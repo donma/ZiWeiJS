@@ -81,5 +81,22 @@
     "note": "恩光自文昌宮位起初一順數至生日再退一宮；天貴自文曲宮位起初一順數至生日再退一宮。",
     "ZW.STAR.AUX.ENGUANG": { "base": "ZW.STAR.AUX.WENCHANG", "dayDirection": 1, "offset": -1 },
     "ZW.STAR.AUX.TIANGUI": { "base": "ZW.STAR.AUX.WENQU", "dayDirection": 1, "offset": -1 }
+  },
+  "byYearStemVoid": {
+    "note": "截空/旬空/天空/天乙 依生年干（空亡諸星）。",
+    "ZW.STAR.AUX.JIEKONG": { "jia": 10, "yi": 11, "bing": 0, "ding": 1, "wu": 2, "ji": 3, "geng": 4, "xin": 5, "ren": 6, "gui": 7 },
+    "ZW.STAR.AUX.XUNKONG": { "formula": "xunKong(yearStem, yearBranch)" },
+    "ZW.STAR.AUX.TIANKONG": { "jia": 8, "yi": 9, "bing": 10, "ding": 11, "wu": 0, "ji": 1, "geng": 2, "xin": 3, "ren": 4, "gui": 5 },
+    "ZW.STAR.AUX.TIANYI": { "note": "天乙貴人 = 天魁/天鉞合宮之對宮；以年干查表", "jia": 7, "yi": 8, "bing": 9, "ding": 9, "wu": 7, "ji": 8, "geng": 7, "xin": 2, "ren": 5, "gui": 5 }
+  },
+  "byMonthSpecial": {
+    "note": "沐浴（咸池桃花變體）依月支；蜚廉依年支；天德月德依月。",
+    "ZW.STAR.AUX.MUYU": { "note": "沐浴為長生第二宮，已由 changsheng engine 標記於 palace.changsheng；此處為獨立星曜版（部分流派）", "formula": "changshengIndex(1)" },
+    "ZW.STAR.AUX.FEILIAN": { "yin-wu-xu": 10, "shen-zi-chen": 4, "si-you-chou": 1, "hai-mao-wei": 7 },
+    "ZW.STAR.AUX.TIANDE": { "formula": "tiande(monthBranch)" },
+    "ZW.STAR.AUX.YUEDE": { "formula": "yuede(monthBranch)" },
+    "ZW.STAR.AUX.XIUSHEN": { "formula": "xiushen(yearBranch)" },
+    "ZW.STAR.AUX.TIANYUE2": { "formula": "tianyue2(monthBranch)" },
+    "ZW.STAR.AUX.ZHIFU": { "formula": "zhifu(yearBranch)" }
   }
 }

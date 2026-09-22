@@ -314,6 +314,59 @@ export function calcAuxByDayHour(ctx: EngineContext): void {
   });
 }
 
+export function calcAuxSpecial(ctx: EngineContext): void {
+  const yearBranch = ctx.normalized.ganzhi.year.branch;
+  const ybIdx = branchIndex(yearBranch);
+  const group = yearBranchGroup(yearBranch);
+  const table = auxTables.byMonthSpecial as Record<string, Record<string, number> | { formula?: string; note?: string }>;
+  const ruleId = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
+  const yearStem = ctx.normalized.ganzhi.year.stem;
+  const voidTable = (auxTables as unknown as { byYearStemVoid?: Record<string, unknown> }).byYearStemVoid ?? {};
+
+  // 截空 / 天空 / 天乙（年干）
+  for (const starId of ['ZW.STAR.AUX.JIEKONG', 'ZW.STAR.AUX.TIANKONG', 'ZW.STAR.AUX.TIANYI']) {
+    const row = voidTable[starId] as Record<string, number> | undefined;
+    if (row && row[yearStem] !== undefined) {
+      placeStar(ctx, starId, branchAt(row[yearStem]), ruleId);
+    }
+  }
+
+  // 旬空：年柱干支所在旬的兩個空亡地支
+  // 干支差值 d = (branch - stem) mod 12 → 旬空 = (10+d, 11+d)
+  const stemIdx = STEMS.indexOf(yearStem);
+  const d = ((branchIndex(yearBranch) - stemIdx) % 12 + 12) % 12;
+  placeStar(ctx, 'ZW.STAR.AUX.XUNKONG', branchAt(10 + d), ruleId);
+
+  // 蜚廉
+  const feilian = (table['ZW.STAR.AUX.FEILIAN'] as Record<string, number>)?.[group];
+  if (feilian !== undefined) placeStar(ctx, 'ZW.STAR.AUX.FEILIAN', branchAt(feilian), ruleId);
+
+  // 息神：年支後一宮
+  placeStar(ctx, 'ZW.STAR.AUX.XIUSHEN', branchAt(ybIdx + 1), ruleId);
+
+  // 天德/月德：以月支查（簡化表）
+  const monthBranchIdx = branchIndex(ctx.normalized.ganzhi.month.branch);
+  const TIANDE = [9, 0, 11, 2, 9, 4, 9, 6, 9, 8, 9, 10];
+  const YUEDE = [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  placeStar(ctx, 'ZW.STAR.AUX.TIANDE', branchAt(TIANDE[monthBranchIdx]), ruleId);
+  placeStar(ctx, 'ZW.STAR.AUX.YUEDE', branchAt(YUEDE[monthBranchIdx]), ruleId);
+
+  // 天月：以月支查（疾厄相關）
+  const TIANYUE2 = [10, 5, 4, 1, 1, 9, 1, 8, 6, 3, 11, 7];
+  placeStar(ctx, 'ZW.STAR.AUX.TIANYUE2', branchAt(TIANYUE2[monthBranchIdx]), ruleId);
+
+  // 指背：年支對宮
+  placeStar(ctx, 'ZW.STAR.AUX.ZHIFU', branchAt(ybIdx + 6), ruleId);
+
+  ctx.tracer.record({
+    ruleId,
+    inputs: { yearStem, yearBranch },
+    result: 'special aux placed',
+    profile: ctx.profile.profileId,
+    sourceRefs: ['SRC.QUANSHU']
+  });
+}
+
 export function calcFixedStars(ctx: EngineContext): void {
   const ruleId = 'ZW.STAR.FIXED.001';
   for (const [starId, cfg] of Object.entries(auxTables.fixed as unknown as Record<string, { palace: string }>)) {
