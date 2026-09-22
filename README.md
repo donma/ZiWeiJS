@@ -104,6 +104,10 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 
 打開 `dist/ziwei-bible-demo.html` — 單一 HTML 檔，離線可用。
 
+**線上 gist 版**：https://gist.github.com/donma/3325f639458af903a0d8948f2bf26fe1
+
+下載後雙擊即可排盤。
+
 ### 開發模式
 
 ```bash
