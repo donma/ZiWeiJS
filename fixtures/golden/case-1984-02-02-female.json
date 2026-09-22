@@ -1,0 +1,16 @@
+{
+  "name": "golden-1984-02-02-female",
+  "input": {
+    "calendarType": "solar",
+    "date": { "year": 1984, "month": 2, "day": 2 },
+    "time": { "hour": 23, "minute": 30 },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "expect": {
+    "ganzhi.year": "jia-zi",
+    "lifePalaceBranch": "_computed_",
+    "bureau": "_computed_"
+  },
+  "note": "1984/2/2 23:30 子時。lunar-typescript 以農曆正月初一（1984/2/2 即甲子年正月初一）換年柱。canonical=midnight 換日。"
+}

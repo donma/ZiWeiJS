@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/source.schema.json",
+  "title": "ZiWei Bible Source",
+  "type": "object",
+  "required": ["sourceId", "title", "type", "tier"],
+  "properties": {
+    "sourceId": { "type": "string", "pattern": "^SRC\\.[A-Z0-9._-]+$" },
+    "title": { "type": "string" },
+    "author": { "type": "string" },
+    "era": { "type": "string" },
+    "edition": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "classical-text",
+        "modern-book",
+        "course",
+        "implementation",
+        "article",
+        "community",
+        "dataset",
+        "other"
+      ]
+    },
+    "tier": { "type": "integer", "minimum": 1, "maximum": 6 },
+    "language": { "type": "string" },
+    "isbn": { "type": "string" },
+    "publisher": { "type": "string" },
+    "year": { "type": ["integer", "string"] },
+    "url": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

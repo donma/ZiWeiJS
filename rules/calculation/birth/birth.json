@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.BIRTH.SEX_DIRECTION.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.birth.direction", "category": "birth",
+      "name": { "zh-TW": "陰陽順逆", "en": "Yin-yang direction" },
+      "description": { "zh-TW": "陽男陰女順行、陰男陽女逆行，用於大限與長生。" },
+      "inputs": ["ganzhi.year.stem", "sexForCalculation"],
+      "logic": { "executor": "calcDirection" },
+      "outputs": ["birthContext.direction"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.DAXIAN"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.BIRTH.SEX_REQUIRED.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.birth.sex", "category": "birth",
+      "name": { "zh-TW": "性別必要欄位", "en": "sexForCalculation required" },
+      "description": { "zh-TW": "未提供性別時拋出 UNKNOWN_SEX_FOR_CALCULATION；不得偷偷預設。" },
+      "inputs": ["sexForCalculation"],
+      "logic": { "executor": "requireSex" },
+      "outputs": [], "sourceRefs": [], "evidenceRefs": [], "tags": ["core", "validation"]
+    }
+  ]
+}

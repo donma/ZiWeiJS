@@ -1,0 +1,35 @@
+{
+  "description": "Variant 登錄：所有非 canonical 規則集中索引。",
+  "variants": [
+    {
+      "variantId": "bureau-year-nayin",
+      "ruleId": "ZW.CALC.BUREAU.NAYIN.V001",
+      "canonicalRuleId": "ZW.CALC.BUREAU.NAYIN.001",
+      "name": { "zh-TW": "年干支納音定局", "en": "Bureau by year nayin" },
+      "status": "variant",
+      "note": "少數流派以生年干支納音定五行局。"
+    },
+    {
+      "variantId": "sihua-geng-quan-tianfu",
+      "ruleId": "ZW.CALC.SIHUA.NATAL.V001",
+      "canonicalRuleId": "ZW.CALC.SIHUA.NATAL.001",
+      "name": { "zh-TW": "庚干天府化權", "en": "Geng: Tian Fu hua quan" },
+      "status": "variant",
+      "note": "部分流派庚年化權為天府。"
+    },
+    {
+      "variantId": "profile-zi-hour-boundary",
+      "profileId": "traditional-zi",
+      "name": { "zh-TW": "子初換日", "en": "Zi-hour day boundary" },
+      "status": "variant",
+      "note": "23:00 起算次日。"
+    },
+    {
+      "variantId": "profile-true-solar",
+      "profileId": "true-solar",
+      "name": { "zh-TW": "真太陽時", "en": "True solar time" },
+      "status": "variant",
+      "note": "以經度與均時差校正。"
+    }
+  ]
+}

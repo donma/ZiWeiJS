@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/interpretation.schema.json",
+  "title": "ZiWei Bible Interpretation Rule",
+  "type": "object",
+  "required": ["ruleId", "ruleVersion", "status", "domain", "conditions"],
+  "properties": {
+    "ruleId": { "type": "string", "pattern": "^ZW\\.INT\\.[A-Z0-9._-]+$" },
+    "ruleVersion": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"]
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "personality", "career", "wealth", "relationship", "marriage",
+        "family", "health", "learning", "migration", "social",
+        "risk", "timing", "general"
+      ]
+    },
+    "name": { "type": "object", "additionalProperties": { "type": "string" } },
+    "conditions": { "type": "object", "description": "DSL expression" },
+    "tendency": {
+      "type": "string",
+      "enum": ["very-positive", "positive", "neutral", "negative", "very-negative", "mixed"]
+    },
+    "strength": { "type": "number", "minimum": 0, "maximum": 1 },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "priority": { "type": "integer" },
+    "supports": { "type": "array", "items": { "type": "string" } },
+    "conflictsWith": { "type": "array", "items": { "type": "string" } },
+    "overrides": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "sourceRefs": { "type": "array", "items": { "type": "string" } },
+    "text": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

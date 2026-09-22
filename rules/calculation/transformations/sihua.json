@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.SIHUA.NATAL.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.transformations.natal", "category": "transformations",
+      "name": { "zh-TW": "生年四化", "en": "Natal four transformations" },
+      "description": { "zh-TW": "以生年干查四化表，化祿化權化科化忌落於星曜所在宮。" },
+      "inputs": ["ganzhi.year.stem"],
+      "logic": { "executor": "calcSihua", "params": { "tableRef": "transformations/sihua#canonical", "scope": "natal" } },
+      "outputs": ["chart.transformations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.SIHUA"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.SIHUA.NATAL.V001", "ruleVersion": "1.0", "status": "variant",
+      "variantOf": "ZW.CALC.SIHUA.NATAL.001",
+      "scope": "calculation.transformations.natal", "category": "transformations",
+      "name": { "zh-TW": "生年四化（庚干天府化權/天相化科流派）", "en": "Natal sihua variant (geng)" },
+      "description": { "zh-TW": "部分流派庚年化權為天府、化科為天相。" },
+      "inputs": ["ganzhi.year.stem"],
+      "logic": { "executor": "calcSihua", "params": { "tableRef": "transformations/sihua#canonical", "scope": "natal", "variantPatch": "geng-quan-tianfu" } },
+      "outputs": ["chart.transformations"], "sourceRefs": ["SRC.ZHONGZHOU"], "evidenceRefs": [], "tags": ["variant"]
+    },
+    {
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.transformations.palace", "category": "transformations",
+      "name": { "zh-TW": "宮干四化（飛化/自化）", "en": "Palace-stem transformations" },
+      "description": { "zh-TW": "以各宮宮干查四化表；飛入他宮為飛化，落本宮為自化。" },
+      "inputs": ["palaces[].stem"],
+      "logic": { "executor": "calcSihuaPalace", "params": { "tableRef": "transformations/sihua#canonical", "scope": "palace" } },
+      "outputs": ["chart.transformations"], "sourceRefs": ["SRC.SIHUA-FEIXING"], "evidenceRefs": [], "tags": ["core", "feihua"]
+    },
+    {
+      "ruleId": "ZW.CALC.SIHUA.PERIOD.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.transformations.period", "category": "transformations",
+      "name": { "zh-TW": "限運四化", "en": "Period transformations" },
+      "description": { "zh-TW": "大限/流年/流月/流日/流時各以其天干查四化表疊加。" },
+      "inputs": ["periods.*.stem"],
+      "logic": { "executor": "calcSihuaPeriod", "params": { "tableRef": "transformations/sihua#canonical" } },
+      "outputs": ["chart.transformations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.SIHUA"], "tags": ["core"]
+    }
+  ]
+}

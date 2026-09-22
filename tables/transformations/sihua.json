@@ -1,0 +1,25 @@
+{
+  "description": "四化表：依年干（或宮干、限運干）查化祿/化權/化科/化忌主星。canonical 採用常見主流版本。",
+  "canonical": {
+    "jia": { "lu": "ZW.STAR.MAJOR.LIANZHEN", "quan": "ZW.STAR.MAJOR.POJUN", "ke": "ZW.STAR.MAJOR.WUQU", "ji": "ZW.STAR.MAJOR.TAIYANG" },
+    "yi": { "lu": "ZW.STAR.MAJOR.TIANJI", "quan": "ZW.STAR.MAJOR.TIANLIANG", "ke": "ZW.STAR.MAJOR.ZIWEI", "ji": "ZW.STAR.MAJOR.TAIYIN" },
+    "bing": { "lu": "ZW.STAR.MAJOR.TIANTONG", "quan": "ZW.STAR.MAJOR.TIANJI", "ke": "ZW.STAR.AUX.WENCHANG", "ji": "ZW.STAR.MAJOR.LIANZHEN" },
+    "ding": { "lu": "ZW.STAR.MAJOR.TAIYIN", "quan": "ZW.STAR.MAJOR.TIANTONG", "ke": "ZW.STAR.MAJOR.TIANJI", "ji": "ZW.STAR.MAJOR.JUMEN" },
+    "wu": { "lu": "ZW.STAR.MAJOR.TANLANG", "quan": "ZW.STAR.MAJOR.TAIYIN", "ke": "ZW.STAR.AUX.YOUBI", "ji": "ZW.STAR.MAJOR.TIANJI" },
+    "ji": { "lu": "ZW.STAR.MAJOR.WUQU", "quan": "ZW.STAR.MAJOR.TANLANG", "ke": "ZW.STAR.MAJOR.TIANLIANG", "ji": "ZW.STAR.AUX.WENQU" },
+    "geng": { "lu": "ZW.STAR.MAJOR.TAIYANG", "quan": "ZW.STAR.MAJOR.WUQU", "ke": "ZW.STAR.MAJOR.TAIYIN", "ji": "ZW.STAR.MAJOR.TIANTONG" },
+    "xin": { "lu": "ZW.STAR.MAJOR.JUMEN", "quan": "ZW.STAR.MAJOR.TAIYANG", "ke": "ZW.STAR.AUX.WENQU", "ji": "ZW.STAR.AUX.WENCHANG" },
+    "ren": { "lu": "ZW.STAR.MAJOR.TIANLIANG", "quan": "ZW.STAR.MAJOR.ZIWEI", "ke": "ZW.STAR.AUX.ZUOFU", "ji": "ZW.STAR.MAJOR.WUQU" },
+    "gui": { "lu": "ZW.STAR.MAJOR.POJUN", "quan": "ZW.STAR.MAJOR.JUMEN", "ke": "ZW.STAR.MAJOR.TAIYIN", "ji": "ZW.STAR.MAJOR.TANLANG" }
+  },
+  "variants": {
+    "geng-quan-tianfu": {
+      "note": "部分流派庚年化權為天府而非武曲。",
+      "geng": { "quan": "ZW.STAR.MAJOR.TIANFU" }
+    },
+    "geng-ke-tianxiang": {
+      "note": "部分流派庚年化科為天相。",
+      "geng": { "ke": "ZW.STAR.MAJOR.TIANXIANG" }
+    }
+  }
+}

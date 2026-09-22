@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.BUREAU.NAYIN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.bureau",
+      "category": "bureau",
+      "name": { "zh-TW": "定五行局", "en": "Determine Five-Element Bureau" },
+      "description": { "zh-TW": "以命宮干支納音五行定局：水二局、木三局、金四局、土五局、火六局。" },
+      "inputs": ["lifePalace.ganzhi"],
+      "logic": { "executor": "calcBureau", "params": { "tableRef": "stems/nayin" } },
+      "outputs": ["birthContext.bureau"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.WUXINGJU"],
+      "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.BUREAU.NAYIN.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.BUREAU.NAYIN.001",
+      "scope": "calculation.bureau",
+      "category": "bureau",
+      "name": { "zh-TW": "定五行局（年干支納音流派）", "en": "Bureau by year ganzhi nayin (variant)" },
+      "description": { "zh-TW": "少數流派以生年干支納音定局，而非命宮干支；本 Bible 標為 variant，待考證。" },
+      "inputs": ["ganzhi.year"],
+      "logic": { "executor": "calcBureau", "params": { "tableRef": "stems/nayin", "useYearGanzhi": true } },
+      "outputs": ["birthContext.bureau"],
+      "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"],
+      "evidenceRefs": [],
+      "tags": ["variant"]
+    }
+  ]
+}

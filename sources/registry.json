@@ -1,0 +1,99 @@
+{
+  "$schema": "../schemas/source.schema.json",
+  "sources": [
+    {
+      "sourceId": "SRC.QUANSHU",
+      "title": "紫微斗數全書",
+      "author": "托名陳希夷（陳摶）",
+      "era": "宋（傳）/明清刊本",
+      "edition": "通行本",
+      "type": "classical-text",
+      "tier": 1,
+      "language": "zh",
+      "notes": "紫微斗數核心古典文獻之一，安星法、格局賦文主要出處。"
+    },
+    {
+      "sourceId": "SRC.QUANJI",
+      "title": "紫微斗數全集",
+      "author": "不詳",
+      "era": "明清",
+      "edition": "通行本",
+      "type": "classical-text",
+      "tier": 1,
+      "language": "zh",
+      "notes": "與全書並列的古典系統，部分星曜安法與格局有差異。"
+    },
+    {
+      "sourceId": "SRC.ZHONGZHOU",
+      "title": "中州派紫微斗數講義",
+      "author": "王亭之",
+      "era": "現代",
+      "edition": "公開講義/著作",
+      "type": "modern-book",
+      "tier": 2,
+      "language": "zh",
+      "notes": "中州派傳承，四化飛星與星曜互涉體系代表。"
+    },
+    {
+      "sourceId": "SRC.SIHUA-FEIXING",
+      "title": "飛星紫微斗數（四化飛星體系）",
+      "author": "梁若瑜等",
+      "era": "現代",
+      "type": "modern-book",
+      "tier": 2,
+      "language": "zh",
+      "notes": "四化飛星流派代表文獻，宮干飛化體系。"
+    },
+    {
+      "sourceId": "SRC.MODERN-IMPL-CONSENSUS",
+      "title": "多個可信排盤系統一致實作（iztro / 文墨天機 / 排盤軟體共識）",
+      "author": "多方實作",
+      "era": "現代",
+      "type": "implementation",
+      "tier": 3,
+      "language": "multi",
+      "notes": "多個廣泛使用的排盤系統一致之實作，作為 Tier 3 交叉驗證依據。"
+    },
+    {
+      "sourceId": "SRC.IZTRO",
+      "title": "iztro — 開源紫微斗數排盤庫",
+      "author": "SylarLong",
+      "era": "現代",
+      "type": "implementation",
+      "tier": 3,
+      "language": "zh/en",
+      "url": "https://github.com/SylarLong/iztro",
+      "notes": "開源 TypeScript 排盤實作，安星法透明可查，供 differential 比對。"
+    },
+    {
+      "sourceId": "SRC.WENMO",
+      "title": "文墨天機排盤系統",
+      "author": "文墨天機團隊",
+      "era": "現代",
+      "type": "implementation",
+      "tier": 3,
+      "language": "zh",
+      "notes": "廣泛使用的商業排盤軟體，作為 differential 對照來源之一。"
+    },
+    {
+      "sourceId": "SRC.BAIKE-ZIWEI",
+      "title": "紫微斗數概論（維基百科條目）",
+      "author": "維基百科編者群",
+      "era": "現代",
+      "type": "article",
+      "tier": 4,
+      "language": "zh",
+      "notes": "術語定義與體系概述之參考。"
+    },
+    {
+      "sourceId": "SRC.SANHE-PAI",
+      "title": "三合派紫微斗數教材（傳承講義彙編）",
+      "author": "多位三合派老師",
+      "era": "現代",
+      "type": "course",
+      "tier": 4,
+      "language": "zh",
+      "notes": "三合派傳統教材彙編，星曜互涉與宮位體系參考。"
+    }
+  ]
+}

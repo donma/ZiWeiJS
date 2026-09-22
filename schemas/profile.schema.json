@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/profile.schema.json",
+  "title": "ZiWei Bible Profile",
+  "type": "object",
+  "required": ["profileId", "name"],
+  "properties": {
+    "profileId": { "type": "string" },
+    "name": { "type": "object", "additionalProperties": { "type": "string" } },
+    "description": { "type": "object", "additionalProperties": { "type": "string" } },
+    "timeConvention": {
+      "type": "string",
+      "enum": ["civil", "true-solar", "local-mean-solar"]
+    },
+    "dayBoundary": {
+      "type": "string",
+      "enum": ["midnight", "zi-hour"]
+    },
+    "leapMonthPolicy": {
+      "type": "string",
+      "enum": ["mid-month", "same-as-normal", "split", "next-month"]
+    },
+    "transformationPolicy": { "type": "string" },
+    "starRules": { "type": "object" },
+    "periodRules": { "type": "object" },
+    "dignityRules": { "type": "object" },
+    "ruleOverrides": {
+      "type": "object",
+      "description": "canonical ruleId -> variant ruleId",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

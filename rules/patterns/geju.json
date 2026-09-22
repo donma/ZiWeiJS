@@ -1,0 +1,207 @@
+{
+  "$schema": "../../schemas/rule.schema.json",
+  "patterns": [
+    {
+      "ruleId": "ZW.PAT.ZIFU_TONGGONG.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "紫府同宮", "en": "Zi Wei & Tian Fu same palace" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.ZIWEI", "ZW.STAR.MAJOR.TIANFU"], "relation": "same-palace" }
+      ],
+      "enhancers": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+      ],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "same-palace" }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "紫微天府同宮（寅申），主厚重穩貴，得輔弼更佳。" }
+    },
+    {
+      "ruleId": "ZW.PAT.JIYUETONGLIANG.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "機月同梁", "en": "Ji Yue Tong Liang" },
+      "required": [
+        { "type": "any", "conditions": [
+          { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TAIYIN", "ZW.STAR.MAJOR.TIANTONG", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 3 }
+        ]}
+      ],
+      "enhancers": [],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "機月同梁格，主文職、公教、穩定上班族之命。" }
+    },
+    {
+      "ruleId": "ZW.PAT.SHA_POLANG.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "殺破狼", "en": "Sha Po Lang" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.QISHA", "ZW.STAR.MAJOR.POJUN", "ZW.STAR.MAJOR.TANLANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+      ],
+      "enhancers": [],
+      "breakers": [],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "殺破狼格局，主變動開創，一生起伏大、利武職或開創性事業。" }
+    },
+    {
+      "ruleId": "ZW.PAT.RIYUEMING.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "日月並明", "en": "Sun and Moon both bright" },
+      "required": [
+        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYANG", "minLevel": "wang" },
+        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYIN", "minLevel": "wang" }
+      ],
+      "enhancers": [],
+      "breakers": [],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "太陽太陰皆居旺地，主貴氣與福澤。" }
+    },
+    {
+      "ruleId": "ZW.PAT.JIAXIANG.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "府相朝垣", "en": "Fu Xiang Chao Yuan" },
+      "required": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.MAJOR.TIANFU", "ZW.STAR.MAJOR.TIANXIANG"] }
+      ],
+      "enhancers": [
+        { "type": "transformation", "transform": "lu", "relation": "san-fang-si-zheng", "palace": "life" }
+      ],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "天府天相朝拱命宮，主衣食無缺、貴人扶持。" }
+    },
+    {
+      "ruleId": "ZW.PAT.ZIWEI_ZUOYOU.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "君臣慶會", "en": "Zi Wei with Zuo Fu / You Bi" },
+      "required": [
+        { "type": "star-in-palace", "star": "ZW.STAR.MAJOR.ZIWEI", "palace": "life" },
+        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+      ],
+      "enhancers": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+      ],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 3 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "紫微得輔弼朝拱，帝王得臣，主領導得人助、格局高。" }
+    },
+    {
+      "ruleId": "ZW.PAT.LUMA_JIAOCHI.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "祿馬交馳", "en": "Lu Cun & Tian Ma together" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.AUX.LUCUN", "ZW.STAR.AUX.TIANMA"], "relation": "same-palace" }
+      ],
+      "enhancers": [
+        { "type": "transformation", "transform": "lu", "relation": "san-fang-si-zheng", "palace": "life" }
+      ],
+      "breakers": [
+        { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIKONG" },
+        { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIJIE" }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "祿存與天馬同宮或對拱，主動中求財、異地發達。" }
+    },
+    {
+      "ruleId": "ZW.PAT.WENGUI.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "文桂文華", "en": "Wen Chang / Wen Qu in auspicious palaces" },
+      "required": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU"] }
+      ],
+      "enhancers": [
+        { "type": "transformation", "transform": "ke", "relation": "san-fang-si-zheng", "palace": "life" }
+      ],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "palace": "life", "minCount": 2 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "昌曲夾拱命身，主文才科名、才華出眾。" }
+    },
+    {
+      "ruleId": "ZW.PAT.YUE_MEN_DONG.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "日月同宮", "en": "Sun & Moon same palace" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TAIYANG", "ZW.STAR.MAJOR.TAIYIN"], "relation": "same-palace" }
+      ],
+      "enhancers": [],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "日月同宮（丑未），主貴氣，然亦主反覆與辛勞。" }
+    },
+    {
+      "ruleId": "ZW.PAT.YINGHUO.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "火貪格 / 鈴貪格", "en": "Huo/Ling + Tan Lang" },
+      "required": [
+        { "type": "any", "conditions": [
+          { "type": "star-group", "group": ["ZW.STAR.AUX.HUOLING", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" },
+          { "type": "star-group", "group": ["ZW.STAR.AUX.LINGXING", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" }
+        ]}
+      ],
+      "enhancers": [
+        { "type": "transformation", "transform": "lu", "relation": "same-palace" }
+      ],
+      "breakers": [
+        { "type": "star-group", "group": ["ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"], "relation": "same-palace" }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "火星或鈴星與貪狼同宮，主暴發、偏財橫發，亦主驟敗風險。" }
+    },
+    {
+      "ruleId": "ZW.PAT.JILIANG_LU.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "機梁加祿", "en": "Tian Ji & Tian Liang with Lu" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "same-palace" },
+        { "type": "any", "conditions": [
+          { "type": "transformation", "transform": "lu" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.LUCUN" }
+        ]}
+      ],
+      "enhancers": [],
+      "breakers": [
+        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+      ],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "天機天梁同宮會祿，主智慧清貴、善策劃經營。" }
+    },
+    {
+      "ruleId": "ZW.PAT.JINJI.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "極居卯酉", "en": "Zi Wei & Tan Lang in Mao/You" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.ZIWEI", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" }
+      ],
+      "enhancers": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+      ],
+      "breakers": [],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "紫微貪狼同宮於卯酉，主桃花犯主、才情風流，須防酒色。" }
+    },
+    {
+      "ruleId": "ZW.PAT.SHILIANG_YIN.001", "ruleVersion": "1.0", "status": "candidate",
+      "scope": "pattern", "category": "patterns",
+      "name": { "zh-TW": "善蔭朝綱", "en": "Tian Ji & Tian Liang pattern" },
+      "required": [
+        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+      ],
+      "enhancers": [
+        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAny": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU"] }
+      ],
+      "breakers": [],
+      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
+      "text": { "zh-TW": "天機天梁會照命宮，主善於謀劃、有專業清貴之格。" }
+    }
+  ]
+}

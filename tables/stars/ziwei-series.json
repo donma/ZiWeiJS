@@ -1,0 +1,29 @@
+{
+  "description": "紫微星系安星表：以五行局數與農曆生日推紫微位置，其餘紫微系星曜以紫微為基準逆行。",
+  "ziweiPosition": {
+    "note": "ziweiBranchIndex = f(bureauNumber, lunarDay). Algorithm: find smallest x such that (day + x) % bureau == 0; q = (day + x) / bureau; if x is even, branchIndex = q + x - 1 (0=zi); if x is odd, branchIndex = q - x - 1. Normalized to 0..11.",
+    "algorithm": "ziwei-day-divisor"
+  },
+  "series": {
+    "ZW.STAR.MAJOR.ZIWEI": { "offsetFromZiwei": 0 },
+    "ZW.STAR.MAJOR.TIANJI": { "offsetFromZiwei": -1 },
+    "ZW.STAR.MAJOR.TAIYANG": { "offsetFromZiwei": -3 },
+    "ZW.STAR.MAJOR.WUQU": { "offsetFromZiwei": -4 },
+    "ZW.STAR.MAJOR.TIANTONG": { "offsetFromZiwei": -5 },
+    "ZW.STAR.MAJOR.LIANZHEN": { "offsetFromZiwei": -8 }
+  },
+  "tianfuPosition": {
+    "note": "天府與紫微以寅申線對稱：tianfuIndex = 4 - ziweiIndex (mod 12), i.e. mirrored across yin-shen axis.",
+    "algorithm": "mirror-yin-shen"
+  },
+  "tianfuSeries": {
+    "ZW.STAR.MAJOR.TIANFU": { "offsetFromTianfu": 0 },
+    "ZW.STAR.MAJOR.TAIYIN": { "offsetFromTianfu": 1 },
+    "ZW.STAR.MAJOR.TANLANG": { "offsetFromTianfu": 2 },
+    "ZW.STAR.MAJOR.JUMEN": { "offsetFromTianfu": 3 },
+    "ZW.STAR.MAJOR.TIANXIANG": { "offsetFromTianfu": 4 },
+    "ZW.STAR.MAJOR.TIANLIANG": { "offsetFromTianfu": 5 },
+    "ZW.STAR.MAJOR.QISHA": { "offsetFromTianfu": 6 },
+    "ZW.STAR.MAJOR.POJUN": { "offsetFromTianfu": 10 }
+  }
+}

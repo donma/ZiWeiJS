@@ -1,0 +1,22 @@
+{
+  "description": "納音五行：六十甲子納音，用於五行局判定。key = stemIndex*? 使用 pair key 'stem-branch'。",
+  "nayin": {
+    "jia-zi": "jin", "yi-chou": "jin", "bing-yin": "huo", "ding-mao": "huo", "wu-chen": "mu", "ji-si": "mu",
+    "geng-wu": "tu", "xin-wei": "tu", "ren-shen": "jin", "gui-you": "jin", "jia-xu": "huo", "yi-hai": "huo",
+    "bing-zi": "shui", "ding-chou": "shui", "wu-yin": "tu", "ji-mao": "tu", "geng-chen": "jin", "xin-si": "jin",
+    "ren-wu": "mu", "gui-wei": "mu", "jia-shen": "shui", "yi-you": "shui", "bing-xu": "tu", "ding-hai": "tu",
+    "wu-zi": "huo", "ji-chou": "huo", "geng-yin": "mu", "xin-mao": "mu", "ren-chen": "shui", "gui-si": "shui",
+    "jia-wu": "jin", "yi-wei": "jin", "bing-shen": "huo", "ding-you": "huo", "wu-xu": "mu", "ji-hai": "mu",
+    "geng-zi": "tu", "xin-chou": "tu", "ren-yin": "jin", "gui-mao": "jin", "jia-chen": "huo", "yi-si": "huo",
+    "bing-wu": "shui", "ding-wei": "shui", "wu-shen": "tu", "ji-you": "tu", "geng-xu": "jin", "xin-hai": "jin",
+    "ren-zi": "mu", "gui-chou": "mu", "jia-yin": "shui", "yi-mao": "shui", "bing-chen": "tu", "ding-si": "tu",
+    "wu-wu": "huo", "ji-wei": "huo", "geng-shen": "mu", "xin-you": "mu", "ren-xu": "shui", "gui-hai": "shui"
+  },
+  "wuxingToBureau": {
+    "shui": "shui2",
+    "mu": "mu3",
+    "jin": "jin4",
+    "tu": "tu5",
+    "huo": "huo6"
+  }
+}

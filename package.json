@@ -1,0 +1,52 @@
+{
+  "name": "ziwei-bible",
+  "version": "0.1.0",
+  "description": "ZiWeiJS-Bible — machine-readable, traceable and testable Zi Wei Dou Shu reference repository and reference engine.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE-DRAFT.md",
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/ziwei-bible.d.ts",
+      "import": "./dist/ziwei-bible.esm.js",
+      "default": "./dist/ziwei-bible.esm.js"
+    },
+    "./browser": {
+      "types": "./dist/ziwei-bible.d.ts",
+      "default": "./dist/ziwei-bible.browser.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "rules",
+    "tables",
+    "sources",
+    "evidence",
+    "profiles",
+    "variants"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --config vite.lib.config.ts && node tools/build-types.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:rules": "node tools/rule-validator/validate.mjs",
+    "validate:sources": "node tools/source-validator/validate.mjs"
+  },
+  "dependencies": {
+    "lunar-typescript": "^1.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "ajv": "^8.17.1",
+    "ajv-draft-04": "^1.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  }
+}

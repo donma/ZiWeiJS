@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/chart.schema.json",
+  "title": "ZiWei Bible Chart",
+  "type": "object",
+  "required": ["schemaVersion", "generatedWith", "input", "chart"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "generatedWith": {
+      "type": "object",
+      "properties": {
+        "bibleVersion": { "type": "string" },
+        "schemaVersion": { "type": "string" },
+        "profile": { "type": "string" }
+      }
+    },
+    "engine": { "type": "object" },
+    "input": { "type": "object" },
+    "calendar": { "type": "object" },
+    "birthContext": { "type": "object" },
+    "chart": {
+      "type": "object",
+      "properties": {
+        "natal": { "type": "object" },
+        "palaces": { "type": "array" },
+        "stars": { "type": "object" },
+        "transformations": { "type": ["object", "array"] },
+        "patterns": { "type": "array" }
+      }
+    },
+    "periods": { "type": "object" },
+    "interpretation": { "type": "object" },
+    "certainty": { "type": "object" },
+    "trace": { "type": "object" }
+  },
+  "additionalProperties": true
+}

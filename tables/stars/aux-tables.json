@@ -1,0 +1,85 @@
+{
+  "description": "輔星 / 煞星 / 雜曜安星表。index = 地支序 (zi=0 ... hai=11)。",
+  "byLunarMonth": {
+    "note": "左輔自辰起正月順行；右弼自戌起正月逆行；天刑自酉起正月順行；天姚自丑起正月順行。值為正月所在宮位地支序，其餘月份按方向推。",
+    "ZW.STAR.AUX.ZUOFU": { "startBranch": "chen", "direction": 1 },
+    "ZW.STAR.AUX.YOUBI": { "startBranch": "xu", "direction": -1 },
+    "ZW.STAR.AUX.TIANXING": { "startBranch": "you", "direction": 1 },
+    "ZW.STAR.AUX.TIANYAO": { "startBranch": "chou", "direction": 1 }
+  },
+  "byHourBranch": {
+    "note": "文昌自戌起子時逆行；文曲自辰起子時順行；地空自亥起子時逆行；地劫自亥起子時順行。",
+    "ZW.STAR.AUX.WENCHANG": { "startBranch": "xu", "direction": -1 },
+    "ZW.STAR.AUX.WENQU": { "startBranch": "chen", "direction": 1 },
+    "ZW.STAR.MALEFIC.DIKONG": { "startBranch": "hai", "direction": -1 },
+    "ZW.STAR.MALEFIC.DIJIE": { "startBranch": "hai", "direction": 1 }
+  },
+  "byYearStem": {
+    "note": "祿存/擎羊/陀羅/天魁/天鉞 依生年干。值為地支序 zi=0..hai=11。",
+    "ZW.STAR.AUX.LUCUN": { "jia": 2, "yi": 3, "bing": 5, "ding": 6, "wu": 5, "ji": 6, "geng": 8, "xin": 9, "ren": 11, "gui": 0 },
+    "ZW.STAR.MALEFIC.QINGYANG": { "jia": 3, "yi": 4, "bing": 6, "ding": 7, "wu": 6, "ji": 7, "geng": 9, "xin": 10, "ren": 0, "gui": 1 },
+    "ZW.STAR.MALEFIC.TUOLUO": { "jia": 1, "yi": 2, "bing": 4, "ding": 5, "wu": 4, "ji": 5, "geng": 7, "xin": 8, "ren": 10, "gui": 11 },
+    "ZW.STAR.AUX.TIANKUI": { "jia": 1, "yi": 0, "bing": 11, "ding": 11, "wu": 1, "ji": 0, "geng": 1, "xin": 6, "ren": 3, "gui": 3 },
+    "ZW.STAR.AUX.TIANYUE": { "jia": 7, "yi": 8, "bing": 9, "ding": 9, "wu": 7, "ji": 8, "geng": 7, "xin": 2, "ren": 5, "gui": 5 },
+    "ZW.STAR.AUX.HUAGAI_variant_a": { "jia": 9, "yi": 9, "bing": 0, "ding": 0, "wu": 3, "ji": 3, "geng": 6, "xin": 6, "ren": 9, "gui": 9 }
+  },
+  "byYearBranch": {
+    "note": "火星/鈴星/天馬/紅鸞/天喜/孤辰/寡宿/華蓋/咸池/大耗/破碎等依生年支。組別：寅午戌 / 申子辰 / 巳酉丑 / 亥卯未。",
+    "groups": {
+      "yin-wu-xu": [2, 6, 10],
+      "shen-zi-chen": [8, 0, 4],
+      "si-you-chou": [5, 9, 1],
+      "hai-mao-wei": [11, 3, 7]
+    },
+    "ZW.STAR.AUX.HUOLING": { "yin-wu-xu": 1, "shen-zi-chen": 2, "si-you-chou": 3, "hai-mao-wei": 9, "mode": "group-start-hour-forward" },
+    "ZW.STAR.AUX.LINGXING": { "yin-wu-xu": 3, "shen-zi-chen": 10, "si-you-chou": 10, "hai-mao-wei": 10, "mode": "group-start-hour-forward" },
+    "ZW.STAR.AUX.TIANMA": { "yin-wu-xu": 8, "shen-zi-chen": 2, "si-you-chou": 11, "hai-mao-wei": 5 },
+    "ZW.STAR.AUX.HONGLUAN": { "formula": "3 - yearBranchIndex mod 12" },
+    "ZW.STAR.AUX.TIANXI": { "formula": "hongluan + 6" },
+    "ZW.STAR.AUX.GUCHEN": { "yin-wu-xu": 5, "shen-zi-chen": 11, "si-you-chou": 2, "hai-mao-wei": 8 },
+    "ZW.STAR.AUX.GUASU": { "yin-wu-xu": 1, "shen-zi-chen": 7, "si-you-chou": 10, "hai-mao-wei": 4 },
+    "ZW.STAR.AUX.HUAGAI": { "yin-wu-xu": 10, "shen-zi-chen": 4, "si-you-chou": 1, "hai-mao-wei": 7 },
+    "ZW.STAR.AUX.XIANCHI": { "yin-wu-xu": 9, "shen-zi-chen": 6, "si-you-chou": 3, "hai-mao-wei": 0 },
+    "ZW.STAR.AUX.DAHao": { "formula": "yearBranchIndex + 7 mod 12 (元辰/大耗，陽男陰女順)" },
+    "ZW.STAR.AUX.POSUI": { "yin-wu-xu": 5, "shen-zi-chen": 11, "si-you-chou": 1, "hai-mao-wei": 9 },
+    "ZW.STAR.AUX.JIESHA": { "yin-wu-xu": 5, "shen-zi-chen": 8, "si-you-chou": 11, "hai-mao-wei": 2 },
+    "ZW.STAR.AUX.TIANKU": { "formula": "wu(6) - yearBranchIndex" },
+    "ZW.STAR.AUX.TIANXU": { "formula": "tianku + 6" },
+    "ZW.STAR.AUX.SANGMEN": { "formula": "yearBranchIndex + 2" },
+    "ZW.STAR.AUX.DIAOKE": { "formula": "yearBranchIndex - 2" },
+    "ZW.STAR.AUX.BAIHU": { "formula": "shen(8) - yearBranchIndex" },
+    "ZW.STAR.AUX.YINSHA": { "formula": "yin(2) + monthIndex*2 mod 12 (正月寅起順)" },
+    "ZW.STAR.AUX.BINGFU": { "formula": "yearBranchIndex - 1" },
+    "ZW.STAR.AUX.WANGSHEN": { "yin-wu-xu": 4, "shen-zi-chen": 10, "si-you-chou": 1, "hai-mao-wei": 7 },
+    "ZW.STAR.AUX.XIAOHAO": { "formula": "yearBranchIndex + 6 (大耗對宮)" },
+    "ZW.STAR.AUX.DAHao": { "formula": "yearBranchIndex + 7" },
+    "ZW.STAR.AUX.GUANFU": { "formula": "yearBranchIndex + 8" },
+    "ZW.STAR.AUX.SUISHEN": { "formula": "yearBranchIndex + 3" }
+  },
+  "fixed": {
+    "note": "天傷固定守交友宮、天使固定守疾厄宮（依宮位而非地支）。",
+    "ZW.STAR.AUX.TIANSHANG": { "palace": "friends" },
+    "ZW.STAR.AUX.TIANSHI": { "palace": "health" }
+  },
+  "byDayBranch": {
+    "note": "三台自左輔起初一順數至生日；八座自右弼起初一逆數至生日。",
+    "ZW.STAR.AUX.SANTAI": { "base": "ZW.STAR.AUX.ZUOFU", "direction": 1 },
+    "ZW.STAR.AUX.BAZUO": { "base": "ZW.STAR.AUX.YOUBI", "direction": -1 }
+  },
+  "byLunarMonth2": {
+    "note": "龍池自辰起正月順數；鳳閣自戌起正月順數。",
+    "ZW.STAR.AUX.LONGCHI": { "startBranch": "chen", "direction": 1 },
+    "ZW.STAR.AUX.FENGGE": { "startBranch": "xu", "direction": 1 }
+  },
+  "byYearStem2": {
+    "note": "天官/天福/天廚 依生年干。",
+    "ZW.STAR.AUX.TIANGUAN": { "jia": 9, "yi": 10, "bing": 5, "ding": 2, "wu": 3, "ji": 10, "geng": 11, "xin": 9, "ren": 0, "gui": 5 },
+    "ZW.STAR.AUX.TIANFU2": { "jia": 9, "yi": 10, "bing": 5, "ding": 3, "wu": 0, "ji": 10, "geng": 0, "xin": 9, "ren": 1, "gui": 4 },
+    "ZW.STAR.AUX.TIANCHU": { "jia": 6, "yi": 7, "bing": 6, "ding": 9, "wu": 7, "ji": 8, "geng": 2, "xin": 7, "ren": 10, "gui": 9 }
+  },
+  "byDayHour": {
+    "note": "恩光自文昌宮位起初一順數至生日再退一宮；天貴自文曲宮位起初一順數至生日再退一宮。",
+    "ZW.STAR.AUX.ENGUANG": { "base": "ZW.STAR.AUX.WENCHANG", "dayDirection": 1, "offset": -1 },
+    "ZW.STAR.AUX.TIANGUI": { "base": "ZW.STAR.AUX.WENQU", "dayDirection": 1, "offset": -1 }
+  }
+}

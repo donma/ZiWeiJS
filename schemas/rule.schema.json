@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/rule.schema.json",
+  "title": "ZiWei Bible Rule",
+  "type": "object",
+  "required": ["ruleId", "ruleVersion", "status", "scope", "category", "name", "logic"],
+  "properties": {
+    "ruleId": { "type": "string", "pattern": "^ZW\\.[A-Z0-9._-]+$" },
+    "ruleVersion": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "status": {
+      "type": "string",
+      "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"]
+    },
+    "scope": { "type": "string", "description": "e.g. calculation.palace.life" },
+    "category": { "type": "string" },
+    "name": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "description": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "profile": { "type": "string", "default": "canonical" },
+    "variantOf": { "type": "string", "description": "ruleId of the canonical rule this is a variant of" },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "logic": {
+      "type": "object",
+      "description": "Either a DSL expression ({dsl: {...}}) or an executor reference ({executor: 'name', params: {...}})",
+      "properties": {
+        "dsl": { "type": "object" },
+        "executor": { "type": "string" },
+        "params": { "type": "object" },
+        "tableRef": { "type": "string", "description": "path into tables/, e.g. stars/majors" }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^SRC\\." }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^EVD\\." }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fixture": { "type": "string" },
+          "expect": {}
+        }
+      }
+    },
+    "changeLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["version", "type"],
+        "properties": {
+          "version": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["breaking", "behavior-change", "evidence-update", "wording-only", "deprecated"]
+          },
+          "note": { "type": "string" },
+          "date": { "type": "string" }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

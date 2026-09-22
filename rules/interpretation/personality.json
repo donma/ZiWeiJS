@@ -1,0 +1,197 @@
+{
+  "$schema": "../../schemas/interpretation.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.INT.PERS.ZIWEI_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "紫微坐命", "en": "Zi Wei in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.ZIWEI", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.7, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "紫微居命，主厚重謙恭、有領導欲與自尊心，喜得人尊重與輔佐。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TIANJI_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "天機坐命", "en": "Tian Ji in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANJI", "palace": "life" }] },
+      "tendency": "neutral",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天機居命，主聰明機巧、思慮多變，善策劃而欠安定。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TAIYANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "太陽坐命", "en": "Tai Yang in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TAIYANG", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "太陽居命，主光明磊落、博愛好施，重名聲與表現。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.WUQU_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "武曲坐命", "en": "Wu Qu in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.WUQU", "palace": "life" }] },
+      "tendency": "neutral",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "武曲居命，主剛毅果決、重實際與財務觀念，性直少圓融。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TIANTONG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "天同坐命", "en": "Tian Tong in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANTONG", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天同居命，主溫和隨和、重享受與感性，童心未泯。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.LIANZHEN_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "廉貞坐命", "en": "Lian Zhen in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.LIANZHEN", "palace": "life" }] },
+      "tendency": "mixed",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "廉貞居命，主剛烈有才幹、感情濃烈，亦主政治與桃花糾葛。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TIANFU_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "天府坐命", "en": "Tian Fu in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANFU", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天府居命，主穩重保守、善理財守成，有庫藏之量。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TAIYIN_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "太陰坐命", "en": "Tai Yin in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TAIYIN", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "太陰居命，主溫柔細膩、內斂重感受，利田宅與財富積累。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TANLANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "貪狼坐命", "en": "Tan Lang in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TANLANG", "palace": "life" }] },
+      "tendency": "mixed",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "貪狼居命，主多才多藝、慾望與交際力強，易涉桃花亦利修行才藝。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.JUMEN_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "巨門坐命", "en": "Ju Men in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.JUMEN", "palace": "life" }] },
+      "tendency": "mixed",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "巨門居命，主口才佳、善分析研究，然多疑慮是非。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TIANXIANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "天相坐命", "en": "Tian Xiang in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANXIANG", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天相居命，主公正熱心、善輔佐協調，重衣食形象。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.TIANLIANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "天梁坐命", "en": "Tian Liang in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANLIANG", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天梁居命，主清高蔭庇、老成持重，利專業與照顧他人。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.QISHA_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "七殺坐命", "en": "Qi Sha in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.QISHA", "palace": "life" }] },
+      "tendency": "mixed",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "七殺居命，主剛強果斷、具開創與權威，然孤剋變動大。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.POJUN_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "破軍坐命", "en": "Po Jun in Life Palace" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.POJUN", "palace": "life" }] },
+      "tendency": "mixed",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "破軍居命，主破舊立新、變動開創，性急而具破壞力與行動力。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.MALEFIC_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "煞星會命", "en": "Malefics afflicting Life Palace" },
+      "conditions": {
+        "all": [{
+          "type": "relation", "relation": "san-fang-si-zheng", "palace": "life",
+          "containsAny": ["ZW.STAR.MALEFIC.QINGYANG", "ZW.STAR.MALEFIC.TUOLUO", "ZW.STAR.AUX.HUOLING", "ZW.STAR.AUX.LINGXING", "ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"]
+        }]
+      },
+      "tendency": "negative",
+      "strength": 0.55, "confidence": 0.75, "priority": 60,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "命宮三方四正會煞，人生波折較多，個性中帶有衝突或孤獨傾向，須以吉星化解。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.LU_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "化祿入命", "en": "Hua Lu into Life Palace" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "life" }] },
+      "tendency": "positive",
+      "strength": 0.7, "confidence": 0.8, "priority": 75,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "生年化祿入命，主財緣與人緣俱佳，性格中帶圓融與機遇。" }
+    },
+    {
+      "ruleId": "ZW.INT.PERS.JI_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "personality",
+      "name": { "zh-TW": "化忌入命", "en": "Hua Ji into Life Palace" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "life" }] },
+      "tendency": "negative",
+      "strength": 0.7, "confidence": 0.8, "priority": 80,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "生年化忌入命，主執著糾結、得失心重，一生多牽掛於該星所主事項。" }
+    }
+  ]
+}

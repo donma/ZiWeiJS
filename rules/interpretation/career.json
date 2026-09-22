@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schemas/interpretation.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.INT.CAREER.QUAN_CAREER.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "career",
+      "name": { "zh-TW": "化權入官祿", "en": "Hua Quan into Career" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "career" }] },
+      "tendency": "positive",
+      "strength": 0.7, "confidence": 0.8, "priority": 75,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化權入官祿宮，事業上主掌權、能擔當，適合管理與專業主導。" }
+    },
+    {
+      "ruleId": "ZW.INT.CAREER.JI_CAREER.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "career",
+      "name": { "zh-TW": "化忌入官祿", "en": "Hua Ji into Career" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "career" }] },
+      "tendency": "negative",
+      "strength": 0.7, "confidence": 0.8, "priority": 80,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化忌入官祿宮，事業多牽掛波折，宜專精一技或受薪，不宜貿然創業。" }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.LU_WEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "wealth",
+      "name": { "zh-TW": "化祿入財帛", "en": "Hua Lu into Wealth" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "wealth" }] },
+      "tendency": "positive",
+      "strength": 0.7, "confidence": 0.8, "priority": 75,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化祿入財帛宮，財源豐厚、求財順遂。" }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.LUCUN_WEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "wealth",
+      "name": { "zh-TW": "祿存守財帛", "en": "Lu Cun in Wealth" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.LUCUN", "palace": "wealth" }] },
+      "tendency": "positive",
+      "strength": 0.65, "confidence": 0.8, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "祿存守財帛，主穩定財源、善於積蓄，唯羊陀夾守時開銷壓力並存。" }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.JI_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "marriage",
+      "name": { "zh-TW": "化忌入夫妻", "en": "Hua Ji into Spouse" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "spouse" }] },
+      "tendency": "negative",
+      "strength": 0.7, "confidence": 0.8, "priority": 80,
+      "supports": [], "conflictsWith": [], "overrides": [],
+      "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化忌入夫妻宮，感情婚姻多糾結牽掛，宜晚婚或寬待差異。" }
+    }
+  ]
+}

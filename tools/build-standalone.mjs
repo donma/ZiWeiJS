@@ -1,0 +1,32 @@
+import { execSync } from 'node:child_process';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+
+execSync('npx vite build --config vite.standalone.config.ts', { cwd: root, stdio: 'inherit' });
+
+const dir = join(root, 'dist/standalone');
+const jsFile = readdirSync(dir).find(f => f.endsWith('.js'));
+const cssFile = readdirSync(dir).find(f => f.endsWith('.css'));
+
+const js = jsFile ? readFileSync(join(dir, jsFile), 'utf8') : '';
+const css = cssFile ? readFileSync(join(dir, cssFile), 'utf8') : '';
+
+const html = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>ZiWeiJS — 紫微斗數 Reference Engine</title>
+<style>${css}</style>
+</head>
+<body>
+<div id="app"></div>
+<script>${js.replace(/<\/script>/g, '<\\/script>')}</script>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'dist/ziwei-bible-demo.html'), html, 'utf8');
+console.log('wrote dist/ziwei-bible-demo.html (double-click to open, works offline)');

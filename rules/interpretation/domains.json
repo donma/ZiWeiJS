@@ -1,0 +1,171 @@
+{
+  "$schema": "../../schemas/interpretation.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.INT.WEALTH.WUQU_WEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "wealth",
+      "name": { "zh-TW": "武曲守財帛", "en": "Wu Qu in Wealth" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.WUQU", "palace": "wealth" }] },
+      "tendency": "positive", "strength": 0.7, "confidence": 0.8, "priority": 75,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "武曲為財星守財帛，主理財有方、財源穩健，廟旺更利積蓄。" }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.TAIYIN_WEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "wealth",
+      "name": { "zh-TW": "太陰守財帛", "en": "Tai Yin in Wealth" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TAIYIN", "palace": "wealth" }] },
+      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "太陰守財帛主財富細水長流、善積蓄置產，廟旺為富格基礎。" }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.JI_WEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "wealth",
+      "name": { "zh-TW": "化忌入財帛", "en": "Hua Ji into Wealth" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "wealth", "scope": "natal" }] },
+      "tendency": "negative", "strength": 0.7, "confidence": 0.8, "priority": 80,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化忌入財帛，求財多牽掛波折，不宜投機，宜穩紮穩打。" }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.JI_HEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "health",
+      "name": { "zh-TW": "化忌入疾厄", "en": "Hua Ji into Health" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "health", "scope": "natal" }] },
+      "tendency": "negative", "strength": 0.7, "confidence": 0.75, "priority": 80,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化忌入疾厄，健康易有隱憂或宿疾糾纏，宜定期檢查、留意該星五行所主部位。" }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.MALEFIC_HEALTH.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "health",
+      "name": { "zh-TW": "煞星守疾厄", "en": "Malefics in Health" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "health" },
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.TUOLUO", "palace": "health" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.HUOLING", "palace": "health" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.LINGXING", "palace": "health" }
+        ]
+      },
+      "tendency": "negative", "strength": 0.6, "confidence": 0.7, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "煞星守疾厄，易有外傷、急症或慢性纏綿之疾，視煞星性質而異。" }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "marriage",
+      "name": { "zh-TW": "紅鸞天喜會夫妻", "en": "Hong Luan / Tian Xi aspecting Spouse" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.HONGLUAN", "palace": "spouse" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANXI", "palace": "spouse" }
+        ]
+      },
+      "tendency": "positive", "strength": 0.6, "confidence": 0.7, "priority": 65,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "紅鸞天喜入夫妻宮，主婚緣早現、感情生活多喜慶。" }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "marriage",
+      "name": { "zh-TW": "煞星守夫妻", "en": "Malefics in Spouse" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "spouse" },
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.TUOLUO", "palace": "spouse" },
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIKONG", "palace": "spouse" },
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIJIE", "palace": "spouse" }
+        ]
+      },
+      "tendency": "negative", "strength": 0.6, "confidence": 0.7, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "煞星守夫妻宮，感情易生波折、聚少離多或配偶個性剛強。" }
+    },
+    {
+      "ruleId": "ZW.INT.MIGRATION.MA_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "migration",
+      "name": { "zh-TW": "天馬守遷移", "en": "Tian Ma in Travel" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANMA", "palace": "travel" }] },
+      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天馬守遷移，主一生多動、利外出發展、異地得財。" }
+    },
+    {
+      "ruleId": "ZW.INT.MIGRATION.LU_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "migration",
+      "name": { "zh-TW": "化祿入遷移", "en": "Hua Lu into Travel" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "travel", "scope": "natal" }] },
+      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化祿入遷移，出外得財、人緣廣，異地發展順遂。" }
+    },
+    {
+      "ruleId": "ZW.INT.LEARNING.WENCHANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "learning",
+      "name": { "zh-TW": "文昌文曲會命", "en": "Wen Chang / Wen Qu aspecting Life" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.WENCHANG", "palace": "life" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.WENQU", "palace": "life" },
+          { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU"] }
+        ]
+      },
+      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "昌曲會命，主聰明好學、具文藝才華，利考試功名與文字工作。" }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.FRIENDS_EMPTY.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "social",
+      "name": { "zh-TW": "交友宮無主星", "en": "No major star in Friends" },
+      "conditions": { "all": [{ "type": "palace", "palace": "friends", "empty": true }] },
+      "tendency": "neutral", "strength": 0.5, "confidence": 0.6, "priority": 50,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "交友宮無主星，人際助力平淡，需借對宮星曜論之。" }
+    },
+    {
+      "ruleId": "ZW.INT.RISK.KONGJIE_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "risk",
+      "name": { "zh-TW": "地空地劫會命", "en": "Di Kong / Di Jie aspecting Life" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIKONG", "palace": "life" },
+          { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIJIE", "palace": "life" },
+          { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"] }
+        ]
+      },
+      "tendency": "negative", "strength": 0.6, "confidence": 0.7, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "空劫會命，主一生易有破耗、理想落空或價值觀超脫世俗，宜宗教修行或技藝轉化。" }
+    },
+    {
+      "ruleId": "ZW.INT.CAREER.LU_CAREER.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "career",
+      "name": { "zh-TW": "化祿入官祿", "en": "Hua Lu into Career" },
+      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "career", "scope": "natal" }] },
+      "tendency": "positive", "strength": 0.7, "confidence": 0.8, "priority": 75,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "化祿入官祿，事業順遂、工作中得財利與機遇。" }
+    },
+    {
+      "ruleId": "ZW.INT.CAREER.QISHA_CAREER.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "career",
+      "name": { "zh-TW": "七殺守官祿", "en": "Qi Sha in Career" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.QISHA", "palace": "career" }] },
+      "tendency": "mixed", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "七殺守官祿，事業主開創變動、掌權柄，宜軍警、外科、企業開拓或專業技術。" }
+    },
+    {
+      "ruleId": "ZW.INT.TIMING.DAXIAN_LIFE.001", "ruleVersion": "1.0", "status": "research",
+      "domain": "timing",
+      "name": { "zh-TW": "大限行運總論", "en": "Major period overview" },
+      "conditions": { "all": [{ "type": "period-scope", "scope": "major-period" }] },
+      "tendency": "neutral", "strength": 0.4, "confidence": 0.5, "priority": 30,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": [],
+      "text": { "zh-TW": "大限各宮十年行運，吉凶須合原局星曜、四化與限干飛化並論。本條為框架性占位，待細化。" }
+    }
+  ]
+}

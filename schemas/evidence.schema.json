@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/evidence.schema.json",
+  "title": "ZiWei Bible Evidence",
+  "type": "object",
+  "required": ["evidenceId", "sourceId", "type"],
+  "properties": {
+    "evidenceId": { "type": "string", "pattern": "^EVD\\.[A-Z0-9._-]+$" },
+    "sourceId": { "type": "string", "pattern": "^SRC\\." },
+    "ruleId": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["supports", "conflicts", "mentions", "variant-only"]
+    },
+    "location": { "type": "string", "description": "卷/頁/條目" },
+    "quote": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

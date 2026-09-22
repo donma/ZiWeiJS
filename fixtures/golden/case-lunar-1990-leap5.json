@@ -1,0 +1,15 @@
+{
+  "name": "golden-lunar-1990-leap5",
+  "input": {
+    "calendarType": "lunar",
+    "date": { "year": 1990, "month": 5, "day": 10, "isLeapMonth": true },
+    "time": { "hour": 6, "minute": 0 },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "expect": {
+    "lunar": { "year": 1990, "month": 5, "day": 10, "isLeapMonth": true },
+    "ganzhi.year": "geng-wu"
+  },
+  "note": "1990 閏五月：驗證 isLeapMonth 明確標記與換算。"
+}

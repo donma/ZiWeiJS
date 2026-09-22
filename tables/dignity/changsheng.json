@@ -1,0 +1,38 @@
+{
+  "description": "十二長生：以五行局起長生。水二局長生在申、木三局在亥、金四局在巳、土五局在申、火六局在寅。陽男陰女順行、陰男陽女逆行。",
+  "startBranch": {
+    "shui2": "shen",
+    "mu3": "hai",
+    "jin4": "si",
+    "tu5": "shen",
+    "huo6": "yin"
+  },
+  "stages": [
+    "changsheng", "muyu", "guandai", "linguan", "diwang", "shuai",
+    "bing", "si", "mu", "jue", "tai", "yang"
+  ],
+  "stageNames": {
+    "changsheng": { "zh-TW": "長生", "zh-CN": "长生", "en": "Chang Sheng" },
+    "muyu": { "zh-TW": "沐浴", "zh-CN": "沐浴", "en": "Mu Yu" },
+    "guandai": { "zh-TW": "冠帶", "zh-CN": "冠带", "en": "Guan Dai" },
+    "linguan": { "zh-TW": "臨官", "zh-CN": "临官", "en": "Lin Guan" },
+    "diwang": { "zh-TW": "帝旺", "zh-CN": "帝旺", "en": "Di Wang" },
+    "shuai": { "zh-TW": "衰", "zh-CN": "衰", "en": "Shuai" },
+    "bing": { "zh-TW": "病", "zh-CN": "病", "en": "Bing" },
+    "si": { "zh-TW": "死", "zh-CN": "死", "en": "Si" },
+    "mu": { "zh-TW": "墓", "zh-CN": "墓", "en": "Mu" },
+    "jue": { "zh-TW": "絕", "zh-CN": "绝", "en": "Jue" },
+    "tai": { "zh-TW": "胎", "zh-CN": "胎", "en": "Tai" },
+    "yang": { "zh-TW": "養", "zh-CN": "养", "en": "Yang" }
+  },
+  "boshi12": {
+    "note": "博士十二神：以祿存起博士順行。博士、力士、青龍、小耗、將軍、奏書、飛廉、喜神、病符、大耗、伏兵、官府。",
+    "stages": ["boshi", "lishi", "qinglong", "xiaohao", "jiangjun", "zoushu", "feilian", "xishen", "bingfu", "dahao", "fubing", "guanfu"],
+    "stageNames": {
+      "boshi": { "zh-TW": "博士" }, "lishi": { "zh-TW": "力士" }, "qinglong": { "zh-TW": "青龍" },
+      "xiaohao": { "zh-TW": "小耗" }, "jiangjun": { "zh-TW": "將軍" }, "zoushu": { "zh-TW": "奏書" },
+      "feilian": { "zh-TW": "飛廉" }, "xishen": { "zh-TW": "喜神" }, "bingfu": { "zh-TW": "病符" },
+      "dahao": { "zh-TW": "大耗" }, "fubing": { "zh-TW": "伏兵" }, "guanfu": { "zh-TW": "官府" }
+    }
+  }
+}

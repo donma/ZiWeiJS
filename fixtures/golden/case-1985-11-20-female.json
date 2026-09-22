@@ -1,0 +1,14 @@
+{
+  "name": "golden-1985-11-20-female",
+  "input": {
+    "calendarType": "solar",
+    "date": { "year": 1985, "month": 11, "day": 20 },
+    "time": { "hour": 14, "minute": 0 },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "expect": {
+    "ganzhi.year": "yi-chou"
+  },
+  "note": "乙丑年女命：陰年女順行大限。用於驗證 direction 與不同年干四化（乙：機梁紫陰）。"
+}

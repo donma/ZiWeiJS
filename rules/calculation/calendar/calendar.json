@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.CALENDAR.SOLAR_LUNAR.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.calendar.conversion", "category": "calendar",
+      "name": { "zh-TW": "國曆農曆轉換", "en": "Solar/lunar conversion" },
+      "description": { "zh-TW": "以曆法庫轉換國曆↔農曆，含閏月標記與節氣。" },
+      "inputs": ["input.date", "input.calendarType"],
+      "logic": { "executor": "convertCalendar" },
+      "outputs": ["calendar"], "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"], "evidenceRefs": [], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.CALENDAR.GANZHI.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.calendar.ganzhi", "category": "calendar",
+      "name": { "zh-TW": "四柱干支", "en": "Four pillars ganzhi" },
+      "description": { "zh-TW": "年月日時干支，年柱以立春為界（曆法庫行為）。" },
+      "inputs": ["normalized.solar", "hourBranch"],
+      "logic": { "executor": "calcGanzhi" },
+      "outputs": ["calendar.ganzhi"], "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"], "evidenceRefs": [], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.CALENDAR.TRUESOLAR.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.calendar.true-solar", "category": "calendar",
+      "name": { "zh-TW": "真太陽時校正", "en": "True solar time correction" },
+      "description": { "zh-TW": "經度修正 + 均時差近似公式。" },
+      "inputs": ["location.longitude", "timezone"],
+      "logic": { "executor": "calcTrueSolar" },
+      "outputs": ["calendar.trueSolarOffsetMinutes"], "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"], "evidenceRefs": [], "tags": ["core"]
+    }
+  ]
+}

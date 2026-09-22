@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.PALACE.LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.palace.life",
+      "category": "palace",
+      "name": { "zh-TW": "安命宮", "en": "Locate Life Palace" },
+      "description": { "zh-TW": "寅宮起正月順數至生月，再自該宮起子時逆數至生時，即命宮。" },
+      "inputs": ["lunar.month", "hourBranch"],
+      "logic": { "executor": "calcLifePalace", "params": { "startBranch": "yin", "monthDirection": 1, "hourDirection": -1 } },
+      "outputs": ["chart.natal.lifePalaceBranch"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+      "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PALACE.BODY.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.palace.body",
+      "category": "palace",
+      "name": { "zh-TW": "安身宮", "en": "Locate Body Palace" },
+      "description": { "zh-TW": "寅宮起正月順數至生月，再自該宮起子時順數至生時，即身宮。" },
+      "inputs": ["lunar.month", "hourBranch"],
+      "logic": { "executor": "calcBodyPalace", "params": { "startBranch": "yin", "monthDirection": 1, "hourDirection": 1 } },
+      "outputs": ["chart.natal.bodyPalaceBranch"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+      "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PALACE.TWELVE.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.palace.twelve",
+      "category": "palace",
+      "name": { "zh-TW": "排十二宮", "en": "Arrange twelve palaces" },
+      "description": { "zh-TW": "由命宮起逆布：命、兄弟、夫妻、子女、財帛、疾厄、遷移、交友、官祿、田宅、福德、父母。" },
+      "inputs": ["lifePalaceBranch"],
+      "logic": { "executor": "calcTwelvePalaces" },
+      "outputs": ["chart.palaces"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+      "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PALACE.STEM.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.palace.stem",
+      "category": "palace",
+      "name": { "zh-TW": "安宮干", "en": "Assign palace stems" },
+      "description": { "zh-TW": "五虎遁：年干起寅宮天干，甲己之年丙作首，乙庚之歲戊為頭，丙辛必定尋庚起，丁壬壬位順行流，戊癸何方發，甲寅之上好追求。" },
+      "inputs": ["ganzhi.year.stem"],
+      "logic": { "executor": "calcPalaceStems", "params": { "startStemByYearStem": { "jia": "bing", "ji": "bing", "yi": "wu", "geng": "wu", "bing": "geng", "xin": "geng", "ding": "ren", "ren": "ren", "wu": "jia", "gui": "jia" } } },
+      "outputs": ["chart.palaces[].stem"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+      "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PALACE.MASTER.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.palace.master",
+      "category": "palace",
+      "name": { "zh-TW": "命主身主", "en": "Life/body master stars" },
+      "description": { "zh-TW": "命主由命宮地支定（子貪狼、丑亥巨門、寅戌祿存、卯酉文曲、辰申廉貞、巳未武曲、午破軍）；身主由生年支定（子鈴星、丑天相、寅天梁、卯天同、辰文昌、巳天機、午火星、未天相、申天梁、酉天同、戌文昌、亥天機）。" },
+      "inputs": ["lifePalaceBranch", "ganzhi.year.branch"],
+      "logic": { "executor": "calcMasterStars" },
+      "outputs": ["chart.natal.masterStar", "chart.natal.bodyStar"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+      "tags": ["core"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "golden-2000-01-01-male",
+  "input": {
+    "calendarType": "solar",
+    "date": { "year": 2000, "month": 1, "day": 1 },
+    "time": { "hour": 0, "minute": 0 },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "expect": {
+    "ganzhi.year": "ji-mao"
+  },
+  "note": "2000/1/1 子時：仍在立春前（己卯年）。驗證年柱分界與子時。"
+}

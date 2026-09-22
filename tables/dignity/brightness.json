@@ -1,0 +1,19 @@
+{
+  "description": "廟旺利陷表（canonical 主流版本）。levels: miao 廟, wang 旺, de 得, li 利, ping 平, bu 不, xian 陷。以地支為 key。",
+  "tables": {
+    "ZW.STAR.MAJOR.ZIWEI":   { "zi": "ping", "chou": "miao", "yin": "miao", "mao": "wang", "chen": "de", "si": "wang", "wu": "miao", "wei": "wang", "shen": "de", "you": "wang", "xu": "ping", "hai": "miao" },
+    "ZW.STAR.MAJOR.TIANJI":  { "zi": "miao", "chou": "xian", "yin": "de", "mao": "wang", "chen": "li", "si": "ping", "wu": "miao", "wei": "xian", "shen": "de", "you": "wang", "xu": "li", "hai": "ping" },
+    "ZW.STAR.MAJOR.TAIYANG": { "zi": "xian", "chou": "bu", "yin": "wang", "mao": "miao", "chen": "wang", "si": "wang", "wu": "miao", "wei": "de", "shen": "de", "you": "ping", "xu": "xian", "hai": "xian" },
+    "ZW.STAR.MAJOR.WUQU":    { "zi": "wang", "chou": "miao", "yin": "de", "mao": "li", "chen": "miao", "si": "ping", "wu": "wang", "wei": "miao", "shen": "de", "you": "wang", "xu": "li", "hai": "ping" },
+    "ZW.STAR.MAJOR.TIANTONG":{ "zi": "miao", "chou": "bu", "yin": "li", "mao": "xian", "chen": "ping", "si": "miao", "wu": "xian", "wei": "bu", "shen": "wang", "you": "ping", "xu": "ping", "hai": "miao" },
+    "ZW.STAR.MAJOR.LIANZHEN":{ "zi": "ping", "chou": "li", "yin": "miao", "mao": "ping", "chen": "xian", "si": "xian", "wu": "ping", "wei": "li", "shen": "miao", "you": "ping", "xu": "xian", "hai": "xian" },
+    "ZW.STAR.MAJOR.TIANFU":  { "zi": "miao", "chou": "miao", "yin": "miao", "mao": "wang", "chen": "miao", "si": "de", "wu": "wang", "wei": "miao", "shen": "de", "you": "wang", "xu": "miao", "hai": "de" },
+    "ZW.STAR.MAJOR.TAIYIN":  { "zi": "miao", "chou": "miao", "yin": "wang", "mao": "xian", "chen": "xian", "si": "xian", "wu": "xian", "wei": "bu", "shen": "li", "you": "de", "xu": "wang", "hai": "miao" },
+    "ZW.STAR.MAJOR.TANLANG": { "zi": "wang", "chou": "miao", "yin": "ping", "mao": "li", "chen": "miao", "si": "xian", "wu": "wang", "wei": "miao", "shen": "ping", "you": "li", "xu": "miao", "hai": "xian" },
+    "ZW.STAR.MAJOR.JUMEN":   { "zi": "wang", "chou": "miao", "yin": "miao", "mao": "xian", "chen": "wang", "si": "wang", "wu": "xian", "wei": "bu", "shen": "miao", "you": "xian", "xu": "wang", "hai": "miao" },
+    "ZW.STAR.MAJOR.TIANXIANG":{"zi": "de", "chou": "miao", "yin": "miao", "mao": "xian", "chen": "de", "si": "de", "wu": "miao", "wei": "de", "shen": "miao", "you": "xian", "xu": "de", "hai": "de" },
+    "ZW.STAR.MAJOR.TIANLIANG":{"zi": "miao", "chou": "wang", "yin": "miao", "mao": "miao", "chen": "miao", "si": "xian", "wu": "xian", "wei": "wang", "shen": "xian", "you": "de", "xu": "miao", "hai": "miao" },
+    "ZW.STAR.MAJOR.QISHA":   { "zi": "wang", "chou": "wang", "yin": "miao", "mao": "xian", "chen": "wang", "si": "ping", "wu": "wang", "wei": "wang", "shen": "miao", "you": "xian", "xu": "wang", "hai": "ping" },
+    "ZW.STAR.MAJOR.POJUN":   { "zi": "miao", "chou": "wang", "yin": "xian", "mao": "xian", "chen": "wang", "si": "ping", "wu": "miao", "wei": "wang", "shen": "xian", "you": "xian", "xu": "wang", "hai": "ping" }
+  }
+}

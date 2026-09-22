@@ -1,0 +1,165 @@
+{
+  "$schema": "../schemas/evidence.schema.json",
+  "evidence": [
+    {
+      "evidenceId": "EVD.QUANSHU.ANXING",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安星訣 / 安命身宮訣",
+      "quote": "寅宮起正月，順數至生月；生月起子時，逆數至生時安命宮，順數至生時安身宮。",
+      "confidence": 0.95,
+      "notes": "命宮、身宮安法主依據。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.WUXINGJU",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "五行局歌訣",
+      "quote": "以命宮干支納音定五行局：水二局、木三局、金四局、土五局、火六局。",
+      "confidence": 0.95
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.ZIWEIXI",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安紫微諸星訣",
+      "quote": "六五四三二，酉午亥辰丑，局數除日數，商數宮前走；若見數無餘，便要起寅宮，日數小於局，還直宮中守。",
+      "confidence": 0.95,
+      "notes": "紫微星定位歌訣（商數加餘數法）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SIHUA",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "四化歌訣",
+      "quote": "甲廉破武陽，乙機梁紫陰，丙同機昌廉，丁陰同機巨，戊貪陰右機，己武貪梁曲，庚陽武陰同，辛巨陽曲昌，壬梁紫左武，癸破巨陰貪。",
+      "confidence": 0.9,
+      "notes": "生年四化歌訣；庚干化科各版本有異（太陰/天相），已建 variant。"
+    },
+    {
+      "evidenceId": "EVD.CONSENSUS.MIAOWANG",
+      "sourceId": "SRC.MODERN-IMPL-CONSENSUS",
+      "type": "supports",
+      "location": "各系統廟旺利陷表比對",
+      "confidence": 0.85,
+      "notes": "廟旺利陷各流派表略有差異，canonical 採多數一致版本；差異星曜保留 variant 空間。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DAXIAN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "大限起法",
+      "quote": "大限由命宮起，陽男陰女順行，陰男陽女逆行，十年一宮，起歲依五行局數。",
+      "confidence": 0.9
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.LUCUN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安祿存訣",
+      "quote": "甲祿到寅，乙祿居卯，丙戊在巳，丁己在午，庚祿居申，辛祿居酉，壬祿在亥，癸祿居子。",
+      "confidence": 0.95,
+      "notes": "祿存安法；擎羊在祿存前、陀羅在祿存後（羊陀夾祿）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.KUIYUE",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安天魁天鉞訣",
+      "quote": "甲戊庚牛羊，乙己鼠猴鄉，丙丁豬雞位，壬癸兔蛇藏，六辛逢馬虎，此是貴人方。",
+      "confidence": 0.9,
+      "notes": "魁鉞即天乙貴人；各派歌訣略有異文（如六辛逢馬虎/逢馬蛇），已標 variant 空間。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.CHANGQU",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安文昌文曲訣",
+      "quote": "文昌戌上起子時，逆數生時是；文曲辰上起子時，順數生時是。",
+      "confidence": 0.95
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.ZUOYOU",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安左輔右弼訣",
+      "quote": "左輔辰上起正月，順數至生月；右弼戌上起正月，逆數至生月。",
+      "confidence": 0.95
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.HUOLING",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安火星鈴星訣",
+      "quote": "火鈴依年支三合局起子時順數至生時：寅午戌人火丑鈴卯、申子辰人火寅鈴戌、巳酉丑人火卯鈴戌、亥卯未人火酉鈴戌。",
+      "confidence": 0.9,
+      "notes": "火鈴起訣各版本有小差異，本表採通行版，差異保留 variant。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.TIANFU_DUI",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安天府訣",
+      "quote": "天府順行有太陰，貪狼而後巨門臨，隨來天相天梁繼，七殺空三是破軍。",
+      "confidence": 0.95
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.TIANMA",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安天馬訣",
+      "quote": "寅午戌馬在申，申子辰馬在寅，巳酉丑馬在亥，亥卯未馬在巳。",
+      "confidence": 0.95
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.HONGLUAN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安紅鸞天喜訣",
+      "quote": "紅鸞卯上起子年，逆數至生年；天喜與紅鸞相對。",
+      "confidence": 0.9
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.CHANGSHENG",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安長生十二神訣",
+      "quote": "水二局長生在申，木三局在亥，金四局在巳，土五局在申，火六局在寅；陽男陰女順行，陰男陽女逆行。",
+      "confidence": 0.9
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DIKONGJIE",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安地空地劫訣",
+      "quote": "地空亥上起子時，逆數至生時；地劫亥上起子時，順數至生時。",
+      "confidence": 0.9
+    },
+    {
+      "evidenceId": "EVD.IZTRO.CONSENSUS",
+      "sourceId": "SRC.IZTRO",
+      "type": "supports",
+      "location": "iztro/src/star 安星實作",
+      "confidence": 0.85,
+      "notes": "開源實作與本引擎安星法一致，作為 Tier 3 交叉驗證。"
+    },
+    {
+      "evidenceId": "EVD.SIHUA.VARIANT.GENG",
+      "sourceId": "SRC.ZHONGZHOU",
+      "type": "variant-only",
+      "location": "中州派四化表",
+      "quote": "中州派等部分流派：庚年天府化權、天相化科。",
+      "confidence": 0.7,
+      "notes": "與通行版（庚武曲化權、太陰化科）不同，保留 variant。"
+    },
+    {
+      "evidenceId": "EVD.KUIYUE.VARIANT",
+      "sourceId": "SRC.QUANJI",
+      "type": "variant-only",
+      "location": "全集貴人歌訣",
+      "quote": "六辛逢馬虎 / 六辛逢馬蛇 — 辛干魁鉞版本差異。",
+      "confidence": 0.6,
+      "notes": "辛干天魁天鉞有『馬虎』與『馬蛇』兩說，本 canonical 採馬虎（丑午）；馬蛇版待建 variant。"
+    }
+  ]
+}

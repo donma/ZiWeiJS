@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.PERIOD.DAXIAN.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.periods.major", "category": "periods",
+      "name": { "zh-TW": "起大限", "en": "Major periods (Da Xian)" },
+      "description": { "zh-TW": "由命宮起大限，起歲數=五行局數；陽男陰女順行、陰男陽女逆行，每宮十年。" },
+      "inputs": ["bureau", "lifePalace", "yinYang", "sexForCalculation"],
+      "logic": { "executor": "calcMajorPeriods" },
+      "outputs": ["periods.major"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.DAXIAN"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.LIUNIAN.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.periods.year", "category": "periods",
+      "name": { "zh-TW": "流年", "en": "Annual period" },
+      "description": { "zh-TW": "流年以當年太歲地支所在宮為流年命宮；流年干支由當年干支定。" },
+      "inputs": ["targetDate.year"],
+      "logic": { "executor": "calcYearPeriod" },
+      "outputs": ["periods.year"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.LIUYUE.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.periods.month", "category": "periods",
+      "name": { "zh-TW": "流月", "en": "Monthly period" },
+      "description": { "zh-TW": "流月命宮由流年命宮起正月順數（canonical；流派差異保留 variant）。" },
+      "inputs": ["periods.year", "targetDate.month"],
+      "logic": { "executor": "calcMonthPeriod" },
+      "outputs": ["periods.month"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.LIURI.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.periods.day", "category": "periods",
+      "name": { "zh-TW": "流日", "en": "Daily period" },
+      "description": { "zh-TW": "流日命宮由流月命宮起初一順數至當日。" },
+      "inputs": ["periods.month", "targetDate.day"],
+      "logic": { "executor": "calcDayPeriod" },
+      "outputs": ["periods.day"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.LIUSHI.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.periods.hour", "category": "periods",
+      "name": { "zh-TW": "流時", "en": "Hourly period" },
+      "description": { "zh-TW": "流時命宮由流日命宮起子時順數至當時支。" },
+      "inputs": ["periods.day", "targetDate.hour"],
+      "logic": { "executor": "calcHourPeriod" },
+      "outputs": ["periods.hour"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+    }
+  ]
+}

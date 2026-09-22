@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.ZUOFU_YOUBI.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.zuofu-youbi", "category": "stars",
+      "name": { "zh-TW": "安左輔右弼", "en": "Place Zuo Fu / You Bi" },
+      "description": { "zh-TW": "左輔辰上起正月順行至生月；右弼戌宮起正月逆行至生月。" },
+      "inputs": ["lunar.month"],
+      "logic": { "executor": "calcAuxByMonth", "params": { "tableRef": "stars/aux-tables#byLunarMonth", "stars": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI", "ZW.STAR.AUX.TIANXING", "ZW.STAR.AUX.TIANYAO"] } },
+      "outputs": ["stars.*"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.ZUOYOU", "EVD.QUANSHU.ANXING"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.CHANGQU.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.chang-qu", "category": "stars",
+      "name": { "zh-TW": "安文昌文曲", "en": "Place Wen Chang / Wen Qu" },
+      "description": { "zh-TW": "文昌戌上起子時逆數至生時；文曲辰上起子時順數至生時。" },
+      "inputs": ["hourBranch"],
+      "logic": { "executor": "calcAuxByHour", "params": { "tableRef": "stars/aux-tables#byHourBranch", "stars": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU", "ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"] } },
+      "outputs": ["stars.*"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.CHANGQU", "EVD.QUANSHU.DIKONGJIE"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.year-stem", "category": "stars",
+      "name": { "zh-TW": "安祿存羊陀魁鉞", "en": "Place Lu Cun / Qing Yang / Tuo Luo / Kui Yue" },
+      "description": { "zh-TW": "祿存依年干；擎羊在祿存前一位、陀羅在祿存後一位；天魁天鉞依年干貴人歌訣。" },
+      "inputs": ["ganzhi.year.stem"],
+      "logic": { "executor": "calcAuxByYearStem", "params": { "tableRef": "stars/aux-tables#byYearStem" } },
+      "outputs": ["stars.*"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.LUCUN", "EVD.QUANSHU.KUIYUE"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.year-branch", "category": "stars",
+      "name": { "zh-TW": "安火鈴馬鸞喜等年支諸星", "en": "Place year-branch stars" },
+      "description": { "zh-TW": "火星鈴星依年支三合局起子時順數至生時；天馬、紅鸞、天喜、孤辰、寡宿、華蓋、咸池等依年支。" },
+      "inputs": ["ganzhi.year.branch", "hourBranch"],
+      "logic": { "executor": "calcAuxByYearBranch", "params": { "tableRef": "stars/aux-tables#byYearBranch" } },
+      "outputs": ["stars.*"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.HUOLING", "EVD.QUANSHU.TIANMA", "EVD.QUANSHU.HONGLUAN"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.FIXED.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.fixed", "category": "stars",
+      "name": { "zh-TW": "安天傷天使", "en": "Place Tian Shang / Tian Shi" },
+      "description": { "zh-TW": "天傷固定守交友宮，天使固定守疾厄宮。" },
+      "inputs": ["palaces"],
+      "logic": { "executor": "calcFixedStars", "params": { "tableRef": "stars/aux-tables#fixed" } },
+      "outputs": ["stars.*"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.ANXING"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.CHANGSHENG12.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.changsheng", "category": "stars",
+      "name": { "zh-TW": "安十二長生", "en": "Place twelve Chang Sheng stages" },
+      "description": { "zh-TW": "以五行局起長生：水二局申、木三局亥、金四局巳、土五局申、火六局寅；陽男陰女順行，陰男陽女逆行。" },
+      "inputs": ["bureau", "yinYang", "sexForCalculation"],
+      "logic": { "executor": "calcChangSheng", "params": { "tableRef": "dignity/changsheng" } },
+      "outputs": ["palaces[].changsheng"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.CHANGSHENG"], "tags": ["core"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.BOSHI12.001", "ruleVersion": "1.0", "status": "canonical",
+      "scope": "calculation.stars.aux.boshi", "category": "stars",
+      "name": { "zh-TW": "安博士十二神", "en": "Place twelve Boshi spirits" },
+      "description": { "zh-TW": "以祿存所在宮起博士順行十二宮：博士、力士、青龍、小耗、將軍、奏書、飛廉、喜神、病符、大耗、伏兵、官府。" },
+      "inputs": ["stars.ZW.STAR.AUX.LUCUN"],
+      "logic": { "executor": "calcBoshi", "params": { "tableRef": "dignity/changsheng#boshi12" } },
+      "outputs": ["palaces[].boshi"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": ["EVD.QUANSHU.ANXING"], "tags": ["core"]
+    }
+  ]
+}

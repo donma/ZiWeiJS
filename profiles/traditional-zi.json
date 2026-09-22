@@ -1,0 +1,14 @@
+{
+  "$schema": "../schemas/profile.schema.json",
+  "profileId": "traditional-zi",
+  "name": { "zh-TW": "傳統子初換日", "zh-CN": "传统子初换日", "en": "Traditional zi-hour boundary" },
+  "description": { "zh-TW": "採 23:00 子初換日、民用時。", "en": "Day boundary at 23:00 (zi hour start)." },
+  "timeConvention": "civil",
+  "dayBoundary": "zi-hour",
+  "leapMonthPolicy": "same-as-normal",
+  "transformationPolicy": "natal-stem",
+  "starRules": {},
+  "periodRules": {},
+  "dignityRules": {},
+  "ruleOverrides": {}
+}

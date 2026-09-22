@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/trace.schema.json",
+  "title": "ZiWei Bible Trace",
+  "type": "object",
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ruleId", "result"],
+        "properties": {
+          "ruleId": { "type": "string" },
+          "ruleVersion": { "type": "string" },
+          "inputs": { "type": "object" },
+          "result": {},
+          "profile": { "type": "string" },
+          "sourceRefs": { "type": "array", "items": { "type": "string" } },
+          "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
