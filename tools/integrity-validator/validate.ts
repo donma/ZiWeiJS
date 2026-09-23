@@ -33,6 +33,8 @@ interface Failure { check: string; detail: string; }
 const failures: Failure[] = [];
 const fail = (check: string, detail: string) => failures.push({ check, detail });
 
+const ajvInstance = new Ajv({ allErrors: true, strict: false });
+
 registerAllExecutors();
 
 /* ---------- 1. ID 唯一 ---------- */
@@ -103,30 +105,33 @@ interface StarEntry {
   id: string; status: string; sources?: string[]; category?: string; name?: Record<string, string>;
 }
 const starRegistry = JSON.parse(readFileSync(join(root, 'tables/stars/registry.json'), 'utf8')) as { stars: StarEntry[] };
+const starSchema = JSON.parse(readFileSync(join(root, 'schemas/star.schema.json'), 'utf8'));
+const validateStar = ajvInstance.compile(starSchema);
+
 for (const d of duplicates(starRegistry.stars.map(s => s.id))) fail('starId unique', d);
-const validCategories = new Set(['major', 'aux', 'malefic', 'minor', 'period', 'interim']);
-const validStatuses = new Set(['canonical', 'variant', 'research', 'candidate', 'deprecated', 'undetermined']);
 
 for (const s of starRegistry.stars) {
-  if (!s.name?.['zh-TW']) fail('star has zh-TW name', s.id);
-  if (!s.category || !validCategories.has(s.category)) fail('star has valid category', `${s.id} -> ${s.category}`);
-  if (!s.status || !validStatuses.has(s.status)) fail('star has valid status', `${s.id} -> ${s.status}`);
-  if (s.status === 'canonical' && (s.sources ?? []).length === 0) fail('canonical star has source', s.id);
+  const starId = s.id;
+  if (!validateStar(s)) {
+    fail('star schema valid', `${starId}: ${ajvInstance.errorsText(validateStar.errors)}`);
+  }
+  if (s.status === 'canonical' && (s.sources ?? []).length === 0) fail('canonical star has source', starId);
   for (const ref of s.sources ?? []) {
-    if (!sourceIds.has(ref)) fail('star source resolvable', `${s.id} -> ${ref}`);
+    if (!sourceIds.has(ref)) fail('star source resolvable', `${starId} -> ${ref}`);
   }
 }
+
+// 星曜 registry 的安放覆蓋率：已 deprecated 者不計，其餘需有安星動作（由 coverage:bible 追蹤）
 
 /* ---------- 5. DSL schema ---------- */
 
 const dslSchema = JSON.parse(readFileSync(join(root, 'schemas/dsl.schema.json'), 'utf8'));
-const ajv = new Ajv({ allErrors: true, strict: false });
-const validateDsl = ajv.compile(dslSchema);
+const validateDsl = ajvInstance.compile(dslSchema);
 
 function checkDslNodes(ruleId: string, label: string, nodes: unknown[] | undefined): void {
   for (const node of nodes ?? []) {
     if (!validateDsl(node)) {
-      fail('dsl schema valid', `${ruleId}.${label}: ${ajv.errorsText(validateDsl.errors)}`);
+      fail('dsl schema valid', `${ruleId}.${label}: ${ajvInstance.errorsText(validateDsl.errors)}`);
     }
   }
 }
@@ -138,7 +143,7 @@ for (const r of rules) {
   };
   if (rAny.conditions !== undefined) {
     if (!validateDsl(rAny.conditions)) {
-      fail('dsl schema valid', `${r.ruleId}.conditions: ${ajv.errorsText(validateDsl.errors)}`);
+      fail('dsl schema valid', `${r.ruleId}.conditions: ${ajvInstance.errorsText(validateDsl.errors)}`);
     }
   }
   checkDslNodes(r.ruleId, 'required', rAny.required);

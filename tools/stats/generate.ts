@@ -42,12 +42,25 @@ const starsPlaced = stars.filter(s => s.status !== 'deprecated').length;
 
 /* ---------- fixtures ---------- */
 function countJson(dir: string): number {
-  try { return readdirSync(join(root, dir)).filter(f => f.endsWith('.json')).length; } catch { return 0; }
+  let n = 0;
+  const walk = (d: string): void => {
+    let entries: string[];
+    try { entries = readdirSync(join(root, d)); } catch { return; }
+    for (const e of entries) {
+      const rel = join(d, e);
+      let isDir = false;
+      try { isDir = readdirSync(join(root, rel)).length >= 0; } catch { isDir = false; }
+      if (isDir) walk(rel);
+      else if (e.endsWith('.json')) n++;
+    }
+  };
+  walk(dir);
+  return n;
 }
 const goldenCases = countJson('fixtures/golden');
 const differentialFixtures = countJson('fixtures/differential');
 
-/* ---------- tests ---------- */
+/** 只計 *.test.ts，並回報 it() 宣告數（近似值：迴圈內宣告只算一次） */
 function countTests(dir: string): { files: number; tests: number } {
   let files = 0;
   let tests = 0;
@@ -55,14 +68,15 @@ function countTests(dir: string): { files: number; tests: number } {
     let entries: string[];
     try { entries = readdirSync(join(root, d)); } catch { return; }
     for (const e of entries) {
-      const p = join(root, d, e);
-      if (e.endsWith('.ts')) {
-        files++;
-        const src = readFileSync(p, 'utf8');
-        tests += (src.match(/\bit\(/g) ?? []).length;
-      } else if (!e.includes('.')) {
-        walk(join(d, e));
-      }
+      const rel = join(d, e);
+      const abs = join(root, rel);
+      let isDir = false;
+      try { isDir = readdirSync(abs).length >= 0; } catch { isDir = false; }
+      if (isDir) { walk(rel); continue; }
+      if (!e.endsWith('.test.ts')) continue;
+      files++;
+      const src = readFileSync(abs, 'utf8');
+      tests += (src.match(/^\s*it(\.each)?\(/gm) ?? []).length;
     }
   };
   walk(dir);
@@ -124,7 +138,7 @@ if (process.argv.includes('--json')) {
   console.log(`Sources / Evidence : ${r.sources} / ${r.evidence}`);
   console.log(`Golden cases       : ${r.goldenCases}`);
   console.log(`Differential fx    : ${r.differentialFixtures}`);
-  console.log(`Tests              : ${r.tests.tests} in ${r.tests.files} files`);
+  console.log(`Tests (it() 宣告) : ${r.tests.tests} in ${r.tests.files} files（迴圈展開後實際執行數見 npm test）`);
 }
 
 if (process.argv.includes('--update-readme')) {
@@ -147,7 +161,7 @@ if (process.argv.includes('--update-readme')) {
     `| 文獻 / 證據 | ${report.sources} / ${report.evidence} |`,
     `| Golden fixtures | ${report.goldenCases} |`,
     `| Differential fixtures | ${report.differentialFixtures} |`,
-    `| Tests | ${report.tests.tests} in ${report.tests.files} files |`,
+    `| Tests | ${report.tests.tests} it() / ${report.tests.files} files（靜態計數）|`,
     `| schemaVersion | ${report.version.schema} |`,
     '<!-- STATS:END -->'
   ].join('\n');

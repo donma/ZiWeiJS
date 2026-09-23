@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/pattern.schema.json",
+  "title": "ZiWei Bible Pattern",
+  "description": "格局定義。required / enhancers / breakers 為 DSL 節點陣列，須符合 schemas/dsl.schema.json。",
+  "type": "object",
+  "required": ["ruleId", "ruleVersion", "status", "name", "required", "sourceRefs"],
+  "additionalProperties": false,
+  "properties": {
+    "ruleId": { "type": "string", "pattern": "^ZW\\.PAT\\." },
+    "patternId": { "type": "string", "pattern": "^ZW\\.PAT\\." },
+    "ruleVersion": { "type": "string" },
+    "status": {
+      "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"]
+    },
+    "scope": { "type": "string" },
+    "category": { "type": "string" },
+    "name": {
+      "type": "object",
+      "required": ["zh-TW"],
+      "additionalProperties": { "type": "string" }
+    },
+    "description": { "type": "object", "additionalProperties": { "type": "string" } },
+    "text": { "type": "object", "additionalProperties": { "type": "string" } },
+    "required": { "type": "array", "minItems": 1 },
+    "enhancers": { "type": "array" },
+    "breakers": { "type": "array" },
+    "variants": { "type": "array" },
+    "profile": { "type": "string" },
+    "variantOf": { "type": "string" },
+    "sourceRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^SRC\\." },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^EVD\\." }
+    },
+    "tests": { "type": "array" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "changeLog": { "type": "array" },
+    "logic": { "type": "object" }
+  }
+}

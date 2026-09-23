@@ -27,9 +27,9 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | 格局 | 24 |
 | 解讀規則 | 138（12 domains）|
 | 文獻 / 證據 | 10 / 28 |
-| Golden fixtures | 8 |
-| Differential fixtures | 1 |
-| Tests | 209 in 20 files |
+| Golden fixtures | 43 |
+| Differential fixtures | 12 |
+| Tests | 227 it() / 22 files（靜態計數）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
 

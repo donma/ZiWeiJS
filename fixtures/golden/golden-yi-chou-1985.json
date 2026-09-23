@@ -1,0 +1,551 @@
+{
+  "name": "yi-chou-1985",
+  "tags": [
+    "stem:yi",
+    "branch:chou"
+  ],
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1985,
+      "month": 11,
+      "day": 20
+    },
+    "time": {
+      "hour": 14
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "profile": "canonical",
+  "verified": {
+    "status": "verified",
+    "verifiedAt": "2026-09-23",
+    "verifiedBy": "differential:iztro",
+    "against": [
+      {
+        "sourceId": "SRC.IZTRO",
+        "version": "2.6.1"
+      }
+    ],
+    "note": "與 iztro 逐欄比對一致（命身宮、五行局、十四主星、可比對輔煞、四化）。"
+  },
+  "oracle": {
+    "schemaVersion": "2.0",
+    "calendar": {
+      "solar": {
+        "year": 1985,
+        "month": 11,
+        "day": 20
+      },
+      "lunar": {
+        "year": 1985,
+        "month": 10,
+        "day": 9,
+        "isLeapMonth": false
+      },
+      "ganzhi": {
+        "year": {
+          "stem": "yi",
+          "branch": "chou"
+        },
+        "month": {
+          "stem": "ding",
+          "branch": "hai"
+        },
+        "day": {
+          "stem": "gui",
+          "branch": "hai"
+        },
+        "hour": {
+          "stem": "ji",
+          "branch": "wei"
+        }
+      },
+      "hourBranch": "wei",
+      "timezone": "Asia/Taipei",
+      "utcOffsetMinutes": 480,
+      "timeConvention": "civil",
+      "dayBoundary": "midnight"
+    },
+    "birthContext": {
+      "yinYang": "yin",
+      "direction": "forward",
+      "bureau": "jin4"
+    },
+    "natal": {
+      "lifePalace": "life",
+      "bodyPalace": "fortune",
+      "lifePalaceBranch": "chen",
+      "bodyPalaceBranch": "wu",
+      "masterStar": "ZW.STAR.MAJOR.LIANZHEN",
+      "bodyStar": "ZW.STAR.MAJOR.TIANXIANG"
+    },
+    "palaces": [
+      {
+        "id": "life",
+        "branch": "chen",
+        "stem": "geng",
+        "isLifePalace": true,
+        "isBodyPalace": false,
+        "changsheng": "yang",
+        "boshi": "lishi",
+        "majorPeriod": {
+          "fromAge": 4,
+          "toAge": 13
+        }
+      },
+      {
+        "id": "siblings",
+        "branch": "mao",
+        "stem": "ji",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "tai",
+        "boshi": "boshi",
+        "majorPeriod": {
+          "fromAge": 114,
+          "toAge": 123
+        }
+      },
+      {
+        "id": "spouse",
+        "branch": "yin",
+        "stem": "wu",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "jue",
+        "boshi": "guanfu",
+        "majorPeriod": {
+          "fromAge": 104,
+          "toAge": 113
+        }
+      },
+      {
+        "id": "children",
+        "branch": "chou",
+        "stem": "ji",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "mu",
+        "boshi": "fubing",
+        "majorPeriod": {
+          "fromAge": 94,
+          "toAge": 103
+        }
+      },
+      {
+        "id": "wealth",
+        "branch": "zi",
+        "stem": "wu",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "si",
+        "boshi": "dahao",
+        "majorPeriod": {
+          "fromAge": 84,
+          "toAge": 93
+        }
+      },
+      {
+        "id": "health",
+        "branch": "hai",
+        "stem": "ding",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "bing",
+        "boshi": "bingfu",
+        "majorPeriod": {
+          "fromAge": 74,
+          "toAge": 83
+        }
+      },
+      {
+        "id": "travel",
+        "branch": "xu",
+        "stem": "bing",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "shuai",
+        "boshi": "xishen",
+        "majorPeriod": {
+          "fromAge": 64,
+          "toAge": 73
+        }
+      },
+      {
+        "id": "friends",
+        "branch": "you",
+        "stem": "yi",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "diwang",
+        "boshi": "feilian",
+        "majorPeriod": {
+          "fromAge": 54,
+          "toAge": 63
+        }
+      },
+      {
+        "id": "career",
+        "branch": "shen",
+        "stem": "jia",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "linguan",
+        "boshi": "zoushu",
+        "majorPeriod": {
+          "fromAge": 44,
+          "toAge": 53
+        }
+      },
+      {
+        "id": "property",
+        "branch": "wei",
+        "stem": "gui",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "guandai",
+        "boshi": "jiangjun",
+        "majorPeriod": {
+          "fromAge": 34,
+          "toAge": 43
+        }
+      },
+      {
+        "id": "fortune",
+        "branch": "wu",
+        "stem": "ren",
+        "isLifePalace": false,
+        "isBodyPalace": true,
+        "changsheng": "muyu",
+        "boshi": "xiaohao",
+        "majorPeriod": {
+          "fromAge": 24,
+          "toAge": 33
+        }
+      },
+      {
+        "id": "parents",
+        "branch": "si",
+        "stem": "xin",
+        "isLifePalace": false,
+        "isBodyPalace": false,
+        "changsheng": "changsheng",
+        "boshi": "qinglong",
+        "majorPeriod": {
+          "fromAge": 14,
+          "toAge": 23
+        }
+      }
+    ],
+    "majorStars": {
+      "ZW.STAR.MAJOR.ZIWEI": {
+        "branch": "chou",
+        "palaceId": "children",
+        "dignity": "miao"
+      },
+      "ZW.STAR.MAJOR.TIANJI": {
+        "branch": "zi",
+        "palaceId": "wealth",
+        "dignity": "miao"
+      },
+      "ZW.STAR.MAJOR.TAIYANG": {
+        "branch": "xu",
+        "palaceId": "travel",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.WUQU": {
+        "branch": "you",
+        "palaceId": "friends",
+        "dignity": "wang"
+      },
+      "ZW.STAR.MAJOR.TIANTONG": {
+        "branch": "shen",
+        "palaceId": "career",
+        "dignity": "wang"
+      },
+      "ZW.STAR.MAJOR.LIANZHEN": {
+        "branch": "si",
+        "palaceId": "parents",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.TIANFU": {
+        "branch": "mao",
+        "palaceId": "siblings",
+        "dignity": "wang"
+      },
+      "ZW.STAR.MAJOR.TAIYIN": {
+        "branch": "chen",
+        "palaceId": "life",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.TANLANG": {
+        "branch": "si",
+        "palaceId": "parents",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.JUMEN": {
+        "branch": "wu",
+        "palaceId": "fortune",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.TIANXIANG": {
+        "branch": "wei",
+        "palaceId": "property",
+        "dignity": "de"
+      },
+      "ZW.STAR.MAJOR.TIANLIANG": {
+        "branch": "shen",
+        "palaceId": "career",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.QISHA": {
+        "branch": "you",
+        "palaceId": "friends",
+        "dignity": "xian"
+      },
+      "ZW.STAR.MAJOR.POJUN": {
+        "branch": "chou",
+        "palaceId": "children",
+        "dignity": "wang"
+      }
+    },
+    "coreAuxStars": {
+      "ZW.STAR.AUX.ZUOFU": {
+        "branch": "chou",
+        "palaceId": "children"
+      },
+      "ZW.STAR.AUX.YOUBI": {
+        "branch": "chou",
+        "palaceId": "children"
+      },
+      "ZW.STAR.AUX.WENCHANG": {
+        "branch": "mao",
+        "palaceId": "siblings"
+      },
+      "ZW.STAR.AUX.WENQU": {
+        "branch": "hai",
+        "palaceId": "health"
+      },
+      "ZW.STAR.MALEFIC.DIKONG": {
+        "branch": "chen",
+        "palaceId": "life"
+      },
+      "ZW.STAR.MALEFIC.DIJIE": {
+        "branch": "wu",
+        "palaceId": "fortune"
+      },
+      "ZW.STAR.AUX.LUCUN": {
+        "branch": "mao",
+        "palaceId": "siblings"
+      },
+      "ZW.STAR.MALEFIC.QINGYANG": {
+        "branch": "chen",
+        "palaceId": "life"
+      },
+      "ZW.STAR.MALEFIC.TUOLUO": {
+        "branch": "yin",
+        "palaceId": "spouse"
+      },
+      "ZW.STAR.AUX.TIANKUI": {
+        "branch": "zi",
+        "palaceId": "wealth"
+      },
+      "ZW.STAR.AUX.TIANYUE": {
+        "branch": "shen",
+        "palaceId": "career"
+      },
+      "ZW.STAR.AUX.HUOLING": {
+        "branch": "xu",
+        "palaceId": "travel"
+      },
+      "ZW.STAR.AUX.LINGXING": {
+        "branch": "si",
+        "palaceId": "parents"
+      },
+      "ZW.STAR.AUX.TIANMA": {
+        "branch": "hai",
+        "palaceId": "health"
+      }
+    },
+    "sihua": {
+      "lu": "ZW.STAR.MAJOR.TIANJI",
+      "quan": "ZW.STAR.MAJOR.TIANLIANG",
+      "ke": "ZW.STAR.MAJOR.ZIWEI",
+      "ji": "ZW.STAR.MAJOR.TAIYIN"
+    },
+    "majorPeriods": [
+      {
+        "fromAge": 4,
+        "toAge": 13,
+        "branch": "chen",
+        "stem": "geng"
+      },
+      {
+        "fromAge": 14,
+        "toAge": 23,
+        "branch": "si",
+        "stem": "xin"
+      },
+      {
+        "fromAge": 24,
+        "toAge": 33,
+        "branch": "wu",
+        "stem": "ren"
+      },
+      {
+        "fromAge": 34,
+        "toAge": 43,
+        "branch": "wei",
+        "stem": "gui"
+      },
+      {
+        "fromAge": 44,
+        "toAge": 53,
+        "branch": "shen",
+        "stem": "jia"
+      },
+      {
+        "fromAge": 54,
+        "toAge": 63,
+        "branch": "you",
+        "stem": "yi"
+      },
+      {
+        "fromAge": 64,
+        "toAge": 73,
+        "branch": "xu",
+        "stem": "bing"
+      },
+      {
+        "fromAge": 74,
+        "toAge": 83,
+        "branch": "hai",
+        "stem": "ding"
+      },
+      {
+        "fromAge": 84,
+        "toAge": 93,
+        "branch": "zi",
+        "stem": "wu"
+      },
+      {
+        "fromAge": 94,
+        "toAge": 103,
+        "branch": "chou",
+        "stem": "ji"
+      },
+      {
+        "fromAge": 104,
+        "toAge": 113,
+        "branch": "yin",
+        "stem": "wu"
+      },
+      {
+        "fromAge": 114,
+        "toAge": 123,
+        "branch": "mao",
+        "stem": "ji"
+      }
+    ],
+    "patterns": [
+      {
+        "patternId": "ZW.PAT.ZIFU_TONGGONG.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.JIYUETONGLIANG.001",
+        "status": "broken"
+      },
+      {
+        "patternId": "ZW.PAT.SHA_POLANG.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.RIYUEMING.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.JIAXIANG.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.ZIWEI_ZUOYOU.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.LUMA_JIAOCHI.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.WENGUI.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.YUE_MEN_DONG.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.YINGHUO.001",
+        "status": "enhanced"
+      },
+      {
+        "patternId": "ZW.PAT.JILIANG_LU.001",
+        "status": "partial"
+      },
+      {
+        "patternId": "ZW.PAT.JINJI.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.SHILIANG_YIN.001",
+        "status": "complete"
+      },
+      {
+        "patternId": "ZW.PAT.ZIWEI_QISHA.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.LIANQI.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.WUTAN.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.TIANJI_JUMEN.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.TIANTONG_JUMEN.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.TAIYANG_JUMEN.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.TIANXIANG_LIANZHEN.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.FULIANG.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.YUEZHU.001",
+        "status": "partial"
+      },
+      {
+        "patternId": "ZW.PAT.YANGTUO_JIA.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.HUOLING_JIA.001",
+        "status": "insufficient"
+      }
+    ]
+  }
+}

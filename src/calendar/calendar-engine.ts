@@ -155,9 +155,15 @@ export function normalizeBirth(
     solarD = solar.getDay();
   }
 
+  // 民曆（未校正）日期，用於時區 offset 查詢
+  const civilY = solarY;
+  const civilM = solarM;
+  const civilD = solarD;
+
   let effHour = hour;
   let effMinute = minute;
   let trueSolarOffset: number | undefined;
+  let effectiveDayOffset = 0;
 
   if (timeConvention === 'true-solar' || timeConvention === 'local-mean-solar') {
     const lon = input.location?.longitude;
@@ -168,18 +174,30 @@ export function normalizeBirth(
       );
     }
     const offsetMin = utcOffsetMinutes(
-      new Date(Date.UTC(solarY, solarM - 1, solarD, hour, minute)),
+      new Date(Date.UTC(civilY, civilM - 1, civilD, hour, minute)),
       timezone
     );
     const standardMeridian = offsetMin / 60 * 15;
     let delta = (lon - standardMeridian) * 4;
     if (timeConvention === 'true-solar') {
-      delta += equationOfTime(solarY, solarM, solarD);
+      delta += equationOfTime(civilY, civilM, civilD);
     }
     trueSolarOffset = Math.round(delta * 10) / 10;
-    const total = effHour * 60 + effMinute + delta;
-    effHour = Math.floor((((total % 1440) + 1440) % 1440) / 60);
-    effMinute = Math.round((((total % 1440) + 1440) % 1440) % 60);
+
+    // 真太陽時可能跨越午夜 → 日期必須同步調整（spec §P1-6）
+    const total = hour * 60 + minute + delta;
+    effectiveDayOffset = Math.floor(total / 1440);
+    const withinDay = ((total % 1440) + 1440) % 1440;
+    effHour = Math.floor(withinDay / 60);
+    effMinute = Math.round(withinDay % 60);
+  }
+
+  // 套用跨日位移（真太陽時校正）
+  if (effectiveDayOffset !== 0) {
+    const shifted = Solar.fromYmd(civilY, civilM, civilD).next(effectiveDayOffset);
+    solarY = shifted.getYear();
+    solarM = shifted.getMonth();
+    solarD = shifted.getDay();
   }
 
   let ganzhiYear: GanzhiPair;
@@ -189,12 +207,20 @@ export function normalizeBirth(
 
   const solar = Solar.fromYmdHms(solarY, solarM, solarD, effHour, effMinute, second);
   const lunarForGz = solar.getLunar();
+  lunar = lunarForGz;
+  // 農曆日期以 effective 日期為準（與國曆同步）
+  lunarY = lunarForGz.getYear();
+  lunarM = Math.abs(lunarForGz.getMonth());
+  lunarD = lunarForGz.getDay();
+  isLeap = lunarForGz.getMonth() < 0;
+
   ganzhiYear = gzCharToIds(lunarForGz.getYearInGanZhi());
   ganzhiMonth = gzCharToIds(lunarForGz.getMonthInGanZhi());
   ganzhiDay = gzCharToIds(lunarForGz.getDayInGanZhi());
   ganzhiHour = gzCharToIds(lunarForGz.getTimeInGanZhi());
 
-  if (dayBoundary === 'zi-hour' && hour === 23) {
+  // 子時換日：以 effective time 判定（非原始輸入時辰）
+  if (dayBoundary === 'zi-hour' && effHour === 23) {
     const nextSolar = solar.next(1);
     const nextLunar = nextSolar.getLunar();
     ganzhiDay = gzCharToIds(nextLunar.getDayInGanZhi());
@@ -202,6 +228,9 @@ export function normalizeBirth(
     lunarM = Math.abs(nextLunar.getMonth());
     lunarD = nextLunar.getDay();
     isLeap = nextLunar.getMonth() < 0;
+    solarY = nextSolar.getYear();
+    solarM = nextSolar.getMonth();
+    solarD = nextSolar.getDay();
     ganzhiYear = gzCharToIds(nextLunar.getYearInGanZhi());
     ganzhiMonth = gzCharToIds(nextLunar.getMonthInGanZhi());
     const hb = hourBranchFromHour(effHour);
@@ -210,7 +239,7 @@ export function normalizeBirth(
 
   const hourBranch = hourBranchFromHour(effHour);
   const offsetMin = utcOffsetMinutes(
-    new Date(Date.UTC(solarY, solarM - 1, solarD, hour, minute)),
+    new Date(Date.UTC(civilY, civilM - 1, civilD, hour, minute)),
     timezone
   );
 

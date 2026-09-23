@@ -108,3 +108,81 @@
 - `validate:sources` 擴充為同時驗證 evidence：schema、ID 唯一、`sourceId` 可解析
   → 目前 10 sources / 20 evidence / 0 failed
 - 文件補 `docs/sources/source-tiers.md`：工程契約類規則與 Evidence 驗證說明
+
+## 0.4.0 — Hardening（P0 全數 + P1 主體）
+
+目標：把 repo 從「功能完整的排盤程式」提升為「可被第三方當標準依據的 Bible Repo」。
+重點是可信度、可重現、可追溯、可驗證、可治理 —— 不是功能數量。
+
+### P0-1 Rule 真正成為 Source of Truth
+- 新增 `executor-registry` / `execute-rule` / `execution-plan`；`engine.ts` 不再直接呼叫 executor
+- 執行順序來自規則資料的 `logic.stage` + `logic.order`（natal 31 步 / period 5 步）
+- executor 只回 `{inputs, result, status, note}`；trace 的 `ruleId` / `ruleVersion` / `sourceRefs` / `evidenceRefs` / `profile` 一律由 Rule Registry 注入
+- 補 6 條原本未被任何規則驅動的安星規則（月系第二組、年干第二組、日系、日時系、特殊雜曜、歲建將前十二神），標為 candidate 待 owner 覆核
+- variant 規則不進計畫，只能經 `profile.ruleOverrides` 觸發
+
+### P0-2 未知時辰不得偷猜
+- `time.hour` 缺失 → `UNKNOWN_BIRTH_TIME`；`analyzeUnknownTime()` 仍可列舉 12 候選
+
+### P0-3 限運正確性
+- 移除隱含 `new Date()`：沒有 `targetDate` 就完全不產限運（輸出完全決定性）
+- 明確 `TargetDate` 契約 + `INVALID_TARGET_DATE`
+- 新增 `periods.active.major` 與 `major-period-resolver`；**大限四化改用實際所在大限**（原固定 `majorPeriods[0]`）
+- `PeriodInfo.ganzhi` 明確化限運真實干支（原本 `branch` 混用「限運命宮位置」與「限運干支」）
+- 流月 / 流日 / 流時干支由 `targetDate` 實際推算
+
+### P0-4 Profile 真的控制演算法
+- `ruleOverrides` → `resolveRuleForProfile` → 實際執行 variant，trace 標記 `status=variant`
+- 未知 `periodRules.ageMethod` → 明確報錯，不再靜默
+
+### P0-5 DSL fail-close
+- 新增 `schemas/dsl.schema.json`（定義全部 operator 與必要參數）
+- 未知 operator → `UNKNOWN_DSL_OPERATOR`；參數錯誤 → `INVALID_DSL`
+- 移除 `default: return true` 的 fail-open 分支
+- 修正 3 條格局使用未記載的 `type: "any"`（現為明確 operator）
+- `pattern` operator 改讀真實 PatternResult
+- DSL 錯誤不再靜默：寫入 trace `status=error` + reason
+
+### P0-6 解讀衝突 / 覆蓋真正生效
+- 新增 `interpretation-engine/resolver.ts`：overrides → conflicts → supports → priority sort
+- `InterpretationHit.status`：`active` / `overridden` / `conflicted`（+ `supportedBy`）
+- 被覆蓋者降強度但**不移除**；**不產生單一總分**
+- Narrative 預設只吃 `active`
+
+### P0-7 未知性別不得偷猜
+- `direction` 新增 `undetermined`；長生十二神與大限標記 `unavailable` 並附 reason
+- natal 不依賴性別的資料仍正常計算
+
+### P1 治理與驗證
+- `tools/integrity-validator`：ID 唯一、ref 可解析、executor 可解析、canonical 有來源與證據、DSL schema、計畫覆蓋、changeLog / 版本一致
+- `tools/governance-validator`：Canonical Evidence Gate（Tier1/2 或 2×Tier3）、variantOf、deprecated 引用、AI 來源阻擋
+- `tools/schema-validator`：`chart.schema.json` 嚴格驗證（15 張盤 + 3 錯誤情境）
+- `chart.schema.json` 全面重寫：核心物件 `additionalProperties: false` + `extensions` 逃生口
+- 新增 `schemas/dsl.schema.json` / `star.schema.json` / `pattern.schema.json`
+- `validate:sources` 擴充為同時驗證 evidence；`evidence.schema.json` location 支援結構化
+- 移除聚合來源 `SRC.MODERN-IMPL-CONSENSUS`（P1-3），新增 `SRC.LUNAR-TS`；廟旺共識改為 Derived Evidence
+- 13 條 canonical 補 evidenceRef、89 條補 changeLog
+- `TRUESOLAR` 由 canonical 降為 candidate（單一 Tier3 來源 + 近似式），並建 research 項目 RSH.007
+
+### P1-6 真太陽時跨日
+- 校正跨午夜時，solar / lunar / 日柱 / 時柱同步調整；子時換日以 effective time 判定
+
+### P1-4 / P1-5 Oracle 化
+- Golden V2：**35 張**完整 oracle fixtures（calendar / 12 宮 / 14 主星 / 輔煞 / 四化 / 廟旺 / 大限 / 格局），
+  含 `verified` 區塊；產生時**必須先通過 iztro 外部對照**才寫入，禁止 `_computed_`
+- Differential fixtures：`fixtures/differential/iztro/` 12 筆存檔外部結果，CI 不需外部套件即可比對
+
+### P2 工程
+- `npm run verify`：Schema → Governance → Integrity → Tests → Build
+- `npm run coverage:bible`：覆蓋率報告，並可自動更新 README 數據區塊（不再手寫數字）
+- CI 加入全部 gate
+- 文件：`docs/architecture/{calculation-flow,rule-execution}.md`、`docs/governance/{canonical,evidence,variants,versioning}.md`、`docs/rules/{patterns,interpretation}.md`、`docs/api/periods.md`
+
+### Breaking
+- `schemaVersion` **1.0 → 2.0**（period 契約、`direction` 列舉、`chart.stars` 型別）
+- 沒有 `targetDate` 時不再產生限運
+- `time.hour` 成為必填
+
+### 測試
+- **281 tests / 22 files**（0.3.0 為 150）
+- 差分：10 案例 × 45 欄 = 450 欄，0 needs-review；另 12 筆存檔 fixture 比對

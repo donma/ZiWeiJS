@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/star.schema.json",
+  "title": "ZiWei Bible Star",
+  "description": "星曜 registry 條目。canonical 星曜必須有 sources（spec §25）。",
+  "type": "object",
+  "required": ["id", "category", "tier", "status", "name", "sources", "tags"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^ZW\\.STAR\\." },
+    "category": {
+      "enum": ["major", "aux", "malefic", "minor", "period", "interim"]
+    },
+    "tier": {
+      "enum": ["core", "common", "extended"]
+    },
+    "status": {
+      "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"]
+    },
+    "name": {
+      "type": "object",
+      "required": ["zh-TW"],
+      "additionalProperties": { "type": "string" }
+    },
+    "shortDesc": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "brightness": {
+      "enum": ["miao", "wang", "de", "li", "ping", "bu", "xian"]
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^SRC\\." }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "note": { "type": "string" }
+  }
+}

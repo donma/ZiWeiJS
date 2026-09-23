@@ -1,0 +1,86 @@
+{
+  "name": "geng-wu-male",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "profile": "canonical",
+  "source": {
+    "id": "SRC.IZTRO",
+    "version": "2.6.1",
+    "package": "iztro"
+  },
+  "note": "iztro 預設換日政策與 canonical 相同。",
+  "expected": {
+    "lifePalaceBranch": "zi",
+    "bodyPalaceBranch": "xu",
+    "bureauName": "火六局",
+    "stars": {
+      "ZW.STAR.MAJOR.ZIWEI": "yin",
+      "ZW.STAR.MAJOR.TIANFU": "yin",
+      "ZW.STAR.MAJOR.TAIYIN": "mao",
+      "ZW.STAR.MAJOR.TANLANG": "chen",
+      "ZW.STAR.MALEFIC.DIJIE": "chen",
+      "ZW.STAR.MAJOR.JUMEN": "si",
+      "ZW.STAR.AUX.WENCHANG": "si",
+      "ZW.STAR.MAJOR.LIANZHEN": "wu",
+      "ZW.STAR.MAJOR.TIANXIANG": "wu",
+      "ZW.STAR.MALEFIC.DIKONG": "wu",
+      "ZW.STAR.AUX.HUOLING": "wu",
+      "ZW.STAR.MAJOR.TIANLIANG": "wei",
+      "ZW.STAR.AUX.ZUOFU": "wei",
+      "ZW.STAR.AUX.YOUBI": "wei",
+      "ZW.STAR.AUX.TIANYUE": "wei",
+      "ZW.STAR.MALEFIC.TUOLUO": "wei",
+      "ZW.STAR.MAJOR.QISHA": "shen",
+      "ZW.STAR.AUX.LUCUN": "shen",
+      "ZW.STAR.AUX.TIANMA": "shen",
+      "ZW.STAR.AUX.LINGXING": "shen",
+      "ZW.STAR.MAJOR.TIANTONG": "you",
+      "ZW.STAR.AUX.WENQU": "you",
+      "ZW.STAR.MALEFIC.QINGYANG": "you",
+      "ZW.STAR.MAJOR.WUQU": "xu",
+      "ZW.STAR.MAJOR.TAIYANG": "hai",
+      "ZW.STAR.MAJOR.POJUN": "zi",
+      "ZW.STAR.MAJOR.TIANJI": "chou",
+      "ZW.STAR.AUX.TIANKUI": "chou"
+    },
+    "dignity": {
+      "ZW.STAR.MAJOR.ZIWEI": "wang",
+      "ZW.STAR.MAJOR.TIANFU": "miao",
+      "ZW.STAR.MAJOR.TAIYIN": "xian",
+      "ZW.STAR.MAJOR.TANLANG": "miao",
+      "ZW.STAR.MAJOR.JUMEN": "wang",
+      "ZW.STAR.AUX.WENCHANG": "miao",
+      "ZW.STAR.MAJOR.LIANZHEN": "ping",
+      "ZW.STAR.MAJOR.TIANXIANG": "miao",
+      "ZW.STAR.AUX.HUOLING": "miao",
+      "ZW.STAR.MAJOR.TIANLIANG": "wang",
+      "ZW.STAR.MALEFIC.TUOLUO": "miao",
+      "ZW.STAR.MAJOR.QISHA": "miao",
+      "ZW.STAR.AUX.LINGXING": "xian",
+      "ZW.STAR.MAJOR.TIANTONG": "ping",
+      "ZW.STAR.AUX.WENQU": "miao",
+      "ZW.STAR.MALEFIC.QINGYANG": "xian",
+      "ZW.STAR.MAJOR.WUQU": "miao",
+      "ZW.STAR.MAJOR.TAIYANG": "xian",
+      "ZW.STAR.MAJOR.POJUN": "miao",
+      "ZW.STAR.MAJOR.TIANJI": "xian"
+    },
+    "sihua": {
+      "ke": "ZW.STAR.MAJOR.TAIYIN",
+      "ji": "ZW.STAR.MAJOR.TIANTONG",
+      "quan": "ZW.STAR.MAJOR.WUQU",
+      "lu": "ZW.STAR.MAJOR.TAIYANG"
+    }
+  }
+}
