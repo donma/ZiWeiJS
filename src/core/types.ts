@@ -158,6 +158,7 @@ export interface Star {
   category: StarCategory;
   tier: StarTier;
   name: LocalizedText;
+  shortDesc?: LocalizedText;
   brightness?: DignityLevel;
   status: RuleStatus;
   sources: string[];
@@ -222,6 +223,29 @@ export interface PatternResult {
   ruleId: string;
 }
 
+export interface PeriodStarPlacement {
+  starId: string;
+  name: LocalizedText;
+  branch: BranchId;
+}
+
+export interface PeriodPalace {
+  palaceId: PalaceId;
+  branch: BranchId;
+  ganzhi: GanzhiPair;
+  stars: PeriodStarPlacement[];
+}
+
+export interface PeriodOverlay {
+  scope: PeriodScope;
+  stem: StemId;
+  branch: BranchId;
+  lifePalaceBranch: BranchId;
+  palaces: PeriodPalace[];
+  periodStars: PeriodStarPlacement[];
+  transformations: Transformation[];
+}
+
 export interface PeriodInfo {
   scope: PeriodScope;
   stem: StemId;
@@ -230,6 +254,7 @@ export interface PeriodInfo {
   ageRange?: [number, number];
   year?: number;
   label: LocalizedText;
+  overlay?: PeriodOverlay;
 }
 
 export interface MajorPeriod extends PeriodInfo {
@@ -291,7 +316,7 @@ export interface ZiWeiChart {
       bodyStar?: string;
     };
     palaces: Palace[];
-    stars: Record<string, StarPlacement[]>;
+    stars: Record<string, StarPlacement>;
     transformations: Transformation[];
     patterns: PatternResult[];
   };

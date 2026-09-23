@@ -108,13 +108,12 @@ function diffBody(): string {
 }
 
 function posOf(c: NonNullable<typeof state.chart>, starId: string): string {
-  const p = c.chart.stars[starId] as unknown as { branch?: string } | undefined;
-  return p?.branch ?? '—';
+  return c.chart.stars[starId]?.branch ?? '—';
 }
 
 function sihuaOf(c: NonNullable<typeof state.chart>, type: string): string {
   const tr = c.chart.transformations.find(t => t.sourceScope === 'natal' && t.type === type);
   if (!tr) return '—';
-  const star = c.chart.stars[tr.targetStarId] as { star?: { name?: Record<string, string> } } | undefined;
-  return star?.star?.name ? `${t(star.star.name)}@${tr.targetPalaceId}` : tr.targetStarId;
+  const star = c.chart.stars[tr.targetStarId];
+  return star ? `${t(star.star.name)}@${tr.targetPalaceId}` : tr.targetStarId;
 }

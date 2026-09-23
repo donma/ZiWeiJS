@@ -63,3 +63,48 @@
 ### 測試（82 → 108）
 - + `tests/unit/conflict.test.ts`（6）、`tests/unit/research.test.ts`（11）、`tests/unit/i18n.test.ts`（7）、golden 全星圖驗證（+2）
 - 目前 11 檔 / 108 tests 全過
+
+## 0.3.0 — 差分驗證與布星正確性修正
+
+差分測試（iztro 對照）首次實跑即抓出兩個真實排盤 Bug，已修正並以外部來源回歸驗證。
+
+### 正確性修正（P0）
+- **宮干五虎遁公式錯誤**：地支序未先對 12 取模即對 10 取模，導致子、丑宮干偏移。
+  例：1990-05-15 命宮 `丙子` → 正確為 `戊子`；五行局連帶由 `水二局` 修正為 `火六局`。
+- **起紫微星訣索引基準錯誤**：誤將「宮位序（寅 = 0）」當作「地支序（子 = 0）」，
+  導致紫微定位與十四主星全數位移。已改用宮位序演算法（`ziweiPalaceIndex`）。
+- **流年宮位天干** 同類取模錯誤一併修正（`src/period-engine`）。
+- 型別修正：`chart.stars` 由 `Record<string, StarPlacement[]>` 更正為 `Record<string, StarPlacement>`；
+  `Star` 補上 `shortDesc`；移除因錯誤型別而散落各處的 `as unknown as` 強制轉型。
+
+### 差分測試（spec §29）
+- `tools/differential-runner/iztro-compare.ts`：抽出可重用對照核心（星名對映、時辰索引、快照、比對、分類）
+- `tools/differential-runner/iztro-runner.ts`：CLI 改寫（`npm run differential`），自動併入 `fixtures/golden/*.json` 案例
+- 對照結果：**10 案例 × 45 欄 = 450 欄，0 需人工檢視**（35 欄/案例可比對全部吻合）
+  - 涵蓋命宮、身宮、五行局、十四主星、可比對輔煞雜曜、四化
+  - 23 時（晚子時）案例以 `traditional-zi` profile 對齊，差異自動歸類為「換日差異」而非 Bug
+
+### 測試（108 → 150）
+- 新增 `tests/differential/iztro.test.ts`（8）：命身宮/五行局/十四主星全等、每案吻合數門檻、
+  所有差異必附 §29.2 分類、不得出現 `bug` 分類、換日差異專項
+- 新增 `tests/regression/ziwei-position.test.ts`（11）：以《全書》口訣「六五四三二，酉午亥辰丑」
+  與三個原典算例（木三局 27 日→戌、火六局 13 日→亥、土五局 6 日→未）作獨立期望值；
+  水二局 30 日完整定位表
+- `tests/unit/engine.test.ts` 補「庚年五虎遁十二宮干全表」驗證
+
+### Golden Fixtures
+- `case-1990-05-15-male`、`case-1993-07-07-female` 期望值依修正後引擎重生，並改由差分測試同步檢驗
+
+### 維護
+- `tsconfig.json` 加 `noEmit: true`（避免 `tsc` 誤將 `.d.ts` 產物寫入 `tests/`）
+- 移除誤入版控的 `tests/**/*.test.d.ts`；`.gitignore` 補建置產物與本機 `ai-guide/`
+- CI 加入 `validate:rules` / `validate:sources`
+
+### 治理
+- 新增來源類別「工程契約」：`SRC.SPEC.ENGINE`（Tier 3, type `other`）+ `EVD.SPEC.ENGINE.SEX_REQUIRED`，
+  使 `ZW.CALC.BIRTH.SEX_REQUIRED.001` 具備可溯源依據（spec §52）；規則 `tags` 標記 `engine-contract`
+  - 明文限制：此來源不得用於安星/四化/廟旺/格局等命理規則
+- `evidence.schema.json`：`location` 支援結構化定位（volume/chapter/page/section/imagePage/anchor）
+- `validate:sources` 擴充為同時驗證 evidence：schema、ID 唯一、`sourceId` 可解析
+  → 目前 10 sources / 20 evidence / 0 failed
+- 文件補 `docs/sources/source-tiers.md`：工程契約類規則與 Evidence 驗證說明

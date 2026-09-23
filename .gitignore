@@ -6,3 +6,12 @@ dist/*
 Thumbs.db
 .vscode/
 .idea/
+
+# build artifacts
+*.tsbuildinfo
+tests/**/*.test.d.ts
+.fixture-gen.tmp.ts
+.diff-tmp.ts
+
+# local AI working guides — never publish
+ai-guide/

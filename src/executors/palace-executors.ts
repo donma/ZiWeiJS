@@ -85,7 +85,9 @@ export function calcPalaceStems(ctx: EngineContext): void {
   const yinStemIdx = STEMS.indexOf(yinStem);
   for (const palace of ctx.palaces) {
     const bIdx = branchIndex(palace.branch);
-    const stemIdx = (((yinStemIdx + (bIdx - 2)) % 10) + 10) % 10;
+    // 五虎遁：自寅宮起年干所遁之干，依宮位在「寅→卯→…→丑」序列中的位置順推天干
+    const posFromYin = (((bIdx - 2) % 12) + 12) % 12;
+    const stemIdx = (yinStemIdx + posFromYin) % 10;
     palace.stem = stemAt(stemIdx);
     palace.ganzhi = { stem: palace.stem, branch: palace.branch };
   }
@@ -124,23 +126,41 @@ export function calcMasterStars(ctx: EngineContext): void {
   });
 }
 
+/**
+ * 起紫微星訣（安紫微諸星訣）純函式：回傳紫微所在「宮位序」（以寅為 0）。
+ *
+ *   局數除日數，商數宮前走；若見數無餘，便要起虎口，日數小於局，還直宮中守。
+ *
+ *   1. 求最小 offset ≥ 0 使 (day + offset) % bureau === 0
+ *   2. quotient = (day + offset) / bureau；再取 % 12
+ *   3. palaceIdx = quotient - 1
+ *   4. offset 為偶 → palaceIdx += offset；為奇 → palaceIdx -= offset
+ *
+ * 驗證例（紫微斗數全書）：
+ *   木三局 27 日 → 戌；火六局 13 日 → 亥；土五局 6 日 → 未
+ */
+export function ziweiPalaceIndex(bureauNumber: number, lunarDay: number): number {
+  let offset = 0;
+  while ((lunarDay + offset) % bureauNumber !== 0) offset++;
+  const quotientMod = ((lunarDay + offset) / bureauNumber) % 12;
+  let palaceIdx = quotientMod - 1;
+  palaceIdx += offset % 2 === 0 ? offset : -offset;
+  return ((palaceIdx % 12) + 12) % 12;
+}
+
+/** 宮位序（寅=0）→ 地支（子=0） */
+export function branchFromPalaceIndex(palaceIdx: number): BranchId {
+  return branchAt((palaceIdx + 2) % 12);
+}
+
 export function calcZiweiPosition(ctx: EngineContext): BranchId {
   const n = ctx.bureauNumber;
   const day = ctx.normalized.lunar.day;
-  let x = 0;
-  while ((day + x) % n !== 0) x++;
-  const q = (day + x) / n;
-  let idx: number;
-  if (x % 2 === 0) {
-    idx = q + x - 1;
-  } else {
-    idx = q - x - 1;
-  }
-  idx = ((idx % 12) + 12) % 12;
-  const branch = branchAt(idx);
+  const palaceIdx = ziweiPalaceIndex(n, day);
+  const branch = branchFromPalaceIndex(palaceIdx);
   ctx.tracer.record({
     ruleId: 'ZW.CALC.STAR.ZIWEI.001',
-    inputs: { bureauNumber: n, lunarDay: day, borrowed: x, quotient: q },
+    inputs: { bureauNumber: n, lunarDay: day, palaceIdx },
     result: branch,
     profile: ctx.profile.profileId,
     sourceRefs: ['SRC.QUANSHU'],

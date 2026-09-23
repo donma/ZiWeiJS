@@ -1,4 +1,5 @@
 import type { EngineContext } from './context.js';
+import { activeRule, effectiveRuleId, variantPatchFor } from './context.js';
 import type { BranchId, StarPlacement, Star, StemId } from '../core/types.js';
 import { branchAt, branchIndex, stemIndex, STEMS } from '../core/constants.js';
 import {
@@ -58,9 +59,10 @@ export function placeStar(ctx: EngineContext, starId: string, branch: BranchId, 
 }
 
 export function calcBureau(ctx: EngineContext): void {
-  const useYear = false;
+  const CANON = 'ZW.CALC.BUREAU.NAYIN.001';
+  const patch = variantPatchFor(ctx, CANON) as { useYearGanzhi?: boolean } | undefined;
   const life = ctx.palaces.find(p => p.isLifePalace)!;
-  const gz = useYear ? ctx.normalized.ganzhi.year : life.ganzhi;
+  const gz = patch?.useYearGanzhi ? ctx.normalized.ganzhi.year : life.ganzhi;
   const key = `${gz.stem}-${gz.branch}`;
   const wuxing = (nayinTable.nayin as Record<string, string>)[key];
   const bureau = (nayinTable.wuxingToBureau as Record<string, string>)[wuxing] as typeof ctx.bureau;
@@ -145,28 +147,47 @@ export function calcAuxByHour(ctx: EngineContext): void {
 }
 
 export function calcAuxByYearStem(ctx: EngineContext): void {
+  const CANON = 'ZW.CALC.STAR.YEARSTEM_AUX.001';
   const stem = ctx.normalized.ganzhi.year.stem;
   const table = auxTables.byYearStem as unknown as Record<string, Record<string, number>>;
-  const ruleId = 'ZW.CALC.STAR.YEARSTEM_AUX.001';
+  const ruleId = effectiveRuleId(ctx, CANON);
+  const patch = variantPatchFor(ctx, CANON) as Record<string, Record<string, number>> | undefined;
   const starIds = [
     'ZW.STAR.AUX.LUCUN', 'ZW.STAR.MALEFIC.QINGYANG', 'ZW.STAR.MALEFIC.TUOLUO',
     'ZW.STAR.AUX.TIANKUI', 'ZW.STAR.AUX.TIANYUE'
   ];
+  const applied: string[] = [];
   for (const starId of starIds) {
     const row = table[starId];
     if (!row || typeof row !== 'object') continue;
-    const idx = row[stem];
+    const patchRow = patch?.[starId];
+    const idx = patchRow?.[stem] !== undefined ? patchRow[stem] : row[stem];
     if (idx === undefined) continue;
     const b = branchAt(idx);
     placeStar(ctx, starId, b, ruleId);
+    applied.push(`${starId}:${b}`);
     if (starId === 'ZW.STAR.AUX.LUCUN') ctx.lucunBranch = b;
   }
+  if (patch) {
+    const rule = activeRule(ctx, CANON);
+    ctx.tracer.record({
+      ruleId: rule?.ruleId ?? ruleId,
+      ruleVersion: rule?.ruleVersion,
+      inputs: { yearStem: stem, variantPatched: Object.keys(patch) },
+      result: applied,
+      profile: ctx.profile.profileId,
+      note: `依 profile 覆寫變體（variant of ${CANON}）`,
+      sourceRefs: rule?.sourceRefs ?? ['SRC.QUANJI'],
+      evidenceRefs: rule?.evidenceRefs ?? []
+    });
+  }
   ctx.tracer.record({
-    ruleId,
+    ruleId: CANON,
     inputs: { yearStem: stem },
-    result: 'year-stem aux placed',
+    result: applied,
     profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
+    sourceRefs: ['SRC.QUANSHU'],
+    evidenceRefs: ['EVD.QUANSHU.LUCUN', 'EVD.QUANSHU.KUIYUE']
   });
 }
 
@@ -187,12 +208,17 @@ export function calcAuxByYearBranch(ctx: EngineContext): void {
   const ruleId = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
   const hbIdx = branchIndex(ctx.normalized.hourBranch);
 
+  const hlCanon = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
+  const hlPatch = variantPatchFor(ctx, hlCanon) as Record<string, Record<string, number>> | undefined;
   const fireLing = ['ZW.STAR.AUX.HUOLING', 'ZW.STAR.AUX.LINGXING'];
   for (const starId of fireLing) {
     const cfg = table[starId] as Record<string, unknown> | undefined;
-    if (!cfg || cfg[group] === undefined) continue;
-    const start = (cfg[group] as number);
-    placeStar(ctx, starId, branchAt(start + hbIdx), ruleId);
+    if (!cfg) continue;
+    const patched = hlPatch?.[starId]?.[group];
+    const start = patched !== undefined ? patched : (cfg[group] as number | undefined);
+    if (start === undefined) continue;
+    placeStar(ctx, starId, branchAt(start + hbIdx), effectiveRuleId(ctx, hlCanon));
+    void activeRule;
   }
 
   const direct: Record<string, string> = {};
@@ -462,10 +488,14 @@ export interface SihuaResult {
   starId: string;
 }
 
-export function sihuaForStem(stem: StemId): SihuaResult[] {
+export function sihuaForStem(
+  stem: StemId,
+  patch?: Record<string, Partial<Record<'lu' | 'quan' | 'ke' | 'ji', string>>>
+): SihuaResult[] {
   const row = (sihuaTable.canonical as Record<string, Record<string, string>>)[stem];
+  const patched = patch?.[stem];
   return (['lu', 'quan', 'ke', 'ji'] as const).map(t => ({
     type: t,
-    starId: row[t]
+    starId: patched?.[t] ?? row[t]
   }));
 }

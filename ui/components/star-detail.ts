@@ -15,10 +15,7 @@ function esc(s: string): string {
 export function starDetailHtml(starId: string): string {
   const chart = state.chart;
   if (!chart) return '';
-  const placement = chart.chart.stars[starId] as unknown as {
-    star: { name: Record<string, string>; category: string; shortDesc?: Record<string, string>; tags?: string[] };
-    palaceId: string; branch: string; dignity?: string; ruleId?: string; certainty?: string;
-  } | undefined;
+  const placement = chart.chart.stars[starId];
   if (!placement) return `<p>找不到星曜 ${starId}</p>`;
 
   const star = placement.star;

@@ -21,6 +21,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run test
+      - run: npm run validate:rules
+      - run: npm run validate:sources
       - run: npm run build
       - run: node tools/build-standalone.mjs
       - uses: actions/upload-pages-artifact@v3

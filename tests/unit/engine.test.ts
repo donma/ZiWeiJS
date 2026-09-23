@@ -45,12 +45,13 @@ describe('palace & bureau', () => {
   });
   it('determines bureau', () => {
     const c = calculate(baseInput);
-    expect(c.birthContext.bureau).toBe('shui2');
+    // 命宮 戊子（庚年五虎遁）→ 納音霹靂火 → 火六局
+    expect(c.birthContext.bureau).toBe('huo6');
   });
   it('assigns palace stems via wu-hu-dun', () => {
     const c = calculate(baseInput);
     const life = c.chart.palaces.find(p => p.isLifePalace)!;
-    expect(`${life.stem}-${life.branch}`).toBe('bing-zi');
+    expect(`${life.stem}-${life.branch}`).toBe('wu-zi');
   });
 });
 
@@ -58,12 +59,25 @@ describe('major stars', () => {
   it('places ziwei & series', () => {
     const c = calculate(baseInput);
     const s = c.chart.stars;
-    const branch = (id: string) => (s[id] as unknown as { branch: string }).branch;
-    expect(branch('ZW.STAR.MAJOR.ZIWEI')).toBe('you');
-    expect(branch('ZW.STAR.MAJOR.TIANJI')).toBe('shen');
-    expect(branch('ZW.STAR.MAJOR.TIANFU')).toBe('wei');
-    expect(branch('ZW.STAR.MAJOR.POJUN')).toBe('si');
-    expect(branch('ZW.STAR.MAJOR.TIANLIANG')).toBe('zi');
+    const branch = (id: string) => s[id].branch;
+    expect(branch('ZW.STAR.MAJOR.ZIWEI')).toBe('yin');
+    expect(branch('ZW.STAR.MAJOR.TIANJI')).toBe('chou');
+    expect(branch('ZW.STAR.MAJOR.TIANFU')).toBe('yin');
+    expect(branch('ZW.STAR.MAJOR.POJUN')).toBe('zi');
+    expect(branch('ZW.STAR.MAJOR.TIANLIANG')).toBe('wei');
+  });
+
+  it('assigns all palace stems per 庚年五虎遁（寅起戊）', () => {
+    const c = calculate(baseInput);
+    // 庚年：乙庚之歲戊為頭 → 寅戊、卯己、辰庚、巳辛、午壬、未癸、申甲、酉乙、戌丙、亥丁、子戊、丑己
+    const expected: Record<string, string> = {
+      yin: 'wu', mao: 'ji', chen: 'geng', si: 'xin', wu: 'ren', wei: 'gui',
+      shen: 'jia', you: 'yi', xu: 'bing', hai: 'ding', zi: 'wu', chou: 'ji'
+    };
+    for (const [branch, stem] of Object.entries(expected)) {
+      const p = c.chart.palaces.find(x => x.branch === branch)!;
+      expect(`${p.stem}-${p.branch}`, `palace at ${branch}`).toBe(`${stem}-${branch}`);
+    }
   });
 });
 
@@ -128,7 +142,8 @@ describe('dsl', () => {
   it('star-in-palace works', () => {
     const c = calculate(baseInput);
     const ctx = { engine: fakeCtx(c) };
-    expect(evalDsl({ type: 'star-in-palace', star: 'ZW.STAR.MAJOR.TIANLIANG', palace: 'life' }, ctx)).toBe(true);
+    // 破軍落命宮（子）；紫微落福德宮（寅）
+    expect(evalDsl({ type: 'star-in-palace', star: 'ZW.STAR.MAJOR.POJUN', palace: 'life' }, ctx)).toBe(true);
     expect(evalDsl({ type: 'star-in-palace', star: 'ZW.STAR.MAJOR.ZIWEI', palace: 'life' }, ctx)).toBe(false);
   });
 });
@@ -182,8 +197,9 @@ describe('periods', () => {
   it('generates 12 major periods', () => {
     const c = calculate(baseInput);
     expect(c.periods.major.length).toBe(12);
-    expect(c.periods.major[0].fromAge).toBe(2);
-    expect(c.periods.major[1].fromAge).toBe(12);
+    // 火六局 → 起運 6 歲
+    expect(c.periods.major[0].fromAge).toBe(6);
+    expect(c.periods.major[1].fromAge).toBe(16);
   });
   it('major periods respect direction (yang male = forward)', () => {
     const c = calculate(baseInput);

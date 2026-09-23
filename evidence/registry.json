@@ -160,6 +160,15 @@
       "quote": "六辛逢馬虎 / 六辛逢馬蛇 — 辛干魁鉞版本差異。",
       "confidence": 0.6,
       "notes": "辛干天魁天鉞有『馬虎』與『馬蛇』兩說，本 canonical 採馬虎（丑午）；馬蛇版待建 variant。"
+    },
+    {
+      "evidenceId": "EVD.SPEC.ENGINE.SEX_REQUIRED",
+      "sourceId": "SRC.SPEC.ENGINE",
+      "type": "supports",
+      "location": { "section": "§52 必須支援的錯誤狀態", "anchor": "UNKNOWN_SEX_FOR_CALCULATION" },
+      "quote": "UNKNOWN_SEX_FOR_CALCULATION",
+      "confidence": 1.0,
+      "notes": "工程契約類：未提供 sexForCalculation 時必須回報此錯誤碼，不得預設為任一性別。"
     }
   ]
 }

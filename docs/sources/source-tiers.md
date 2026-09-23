@@ -17,6 +17,32 @@
 - `candidate`：至少 Tier 1–4 來源
 - `research`：可暫無來源，但須標記待補
 
+## 工程契約類規則（engine-contract）
+
+有一類規則不是命理知識，而是引擎的**輸入/輸出契約**，例如：
+
+- `ZW.CALC.BIRTH.SEX_REQUIRED.001`（未給性別時必須回報 `UNKNOWN_SEX_FOR_CALCULATION`，不得預設）
+- 錯誤碼、序列化契約、schema 版本要求
+
+這類規則的溯源對象是本 repo 的規範性建構文件，登錄為 `SRC.SPEC.ENGINE`（Tier 3、type `other`），
+並在 `tags` 標記 `engine-contract`。
+
+**限制**：`SRC.SPEC.ENGINE` 只能用於工程契約類規則；
+不得用於安星、四化、廟旺、格局等命理規則（那些必須有 Tier 1–3 的命理文獻或實作來源）。
+
+## Evidence 驗證
+
+`npm run validate:sources` 同時驗證 source 與 evidence registry：
+
+```
+source schema 驗證
+sourceId 唯一
+evidence schema 驗證（location 支援字串或結構化物件）
+evidenceId 唯一
+evidence.sourceId 必須可解析
+來源標題/作者不得含 AI 字樣
+```
+
 ## 明確紅線
 
 ```

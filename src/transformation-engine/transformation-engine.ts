@@ -1,16 +1,20 @@
 import type { EngineContext } from '../executors/context.js';
 import type { Transformation, TransformationScope, StemId } from '../core/types.js';
 import { sihuaForStem } from '../executors/star-executors.js';
+import { effectiveRuleId, variantPatchFor } from '../executors/context.js';
+
+type SihuaPatch = Record<string, Partial<Record<'lu' | 'quan' | 'ke' | 'ji', string>>>;
 
 export function applySihua(
   ctx: EngineContext,
   stem: StemId,
   scope: TransformationScope,
   sourcePalaceId?: string,
-  ruleId = 'ZW.CALC.SIHUA.NATAL.001'
+  ruleId = 'ZW.CALC.SIHUA.NATAL.001',
+  patch?: SihuaPatch
 ): Transformation[] {
   const results: Transformation[] = [];
-  for (const { type, starId } of sihuaForStem(stem)) {
+  for (const { type, starId } of sihuaForStem(stem, patch)) {
     const placement = ctx.placements.get(starId);
     if (!placement) continue;
     const selfTransform = sourcePalaceId !== undefined && sourcePalaceId === placement.palaceId;
@@ -35,16 +39,30 @@ export function applySihua(
 }
 
 export function calcNatalSihua(ctx: EngineContext): void {
+  const CANON = 'ZW.CALC.SIHUA.NATAL.001';
   const stem = ctx.normalized.ganzhi.year.stem;
-  const trs = applySihua(ctx, stem, 'natal', undefined, 'ZW.CALC.SIHUA.NATAL.001');
+  const patch = variantPatchFor(ctx, CANON) as SihuaPatch | undefined;
+  const ruleId = effectiveRuleId(ctx, CANON);
+  const trs = applySihua(ctx, stem, 'natal', undefined, ruleId, patch);
   ctx.tracer.record({
-    ruleId: 'ZW.CALC.SIHUA.NATAL.001',
-    inputs: { yearStem: stem },
+    ruleId: CANON,
+    inputs: { yearStem: stem, variantPatched: patch ? Object.keys(patch) : undefined },
     result: trs.map(t => `${t.type}->${t.targetStarId}@${t.targetPalaceId}`),
     profile: ctx.profile.profileId,
     sourceRefs: ['SRC.QUANSHU'],
     evidenceRefs: ['EVD.QUANSHU.SIHUA']
   });
+  if (patch) {
+    ctx.tracer.record({
+      ruleId,
+      inputs: { yearStem: stem, variantOf: CANON },
+      result: trs.map(t => `${t.type}->${t.targetStarId}`),
+      profile: ctx.profile.profileId,
+      note: `依 profile 覆寫變體（variant of ${CANON}）`,
+      sourceRefs: ['SRC.ZHONGZHOU'],
+      evidenceRefs: ['EVD.SIHUA.VARIANT.GENG']
+    });
+  }
 }
 
 export function calcPalaceSihua(ctx: EngineContext): void {

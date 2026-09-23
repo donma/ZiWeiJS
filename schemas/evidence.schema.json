@@ -12,7 +12,24 @@
       "type": "string",
       "enum": ["supports", "conflicts", "mentions", "variant-only"]
     },
-    "location": { "type": "string", "description": "卷/頁/條目" },
+    "location": {
+      "description": "引文位置：字串（卷/頁/條目）或結構化定位",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "volume": { "type": "string" },
+            "chapter": { "type": "string" },
+            "page": { "type": "string" },
+            "section": { "type": "string" },
+            "imagePage": { "type": "string" },
+            "anchor": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
     "quote": { "type": "string" },
     "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
     "notes": { "type": "string" }

@@ -56,7 +56,8 @@ describe('integrity: chart structure', () => {
 
   it('12 major periods starting at bureau number', () => {
     expect(c.periods.major.length).toBe(12);
-    expect(c.periods.major[0].fromAge).toBe(2);
+    // 火六局 → 起運 6 歲
+    expect(c.periods.major[0].fromAge).toBe(6);
   });
 
   it('all palaces have changsheng + boshi', () => {

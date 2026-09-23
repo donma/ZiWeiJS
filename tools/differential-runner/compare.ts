@@ -47,7 +47,7 @@ export function bibleValue(chart: ZiWeiChart, field: string): string {
 
   const starId = STAR_FIELD_MAP[field];
   if (starId) {
-    const p = chart.chart.stars[starId] as unknown as { branch?: string } | undefined;
+    const p = chart.chart.stars[starId];
     return p?.branch ?? '—';
   }
 
@@ -55,8 +55,8 @@ export function bibleValue(chart: ZiWeiChart, field: string): string {
   if (sihua) {
     const tr = chart.chart.transformations.find(x => x.sourceScope === 'natal' && x.type === sihua);
     if (!tr) return '—';
-    const p = chart.chart.stars[tr.targetStarId] as { star?: { name?: Record<string, string> } } | undefined;
-    return p?.star?.name ? `${t(p.star.name)}@${tr.targetPalaceId}` : tr.targetStarId;
+    const p = chart.chart.stars[tr.targetStarId];
+    return p ? `${t(p.star.name)}@${tr.targetPalaceId}` : tr.targetStarId;
   }
   return '—';
 }

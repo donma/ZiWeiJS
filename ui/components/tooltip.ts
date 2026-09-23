@@ -17,7 +17,7 @@ const SIHUA_LABEL: Record<string, string> = { lu: '化祿', quan: '化權', ke: 
 function starTooltipHtml(starId: string): string | null {
   const chart = state.chart;
   if (!chart) return null;
-  const placement = chart.chart.stars[starId] as unknown as { star: { name: Record<string,string>; category: string; shortDesc?: Record<string,string> }; palaceId: string; dignity?: string; ruleId?: string } | undefined;
+  const placement = chart.chart.stars[starId];
   if (!placement || !placement.star) return null;
   const star = placement.star;
   const name = t(star.name);

@@ -25,6 +25,7 @@ export {
   dignityAtLeast, dignityLabel
 } from './dignity-engine/dignity-engine.js';
 export { sihuaForStem } from './executors/star-executors.js';
+export { ziweiPalaceIndex, branchFromPalaceIndex } from './executors/palace-executors.js';
 export { runInterpretation, runPatterns, groupByDomain } from './interpretation-engine/interpretation-engine.js';
 export { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
 export type { UnknownTimeResult, RectificationResult, RectificationClue } from './rectification/rectification.js';

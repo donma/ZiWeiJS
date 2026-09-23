@@ -67,7 +67,9 @@
         "params": {
           "tableRef": "transformations/sihua#canonical",
           "scope": "natal",
-          "variantPatch": "geng-quan-tianfu"
+          "variantPatch": {
+            "geng": { "quan": "ZW.STAR.MAJOR.TIANFU", "ke": "ZW.STAR.MAJOR.TIANXIANG" }
+          }
         }
       },
       "outputs": [

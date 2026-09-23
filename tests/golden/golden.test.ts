@@ -40,7 +40,7 @@ function runCase(gc: GoldenCase): void {
   const stars = exp.stars as Record<string, string> | undefined;
   if (stars) {
     for (const [starId, branch] of Object.entries(stars)) {
-      const placement = chart.chart.stars[starId] as unknown as { branch?: string } | undefined;
+      const placement = chart.chart.stars[starId];
       expect(placement?.branch, `${gc.name}: ${starId}`).toBe(branch);
     }
   }
@@ -69,7 +69,7 @@ describe('golden: generated fixture full star map', () => {
     const chart = calculate((case1993 as GoldenCase).input);
     const expected = (case1993.expect as { stars: Record<string, string> }).stars;
     for (const [starId, branch] of Object.entries(expected)) {
-      const p = chart.chart.stars[starId] as unknown as { branch?: string } | undefined;
+      const p = chart.chart.stars[starId];
       expect(p?.branch, starId).toBe(branch);
     }
     expect(Object.keys(expected).length).toBeGreaterThan(90);

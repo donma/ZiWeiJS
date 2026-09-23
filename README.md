@@ -112,15 +112,16 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run test     # 52 tests
-npm run build    # dist/ 輸出 esm + browser + d.ts + demo.html
+npm run dev        # http://localhost:5173
+npm run test       # 150 tests
+npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html
+npm run differential  # 與 iztro 逐欄對照（差分測試）
 ```
 
 ### 規則驗證
 
 ```bash
-npm run validate:rules    # 88 rules schema 驗證
+npm run validate:rules    # 203 rules schema 驗證
 npm run validate:sources  # 9 sources 驗證（含 AI-source 阻擋）
 ```
 
@@ -134,7 +135,7 @@ rules/          規則資料（calculation · interpretation · patterns · rect
 tables/         星曜 registry、四化表、廟旺表、納音、長生、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
-profiles/       canonical / traditional-zi / true-solar
+profiles/       canonical / traditional-zi / true-solar / school-zhongzhou / school-ma-hu
 variants/       Variant 登錄
 src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）

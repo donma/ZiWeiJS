@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "description": "輔煞星安法之流派 variant。與 canonical 並存，供 profile 逐條覆寫。",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "scope": "calculation.stars.aux.year-stem",
+      "category": "stars",
+      "name": { "zh-TW": "安天魁天鉞（六辛逢馬蛇版）", "en": "Kui Yue: xin stem ma-she variant" },
+      "description": { "zh-TW": "辛干天魁天鉞採『六辛逢馬蛇』（午、巳）而非通行之『馬虎』（午、寅）。" },
+      "inputs": ["ganzhi.year.stem"],
+      "logic": {
+        "executor": "calcAuxByYearStem",
+        "params": {
+          "tableRef": "stars/aux-tables#byYearStem",
+          "variantPatch": {
+            "ZW.STAR.AUX.TIANYUE": { "xin": 5 }
+          }
+        }
+      },
+      "outputs": ["stars.*"],
+      "sourceRefs": ["SRC.QUANJI"],
+      "evidenceRefs": ["EVD.KUIYUE.VARIANT"],
+      "changeLog": [
+        { "version": "1.0", "type": "evidence-update", "date": "2026-09-22", "note": "依紫微斗數全集歌訣建立 variant；canonical 維持馬虎版。" }
+      ],
+      "tags": ["variant", "kuiyue"]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+      "scope": "calculation.stars.aux.year-branch",
+      "category": "stars",
+      "name": { "zh-TW": "安火星鈴星（起子時差異版）", "en": "Huo / Ling alternate start" },
+      "description": { "zh-TW": "部分流派火鈴起子時之基準宮不同（尤以亥卯未、巳酉丑局），本 variant 記錄該差異。" },
+      "inputs": ["ganzhi.year.branch", "hourBranch"],
+      "logic": {
+        "executor": "calcAuxByYearBranch",
+        "params": {
+          "tableRef": "stars/aux-tables#byYearBranch",
+          "variantPatch": {
+            "ZW.STAR.AUX.HUOLING": { "hai-mao-wei": 9 },
+            "ZW.STAR.AUX.LINGXING": { "si-you-chou": 10 }
+          }
+        }
+      },
+      "outputs": ["stars.*"],
+      "sourceRefs": ["SRC.QUANJI"],
+      "evidenceRefs": ["EVD.QUANSHU.HUOLING"],
+      "changeLog": [
+        { "version": "1.0", "type": "evidence-update", "date": "2026-09-22", "note": "火鈴起訣版本差異 variant，待更多文獻確認。" }
+      ],
+      "tags": ["variant", "huoling"]
+    },
+    {
+      "ruleId": "ZW.CALC.DIGNITY.BRIGHTNESS.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.DIGNITY.BRIGHTNESS.001",
+      "scope": "calculation.dignity.brightness",
+      "category": "dignity",
+      "name": { "zh-TW": "廟旺利陷（差異表版）", "en": "Brightness alternate table" },
+      "description": { "zh-TW": "天同、巨門等星於部分地支之廟旺等級各派不同；本 variant 記錄差異表。" },
+      "inputs": ["stars.*", "palaces[].branch"],
+      "logic": {
+        "executor": "calcDignity",
+        "params": {
+          "tableRef": "dignity/brightness",
+          "variantPatch": {
+            "ZW.STAR.MAJOR.TIANTONG": { "si": "wang", "hai": "wang" },
+            "ZW.STAR.MAJOR.JUMEN": { "si": "xian", "hai": "xian" }
+          }
+        }
+      },
+      "outputs": ["stars.*.dignity"],
+      "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"],
+      "evidenceRefs": ["EVD.CONSENSUS.MIAOWANG"],
+      "changeLog": [
+        { "version": "1.0", "type": "evidence-update", "date": "2026-09-22", "note": "廟旺差異星曜 variant，保留流派空間。" }
+      ],
+      "tags": ["variant", "dignity"]
+    }
+  ]
+}

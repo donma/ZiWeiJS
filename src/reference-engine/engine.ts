@@ -4,7 +4,8 @@ import type {
 } from '../core/types.js';
 import { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION, BUREAU_NAME, isYangStem, STEM_YINYANG } from '../core/constants.js';
 import { ZiWeiError } from '../core/errors.js';
-import { getProfile } from '../rule-engine/registry.js';
+import { getProfile, getRule } from '../rule-engine/registry.js';
+import type { Rule } from '../core/types.js';
 import { normalizeBirth, buildCalendarInfo } from '../calendar/calendar-engine.js';
 import { Tracer } from '../trace/tracer.js';
 import type { EngineContext } from '../executors/context.js';
@@ -20,7 +21,7 @@ import {
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
 import { calcDignities } from '../dignity-engine/dignity-engine.js';
 import {
-  calcMajorPeriods, calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod
+  calcMajorPeriods, calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod, ganzhiAt
 } from '../period-engine/period-engine.js';
 import { hourBranchFromHour } from '../calendar/calendar-engine.js';
 import { runInterpretation, groupByDomain, runPatterns } from '../interpretation-engine/interpretation-engine.js';
@@ -38,6 +39,15 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
 
   const normalized = normalizeBirth(input, profile);
 
+  const activeRules = new Map<string, Rule>();
+  for (const [canonicalId, variantId] of Object.entries(profile.ruleOverrides ?? {})) {
+    try {
+      activeRules.set(canonicalId, getRule(variantId));
+    } catch {
+      // 覆寫目標不存在時保留 canonical 行為（由 rule-validator 另行檢查）
+    }
+  }
+
   const ctx: EngineContext = {
     input,
     normalized,
@@ -53,7 +63,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     bureauNumber: 2,
     placements: new Map(),
     transformations: [],
-    majorPeriods: []
+    majorPeriods: [],
+    activeRules
   };
 
   const yangStem = isYangStem(normalized.ganzhi.year.stem);
@@ -88,23 +99,18 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   calcMajorPeriods(ctx);
 
   const target = options.targetDate;
-  if (target?.year) {
-    calcYearPeriod(ctx, target.year);
-    if (target.month) {
-      calcMonthPeriod(ctx, target.year, target.month);
-      if (target.day) {
-        calcDayPeriod(ctx, target.day);
-        if (target.hour !== undefined) {
-          calcHourPeriod(ctx, hourBranchFromHour(target.hour));
-        }
-      }
-    }
-  } else {
-    const now = new Date();
-    calcYearPeriod(ctx, now.getFullYear());
-    calcMonthPeriod(ctx, now.getFullYear(), now.getMonth() + 1);
-    calcDayPeriod(ctx, now.getDate());
-    calcHourPeriod(ctx, hourBranchFromHour(now.getHours()));
+  const now = new Date();
+  const ty = target?.year ?? now.getFullYear();
+  const tm = target?.month ?? (now.getMonth() + 1);
+  const td = target?.day ?? now.getDate();
+  const th = target?.hour ?? now.getHours();
+
+  calcYearPeriod(ctx, ty);
+  calcMonthPeriod(ctx, ty, tm, td);
+  calcDayPeriod(ctx, td, ty, tm);
+  {
+    const gzHour = ganzhiAt(ty, tm, td, th);
+    calcHourPeriod(ctx, hourBranchFromHour(th), gzHour.hour.stem, gzHour.hour.branch);
   }
   calcPeriodSihua(ctx);
 

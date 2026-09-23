@@ -1,4 +1,5 @@
 import type { EngineContext } from '../executors/context.js';
+import { effectiveRuleId, variantPatchFor } from '../executors/context.js';
 import type { DignityLevel, BranchId } from '../core/types.js';
 import dignityTable from '../../tables/dignity/brightness.json' with { type: 'json' };
 
@@ -8,19 +9,31 @@ export function dignityOf(starId: string, branch: BranchId): DignityLevel | unde
   return tables[starId]?.[branch];
 }
 
+export function dignityOfPatched(
+  starId: string,
+  branch: BranchId,
+  patch?: Record<string, Record<string, DignityLevel>>
+): DignityLevel | undefined {
+  const patched = patch?.[starId]?.[branch];
+  return patched ?? tables[starId]?.[branch];
+}
+
 export function calcDignities(ctx: EngineContext): void {
+  const CANON = 'ZW.CALC.DIGNITY.BRIGHTNESS.001';
+  const patch = variantPatchFor(ctx, CANON) as Record<string, Record<string, DignityLevel>> | undefined;
+  const ruleId = effectiveRuleId(ctx, CANON);
   const results: string[] = [];
   for (const p of ctx.placements.values()) {
-    const d = dignityOf(p.starId, p.branch);
+    const d = dignityOfPatched(p.starId, p.branch, patch);
     if (d) {
       p.dignity = d;
       results.push(`${p.starId}@${p.branch}:${d}`);
     }
   }
   ctx.tracer.record({
-    ruleId: 'ZW.CALC.DIGNITY.BRIGHTNESS.001',
-    inputs: {},
-    result: results,
+    ruleId: CANON,
+    inputs: { variantPatched: patch ? Object.keys(patch) : undefined },
+    result: `${results.length} dignities${patch ? ` (variant=${ruleId})` : ''}`,
     profile: ctx.profile.profileId,
     sourceRefs: ['SRC.MODERN-IMPL-CONSENSUS'],
     evidenceRefs: ['EVD.CONSENSUS.MIAOWANG']

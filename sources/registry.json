@@ -94,6 +94,17 @@
       "tier": 4,
       "language": "zh",
       "notes": "三合派傳統教材彙編，星曜互涉與宮位體系參考。"
+    },
+    {
+      "sourceId": "SRC.SPEC.ENGINE",
+      "title": "ZiWeiJS-Bible 建構規格 v1（本 repo 規範性文件）",
+      "author": "ZiWeiJS project",
+      "era": "當代",
+      "edition": "v1.0",
+      "type": "other",
+      "tier": 3,
+      "language": "zh",
+      "notes": "本 repo 之規範性建構文件。僅適用於『工程契約類』規則（輸入驗證、錯誤碼、序列化契約）之溯源，非命理知識來源；不得用於安星、四化、廟旺等命理規則。"
     }
   ]
 }

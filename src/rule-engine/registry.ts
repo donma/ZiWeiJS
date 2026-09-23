@@ -5,6 +5,7 @@ import palacesData from '../../rules/calculation/palace/palaces.json' with { typ
 import bureauData from '../../rules/calculation/bureau/bureau.json' with { type: 'json' };
 import majorStarsData from '../../rules/calculation/stars/major.json' with { type: 'json' };
 import auxStarsData from '../../rules/calculation/stars/aux-stars.json' with { type: 'json' };
+import auxVariantsData from '../../rules/calculation/stars/aux-variants.json' with { type: 'json' };
 import sihuaData from '../../rules/calculation/transformations/sihua.json' with { type: 'json' };
 import periodsData from '../../rules/calculation/periods/periods.json' with { type: 'json' };
 import relationsData from '../../rules/calculation/relations/relations.json' with { type: 'json' };
@@ -16,22 +17,27 @@ import rectificationData from '../../rules/rectification/rectification.json' wit
 import intPersonality from '../../rules/interpretation/personality.json' with { type: 'json' };
 import intCareer from '../../rules/interpretation/career.json' with { type: 'json' };
 import intDomains from '../../rules/interpretation/domains.json' with { type: 'json' };
+import intSihuaPalaces from '../../rules/interpretation/sihua-palaces.json' with { type: 'json' };
+import intMajorPalaces from '../../rules/interpretation/major-stars-palaces.json' with { type: 'json' };
+import intAuxPalaces from '../../rules/interpretation/aux-stars-palaces.json' with { type: 'json' };
 
 import sourcesData from '../../sources/registry.json' with { type: 'json' };
 import evidenceData from '../../evidence/registry.json' with { type: 'json' };
 import profilesCanonical from '../../profiles/canonical.json' with { type: 'json' };
 import profilesTraditionalZi from '../../profiles/traditional-zi.json' with { type: 'json' };
 import profilesTrueSolar from '../../profiles/true-solar.json' with { type: 'json' };
+import profilesZhongzhou from '../../profiles/school-zhongzhou.json' with { type: 'json' };
+import profilesMaHu from '../../profiles/school-ma-hu.json' with { type: 'json' };
 
 interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
 const ruleFiles: RuleFile[] = [
-  palacesData, bureauData, majorStarsData, auxStarsData, sihuaData,
+  palacesData, bureauData, majorStarsData, auxStarsData, auxVariantsData, sihuaData,
   periodsData, relationsData, dignityData, calendarData, birthData,
   patternsData, rectificationData
 ] as unknown as RuleFile[];
 
-const interpretationFiles = [intPersonality, intCareer, intDomains] as unknown as { rules: Rule[] }[];
+const interpretationFiles = [intPersonality, intCareer, intDomains, intSihuaPalaces, intMajorPalaces, intAuxPalaces] as unknown as { rules: Rule[] }[];
 
 const allRules: Rule[] = [];
 const allPatterns: Rule[] = [];
@@ -61,7 +67,7 @@ for (const e of (evidenceData as { evidence: Evidence[] }).evidence) {
 }
 
 const profileIndex = new Map<string, Profile>();
-for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar] as Profile[]) {
+for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar, profilesZhongzhou, profilesMaHu] as Profile[]) {
   profileIndex.set(p.profileId, p);
 }
 
