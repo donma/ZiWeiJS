@@ -26,12 +26,12 @@ export function renderHome(): string {
       ${birthFormHtml(true)}
       ${state.error ? `<div class="card card-pad" style="margin-top:12px;border-color:var(--danger)"><strong>錯誤</strong><p class="small">${state.error}</p></div>` : ''}
       <div class="card card-pad" style="margin-top:14px">
-        <div class="kv">
+        <dl class="kv">
           <dt>Canonical 規則</dt><dd>${canonicalCount} 條</dd>
           <dt>Variant 規則</dt><dd>${variantCount} 條</dd>
           <dt>文獻來源</dt><dd>${sources.length} 筆</dd>
           <dt>排盤方式</dt><dd>本地運算 · 離線可用 · deterministic</dd>
-        </div>
+        </dl>
       </div>
     </div>
     <div>

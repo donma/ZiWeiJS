@@ -11,20 +11,22 @@ export function renderRules(): string {
   <h1>Rule Explorer</h1>
   <p class="sub">所有 machine-readable 規則（calculation / interpretation / pattern）。共 ${all.length} 條，目前顯示 ${rules.length} 條。</p>
   <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-    <input type="text" id="rule-q" placeholder="搜尋 Rule ID 或中文名稱…" value="${escapeAttr(query)}" style="flex:1;min-width:200px" />
-    <select id="rule-status">
+    <input type="text" id="rule-q" aria-label="搜尋規則" placeholder="搜尋 Rule ID 或中文名稱…" value="${escapeAttr(query)}" style="flex:1;min-width:200px" />
+    <select id="rule-status" aria-label="依狀態篩選">
       <option value="">全部狀態</option>
       ${['canonical', 'variant', 'candidate', 'research', 'deprecated', 'undetermined'].map(s => `<option value="${s}" ${statusFilter === s ? 'selected' : ''}>${s}（${all.filter(r => r.status === s).length}）</option>`).join('')}
       </select>
   </div>
   <div id="rule-detail"></div>
   <div class="card">
+    <div class="table-scroll">
     <table class="data">
       <thead><tr><th>Rule ID</th><th>名稱</th><th>狀態</th><th>範圍</th><th>版本</th><th>來源</th></tr></thead>
       <tbody id="rule-tbody">
         ${rules.map(r => ruleRow(r)).join('')}
       </tbody>
     </table>
+    </div>
   </div>
   <div id="rule-count" class="small faint" style="margin-top:6px">顯示 ${rules.length} / ${all.length} 條</div>
   <p class="small faint" style="margin-top:10px">點擊任一列可展開規則詳情（條件、來源、Evidence、變更紀錄）。</p>`;
@@ -82,7 +84,7 @@ export function ruleDetailHtml(ruleId: string): string {
         <h3 style="font-size:13px;margin:0 0 6px">執行方式 Logic</h3>
         ${rule.logic?.executor ? `<div class="small">executor: <span class="mono">${rule.logic.executor}</span></div>` : ''}
         ${rule.logic?.tableRef ? `<div class="small">table: <span class="mono">${rule.logic.tableRef}</span></div>` : ''}
-        ${rule.logic?.dsl ? `<pre class="json" style="max-height:160px">${escapeHtml(JSON.stringify(rule.logic.dsl, null, 1))}</pre>` : ''}
+        ${rule.logic?.dsl ? `<pre tabindex="0" class="json" style="max-height:160px">${escapeHtml(JSON.stringify(rule.logic.dsl, null, 1))}</pre>` : ''}
       </div>
     </div>
 
@@ -90,10 +92,12 @@ export function ruleDetailHtml(ruleId: string): string {
 
     <h3 style="font-size:13px;margin:16px 0 6px">來源 Sources</h3>
     ${sources.length === 0 ? '<p class="small faint">（未登錄來源）</p>' : `
+    <div class="table-scroll">
     <table class="data small">
       <thead><tr><th>ID</th><th>書名</th><th>作者</th><th>Tier</th></tr></thead>
       <tbody>${sources.map(s => `<tr><td class="mono">${s.sourceId}</td><td>${s.title}</td><td>${s.author ?? '—'}</td><td>${s.tier}</td></tr>`).join('')}</tbody>
     </table>`}
+    </div>
 
     <h3 style="font-size:13px;margin:16px 0 6px">Evidence</h3>
     ${evidence.length === 0 ? '<p class="small faint">（未登錄證據）</p>' : evidence.map(e => `
@@ -107,13 +111,15 @@ export function ruleDetailHtml(ruleId: string): string {
 
     <h3 style="font-size:13px;margin:16px 0 6px">變更紀錄 Change Log</h3>
     ${(rule.changeLog ?? []).length === 0 ? '<p class="small faint">v1.0 初版。</p>' : `
+    <div class="table-scroll">
     <table class="data small">
       <thead><tr><th>版本</th><th>類型</th><th>說明</th></tr></thead>
       <tbody>${(rule.changeLog ?? []).map(c => `<tr><td class="mono">${c.version}</td><td><span class="badge">${c.type}</span></td><td>${c.note ?? ''}</td></tr>`).join('')}</tbody>
     </table>`}
+    </div>
 
     <h3 style="font-size:13px;margin:16px 0 6px">Trace 範例</h3>
-    <pre class="json" style="max-height:200px">${escapeHtml(traceExample(rule))}</pre>
+    <pre tabindex="0" class="json" style="max-height:200px">${escapeHtml(traceExample(rule))}</pre>
   </div>`;
 }
 

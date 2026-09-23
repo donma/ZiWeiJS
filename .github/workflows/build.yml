@@ -20,15 +20,18 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # 順序：Schema → Governance → Integrity → Tests → Build（spec §18）
+      # 順序：Schema → Governance → Integrity → 差分 → Tests → Build → A11y（spec §18）
       - run: npm run validate:rules
       - run: npm run validate:sources
       - run: npm run validate:schemas
       - run: npm run validate:governance
       - run: npm run validate:integrity
       - run: npm run coverage:bible
+      - run: npm run differential:calendar -- --check
       - run: npm run test
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:a11y
       - run: node tools/build-standalone.mjs
       - uses: actions/upload-pages-artifact@v3
         with:

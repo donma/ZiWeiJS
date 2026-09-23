@@ -20,6 +20,7 @@ export function renderSources(): string {
 
   <h2>Sources (${sources.length})</h2>
   <div class="card">
+    <div class="table-scroll">
     <table class="data">
       <thead><tr><th>ID</th><th>書名</th><th>作者</th><th>時代</th><th>Tier</th><th>類型</th></tr></thead>
       <tbody>
@@ -33,10 +34,12 @@ export function renderSources(): string {
         </tr>`).join('')}
       </tbody>
     </table>
+    </div>
   </div>
 
   <h2>Evidence (${evidence.length})</h2>
   <div class="card">
+    <div class="table-scroll">
     <table class="data">
       <thead><tr><th>ID</th><th>來源</th><th>類型</th><th>位置</th><th>信心</th><th>摘要</th></tr></thead>
       <tbody>
@@ -50,15 +53,16 @@ export function renderSources(): string {
         </tr>`).join('')}
       </tbody>
     </table>
+    </div>
   </div>
 
   <h2>Canonical 覆蓋率</h2>
   <div class="card card-pad">
-    <div class="kv">
+    <dl class="kv">
       <dt>canonical</dt><dd>${rules.filter(r => r.status === 'canonical').length}</dd>
       <dt>variant</dt><dd>${rules.filter(r => r.status === 'variant').length}</dd>
       <dt>candidate</dt><dd>${rules.filter(r => r.status === 'candidate').length}</dd>
       <dt>research</dt><dd>${rules.filter(r => r.status === 'research').length}</dd>
-    </div>
+    </dl>
   </div>`;
 }

@@ -25,9 +25,9 @@ export function renderChartPage(forceMode?: 'standard' | 'expert'): string {
   return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
     <h1 style="margin:0">命盤</h1>
-    <div class="seg" role="tablist">
-      <button data-mode="standard" class="${mode === 'standard' ? 'active' : ''}">Standard</button>
-      <button data-mode="expert" class="${mode === 'expert' ? 'active' : ''}">Expert</button>
+    <div class="seg" role="group" aria-label="檢視模式">
+      <button data-mode="standard" aria-pressed="${mode === 'standard' ? 'true' : 'false'}" class="${mode === 'standard' ? 'active' : ''}">Standard</button>
+      <button data-mode="expert" aria-pressed="${mode === 'expert' ? 'true' : 'false'}" class="${mode === 'expert' ? 'active' : ''}">Expert</button>
     </div>
     <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap">
       <button class="btn sm" data-chart-action="export-svg">SVG</button>
@@ -58,13 +58,13 @@ function expertMeta(chart: NonNullable<typeof state.chart>): string {
   return `
   <div class="card card-pad" style="margin-top:12px">
     <h3 style="margin-top:0">Engine</h3>
-    <div class="kv small">
+    <dl class="kv small">
       <dt>version</dt><dd class="mono">${chart.generatedWith.bibleVersion}</dd>
       <dt>schema</dt><dd class="mono">${chart.schemaVersion}</dd>
       <dt>profile</dt><dd class="mono">${chart.generatedWith.profile}</dd>
       <dt>rules hit</dt><dd>${chart.interpretation.hits.length + chart.chart.patterns.length}</dd>
       <dt>trace</dt><dd>${chart.trace?.entries.length ?? 0} entries</dd>
-    </div>
+    </dl>
   </div>`;
 }
 
@@ -120,6 +120,6 @@ function tracePanel(chart: NonNullable<typeof state.chart>): string {
   return `
   <div class="card card-pad" style="margin-top:12px">
     <h3 style="margin-top:0">Trace (${chart.trace.entries.length})</h3>
-    <pre class="json">${JSON.stringify(chart.trace.entries, null, 1).slice(0, 8000)}</pre>
+    <pre tabindex="0" class="json">${JSON.stringify(chart.trace.entries, null, 1).slice(0, 8000)}</pre>
   </div>`;
 }

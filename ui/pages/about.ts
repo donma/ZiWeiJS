@@ -19,11 +19,11 @@ export function renderAbout(): string {
     </ul>
 
     <h3>版本</h3>
-    <div class="kv">
+    <dl class="kv">
       <dt>version</dt><dd class="mono">${BIBLE_VERSION}</dd>
       <dt>schemaVersion</dt><dd class="mono">${SCHEMA_VERSION}</dd>
       <dt>License</dt><dd>原始碼公開 · 個人/研究/學術/非商用使用 · 商用需告知 Owner（見 LICENSE-DRAFT.md / COMMERCIAL_USE.md）</dd>
-    </div>
+    </dl>
 
     <h3>Privacy</h3>
     <p class="small sub">核心與官方 UI 為 local-only：出生資料不會自動送往任何伺服器、不做 telemetry、不寫入外部 log。AI / 雲端功能必須由上層明確啟用。</p>

@@ -59,6 +59,7 @@ function countJson(dir: string): number {
 }
 const goldenCases = countJson('fixtures/golden');
 const differentialFixtures = countJson('fixtures/differential');
+const calendarFixtures = countJson('fixtures/calendar');
 
 /** 只計 *.test.ts，並回報 it() 宣告數（近似值：迴圈內宣告只算一次） */
 function countTests(dir: string): { files: number; tests: number } {
@@ -83,6 +84,30 @@ function countTests(dir: string): { files: number; tests: number } {
   return { files, tests };
 }
 const unit = countTests('tests');
+
+/** 只計 *.e2e.ts（Playwright），回報 test() 宣告數（近似值：迴圈內宣告只算一次） */
+function countE2E(dir: string): { files: number; tests: number } {
+  let files = 0;
+  let tests = 0;
+  const walk = (d: string): void => {
+    let entries: string[];
+    try { entries = readdirSync(join(root, d)); } catch { return; }
+    for (const e of entries) {
+      const rel = join(d, e);
+      const abs = join(root, rel);
+      let isDir = false;
+      try { isDir = readdirSync(abs).length >= 0; } catch { isDir = false; }
+      if (isDir) { walk(rel); continue; }
+      if (!e.endsWith('.e2e.ts')) continue;
+      files++;
+      const src = readFileSync(abs, 'utf8');
+      tests += (src.match(/^\s*test\(/gm) ?? []).length;
+    }
+  };
+  walk(dir);
+  return { files, tests };
+}
+const e2e = countE2E('tests');
 
 /* ---------- report ---------- */
 const report = {
@@ -111,7 +136,9 @@ const report = {
   evidence: listEvidence().length,
   goldenCases,
   differentialFixtures,
-  tests: { files: unit.files, tests: unit.tests }
+  calendarFixtures,
+  tests: { files: unit.files, tests: unit.tests },
+  e2e: { files: e2e.files, tests: e2e.tests }
 };
 
 if (process.argv.includes('--json')) {
@@ -138,7 +165,9 @@ if (process.argv.includes('--json')) {
   console.log(`Sources / Evidence : ${r.sources} / ${r.evidence}`);
   console.log(`Golden cases       : ${r.goldenCases}`);
   console.log(`Differential fx    : ${r.differentialFixtures}`);
+  console.log(`Calendar fixtures  : ${r.calendarFixtures}`);
   console.log(`Tests (it() 宣告) : ${r.tests.tests} in ${r.tests.files} files（迴圈展開後實際執行數見 npm test）`);
+  console.log(`E2E (test() 宣告) : ${r.e2e.tests} in ${r.e2e.files} files（實際執行數見 npm run test:visual）`);
 }
 
 if (process.argv.includes('--update-readme')) {
@@ -161,7 +190,9 @@ if (process.argv.includes('--update-readme')) {
     `| 文獻 / 證據 | ${report.sources} / ${report.evidence} |`,
     `| Golden fixtures | ${report.goldenCases} |`,
     `| Differential fixtures | ${report.differentialFixtures} |`,
+    `| Calendar fixtures | ${report.calendarFixtures} |`,
     `| Tests | ${report.tests.tests} it() / ${report.tests.files} files（靜態計數）|`,
+    `| E2E / Visual | ${report.e2e.tests} test() / ${report.e2e.files} files（靜態計數；實際執行數見 npm run test:visual）|`,
     `| schemaVersion | ${report.version.schema} |`,
     '<!-- STATS:END -->'
   ].join('\n');

@@ -48,16 +48,24 @@ export function initTooltip(): void {
     if (!html) return;
     tooltip.innerHTML = html;
     tooltip.classList.add('show');
+    tooltip.setAttribute('aria-hidden', 'false');
+    tooltip.setAttribute('aria-label', el.getAttribute('aria-label') ?? '');
     const rect = tooltip.getBoundingClientRect();
     let tx = x + 14;
     let ty = y + 14;
     if (tx + rect.width > innerWidth - 8) tx = x - rect.width - 14;
     if (ty + rect.height > innerHeight - 8) ty = y - rect.height - 14;
+    // 夾限在視窗內，避免溢出（行動裝置）
+    tx = Math.max(8, Math.min(tx, innerWidth - rect.width - 8));
+    ty = Math.max(8, Math.min(ty, innerHeight - rect.height - 8));
     tooltip.style.left = `${tx}px`;
     tooltip.style.top = `${ty}px`;
   };
 
-  const hide = () => tooltip.classList.remove('show');
+  const hide = () => {
+    tooltip.classList.remove('show');
+    tooltip.setAttribute('aria-hidden', 'true');
+  };
 
   document.querySelectorAll('.zw-star').forEach(el => {
     el.addEventListener('mouseenter', e => {
@@ -79,6 +87,16 @@ export function initTooltip(): void {
       const starId = (el as HTMLElement).dataset.star!;
       openStarDetail(starId);
     });
+    // SVG <g role="button"> 不會因 Enter/Space 自動觸發 click，必須明示處理（無障礙）
+    el.addEventListener('keydown', e => {
+      const key = (e as KeyboardEvent).key;
+      if (key === 'Enter' || key === ' ' || key === 'Spacebar') {
+        e.preventDefault();
+        e.stopPropagation();
+        const starId = (el as HTMLElement).dataset.star;
+        if (starId) openStarDetail(starId);
+      }
+    });
   });
 }
 
@@ -88,17 +106,27 @@ export function openStarDetail(starId: string): void {
   const target = isMobile
     ? document.getElementById('sheet-content')!
     : document.getElementById('drawer-content')!;
+  const opener = document.activeElement as HTMLElement | null;
   target.innerHTML = html;
   document.getElementById('sheet-backdrop')!.classList.add('show');
   if (isMobile) document.getElementById('bottom-sheet')!.classList.add('show');
   else document.getElementById('drawer')!.classList.add('show');
 
+  const close = () => {
+    document.getElementById('bottom-sheet')?.classList.remove('show');
+    document.getElementById('drawer')?.classList.remove('show');
+    document.getElementById('sheet-backdrop')?.classList.remove('show');
+    opener?.focus();
+  };
+
   target.querySelectorAll('[data-close-panel]').forEach(el => {
-    el.addEventListener('click', () => {
-      document.getElementById('bottom-sheet')?.classList.remove('show');
-      document.getElementById('drawer')?.classList.remove('show');
-      document.getElementById('sheet-backdrop')?.classList.remove('show');
-    });
+    el.addEventListener('click', close);
   });
+
+  // 無障礙：開啟後將焦點移入對話框（Esc 關閉與 backdrop 點擊由 initSheet 處理）
+  const focusTarget = target.querySelector<HTMLElement>('[data-close-panel], button, a[href]')
+    ?? target.querySelector<HTMLElement>('h2');
+  focusTarget?.setAttribute('tabindex', '-1');
+  focusTarget?.focus();
 }
 

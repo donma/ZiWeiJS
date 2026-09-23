@@ -29,7 +29,9 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | 文獻 / 證據 | 10 / 28 |
 | Golden fixtures | 43 |
 | Differential fixtures | 12 |
-| Tests | 227 it() / 22 files（靜態計數）|
+| Calendar fixtures | 3 |
+| Tests | 244 it() / 23 files（靜態計數）|
+| E2E / Visual | 20 test() / 2 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
 
@@ -141,17 +143,26 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run test       # 150 tests
+npm run test       # 309 tests
 npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html
-npm run differential  # 與 iztro 逐欄對照（差分測試）
+npm run differential           # 與 iztro 逐欄對照（安星差分）
+npm run differential:calendar  # 與 lunar-lite 逐日對照（曆法差分）
+npm run test:visual            # Playwright：UI / Visual regression
+npm run test:a11y              # Playwright：無障礙（axe + 鍵盤）
 ```
 
 ### 規則驗證
 
 ```bash
-npm run validate:rules    # 203 rules schema 驗證
-npm run validate:sources  # 9 sources 驗證（含 AI-source 阻擋）
+npm run verify            # 全部 gate：schema → governance → integrity → 差分 → test → build
+npm run validate:rules    # 209 rules schema 驗證
+npm run validate:sources  # 10 sources / 28 evidence 驗證（含 AI-source 阻擋）
+npm run validate:governance  # Canonical Evidence Gate
+npm run validate:integrity   # ID / ref / executor / DSL / 計畫覆蓋
+npm run coverage:bible    # 覆蓋率報告（可 --update-readme）
 ```
+
+> 詳細驗證體系見 `docs/testing/verification.md`。
 
 ---
 
@@ -167,10 +178,10 @@ profiles/       canonical / traditional-zi / true-solar / school-zhongzhou / sch
 variants/       Variant 登錄
 src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
-tests/          unit / golden / boundary / differential / regression
-fixtures/       golden / boundary / differential fixtures
-tools/          rule-validator / source-validator / fixture-generator / differential-runner / build-types / build-standalone
-docs/           architecture / rules / sources / profiles / api / governance
+tests/          unit / golden / boundary / differential / schema / periods / calendar / visual
+fixtures/       golden / boundary / differential / calendar fixtures
+tools/          rule-validator / source-validator / fixture-generator / differential-runner / calendar-differential / integrity-validator / governance-validator / schema-validator / stats / build-types / build-standalone
+docs/           architecture / rules / sources / profiles / api / governance / testing
 ```
 
 ---

@@ -67,7 +67,7 @@ export function starDetailHtml(starId: string): string {
 
   ${traceEntry ? `
   <h3 style="font-size:13px;margin:16px 0 6px">Trace（輸入 → 結果）</h3>
-  <pre class="json" style="max-height:220px">${esc(JSON.stringify(traceEntry, null, 1))}</pre>` : (expert ? '<p class="small faint">（此星曜無 trace 記錄，請以 Expert 模式重新排盤）</p>' : '')}
+  <pre tabindex="0" class="json" style="max-height:220px">${esc(JSON.stringify(traceEntry, null, 1))}</pre>` : (expert ? '<p class="small faint">（此星曜無 trace 記錄，請以 Expert 模式重新排盤）</p>' : '')}
 
   ${sources.length ? `
   <h3 style="font-size:13px;margin:16px 0 6px">來源 Sources</h3>

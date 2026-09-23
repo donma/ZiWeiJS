@@ -109,7 +109,7 @@
   → 目前 10 sources / 20 evidence / 0 failed
 - 文件補 `docs/sources/source-tiers.md`：工程契約類規則與 Evidence 驗證說明
 
-## 0.4.0 — Hardening（P0 全數 + P1 主體）
+## 0.4.0 — Hardening（P0 / P1 / P2 全數完成）
 
 目標：把 repo 從「功能完整的排盤程式」提升為「可被第三方當標準依據的 Bible Repo」。
 重點是可信度、可重現、可追溯、可驗證、可治理 —— 不是功能數量。
@@ -173,10 +173,36 @@
 - Differential fixtures：`fixtures/differential/iztro/` 12 筆存檔外部結果，CI 不需外部套件即可比對
 
 ### P2 工程
-- `npm run verify`：Schema → Governance → Integrity → Tests → Build
+- `npm run verify`：Schema → Governance → Integrity → Calendar Differential（`--check`）→ Tests → Build
 - `npm run coverage:bible`：覆蓋率報告，並可自動更新 README 數據區塊（不再手寫數字）
 - CI 加入全部 gate
-- 文件：`docs/architecture/{calculation-flow,rule-execution}.md`、`docs/governance/{canonical,evidence,variants,versioning}.md`、`docs/rules/{patterns,interpretation}.md`、`docs/api/periods.md`
+- 文件：`docs/architecture/{calculation-flow,rule-execution}.md`、`docs/governance/{canonical,evidence,variants,versioning}.md`、`docs/rules/{patterns,interpretation}.md`、`docs/api/periods.md`、`docs/testing/verification.md`
+
+### P2-4 UI Visual Regression（Playwright）
+- 6 個 viewport（375x812 / 390x844 / 768x1024 / 1024x768 / 1440x900 / 1920x1080）全頁面水平溢出 = 0
+- 星曜 tooltip 不被裁切（含行動裝置夾限修正）；同宮星曜方塊不得相交（重疊檢測）
+- 視覺快照：home / chart-standard / chart-expert / dark / tooltip / bottom-sheet / rules / sources / geek
+- 修正 `.chart-page-layout` / `.card` / `.grid` 的 `min-width: 0` 與 `.table-scroll`，解決 375 / 390 / 768 溢出
+
+### P2-5 Accessibility
+- 以 `@axe-core/playwright` 掃描 6 條路由（WCAG 2.0/2.1 A+AA），serious / critical = 0
+- 修正：`.kv` 由 `div` 改為 `dl`、`role="tablist"` 誤用、SVG `role="img"` 內含互動節點、`select` 無名稱、內文連結無非色彩區別、可捲動 `pre` 不可聚焦、色彩對比不足（`--text-faint` / `--warn`）
+- 鍵盤：Tab 順序涵蓋 nav → 表單欄位 → 送出；Enter 可提交表單
+- **SVG 星曜互動不再只支援滑鼠**：補 `Enter` / `Space` 觸發（`<g role="button">` 不會自動觸發 click）
+- dialog / drawer / bottom-sheet：Esc 關閉、開啟後焦點移入、關閉後焦點還原；`initSheet` 重複綁定修正
+- touch target ≥ 24x24 CSS px（依 WCAG 2.5.8，內文 inline 連結豁免）
+
+### P2-6 Calendar Differential
+- 新增 `tools/calendar-differential/run.ts`，以兩套獨立實作互相驗證：
+  `lunar-typescript@1.8.6`（本引擎依賴） vs `lunar-lite@0.2.8`（iztro 依賴）
+- **逐日差分 1900-01-31 ~ 2100-12-31：73,384 日**，農曆 年/月/日/閏月（293,536 欄）與日柱（73,384 欄）**0 未解釋差異**
+- 閏月表 201 年、年柱 / 月柱各 4,824 欄；所有差異均為已知且已驗證的慣例差
+  （年柱換年 104 筆：本引擎採農曆正月初一，已用 lunar-typescript 立春版逐筆驗證；
+   23:00 子時換日 10 筆）
+- `fixtures/calendar/`：`calendar-differential.json`、`day-boundary.json`（子時 / 午夜 / 真太陽時跨日）、
+  `timezone-dst.json`（9 筆人工查證 IANA 事實：1974 美國全年 DST、1968-1971 英國全年 BST、
+  1979 台灣 DST、1986-1991 中國 DST）
+- `npm run differential:calendar -- --check` 納入 `verify` 與 CI（fixture 與實作不得漂移）
 
 ### Breaking
 - `schemaVersion` **1.0 → 2.0**（period 契約、`direction` 列舉、`chart.stars` 型別）
@@ -184,5 +210,8 @@
 - `time.hour` 成為必填
 
 ### 測試
-- **281 tests / 22 files**（0.3.0 為 150）
-- 差分：10 案例 × 45 欄 = 450 欄，0 needs-review；另 12 筆存檔 fixture 比對
+- **309 tests / 23 files**（Vitest；0.3.0 為 150）
+- **33 Playwright tests**：UI / Visual 20 + Accessibility 13
+- 差分：iztro 10 案例 × 45 欄 = 450 欄，0 needs-review；12 筆存檔 fixture
+- 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
+- Golden fixtures：35 筆 v2 oracle；Differential fixtures：12 筆（iztro）+ 3 筆（calendar）

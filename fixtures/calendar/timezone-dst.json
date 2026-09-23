@@ -1,0 +1,78 @@
+{
+  "generatedBy": "tools/calendar-differential/run.ts",
+  "source": "IANA tzdata（人工查證清單）",
+  "cases": [
+    {
+      "tz": "America/New_York",
+      "iso": "1974-01-06T12:00:00Z",
+      "expectedOffsetMinutes": -240,
+      "note": "1974 美國全年日光節約時間（1/6 起）",
+      "engineOffsetMinutes": -240,
+      "match": true
+    },
+    {
+      "tz": "America/New_York",
+      "iso": "1974-11-06T12:00:00Z",
+      "expectedOffsetMinutes": -300,
+      "note": "1974 DST 於 10/27 結束後之 EST",
+      "engineOffsetMinutes": -300,
+      "match": true
+    },
+    {
+      "tz": "America/New_York",
+      "iso": "2024-03-10T12:00:00Z",
+      "expectedOffsetMinutes": -240,
+      "note": "DST 起始日 02:00 EST → 03:00 EDT",
+      "engineOffsetMinutes": -240,
+      "match": true
+    },
+    {
+      "tz": "America/New_York",
+      "iso": "2024-01-15T12:00:00Z",
+      "expectedOffsetMinutes": -300,
+      "note": "EST 標準時間",
+      "engineOffsetMinutes": -300,
+      "match": true
+    },
+    {
+      "tz": "Europe/London",
+      "iso": "1969-06-15T12:00:00Z",
+      "expectedOffsetMinutes": 60,
+      "note": "1968-1971 英國全年 BST",
+      "engineOffsetMinutes": 60,
+      "match": true
+    },
+    {
+      "tz": "Asia/Taipei",
+      "iso": "1979-07-01T12:00:00Z",
+      "expectedOffsetMinutes": 540,
+      "note": "1979 台灣日光節約時間",
+      "engineOffsetMinutes": 540,
+      "match": true
+    },
+    {
+      "tz": "Asia/Taipei",
+      "iso": "1980-01-01T12:00:00Z",
+      "expectedOffsetMinutes": 480,
+      "note": "台灣標準時間 UTC+8",
+      "engineOffsetMinutes": 480,
+      "match": true
+    },
+    {
+      "tz": "Asia/Shanghai",
+      "iso": "1988-06-15T12:00:00Z",
+      "expectedOffsetMinutes": 540,
+      "note": "1986-1991 中國日光節約時間",
+      "engineOffsetMinutes": 540,
+      "match": true
+    },
+    {
+      "tz": "UTC",
+      "iso": "1970-01-01T00:00:00Z",
+      "expectedOffsetMinutes": 0,
+      "note": "UTC 基準",
+      "engineOffsetMinutes": 0,
+      "match": true
+    }
+  ]
+}

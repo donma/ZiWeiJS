@@ -1,0 +1,1207 @@
+{
+  "generatedBy": "tools/calendar-differential/run.ts",
+  "libraries": {
+    "a": "lunar-typescript@1.8.6",
+    "b": "lunar-lite@0.2.8"
+  },
+  "range": {
+    "from": "1900-01-31",
+    "to": "2100-12-31"
+  },
+  "counts": {
+    "daysCompared": 73384,
+    "lunarFieldsCompared": 293536,
+    "dayPillarCompared": 73384,
+    "leapMonthsCompared": 201,
+    "monthPillarCompared": 4824,
+    "yearPillarCompared": 4824,
+    "hourPillarCompared": 130
+  },
+  "totals": {
+    "mismatches": 114,
+    "unexplained": 0,
+    "classified": 114
+  },
+  "classifications": {
+    "year-boundary-convention:day1-vs-lichun": 104,
+    "zi-hour-boundary-convention": 10
+  },
+  "unexplainedSamples": [],
+  "classifiedSamples": [
+    {
+      "kind": "year-pillar",
+      "input": "1900-02-01",
+      "a": "庚子",
+      "b": "己亥",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1901-02-15",
+      "a": "庚子",
+      "b": "辛丑",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1903-02-01",
+      "a": "癸卯",
+      "b": "壬寅",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1904-02-15",
+      "a": "癸卯",
+      "b": "甲辰",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1906-02-01",
+      "a": "丙午",
+      "b": "乙巳",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1909-02-01",
+      "a": "己酉",
+      "b": "戊申",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1911-02-01",
+      "a": "辛亥",
+      "b": "庚戌",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1912-02-15",
+      "a": "辛亥",
+      "b": "壬子",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1914-02-01",
+      "a": "甲寅",
+      "b": "癸丑",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1917-02-01",
+      "a": "丁巳",
+      "b": "丙辰",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1919-02-01",
+      "a": "己未",
+      "b": "戊午",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1920-02-15",
+      "a": "己未",
+      "b": "庚申",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1922-02-01",
+      "a": "壬戌",
+      "b": "辛酉",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1923-02-15",
+      "a": "壬戌",
+      "b": "癸亥",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1925-02-01",
+      "a": "乙丑",
+      "b": "甲子",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1928-02-01",
+      "a": "戊辰",
+      "b": "丁卯",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1930-02-01",
+      "a": "庚午",
+      "b": "己巳",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1931-02-15",
+      "a": "庚午",
+      "b": "辛未",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1933-02-01",
+      "a": "癸酉",
+      "b": "壬申",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    },
+    {
+      "kind": "year-pillar",
+      "input": "1936-02-01",
+      "a": "丙子",
+      "b": "乙亥",
+      "classification": "year-boundary-convention:day1-vs-lichun"
+    }
+  ],
+  "leapMonths": [
+    {
+      "year": 1900,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 1901,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1902,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1903,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1904,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1905,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1906,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1907,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1908,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1909,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 1910,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1911,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1912,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1913,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1914,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1915,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1916,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1917,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 1918,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1919,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 1920,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1921,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1922,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1923,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1924,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1925,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1926,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1927,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1928,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 1929,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1930,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1931,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1932,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1933,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1934,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1935,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1936,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 1937,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1938,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 1939,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1940,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1941,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1942,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1943,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1944,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1945,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1946,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1947,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 1948,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1949,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 1950,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1951,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1952,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1953,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1954,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1955,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 1956,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1957,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 1958,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1959,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1960,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1961,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1962,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1963,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1964,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1965,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1966,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 1967,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1968,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 1969,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1970,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1971,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1972,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1973,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1974,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1975,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1976,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 1977,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1978,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1979,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1980,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1981,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1982,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 1983,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1984,
+      "lunarTypescript": 10,
+      "lunarLite": 10
+    },
+    {
+      "year": 1985,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1986,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1987,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 1988,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1989,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1990,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1991,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1992,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1993,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 1994,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1995,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 1996,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1997,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 1998,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 1999,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2000,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2001,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2002,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2003,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2004,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 2005,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2006,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 2007,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2008,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2009,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2010,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2011,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2012,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2013,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2014,
+      "lunarTypescript": 9,
+      "lunarLite": 9
+    },
+    {
+      "year": 2015,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2016,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2017,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2018,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2019,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2020,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2021,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2022,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2023,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 2024,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2025,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2026,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2027,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2028,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2029,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2030,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2031,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 2032,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2033,
+      "lunarTypescript": 11,
+      "lunarLite": 11
+    },
+    {
+      "year": 2034,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2035,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2036,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2037,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2038,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2039,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2040,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2041,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2042,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 2043,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2044,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 2045,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2046,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2047,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2048,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2049,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2050,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 2051,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2052,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 2053,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2054,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2055,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2056,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2057,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2058,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2059,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2060,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2061,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 2062,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2063,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 2064,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2065,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2066,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2067,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2068,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2069,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2070,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2071,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 2072,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2073,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2074,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2075,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2076,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2077,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2078,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2079,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2080,
+      "lunarTypescript": 3,
+      "lunarLite": 3
+    },
+    {
+      "year": 2081,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2082,
+      "lunarTypescript": 7,
+      "lunarLite": 7
+    },
+    {
+      "year": 2083,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2084,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2085,
+      "lunarTypescript": 5,
+      "lunarLite": 5
+    },
+    {
+      "year": 2086,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2087,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2088,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2089,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2090,
+      "lunarTypescript": 8,
+      "lunarLite": 8
+    },
+    {
+      "year": 2091,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2092,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2093,
+      "lunarTypescript": 6,
+      "lunarLite": 6
+    },
+    {
+      "year": 2094,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2095,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2096,
+      "lunarTypescript": 4,
+      "lunarLite": 4
+    },
+    {
+      "year": 2097,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2098,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    },
+    {
+      "year": 2099,
+      "lunarTypescript": 2,
+      "lunarLite": 2
+    },
+    {
+      "year": 2100,
+      "lunarTypescript": 0,
+      "lunarLite": 0
+    }
+  ],
+  "stemBranchReference": {
+    "stems": [
+      "甲",
+      "乙",
+      "丙",
+      "丁",
+      "戊",
+      "己",
+      "庚",
+      "辛",
+      "壬",
+      "癸"
+    ],
+    "branches": [
+      "子",
+      "丑",
+      "寅",
+      "卯",
+      "辰",
+      "巳",
+      "午",
+      "未",
+      "申",
+      "酉",
+      "戌",
+      "亥"
+    ]
+  }
+}

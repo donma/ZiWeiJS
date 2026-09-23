@@ -64,7 +64,7 @@ export function renderChartSvg(chart: ZiWeiChart, options: RenderOptions = {}): 
   const H = cell * 4;
 
   const parts: string[] = [];
-  parts.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Zi Wei Dou Shu chart" font-family="'Noto Serif TC','Source Han Serif TC','Songti TC','PMingLiU','SimSun',serif">`);
+  parts.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="group" aria-label="Zi Wei Dou Shu chart" font-family="'Noto Serif TC','Source Han Serif TC','Songti TC','PMingLiU','SimSun',serif">`);
   parts.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="${theme.bg}"/>`);
 
   for (const palace of chart.chart.palaces) {

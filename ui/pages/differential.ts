@@ -66,6 +66,7 @@ function diffBody(): string {
 
   return `
   <div class="card">
+    <div class="table-scroll">
     <table class="data" id="diff-table">
       <thead><tr><th>欄位</th><th>本引擎</th><th>外部來源 A</th><th>外部來源 B</th><th>狀態</th></tr></thead>
       <tbody>
@@ -78,6 +79,7 @@ function diffBody(): string {
         </tr>`).join('')}
       </tbody>
     </table>
+    </div>
   </div>
   <p class="small faint" style="margin-top:10px">在各欄貼入外部排盤結果（例：iztro、文墨天機截圖文字），系統即時標示 match / needs-review。</p>
   <button class="btn sm" id="diff-eval">評估差異</button>
@@ -101,7 +103,7 @@ function diffBody(): string {
         }
       });
       document.getElementById('diff-report').innerHTML = report.length
-        ? '<div class="card card-pad"><h3 style="margin-top:0">Needs Review (' + report.length + ')</h3><pre class="json">' + JSON.stringify(report, null, 2).replace(/</g,'&lt;') + '</pre><p class="small sub">請人工分類：流派差異 / 曆法差異 / 時間基準差異 / 換日差異 / 閏月差異 / Bug / 外部來源錯誤</p></div>'
+        ? '<div class="card card-pad"><h3 style="margin-top:0">Needs Review (' + report.length + ')</h3><pre tabindex="0" class="json">' + JSON.stringify(report, null, 2).replace(/</g,'&lt;') + '</pre><p class="small sub">請人工分類：流派差異 / 曆法差異 / 時間基準差異 / 換日差異 / 閏月差異 / Bug / 外部來源錯誤</p></div>'
         : '<p class="sub">沒有需要檢視的差異。</p>';
     });
   </script>`;

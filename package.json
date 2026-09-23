@@ -34,6 +34,8 @@
     "build": "vite build && vite build --config vite.lib.config.ts && node tools/build-types.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:visual": "playwright test",
+    "test:a11y": "playwright test tests/visual/a11y.e2e.ts",
     "validate:rules": "node tools/rule-validator/validate.mjs",
     "validate:sources": "node tools/source-validator/validate.mjs",
     "validate:schemas": "tsx tools/schema-validator/validate.ts",
@@ -41,12 +43,16 @@
     "validate:integrity": "tsx tools/integrity-validator/validate.ts",
     "coverage:bible": "tsx tools/stats/generate.ts",
     "differential": "tsx tools/differential-runner/iztro-runner.ts",
-    "verify": "npm run validate:rules && npm run validate:sources && npm run validate:schemas && npm run validate:governance && npm run validate:integrity && npm run test && npm run build"
+    "differential:calendar": "tsx tools/calendar-differential/run.ts",
+    "verify": "npm run validate:rules && npm run validate:sources && npm run validate:schemas && npm run validate:governance && npm run validate:integrity && npm run differential:calendar -- --check && npm run test && npm run build",
+    "verify:ui": "npm run test:a11y"
   },
   "dependencies": {
     "lunar-typescript": "^1.8.6"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
     "ajv": "^8.17.1",
     "ajv-draft-04": "^1.0.0",

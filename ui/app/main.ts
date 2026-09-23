@@ -45,7 +45,7 @@ function shell(content: string): string {
       ZiWeiJS v${state.chart?.generatedWith.bibleVersion ?? '0.1.0'} · schema ${state.chart?.schemaVersion ?? '1.0'} ·
       Machine-readable Zi Wei Dou Shu reference · Local-only · <a href="#/about">License</a>
     </div></footer>
-    <div class="tooltip" id="tooltip" role="tooltip"></div>
+    <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
     <div class="sheet-backdrop" id="sheet-backdrop"></div>
     <div class="bottom-sheet" id="bottom-sheet" role="dialog" aria-modal="true"><div class="grabber"></div><div id="sheet-content"></div></div>
     <div class="drawer" id="drawer" role="dialog" aria-modal="true"><div id="drawer-content"></div></div>

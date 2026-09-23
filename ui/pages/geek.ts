@@ -51,6 +51,7 @@ export function renderGeek(): string {
 
       <div class="card card-pad" style="margin-top:12px">
         <h3 style="margin-top:0">每顆星定位原因（Rule Trace）</h3>
+        <div class="table-scroll">
         <table class="data small">
           <thead><tr><th>星曜</th><th>宮位/地支</th><th>廟旺</th><th>Rule ID</th></tr></thead>
           <tbody>
@@ -62,17 +63,18 @@ export function renderGeek(): string {
             </tr>`)).join('')}
           </tbody>
         </table>
+        </div>
       </div>
 
       <div class="card card-pad" style="margin-top:12px">
         <h3 style="margin-top:0">Chart JSON</h3>
-        <pre class="json">${escapeHtml(JSON.stringify(chart, null, 1).slice(0, 20000))}${JSON.stringify(chart).length > 20000 ? '\n…(truncated)' : ''}</pre>
+        <pre tabindex="0" class="json">${escapeHtml(JSON.stringify(chart, null, 1).slice(0, 20000))}${JSON.stringify(chart).length > 20000 ? '\n…(truncated)' : ''}</pre>
         <button class="btn sm" data-chart-action="export-json">下載完整 JSON</button>
       </div>
 
       <div class="card card-pad" style="margin-top:12px">
         <h3 style="margin-top:0">AI Context</h3>
-        <pre class="json">${escapeHtml(JSON.stringify(toContext(chart), null, 1).slice(0, 12000))}</pre>
+        <pre tabindex="0" class="json">${escapeHtml(JSON.stringify(toContext(chart), null, 1).slice(0, 12000))}</pre>
       </div>
     </div>
   </div>

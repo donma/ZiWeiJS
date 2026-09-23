@@ -13,5 +13,17 @@ tests/**/*.test.d.ts
 .fixture-gen.tmp.ts
 .diff-tmp.ts
 
+# tsc 誤產生於原始碼旁的宣告檔（正確產物在 dist/types）
+src/**/*.d.ts
+ui/**/*.d.ts
+tools/**/*.d.ts
+tests/**/*.d.ts
+!schemas/**/*.d.ts
+
 # local AI working guides — never publish
 ai-guide/
+
+# playwright
+test-results/
+playwright-report/
+blob-report/

@@ -1,0 +1,232 @@
+{
+  "generatedBy": "tools/calendar-differential/run.ts",
+  "contract": "輸入 date/time 為該時區的本地牆鐘時間；dayBoundary 決定日柱換日點",
+  "cases": [
+    {
+      "id": "zi-hour-23-taipei",
+      "input": {
+        "calendarType": "solar",
+        "date": {
+          "year": 2000,
+          "month": 1,
+          "day": 1
+        },
+        "time": {
+          "hour": 23,
+          "minute": 10
+        },
+        "timezone": "Asia/Taipei",
+        "dayBoundary": "zi-hour",
+        "sexForCalculation": "male"
+      },
+      "engine": {
+        "solar": "2000-01-02",
+        "lunar": {
+          "year": 1999,
+          "month": 11,
+          "day": 26,
+          "isLeapMonth": false
+        },
+        "hourBranch": "zi",
+        "utcOffsetMinutes": 480,
+        "trueSolarOffsetMinutes": null,
+        "ganzhi": {
+          "day": "ji-wei",
+          "hour": "jia-zi"
+        }
+      },
+      "reference": {
+        "lunarTypescript": {
+          "dayInGanZhiExact": "己未",
+          "dayInGanZhiExact2": "戊午"
+        },
+        "lunarLite": {
+          "daily": "戊午",
+          "hourly": "壬子"
+        }
+      }
+    },
+    {
+      "id": "midnight-23-taipei",
+      "input": {
+        "calendarType": "solar",
+        "date": {
+          "year": 2000,
+          "month": 1,
+          "day": 1
+        },
+        "time": {
+          "hour": 23,
+          "minute": 10
+        },
+        "timezone": "Asia/Taipei",
+        "dayBoundary": "midnight",
+        "sexForCalculation": "male"
+      },
+      "engine": {
+        "solar": "2000-01-01",
+        "lunar": {
+          "year": 1999,
+          "month": 11,
+          "day": 25,
+          "isLeapMonth": false
+        },
+        "hourBranch": "zi",
+        "utcOffsetMinutes": 480,
+        "trueSolarOffsetMinutes": null,
+        "ganzhi": {
+          "day": "wu-wu",
+          "hour": "jia-zi"
+        }
+      },
+      "reference": {
+        "lunarTypescript": {
+          "dayInGanZhiExact": "己未",
+          "dayInGanZhiExact2": "戊午"
+        },
+        "lunarLite": {
+          "daily": "戊午",
+          "hourly": "壬子"
+        }
+      }
+    },
+    {
+      "id": "early-zi-0010-taipei",
+      "input": {
+        "calendarType": "solar",
+        "date": {
+          "year": 2000,
+          "month": 1,
+          "day": 1
+        },
+        "time": {
+          "hour": 0,
+          "minute": 10
+        },
+        "timezone": "Asia/Taipei",
+        "dayBoundary": "zi-hour",
+        "sexForCalculation": "male"
+      },
+      "engine": {
+        "solar": "2000-01-01",
+        "lunar": {
+          "year": 1999,
+          "month": 11,
+          "day": 25,
+          "isLeapMonth": false
+        },
+        "hourBranch": "zi",
+        "utcOffsetMinutes": 480,
+        "trueSolarOffsetMinutes": null,
+        "ganzhi": {
+          "day": "wu-wu",
+          "hour": "ren-zi"
+        }
+      },
+      "reference": {
+        "lunarTypescript": {
+          "dayInGanZhiExact": "戊午",
+          "dayInGanZhiExact2": "戊午"
+        },
+        "lunarLite": {
+          "daily": "戊午",
+          "hourly": "壬子"
+        }
+      }
+    },
+    {
+      "id": "true-solar-rollover-back",
+      "input": {
+        "calendarType": "solar",
+        "date": {
+          "year": 2000,
+          "month": 1,
+          "day": 1
+        },
+        "time": {
+          "hour": 0,
+          "minute": 10
+        },
+        "timezone": "Asia/Taipei",
+        "location": {
+          "longitude": 0
+        },
+        "timeConvention": "local-mean-solar",
+        "sexForCalculation": "male"
+      },
+      "engine": {
+        "solar": "1999-12-31",
+        "lunar": {
+          "year": 1999,
+          "month": 11,
+          "day": 24,
+          "isLeapMonth": false
+        },
+        "hourBranch": "shen",
+        "utcOffsetMinutes": 480,
+        "trueSolarOffsetMinutes": -480,
+        "ganzhi": {
+          "day": "ding-si",
+          "hour": "wu-shen"
+        }
+      },
+      "reference": {
+        "lunarTypescript": {
+          "dayInGanZhiExact": "戊午",
+          "dayInGanZhiExact2": "戊午"
+        },
+        "lunarLite": {
+          "daily": "戊午",
+          "hourly": "壬子"
+        }
+      }
+    },
+    {
+      "id": "true-solar-rollover-forward",
+      "input": {
+        "calendarType": "solar",
+        "date": {
+          "year": 2000,
+          "month": 1,
+          "day": 1
+        },
+        "time": {
+          "hour": 23,
+          "minute": 50
+        },
+        "timezone": "Asia/Taipei",
+        "location": {
+          "longitude": 180
+        },
+        "timeConvention": "local-mean-solar",
+        "sexForCalculation": "male"
+      },
+      "engine": {
+        "solar": "2000-01-02",
+        "lunar": {
+          "year": 1999,
+          "month": 11,
+          "day": 26,
+          "isLeapMonth": false
+        },
+        "hourBranch": "yin",
+        "utcOffsetMinutes": 480,
+        "trueSolarOffsetMinutes": 240,
+        "ganzhi": {
+          "day": "ji-wei",
+          "hour": "bing-yin"
+        }
+      },
+      "reference": {
+        "lunarTypescript": {
+          "dayInGanZhiExact": "己未",
+          "dayInGanZhiExact2": "戊午"
+        },
+        "lunarLite": {
+          "daily": "戊午",
+          "hourly": "壬子"
+        }
+      }
+    }
+  ]
+}
