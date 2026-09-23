@@ -90,6 +90,8 @@ function afterRender(): void {
     el.addEventListener('click', e => {
       e.preventDefault();
       navigate((el as HTMLElement).dataset.nav!);
+      // file:// 下 navigate() 用 replaceState，不觸發 hashchange → 需主動 route()
+      route();
     });
   });
   document.querySelectorAll('form[data-form]').forEach(f => {
@@ -135,8 +137,13 @@ function handleForm(form: HTMLFormElement): void {
     };
     state.profile = (fd.get('profile') as string) || 'canonical';
     recalc();
-    if (state.chart) navigate('/chart');
-    else route();
+    if (state.chart) {
+      navigate('/chart');
+      // 若原本就在 /chart，hash 不變 → 不觸發 hashchange → 必須主動 route() 才會更新
+      route();
+    } else {
+      route();
+    }
   }
 }
 

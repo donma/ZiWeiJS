@@ -51,9 +51,14 @@ export function recalc(): void {
 
 export function navigate(route: string): void {
   if (location.protocol === 'file:') {
-    // file:// 視為獨立 origin：location.hash = route 可能被 Chrome 擋下或靜默失敗，
-    // 統一用完整 href 觸發 hashchange。
-    location.href = location.pathname + '#' + route;
+    // file:// 視為獨立 origin：location.hash 指派可能被擋、location.href 會整頁重載
+    // （重載會清掉 state.chart / input）。改用 history.replaceState 更新 URL
+    // 且不觸發 reload；路由更新由呼叫端 route() 處理。
+    try {
+      history.replaceState(null, '', location.pathname + '#' + route);
+    } catch {
+      /* ignore */
+    }
     return;
   }
   location.hash = route;
