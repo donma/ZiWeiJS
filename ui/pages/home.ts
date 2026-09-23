@@ -10,7 +10,7 @@ export function renderHome(): string {
 
   let sample = '';
   if (state.chart) {
-    sample = renderChartSvg(state.chart, { mode: 'standard', theme: state.theme, locale: 'zh-TW' });
+    sample = renderChartSvg(state.chart, { mode: 'standard', theme: state.theme, locale: state.locale });
   }
 
   return `

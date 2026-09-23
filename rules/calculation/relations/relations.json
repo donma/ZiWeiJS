@@ -2,42 +2,173 @@
   "$schema": "../../../schemas/rule.schema.json",
   "rules": [
     {
-      "ruleId": "ZW.CALC.REL.SAME.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.relations.same-palace", "category": "relations",
-      "name": { "zh-TW": "同宮", "en": "Same palace" },
-      "logic": { "executor": "relSamePalace" },
-      "outputs": ["relations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+      "ruleId": "ZW.CALC.REL.SAME.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.relations.same-palace",
+      "category": "relations",
+      "name": {
+        "zh-TW": "同宮",
+        "en": "Same palace"
+      },
+      "logic": {
+        "executor": "relSamePalace"
+      },
+      "outputs": [
+        "relations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.CALC.REL.OPPOSITE.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.relations.opposite", "category": "relations",
-      "name": { "zh-TW": "對宮", "en": "Opposite palace" },
-      "logic": { "executor": "relOpposite" },
-      "outputs": ["relations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+      "ruleId": "ZW.CALC.REL.OPPOSITE.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.relations.opposite",
+      "category": "relations",
+      "name": {
+        "zh-TW": "對宮",
+        "en": "Opposite palace"
+      },
+      "logic": {
+        "executor": "relOpposite"
+      },
+      "outputs": [
+        "relations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.CALC.REL.SFSZ.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.relations.san-fang-si-zheng", "category": "relations",
-      "name": { "zh-TW": "三方四正", "en": "San fang si zheng" },
-      "description": { "zh-TW": "本宮、對宮及三合宮（±4 地支）。" },
-      "logic": { "executor": "relSanFangSiZheng" },
-      "outputs": ["relations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+      "ruleId": "ZW.CALC.REL.SFSZ.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.relations.san-fang-si-zheng",
+      "category": "relations",
+      "name": {
+        "zh-TW": "三方四正",
+        "en": "San fang si zheng"
+      },
+      "description": {
+        "zh-TW": "本宮、對宮及三合宮（±4 地支）。"
+      },
+      "logic": {
+        "executor": "relSanFangSiZheng"
+      },
+      "outputs": [
+        "relations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.CALC.REL.JIA.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.relations.jia", "category": "relations",
-      "name": { "zh-TW": "夾宮", "en": "Flanking palaces" },
-      "description": { "zh-TW": "相鄰兩宮夾本宮。" },
-      "logic": { "executor": "relJia" },
-      "outputs": ["relations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+      "ruleId": "ZW.CALC.REL.JIA.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.relations.jia",
+      "category": "relations",
+      "name": {
+        "zh-TW": "夾宮",
+        "en": "Flanking palaces"
+      },
+      "description": {
+        "zh-TW": "相鄰兩宮夾本宮。"
+      },
+      "logic": {
+        "executor": "relJia"
+      },
+      "outputs": [
+        "relations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.CALC.REL.GONG.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.relations.gong", "category": "relations",
-      "name": { "zh-TW": "拱照", "en": "Gong zhao" },
-      "description": { "zh-TW": "三合宮位拱照本宮。" },
-      "logic": { "executor": "relGong" },
-      "outputs": ["relations"], "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [], "tags": ["core"]
+      "ruleId": "ZW.CALC.REL.GONG.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.relations.gong",
+      "category": "relations",
+      "name": {
+        "zh-TW": "拱照",
+        "en": "Gong zhao"
+      },
+      "description": {
+        "zh-TW": "三合宮位拱照本宮。"
+      },
+      "logic": {
+        "executor": "relGong"
+      },
+      "outputs": [
+        "relations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     }
   ]
 }

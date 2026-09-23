@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/research.schema.json",
+  "description": "Research 佇列：AI/研究者提出但尚未成為 canonical 的規則、差異與待考證事項。任何項目都不得由 AI 自行升級為 canonical。",
+  "items": [
+    {
+      "researchId": "RSH.001",
+      "title": "辛干天魁天鉞：馬虎 vs 馬蛇",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": ["ZW.CALC.STAR.YEARSTEM_AUX.001"],
+      "evidence": ["EVD.KUIYUE.VARIANT"],
+      "question": "辛干魁鉞歌訣有『六辛逢馬虎』（午寅）與『六辛逢馬蛇』（午巳）兩說。canonical 目前採馬虎（丑午），需確認主流排盤系統實作。",
+      "nextAction": "比對 iztro / 文墨天機 / 古籍影本，確認後建立 variant 或修正 canonical。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.002",
+      "title": "火鈴安星起訣版本差異",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": ["ZW.CALC.STAR.YEARBRANCH_AUX.001"],
+      "evidence": ["EVD.QUANSHU.HUOLING"],
+      "question": "火星鈴星依年支三合局起子時順數，但各版本在部分局別的起點有差異（尤以亥卯未、巳酉丑）。",
+      "nextAction": "蒐集至少三份古籍或三套系統比對，建立 variant 表。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.003",
+      "title": "閏月排盤流派處理",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [],
+      "question": "閏月生人：部分流派歸當月（canonical 現行 same-as-normal）、部分折半（前半月歸本月、後半月歸次月）、部分全歸次月。",
+      "nextAction": "建立 leapMonthPolicy 的 variant profile 並加入 golden fixture 驗證差異。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.004",
+      "title": "命宮無主星之解讀權重",
+      "status": "open",
+      "type": "interpretation",
+      "relatedRules": ["ZW.INT.SOCIAL.FRIENDS_EMPTY.001", "ZW.INT.FAMILY.QIANGYANG_PARENTS.001"],
+      "question": "空宮借對宮的力度與是否降低 confidence，各派說法不一。",
+      "nextAction": "補 evidence 後決定是否調降 strength/confidence。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.005",
+      "title": "廟旺利陷表流派差異盤點",
+      "status": "open",
+      "type": "table",
+      "relatedRules": ["ZW.CALC.DIGNITY.BRIGHTNESS.001"],
+      "evidence": ["EVD.CONSENSUS.MIAOWANG"],
+      "question": "已採多數一致版本，但仍有若干星曜（如天同、巨門）各派表不同。",
+      "nextAction": "逐星標記爭議，建立 per-star variant 覆寫機制。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.006",
+      "title": "庚干四化 canonical/variant 定案",
+      "status": "candidate",
+      "type": "variant-conflict",
+      "relatedRules": ["ZW.CALC.SIHUA.NATAL.001", "ZW.CALC.SIHUA.NATAL.V001"],
+      "evidence": ["EVD.QUANSHU.SIHUA", "EVD.SIHUA.VARIANT.GENG"],
+      "question": "庚干化權/化科：通行版（武曲/太陰）已定 canonical；中州派版（天府/天相）為 variant。是否維持雙軌？",
+      "nextAction": "維持雙軌（符合 Bible 保存差異原則），待 Owner 最終確認。",
+      "ownerReviewRequired": true
+    }
+  ]
+}

@@ -2,13 +2,41 @@
   "$schema": "../../schemas/rule.schema.json",
   "rules": [
     {
-      "ruleId": "ZW.RECT.FRAMEWORK.001", "ruleVersion": "1.0", "status": "research",
-      "scope": "rectification", "category": "rectification",
-      "name": { "zh-TW": "時辰校正框架", "en": "Rectification framework" },
-      "description": { "zh-TW": "以事件/特徵比對十二時辰候選盤，輸出 support 分數；不得寫回真實出生時間。" },
-      "inputs": ["input", "clues"],
-      "logic": { "executor": "rectifyAnalyze" },
-      "outputs": ["candidates"], "sourceRefs": [], "evidenceRefs": [], "tags": ["research"]
+      "ruleId": "ZW.RECT.FRAMEWORK.001",
+      "ruleVersion": "1.0",
+      "status": "research",
+      "scope": "rectification",
+      "category": "rectification",
+      "name": {
+        "zh-TW": "時辰校正框架",
+        "en": "Rectification framework"
+      },
+      "description": {
+        "zh-TW": "以事件/特徵比對十二時辰候選盤，輸出 support 分數；不得寫回真實出生時間。"
+      },
+      "inputs": [
+        "input",
+        "clues"
+      ],
+      "logic": {
+        "executor": "rectifyAnalyze"
+      },
+      "outputs": [
+        "candidates"
+      ],
+      "sourceRefs": [],
+      "evidenceRefs": [],
+      "tags": [
+        "research"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 research。"
+        }
+      ]
     }
   ]
 }

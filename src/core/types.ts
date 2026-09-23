@@ -260,6 +260,8 @@ export interface InterpretationHit {
   supports: string[];
   conflictsWith: string[];
   overriddenBy: string[];
+  overridesList?: string[];
+  effectiveStrength?: number;
 }
 
 export interface ZiWeiChart {

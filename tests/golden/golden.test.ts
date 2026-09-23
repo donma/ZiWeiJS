@@ -8,6 +8,7 @@ import case2000 from '../../fixtures/golden/case-2000-01-01-male.json' with { ty
 import case1984 from '../../fixtures/golden/case-1984-02-02-female.json' with { type: 'json' };
 import case1995 from '../../fixtures/golden/case-1995-08-08-male.json' with { type: 'json' };
 import caseOverseas from '../../fixtures/golden/case-1978-12-25-overseas.json' with { type: 'json' };
+import case1993 from '../../fixtures/golden/case-1993-07-07-female.json' with { type: 'json' };
 
 interface GoldenCase {
   name: string;
@@ -60,4 +61,17 @@ describe('golden charts', () => {
   it(case1984.name, () => runCase(case1984 as GoldenCase));
   it(case1995.name, () => runCase(case1995 as GoldenCase));
   it(caseOverseas.name, () => runCase(caseOverseas as GoldenCase));
+  it(case1993.name, () => runCase(case1993 as GoldenCase));
+});
+
+describe('golden: generated fixture full star map', () => {
+  it('all 96 star positions stable for 1993-07-07 female', () => {
+    const chart = calculate((case1993 as GoldenCase).input);
+    const expected = (case1993.expect as { stars: Record<string, string> }).stars;
+    for (const [starId, branch] of Object.entries(expected)) {
+      const p = chart.chart.stars[starId] as unknown as { branch?: string } | undefined;
+      expect(p?.branch, starId).toBe(branch);
+    }
+    expect(Object.keys(expected).length).toBeGreaterThan(90);
+  });
 });

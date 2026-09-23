@@ -27,6 +27,10 @@ export interface InterpretationRule {
 export function runInterpretation(ctx: EngineContext): InterpretationHit[] {
   const rules = listInterpretationRules() as unknown as InterpretationRule[];
   const hits: InterpretationHit[] = [];
+  const matchedIds = new Set<string>();
+  const ruleMap = new Map<string, InterpretationRule>();
+  for (const r of rules) ruleMap.set(r.ruleId, r);
+
   for (const rule of rules) {
     let matched = false;
     try {
@@ -35,6 +39,7 @@ export function runInterpretation(ctx: EngineContext): InterpretationHit[] {
       matched = false;
     }
     if (!matched) continue;
+    matchedIds.add(rule.ruleId);
     hits.push({
       ruleId: rule.ruleId,
       domain: rule.domain,
@@ -49,13 +54,42 @@ export function runInterpretation(ctx: EngineContext): InterpretationHit[] {
     });
   }
 
+  // 衝突與覆蓋解析：只計算雙方都命中的情況
+  // def.overrides = 本規則覆蓋哪些規則；def.conflictsWith = 與哪些規則衝突
   for (const h of hits) {
-    for (const other of hits) {
-      if (other.ruleId !== h.ruleId && (other as unknown as { overrides?: string[] }).overrides?.includes?.(h.ruleId)) {
-        h.overriddenBy.push(other.ruleId);
-      }
+    const def = ruleMap.get(h.ruleId);
+    if (!def) continue;
+
+    for (const otherId of def.overrides ?? []) {
+      if (otherId === h.ruleId || !matchedIds.has(otherId)) continue;
+      const other = hits.find(x => x.ruleId === otherId)!;
+      if (!other.overriddenBy.includes(h.ruleId)) other.overriddenBy.push(h.ruleId);
+      h.overridesList = h.overridesList ?? [];
+      if (!h.overridesList.includes(otherId)) h.overridesList.push(otherId);
+    }
+
+    for (const otherId of def.conflictsWith ?? []) {
+      if (otherId === h.ruleId || !matchedIds.has(otherId)) continue;
+      const other = hits.find(x => x.ruleId === otherId)!;
+      if (!h.conflictsWith.includes(otherId)) h.conflictsWith.push(otherId);
+      if (!other.conflictsWith.includes(h.ruleId)) other.conflictsWith.push(h.ruleId);
     }
   }
+
+  // 未被任何規則覆蓋者，不應留在 overriddenBy
+  for (const h of hits) {
+    h.overriddenBy = [...new Set(h.overriddenBy)];
+  }
+
+  // 被覆蓋的命中降低有效強度（保留可解釋性，不移除）
+  for (const h of hits) {
+    if (h.overriddenBy.length > 0) {
+      h.effectiveStrength = Math.round(h.strength * 0.5 * 100) / 100;
+    } else {
+      h.effectiveStrength = h.strength;
+    }
+  }
+
   return hits;
 }
 

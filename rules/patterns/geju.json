@@ -2,362 +2,1187 @@
   "$schema": "../../schemas/rule.schema.json",
   "patterns": [
     {
-      "ruleId": "ZW.PAT.ZIFU_TONGGONG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "紫府同宮", "en": "Zi Wei & Tian Fu same palace" },
+      "ruleId": "ZW.PAT.ZIFU_TONGGONG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "紫府同宮",
+        "en": "Zi Wei & Tian Fu same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.ZIWEI", "ZW.STAR.MAJOR.TIANFU"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.ZIWEI",
+            "ZW.STAR.MAJOR.TIANFU"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace"
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "紫微天府同宮（寅申），主厚重穩貴，得輔弼更佳。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "紫微天府同宮（寅申），主厚重穩貴，得輔弼更佳。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.JIYUETONGLIANG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "機月同梁", "en": "Ji Yue Tong Liang" },
+      "ruleId": "ZW.PAT.JIYUETONGLIANG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "機月同梁",
+        "en": "Ji Yue Tong Liang"
+      },
       "required": [
-        { "type": "any", "conditions": [
-          { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TAIYIN", "ZW.STAR.MAJOR.TIANTONG", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 3 }
-        ]}
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "star-group",
+              "group": [
+                "ZW.STAR.MAJOR.TIANJI",
+                "ZW.STAR.MAJOR.TAIYIN",
+                "ZW.STAR.MAJOR.TIANTONG",
+                "ZW.STAR.MAJOR.TIANLIANG"
+              ],
+              "relation": "san-fang-si-zheng",
+              "palace": "life",
+              "minCount": 3
+            }
+          ]
+        }
       ],
       "enhancers": [],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "機月同梁格，主文職、公教、穩定上班族之命。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "機月同梁格，主文職、公教、穩定上班族之命。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.SHA_POLANG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "殺破狼", "en": "Sha Po Lang" },
+      "ruleId": "ZW.PAT.SHA_POLANG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "殺破狼",
+        "en": "Sha Po Lang"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.QISHA", "ZW.STAR.MAJOR.POJUN", "ZW.STAR.MAJOR.TANLANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.QISHA",
+            "ZW.STAR.MAJOR.POJUN",
+            "ZW.STAR.MAJOR.TANLANG"
+          ],
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "殺破狼格局，主變動開創，一生起伏大、利武職或開創性事業。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "殺破狼格局，主變動開創，一生起伏大、利武職或開創性事業。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.RIYUEMING.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "日月並明", "en": "Sun and Moon both bright" },
+      "ruleId": "ZW.PAT.RIYUEMING.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "日月並明",
+        "en": "Sun and Moon both bright"
+      },
       "required": [
-        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYANG", "minLevel": "wang" },
-        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYIN", "minLevel": "wang" }
+        {
+          "type": "dignity",
+          "star": "ZW.STAR.MAJOR.TAIYANG",
+          "minLevel": "wang"
+        },
+        {
+          "type": "dignity",
+          "star": "ZW.STAR.MAJOR.TAIYIN",
+          "minLevel": "wang"
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "太陽太陰皆居旺地，主貴氣與福澤。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "太陽太陰皆居旺地，主貴氣與福澤。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.JIAXIANG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "府相朝垣", "en": "Fu Xiang Chao Yuan" },
+      "ruleId": "ZW.PAT.JIAXIANG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "府相朝垣",
+        "en": "Fu Xiang Chao Yuan"
+      },
       "required": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.MAJOR.TIANFU", "ZW.STAR.MAJOR.TIANXIANG"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAll": [
+            "ZW.STAR.MAJOR.TIANFU",
+            "ZW.STAR.MAJOR.TIANXIANG"
+          ]
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "lu", "relation": "san-fang-si-zheng", "palace": "life" }
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天府天相朝拱命宮，主衣食無缺、貴人扶持。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天府天相朝拱命宮，主衣食無缺、貴人扶持。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.ZIWEI_ZUOYOU.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "君臣慶會", "en": "Zi Wei with Zuo Fu / You Bi" },
+      "ruleId": "ZW.PAT.ZIWEI_ZUOYOU.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "君臣慶會",
+        "en": "Zi Wei with Zuo Fu / You Bi"
+      },
       "required": [
-        { "type": "star-in-palace", "star": "ZW.STAR.MAJOR.ZIWEI", "palace": "life" },
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MAJOR.ZIWEI",
+          "palace": "life"
+        },
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        }
       ],
       "enhancers": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAll": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 3 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 3
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "紫微得輔弼朝拱，帝王得臣，主領導得人助、格局高。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "紫微得輔弼朝拱，帝王得臣，主領導得人助、格局高。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.LUMA_JIAOCHI.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "祿馬交馳", "en": "Lu Cun & Tian Ma together" },
+      "ruleId": "ZW.PAT.LUMA_JIAOCHI.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "祿馬交馳",
+        "en": "Lu Cun & Tian Ma together"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.AUX.LUCUN", "ZW.STAR.AUX.TIANMA"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.AUX.LUCUN",
+            "ZW.STAR.AUX.TIANMA"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "lu", "relation": "san-fang-si-zheng", "palace": "life" }
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        }
       ],
       "breakers": [
-        { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIKONG" },
-        { "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.DIJIE" }
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MALEFIC.DIKONG"
+        },
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MALEFIC.DIJIE"
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "祿存與天馬同宮或對拱，主動中求財、異地發達。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "祿存與天馬同宮或對拱，主動中求財、異地發達。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.WENGUI.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "文桂文華", "en": "Wen Chang / Wen Qu in auspicious palaces" },
+      "ruleId": "ZW.PAT.WENGUI.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "文桂文華",
+        "en": "Wen Chang / Wen Qu in auspicious palaces"
+      },
       "required": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAll": [
+            "ZW.STAR.AUX.WENCHANG",
+            "ZW.STAR.AUX.WENQU"
+          ]
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "ke", "relation": "san-fang-si-zheng", "palace": "life" }
+        {
+          "type": "transformation",
+          "transform": "ke",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "昌曲夾拱命身，主文才科名、才華出眾。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "昌曲夾拱命身，主文才科名、才華出眾。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.YUE_MEN_DONG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "日月同宮", "en": "Sun & Moon same palace" },
+      "ruleId": "ZW.PAT.YUE_MEN_DONG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "日月同宮",
+        "en": "Sun & Moon same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TAIYANG", "ZW.STAR.MAJOR.TAIYIN"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TAIYANG",
+            "ZW.STAR.MAJOR.TAIYIN"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "日月同宮（丑未），主貴氣，然亦主反覆與辛勞。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "日月同宮（丑未），主貴氣，然亦主反覆與辛勞。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.YINGHUO.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "火貪格 / 鈴貪格", "en": "Huo/Ling + Tan Lang" },
+      "ruleId": "ZW.PAT.YINGHUO.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "火貪格 / 鈴貪格",
+        "en": "Huo/Ling + Tan Lang"
+      },
       "required": [
-        { "type": "any", "conditions": [
-          { "type": "star-group", "group": ["ZW.STAR.AUX.HUOLING", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" },
-          { "type": "star-group", "group": ["ZW.STAR.AUX.LINGXING", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" }
-        ]}
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "star-group",
+              "group": [
+                "ZW.STAR.AUX.HUOLING",
+                "ZW.STAR.MAJOR.TANLANG"
+              ],
+              "relation": "same-palace"
+            },
+            {
+              "type": "star-group",
+              "group": [
+                "ZW.STAR.AUX.LINGXING",
+                "ZW.STAR.MAJOR.TANLANG"
+              ],
+              "relation": "same-palace"
+            }
+          ]
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "lu", "relation": "same-palace" }
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "relation": "same-palace"
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": ["ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MALEFIC.DIKONG",
+            "ZW.STAR.MALEFIC.DIJIE"
+          ],
+          "relation": "same-palace"
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "火星或鈴星與貪狼同宮，主暴發、偏財橫發，亦主驟敗風險。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "火星或鈴星與貪狼同宮，主暴發、偏財橫發，亦主驟敗風險。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.JILIANG_LU.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "機梁加祿", "en": "Tian Ji & Tian Liang with Lu" },
+      "ruleId": "ZW.PAT.JILIANG_LU.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "機梁加祿",
+        "en": "Tian Ji & Tian Liang with Lu"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "same-palace" },
-        { "type": "any", "conditions": [
-          { "type": "transformation", "transform": "lu" },
-          { "type": "star-in-palace", "star": "ZW.STAR.AUX.LUCUN" }
-        ]}
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TIANJI",
+            "ZW.STAR.MAJOR.TIANLIANG"
+          ],
+          "relation": "same-palace"
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "transformation",
+              "transform": "lu"
+            },
+            {
+              "type": "star-in-palace",
+              "star": "ZW.STAR.AUX.LUCUN"
+            }
+          ]
+        }
       ],
       "enhancers": [],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天機天梁同宮會祿，主智慧清貴、善策劃經營。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天機天梁同宮會祿，主智慧清貴、善策劃經營。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.JINJI.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "極居卯酉", "en": "Zi Wei & Tan Lang in Mao/You" },
+      "ruleId": "ZW.PAT.JINJI.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "極居卯酉",
+        "en": "Zi Wei & Tan Lang in Mao/You"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.ZIWEI", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.ZIWEI",
+            "ZW.STAR.MAJOR.TANLANG"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        }
       ],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "紫微貪狼同宮於卯酉，主桃花犯主、才情風流，須防酒色。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "紫微貪狼同宮於卯酉，主桃花犯主、才情風流，須防酒色。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.SHILIANG_YIN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "善蔭朝綱", "en": "Tian Ji & Tian Liang pattern" },
+      "ruleId": "ZW.PAT.SHILIANG_YIN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "善蔭朝綱",
+        "en": "Tian Ji & Tian Liang pattern"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TIANJI",
+            "ZW.STAR.MAJOR.TIANLIANG"
+          ],
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
       "enhancers": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAny": ["ZW.STAR.AUX.WENCHANG", "ZW.STAR.AUX.WENQU"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.AUX.WENCHANG",
+            "ZW.STAR.AUX.WENQU"
+          ]
+        }
       ],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天機天梁會照命宮，主善於謀劃、有專業清貴之格。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天機天梁會照命宮，主善於謀劃、有專業清貴之格。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.ZIWEI_QISHA.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "紫殺朝斗", "en": "Zi Wei & Qi Sha pattern" },
+      "ruleId": "ZW.PAT.ZIWEI_QISHA.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "紫殺朝斗",
+        "en": "Zi Wei & Qi Sha pattern"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.ZIWEI", "ZW.STAR.MAJOR.QISHA"], "relation": "san-fang-si-zheng", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.ZIWEI",
+            "ZW.STAR.MAJOR.QISHA"
+          ],
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "紫微七殺會照，主權柄獨掌、剛柔並濟，利軍警法政。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "紫微七殺會照，主權柄獨掌、剛柔並濟，利軍警法政。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.LIANQI.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "廉殺同宮", "en": "Lian Zhen & Qi Sha same palace" },
+      "ruleId": "ZW.PAT.LIANQI.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "廉殺同宮",
+        "en": "Lian Zhen & Qi Sha same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.LIANZHEN", "ZW.STAR.MAJOR.QISHA"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.LIANZHEN",
+            "ZW.STAR.MAJOR.QISHA"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "lu", "relation": "san-fang-si-zheng" }
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "relation": "san-fang-si-zheng"
+        }
       ],
       "breakers": [
-        { "type": "transformation", "transform": "ji", "relation": "san-fang-si-zheng" }
+        {
+          "type": "transformation",
+          "transform": "ji",
+          "relation": "san-fang-si-zheng"
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "廉貞七殺同宮，主剛烈果決、多波折，成敗起伏大。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "廉貞七殺同宮，主剛烈果決、多波折，成敗起伏大。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.WUTAN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "武貪同行", "en": "Wu Qu & Tan Lang together" },
+      "ruleId": "ZW.PAT.WUTAN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "武貪同行",
+        "en": "Wu Qu & Tan Lang together"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.WUQU", "ZW.STAR.MAJOR.TANLANG"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.WUQU",
+            "ZW.STAR.MAJOR.TANLANG"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "lu" }
+        {
+          "type": "transformation",
+          "transform": "lu"
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "武曲貪狼同宮（丑未），主財富權慾並重、晚發之格。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "武曲貪狼同宮（丑未），主財富權慾並重、晚發之格。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.TIANJI_JUMEN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "機巨同臨", "en": "Tian Ji & Ju Men same palace" },
+      "ruleId": "ZW.PAT.TIANJI_JUMEN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "機巨同臨",
+        "en": "Tian Ji & Ju Men same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANJI", "ZW.STAR.MAJOR.JUMEN"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TIANJI",
+            "ZW.STAR.MAJOR.JUMEN"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "ke" }
+        {
+          "type": "transformation",
+          "transform": "ke"
+        }
       ],
       "breakers": [
-        { "type": "transformation", "transform": "ji", "relation": "same-palace" }
+        {
+          "type": "transformation",
+          "transform": "ji",
+          "relation": "same-palace"
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天機巨門同宮（卯酉），主口才智慧、分析力強，亦主是非多。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天機巨門同宮（卯酉），主口才智慧、分析力強，亦主是非多。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.TIANTONG_JUMEN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "同巨同宮", "en": "Tian Tong & Ju Men same palace" },
+      "ruleId": "ZW.PAT.TIANTONG_JUMEN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "同巨同宮",
+        "en": "Tian Tong & Ju Men same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANTONG", "ZW.STAR.MAJOR.JUMEN"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TIANTONG",
+            "ZW.STAR.MAJOR.JUMEN"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "same-palace", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "same-palace",
+          "minCount": 2
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天同巨門同宮（丑未），主口舌是非與情感糾葛並見。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天同巨門同宮（丑未），主口舌是非與情感糾葛並見。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.TAIYANG_JUMEN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "日巨同宮", "en": "Tai Yang & Ju Men same palace" },
+      "ruleId": "ZW.PAT.TAIYANG_JUMEN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "日巨同宮",
+        "en": "Tai Yang & Ju Men same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TAIYANG", "ZW.STAR.MAJOR.JUMEN"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TAIYANG",
+            "ZW.STAR.MAJOR.JUMEN"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "transformation", "transform": "quan" }
+        {
+          "type": "transformation",
+          "transform": "quan"
+        }
       ],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "太陽巨門同宮（寅申），主口才顯達、名聲在外，亦防口舌招怨。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "太陽巨門同宮（寅申），主口才顯達、名聲在外，亦防口舌招怨。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.TIANXIANG_LIANZHEN.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "廉相同宮", "en": "Lian Zhen & Tian Xiang same palace" },
+      "ruleId": "ZW.PAT.TIANXIANG_LIANZHEN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "廉相同宮",
+        "en": "Lian Zhen & Tian Xiang same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.LIANZHEN", "ZW.STAR.MAJOR.TIANXIANG"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.LIANZHEN",
+            "ZW.STAR.MAJOR.TIANXIANG"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [
-        { "type": "relation", "relation": "san-fang-si-zheng", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        }
       ],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "廉貞天相同宮（子午），主政商才幹、刑獄或管理之格。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "廉貞天相同宮（子午），主政商才幹、刑獄或管理之格。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.FULIANG.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "府梁同宮", "en": "Tian Fu & Tian Liang same palace" },
+      "ruleId": "ZW.PAT.FULIANG.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "府梁同宮",
+        "en": "Tian Fu & Tian Liang same palace"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MAJOR.TIANFU", "ZW.STAR.MAJOR.TIANLIANG"], "relation": "same-palace" }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.TIANFU",
+            "ZW.STAR.MAJOR.TIANLIANG"
+          ],
+          "relation": "same-palace"
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "天府天梁同宮（辰戌丑未其中），主福蔭庫厚、安穩長壽。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "天府天梁同宮（辰戌丑未其中），主福蔭庫厚、安穩長壽。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.YUEZHU.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "日月照壁", "en": "Sun & Moon illuminating" },
+      "ruleId": "ZW.PAT.YUEZHU.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "日月照壁",
+        "en": "Sun & Moon illuminating"
+      },
       "required": [
-        { "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TAIYANG", "palace": "life" },
-        { "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAny": ["ZW.STAR.MAJOR.TAIYIN"] }
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MAJOR.TAIYANG",
+          "palace": "life"
+        },
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.MAJOR.TAIYIN"
+          ]
+        }
       ],
       "enhancers": [
-        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYANG", "minLevel": "wang" },
-        { "type": "dignity", "star": "ZW.STAR.MAJOR.TAIYIN", "minLevel": "wang" }
+        {
+          "type": "dignity",
+          "star": "ZW.STAR.MAJOR.TAIYANG",
+          "minLevel": "wang"
+        },
+        {
+          "type": "dignity",
+          "star": "ZW.STAR.MAJOR.TAIYIN",
+          "minLevel": "wang"
+        }
       ],
       "breakers": [
-        { "type": "star-group", "group": "major-malefic", "relation": "san-fang-si-zheng", "palace": "life", "minCount": 3 }
+        {
+          "type": "star-group",
+          "group": "major-malefic",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "minCount": 3
+        }
       ],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "日月夾拱命宮皆旺，主貴顯福厚。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "日月夾拱命宮皆旺，主貴顯福厚。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.YANGTUO_JIA.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "羊陀夾忌", "en": "Qing Yang & Tuo Luo flanking Ji" },
+      "ruleId": "ZW.PAT.YANGTUO_JIA.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "羊陀夾忌",
+        "en": "Qing Yang & Tuo Luo flanking Ji"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.MALEFIC.QINGYANG", "ZW.STAR.MALEFIC.TUOLUO"], "relation": "jia", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MALEFIC.QINGYANG",
+            "ZW.STAR.MALEFIC.TUOLUO"
+          ],
+          "relation": "jia",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "擎羊陀羅夾命宮，主一生多刑剋糾纏，須以吉星化解。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "擎羊陀羅夾命宮，主一生多刑剋糾纏，須以吉星化解。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     },
     {
-      "ruleId": "ZW.PAT.HUOLING_JIA.001", "ruleVersion": "1.0", "status": "candidate",
-      "scope": "pattern", "category": "patterns",
-      "name": { "zh-TW": "火鈴夾命", "en": "Huo & Ling flanking Life" },
+      "ruleId": "ZW.PAT.HUOLING_JIA.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "火鈴夾命",
+        "en": "Huo & Ling flanking Life"
+      },
       "required": [
-        { "type": "star-group", "group": ["ZW.STAR.AUX.HUOLING", "ZW.STAR.AUX.LINGXING"], "relation": "jia", "palace": "life", "minCount": 2 }
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.AUX.HUOLING",
+            "ZW.STAR.AUX.LINGXING"
+          ],
+          "relation": "jia",
+          "palace": "life",
+          "minCount": 2
+        }
       ],
       "enhancers": [],
       "breakers": [],
-      "sourceRefs": ["SRC.QUANSHU"], "evidenceRefs": [],
-      "text": { "zh-TW": "火星鈴星夾命宮，主性情剛烈多變、一生起伏大。" }
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [],
+      "text": {
+        "zh-TW": "火星鈴星夾命宮，主性情剛烈多變、一生起伏大。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "初版：建立待考證，標記為 candidate。"
+        }
+      ]
     }
   ]
 }

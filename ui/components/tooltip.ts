@@ -1,6 +1,7 @@
 import { state } from '../app/state.js';
 import { t } from '../../src/index.js';
 import { DIGNITY_ZH } from '../../src/index.js';
+import { starDetailHtml } from './star-detail.js';
 
 const CAT_LABEL: Record<string, string> = {
   major: '十四主星',
@@ -81,49 +82,23 @@ export function initTooltip(): void {
   });
 }
 
-function openStarDetail(starId: string): void {
+export function openStarDetail(starId: string): void {
   const isMobile = matchMedia('(max-width: 800px)').matches;
   const html = starDetailHtml(starId);
-  if (isMobile) {
-    const sheet = document.getElementById('bottom-sheet')!;
-    document.getElementById('sheet-content')!.innerHTML = html;
-    document.getElementById('sheet-backdrop')!.classList.add('show');
-    sheet.classList.add('show');
-  } else {
-    const drawer = document.getElementById('drawer')!;
-    document.getElementById('drawer-content')!.innerHTML = html;
-    document.getElementById('sheet-backdrop')!.classList.add('show');
-    drawer.classList.add('show');
-  }
+  const target = isMobile
+    ? document.getElementById('sheet-content')!
+    : document.getElementById('drawer-content')!;
+  target.innerHTML = html;
+  document.getElementById('sheet-backdrop')!.classList.add('show');
+  if (isMobile) document.getElementById('bottom-sheet')!.classList.add('show');
+  else document.getElementById('drawer')!.classList.add('show');
+
+  target.querySelectorAll('[data-close-panel]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('bottom-sheet')?.classList.remove('show');
+      document.getElementById('drawer')?.classList.remove('show');
+      document.getElementById('sheet-backdrop')?.classList.remove('show');
+    });
+  });
 }
 
-function starDetailHtml(starId: string): string {
-  const chart = state.chart;
-  if (!chart) return '';
-  const placement = chart.chart.stars[starId] as unknown as {
-    star: { name: Record<string,string>; category: string; shortDesc?: Record<string,string>; tags?: string[] };
-    palaceId: string; dignity?: string; ruleId?: string; branch: string; certainty?: string;
-  } | undefined;
-  if (!placement) return `<p>找不到星曜 ${starId}</p>`;
-  const star = placement.star;
-  const palace = chart.chart.palaces.find(p => p.id === placement.palaceId);
-  const sihua = chart.chart.transformations.filter(tr => tr.targetStarId === starId);
-  const sfsz = palace ? [palace.branch] : [];
-
-  return `
-    <div style="display:flex;justify-content:space-between;align-items:start">
-      <h2 class="serif">${t(star.name)}</h2>
-      <button class="icon-btn" onclick="document.getElementById('sheet-backdrop').classList.remove('show');document.getElementById('bottom-sheet').classList.remove('show');document.getElementById('drawer').classList.remove('show')">✕</button>
-    </div>
-    <p class="sub">${star.shortDesc ? t(star.shortDesc) : ''}</p>
-    <dl class="kv">
-      <dt>類別</dt><dd>${CAT_LABEL[star.category] ?? star.category}</dd>
-      <dt>所在宮位</dt><dd>${palace ? t(palace.name) : ''}（${placement.branch}）</dd>
-      ${placement.dignity ? `<dt>廟旺</dt><dd>${DIGNITY_ZH[placement.dignity as keyof typeof DIGNITY_ZH]}</dd>` : ''}
-      <dt>確定度</dt><dd>${placement.certainty ?? 'high'}</dd>
-      ${placement.ruleId ? `<dt>安星規則</dt><dd class="mono small">${placement.ruleId}</dd>` : ''}
-    </dl>
-    ${sihua.length ? `<h3>四化</h3><ul>${sihua.map(tr => `<li>${SIHUA_LABEL[tr.type]} · 來源 ${tr.sourceScope} · 干 ${tr.sourceStem}${tr.selfTransformation ? ' · 自化' : ''}</li>`).join('')}</ul>` : ''}
-    ${star.tags?.length ? `<p class="small faint">tags: ${star.tags.join(', ')}</p>` : ''}
-  `;
-}

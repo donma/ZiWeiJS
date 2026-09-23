@@ -1,8 +1,8 @@
 import '../styles/base.css';
-import { state, recalc, navigate, currentRoute } from './state.js';
+import { state, recalc, navigate, currentRoute, setAppLocale } from './state.js';
 import { renderHome } from '../pages/home.js';
 import { renderChartPage } from '../pages/chart.js';
-import { renderRules } from '../pages/rules.js';
+import { renderRules, bindRuleExplorer } from '../pages/rules.js';
 import { renderSources } from '../pages/sources.js';
 import { renderGeek } from '../pages/geek.js';
 import { renderDifferential } from '../pages/differential.js';
@@ -32,6 +32,11 @@ function shell(content: string): string {
       <div class="container topbar-inner">
         <a class="brand" href="#/"><span class="mark">紫</span>ZiWeiJS</a>
         <nav class="nav">${nav}</nav>
+        <select class="icon-btn" id="locale-select" aria-label="語系" style="min-height:32px;padding:3px 6px">
+          <option value="zh-TW" ${state.locale === 'zh-TW' ? 'selected' : ''}>繁中</option>
+          <option value="zh-CN" ${state.locale === 'zh-CN' ? 'selected' : ''}>简中</option>
+          <option value="en" ${state.locale === 'en' ? 'selected' : ''}>EN</option>
+        </select>
         <button class="icon-btn" id="theme-toggle" aria-label="切換主題">${state.theme === 'light' ? '◐' : '◑'}</button>
       </div>
     </header>
@@ -74,6 +79,11 @@ function afterRender(): void {
     document.documentElement.dataset.theme = state.theme === 'dark' ? 'dark' : '';
     route();
   });
+  const localeSel = document.getElementById('locale-select') as HTMLSelectElement | null;
+  localeSel?.addEventListener('change', () => {
+    setAppLocale(localeSel.value as 'zh-TW' | 'zh-CN' | 'en');
+    route();
+  });
   initTooltip();
   initSheet();
   document.querySelectorAll('[data-nav]').forEach(el => {
@@ -97,6 +107,7 @@ function afterRender(): void {
   document.querySelectorAll('[data-chart-action]').forEach(el => {
     el.addEventListener('click', () => handleChartAction((el as HTMLElement).dataset.chartAction!));
   });
+  if (currentRoute() === '/rules') bindRuleExplorer();
 }
 
 function handleForm(form: HTMLFormElement): void {

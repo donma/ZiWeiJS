@@ -20,13 +20,21 @@ export {
   resolveStarGroup, MAJOR_MALEFIC_IDS
 } from './relation-engine/relation-engine.js';
 
-export { dignityOf, calcDignities, DIGNITY_ORDER, DIGNITY_ZH, dignityAtLeast } from './dignity-engine/dignity-engine.js';
+export {
+  dignityOf, calcDignities, DIGNITY_ORDER, DIGNITY_ZH, DIGNITY_ZH_CN, DIGNITY_EN,
+  dignityAtLeast, dignityLabel
+} from './dignity-engine/dignity-engine.js';
 export { sihuaForStem } from './executors/star-executors.js';
 export { runInterpretation, runPatterns, groupByDomain } from './interpretation-engine/interpretation-engine.js';
 export { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
 export type { UnknownTimeResult, RectificationResult, RectificationClue } from './rectification/rectification.js';
 export { toContext } from './ai/context.js';
 export type { AiContext } from './ai/context.js';
+export {
+  PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus,
+  classifyDifference, DIFFERENTIAL_CLASSES, DIFFERENTIAL_CLASS_ZH
+} from './ai/research.js';
+export type { ResearchStage, PipelineGuardResult, ConflictReport } from './ai/research.js';
 export { renderNarrative } from './narrative/narrative.js';
 export type { NarrativeSection } from './narrative/narrative.js';
 export { Tracer, explainTrace } from './trace/tracer.js';
@@ -40,6 +48,9 @@ import { getRule, listRules, getSource, listSources } from './rule-engine/regist
 import { runInterpretation, runPatterns } from './interpretation-engine/interpretation-engine.js';
 import { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
 import { toContext } from './ai/context.js';
+import {
+  PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus, classifyDifference, DIFFERENTIAL_CLASSES
+} from './ai/research.js';
 import { renderChartSvg } from './renderer/svg-renderer.js';
 import { explainTrace } from './trace/tracer.js';
 import {
@@ -69,7 +80,17 @@ export const ZiWei = {
     render: renderChartSvg
   },
   AI: {
-    toContext
+    toContext,
+    canAdvance,
+    canPromoteStatus,
+    pipelineStages: PIPELINE_STAGES,
+    aiAllowedStages: AI_ALLOWED_STAGES
+  },
+  Research: {
+    canAdvance,
+    canPromoteStatus,
+    classifyDifference,
+    classes: DIFFERENTIAL_CLASSES
   },
   Rules: {
     get: getRule,
@@ -92,7 +113,12 @@ export const ZiWei = {
   Trace: {
     explain: explainTrace
   },
-  analyzeUnknownTime
+  analyzeUnknownTime,
+  canAdvance,
+  canPromoteStatus,
+  classifyDifference,
+  pipelineStages: PIPELINE_STAGES,
+  aiAllowedStages: AI_ALLOWED_STAGES
 };
 
 export default ZiWei;

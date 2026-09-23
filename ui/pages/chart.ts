@@ -18,7 +18,7 @@ export function renderChartPage(forceMode?: 'standard' | 'expert'): string {
   const svg = renderChartSvg(chart, {
     mode,
     theme: state.theme,
-    locale: 'zh-TW',
+    locale: state.locale,
     cellSize: mode === 'expert' ? 240 : 210
   });
 
@@ -98,7 +98,7 @@ function palaceCardsHtml(chart: NonNullable<typeof state.chart>): string {
 }
 
 function interpretationPanel(chart: NonNullable<typeof state.chart>, mode: string): string {
-  const sections = renderNarrative(chart, { locale: 'zh-TW' });
+  const sections = renderNarrative(chart, { locale: state.locale });
   const patterns = chart.chart.patterns.filter(p => p.status === 'complete' || p.status === 'enhanced' || p.status === 'partial');
   return `
   <div class="card card-pad">

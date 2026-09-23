@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/research.schema.json",
+  "title": "ZiWei Bible Research Queue",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["researchId", "title", "status", "type"],
+        "properties": {
+          "researchId": { "type": "string", "pattern": "^RSH\\.[0-9]+$" },
+          "title": { "type": "string" },
+          "status": { "type": "string", "enum": ["open", "candidate", "resolved", "rejected"] },
+          "type": {
+            "type": "string",
+            "enum": ["variant-conflict", "policy", "interpretation", "table", "star", "pattern", "bug"]
+          },
+          "relatedRules": { "type": "array", "items": { "type": "string" } },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "question": { "type": "string" },
+          "nextAction": { "type": "string" },
+          "ownerReviewRequired": { "type": "boolean" },
+          "resolution": { "type": "string" }
+        }
+      }
+    }
+  }
+}

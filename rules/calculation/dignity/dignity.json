@@ -2,13 +2,48 @@
   "$schema": "../../../schemas/rule.schema.json",
   "rules": [
     {
-      "ruleId": "ZW.CALC.DIGNITY.BRIGHTNESS.001", "ruleVersion": "1.0", "status": "canonical",
-      "scope": "calculation.dignity.brightness", "category": "dignity",
-      "name": { "zh-TW": "廟旺利陷", "en": "Star dignity / brightness" },
-      "description": { "zh-TW": "十四主星於各地支之廟旺得利落平不陷等級查表。" },
-      "inputs": ["stars.*", "palaces[].branch"],
-      "logic": { "executor": "calcDignity", "params": { "tableRef": "dignity/brightness" } },
-      "outputs": ["stars.*.dignity"], "sourceRefs": ["SRC.MODERN-IMPL-CONSENSUS"], "evidenceRefs": ["EVD.CONSENSUS.MIAOWANG"], "tags": ["core"]
+      "ruleId": "ZW.CALC.DIGNITY.BRIGHTNESS.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.dignity.brightness",
+      "category": "dignity",
+      "name": {
+        "zh-TW": "廟旺利陷",
+        "en": "Star dignity / brightness"
+      },
+      "description": {
+        "zh-TW": "十四主星於各地支之廟旺得利落平不陷等級查表。"
+      },
+      "inputs": [
+        "stars.*",
+        "palaces[].branch"
+      ],
+      "logic": {
+        "executor": "calcDignity",
+        "params": {
+          "tableRef": "dignity/brightness"
+        }
+      },
+      "outputs": [
+        "stars.*.dignity"
+      ],
+      "sourceRefs": [
+        "SRC.MODERN-IMPL-CONSENSUS"
+      ],
+      "evidenceRefs": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.MODERN-IMPL-CONSENSUS 建立並通過 golden/unit 驗證。"
+        }
+      ]
     }
   ]
 }

@@ -1,11 +1,12 @@
-import type { ZiWeiChart, ZiWeiBirthInput } from '../../src/index.js';
-import { calculateSafe } from '../../src/index.js';
+import type { ZiWeiChart, ZiWeiBirthInput, Locale } from '../../src/index.js';
+import { calculateSafe, setLocale } from '../../src/index.js';
 
 export interface AppState {
   chart: ZiWeiChart | null;
   input: ZiWeiBirthInput;
   mode: 'standard' | 'expert';
   theme: 'light' | 'dark';
+  locale: Locale;
   profile: string;
   error: string | null;
   route: string;
@@ -24,10 +25,18 @@ export const state: AppState = {
   input: defaultInput,
   mode: 'standard',
   theme: 'light',
+  locale: 'zh-TW',
   profile: 'canonical',
   error: null,
   route: location.hash.replace('#', '') || '/'
 };
+
+setLocale(state.locale);
+
+export function setAppLocale(locale: Locale): void {
+  state.locale = locale;
+  setLocale(locale);
+}
 
 export function recalc(): void {
   const res = calculateSafe(state.input, { profile: state.profile, trace: true });

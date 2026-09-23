@@ -7,14 +7,43 @@
       "status": "canonical",
       "scope": "calculation.stars.major.ziwei",
       "category": "stars",
-      "name": { "zh-TW": "安紫微星", "en": "Locate Zi Wei" },
-      "description": { "zh-TW": "以五行局數與農曆生日推紫微：局數除日數，商數加餘數定位（餘數奇減偶加）。" },
-      "inputs": ["bureau", "lunar.day"],
-      "logic": { "executor": "calcZiweiPosition", "params": { "tableRef": "stars/ziwei-series" } },
-      "outputs": ["stars.ZW.STAR.MAJOR.ZIWEI"],
-      "sourceRefs": ["SRC.QUANSHU"],
-      "evidenceRefs": ["EVD.QUANSHU.ZIWEIXI"],
-      "tags": ["core"]
+      "name": {
+        "zh-TW": "安紫微星",
+        "en": "Locate Zi Wei"
+      },
+      "description": {
+        "zh-TW": "以五行局數與農曆生日推紫微：局數除日數，商數加餘數定位（餘數奇減偶加）。"
+      },
+      "inputs": [
+        "bureau",
+        "lunar.day"
+      ],
+      "logic": {
+        "executor": "calcZiweiPosition",
+        "params": {
+          "tableRef": "stars/ziwei-series"
+        }
+      },
+      "outputs": [
+        "stars.ZW.STAR.MAJOR.ZIWEI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.ZIWEIXI"
+      ],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
@@ -22,14 +51,42 @@
       "status": "canonical",
       "scope": "calculation.stars.major.ziwei-series",
       "category": "stars",
-      "name": { "zh-TW": "安紫微系諸星", "en": "Place Zi Wei series" },
-      "description": { "zh-TW": "紫微逆行安天機、太陽、武曲、天同、廉貞：紫微逆去天機星，隔二太陽武曲當，又隔二位天同府，再隔三宮廉貞臨。" },
-      "inputs": ["stars.ZW.STAR.MAJOR.ZIWEI"],
-      "logic": { "executor": "calcZiweiSeries", "params": { "tableRef": "stars/ziwei-series" } },
-      "outputs": ["stars.*"],
-      "sourceRefs": ["SRC.QUANSHU"],
-      "evidenceRefs": ["EVD.QUANSHU.ZIWEIXI"],
-      "tags": ["core"]
+      "name": {
+        "zh-TW": "安紫微系諸星",
+        "en": "Place Zi Wei series"
+      },
+      "description": {
+        "zh-TW": "紫微逆行安天機、太陽、武曲、天同、廉貞：紫微逆去天機星，隔二太陽武曲當，又隔二位天同府，再隔三宮廉貞臨。"
+      },
+      "inputs": [
+        "stars.ZW.STAR.MAJOR.ZIWEI"
+      ],
+      "logic": {
+        "executor": "calcZiweiSeries",
+        "params": {
+          "tableRef": "stars/ziwei-series"
+        }
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.ZIWEIXI"
+      ],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
@@ -37,14 +94,43 @@
       "status": "canonical",
       "scope": "calculation.stars.major.tianfu-series",
       "category": "stars",
-      "name": { "zh-TW": "安天府系諸星", "en": "Place Tian Fu series" },
-      "description": { "zh-TW": "天府與紫微以寅申軸對稱；天府順行安太陰、貪狼、巨門、天相、天梁、七殺，隔三宮為破軍。" },
-      "inputs": ["stars.ZW.STAR.MAJOR.ZIWEI"],
-      "logic": { "executor": "calcTianfuSeries", "params": { "tableRef": "stars/ziwei-series" } },
-      "outputs": ["stars.*"],
-      "sourceRefs": ["SRC.QUANSHU"],
-      "evidenceRefs": ["EVD.QUANSHU.TIANFU_DUI", "EVD.QUANSHU.ZIWEIXI"],
-      "tags": ["core"]
+      "name": {
+        "zh-TW": "安天府系諸星",
+        "en": "Place Tian Fu series"
+      },
+      "description": {
+        "zh-TW": "天府與紫微以寅申軸對稱；天府順行安太陰、貪狼、巨門、天相、天梁、七殺，隔三宮為破軍。"
+      },
+      "inputs": [
+        "stars.ZW.STAR.MAJOR.ZIWEI"
+      ],
+      "logic": {
+        "executor": "calcTianfuSeries",
+        "params": {
+          "tableRef": "stars/ziwei-series"
+        }
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.TIANFU_DUI",
+        "EVD.QUANSHU.ZIWEIXI"
+      ],
+      "tags": [
+        "core"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-22",
+          "note": "Canonical 初版：依 SRC.QUANSHU 建立並通過 golden/unit 驗證。"
+        }
+      ]
     }
   ]
 }

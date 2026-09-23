@@ -37,3 +37,19 @@ export function dignityAtLeast(level: DignityLevel | undefined, min: DignityLeve
 export const DIGNITY_ZH: Record<DignityLevel, string> = {
   miao: '廟', wang: '旺', de: '得', li: '利', ping: '平', bu: '不', xian: '陷'
 };
+
+export const DIGNITY_ZH_CN: Record<DignityLevel, string> = {
+  miao: '庙', wang: '旺', de: '得', li: '利', ping: '平', bu: '不', xian: '陷'
+};
+
+export const DIGNITY_EN: Record<DignityLevel, string> = {
+  miao: 'Exalted', wang: 'Prosperous', de: 'Favourable', li: 'Beneficial',
+  ping: 'Neutral', bu: 'Weak', xian: 'Fallen'
+};
+
+export function dignityLabel(level: DignityLevel | undefined, locale: string): string {
+  if (!level) return '';
+  if (locale === 'zh-CN') return DIGNITY_ZH_CN[level];
+  if (locale === 'en') return DIGNITY_EN[level];
+  return DIGNITY_ZH[level];
+}

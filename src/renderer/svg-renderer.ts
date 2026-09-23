@@ -2,7 +2,7 @@ import type { ZiWeiChart, Palace, StarPlacement, BranchId, Transformation } from
 import { STEM_ZH, BRANCH_ZH, PALACE_NAME } from '../core/constants.js';
 import { t } from '../core/i18n.js';
 import type { Locale } from '../core/types.js';
-import { DIGNITY_ZH } from '../dignity-engine/dignity-engine.js';
+import { dignityLabel } from '../dignity-engine/dignity-engine.js';
 
 export interface RenderOptions {
   mode?: 'standard' | 'expert';
@@ -132,7 +132,7 @@ function renderPalace(
 
     let badgeX = sx + name.length * (fs * 0.95) + 2;
     if (s.dignity && isMajor) {
-      out.push(`<text x="${badgeX}" y="${sy}" font-size="${Math.min(10, fs * 0.55)}" fill="${theme.textFaint}">${DIGNITY_ZH[s.dignity]}</text>`);
+      out.push(`<text x="${badgeX}" y="${sy}" font-size="${Math.min(10, fs * 0.55)}" fill="${theme.textFaint}">${dignityLabel(s.dignity, locale)}</text>`);
       badgeX += Math.min(12, fs * 0.68);
     }
     const marks = sihuaByStar.get(s.starId) ?? [];
@@ -148,8 +148,8 @@ function renderPalace(
 
   const footerY = y + size - 4;
   const meta = [
-    palace.changsheng ? (CHANGSHENG_ZH[palace.changsheng] ?? palace.changsheng) : '',
-    palace.boshi ? (BOSHI_ZH[palace.boshi] ?? palace.boshi) : '',
+    palace.changsheng ? localizedStage(CHANGSHENG_ZH, CHANGSHENG_EN, palace.changsheng, locale) : '',
+    palace.boshi ? localizedStage(BOSHI_ZH, BOSHI_EN, palace.boshi, locale) : '',
     palace.majorPeriod ? `${palace.majorPeriod.fromAge}-${palace.majorPeriod.toAge}` : ''
   ].filter(Boolean).join(' ');
   if (meta) {
@@ -177,6 +177,22 @@ const BOSHI_ZH: Record<string, string> = {
   zoushu: '奏書', feilian: '飛廉', xishen: '喜神', bingfu: '病符', dahao: '大耗',
   fubing: '伏兵', guanfu: '官府'
 };
+
+const CHANGSHENG_EN: Record<string, string> = {
+  changsheng: 'Birth', muyu: 'Bath', guandai: 'Capping', linguan: 'Office', diwang: 'Peak',
+  shuai: 'Decline', bing: 'Illness', si: 'Death', mu: 'Tomb', jue: 'Extinction', tai: 'Foetus', yang: 'Nourish'
+};
+
+const BOSHI_EN: Record<string, string> = {
+  boshi: 'Doctor', lishi: 'Warrior', qinglong: 'Azure Dragon', xiaohao: 'Minor Loss', jiangjun: 'General',
+  zoushu: 'Memorial', feilian: 'Fei Lian', xishen: 'Joy', bingfu: 'Illness', dahao: 'Major Loss',
+  fubing: 'Ambush', guanfu: 'Magistrate'
+};
+
+function localizedStage(zh: Record<string, string>, en: Record<string, string>, key: string, locale: Locale): string {
+  if (locale === 'en') return en[key] ?? key;
+  return zh[key] ?? key;
+}
 
 function renderCenter(
   chart: ZiWeiChart, x: number, y: number, w: number, h: number,
