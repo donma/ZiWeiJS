@@ -1,0 +1,69 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-period.ts",
+  "name": "major-switch-after",
+  "note": "大限切換後（36-45）",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10,
+      "minute": 30
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "oracle": {
+    "targetDate": {
+      "year": 2026,
+      "month": 9,
+      "day": 1
+    },
+    "activeMajor": {
+      "age": 37,
+      "major": {
+        "fromAge": 36,
+        "toAge": 45,
+        "branch": "mao",
+        "stem": "ji",
+        "palaceId": "property",
+        "ganzhi": {
+          "stem": "ji",
+          "branch": "mao"
+        }
+      },
+      "skipped": null
+    },
+    "year": {
+      "branch": "wu",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "wu"
+      },
+      "palaceId": "travel"
+    },
+    "month": {
+      "branch": "zi",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "shen"
+      },
+      "palaceId": "life"
+    },
+    "day": {
+      "branch": "wei",
+      "stem": "wu",
+      "ganzhi": {
+        "stem": "wu",
+        "branch": "yin"
+      },
+      "palaceId": "health"
+    },
+    "hour": null
+  }
+}

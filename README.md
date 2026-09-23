@@ -23,15 +23,15 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | research | 2 |
 | Canonical source 覆蓋率 | 100% |
 | Canonical evidence 覆蓋率 | 100% |
-| 星曜（已安 / 總數）| 95 / 96 |
+| 星曜（實測安星 / 總數）| 95 / 96（active 95）|
 | 格局 | 24 |
 | 解讀規則 | 138（12 domains）|
 | 文獻 / 證據 | 10 / 28 |
-| Golden fixtures | 43 |
-| Differential fixtures | 12 |
+| Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
+| Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 282 it() / 25 files（靜態計數）|
-| E2E / Visual | 20 test() / 2 files（靜態計數；實際執行數見 npm run test:visual）|
+| Tests | 315 it() / 32 files（靜態計數）|
+| E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
 
@@ -143,7 +143,7 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run test       # 358 tests
+npm run test       # 執行完整測試套件
 npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html
 npm run differential           # 與 iztro 逐欄對照（安星差分）
 npm run differential:calendar  # 與 lunar-lite 逐日對照（曆法差分）

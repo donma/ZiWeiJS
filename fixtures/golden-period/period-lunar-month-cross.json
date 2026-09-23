@@ -1,0 +1,69 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-period.ts",
+  "name": "lunar-month-cross",
+  "note": "Gregorian 2 月但農曆正月",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10,
+      "minute": 30
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "oracle": {
+    "targetDate": {
+      "year": 2026,
+      "month": 2,
+      "day": 20
+    },
+    "activeMajor": {
+      "age": 37,
+      "major": {
+        "fromAge": 36,
+        "toAge": 45,
+        "branch": "mao",
+        "stem": "ji",
+        "palaceId": "property",
+        "ganzhi": {
+          "stem": "ji",
+          "branch": "mao"
+        }
+      },
+      "skipped": null
+    },
+    "year": {
+      "branch": "wu",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "wu"
+      },
+      "palaceId": "travel"
+    },
+    "month": {
+      "branch": "wu",
+      "stem": "geng",
+      "ganzhi": {
+        "stem": "geng",
+        "branch": "yin"
+      },
+      "palaceId": "travel"
+    },
+    "day": {
+      "branch": "you",
+      "stem": "yi",
+      "ganzhi": {
+        "stem": "yi",
+        "branch": "chou"
+      },
+      "palaceId": "children"
+    },
+    "hour": null
+  }
+}

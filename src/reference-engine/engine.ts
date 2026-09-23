@@ -13,6 +13,7 @@ import { registerAllExecutors } from '../rule-engine/register-executors.js';
 import { executePlan } from '../rule-engine/execute-rule.js';
 import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN } from '../rule-engine/execution-plan.js';
 import { ageAt, resolveMajorPeriod } from '../period-engine/major-period-resolver.js';
+import { normalizePeriodTarget, validateSolarDate } from '../period-engine/period-target.js';
 import { runInterpretation, groupByDomain, runPatterns } from '../interpretation-engine/interpretation-engine.js';
 import type { TargetDate } from '../core/types.js';
 
@@ -51,6 +52,22 @@ function validateTargetDate(target: TargetDate): void {
   }
   if (target.hour !== undefined && (target.hour < 0 || target.hour > 23)) {
     throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.hour out of range 0-23', { target });
+  }
+  if (target.minute !== undefined && !Number.isInteger(target.minute)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.minute must be an integer', { target });
+  }
+  if (target.minute !== undefined && (target.minute < 0 || target.minute > 59)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.minute out of range 0-59', { target });
+  }
+  if (target.minute !== undefined && target.hour === undefined) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.minute requires targetDate.hour', { target });
+  }
+  // 真實日期驗證（spec §P0-5）：不得靠 Date rollover 接受 2025-02-29 / 2026-04-31
+  if (target.month !== undefined) {
+    const day = target.day ?? 15;
+    if (!validateSolarDate(target.year, target.month, day)) {
+      throw new ZiWeiError('INVALID_TARGET_DATE', `targetDate is not a real solar date: ${target.year}-${target.month}-${day}`, { target });
+    }
   }
 }
 
@@ -109,6 +126,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   // 限運：只有在提供 targetDate 時才計算；沒有 targetDate 時絕不隱含 now（spec §P0-3E）
   let activePeriods: ZiWeiChart['periods']['active'];
   if (target) {
+    // 單一正規化來源：Gregorian→農曆語意 / leapMonthPolicy / 真實干支（spec 2nd §P0-1）
+    ctx.periodTarget = normalizePeriodTarget(target, profile);
     // 先解出目標年齡所在之大限，限運四化才能依正確的大限（spec §P0-3A）
     const ageMethod = profile.periodRules?.ageMethod ?? 'virtual-age';
     const age = ageAt(normalized.lunar.year, target, ageMethod);

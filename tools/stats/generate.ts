@@ -13,6 +13,7 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  calculate,
   listRules, listSources, listEvidence, listPatterns, listInterpretationRules,
   SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION
 } from '../../src/index.js';
@@ -38,9 +39,50 @@ const pct = (n: number, d: number) => (d === 0 ? 100 : Math.round((n / d) * 1000
 interface StarEntry { id: string; status: string }
 const starRegistry = JSON.parse(readFileSync(join(root, 'tables/stars/registry.json'), 'utf8')) as { stars: StarEntry[] };
 const stars = starRegistry.stars;
-const starsPlaced = stars.filter(s => s.status !== 'deprecated').length;
+/** 非 deprecated 的 registry 星曜數（語意：registry active stars，非「已安」） */
+const starsActive = stars.filter(s => s.status !== 'deprecated').length;
 
-/* ---------- fixtures ---------- */
+/**
+ * 真實安放覆蓋（spec 2nd §P1-2）：
+ * 實際執行多張覆蓋案例，蒐集 chart.stars 中真正出現過的星曜 ID。
+ * 不得再用「非 deprecated 數量」冒充「已安星數」。
+ */
+function measureStarPlacement(): { placed: number; total: number; ids: Set<string> } {
+  const ids = new Set<string>();
+  const combos: Array<{ year: number; month: number; day: number; hour: number; sex: 'male' | 'female' }> = [];
+  // 覆蓋：年干/年支（含不同 stem groups）、月系、日系、時系、性別（順逆行）
+  for (const year of [1950, 1962, 1975, 1988, 1990, 2000, 2013, 2024]) {
+    for (const month of [1, 3, 5, 7, 9, 11]) {
+      for (const hour of [0, 6, 13, 20, 23]) {
+        combos.push({ year, month, day: 15, hour, sex: (year + month) % 2 === 0 ? 'male' : 'female' });
+      }
+    }
+  }
+  for (const combo of combos) {
+    try {
+      const chart = calculate(
+        {
+          calendarType: 'solar',
+          date: { year: combo.year, month: combo.month, day: combo.day },
+          time: { hour: combo.hour, minute: 0 },
+          timezone: 'Asia/Taipei',
+          sexForCalculation: combo.sex
+        },
+        { targetDate: { year: combo.year + 36, month: combo.month, day: combo.day, hour: combo.hour } }
+      );
+      for (const id of Object.keys(chart.chart.stars)) ids.add(id);
+      for (const p of Object.values(chart.periods)) {
+        const overlay = (p as { overlay?: { periodStars?: Array<{ starId: string }> } } | undefined)?.overlay;
+        for (const s of overlay?.periodStars ?? []) ids.add(s.starId);
+      }
+    } catch {
+      /* 個別案例失敗不影響統計 */
+    }
+  }
+  return { placed: ids.size, total: stars.length, ids };
+}
+const starPlacement = measureStarPlacement();
+
 function countJson(dir: string): number {
   let n = 0;
   const walk = (d: string): void => {
@@ -57,7 +99,28 @@ function countJson(dir: string): number {
   walk(dir);
   return n;
 }
-const goldenCases = countJson('fixtures/golden');
+
+/* ---------- fixtures ---------- */
+function countGolden(): { total: number; verified: number; engineOnly: number } {
+  let total = 0, verified = 0, engineOnly = 0;
+  const dir = join(root, 'fixtures/golden');
+  let entries: string[] = [];
+  try { entries = readdirSync(dir); } catch { return { total: 0, verified: 0, engineOnly: 0 }; }
+  for (const e of entries) {
+    if (!e.endsWith('.json')) continue;
+    total++;
+    try {
+      const j = JSON.parse(readFileSync(join(dir, e), 'utf8'));
+      if (j.verified) verified++;
+      else engineOnly++;
+    } catch {
+      engineOnly++;
+    }
+  }
+  return { total, verified, engineOnly };
+}
+const goldenStats = countGolden();
+const goldenCases = goldenStats.total;
 const differentialFixtures = countJson('fixtures/differential');
 const calendarFixtures = countJson('fixtures/calendar');
 
@@ -126,7 +189,13 @@ const report = {
     canonicalEvidenceCoverage: pct(withEvidence.length, canonical.length),
     canonicalTier123Coverage: pct(withTier123.length, canonical.length)
   },
-  stars: { total: stars.length, placed: starsPlaced, deprecated: stars.length - starsPlaced },
+  stars: {
+    total: stars.length,
+    active: starsActive,
+    /** 真正在 chart.stars / periodStars 出現過的星曜數（實測） */
+    placed: starPlacement.placed,
+    measured: true
+  },
   patterns: listPatterns().length,
   interpretationRules: listInterpretationRules().length,
   interpretationDomains: new Set(
@@ -134,6 +203,7 @@ const report = {
   ).size,
   sources: listSources().length,
   evidence: listEvidence().length,
+  golden: goldenStats,
   goldenCases,
   differentialFixtures,
   calendarFixtures,
@@ -159,11 +229,11 @@ if (process.argv.includes('--json')) {
   console.log(`Canonical evidence coverage : ${r.coverage.canonicalEvidenceCoverage}%`);
   console.log(`Canonical Tier1-3 coverage  : ${r.coverage.canonicalTier123Coverage}%`);
   console.log('');
-  console.log(`Stars              : ${r.stars.placed}/${r.stars.total} placed (deprecated ${r.stars.deprecated})`);
+  console.log(`Stars              : ${r.stars.placed}/${r.stars.total} placed (active ${r.stars.active}，實測覆蓋)`);
   console.log(`Patterns           : ${r.patterns}`);
   console.log(`Interpretation     : ${r.interpretationRules} rules / ${r.interpretationDomains} domains`);
   console.log(`Sources / Evidence : ${r.sources} / ${r.evidence}`);
-  console.log(`Golden cases       : ${r.goldenCases}`);
+  console.log(`Golden cases       : ${r.golden.total}（verified ${r.golden.verified}，engine-only ${r.golden.engineOnly}）`);
   console.log(`Differential fx    : ${r.differentialFixtures}`);
   console.log(`Calendar fixtures  : ${r.calendarFixtures}`);
   console.log(`Tests (it() 宣告) : ${r.tests.tests} in ${r.tests.files} files（迴圈展開後實際執行數見 npm test）`);
@@ -184,11 +254,11 @@ if (process.argv.includes('--update-readme')) {
     `| research | ${report.rules.research} |`,
     `| Canonical source 覆蓋率 | ${report.coverage.canonicalSourceCoverage}% |`,
     `| Canonical evidence 覆蓋率 | ${report.coverage.canonicalEvidenceCoverage}% |`,
-    `| 星曜（已安 / 總數）| ${report.stars.placed} / ${report.stars.total} |`,
+    `| 星曜（實測安星 / 總數）| ${report.stars.placed} / ${report.stars.total}（active ${report.stars.active}）|`,
     `| 格局 | ${report.patterns} |`,
     `| 解讀規則 | ${report.interpretationRules}（${report.interpretationDomains} domains）|`,
     `| 文獻 / 證據 | ${report.sources} / ${report.evidence} |`,
-    `| Golden fixtures | ${report.goldenCases} |`,
+    `| Golden fixtures（外部 verified / 本地）| ${report.golden.verified} / ${report.golden.engineOnly}（總計 ${report.golden.total}）|`,
     `| Differential fixtures | ${report.differentialFixtures} |`,
     `| Calendar fixtures | ${report.calendarFixtures} |`,
     `| Tests | ${report.tests.tests} it() / ${report.tests.files} files（靜態計數）|`,

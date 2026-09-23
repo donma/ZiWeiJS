@@ -13,6 +13,8 @@ export interface EngineContext {
   tracer: Tracer;
   /** 本次計算之目標日期（未提供時為 undefined → 不計算任何限運） */
   targetDate?: TargetDate;
+  /** targetDate 經 normalizePeriodTarget 後之限運單一來源（spec 2nd §P0-1） */
+  periodTarget?: import('../period-engine/period-target.js').NormalizedPeriodTarget;
 
   sexForCalculation: 'male' | 'female' | 'unknown';
   yinYang: 'yang' | 'yin';

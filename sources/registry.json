@@ -105,7 +105,7 @@
       "tier": 3,
       "language": "zh",
       "url": "https://github.com/6tail/lunar-typescript",
-      "notes": "本引擎曆法層實際使用之曆法庫（國曆↔農曆、節氣、四柱干支、真太陽時偏移）。"
+      "notes": "本引擎用於：國曆↔農曆轉換、節氣、四柱干支（年/月/日/時柱）、閏月判定。注意：真太陽時之經度修正與 equation of time 近似式由 ZiWeiJS 自行實作，並非本套件提供；本套件只提供曆法與干支。"
     }
   ]
 }

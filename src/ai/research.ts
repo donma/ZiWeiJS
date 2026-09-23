@@ -122,7 +122,21 @@ export interface ConflictReport {
 export function classifyDifference(
   report: Omit<ConflictReport, 'classification'>
 ): ConflictReport {
-  return { ...report, classification: 'unclassified' };
+  let classification: ConflictReport['classification'] = 'unclassified';
+  const sub = report.subject.toLowerCase();
+  const note = (report.note ?? '').toLowerCase();
+
+  if (report.type === 'policy') {
+    if (sub.includes('leap') || note.includes('閏')) classification = 'leap-month-variance';
+    else if (sub.includes('boundary') || note.includes('換日') || note.includes('zi')) classification = 'day-boundary-variance';
+    else classification = 'school-variance';
+  } else if (report.type === 'table' || report.type === 'implementation') {
+    if (sub.includes('calendar') || sub.includes('solar') || sub.includes('lunar')) classification = 'calendar-variance';
+    else if (sub.includes('time') || sub.includes('dst') || sub.includes('timezone')) classification = 'time-basis-variance';
+    else if (sub.includes('sihua') || sub.includes('aux') || sub.includes('major') || sub.includes('star')) classification = 'school-variance';
+  }
+
+  return { ...report, classification };
 }
 
 export const DIFFERENTIAL_CLASSES: ConflictReport['classification'][] = [

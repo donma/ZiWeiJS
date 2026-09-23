@@ -66,7 +66,11 @@ test.describe('P2-5 鍵盤操作', () => {
     const iYear = order.indexOf('input:year');
     const iHour = order.indexOf('input:hour');
     const iSubmit = order.indexOf('button:submit');
-    expect(order.some(x => x.startsWith('a:#')), `Tab 需到達 nav 連結（${trace}）`).toBe(true);
+    // WebKit (Safari) 預設 Tab 不聚焦一般 <a>（需 Option+Tab），在此僅 Chromium/Firefox 強求 nav 連結
+    const isWebKit = test.info().project.name === 'webkit';
+    if (!isWebKit) {
+      expect(order.some(x => x.startsWith('a:#')), `Tab 需到達 nav 連結（${trace}）`).toBe(true);
+    }
     expect(iYear, `Tab 需到達年份欄位（${trace}）`).toBeGreaterThanOrEqual(0);
     expect(iHour).toBeGreaterThan(iYear);
     expect(iSubmit).toBeGreaterThanOrEqual(0);

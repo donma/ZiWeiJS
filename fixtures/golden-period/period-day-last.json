@@ -1,0 +1,69 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-period.ts",
+  "name": "day-last",
+  "note": "流日月底",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10,
+      "minute": 30
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "oracle": {
+    "targetDate": {
+      "year": 2026,
+      "month": 4,
+      "day": 16
+    },
+    "activeMajor": {
+      "age": 37,
+      "major": {
+        "fromAge": 36,
+        "toAge": 45,
+        "branch": "mao",
+        "stem": "ji",
+        "palaceId": "property",
+        "ganzhi": {
+          "stem": "ji",
+          "branch": "mao"
+        }
+      },
+      "skipped": null
+    },
+    "year": {
+      "branch": "wu",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "wu"
+      },
+      "palaceId": "travel"
+    },
+    "month": {
+      "branch": "wei",
+      "stem": "ren",
+      "ganzhi": {
+        "stem": "ren",
+        "branch": "chen"
+      },
+      "palaceId": "health"
+    },
+    "day": {
+      "branch": "hai",
+      "stem": "geng",
+      "ganzhi": {
+        "stem": "geng",
+        "branch": "shen"
+      },
+      "palaceId": "siblings"
+    },
+    "hour": null
+  }
+}

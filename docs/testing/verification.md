@@ -89,7 +89,31 @@ source.schema.json    文獻來源
 |------|------|------|
 | 安星正確性 | 與 `iztro@2.6.1` 對照 | 10 案例 × 45 欄 = 450 欄，0 needs-review |
 | 安星快照 | `fixtures/differential/iztro/*.json`（12 筆） | CI 不需外部套件 |
+| 限運（大限/流年/流月/流日/流時） | `tools/differential-runner/iztro-period-runner.ts` | 5 案例 × 13~15 欄 |
 | 曆法層 | `lunar-typescript@1.8.6` vs `lunar-lite@0.2.8` | 73,384 日逐日 |
+
+### 限運差分（spec 2nd §P0-9）
+
+```bash
+npm run differential:period              # 即時比對（需 iztro）
+npm run differential:period -- --write-fixtures   # 更新存檔
+```
+
+比對欄位：`stem` / `branch` / `lifePalaceBranch`（限運命宮疊盤位置）與 `sihua`。
+
+差異一律分類，**禁止 `unclassified` 進入通過狀態**：
+
+```text
+school-variance | calendar-variance | time-basis-variance |
+day-boundary-variance | leap-month-variance | bug | external-error
+```
+
+目前 66 欄中 49 match / 17 needs-review，全部已分類（`school-variance` 13、`calendar-variance` 4）。
+
+存檔位於 `fixtures/differential/iztro-period/`，由 `tests/differential/iztro-period.test.ts` 驗證
+（CI 不需要 iztro 也能跑）：
+- 0 unclassified
+- 引擎現行輸出與存檔 oracle 一致
 
 ### 曆法差分（P2-6）
 

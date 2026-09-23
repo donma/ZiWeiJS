@@ -32,6 +32,8 @@ function collect(dir: string): string[] {
   const out: string[] = [];
   for (const entry of readdirSync(dir)) {
     const p = join(dir, entry);
+    // iztro-period 為限運差分 fixture，形狀不同，由 tests/differential/iztro-period.test.ts 驗證
+    if (entry === 'iztro-period') continue;
     if (statSync(p).isDirectory()) out.push(...collect(p));
     else if (entry.endsWith('.json')) out.push(p);
   }

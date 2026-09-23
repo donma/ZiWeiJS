@@ -5,6 +5,7 @@
   "type": "object",
   "required": ["profileId", "name"],
   "properties": {
+    "$schema": { "type": "string" },
     "profileId": { "type": "string" },
     "name": { "type": "object", "additionalProperties": { "type": "string" } },
     "description": { "type": "object", "additionalProperties": { "type": "string" } },
@@ -20,15 +21,22 @@
       "type": "string",
       "enum": ["mid-month", "same-as-normal", "split", "next-month"]
     },
-    "transformationPolicy": { "type": "string" },
-    "starRules": { "type": "object" },
-    "periodRules": { "type": "object" },
-    "dignityRules": { "type": "object" },
+    "periodRules": {
+      "type": "object",
+      "description": "目前支援 ageMethod: virtual-age",
+      "properties": {
+        "ageMethod": { "type": "string", "enum": ["virtual-age"] }
+      }
+    },
     "ruleOverrides": {
       "type": "object",
-      "description": "canonical ruleId -> variant ruleId",
+      "description": "canonical ruleId -> variant ruleId（所有 variant 統一由此機制控制）",
       "additionalProperties": { "type": "string" }
+    },
+    "_reserved": {
+      "type": "object",
+      "description": "未實作或保留之控制欄位（不得宣稱為 runtime 有效）"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

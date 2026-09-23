@@ -194,8 +194,19 @@ for (const c of CASES) {
 
   const file = join(outDir, `golden-${c.name}.json`);
   if (checkOnly) {
-    if (!readdirSync(outDir).includes(`golden-${c.name}.json`)) {
-      failures.push({ name: c.name, details: ['fixture missing'] });
+    let existingRaw: string;
+    try {
+      existingRaw = readFileSync(file, 'utf8');
+    } catch {
+      failures.push({ name: c.name, details: ['fixture file missing'] });
+      continue;
+    }
+    const existing = JSON.parse(existingRaw) as { oracle?: unknown; input?: unknown };
+    // deep compare oracle
+    const expStr = JSON.stringify(fixture.oracle);
+    const actStr = JSON.stringify(existing.oracle);
+    if (expStr !== actStr) {
+      failures.push({ name: c.name, details: ['oracle drift detected (current calculation does not match stored fixture)'] });
     }
     continue;
   }
@@ -227,5 +238,5 @@ if (!checkOnly) {
   console.log(`golden v2 written: ${written.length} fixtures${checkOnly ? '' : ''}`);
   console.log('all externally verified against SRC.IZTRO where applicable');
 } else {
-  console.log(`golden v2 check OK — ${CASES.length} expected fixtures present`);
+  console.log(`golden v2 check OK — ${CASES.length} fixtures re-calculated, verified against iztro, and match stored oracle (no drift)`);
 }

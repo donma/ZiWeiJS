@@ -1,0 +1,78 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-period.ts",
+  "name": "late-zi-23",
+  "note": "23:00 子時換日",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 23,
+      "minute": 30
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "oracle": {
+    "targetDate": {
+      "year": 2026,
+      "month": 9,
+      "day": 23,
+      "hour": 23
+    },
+    "activeMajor": {
+      "age": 37,
+      "major": {
+        "fromAge": 34,
+        "toAge": 43,
+        "branch": "shen",
+        "stem": "jia",
+        "palaceId": "property",
+        "ganzhi": {
+          "stem": "jia",
+          "branch": "shen"
+        }
+      },
+      "skipped": null
+    },
+    "year": {
+      "branch": "wu",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "wu"
+      },
+      "palaceId": "parents"
+    },
+    "month": {
+      "branch": "chou",
+      "stem": "ding",
+      "ganzhi": {
+        "stem": "ding",
+        "branch": "you"
+      },
+      "palaceId": "wealth"
+    },
+    "day": {
+      "branch": "chou",
+      "stem": "geng",
+      "ganzhi": {
+        "stem": "geng",
+        "branch": "zi"
+      },
+      "palaceId": "wealth"
+    },
+    "hour": {
+      "branch": "chou",
+      "stem": "wu",
+      "ganzhi": {
+        "stem": "wu",
+        "branch": "zi"
+      },
+      "palaceId": "wealth"
+    }
+  }
+}

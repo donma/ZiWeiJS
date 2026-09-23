@@ -70,6 +70,7 @@ export function ruleDetailHtml(ruleId: string): string {
         <span class="badge ${rule.status}">${rule.status}</span>
         <span class="badge">v${rule.ruleVersion}</span>
         ${variant ? `<span class="badge variant">variant of ${variant}</span>` : ''}
+        ${ZiWei.Research.hasOpen(rule.ruleId) ? '<span class="badge warn" style="background:#8a5a1520;color:#8a5a15">open research</span>' : ''}
       </div>
     </div>
     ${rule.description ? `<p class="sub small" style="margin:10px 0 0">${t(rule.description)}</p>` : ''}
@@ -117,6 +118,21 @@ export function ruleDetailHtml(ruleId: string): string {
       <tbody>${(rule.changeLog ?? []).map(c => `<tr><td class="mono">${c.version}</td><td><span class="badge">${c.type}</span></td><td>${c.note ?? ''}</td></tr>`).join('')}</tbody>
     </table>`}
     </div>
+
+    ${ZiWei.Research.forRule(rule.ruleId).length ? `
+    <h3 style="font-size:13px;margin:16px 0 6px">相關研究項目 Research Queue</h3>
+    <div class="table-scroll">
+    <table class="data small">
+      <thead><tr><th>ID</th><th>狀態</th><th>類型</th><th>標題</th><th>提問</th></tr></thead>
+      <tbody>${ZiWei.Research.forRule(rule.ruleId).map(i => `<tr>
+        <td class="mono">${i.researchId}</td>
+        <td><span class="badge ${i.status === 'open' ? 'warn' : 'canonical'}">${i.status}</span></td>
+        <td><span class="badge">${i.type}</span></td>
+        <td>${i.title}</td>
+        <td class="small sub">${i.question}</td>
+      </tr>`).join('')}</tbody>
+    </table>
+    </div>` : ''}
 
     <h3 style="font-size:13px;margin:16px 0 6px">Trace 範例</h3>
     <pre tabindex="0" class="json" style="max-height:200px">${escapeHtml(traceExample(rule))}</pre>

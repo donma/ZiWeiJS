@@ -1,7 +1,11 @@
 {
   "$schema": "../schemas/profile.schema.json",
   "profileId": "school-ma-hu",
-  "name": { "zh-TW": "魁鉞馬虎版", "zh-CN": "魁钺马虎版", "en": "Kui Yue (Ma-Hu variant)" },
+  "name": {
+    "zh-TW": "魁鉞馬虎版",
+    "zh-CN": "魁钺马虎版",
+    "en": "Kui Yue (Ma-Hu variant)"
+  },
   "description": {
     "zh-TW": "辛干天魁天鉞採『六辛逢馬虎』（午、寅）；與『逢馬蛇』版並存。",
     "en": "Xin stem Kui/Yue per 'ma-hu' verse."
@@ -9,10 +13,6 @@
   "timeConvention": "civil",
   "dayBoundary": "midnight",
   "leapMonthPolicy": "same-as-normal",
-  "transformationPolicy": "natal-stem",
-  "starRules": { "kuiyue": "ma-hu" },
-  "periodRules": {},
-  "dignityRules": {},
   "ruleOverrides": {
     "ZW.CALC.STAR.YEARSTEM_AUX.001": "ZW.CALC.STAR.YEARSTEM_AUX.V001"
   }

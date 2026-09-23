@@ -1,14 +1,16 @@
 {
   "$schema": "../schemas/profile.schema.json",
   "profileId": "canonical",
-  "name": { "zh-TW": "標準", "zh-CN": "标准", "en": "Canonical" },
-  "description": { "zh-TW": "Bible 官方標準 profile：民用時、午夜換日、閏月歸當月。", "en": "Official canonical profile." },
+  "name": {
+    "zh-TW": "標準",
+    "zh-CN": "标准",
+    "en": "Canonical"
+  },
+  "description": {
+    "zh-TW": "Bible 官方標準 profile：民用時、午夜換日、閏月歸當月。",
+    "en": "Official canonical profile."
+  },
   "timeConvention": "civil",
   "dayBoundary": "midnight",
-  "leapMonthPolicy": "same-as-normal",
-  "transformationPolicy": "natal-stem",
-  "starRules": {},
-  "periodRules": {},
-  "dignityRules": {},
-  "ruleOverrides": {}
+  "leapMonthPolicy": "same-as-normal"
 }

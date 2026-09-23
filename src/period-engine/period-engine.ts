@@ -8,6 +8,7 @@ import { getStar } from '../executors/star-executors.js';
 import { sihuaForStem } from '../executors/star-executors.js';
 import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import { Solar } from 'lunar-typescript';
+import { monthLifeBranch, dayLifeBranch } from './period-target.js';
 
 const SUIJIAN_STARS = [
   'ZW.STAR.PERIOD.SUIJIAN', 'ZW.STAR.PERIOD.HUIQI', 'ZW.STAR.PERIOD.SANGMEN2',
@@ -156,7 +157,9 @@ function periodPalaceStem(yearStem: StemId, _pi: number, branch: BranchId): Stem
 }
 
 export function calcYearPeriod(ctx: EngineContext, year: number): ExecutorOutcome {
-  const gz = ganzhiOfSolarYear(year);
+  const pt = ctx.periodTarget;
+  // 流年干支：由正規化目標之農曆年干支（非 Gregorian），統一自 periodTarget 取
+  const gz = pt ? pt.ganzhi.year : ganzhiOfSolarYear(year);
   const palace = ctx.palaces.find(p => p.branch === gz.branch)!;
   const overlay = buildPeriodOverlay(
     ctx, 'year', gz.stem, gz.branch,
@@ -176,16 +179,16 @@ export function calcYearPeriod(ctx: EngineContext, year: number): ExecutorOutcom
 }
 
 /**
- * 以 lunar-typescript 取得目標時刻的真實四柱干支，避免近似誤差。
- * @param dayStemFallback 當無日期時使用的日干
+ * 以 lunar-typescript 取得目標時刻的真實四柱干支。
+ * 限運 executor 一律經 periodTarget 提供，此函式僅供外部 / 測試使用。
  */
-function ganzhiAt(year: number, month: number, day: number, hour: number): {
+function ganzhiAt(year: number, month: number, day: number, hour: number, minute = 0): {
   year: { stem: StemId; branch: BranchId };
   month: { stem: StemId; branch: BranchId };
   day: { stem: StemId; branch: BranchId };
   hour: { stem: StemId; branch: BranchId };
 } {
-  const lunar = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+  const lunar = Solar.fromYmdHms(year, month, day, hour, minute, 0).getLunar();
   const parse = (gz: string) => ({
     stem: STEMS['甲乙丙丁戊己庚辛壬癸'.indexOf(gz[0])],
     branch: BRANCHES['子丑寅卯辰巳午未申酉戌亥'.indexOf(gz[1])]
@@ -198,64 +201,79 @@ function ganzhiAt(year: number, month: number, day: number, hour: number): {
   };
 }
 
-export function calcMonthPeriod(ctx: EngineContext, year: number, month: number, day = 15): ExecutorOutcome | void {
-  if (!ctx.yearPeriod) return;
-  // 以當月 15 日取月柱（避開節氣交界爭議）
-  const gz = ganzhiAt(year, month, day, 12);
-  const baseIdx = branchIndex(ctx.yearPeriod.branch);
-  const branch = branchAt(baseIdx + (month - 1));
+export function calcMonthPeriod(ctx: EngineContext): ExecutorOutcome | void {
+  if (!ctx.yearPeriod || !ctx.periodTarget) return;
+  const pt = ctx.periodTarget;
+  // 流月命宮：由流年命宮起「農曆正月」順數（spec 2nd §P0-1），
+  // 用經 leapMonthPolicy 處理後之 effectiveLunarMonth，而非 Gregorian month。
+  const branch = monthLifeBranch(ctx.yearPeriod.branch, pt.effectiveLunarMonth);
   const palace = ctx.palaces.find(p => p.branch === branch)!;
-  const overlay = buildPeriodOverlay(ctx, 'month', gz.month.stem, gz.month.branch,
-    (_pi, b) => periodPalaceStem(gz.month.stem, 0, b));
+  // 流月干支：目標代表日之真實月柱
+  const gz = pt.ganzhi.month;
+  const overlay = buildPeriodOverlay(ctx, 'month', gz.stem, gz.branch,
+    (_pi, b) => periodPalaceStem(gz.stem, 0, b));
   ctx.monthPeriod = {
     scope: 'month',
-    stem: gz.month.stem,
+    stem: gz.stem,
     branch,
     palaceId: palace.id,
-    ganzhi: { stem: gz.month.stem, branch: gz.month.branch },
-    label: { 'zh-TW': `流月 ${month}`, en: `Month ${month}` },
+    ganzhi: { stem: gz.stem, branch: gz.branch },
+    label: {
+      'zh-TW': `流月 ${pt.lunar.month}月${pt.lunar.isLeapMonth ? '（閏）' : ''}`,
+      en: `Month ${pt.effectiveLunarMonth}`
+    },
     overlay
   };
   return {
-    inputs: { year, month, day, monthGanzhi: `${gz.month.stem}-${gz.month.branch}` },
-    result: `${gz.month.stem}-${branch} @ ${palace.id}`
+    inputs: {
+      lunarMonth: pt.lunar.month, isLeapMonth: pt.lunar.isLeapMonth,
+      effectiveLunarMonth: pt.effectiveLunarMonth,
+      representativeDate: pt.isRepresentativeDate,
+      monthGanzhi: `${gz.stem}-${gz.branch}`
+    },
+    result: `${gz.stem}-${branch} @ ${palace.id}`
   };
 }
 
-export function calcDayPeriod(ctx: EngineContext, day: number, year?: number, month?: number): ExecutorOutcome | void {
-  if (!ctx.monthPeriod) return;
-  const baseIdx = branchIndex(ctx.monthPeriod.branch);
-  const branch = branchAt(baseIdx + (day - 1));
+export function calcDayPeriod(ctx: EngineContext): ExecutorOutcome | void {
+  if (!ctx.monthPeriod || !ctx.periodTarget) return;
+  const pt = ctx.periodTarget;
+  // 流日命宮：自流月命宮起「農曆初一」順數至當日（spec 2nd §P0-2），
+  // 用 lunar day 而非 Gregorian day。
+  const branch = dayLifeBranch(ctx.monthPeriod.branch, pt.lunar.day);
   const palace = ctx.palaces.find(p => p.branch === branch)!;
-  const now = new Date();
-  const gz = ganzhiAt(year ?? now.getFullYear(), month ?? (now.getMonth() + 1), day, 12);
-  const overlay = buildPeriodOverlay(ctx, 'day', gz.day.stem, gz.day.branch,
-    (_pi, b) => periodPalaceStem(gz.day.stem, 0, b));
+  // 流日干支：目標日期之真實日柱（不再 new Date fallback）
+  const gz = pt.ganzhi.day;
+  const overlay = buildPeriodOverlay(ctx, 'day', gz.stem, gz.branch,
+    (_pi, b) => periodPalaceStem(gz.stem, 0, b));
   ctx.dayPeriod = {
     scope: 'day',
-    stem: gz.day.stem,
+    stem: gz.stem,
     branch,
     palaceId: palace.id,
-    ganzhi: { stem: gz.day.stem, branch: gz.day.branch },
-    label: { 'zh-TW': `流日 ${day}`, en: `Day ${day}` },
+    ganzhi: { stem: gz.stem, branch: gz.branch },
+    label: { 'zh-TW': `流日 ${pt.lunar.day}日`, en: `Day ${pt.lunar.day}` },
     overlay
   };
   return {
-    inputs: { day, dayGanzhi: `${gz.day.stem}-${gz.day.branch}` },
-    result: `${gz.day.stem}-${branch} @ ${palace.id}`
+    inputs: { lunarDay: pt.lunar.day, dayGanzhi: `${gz.stem}-${gz.branch}` },
+    result: `${gz.stem}-${branch} @ ${palace.id}`
   };
 }
 
 export function calcHourPeriod(
-  ctx: EngineContext, hourBranch: BranchId,
-  hourStem?: StemId, hourGanzhiBranch?: BranchId
+  ctx: EngineContext
 ): ExecutorOutcome | void {
-  if (!ctx.dayPeriod) return;
+  const pt = ctx.periodTarget;
+  if (!ctx.dayPeriod || !pt || !pt.hourBranch || !pt.ganzhi.hour) return;
+  const hourBranch = pt.hourBranch;
+  const hourGanzhi = pt.ganzhi.hour;
   const baseIdx = branchIndex(ctx.dayPeriod.branch);
   const branch = branchAt(baseIdx + branchIndex(hourBranch));
   const palace = ctx.palaces.find(p => p.branch === branch)!;
-  const stem = hourStem ?? ctx.dayPeriod.stem;
-  const gzBranch = hourGanzhiBranch ?? hourBranch;
+  // 流時干支：目標時之真實時柱（由 periodTarget.ganzhi.hour 提供，含 minute 精細度）
+  const stem = hourGanzhi.stem;
+  const gzBranch = hourGanzhi.branch;
   const overlay = buildPeriodOverlay(ctx, 'hour', stem, gzBranch,
     (_pi, b) => periodPalaceStem(stem, 0, b));
   ctx.hourPeriod = {

@@ -429,12 +429,14 @@ export interface Profile {
   description?: LocalizedText;
   timeConvention: 'civil' | 'true-solar' | 'local-mean-solar';
   dayBoundary: 'midnight' | 'zi-hour';
-  leapMonthPolicy: string;
-  transformationPolicy?: string;
-  starRules?: Record<string, string>;
-  periodRules?: Record<string, string>;
-  dignityRules?: Record<string, string>;
+  /** 閏月處理（same-as-normal | next-month | mid-month；split 暫未支援） */
+  leapMonthPolicy: 'mid-month' | 'same-as-normal' | 'split' | 'next-month' | string;
+  /** 限運相關設定（目前支援 ageMethod: 'virtual-age'） */
+  periodRules?: { ageMethod?: 'virtual-age' | string };
+  /** 所有演算法 variant 統一由此機制控制（canonical ruleId -> variant ruleId） */
   ruleOverrides?: Record<string, string>;
+  /** 保留欄位（未實作不得宣稱有 runtime 效果，spec 2nd §P0-8） */
+  _reserved?: Record<string, unknown>;
 }
 
 export interface RuleDataFile {

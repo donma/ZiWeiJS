@@ -22,23 +22,56 @@ c.certainty.periods // 'unavailable'
 interface TargetDate {
   year: number;      // 必填
   month?: number;    // 1-12
-  day?: number;      // 1-31，需有 month
+  day?: number;      // 1-31，需有 month（且須為真實日期）
   hour?: number;     // 0-23，需有 day
-  minute?: number;
+  minute?: number;   // 0-59，需有 hour
   timezone?: string;
 }
 ```
 
-違反依存關係（day 無 month、hour 無 day、缺 year）→ `INVALID_TARGET_DATE`。
+違反依存關係（day 無 month、hour 無 day、minute 無 hour、缺 year）→ `INVALID_TARGET_DATE`。
+
+日期必須真實存在：`2025-02-29` / `2026-04-31` / `2026-13-01` 皆為 `INVALID_TARGET_DATE`
+（不得靠 JS `Date` rollover 默默接受）。
+
+語意：
+
+```text
+year                → active major + 流年
+year + month        → 語意模糊（Gregorian month 可能跨兩個農曆月）
+                      → 以該月 15 日為 representative date，並在輸出標示
+year + month + day  → exact date（流月 / 流日以農曆月日定位）
++ hour（+ minute）  → exact hour（流時）
+```
 
 限運採**逐層疊加**：
 
 | targetDate 提供 | 產出 |
 |---|---|
 | `{ year }` | 流年 |
-| `{ year, month }` | 流年 + 流月 |
+| `{ year, month }` | 流年 + 流月（representative date） |
 | `{ year, month, day }` | + 流日 |
 | `{ year, month, day, hour }` | + 流時 + 限運四化 |
+
+## 農曆語意（重要）
+
+流月與流日**一律以農曆定位**，不得使用 Gregorian month / day：
+
+- 流月命宮：由流年命宮起**農曆正月**順數至目標農曆月
+- 流日命宮：由流月命宮起**農曆初一**順數至目標農曆日
+
+因此「同一農曆月份內」不會單純因 Gregorian 日期不同而被判為不同流月。
+
+### leapMonthPolicy
+
+閏月目標以 `profile.leapMonthPolicy` 決定有效月序：
+
+| policy | 閏五月 |
+|---|---|
+| `same-as-normal` | 視同五月 |
+| `next-month` | 視同六月 |
+| `mid-month` | 初一~十五 → 五月；十六~月底 → 六月 |
+| `split` | **尚未支援**（現行 Period model 無法表達 13/14 個流月）→ `UNSUPPORTED_PROFILE` |
 
 ## 取得限運
 
@@ -75,15 +108,24 @@ NO_MAJOR_PERIODS
 
 **大限四化使用 `periods.active.major` 的天干**，不是 `majorPeriods[0]`。
 
-## 限運干支
+## 限運干支與命宮地支語意契約（spec 2nd §P0-3）
 
-`PeriodInfo.branch` 是**限運命宮疊盤位置**，與該限運的真實干支無關。
-真實干支請讀 `PeriodInfo.ganzhi`：
+必須嚴格區分兩者：
+
+- `PeriodInfo.branch`：**該限運命宮所在的地支**（用於十二宮疊盤定位）。
+  例如流月命宮由流年命宮起農曆正月順數所得之地支、流日命宮由流月命宮起農曆初一順數所得之地支。
+- `PeriodInfo.ganzhi`：**目標日期本身該層級的真實干支**（以曆法實際日期推算之四柱）。
+  `PeriodInfo.ganzhi.branch` 為該四柱的地支（如日柱地支、時柱地支）。
+
+兩者屬於不同概念，偶爾可能恰好相同，不得假設 `branch === ganzhi.branch`，亦不得假設必不相同：
 
 ```ts
-timed.periods.day.branch        // 流日命宮在十二宮疊盤中的位置
-timed.periods.day.ganzhi        // { stem: 'geng', branch: 'chen' } ← 該日真實日柱
-timed.periods.hour.ganzhi       // 由日干 + 時支推算
+timed.periods.month.branch        // 流月命宮所在宮位地支（疊盤定位）
+timed.periods.month.ganzhi        // { stem: 'geng', branch: 'yin' } ← 目標日農曆月份之真實月柱
+timed.periods.day.branch          // 流日命宮所在宮位地支（自流月命宮起初一順數至當日農曆日）
+timed.periods.day.ganzhi          // { stem: 'geng', branch: 'chen' } ← 該日真實日柱
+timed.periods.hour.branch         // 流時命宮所在宮位地支
+timed.periods.hour.ganzhi         // 該時刻真實時柱（日干+時辰）
 ```
 
 各層干支一律由 `targetDate` 實際推算，**不會沿用上層天干**。

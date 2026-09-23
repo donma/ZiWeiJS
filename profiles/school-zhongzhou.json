@@ -1,7 +1,11 @@
 {
   "$schema": "../schemas/profile.schema.json",
   "profileId": "school-zhongzhou",
-  "name": { "zh-TW": "中州派", "zh-CN": "中州派", "en": "Zhongzhou School" },
+  "name": {
+    "zh-TW": "中州派",
+    "zh-CN": "中州派",
+    "en": "Zhongzhou School"
+  },
   "description": {
     "zh-TW": "中州派：庚干天府化權、天相化科；民用時、午夜換日。",
     "en": "Zhongzhou school: Geng stem Tian Fu hua quan / Tian Xiang hua ke."
@@ -9,10 +13,6 @@
   "timeConvention": "civil",
   "dayBoundary": "midnight",
   "leapMonthPolicy": "same-as-normal",
-  "transformationPolicy": "natal-stem",
-  "starRules": { "kuiyue": "ma-hu" },
-  "periodRules": {},
-  "dignityRules": {},
   "ruleOverrides": {
     "ZW.CALC.SIHUA.NATAL.001": "ZW.CALC.SIHUA.NATAL.V001"
   }

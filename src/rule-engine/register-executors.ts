@@ -24,9 +24,8 @@ import { verifySolarLunar, verifyGanzhi, verifyTrueSolar } from './calendar-exec
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
 import { calcDignities } from '../dignity-engine/dignity-engine.js';
 import {
-  calcMajorPeriods, calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod, ganzhiAt
+calcMajorPeriods, calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod
 } from '../period-engine/period-engine.js';
-import { hourBranchFromHour } from '../calendar/calendar-engine.js';
 import {
   sanFangSiZhengBranches, trineBranches, adjacentBranches, oppositeBranchOf
 } from '../relation-engine/relation-engine.js';
@@ -44,7 +43,7 @@ function calcMonthPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {
   if (!t || t.month === undefined) {
     return { inputs: {}, result: null, status: 'skipped', reason: 'NO_TARGET_MONTH' };
   }
-  return calcMonthPeriod(ctx, t.year, t.month, t.day ?? 15);
+  return calcMonthPeriod(ctx);
 }
 
 function calcDayPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {
@@ -52,7 +51,7 @@ function calcDayPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {
   if (!t || t.month === undefined || t.day === undefined) {
     return { inputs: {}, result: null, status: 'skipped', reason: 'NO_TARGET_DAY' };
   }
-  return calcDayPeriod(ctx, t.day, t.year, t.month);
+  return calcDayPeriod(ctx);
 }
 
 function calcHourPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {
@@ -60,8 +59,7 @@ function calcHourPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {
   if (!t || t.month === undefined || t.day === undefined || t.hour === undefined) {
     return { inputs: {}, result: null, status: 'skipped', reason: 'NO_TARGET_HOUR' };
   }
-  const gz = ganzhiAt(t.year, t.month, t.day, t.hour);
-  return calcHourPeriod(ctx, hourBranchFromHour(t.hour), gz.hour.stem, gz.hour.branch);
+  return calcHourPeriod(ctx);
 }
 
 function calcSihuaPeriodFromTarget(ctx: EngineContext): ExecutorOutcome | void {

@@ -27,7 +27,21 @@ export default defineConfig({
     screenshot: 'off'
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] }
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+      // 跨瀏覽器 smoke / a11y；快照僅在 chromium 維護（避免字型跨引擎 diff 膨脹）
+      testIgnore: /ui\.e2e\.ts/
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+      testIgnore: /ui\.e2e\.ts/
+    }
   ],
   webServer: {
     // vite preview 預設只綁 localhost(IPv6)；明確指定 127.0.0.1 才能被 Playwright 探測

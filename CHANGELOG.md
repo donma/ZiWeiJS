@@ -109,10 +109,32 @@
   → 目前 10 sources / 20 evidence / 0 failed
 - 文件補 `docs/sources/source-tiers.md`：工程契約類規則與 Evidence 驗證說明
 
-## 0.4.0 — Hardening（P0 / P1 / P2 全數完成）
+## 0.4.0 — Hardening（P0 / P1 / P2 全數完成，含第二輪 Correctness / Governance）
 
 目標：把 repo 從「功能完整的排盤程式」提升為「可被第三方當標準依據的 Bible Repo」。
 重點是可信度、可重現、可追溯、可驗證、可治理 —— 不是功能數量。
+
+### 第二輪 Correctness / Governance Hardening
+- **P0-1 流月農曆語意**：不再把 Gregorian month 當農曆月；流月命宮由流年命宮起農曆正月順數，同一農曆月內不因國曆日期換月
+- **P0-2 流日農曆語意**：由流月命宮起農曆初一順數至農曆當日，不再使用 Gregorian day
+- **P0-3 PeriodInfo 契約固定**：明確 `branch`（限運命宮疊盤位置）與 `ganzhi.branch`（該層四柱真實地支）之語意差異
+- **P0-4 移除 new Date() fallback**：核心 engine 不得使用無引數之 `new Date()` / `Date.now()` 作為計算結果補缺
+- **P0-5 targetDate 真實日期驗證**：平年 2/29、4/31 等非法日期拋 `INVALID_TARGET_DATE`，不得靠 Date rollover 默默接受
+- **P0-6 TargetDate.minute 正式支援**：驗證 0..59；`ganzhiAt` 支援 minute 精細度
+- **P0-7 leapMonthPolicy 真正影響演算法**：支援 `same-as-normal`、`next-month`、`mid-month`；未支援之 `split` 明確拋 `UNSUPPORTED_PROFILE`
+- **P0-8 Profile 移除假控制欄位**：移除無 consumer 之 `starRules` / `dignityRules` / `transformationPolicy`；所有 variant 統一由 `ruleOverrides` 控制
+- **P0-9 限運 Differential**：五層限運（大限/流年/流月/流日/流時）對照 iztro；差異必分類（0 unclassified）；存檔至 `fixtures/differential/iztro-period/`
+- **P1-1 Golden 統計拆分**：externally verified（35）與 engine-only（8）明確分開
+- **P1-2 星曜覆蓋實測**：改為多案例真實排盤蒐集，不再以「非 deprecated 數量」冒充已安星（95/96 實測）
+- **P1-3 README 測試數字去重**：移除 Quick Start 手寫數字
+- **P1-4 Research Queue 公開 API**：`ZiWei.Research.list` / `.get` / `.forRule` / `.hasOpen`；Rules 頁面標示 open research 標籤
+- **P1-5 classifyDifference 真實分類**：依 policy/table/boundary 判定分類，不再永遠回 unclassified
+- **P1-7 SRC.LUNAR-TS 描述修正**：澄清真太陽時之經度修正與 equation of time 為 ZiWeiJS 自行實作
+- **P2-1 跨瀏覽器 CI**：Playwright 加入 Firefox 與 WebKit（smoke + a11y 三引擎全過）
+- **P2-2 Golden --check 真實漂移偵測**：重算並與 oracle 比對，任一 drift 立即報錯
+- **P2-3 Period Golden Fixtures**：10 筆限運黃金案例（大限切換、農曆跨月/年、閏月、初一/月底、23:00、時區、真太陽時跨日）
+- **P2-4 清理根目錄暫存檔**：移除 `.fixture-gen.tmp.ts`，`.gitignore` 加強
+- **P2-5 ROADMAP 重整**：分 Done / In progress / Next，澄清 research pipeline 範圍
 
 ### P0-1 Rule 真正成為 Source of Truth
 - 新增 `executor-registry` / `execute-rule` / `execution-plan`；`engine.ts` 不再直接呼叫 executor
@@ -210,8 +232,8 @@
 - `time.hour` 成為必填
 
 ### 測試
-- **358 tests / 25 files**（Vitest；0.3.0 為 150）
-- **33 Playwright tests**：UI / Visual 20 + Accessibility 13
+- **412 tests / 32 files**（Vitest；0.3.0 為 150）
+- **62 Playwright tests**：Chromium（UI 20 + a11y 13 + file:// 1）+ Firefox（14）+ WebKit（14）
 - `tests/integrity/`（spec §25）：與 `validate:integrity` 共用同一份實作，ID 唯一 / 參照可解析 /
   canonical 溯源 / DSL 與 star schema / 執行計畫覆蓋 / changeLog 一致性 / chart output schema
 - `tests/regression/spec37.test.ts`（spec §37 逐條驗收）：無時辰→error、未知性別不 forward、
@@ -219,5 +241,6 @@
   DSL typo→error、profile override 生效、Trace 自動帶 source/evidence/version
 - Determinism（spec §26）：`JSON.stringify(calculate(input))` 連同 periods 完全一致，不再需要 strip
 - 差分：iztro 10 案例 × 45 欄 = 450 欄，0 needs-review；12 筆存檔 fixture
+- 限運差分：5 案例五層限運（66 欄，49 match / 17 分類完成）；5 筆存檔 fixture
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
-- Golden fixtures：35 筆 v2 oracle；Differential fixtures：12 筆（iztro）+ 3 筆（calendar）
+- Golden fixtures：35 筆 v2 oracle + 8 legacy + 10 筆 period golden oracle；Differential fixtures：17 筆（12 iztro + 5 iztro-period）+ 3 筆（calendar）

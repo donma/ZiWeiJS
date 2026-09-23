@@ -1,0 +1,73 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-period.ts",
+  "name": "true-solar-rollover",
+  "note": "真太陽時跨日（本命）",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 0,
+      "minute": 10
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male",
+    "location": {
+      "longitude": 0
+    },
+    "timeConvention": "local-mean-solar"
+  },
+  "oracle": {
+    "targetDate": {
+      "year": 2026,
+      "month": 9,
+      "day": 23
+    },
+    "activeMajor": {
+      "age": 37,
+      "major": {
+        "fromAge": 32,
+        "toAge": 41,
+        "branch": "zi",
+        "stem": "wu",
+        "palaceId": "property",
+        "ganzhi": {
+          "stem": "wu",
+          "branch": "zi"
+        }
+      },
+      "skipped": null
+    },
+    "year": {
+      "branch": "wu",
+      "stem": "bing",
+      "ganzhi": {
+        "stem": "bing",
+        "branch": "wu"
+      },
+      "palaceId": "children"
+    },
+    "month": {
+      "branch": "chou",
+      "stem": "ding",
+      "ganzhi": {
+        "stem": "ding",
+        "branch": "you"
+      },
+      "palaceId": "career"
+    },
+    "day": {
+      "branch": "chou",
+      "stem": "geng",
+      "ganzhi": {
+        "stem": "geng",
+        "branch": "zi"
+      },
+      "palaceId": "career"
+    },
+    "hour": null
+  }
+}

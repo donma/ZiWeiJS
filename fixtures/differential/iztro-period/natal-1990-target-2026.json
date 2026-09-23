@@ -1,0 +1,134 @@
+{
+  "id": "natal-1990-target-2026",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10,
+      "minute": 30
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "target": {
+    "year": 2026,
+    "month": 9,
+    "day": 23,
+    "hour": 14
+  },
+  "rows": [
+    {
+      "scope": "decadal",
+      "field": "stem",
+      "bible": "ji",
+      "external": "ji",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "branch",
+      "bible": "mao",
+      "external": "mao",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "lifePalaceBranch",
+      "bible": "mao",
+      "external": "mao",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "stem",
+      "bible": "bing",
+      "external": "bing",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "branch",
+      "bible": "wu",
+      "external": "wu",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "lifePalaceBranch",
+      "bible": "wu",
+      "external": "wu",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "stem",
+      "bible": "ding",
+      "external": "ding",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "branch",
+      "bible": "you",
+      "external": "you",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "lifePalaceBranch",
+      "bible": "chou",
+      "external": "mao",
+      "status": "needs-review",
+      "classification": "school-variance"
+    },
+    {
+      "scope": "daily",
+      "field": "stem",
+      "bible": "geng",
+      "external": "geng",
+      "status": "match"
+    },
+    {
+      "scope": "daily",
+      "field": "branch",
+      "bible": "zi",
+      "external": "zi",
+      "status": "match"
+    },
+    {
+      "scope": "daily",
+      "field": "lifePalaceBranch",
+      "bible": "chou",
+      "external": "mao",
+      "status": "needs-review",
+      "classification": "school-variance"
+    },
+    {
+      "scope": "hourly",
+      "field": "stem",
+      "bible": "gui",
+      "external": "gui",
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "branch",
+      "bible": "wei",
+      "external": "wei",
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "lifePalaceBranch",
+      "bible": "shen",
+      "external": "xu",
+      "status": "needs-review",
+      "classification": "school-variance"
+    }
+  ],
+  "externalError": null
+}

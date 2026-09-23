@@ -1,0 +1,67 @@
+{
+  "id": "year-only-target",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "target": {
+    "year": 2035
+  },
+  "rows": [
+    {
+      "scope": "decadal",
+      "field": "stem",
+      "bible": "jia",
+      "external": "jia",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "branch",
+      "bible": "shen",
+      "external": "shen",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "lifePalaceBranch",
+      "bible": "shen",
+      "external": "shen",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "stem",
+      "bible": "jia",
+      "external": "yi",
+      "status": "needs-review",
+      "classification": "calendar-variance"
+    },
+    {
+      "scope": "yearly",
+      "field": "branch",
+      "bible": "yin",
+      "external": "mao",
+      "status": "needs-review",
+      "classification": "calendar-variance"
+    },
+    {
+      "scope": "yearly",
+      "field": "lifePalaceBranch",
+      "bible": "yin",
+      "external": "mao",
+      "status": "needs-review",
+      "classification": "school-variance"
+    }
+  ],
+  "externalError": null
+}

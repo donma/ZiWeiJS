@@ -36,6 +36,10 @@ export {
   PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus,
   classifyDifference, DIFFERENTIAL_CLASSES, DIFFERENTIAL_CLASS_ZH
 } from './ai/research.js';
+export {
+  listResearch, getResearch, researchForRule, hasOpenResearch,
+  type ResearchItem
+} from './ai/research-registry.js';
 export type { ResearchStage, PipelineGuardResult, ConflictReport } from './ai/research.js';
 export { renderNarrative } from './narrative/narrative.js';
 export type { NarrativeSection } from './narrative/narrative.js';
@@ -54,6 +58,7 @@ import { toContext } from './ai/context.js';
 import {
   PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus, classifyDifference, DIFFERENTIAL_CLASSES
 } from './ai/research.js';
+import { listResearch, getResearch, researchForRule, hasOpenResearch } from './ai/research-registry.js';
 import { renderChartSvg } from './renderer/svg-renderer.js';
 import { explainTrace } from './trace/tracer.js';
 import {
@@ -94,7 +99,11 @@ export const ZiWei = {
     canAdvance,
     canPromoteStatus,
     classifyDifference,
-    classes: DIFFERENTIAL_CLASSES
+    classes: DIFFERENTIAL_CLASSES,
+    list: listResearch,
+    get: getResearch,
+    forRule: researchForRule,
+    hasOpen: hasOpenResearch
   },
   Rules: {
     get: getRule,

@@ -1,14 +1,16 @@
 {
   "$schema": "../schemas/profile.schema.json",
   "profileId": "true-solar",
-  "name": { "zh-TW": "真太陽時", "zh-CN": "真太阳时", "en": "True solar time" },
-  "description": { "zh-TW": "以出生地經度與均時差校正的真太陽時；需 location.longitude。", "en": "True solar time; requires location.longitude." },
+  "name": {
+    "zh-TW": "真太陽時",
+    "zh-CN": "真太阳时",
+    "en": "True solar time"
+  },
+  "description": {
+    "zh-TW": "以出生地經度與均時差校正的真太陽時；需 location.longitude。",
+    "en": "True solar time; requires location.longitude."
+  },
   "timeConvention": "true-solar",
   "dayBoundary": "midnight",
-  "leapMonthPolicy": "same-as-normal",
-  "transformationPolicy": "natal-stem",
-  "starRules": {},
-  "periodRules": {},
-  "dignityRules": {},
-  "ruleOverrides": {}
+  "leapMonthPolicy": "same-as-normal"
 }

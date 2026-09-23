@@ -67,6 +67,12 @@ const res = ZiWei.calculateSafe(input);
 if (!res.ok) console.error(res.error.code, res.error.message, res.error.details);
 ```
 
+## 限運資料契約（PeriodInfo）
+
+- `PeriodInfo.branch`：**該限運命宮所在的地支**（十二宮疊盤定位）。
+- `PeriodInfo.ganzhi`：**目標日期本身該層級之真實干支**（四柱干支）。`ganzhi.branch` 為該柱地支。
+- 兩者語意不同，偶爾可能剛好相同。流月 / 流日定位一律採農曆月日序（非 Gregorian）。
+
 ## Chart JSON 頂層結構
 
 ```jsonc
