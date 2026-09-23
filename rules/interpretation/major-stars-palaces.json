@@ -38,7 +38,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TIANJI.001",
@@ -76,7 +84,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TAIYANG.001",
@@ -114,7 +130,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_WUQU.001",
@@ -152,7 +176,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TIANTONG.001",
@@ -190,7 +222,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_LIANZHEN.001",
@@ -228,7 +268,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TIANFU.001",
@@ -266,7 +314,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TAIYIN.001",
@@ -304,7 +360,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TANLANG.001",
@@ -342,7 +406,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_JUMEN.001",
@@ -380,7 +452,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TIANXIANG.001",
@@ -418,7 +498,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_TIANLIANG.001",
@@ -456,7 +544,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.STAR_POJUN.001",
@@ -494,7 +590,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_ZIWEI.001",
@@ -532,7 +636,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TIANJI.001",
@@ -570,7 +682,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TAIYANG.001",
@@ -608,7 +728,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TIANTONG.001",
@@ -646,7 +774,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_LIANZHEN.001",
@@ -684,7 +820,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TIANFU.001",
@@ -722,7 +866,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TANLANG.001",
@@ -760,7 +912,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_JUMEN.001",
@@ -798,7 +958,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TIANXIANG.001",
@@ -836,7 +1004,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TIANLIANG.001",
@@ -874,7 +1050,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_QISHA.001",
@@ -912,7 +1096,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_POJUN.001",
@@ -950,7 +1142,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.STAR_TAIYIN_CN.001",
@@ -993,7 +1193,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     }
   ]
 }

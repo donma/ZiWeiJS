@@ -38,11 +38,14 @@
     },
     {
       "evidenceId": "EVD.CONSENSUS.MIAOWANG",
-      "sourceId": "SRC.MODERN-IMPL-CONSENSUS",
+      "sourceId": "SRC.IZTRO",
       "type": "supports",
-      "location": "各系統廟旺利陷表比對",
+      "location": {
+        "section": "iztro/src/star/location.js",
+        "anchor": "brightness"
+      },
       "confidence": 0.85,
-      "notes": "廟旺利陷各流派表略有差異，canonical 採多數一致版本；差異星曜保留 variant 空間。"
+      "notes": "廟旺利陷表為多系統比對後之衍生共識（Derived Evidence）。依 spec §P1-3 不聚合成單一 Source，實際引用具體實作 SRC.IZTRO；差異星曜保留 variant 空間。"
     },
     {
       "evidenceId": "EVD.QUANSHU.DAXIAN",
@@ -190,10 +193,62 @@
       "evidenceId": "EVD.SPEC.ENGINE.SEX_REQUIRED",
       "sourceId": "SRC.SPEC.ENGINE",
       "type": "supports",
-      "location": { "section": "§52 必須支援的錯誤狀態", "anchor": "UNKNOWN_SEX_FOR_CALCULATION" },
+      "location": {
+        "section": "§52 必須支援的錯誤狀態",
+        "anchor": "UNKNOWN_SEX_FOR_CALCULATION"
+      },
       "quote": "UNKNOWN_SEX_FOR_CALCULATION",
-      "confidence": 1.0,
+      "confidence": 1,
       "notes": "工程契約類：未提供 sexForCalculation 時必須回報此錯誤碼，不得預設為任一性別。"
+    },
+    {
+      "evidenceId": "EVD.CALENDAR.SOLAR_LUNAR",
+      "sourceId": "SRC.LUNAR-TS",
+      "type": "supports",
+      "location": {
+        "section": "Solar.getLunar / Lunar.getSolar",
+        "anchor": "conversion"
+      },
+      "confidence": 0.95,
+      "notes": "國曆↔農曆轉換（含閏月標記）由 SRC.LUNAR-TS 提供，並與 SRC.IZTRO 交叉比對。"
+    },
+    {
+      "evidenceId": "EVD.CALENDAR.GANZHI",
+      "sourceId": "SRC.LUNAR-TS",
+      "type": "supports",
+      "location": {
+        "section": "Lunar.getYearInGanZhi / getMonthInGanZhi / getDayInGanZhi / getTimeInGanZhi"
+      },
+      "confidence": 0.95,
+      "notes": "四柱干支（年柱以立春為界、月柱依節氣、日柱、時柱五鼠遁）之實作來源。"
+    },
+    {
+      "evidenceId": "EVD.CALENDAR.TRUESOLAR",
+      "sourceId": "SRC.LUNAR-TS",
+      "type": "supports",
+      "location": {
+        "section": "真太陽時 / 均時差近似"
+      },
+      "confidence": 0.8,
+      "notes": "經度修正 + 均時差近似公式。offset 精度受限於近似式，標記為 high 而非 certain。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.LIUNIAN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安流年流月流日流時訣",
+      "quote": "流年以太歲宮起，流月自流年命宮起正月，流日自流月命宮起初一，流時自流日命宮起子時。",
+      "confidence": 0.85,
+      "notes": "流年/流月/流日/流時命宮起法；各層干支仍以該層真實干支為準（見 §P0-3B/C）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.GONGWEI",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "宮位關係訣（對宮、三方四正、夾、拱）",
+      "quote": "對宮相沖，三方四正相會，兩鄰為夾。",
+      "confidence": 0.9,
+      "notes": "relation engine 之對宮、三合、三方四正、夾宮、拱照定義來源。"
     }
   ]
 }

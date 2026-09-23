@@ -7,8 +7,12 @@
       "title": "辛干天魁天鉞：馬虎 vs 馬蛇",
       "status": "open",
       "type": "variant-conflict",
-      "relatedRules": ["ZW.CALC.STAR.YEARSTEM_AUX.001"],
-      "evidence": ["EVD.KUIYUE.VARIANT"],
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARSTEM_AUX.001"
+      ],
+      "evidence": [
+        "EVD.KUIYUE.VARIANT"
+      ],
       "question": "辛干魁鉞歌訣有『六辛逢馬虎』（午寅）與『六辛逢馬蛇』（午巳）兩說。canonical 目前採馬虎（丑午），需確認主流排盤系統實作。",
       "nextAction": "比對 iztro / 文墨天機 / 古籍影本，確認後建立 variant 或修正 canonical。",
       "ownerReviewRequired": true
@@ -18,8 +22,12 @@
       "title": "火鈴安星起訣版本差異",
       "status": "open",
       "type": "variant-conflict",
-      "relatedRules": ["ZW.CALC.STAR.YEARBRANCH_AUX.001"],
-      "evidence": ["EVD.QUANSHU.HUOLING"],
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARBRANCH_AUX.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.HUOLING"
+      ],
       "question": "火星鈴星依年支三合局起子時順數，但各版本在部分局別的起點有差異（尤以亥卯未、巳酉丑）。",
       "nextAction": "蒐集至少三份古籍或三套系統比對，建立 variant 表。",
       "ownerReviewRequired": true
@@ -39,7 +47,10 @@
       "title": "命宮無主星之解讀權重",
       "status": "open",
       "type": "interpretation",
-      "relatedRules": ["ZW.INT.SOCIAL.FRIENDS_EMPTY.001", "ZW.INT.FAMILY.QIANGYANG_PARENTS.001"],
+      "relatedRules": [
+        "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+        "ZW.INT.FAMILY.QIANGYANG_PARENTS.001"
+      ],
       "question": "空宮借對宮的力度與是否降低 confidence，各派說法不一。",
       "nextAction": "補 evidence 後決定是否調降 strength/confidence。",
       "ownerReviewRequired": true
@@ -49,8 +60,12 @@
       "title": "廟旺利陷表流派差異盤點",
       "status": "open",
       "type": "table",
-      "relatedRules": ["ZW.CALC.DIGNITY.BRIGHTNESS.001"],
-      "evidence": ["EVD.CONSENSUS.MIAOWANG"],
+      "relatedRules": [
+        "ZW.CALC.DIGNITY.BRIGHTNESS.001"
+      ],
+      "evidence": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ],
       "question": "已採多數一致版本，但仍有若干星曜（如天同、巨門）各派表不同。",
       "nextAction": "逐星標記爭議，建立 per-star variant 覆寫機制。",
       "ownerReviewRequired": true
@@ -60,10 +75,31 @@
       "title": "庚干四化 canonical/variant 定案",
       "status": "candidate",
       "type": "variant-conflict",
-      "relatedRules": ["ZW.CALC.SIHUA.NATAL.001", "ZW.CALC.SIHUA.NATAL.V001"],
-      "evidence": ["EVD.QUANSHU.SIHUA", "EVD.SIHUA.VARIANT.GENG"],
+      "relatedRules": [
+        "ZW.CALC.SIHUA.NATAL.001",
+        "ZW.CALC.SIHUA.NATAL.V001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA",
+        "EVD.SIHUA.VARIANT.GENG"
+      ],
       "question": "庚干化權/化科：通行版（武曲/太陰）已定 canonical；中州派版（天府/天相）為 variant。是否維持雙軌？",
       "nextAction": "維持雙軌（符合 Bible 保存差異原則），待 Owner 最終確認。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.007",
+      "title": "真太陽時校正之依據與精度",
+      "status": "open",
+      "type": "evidence-gap",
+      "relatedRules": [
+        "ZW.CALC.CALENDAR.TRUESOLAR.001"
+      ],
+      "evidence": [
+        "EVD.CALENDAR.TRUESOLAR"
+      ],
+      "question": "現行真太陽時採「經度修正 + 均時差近似式」，僅有單一 Tier 3 來源。命理實務之真太陽時標準（含均時差公式版本、是否納入歷史時區/DST）需確認。",
+      "nextAction": "找尋 Tier 1/2 天文曆算或命理專著依據；確認後升回 canonical 或明確標示為近似值。",
       "ownerReviewRequired": true
     }
   ]

@@ -35,7 +35,8 @@
         "stars.*"
       ],
       "sourceRefs": [
-        "SRC.QUANJI"
+        "SRC.QUANJI",
+        "SRC.IZTRO"
       ],
       "evidenceRefs": [
         "EVD.KUIYUE.VARIANT"
@@ -90,7 +91,8 @@
         "stars.*"
       ],
       "sourceRefs": [
-        "SRC.QUANJI"
+        "SRC.QUANJI",
+        "SRC.IZTRO"
       ],
       "evidenceRefs": [
         "EVD.QUANSHU.HUOLING"
@@ -147,7 +149,8 @@
         "stars.*.dignity"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.IZTRO",
+        "SRC.WENMO"
       ],
       "evidenceRefs": [
         "EVD.CONSENSUS.MIAOWANG"

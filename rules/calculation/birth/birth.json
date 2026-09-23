@@ -46,7 +46,7 @@
     },
     {
       "ruleId": "ZW.CALC.BIRTH.SEX_REQUIRED.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.birth.sex",
       "category": "birth",

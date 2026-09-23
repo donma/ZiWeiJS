@@ -2,36 +2,449 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ziwei-bible/chart.schema.json",
   "title": "ZiWei Bible Chart",
+  "description": "公開 JSON 契約。核心物件採 additionalProperties:false；如需擴充請使用 extensions。",
   "type": "object",
-  "required": ["schemaVersion", "generatedWith", "input", "chart"],
+  "required": ["schemaVersion", "generatedWith", "input", "calendar", "birthContext", "chart", "periods", "certainty"],
+  "additionalProperties": false,
   "properties": {
     "schemaVersion": { "type": "string" },
     "generatedWith": {
       "type": "object",
+      "required": ["bibleVersion", "schemaVersion", "profile", "engineVersion"],
+      "additionalProperties": false,
       "properties": {
         "bibleVersion": { "type": "string" },
         "schemaVersion": { "type": "string" },
-        "profile": { "type": "string" }
+        "profile": { "type": "string" },
+        "engineVersion": { "type": "string" }
       }
     },
-    "engine": { "type": "object" },
-    "input": { "type": "object" },
-    "calendar": { "type": "object" },
-    "birthContext": { "type": "object" },
+    "input": {
+      "type": "object",
+      "required": ["calendarType", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "calendarType": { "enum": ["solar", "lunar"] },
+        "date": {
+          "type": "object",
+          "required": ["year", "month", "day"],
+          "additionalProperties": false,
+          "properties": {
+            "year": { "type": "integer" },
+            "month": { "type": "integer" },
+            "day": { "type": "integer" },
+            "isLeapMonth": { "type": "boolean" }
+          }
+        },
+        "time": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hour": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "minute": { "type": "integer", "minimum": 0, "maximum": 59 },
+            "second": { "type": "integer", "minimum": 0, "maximum": 59 }
+          }
+        },
+        "timezone": { "type": "string" },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "latitude": { "type": "number" },
+            "longitude": { "type": "number" },
+            "placeName": { "type": "string" }
+          }
+        },
+        "sexForCalculation": { "enum": ["male", "female", "unknown"] },
+        "timeConvention": { "enum": ["civil", "true-solar", "local-mean-solar"] },
+        "dayBoundary": { "enum": ["midnight", "zi-hour"] },
+        "name": { "type": "string" }
+      }
+    },
+    "calendar": { "$ref": "#/$defs/calendar" },
+    "birthContext": { "$ref": "#/$defs/birthContext" },
     "chart": {
       "type": "object",
+      "required": ["natal", "palaces", "stars", "transformations", "patterns"],
+      "additionalProperties": false,
       "properties": {
-        "natal": { "type": "object" },
-        "palaces": { "type": "array" },
-        "stars": { "type": "object" },
-        "transformations": { "type": ["object", "array"] },
-        "patterns": { "type": "array" }
+        "natal": {
+          "type": "object",
+          "required": ["lifePalace", "bodyPalace", "lifePalaceBranch", "bodyPalaceBranch"],
+          "additionalProperties": false,
+          "properties": {
+            "lifePalace": { "$ref": "#/$defs/palaceId" },
+            "bodyPalace": { "$ref": "#/$defs/palaceId" },
+            "lifePalaceBranch": { "$ref": "#/$defs/branch" },
+            "bodyPalaceBranch": { "$ref": "#/$defs/branch" },
+            "masterStar": { "type": "string" },
+            "bodyStar": { "type": "string" }
+          }
+        },
+        "palaces": { "type": "array", "items": { "$ref": "#/$defs/palace" } },
+        "stars": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/starPlacement" }
+        },
+        "transformations": { "type": "array", "items": { "$ref": "#/$defs/transformation" } },
+        "patterns": { "type": "array", "items": { "$ref": "#/$defs/patternResult" } }
       }
     },
-    "periods": { "type": "object" },
-    "interpretation": { "type": "object" },
-    "certainty": { "type": "object" },
-    "trace": { "type": "object" }
+    "periods": {
+      "type": "object",
+      "required": ["major"],
+      "additionalProperties": false,
+      "properties": {
+        "major": { "type": "array", "items": { "$ref": "#/$defs/majorPeriod" } },
+        "active": {
+          "type": "object",
+          "required": ["age", "asOf"],
+          "additionalProperties": false,
+          "properties": {
+            "age": { "type": "integer" },
+            "asOf": { "$ref": "#/$defs/targetDate" },
+            "major": { "$ref": "#/$defs/majorPeriod" },
+            "majorSkippedReason": { "type": "string" }
+          }
+        },
+        "year": { "$ref": "#/$defs/periodInfo" },
+        "month": { "$ref": "#/$defs/periodInfo" },
+        "day": { "$ref": "#/$defs/periodInfo" },
+        "hour": { "$ref": "#/$defs/periodInfo" }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "required": ["hits", "byDomain"],
+      "additionalProperties": false,
+      "properties": {
+        "hits": { "type": "array", "items": { "$ref": "#/$defs/interpretationHit" } },
+        "byDomain": {
+          "type": "object",
+          "additionalProperties": { "type": "array", "items": { "$ref": "#/$defs/interpretationHit" } }
+        }
+      }
+    },
+    "certainty": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/certainty" }
+    },
+    "trace": {
+      "type": "object",
+      "required": ["entries"],
+      "additionalProperties": false,
+      "properties": {
+        "entries": { "type": "array", "items": { "$ref": "#/$defs/traceEntry" } }
+      }
+    },
+    "extensions": { "type": "object", "additionalProperties": true }
   },
-  "additionalProperties": true
+  "$defs": {
+    "branch": { "enum": ["zi", "chou", "yin", "mao", "chen", "si", "wu", "wei", "shen", "you", "xu", "hai"] },
+    "stem": { "enum": ["jia", "yi", "bing", "ding", "wu", "ji", "geng", "xin", "ren", "gui"] },
+    "palaceId": {
+      "enum": ["life", "siblings", "spouse", "children", "wealth", "health", "travel", "friends", "career", "property", "fortune", "parents"]
+    },
+    "bureau": { "enum": ["shui2", "mu3", "jin4", "tu5", "huo6"] },
+    "certainty": { "enum": ["certain", "high", "medium", "low", "unknown", "unavailable", "variant-dependent"] },
+    "dignity": { "enum": ["miao", "wang", "de", "li", "ping", "bu", "xian"] },
+    "localizedText": { "type": "object", "additionalProperties": { "type": "string" } },
+    "ganzhiPair": {
+      "type": "object",
+      "required": ["stem", "branch"],
+      "additionalProperties": false,
+      "properties": { "stem": { "$ref": "#/$defs/stem" }, "branch": { "$ref": "#/$defs/branch" } }
+    },
+    "targetDate": {
+      "type": "object",
+      "required": ["year"],
+      "additionalProperties": false,
+      "properties": {
+        "year": { "type": "integer" },
+        "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "day": { "type": "integer", "minimum": 1, "maximum": 31 },
+        "hour": { "type": "integer", "minimum": 0, "maximum": 23 },
+        "minute": { "type": "integer", "minimum": 0, "maximum": 59 },
+        "timezone": { "type": "string" }
+      }
+    },
+    "calendar": {
+      "type": "object",
+      "required": ["solar", "lunar", "ganzhi", "hourBranch", "timezone", "utcOffsetMinutes", "timeConvention", "dayBoundary"],
+      "additionalProperties": false,
+      "properties": {
+        "solar": { "$ref": "#/$defs/ymd" },
+        "lunar": {
+          "type": "object",
+          "required": ["year", "month", "day", "isLeapMonth"],
+          "additionalProperties": false,
+          "properties": {
+            "year": { "type": "integer" },
+            "month": { "type": "integer" },
+            "day": { "type": "integer" },
+            "isLeapMonth": { "type": "boolean" }
+          }
+        },
+        "ganzhi": {
+          "type": "object",
+          "required": ["year", "month", "day", "hour"],
+          "additionalProperties": false,
+          "properties": {
+            "year": { "$ref": "#/$defs/ganzhiPair" },
+            "month": { "$ref": "#/$defs/ganzhiPair" },
+            "day": { "$ref": "#/$defs/ganzhiPair" },
+            "hour": { "$ref": "#/$defs/ganzhiPair" }
+          }
+        },
+        "hourBranch": { "$ref": "#/$defs/branch" },
+        "solarTerm": { "type": "string" },
+        "timezone": { "type": "string" },
+        "utcOffsetMinutes": { "type": "number" },
+        "timeConvention": { "type": "string" },
+        "trueSolarOffsetMinutes": { "type": "number" },
+        "dayBoundary": { "type": "string" }
+      }
+    },
+    "ymd": {
+      "type": "object",
+      "required": ["year", "month", "day"],
+      "additionalProperties": false,
+      "properties": {
+        "year": { "type": "integer" },
+        "month": { "type": "integer" },
+        "day": { "type": "integer" }
+      }
+    },
+    "birthContext": {
+      "type": "object",
+      "required": ["sexForCalculation", "yinYang", "direction", "bureau", "bureauName"],
+      "additionalProperties": false,
+      "properties": {
+        "sexForCalculation": { "type": "string" },
+        "yinYang": { "enum": ["yang", "yin"] },
+        "direction": { "enum": ["forward", "backward", "undetermined"] },
+        "bureau": { "$ref": "#/$defs/bureau" },
+        "bureauName": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "star": {
+      "type": "object",
+      "required": ["id", "category", "tier", "name", "status", "sources", "tags"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "enum": ["major", "aux", "malefic", "minor", "period", "interim"] },
+        "tier": { "type": "string" },
+        "name": { "$ref": "#/$defs/localizedText" },
+        "shortDesc": { "$ref": "#/$defs/localizedText" },
+        "brightness": { "$ref": "#/$defs/dignity" },
+        "status": { "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"] },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "starPlacement": {
+      "type": "object",
+      "required": ["starId", "star", "palaceId", "branch", "certainty", "ruleId", "ruleVersion"],
+      "additionalProperties": false,
+      "properties": {
+        "starId": { "type": "string" },
+        "star": { "$ref": "#/$defs/star" },
+        "palaceId": { "$ref": "#/$defs/palaceId" },
+        "branch": { "$ref": "#/$defs/branch" },
+        "dignity": { "$ref": "#/$defs/dignity" },
+        "certainty": { "$ref": "#/$defs/certainty" },
+        "ruleId": { "type": "string" },
+        "ruleVersion": { "type": "string" },
+        "transformations": { "type": "array", "items": { "$ref": "#/$defs/transformation" } }
+      }
+    },
+    "transformation": {
+      "type": "object",
+      "required": ["type", "sourceScope", "sourceStem", "targetStarId", "targetPalaceId", "profile", "ruleId"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["lu", "quan", "ke", "ji"] },
+        "sourceScope": { "enum": ["natal", "palace", "major-period", "year", "month", "day", "hour"] },
+        "sourceStem": { "$ref": "#/$defs/stem" },
+        "sourcePalaceId": { "$ref": "#/$defs/palaceId" },
+        "targetStarId": { "type": "string" },
+        "targetPalaceId": { "$ref": "#/$defs/palaceId" },
+        "profile": { "type": "string" },
+        "ruleId": { "type": "string" },
+        "selfTransformation": { "type": "boolean" }
+      }
+    },
+    "palace": {
+      "type": "object",
+      "required": ["id", "index", "name", "stem", "branch", "ganzhi", "isBodyPalace", "isLifePalace", "stars", "majorStars", "auxStars", "maleficStars", "minorStars"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/palaceId" },
+        "index": { "type": "integer" },
+        "name": { "$ref": "#/$defs/localizedText" },
+        "stem": { "$ref": "#/$defs/stem" },
+        "branch": { "$ref": "#/$defs/branch" },
+        "ganzhi": { "$ref": "#/$defs/ganzhiPair" },
+        "isBodyPalace": { "type": "boolean" },
+        "isLifePalace": { "type": "boolean" },
+        "stars": { "type": "array", "items": { "$ref": "#/$defs/starPlacement" } },
+        "majorStars": { "type": "array", "items": { "$ref": "#/$defs/starPlacement" } },
+        "auxStars": { "type": "array", "items": { "$ref": "#/$defs/starPlacement" } },
+        "maleficStars": { "type": "array", "items": { "$ref": "#/$defs/starPlacement" } },
+        "minorStars": { "type": "array", "items": { "$ref": "#/$defs/starPlacement" } },
+        "changsheng": { "type": "string" },
+        "boshi": { "type": "string" },
+        "majorPeriod": {
+          "type": "object",
+          "required": ["fromAge", "toAge"],
+          "additionalProperties": false,
+          "properties": { "fromAge": { "type": "integer" }, "toAge": { "type": "integer" } }
+        },
+        "transformations": { "type": "array", "items": { "$ref": "#/$defs/transformation" } },
+        "cycles": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "patternResult": {
+      "type": "object",
+      "required": ["patternId", "name", "status", "score", "matchedConditions", "failedConditions", "breakers", "enhancers", "profile", "ruleId"],
+      "additionalProperties": false,
+      "properties": {
+        "patternId": { "type": "string" },
+        "name": { "$ref": "#/$defs/localizedText" },
+        "status": { "enum": ["complete", "partial", "enhanced", "broken", "variant-only", "insufficient"] },
+        "score": { "type": "number" },
+        "matchedConditions": { "type": "array", "items": { "type": "string" } },
+        "failedConditions": { "type": "array", "items": { "type": "string" } },
+        "breakers": { "type": "array", "items": { "type": "string" } },
+        "enhancers": { "type": "array", "items": { "type": "string" } },
+        "profile": { "type": "string" },
+        "ruleId": { "type": "string" }
+      }
+    },
+    "interpretationHit": {
+      "type": "object",
+      "required": ["ruleId", "domain", "tendency", "strength", "confidence", "priority", "supports", "conflictsWith", "overriddenBy"],
+      "additionalProperties": false,
+      "properties": {
+        "ruleId": { "type": "string" },
+        "domain": { "type": "string" },
+        "tendency": { "type": "string" },
+        "strength": { "type": "number" },
+        "confidence": { "type": "number" },
+        "priority": { "type": "number" },
+        "text": { "$ref": "#/$defs/localizedText" },
+        "supports": { "type": "array", "items": { "type": "string" } },
+        "conflictsWith": { "type": "array", "items": { "type": "string" } },
+        "overriddenBy": { "type": "array", "items": { "type": "string" } },
+        "overridesList": { "type": "array", "items": { "type": "string" } },
+        "effectiveStrength": { "type": "number" },
+        "status": { "enum": ["active", "overridden", "conflicted"] },
+        "supportedBy": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "periodInfo": {
+      "type": "object",
+      "required": ["scope", "stem", "branch", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "enum": ["natal", "palace", "major-period", "year", "month", "day", "hour"] },
+        "stem": { "$ref": "#/$defs/stem" },
+        "branch": { "$ref": "#/$defs/branch" },
+        "ganzhi": { "$ref": "#/$defs/ganzhiPair" },
+        "palaceId": { "$ref": "#/$defs/palaceId" },
+        "ageRange": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "year": { "type": "integer" },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "overlay": { "$ref": "#/$defs/periodOverlay" }
+      }
+    },
+    "majorPeriod": {
+      "type": "object",
+      "required": ["scope", "stem", "branch", "label", "fromAge", "toAge", "direction"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "enum": ["natal", "palace", "major-period", "year", "month", "day", "hour"] },
+        "stem": { "$ref": "#/$defs/stem" },
+        "branch": { "$ref": "#/$defs/branch" },
+        "ganzhi": { "$ref": "#/$defs/ganzhiPair" },
+        "palaceId": { "$ref": "#/$defs/palaceId" },
+        "ageRange": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "year": { "type": "integer" },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "overlay": { "$ref": "#/$defs/periodOverlay" },
+        "fromAge": { "type": "integer" },
+        "toAge": { "type": "integer" },
+        "direction": { "enum": ["forward", "backward"] }
+      }
+    },
+    "periodOverlay": {
+      "type": "object",
+      "required": ["scope", "stem", "branch", "lifePalaceBranch", "palaces", "periodStars", "transformations"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "enum": ["natal", "palace", "major-period", "year", "month", "day", "hour"] },
+        "stem": { "$ref": "#/$defs/stem" },
+        "branch": { "$ref": "#/$defs/branch" },
+        "lifePalaceBranch": { "$ref": "#/$defs/branch" },
+        "palaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["palaceId", "branch", "ganzhi", "stars"],
+            "additionalProperties": false,
+            "properties": {
+              "palaceId": { "$ref": "#/$defs/palaceId" },
+              "branch": { "$ref": "#/$defs/branch" },
+              "ganzhi": { "$ref": "#/$defs/ganzhiPair" },
+              "stars": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["starId", "name", "branch"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "starId": { "type": "string" },
+                    "name": { "$ref": "#/$defs/localizedText" },
+                    "branch": { "$ref": "#/$defs/branch" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "periodStars": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["starId", "name", "branch"],
+            "additionalProperties": false,
+            "properties": {
+              "starId": { "type": "string" },
+              "name": { "$ref": "#/$defs/localizedText" },
+              "branch": { "$ref": "#/$defs/branch" }
+            }
+          }
+        },
+        "transformations": { "type": "array", "items": { "$ref": "#/$defs/transformation" } }
+      }
+    },
+    "traceEntry": {
+      "type": "object",
+      "required": ["ruleId", "result", "profile"],
+      "additionalProperties": false,
+      "properties": {
+        "ruleId": { "type": "string" },
+        "ruleVersion": { "type": "string" },
+        "inputs": { "type": ["object", "null"] },
+        "result": {},
+        "profile": { "type": "string" },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+        "status": { "enum": ["executed", "skipped", "unavailable", "variant", "error"] },
+        "reason": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    }
+  }
 }

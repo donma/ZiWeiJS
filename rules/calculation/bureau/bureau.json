@@ -75,7 +75,8 @@
         "birthContext.bureau"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.IZTRO",
+        "SRC.QUANJI"
       ],
       "evidenceRefs": [],
       "tags": [

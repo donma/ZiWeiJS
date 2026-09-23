@@ -21,7 +21,9 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.GONGWEI"
+      ],
       "tags": [
         "core"
       ],
@@ -54,7 +56,9 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.GONGWEI"
+      ],
       "tags": [
         "core"
       ],
@@ -90,7 +94,9 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.GONGWEI"
+      ],
       "tags": [
         "core"
       ],
@@ -126,7 +132,9 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.GONGWEI"
+      ],
       "tags": [
         "core"
       ],
@@ -162,7 +170,9 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.GONGWEI"
+      ],
       "tags": [
         "core"
       ],

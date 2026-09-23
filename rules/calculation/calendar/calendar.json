@@ -27,9 +27,12 @@
         "calendar"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.LUNAR-TS",
+        "SRC.IZTRO"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.CALENDAR.SOLAR_LUNAR"
+      ],
       "tags": [
         "core"
       ],
@@ -68,9 +71,12 @@
         "calendar.ganzhi"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.QUANSHU",
+        "SRC.LUNAR-TS"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.CALENDAR.GANZHI"
+      ],
       "tags": [
         "core"
       ],
@@ -85,8 +91,8 @@
     },
     {
       "ruleId": "ZW.CALC.CALENDAR.TRUESOLAR.001",
-      "ruleVersion": "1.0",
-      "status": "canonical",
+      "ruleVersion": "1.2",
+      "status": "candidate",
       "scope": "calculation.calendar.true-solar",
       "category": "calendar",
       "name": {
@@ -109,13 +115,21 @@
         "calendar.trueSolarOffsetMinutes"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.LUNAR-TS"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.CALENDAR.TRUESOLAR"
+      ],
       "tags": [
         "core"
       ],
       "changeLog": [
+        {
+          "version": "1.2",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1 Canonical Evidence Gate：僅有單一 Tier 3 來源（SRC.LUNAR-TS），且均時差為近似式，不足以宣稱 canonical。降為 candidate，待補 Tier 1/2 天文曆算依據或 owner 覆核（見 research/registry.json）。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",

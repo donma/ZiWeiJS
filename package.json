@@ -36,7 +36,12 @@
     "test:watch": "vitest",
     "validate:rules": "node tools/rule-validator/validate.mjs",
     "validate:sources": "node tools/source-validator/validate.mjs",
-    "differential": "tsx tools/differential-runner/iztro-runner.ts"
+    "validate:schemas": "tsx tools/schema-validator/validate.ts",
+    "validate:governance": "tsx tools/governance-validator/validate.ts",
+    "validate:integrity": "tsx tools/integrity-validator/validate.ts",
+    "coverage:bible": "tsx tools/stats/generate.ts",
+    "differential": "tsx tools/differential-runner/iztro-runner.ts",
+    "verify": "npm run validate:rules && npm run validate:sources && npm run validate:schemas && npm run validate:governance && npm run validate:integrity && npm run test && npm run build"
   },
   "dependencies": {
     "lunar-typescript": "^1.8.6"

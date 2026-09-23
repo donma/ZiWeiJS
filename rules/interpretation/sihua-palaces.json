@@ -39,7 +39,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_SPOUSE.001",
@@ -78,7 +86,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_CHILDREN.001",
@@ -117,7 +133,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_TRAVEL.001",
@@ -156,7 +180,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_FRIENDS.001",
@@ -195,7 +227,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_PROPERTY.001",
@@ -234,7 +274,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_FORTUNE.001",
@@ -273,7 +321,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_PARENTS.001",
@@ -312,7 +368,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_SIBLINGS.001",
@@ -351,7 +415,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_SPOUSE.001",
@@ -390,7 +462,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_CHILDREN.001",
@@ -429,7 +509,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_HEALTH.001",
@@ -468,7 +556,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_TRAVEL.001",
@@ -507,7 +603,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_FRIENDS.001",
@@ -546,7 +650,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_PROPERTY.001",
@@ -585,7 +697,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_FORTUNE.001",
@@ -624,7 +744,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_PARENTS.001",
@@ -663,7 +791,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_SIBLINGS.001",
@@ -702,7 +838,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_SPOUSE.001",
@@ -741,7 +885,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_CHILDREN.001",
@@ -780,7 +932,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_HEALTH.001",
@@ -819,7 +979,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_TRAVEL.001",
@@ -858,7 +1026,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_FRIENDS.001",
@@ -897,7 +1073,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_CAREER.001",
@@ -936,7 +1120,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_PROPERTY.001",
@@ -975,7 +1167,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_FORTUNE.001",
@@ -1014,7 +1214,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.KE_PARENTS.001",
@@ -1053,7 +1261,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_SIBLINGS.001",
@@ -1092,7 +1308,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_CHILDREN.001",
@@ -1131,7 +1355,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_TRAVEL.001",
@@ -1170,7 +1402,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_FRIENDS.001",
@@ -1209,7 +1449,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_PROPERTY.001",
@@ -1248,7 +1496,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_FORTUNE.001",
@@ -1287,7 +1543,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.JI_PARENTS.001",
@@ -1326,7 +1590,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.LU_CAREER.001",
@@ -1365,7 +1637,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     },
     {
       "ruleId": "ZW.INT.SIHUA.QUAN_WEALTH.001",
@@ -1404,7 +1684,15 @@
       },
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-23",
+          "note": "Hardening P1-1：補上 changeLog 與溯源欄位。"
+        }
+      ]
     }
   ]
 }

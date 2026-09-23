@@ -30,7 +30,8 @@
         "stars.*.dignity"
       ],
       "sourceRefs": [
-        "SRC.MODERN-IMPL-CONSENSUS"
+        "SRC.IZTRO",
+        "SRC.WENMO"
       ],
       "evidenceRefs": [
         "EVD.CONSENSUS.MIAOWANG"

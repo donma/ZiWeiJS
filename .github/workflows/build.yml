@@ -20,9 +20,14 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run test
+      # 順序：Schema → Governance → Integrity → Tests → Build（spec §18）
       - run: npm run validate:rules
       - run: npm run validate:sources
+      - run: npm run validate:schemas
+      - run: npm run validate:governance
+      - run: npm run validate:integrity
+      - run: npm run coverage:bible
+      - run: npm run test
       - run: npm run build
       - run: node tools/build-standalone.mjs
       - uses: actions/upload-pages-artifact@v3

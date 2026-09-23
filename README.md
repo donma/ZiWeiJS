@@ -5,6 +5,34 @@
 
 ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心齋圓與第三方紫微工具共同引用的 **規則與驗證基準**。
 
+> **Current maturity: Reference implementation / pre-1.0**
+>
+> canonical 規則已具備來源、證據與測試，但**不等於全部命理知識已驗證完畢**；
+> 大量規則仍為 `candidate`，待領域 owner 覆核後方可升為 `canonical`。
+> AI 不得自行升級規則狀態（見 `docs/governance/rule-lifecycle.md`）。
+
+## 現況數據
+
+<!-- STATS:BEGIN (由 `npm run coverage:bible -- --update-readme` 產生，請勿手寫) -->
+| 項目 | 數量 |
+|---|---|
+| 規則總數 | 209 |
+| canonical | 34 |
+| candidate | 168 |
+| variant | 5 |
+| research | 2 |
+| Canonical source 覆蓋率 | 100% |
+| Canonical evidence 覆蓋率 | 100% |
+| 星曜（已安 / 總數）| 95 / 96 |
+| 格局 | 24 |
+| 解讀規則 | 138（12 domains）|
+| 文獻 / 證據 | 10 / 28 |
+| Golden fixtures | 8 |
+| Differential fixtures | 1 |
+| Tests | 209 in 20 files |
+| schemaVersion | 2.0 |
+<!-- STATS:END -->
+
 ---
 
 ## 這是什麼？
