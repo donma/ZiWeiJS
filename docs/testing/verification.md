@@ -37,6 +37,18 @@ canonical star 有 source、profile override 來源與目標存在、DSL / star 
 **連同 `periods` 完全一致** —— 不得再靠 strip periods 才 deterministic。
 這是 P0-3「移除隱含 `new Date()`」的驗收條件。
 
+## 1.3 Regression Checklist（spec §37）
+
+`tests/regression/spec37.test.ts` 把規格列出的驗收清單逐條寫成測試：
+
+```text
+無時辰 → error                       未知性別 → 不得偷偷 forward
+無 targetDate → 不產流年             targetDate 改變 → active period 改變
+真太陽時 00:10 → 前日                真太陽時 23:55 → 次日
+23:00 midnight vs zi-hour → 不同      DSL typo → error
+profile override 真的影響 output      Trace 自動帶 source / evidence / version
+```
+
 瀏覽器層另外執行：
 
 ```bash

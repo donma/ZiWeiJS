@@ -210,10 +210,13 @@
 - `time.hour` 成為必填
 
 ### 測試
-- **338 tests / 24 files**（Vitest；0.3.0 為 150）
+- **358 tests / 25 files**（Vitest；0.3.0 為 150）
 - **33 Playwright tests**：UI / Visual 20 + Accessibility 13
 - `tests/integrity/`（spec §25）：與 `validate:integrity` 共用同一份實作，ID 唯一 / 參照可解析 /
   canonical 溯源 / DSL 與 star schema / 執行計畫覆蓋 / changeLog 一致性 / chart output schema
+- `tests/regression/spec37.test.ts`（spec §37 逐條驗收）：無時辰→error、未知性別不 forward、
+  無 targetDate 不產流年、targetDate 改變→active period 改變、真太陽時跨日、23:00 換日慣例差異、
+  DSL typo→error、profile override 生效、Trace 自動帶 source/evidence/version
 - Determinism（spec §26）：`JSON.stringify(calculate(input))` 連同 periods 完全一致，不再需要 strip
 - 差分：iztro 10 案例 × 45 欄 = 450 欄，0 needs-review；12 筆存檔 fixture
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
