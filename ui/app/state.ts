@@ -14,8 +14,8 @@ export interface AppState {
 
 const defaultInput: ZiWeiBirthInput = {
   calendarType: 'solar',
-  date: { year: 1990, month: 5, day: 15 },
-  time: { hour: 10, minute: 30 },
+  date: { year: 1983, month: 5, day: 11 },
+  time: { hour: 0, minute: 0 },
   timezone: 'Asia/Taipei',
   sexForCalculation: 'male'
 };
