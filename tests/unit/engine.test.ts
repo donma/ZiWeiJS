@@ -222,15 +222,26 @@ describe('trace', () => {
   });
 });
 
-describe('determinism', () => {
-  it('same input → same output', () => {
+describe('determinism（spec §26）', () => {
+  it('same input → same output（不得 strip periods 才 deterministic）', () => {
     const a = calculate(baseInput);
     const b = calculate(baseInput);
-    const strip = (c: typeof a) => {
-      const { periods, ...rest } = c;
-      const { year, month, day, hour, ...restP } = periods;
-      return { ...rest };
-    };
-    expect(JSON.stringify(strip(a))).toBe(JSON.stringify(strip(b)));
+    expect(JSON.stringify(a)).toBe(JSON.stringify(b));
+  });
+
+  it('含 targetDate 之完整輸出亦完全相同', () => {
+    const options = { targetDate: { year: 2026, month: 9, day: 23 } };
+    const a = calculate(baseInput, options);
+    const b = calculate(baseInput, options);
+    expect(JSON.stringify(a)).toBe(JSON.stringify(b));
+    expect(a.periods.major.length).toBeGreaterThan(0);
+  });
+
+  it('不因呼叫順序或時間而改變（連續多次計算）', () => {
+    const options = { targetDate: { year: 2026, month: 9, day: 23 } };
+    const first = JSON.stringify(calculate(baseInput, options));
+    for (let i = 0; i < 5; i++) {
+      expect(JSON.stringify(calculate(baseInput, options))).toBe(first);
+    }
   });
 });

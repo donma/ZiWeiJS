@@ -210,8 +210,11 @@
 - `time.hour` 成為必填
 
 ### 測試
-- **309 tests / 23 files**（Vitest；0.3.0 為 150）
+- **338 tests / 24 files**（Vitest；0.3.0 為 150）
 - **33 Playwright tests**：UI / Visual 20 + Accessibility 13
+- `tests/integrity/`（spec §25）：與 `validate:integrity` 共用同一份實作，ID 唯一 / 參照可解析 /
+  canonical 溯源 / DSL 與 star schema / 執行計畫覆蓋 / changeLog 一致性 / chart output schema
+- Determinism（spec §26）：`JSON.stringify(calculate(input))` 連同 periods 完全一致，不再需要 strip
 - 差分：iztro 10 案例 × 45 欄 = 450 欄，0 needs-review；12 筆存檔 fixture
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
 - Golden fixtures：35 筆 v2 oracle；Differential fixtures：12 筆（iztro）+ 3 筆（calendar）

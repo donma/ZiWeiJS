@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures | 43 |
 | Differential fixtures | 12 |
 | Calendar fixtures | 3 |
-| Tests | 244 it() / 23 files（靜態計數）|
+| Tests | 262 it() / 24 files（靜態計數）|
 | E2E / Visual | 20 test() / 2 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -143,7 +143,7 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run test       # 309 tests
+npm run test       # 338 tests
 npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html
 npm run differential           # 與 iztro 逐欄對照（安星差分）
 npm run differential:calendar  # 與 lunar-lite 逐日對照（曆法差分）

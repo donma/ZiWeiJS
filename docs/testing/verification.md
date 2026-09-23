@@ -17,8 +17,25 @@
 | 4 | `npm run validate:governance` | Canonical Evidence Gate、variantOf、AI 來源阻擋 |
 | 5 | `npm run validate:integrity` | ID 唯一、ref 可解析、executor 可解析、DSL schema、計畫覆蓋、changeLog |
 | 6 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 7 | `npm run test` | 單元 / golden / differential / boundary / schema / period |
+| 7 | `npm run test` | 單元 / golden / differential / boundary / schema / periods / integrity |
 | 8 | `npm run build` | app + library + types + standalone demo |
+
+## 1.1 Integrity Tests（`tests/integrity/`）
+
+`tests/integrity/integrity.test.ts` 與 `npm run validate:integrity` **共用同一份實作**
+（`tools/integrity-validator/checks.ts`），因此規則 / 來源 / 證據 / profile / 星曜 registry
+的任何破壞都會同時擋下 `npm test` 與 CI gate，不會出現「gate 過但測試沒過」的分歧。
+
+檢查項目即 spec §25 清單：ID 唯一（rule / star / source / evidence / profile）、
+`sourceRefs` / `evidenceRefs` / `variantOf` / `executor` 全可解析、canonical rule 有 source 與 evidence、
+canonical star 有 source、profile override 來源與目標存在、DSL / star / chart schema 合法、
+執行計畫覆蓋（0 unplanned）、changeLog 與 ruleVersion 一致。
+
+## 1.2 Determinism（spec §26）
+
+`tests/unit/engine.test.ts` 的 determinism 區塊要求 `JSON.stringify(calculate(input))`
+**連同 `periods` 完全一致** —— 不得再靠 strip periods 才 deterministic。
+這是 P0-3「移除隱含 `new Date()`」的驗收條件。
 
 瀏覽器層另外執行：
 
