@@ -49,7 +49,7 @@ describe('integrity: chart structure', () => {
   });
 
   it('all majors have dignity', () => {
-    for (const s of Object.values(c.chart.stars) as Array<{ star: { category: string }; starId: string; dignity?: string }>) {
+    for (const s of Object.values(c.chart.stars) as unknown as Array<{ star: { category: string }; starId: string; dignity?: string }>) {
       if (s.star.category === 'major') expect(s.dignity, s.starId).toBeTruthy();
     }
   });

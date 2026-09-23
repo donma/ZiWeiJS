@@ -14,7 +14,8 @@ import {
 import {
   calcBureau, calcMajors, calcAuxByMonth, calcAuxByHour, calcAuxByYearStem,
   calcAuxByYearBranch, calcFixedStars, calcChangSheng, calcBoshi,
-  calcAuxByMonth2, calcAuxByYearStem2, calcAuxByDay, calcAuxByDayHour, calcAuxSpecial
+  calcAuxByMonth2, calcAuxByYearStem2, calcAuxByDay, calcAuxByDayHour, calcAuxSpecial,
+  calcPeriodStars
 } from '../executors/star-executors.js';
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
 import { calcDignities } from '../dignity-engine/dignity-engine.js';
@@ -77,6 +78,7 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   calcAuxByDay(ctx);
   calcAuxByDayHour(ctx);
   calcAuxSpecial(ctx);
+  calcPeriodStars(ctx);
   calcFixedStars(ctx);
   calcChangSheng(ctx);
   calcBoshi(ctx);

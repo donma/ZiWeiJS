@@ -1,0 +1,15 @@
+{
+  "name": "golden-1995-08-08-male",
+  "input": {
+    "calendarType": "solar",
+    "date": { "year": 1995, "month": 8, "day": 8 },
+    "time": { "hour": 8, "minute": 0 },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "expect": {
+    "ganzhi.year": "yi-hai",
+    "bureau": "_computed_"
+  },
+  "note": "乙亥年陽男（乙屬陰 → 陰男逆行大限）。驗證 direction=backward。"
+}

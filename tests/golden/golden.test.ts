@@ -6,6 +6,8 @@ import caseLeap from '../../fixtures/golden/case-lunar-1990-leap5.json' with { t
 import case1985 from '../../fixtures/golden/case-1985-11-20-female.json' with { type: 'json' };
 import case2000 from '../../fixtures/golden/case-2000-01-01-male.json' with { type: 'json' };
 import case1984 from '../../fixtures/golden/case-1984-02-02-female.json' with { type: 'json' };
+import case1995 from '../../fixtures/golden/case-1995-08-08-male.json' with { type: 'json' };
+import caseOverseas from '../../fixtures/golden/case-1978-12-25-overseas.json' with { type: 'json' };
 
 interface GoldenCase {
   name: string;
@@ -56,4 +58,6 @@ describe('golden charts', () => {
   it(case1985.name, () => runCase(case1985 as GoldenCase));
   it(case2000.name, () => runCase(case2000 as GoldenCase));
   it(case1984.name, () => runCase(case1984 as GoldenCase));
+  it(case1995.name, () => runCase(case1995 as GoldenCase));
+  it(caseOverseas.name, () => runCase(caseOverseas as GoldenCase));
 });

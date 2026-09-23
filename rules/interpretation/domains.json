@@ -166,6 +166,54 @@
       "tendency": "neutral", "strength": 0.4, "confidence": 0.5, "priority": 30,
       "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": [],
       "text": { "zh-TW": "大限各宮十年行運，吉凶須合原局星曜、四化與限干飛化並論。本條為框架性占位，待細化。" }
+    },
+    {
+      "ruleId": "ZW.INT.FAMILY.PARENTS_EMPTY.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "family",
+      "name": { "zh-TW": "父母宮無主星", "en": "No major star in Parents" },
+      "conditions": { "all": [{ "type": "palace", "palace": "parents", "empty": true }] },
+      "tendency": "neutral", "strength": 0.5, "confidence": 0.6, "priority": 50,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "父母宮無主星，親緣助力平淡，借對宮星曜論之。" }
+    },
+    {
+      "ruleId": "ZW.INT.FAMILY.TIANLIANG_PARENTS.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "family",
+      "name": { "zh-TW": "天梁守父母", "en": "Tian Liang in Parents" },
+      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANLIANG", "palace": "parents" }] },
+      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "天梁守父母宮，主得長輩庇蔭、父母德高或有福蔭。" }
+    },
+    {
+      "ruleId": "ZW.INT.RELATIONSHIP.PEACH_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "relationship",
+      "name": { "zh-TW": "桃花星會命", "en": "Peach blossom stars aspecting Life" },
+      "conditions": {
+        "any": [
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.HONGLUAN", "palace": "life" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANXI", "palace": "life" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANYAO", "palace": "life" },
+          { "type": "star-in-palace", "star": "ZW.STAR.AUX.XIANCHI", "palace": "life" }
+        ]
+      },
+      "tendency": "mixed", "strength": 0.6, "confidence": 0.7, "priority": 65,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "紅鸞天喜天姚咸池會命，主異性緣重、魅力強，感情生活多采亦多擾。" }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.KUIYUE_LIFE.001", "ruleVersion": "1.0", "status": "candidate",
+      "domain": "social",
+      "name": { "zh-TW": "天魁天鉞會命", "en": "Tian Kui / Tian Yue aspecting Life" },
+      "conditions": {
+        "all": [{
+          "type": "relation", "relation": "san-fang-si-zheng", "palace": "life",
+          "containsAny": ["ZW.STAR.AUX.TIANKUI", "ZW.STAR.AUX.TIANYUE"]
+        }]
+      },
+      "tendency": "positive", "strength": 0.7, "confidence": 0.75, "priority": 70,
+      "supports": [], "conflictsWith": [], "overrides": [], "evidence": [], "sourceRefs": ["SRC.QUANSHU"],
+      "text": { "zh-TW": "魁鉞會命，主一生多貴人扶持，遇難得助，利於求人辦事。" }
     }
   ]
 }

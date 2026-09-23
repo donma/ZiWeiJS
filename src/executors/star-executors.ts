@@ -367,6 +367,45 @@ export function calcAuxSpecial(ctx: EngineContext): void {
   });
 }
 
+export function calcPeriodStars(ctx: EngineContext): void {
+  const ybIdx = branchIndex(ctx.normalized.ganzhi.year.branch);
+  const ruleId = 'ZW.CALC.STAR.PERIOD.001';
+  // 歲建諸星：歲建在太歲宮，其餘順行 12 宮
+  const SUIJIAN: string[] = [
+    'ZW.STAR.PERIOD.SUIJIAN', 'ZW.STAR.PERIOD.HUIQI', 'ZW.STAR.PERIOD.SANGMEN2',
+    'ZW.STAR.PERIOD.GUANSUO', 'ZW.STAR.PERIOD.GUANFU2', 'ZW.STAR.PERIOD.XIAOHAO2',
+    'ZW.STAR.PERIOD.DAHAO2', 'ZW.STAR.PERIOD.LONDE', 'ZW.STAR.PERIOD.BAIHU2',
+    'ZW.STAR.PERIOD.FUDE', 'ZW.STAR.PERIOD.DIAOKE2', 'ZW.STAR.PERIOD.BINGFU2'
+  ];
+  for (let i = 0; i < 12; i++) {
+    placeStar(ctx, SUIJIAN[i], branchAt(ybIdx + i), ruleId);
+  }
+  // 將前諸星：將星在三合局中宮（寅午戌在午/申子辰在子/巳酉丑在酉/亥卯未在卯），其餘順行
+  const groupCenter: Record<string, number> = { 'yin-wu-xu': 6, 'shen-zi-chen': 0, 'si-you-chou': 9, 'hai-mao-wei': 3 };
+  const group = yearBranchGroup(yearBranchOf(ctx));
+  const jxBase = groupCenter[group] ?? 0;
+  const JIANGQIAN: string[] = [
+    'ZW.STAR.INTERIM.JIANGXING', 'ZW.STAR.INTERIM.PANAN', 'ZW.STAR.INTERIM.SUIYI',
+    'ZW.STAR.INTERIM.XISHEN', 'ZW.STAR.INTERIM.HUAGAI2', 'ZW.STAR.INTERIM.JIESHA2',
+    'ZW.STAR.INTERIM.ZAISHA', 'ZW.STAR.INTERIM.TIANSHA', 'ZW.STAR.INTERIM.ZHIBEI2',
+    'ZW.STAR.INTERIM.XIANCHI2', 'ZW.STAR.INTERIM.YUESHA', 'ZW.STAR.INTERIM.WANGSHEN2'
+  ];
+  for (let i = 0; i < 12; i++) {
+    placeStar(ctx, JIANGQIAN[i], branchAt(jxBase + i), ruleId);
+  }
+  ctx.tracer.record({
+    ruleId,
+    inputs: { yearBranch: ctx.normalized.ganzhi.year.branch, group },
+    result: 'period & interim stars placed',
+    profile: ctx.profile.profileId,
+    sourceRefs: ['SRC.QUANSHU']
+  });
+}
+
+function yearBranchOf(ctx: EngineContext): BranchId {
+  return ctx.normalized.ganzhi.year.branch;
+}
+
 export function calcFixedStars(ctx: EngineContext): void {
   const ruleId = 'ZW.STAR.FIXED.001';
   for (const [starId, cfg] of Object.entries(auxTables.fixed as unknown as Record<string, { palace: string }>)) {
