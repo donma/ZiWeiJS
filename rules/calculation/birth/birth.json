@@ -19,7 +19,9 @@
         "sexForCalculation"
       ],
       "logic": {
-        "executor": "calcDirection"
+        "executor": "calcDirection",
+        "stage": "natal",
+        "order": 50
       },
       "outputs": [
         "birthContext.direction"
@@ -59,7 +61,9 @@
         "sexForCalculation"
       ],
       "logic": {
-        "executor": "requireSex"
+        "executor": "requireSex",
+        "stage": "natal",
+        "order": 10
       },
       "outputs": [],
       "sourceRefs": [

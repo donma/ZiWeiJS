@@ -10,13 +10,22 @@ export class Tracer {
 
   record(entry: TraceEntry): void {
     if (!this.enabled) return;
-    this.entries.push(entry);
+    this.entries.push({ status: 'executed', ...entry });
+  }
+
+  /** 記錄一筆未執行 / 無法執行的規則（spec §28） */
+  recordSkipped(
+    entry: Omit<TraceEntry, 'result' | 'status'>,
+    status: 'skipped' | 'unavailable',
+    reason: string
+  ): void {
+    this.record({ ...entry, result: null, status, reason });
   }
 
   wrap<T>(entry: Omit<TraceEntry, 'result'>, fn: () => T): T {
     const result = fn();
     if (this.enabled) {
-      this.entries.push({ ...entry, result });
+      this.entries.push({ status: 'executed', ...entry, result });
     }
     return result;
   }

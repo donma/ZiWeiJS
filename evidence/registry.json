@@ -162,6 +162,31 @@
       "notes": "辛干天魁天鉞有『馬虎』與『馬蛇』兩說，本 canonical 採馬虎（丑午）；馬蛇版待建 variant。"
     },
     {
+      "evidenceId": "EVD.QUANSHU.ZAXING",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安雜曜訣（月系、日系、年支系諸星）",
+      "quote": "按月建、日支、年支起諸雜曜；各訣分見安星章。",
+      "confidence": 0.75,
+      "notes": "月系（陰煞等）、日系、年支系雜曜安法。confidence 未達 canonical 門檻，相關規則維持 candidate 待 owner 覆核。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SUIJIAN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "location": "安歲建十二神 / 安將前十二神訣",
+      "quote": "歲建起太歲宮，餘神順行十二宮；將星依三合局起，餘神順行。",
+      "confidence": 0.8
+    },
+    {
+      "evidenceId": "EVD.IZTRO.AUXGROUPS",
+      "sourceId": "SRC.IZTRO",
+      "type": "supports",
+      "location": "iztro/src/star/location.js 雜曜安星實作",
+      "confidence": 0.8,
+      "notes": "Tier 3 實作交叉驗證：本引擎之月系/日系/年支系/歲建/將前諸星安法與 iztro 逐欄比對一致（見 tests/differential/iztro.test.ts）。"
+    },
+    {
       "evidenceId": "EVD.SPEC.ENGINE.SEX_REQUIRED",
       "sourceId": "SRC.SPEC.ENGINE",
       "type": "supports",

@@ -42,7 +42,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
@@ -85,7 +88,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.WEALTH.JI_WEALTH.001",
@@ -129,7 +135,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.HEALTH.JI_HEALTH.001",
@@ -173,7 +182,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
@@ -231,7 +243,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
@@ -279,7 +294,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
@@ -337,7 +355,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MIGRATION.MA_TRAVEL.001",
@@ -380,7 +401,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MIGRATION.LU_TRAVEL.001",
@@ -424,7 +448,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.LEARNING.WENCHANG_LIFE.001",
@@ -481,7 +508,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
@@ -524,7 +554,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.RISK.KONGJIE_LIFE.001",
@@ -581,7 +614,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.CAREER.LU_CAREER.001",
@@ -625,7 +661,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.CAREER.QISHA_CAREER.001",
@@ -668,7 +707,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.TIMING.DAXIAN_LIFE.001",
@@ -708,7 +750,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 research。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.FAMILY.PARENTS_EMPTY.001",
@@ -751,7 +796,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
@@ -794,7 +842,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
@@ -852,7 +903,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
@@ -899,7 +953,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
@@ -947,7 +1004,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.LEARNING.JUMEN_LIFE.001",
@@ -990,7 +1050,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
@@ -1033,7 +1096,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MIGRATION.ZIWEI_TRAVEL.001",
@@ -1076,7 +1142,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
@@ -1124,7 +1193,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.TIANTONG_SPOUSE.001",
@@ -1167,7 +1239,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.RISK.HUOLING_LIFE.001",
@@ -1215,7 +1290,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.TIMING.SUIJIAN_LIFE.001",
@@ -1255,7 +1333,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     }
   ]
 }

@@ -27,7 +27,7 @@ describe('boundary – leap month & edge', () => {
     expect(a.calendar.hourBranch).toBe(b.calendar.hourBranch);
   });
 
-  it('unknown sex still computes (forward direction default) but flagged', () => {
+  it('unknown sex does NOT guess direction (undetermined) but natal still computed', () => {
     const r = calculateSafe({
       calendarType: 'solar',
       date: { year: 1990, month: 5, day: 15 },
@@ -35,7 +35,32 @@ describe('boundary – leap month & edge', () => {
       sexForCalculation: 'unknown'
     });
     expect(r.ok).toBe(true);
-    if (r.ok) expect(r.chart.birthContext.direction).toBe('forward');
+    if (!r.ok) return;
+    // spec §27：不得 unknown → forward
+    expect(r.chart.birthContext.direction).toBe('undetermined');
+    expect(r.chart.certainty.direction).toBe('unknown');
+    expect(r.chart.certainty.majorPeriods).toBe('unknown');
+    // 不依賴性別的 natal 資料仍可計算
+    expect(r.chart.chart.natal.lifePalaceBranch).toBe('zi');
+    // 依賴性別的結果不得產出
+    expect(r.chart.periods.major).toEqual([]);
+    expect(r.chart.chart.palaces.every(p => p.changsheng === undefined)).toBe(true);
+  });
+
+  it('unknown sex → trace marks dependent rules as unavailable', () => {
+    const c = calculate({
+      calendarType: 'solar',
+      date: { year: 1990, month: 5, day: 15 },
+      time: { hour: 10 },
+      sexForCalculation: 'unknown'
+    }, { trace: true });
+    const skipped = c.trace!.entries.filter(e => e.status === 'unavailable');
+    expect(skipped.map(e => e.ruleId).sort()).toEqual([
+      'ZW.CALC.BIRTH.SEX_DIRECTION.001',
+      'ZW.CALC.PERIOD.DAXIAN.001',
+      'ZW.CALC.STAR.CHANGSHENG12.001'
+    ]);
+    expect(skipped.every(e => e.reason === 'UNKNOWN_SEX_FOR_CALCULATION')).toBe(true);
   });
 
   it('year 1900 lower bound works', () => {

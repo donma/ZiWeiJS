@@ -27,7 +27,9 @@
             "ZW.STAR.AUX.TIANXING",
             "ZW.STAR.AUX.TIANYAO"
           ]
-        }
+        },
+        "stage": "natal",
+        "order": 200
       },
       "outputs": [
         "stars.*"
@@ -77,7 +79,9 @@
             "ZW.STAR.MALEFIC.DIKONG",
             "ZW.STAR.MALEFIC.DIJIE"
           ]
-        }
+        },
+        "stage": "natal",
+        "order": 210
       },
       "outputs": [
         "stars.*"
@@ -121,7 +125,9 @@
         "executor": "calcAuxByYearStem",
         "params": {
           "tableRef": "stars/aux-tables#byYearStem"
-        }
+        },
+        "stage": "natal",
+        "order": 220
       },
       "outputs": [
         "stars.*"
@@ -166,7 +172,9 @@
         "executor": "calcAuxByYearBranch",
         "params": {
           "tableRef": "stars/aux-tables#byYearBranch"
-        }
+        },
+        "stage": "natal",
+        "order": 230
       },
       "outputs": [
         "stars.*"
@@ -211,7 +219,9 @@
         "executor": "calcFixedStars",
         "params": {
           "tableRef": "stars/aux-tables#fixed"
-        }
+        },
+        "stage": "natal",
+        "order": 290
       },
       "outputs": [
         "stars.*"
@@ -256,7 +266,9 @@
         "executor": "calcChangSheng",
         "params": {
           "tableRef": "dignity/changsheng"
-        }
+        },
+        "stage": "natal",
+        "order": 300
       },
       "outputs": [
         "palaces[].changsheng"
@@ -299,7 +311,9 @@
         "executor": "calcBoshi",
         "params": {
           "tableRef": "dignity/changsheng#boshi12"
-        }
+        },
+        "stage": "natal",
+        "order": 310
       },
       "outputs": [
         "palaces[].boshi"

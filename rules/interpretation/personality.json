@@ -42,7 +42,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TIANJI_LIFE.001",
@@ -85,7 +88,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TAIYANG_LIFE.001",
@@ -128,7 +134,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.WUQU_LIFE.001",
@@ -171,7 +180,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TIANTONG_LIFE.001",
@@ -214,7 +226,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.LIANZHEN_LIFE.001",
@@ -257,7 +272,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TIANFU_LIFE.001",
@@ -300,7 +318,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TAIYIN_LIFE.001",
@@ -343,7 +364,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TANLANG_LIFE.001",
@@ -386,7 +410,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.JUMEN_LIFE.001",
@@ -429,7 +456,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TIANXIANG_LIFE.001",
@@ -472,7 +502,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.TIANLIANG_LIFE.001",
@@ -515,7 +548,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.QISHA_LIFE.001",
@@ -558,7 +594,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.POJUN_LIFE.001",
@@ -601,7 +640,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.MALEFIC_LIFE.001",
@@ -652,7 +694,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.LU_LIFE.001",
@@ -697,7 +742,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.PERS.JI_LIFE.001",
@@ -744,7 +792,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     }
   ]
 }

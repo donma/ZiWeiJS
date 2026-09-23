@@ -12,7 +12,8 @@
         "en": "Same palace"
       },
       "logic": {
-        "executor": "relSamePalace"
+        "executor": "relSamePalace",
+        "stage": "on-demand"
       },
       "outputs": [
         "relations"
@@ -44,7 +45,8 @@
         "en": "Opposite palace"
       },
       "logic": {
-        "executor": "relOpposite"
+        "executor": "relOpposite",
+        "stage": "on-demand"
       },
       "outputs": [
         "relations"
@@ -79,7 +81,8 @@
         "zh-TW": "本宮、對宮及三合宮（±4 地支）。"
       },
       "logic": {
-        "executor": "relSanFangSiZheng"
+        "executor": "relSanFangSiZheng",
+        "stage": "on-demand"
       },
       "outputs": [
         "relations"
@@ -114,7 +117,8 @@
         "zh-TW": "相鄰兩宮夾本宮。"
       },
       "logic": {
-        "executor": "relJia"
+        "executor": "relJia",
+        "stage": "on-demand"
       },
       "outputs": [
         "relations"
@@ -149,7 +153,8 @@
         "zh-TW": "三合宮位拱照本宮。"
       },
       "logic": {
-        "executor": "relGong"
+        "executor": "relGong",
+        "stage": "on-demand"
       },
       "outputs": [
         "relations"

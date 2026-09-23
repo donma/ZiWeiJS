@@ -42,6 +42,7 @@ export { Tracer, explainTrace } from './trace/tracer.js';
 export { renderChartSvg } from './renderer/svg-renderer.js';
 export type { RenderOptions } from './renderer/svg-renderer.js';
 export { getStar, listStars } from './executors/star-executors.js';
+export { ageAt, virtualAge, resolveMajorPeriod } from './period-engine/major-period-resolver.js';
 export { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION } from './core/constants.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
@@ -58,13 +59,14 @@ import {
   calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod
 } from './period-engine/period-engine.js';
 import { hourBranchFromHour } from './calendar/calendar-engine.js';
-import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput } from './core/types.js';
+import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
 
 export const ZiWei = {
   calculate,
   calculateSafe,
   Periods: {
-    at(chart: ZiWeiChart, target: { year: number; month?: number; day?: number; hour?: number }, options?: CalculateOptions): ZiWeiChart {
+    /** 於既有本命盤上疊加指定目標日期之限運（不 mutate 原 chart） */
+    at(chart: ZiWeiChart, target: TargetDate, options?: CalculateOptions): ZiWeiChart {
       const opts: CalculateOptions = { ...(options ?? {}), targetDate: target };
       return calculate(chart.input, opts);
     }

@@ -2,224 +2,1409 @@
   "$schema": "../../schemas/interpretation.schema.json",
   "description": "四化入十二宮：生年四化（化祿/化權/化科/化忌）落宮之解讀。系統性覆蓋 4 × 12 = 48 條。",
   "rules": [
-    { "ruleId": "ZW.INT.SIHUA.LU_SIBLINGS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化祿入兄弟", "en": "Hua Lu into Siblings" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "siblings", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入兄弟宮，主手足情厚、兄弟有助力或有財，亦利合夥。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "化祿入夫妻", "en": "Hua Lu into Spouse" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "spouse", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 65,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入夫妻宮，主配偶助益、感情濃厚，婚後得利或得配偶財。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_CHILDREN.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化祿入子女", "en": "Hua Lu into Children" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "children", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入子女宮，主子女賢孝有出息，亦利投資、合夥生財。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate", "domain": "migration",
-      "name": { "zh-TW": "化祿入遷移", "en": "Hua Lu into Travel" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "travel", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 65,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入遷移宮，主出外得財、異地人緣佳，適合外出發展。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_FRIENDS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "social",
-      "name": { "zh-TW": "化祿入交友", "en": "Hua Lu into Friends" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "friends", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入交友宮，主人緣廣、朋友多助，適合團隊合作與群眾事業。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "化祿入田宅", "en": "Hua Lu into Property" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "property", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.72, "confidence": 0.78, "priority": 65,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入田宅宮，主置產順利、家業興旺，利不動產投資。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_FORTUNE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "personality",
-      "name": { "zh-TW": "化祿入福德", "en": "Hua Lu into Fortune" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "fortune", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 65,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入福德宮，主精神富足、享受生活、樂觀豁達。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化祿入父母", "en": "Hua Lu into Parents" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "parents", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入父母宮，主得父母庇蔭、長輩提攜，亦有書卷功名之利。" } },
-
-    { "ruleId": "ZW.INT.SIHUA.QUAN_SIBLINGS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化權入兄弟", "en": "Hua Quan into Siblings" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "siblings", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.6, "confidence": 0.72, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入兄弟宮，主手足強勢能幹，易有兄弟間主導權之爭。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "化權入夫妻", "en": "Hua Quan into Spouse" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "spouse", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.62, "confidence": 0.72, "priority": 65,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入夫妻宮，主配偶能力強、主導性高，感情上宜多讓步協調。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_CHILDREN.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化權入子女", "en": "Hua Quan into Children" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "children", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.6, "confidence": 0.72, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入子女宮，主子女有主見、能力強，宜以引導代替權威管教。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "化權入疾厄", "en": "Hua Quan into Health" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "health", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.55, "confidence": 0.68, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入疾厄宮，主體質剛強但易有急性炎症或勞損，需注意血壓與情緒。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate", "domain": "migration",
-      "name": { "zh-TW": "化權入遷移", "en": "Hua Quan into Travel" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "travel", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 62,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入遷移宮，主在外有權威、能掌事，適合外地任職或開拓市場。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_FRIENDS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "social",
-      "name": { "zh-TW": "化權入交友", "en": "Hua Quan into Friends" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "friends", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.58, "confidence": 0.7, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入交友宮，主在群體中有領導地位，亦防因權而與友生隙。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "化權入田宅", "en": "Hua Quan into Property" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "property", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入田宅宮，主家中有主導權或掌管家業，置產有魄力。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_FORTUNE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "personality",
-      "name": { "zh-TW": "化權入福德", "en": "Hua Quan into Fortune" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "fortune", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.58, "confidence": 0.7, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入福德宮，主思考強勢主觀、企圖心旺，需防精神過勞。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化權入父母", "en": "Hua Quan into Parents" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "parents", "scope": "natal" }] },
-      "tendency": "mixed", "strength": 0.58, "confidence": 0.7, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入父母宮，主父母強勢或具權威，親子間易有意見之爭。" } },
-
-    { "ruleId": "ZW.INT.SIHUA.KE_SIBLINGS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化科入兄弟", "en": "Hua Ke into Siblings" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "siblings", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.6, "confidence": 0.72, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入兄弟宮，主手足有學識名望，彼此和睦有文事往來。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "化科入夫妻", "en": "Hua Ke into Spouse" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "spouse", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.65, "confidence": 0.75, "priority": 62,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入夫妻宮，主配偶有才學或名聲，感情和睦且注重形象。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_CHILDREN.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化科入子女", "en": "Hua Ke into Children" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "children", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.6, "confidence": 0.72, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入子女宮，主子女聰慧好學、有文名。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "化科入疾厄", "en": "Hua Ke into Health" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "health", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.6, "confidence": 0.72, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入疾厄宮，主遇病得良醫、貴人相助，健康資訊掌握得宜。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate", "domain": "migration",
-      "name": { "zh-TW": "化科入遷移", "en": "Hua Ke into Travel" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "travel", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.62, "confidence": 0.73, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入遷移宮，主在外有好名聲、受禮遇，利外地求學或發展。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_FRIENDS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "social",
-      "name": { "zh-TW": "化科入交友", "en": "Hua Ke into Friends" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "friends", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.58, "confidence": 0.7, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入交友宮，主朋友多為有學養之人，往來有助力。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "化科入官祿", "en": "Hua Ke into Career" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "career", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 70,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入官祿宮，主事業上得名聲、學術或專業受肯定，利考試升遷。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "化科入田宅", "en": "Hua Ke into Property" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "property", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.58, "confidence": 0.7, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入田宅宮，主宅第有名聲或家風重文教。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_FORTUNE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "personality",
-      "name": { "zh-TW": "化科入福德", "en": "Hua Ke into Fortune" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "fortune", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.6, "confidence": 0.72, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入福德宮，主精神生活清雅、有藝術或學術品味。" } },
-    { "ruleId": "ZW.INT.SIHUA.KE_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化科入父母", "en": "Hua Ke into Parents" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ke", "palace": "parents", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.62, "confidence": 0.73, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化科入父母宮，主父母有學識名望，己身利於升學考運與師長提攜。" } },
-
-    { "ruleId": "ZW.INT.SIHUA.JI_SIBLINGS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化忌入兄弟", "en": "Hua Ji into Siblings" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "siblings", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.68, "confidence": 0.78, "priority": 72,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入兄弟宮，主手足緣薄或為兄弟費心，合夥亦多牽累。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_CHILDREN.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化忌入子女", "en": "Hua Ji into Children" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "children", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.66, "confidence": 0.76, "priority": 70,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入子女宮，主為子女操心，或投資合夥易有損失。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate", "domain": "migration",
-      "name": { "zh-TW": "化忌入遷移", "en": "Hua Ji into Travel" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "travel", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.7, "confidence": 0.78, "priority": 74,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入遷移宮，主出外多阻礙、易有意外或受人牽累，遠行宜謹慎。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_FRIENDS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "social",
-      "name": { "zh-TW": "化忌入交友", "en": "Hua Ji into Friends" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "friends", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.68, "confidence": 0.76, "priority": 72,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入交友宮，主易受朋友所累、識人不明，合作須防背信。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "化忌入田宅", "en": "Hua Ji into Property" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "property", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.68, "confidence": 0.76, "priority": 72,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入田宅宮，主家宅不寧、置產易生糾紛，須留意不動產細節。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_FORTUNE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "personality",
-      "name": { "zh-TW": "化忌入福德", "en": "Hua Ji into Fortune" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "fortune", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.7, "confidence": 0.78, "priority": 74,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入福德宮，主心思糾結、易鑽牛角尖、精神內耗，宜修心。" } },
-    { "ruleId": "ZW.INT.SIHUA.JI_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "化忌入父母", "en": "Hua Ji into Parents" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "ji", "palace": "parents", "scope": "natal" }] },
-      "tendency": "negative", "strength": 0.68, "confidence": 0.76, "priority": 72,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化忌入父母宮，主與父母緣薄或代溝、學業過程多波折。" } },
-    { "ruleId": "ZW.INT.SIHUA.LU_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "化祿入官祿", "en": "Hua Lu into Career" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "lu", "palace": "career", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.72, "confidence": 0.78, "priority": 70,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化祿入官祿宮，主事業順遂、工作得利與機遇，宜積極發展。" } },
-    { "ruleId": "ZW.INT.SIHUA.QUAN_WEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "化權入財帛", "en": "Hua Quan into Wealth" },
-      "conditions": { "all": [{ "type": "transformation", "transform": "quan", "palace": "wealth", "scope": "natal" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 68,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.SIHUA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "化權入財帛宮，主理財有魄力、能掌財權，求財積積極。" } }
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_SIBLINGS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化祿入兄弟",
+        "en": "Hua Lu into Siblings"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "siblings",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入兄弟宮，主手足情厚、兄弟有助力或有財，亦利合夥。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "化祿入夫妻",
+        "en": "Hua Lu into Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "spouse",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 65,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入夫妻宮，主配偶助益、感情濃厚，婚後得利或得配偶財。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_CHILDREN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化祿入子女",
+        "en": "Hua Lu into Children"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "children",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入子女宮，主子女賢孝有出息，亦利投資、合夥生財。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_TRAVEL.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "migration",
+      "name": {
+        "zh-TW": "化祿入遷移",
+        "en": "Hua Lu into Travel"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "travel",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 65,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入遷移宮，主出外得財、異地人緣佳，適合外出發展。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_FRIENDS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "social",
+      "name": {
+        "zh-TW": "化祿入交友",
+        "en": "Hua Lu into Friends"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "friends",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入交友宮，主人緣廣、朋友多助，適合團隊合作與群眾事業。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "化祿入田宅",
+        "en": "Hua Lu into Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "property",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.72,
+      "confidence": 0.78,
+      "priority": 65,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入田宅宮，主置產順利、家業興旺，利不動產投資。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_FORTUNE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "personality",
+      "name": {
+        "zh-TW": "化祿入福德",
+        "en": "Hua Lu into Fortune"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "fortune",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 65,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入福德宮，主精神富足、享受生活、樂觀豁達。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化祿入父母",
+        "en": "Hua Lu into Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "parents",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入父母宮，主得父母庇蔭、長輩提攜，亦有書卷功名之利。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_SIBLINGS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化權入兄弟",
+        "en": "Hua Quan into Siblings"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "siblings",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入兄弟宮，主手足強勢能幹，易有兄弟間主導權之爭。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "化權入夫妻",
+        "en": "Hua Quan into Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "spouse",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.62,
+      "confidence": 0.72,
+      "priority": 65,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入夫妻宮，主配偶能力強、主導性高，感情上宜多讓步協調。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_CHILDREN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化權入子女",
+        "en": "Hua Quan into Children"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "children",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入子女宮，主子女有主見、能力強，宜以引導代替權威管教。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "化權入疾厄",
+        "en": "Hua Quan into Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "health",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.55,
+      "confidence": 0.68,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入疾厄宮，主體質剛強但易有急性炎症或勞損，需注意血壓與情緒。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_TRAVEL.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "migration",
+      "name": {
+        "zh-TW": "化權入遷移",
+        "en": "Hua Quan into Travel"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "travel",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 62,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入遷移宮，主在外有權威、能掌事，適合外地任職或開拓市場。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_FRIENDS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "social",
+      "name": {
+        "zh-TW": "化權入交友",
+        "en": "Hua Quan into Friends"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "friends",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.58,
+      "confidence": 0.7,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入交友宮，主在群體中有領導地位，亦防因權而與友生隙。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "化權入田宅",
+        "en": "Hua Quan into Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "property",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入田宅宮，主家中有主導權或掌管家業，置產有魄力。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_FORTUNE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "personality",
+      "name": {
+        "zh-TW": "化權入福德",
+        "en": "Hua Quan into Fortune"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "fortune",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.58,
+      "confidence": 0.7,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入福德宮，主思考強勢主觀、企圖心旺，需防精神過勞。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化權入父母",
+        "en": "Hua Quan into Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "parents",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.58,
+      "confidence": 0.7,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入父母宮，主父母強勢或具權威，親子間易有意見之爭。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_SIBLINGS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化科入兄弟",
+        "en": "Hua Ke into Siblings"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "siblings",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入兄弟宮，主手足有學識名望，彼此和睦有文事往來。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "化科入夫妻",
+        "en": "Hua Ke into Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "spouse",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 62,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入夫妻宮，主配偶有才學或名聲，感情和睦且注重形象。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_CHILDREN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化科入子女",
+        "en": "Hua Ke into Children"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "children",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入子女宮，主子女聰慧好學、有文名。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "化科入疾厄",
+        "en": "Hua Ke into Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "health",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入疾厄宮，主遇病得良醫、貴人相助，健康資訊掌握得宜。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_TRAVEL.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "migration",
+      "name": {
+        "zh-TW": "化科入遷移",
+        "en": "Hua Ke into Travel"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "travel",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.62,
+      "confidence": 0.73,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入遷移宮，主在外有好名聲、受禮遇，利外地求學或發展。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_FRIENDS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "social",
+      "name": {
+        "zh-TW": "化科入交友",
+        "en": "Hua Ke into Friends"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "friends",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.58,
+      "confidence": 0.7,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入交友宮，主朋友多為有學養之人，往來有助力。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "化科入官祿",
+        "en": "Hua Ke into Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "career",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 70,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入官祿宮，主事業上得名聲、學術或專業受肯定，利考試升遷。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "化科入田宅",
+        "en": "Hua Ke into Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "property",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.58,
+      "confidence": 0.7,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入田宅宮，主宅第有名聲或家風重文教。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_FORTUNE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "personality",
+      "name": {
+        "zh-TW": "化科入福德",
+        "en": "Hua Ke into Fortune"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "fortune",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.6,
+      "confidence": 0.72,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入福德宮，主精神生活清雅、有藝術或學術品味。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.KE_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化科入父母",
+        "en": "Hua Ke into Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ke",
+            "palace": "parents",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.62,
+      "confidence": 0.73,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化科入父母宮，主父母有學識名望，己身利於升學考運與師長提攜。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_SIBLINGS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化忌入兄弟",
+        "en": "Hua Ji into Siblings"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "siblings",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.68,
+      "confidence": 0.78,
+      "priority": 72,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入兄弟宮，主手足緣薄或為兄弟費心，合夥亦多牽累。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_CHILDREN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化忌入子女",
+        "en": "Hua Ji into Children"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "children",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.66,
+      "confidence": 0.76,
+      "priority": 70,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入子女宮，主為子女操心，或投資合夥易有損失。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_TRAVEL.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "migration",
+      "name": {
+        "zh-TW": "化忌入遷移",
+        "en": "Hua Ji into Travel"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "travel",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 74,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入遷移宮，主出外多阻礙、易有意外或受人牽累，遠行宜謹慎。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_FRIENDS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "social",
+      "name": {
+        "zh-TW": "化忌入交友",
+        "en": "Hua Ji into Friends"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "friends",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.68,
+      "confidence": 0.76,
+      "priority": 72,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入交友宮，主易受朋友所累、識人不明，合作須防背信。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "化忌入田宅",
+        "en": "Hua Ji into Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "property",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.68,
+      "confidence": 0.76,
+      "priority": 72,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入田宅宮，主家宅不寧、置產易生糾紛，須留意不動產細節。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_FORTUNE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "personality",
+      "name": {
+        "zh-TW": "化忌入福德",
+        "en": "Hua Ji into Fortune"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "fortune",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 74,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入福德宮，主心思糾結、易鑽牛角尖、精神內耗，宜修心。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.JI_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "化忌入父母",
+        "en": "Hua Ji into Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "ji",
+            "palace": "parents",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.68,
+      "confidence": 0.76,
+      "priority": 72,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化忌入父母宮，主與父母緣薄或代溝、學業過程多波折。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.LU_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "化祿入官祿",
+        "en": "Hua Lu into Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "lu",
+            "palace": "career",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.72,
+      "confidence": 0.78,
+      "priority": 70,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化祿入官祿宮，主事業順遂、工作得利與機遇，宜積極發展。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SIHUA.QUAN_WEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "化權入財帛",
+        "en": "Hua Quan into Wealth"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "transformation",
+            "transform": "quan",
+            "palace": "wealth",
+            "scope": "natal"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 68,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "化權入財帛宮，主理財有魄力、能掌財權，求財積積極。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    }
   ]
 }

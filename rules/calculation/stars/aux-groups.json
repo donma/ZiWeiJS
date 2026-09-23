@@ -1,0 +1,197 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.BYMONTH2.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.aux-by-month-2",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "月系雜曜安法（第二組）",
+        "en": "Aux stars by lunar month (group 2)"
+      },
+      "description": {
+        "zh-TW": "由 tables/stars/aux-tables.json → byLunarMonth2 查表安月系雜曜；陰煞正月起寅、每月進二宮。"
+      },
+      "inputs": ["calendar.lunar.month"],
+      "logic": {
+        "executor": "calcAuxByMonth2",
+        "stage": "natal",
+        "order": 240
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "aux"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate，待 owner 覆核升 canonical）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.BYYEARSTEM2.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.aux-by-year-stem-2",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "年干系雜曜安法（第二組）",
+        "en": "Aux stars by year stem (group 2)"
+      },
+      "description": {
+        "zh-TW": "由 tables/stars/aux-tables.json → byYearStem2 查表安年干系雜曜。"
+      },
+      "inputs": ["calendar.ganzhi.year.stem"],
+      "logic": {
+        "executor": "calcAuxByYearStem2",
+        "stage": "natal",
+        "order": 250
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "aux"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.BYDAY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.aux-by-day",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "日系雜曜安法",
+        "en": "Aux stars by lunar day"
+      },
+      "description": {
+        "zh-TW": "由 tables/stars/aux-tables.json → byDayBranch 查表，以基準星所在宮起算、依農曆日數遞移。"
+      },
+      "inputs": ["calendar.lunar.day", "chart.stars"],
+      "logic": {
+        "executor": "calcAuxByDay",
+        "stage": "natal",
+        "order": 260
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "aux"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.BYDAYHOUR.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.aux-by-day-hour",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "日時系雜曜安法",
+        "en": "Aux stars by lunar day and hour"
+      },
+      "description": {
+        "zh-TW": "由 tables/stars/aux-tables.json → byDayHour 查表，以基準星所在宮起算，同時受日數與時辰影響。"
+      },
+      "inputs": ["calendar.lunar.day", "calendar.hourBranch", "chart.stars"],
+      "logic": {
+        "executor": "calcAuxByDayHour",
+        "stage": "natal",
+        "order": 265
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "aux"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.aux-special",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "特殊雜曜安法（截空、旬空、蜚廉、天德月德等）",
+        "en": "Special aux stars"
+      },
+      "description": {
+        "zh-TW": "年干系（截空、天空、天乙）、旬空（年柱所在旬之空亡）、年支系（蜚廉、息神、指背）、月支系（天德、月德、天月）。"
+      },
+      "inputs": ["calendar.ganzhi.year.stem", "calendar.ganzhi.year.branch", "calendar.ganzhi.month.branch"],
+      "logic": {
+        "executor": "calcAuxSpecial",
+        "stage": "natal",
+        "order": 270
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "aux"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate）。旬空之干支差值法與天德月德簡化表待 owner 覆核。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.stars.period-12",
+      "category": "calculation",
+      "name": {
+        "zh-TW": "歲建十二神與將前十二神",
+        "en": "Suijian 12 and Jiangqian 12"
+      },
+      "description": {
+        "zh-TW": "歲建十二神自太歲宮順行；將前十二神依年支三合局起將星（寅午戌在午、申子辰在子、巳酉丑在酉、亥卯未在卯），餘神順行。"
+      },
+      "inputs": ["calendar.ganzhi.year.branch"],
+      "logic": {
+        "executor": "calcPeriodStars",
+        "stage": "natal",
+        "order": 280
+      },
+      "outputs": ["chart.stars"],
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.SUIJIAN", "EVD.IZTRO.AUXGROUPS"],
+      "tags": ["stars", "period"],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "rule-add",
+          "date": "2026-09-23",
+          "note": "Hardening P0-1：補上原本未被任何規則驅動的安星動作（candidate）。"
+        }
+      ]
+    }
+  ]
+}

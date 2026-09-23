@@ -89,10 +89,16 @@ export function normalizeBirth(
     throw new ZiWeiError('INVALID_TIMEZONE', `Unknown IANA timezone: ${timezone}`, { timezone });
   }
 
-  const hour = input.time?.hour ?? 12;
-  const minute = input.time?.minute ?? 0;
-  const second = input.time?.second ?? 0;
-  const hasTime = input.time?.hour !== undefined;
+  // 未知時辰不得偷偷預設（spec §P0-2）。唯一例外：analyzeUnknownTime 會逐一帶入代表時辰。
+  if (input.time?.hour === undefined) {
+    throw new ZiWeiError(
+      'UNKNOWN_BIRTH_TIME',
+      'input.time.hour is required; use ZiWei.analyzeUnknownTime() to enumerate 12 candidate hours'
+    );
+  }
+  const hour = input.time.hour;
+  const minute = input.time.minute ?? 0;
+  const second = input.time.second ?? 0;
 
   const timeConvention = input.timeConvention ?? profile.timeConvention;
   const dayBoundary = input.dayBoundary ?? profile.dayBoundary;
@@ -207,8 +213,6 @@ export function normalizeBirth(
     new Date(Date.UTC(solarY, solarM - 1, solarD, hour, minute)),
     timezone
   );
-
-  void hasTime;
 
   return {
     solar: { year: solarY, month: solarM, day: solarD },

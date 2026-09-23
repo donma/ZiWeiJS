@@ -22,7 +22,9 @@
         "executor": "calcZiweiPosition",
         "params": {
           "tableRef": "stars/ziwei-series"
-        }
+        },
+        "stage": "natal",
+        "order": 160
       },
       "outputs": [
         "stars.ZW.STAR.MAJOR.ZIWEI"
@@ -65,7 +67,9 @@
         "executor": "calcZiweiSeries",
         "params": {
           "tableRef": "stars/ziwei-series"
-        }
+        },
+        "stage": "natal",
+        "order": 170
       },
       "outputs": [
         "stars.*"
@@ -108,7 +112,9 @@
         "executor": "calcTianfuSeries",
         "params": {
           "tableRef": "stars/ziwei-series"
-        }
+        },
+        "stage": "natal",
+        "order": 180
       },
       "outputs": [
         "stars.*"

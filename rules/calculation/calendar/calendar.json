@@ -19,7 +19,9 @@
         "input.calendarType"
       ],
       "logic": {
-        "executor": "convertCalendar"
+        "executor": "convertCalendar",
+        "stage": "natal",
+        "order": 20
       },
       "outputs": [
         "calendar"
@@ -58,7 +60,9 @@
         "hourBranch"
       ],
       "logic": {
-        "executor": "calcGanzhi"
+        "executor": "calcGanzhi",
+        "stage": "natal",
+        "order": 30
       },
       "outputs": [
         "calendar.ganzhi"
@@ -97,7 +101,9 @@
         "timezone"
       ],
       "logic": {
-        "executor": "calcTrueSolar"
+        "executor": "calcTrueSolar",
+        "stage": "natal",
+        "order": 40
       },
       "outputs": [
         "calendar.trueSolarOffsetMinutes"

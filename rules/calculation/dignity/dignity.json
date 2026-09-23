@@ -22,7 +22,9 @@
         "executor": "calcDignity",
         "params": {
           "tableRef": "dignity/brightness"
-        }
+        },
+        "stage": "natal",
+        "order": 340
       },
       "outputs": [
         "stars.*.dignity"

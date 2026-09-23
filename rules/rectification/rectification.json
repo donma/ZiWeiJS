@@ -19,7 +19,8 @@
         "clues"
       ],
       "logic": {
-        "executor": "rectifyAnalyze"
+        "executor": "rectifyAnalyze",
+        "stage": "on-demand"
       },
       "outputs": [
         "candidates"

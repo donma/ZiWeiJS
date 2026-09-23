@@ -1,9 +1,10 @@
 import type { EngineContext } from './context.js';
-import { activeRule, effectiveRuleId, variantPatchFor } from './context.js';
+import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
+import { effectiveRuleId, variantPatchFor } from './context.js';
 import type { BranchId, StarPlacement, Star, StemId } from '../core/types.js';
 import { branchAt, branchIndex, stemIndex, STEMS } from '../core/constants.js';
 import {
-  calcZiweiPosition, ziweiSeriesOffsets, tianfuBase, tianfuSeriesOffsets
+  ziweiSeriesOffsets, tianfuBase, tianfuSeriesOffsets
 } from './palace-executors.js';
 import starRegistry from '../../tables/stars/registry.json' with { type: 'json' };
 import auxTables from '../../tables/stars/aux-tables.json' with { type: 'json' };
@@ -58,7 +59,7 @@ export function placeStar(ctx: EngineContext, starId: string, branch: BranchId, 
   return placement;
 }
 
-export function calcBureau(ctx: EngineContext): void {
+export function calcBureau(ctx: EngineContext): ExecutorOutcome {
   const CANON = 'ZW.CALC.BUREAU.NAYIN.001';
   const patch = variantPatchFor(ctx, CANON) as { useYearGanzhi?: boolean } | undefined;
   const life = ctx.palaces.find(p => p.isLifePalace)!;
@@ -69,40 +70,38 @@ export function calcBureau(ctx: EngineContext): void {
   ctx.bureau = bureau;
   const numMap: Record<string, number> = { shui2: 2, mu3: 3, jin4: 4, tu5: 5, huo6: 6 };
   ctx.bureauNumber = numMap[bureau];
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.BUREAU.NAYIN.001',
+  return {
     inputs: { lifePalaceGanzhi: key, nayin: wuxing },
-    result: bureau,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.WUXINGJU']
-  });
+    result: bureau
+  };
 }
 
-export function calcMajors(ctx: EngineContext): void {
-  const ziweiBranch = calcZiweiPosition(ctx);
-  const ziweiOffsets = ziweiSeriesOffsets();
-  for (const [starId, offset] of Object.entries(ziweiOffsets)) {
+export function calcZiweiSeries(ctx: EngineContext): ExecutorOutcome {
+  const ziweiBranch = ctx.ziweiBranch!;
+  const offsets = ziweiSeriesOffsets();
+  const placed: string[] = [];
+  for (const [starId, offset] of Object.entries(offsets)) {
     const b = branchAt(branchIndex(ziweiBranch) + offset);
     placeStar(ctx, starId, b, 'ZW.CALC.STAR.ZIWEI_SERIES.001');
+    placed.push(`${starId}@${b}`);
   }
+  return { inputs: { ziweiBranch }, result: placed };
+}
+
+export function calcTianfuSeries(ctx: EngineContext): ExecutorOutcome {
+  const ziweiBranch = ctx.ziweiBranch!;
   const tfBase = tianfuBase(ziweiBranch);
   const tfOffsets = tianfuSeriesOffsets();
+  const placed: string[] = [];
   for (const [starId, offset] of Object.entries(tfOffsets)) {
     const b = branchAt(branchIndex(tfBase) + offset);
     placeStar(ctx, starId, b, 'ZW.CALC.STAR.TIANFU_SERIES.001');
+    placed.push(`${starId}@${b}`);
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.ZIWEI_SERIES.001',
-    inputs: { ziweiBranch },
-    result: [...ctx.placements.values()].filter(p => p.star.category === 'major').map(p => `${p.starId}@${p.branch}`),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.ZIWEIXI']
-  });
+  return { inputs: { ziweiBranch, tianfuBranch: tfBase }, result: placed };
 }
 
-export function calcAuxByMonth(ctx: EngineContext): void {
+export function calcAuxByMonth(ctx: EngineContext): ExecutorOutcome {
   const month = ctx.normalized.lunar.month;
   const table = auxTables.byLunarMonth as unknown as Record<string, { startBranch: string; direction: number }>;
   const map: Record<string, string> = {
@@ -118,16 +117,10 @@ export function calcAuxByMonth(ctx: EngineContext): void {
     const b = branchAt(start + cfg.direction * (month - 1));
     placeStar(ctx, starId, b, map[starId]);
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.ZUOFU_YOUBI.001',
-    inputs: { lunarMonth: month },
-    result: 'aux-by-month placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { lunarMonth: month }, result: 'aux-by-month placed' };
 }
 
-export function calcAuxByHour(ctx: EngineContext): void {
+export function calcAuxByHour(ctx: EngineContext): ExecutorOutcome {
   const hbIdx = branchIndex(ctx.normalized.hourBranch);
   const table = auxTables.byHourBranch as unknown as Record<string, { startBranch: string; direction: number }>;
   const ruleId = 'ZW.CALC.STAR.CHANGQU.001';
@@ -137,16 +130,10 @@ export function calcAuxByHour(ctx: EngineContext): void {
     const b = branchAt(start + cfg.direction * hbIdx);
     placeStar(ctx, starId, b, ruleId);
   }
-  ctx.tracer.record({
-    ruleId,
-    inputs: { hourBranch: ctx.normalized.hourBranch },
-    result: 'aux-by-hour placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { hourBranch: ctx.normalized.hourBranch }, result: 'aux-by-hour placed' };
 }
 
-export function calcAuxByYearStem(ctx: EngineContext): void {
+export function calcAuxByYearStem(ctx: EngineContext): ExecutorOutcome {
   const CANON = 'ZW.CALC.STAR.YEARSTEM_AUX.001';
   const stem = ctx.normalized.ganzhi.year.stem;
   const table = auxTables.byYearStem as unknown as Record<string, Record<string, number>>;
@@ -168,27 +155,12 @@ export function calcAuxByYearStem(ctx: EngineContext): void {
     applied.push(`${starId}:${b}`);
     if (starId === 'ZW.STAR.AUX.LUCUN') ctx.lucunBranch = b;
   }
-  if (patch) {
-    const rule = activeRule(ctx, CANON);
-    ctx.tracer.record({
-      ruleId: rule?.ruleId ?? ruleId,
-      ruleVersion: rule?.ruleVersion,
-      inputs: { yearStem: stem, variantPatched: Object.keys(patch) },
-      result: applied,
-      profile: ctx.profile.profileId,
-      note: `依 profile 覆寫變體（variant of ${CANON}）`,
-      sourceRefs: rule?.sourceRefs ?? ['SRC.QUANJI'],
-      evidenceRefs: rule?.evidenceRefs ?? []
-    });
-  }
-  ctx.tracer.record({
-    ruleId: CANON,
-    inputs: { yearStem: stem },
+  return {
+    inputs: { yearStem: stem, variantOf: CANON, variantPatched: patch ? Object.keys(patch) : [] },
     result: applied,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.LUCUN', 'EVD.QUANSHU.KUIYUE']
-  });
+    status: patch ? 'variant' : 'executed',
+    note: patch ? `依 profile 覆寫變體（variant of ${CANON}）` : undefined
+  };
 }
 
 function yearBranchGroup(branch: BranchId): string {
@@ -200,7 +172,7 @@ function yearBranchGroup(branch: BranchId): string {
   return 'yin-wu-xu';
 }
 
-export function calcAuxByYearBranch(ctx: EngineContext): void {
+export function calcAuxByYearBranch(ctx: EngineContext): ExecutorOutcome {
   const yearBranch = ctx.normalized.ganzhi.year.branch;
   const ybIdx = branchIndex(yearBranch);
   const group = yearBranchGroup(yearBranch);
@@ -218,7 +190,6 @@ export function calcAuxByYearBranch(ctx: EngineContext): void {
     const start = patched !== undefined ? patched : (cfg[group] as number | undefined);
     if (start === undefined) continue;
     placeStar(ctx, starId, branchAt(start + hbIdx), effectiveRuleId(ctx, hlCanon));
-    void activeRule;
   }
 
   const direct: Record<string, string> = {};
@@ -251,19 +222,13 @@ export function calcAuxByYearBranch(ctx: EngineContext): void {
   placeStar(ctx, 'ZW.STAR.AUX.SUISHEN', branchAt(ybIdx + 3), ruleId);
   placeStar(ctx, 'ZW.STAR.AUX.BINGFU', branchAt(ybIdx - 1), ruleId);
 
-  ctx.tracer.record({
-    ruleId,
-    inputs: { yearBranch, group },
-    result: 'year-branch aux placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { yearBranch, group }, result: 'year-branch aux placed' };
 }
 
-export function calcAuxByMonth2(ctx: EngineContext): void {
+export function calcAuxByMonth2(ctx: EngineContext): ExecutorOutcome {
   const month = ctx.normalized.lunar.month;
   const table = (auxTables as unknown as { byLunarMonth2?: Record<string, { startBranch: string; direction: number }> }).byLunarMonth2 ?? {};
-  const ruleId = 'ZW.CALC.STAR.ZUOFU_YOUBI.001';
+  const ruleId = 'ZW.CALC.STAR.BYMONTH2.001';
   for (const [starId, cfg] of Object.entries(table)) {
     if (!cfg.startBranch) continue;
     const start = branchIndex(cfg.startBranch as BranchId);
@@ -272,38 +237,26 @@ export function calcAuxByMonth2(ctx: EngineContext): void {
   }
   // 陰煞：正月起寅，每月進二宮
   const yinsha = branchAt(2 + ((month - 1) * 2) % 12);
-  placeStar(ctx, 'ZW.STAR.AUX.YINSHA', yinsha, 'ZW.CALC.STAR.YEARBRANCH_AUX.001');
-  ctx.tracer.record({
-    ruleId,
-    inputs: { lunarMonth: month },
-    result: 'aux-by-month2 placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  placeStar(ctx, 'ZW.STAR.AUX.YINSHA', yinsha, ruleId);
+  return { inputs: { lunarMonth: month }, result: 'aux-by-month2 placed' };
 }
 
-export function calcAuxByYearStem2(ctx: EngineContext): void {
+export function calcAuxByYearStem2(ctx: EngineContext): ExecutorOutcome {
   const stem = ctx.normalized.ganzhi.year.stem;
   const table = (auxTables as unknown as { byYearStem2?: Record<string, Record<string, number>> }).byYearStem2 ?? {};
-  const ruleId = 'ZW.CALC.STAR.YEARSTEM_AUX.001';
+  const ruleId = 'ZW.CALC.STAR.BYYEARSTEM2.001';
   for (const [starId, row] of Object.entries(table)) {
     const idx = row[stem];
     if (idx === undefined) continue;
     placeStar(ctx, starId, branchAt(idx), ruleId);
   }
-  ctx.tracer.record({
-    ruleId,
-    inputs: { yearStem: stem },
-    result: 'year-stem2 aux placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { yearStem: stem }, result: 'year-stem2 aux placed' };
 }
 
-export function calcAuxByDay(ctx: EngineContext): void {
+export function calcAuxByDay(ctx: EngineContext): ExecutorOutcome {
   const day = ctx.normalized.lunar.day;
   const table = (auxTables as unknown as { byDayBranch?: Record<string, { base: string; direction: number }> }).byDayBranch ?? {};
-  const ruleId = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
+  const ruleId = 'ZW.CALC.STAR.BYDAY.001';
   for (const [starId, cfg] of Object.entries(table)) {
     if (!cfg.base) continue;
     const basePlacement = ctx.placements.get(cfg.base);
@@ -311,19 +264,13 @@ export function calcAuxByDay(ctx: EngineContext): void {
     const b = branchAt(branchIndex(basePlacement.branch) + cfg.direction * (day - 1));
     placeStar(ctx, starId, b, ruleId);
   }
-  ctx.tracer.record({
-    ruleId,
-    inputs: { lunarDay: day },
-    result: 'aux-by-day placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { lunarDay: day }, result: 'aux-by-day placed' };
 }
 
-export function calcAuxByDayHour(ctx: EngineContext): void {
+export function calcAuxByDayHour(ctx: EngineContext): ExecutorOutcome {
   const day = ctx.normalized.lunar.day;
   const table = (auxTables as unknown as { byDayHour?: Record<string, { base: string; dayDirection: number; offset: number }> }).byDayHour ?? {};
-  const ruleId = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
+  const ruleId = 'ZW.CALC.STAR.BYDAYHOUR.001';
   for (const [starId, cfg] of Object.entries(table)) {
     if (!cfg.base) continue;
     const basePlacement = ctx.placements.get(cfg.base);
@@ -331,21 +278,15 @@ export function calcAuxByDayHour(ctx: EngineContext): void {
     const b = branchAt(branchIndex(basePlacement.branch) + cfg.dayDirection * (day - 1) + cfg.offset);
     placeStar(ctx, starId, b, ruleId);
   }
-  ctx.tracer.record({
-    ruleId,
-    inputs: { lunarDay: day },
-    result: 'aux-by-day-hour placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { lunarDay: day }, result: 'aux-by-day-hour placed' };
 }
 
-export function calcAuxSpecial(ctx: EngineContext): void {
+export function calcAuxSpecial(ctx: EngineContext): ExecutorOutcome {
   const yearBranch = ctx.normalized.ganzhi.year.branch;
   const ybIdx = branchIndex(yearBranch);
   const group = yearBranchGroup(yearBranch);
   const table = auxTables.byMonthSpecial as Record<string, Record<string, number> | { formula?: string; note?: string }>;
-  const ruleId = 'ZW.CALC.STAR.YEARBRANCH_AUX.001';
+  const ruleId = 'ZW.CALC.STAR.SPECIAL_AUX.001';
   const yearStem = ctx.normalized.ganzhi.year.stem;
   const voidTable = (auxTables as unknown as { byYearStemVoid?: Record<string, unknown> }).byYearStemVoid ?? {};
 
@@ -384,18 +325,12 @@ export function calcAuxSpecial(ctx: EngineContext): void {
   // 指背：年支對宮
   placeStar(ctx, 'ZW.STAR.AUX.ZHIFU', branchAt(ybIdx + 6), ruleId);
 
-  ctx.tracer.record({
-    ruleId,
-    inputs: { yearStem, yearBranch },
-    result: 'special aux placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { yearStem, yearBranch }, result: 'special aux placed' };
 }
 
-export function calcPeriodStars(ctx: EngineContext): void {
+export function calcPeriodStars(ctx: EngineContext): ExecutorOutcome {
   const ybIdx = branchIndex(ctx.normalized.ganzhi.year.branch);
-  const ruleId = 'ZW.CALC.STAR.PERIOD.001';
+  const ruleId = 'ZW.CALC.STAR.PERIOD12.001';
   // 歲建諸星：歲建在太歲宮，其餘順行 12 宮
   const SUIJIAN: string[] = [
     'ZW.STAR.PERIOD.SUIJIAN', 'ZW.STAR.PERIOD.HUIQI', 'ZW.STAR.PERIOD.SANGMEN2',
@@ -419,35 +354,32 @@ export function calcPeriodStars(ctx: EngineContext): void {
   for (let i = 0; i < 12; i++) {
     placeStar(ctx, JIANGQIAN[i], branchAt(jxBase + i), ruleId);
   }
-  ctx.tracer.record({
-    ruleId,
-    inputs: { yearBranch: ctx.normalized.ganzhi.year.branch, group },
-    result: 'period & interim stars placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { yearBranch: ctx.normalized.ganzhi.year.branch, group }, result: 'period & interim stars placed' };
 }
 
 function yearBranchOf(ctx: EngineContext): BranchId {
   return ctx.normalized.ganzhi.year.branch;
 }
 
-export function calcFixedStars(ctx: EngineContext): void {
+export function calcFixedStars(ctx: EngineContext): ExecutorOutcome {
   const ruleId = 'ZW.STAR.FIXED.001';
   for (const [starId, cfg] of Object.entries(auxTables.fixed as unknown as Record<string, { palace: string }>)) {
     const palace = ctx.palaces.find(p => p.id === cfg.palace);
     if (palace) placeStar(ctx, starId, palace.branch, ruleId);
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.FIXED.001',
-    inputs: {},
-    result: 'fixed stars placed',
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: {}, result: 'fixed stars placed' };
 }
 
-export function calcChangSheng(ctx: EngineContext): void {
+export function calcChangSheng(ctx: EngineContext): ExecutorOutcome {
+  // 長生十二神順逆依性別決定，性別未知時不得猜測（spec §27）
+  if (ctx.direction === 'undetermined') {
+    return {
+      inputs: { bureau: ctx.bureau },
+      result: null,
+      status: 'unavailable',
+      reason: 'UNKNOWN_SEX_FOR_CALCULATION'
+    };
+  }
   const startBranch = (changshengTable.startBranch as Record<string, string>)[ctx.bureau];
   const startIdx = branchIndex(startBranch as BranchId);
   const dir = ctx.direction === 'forward' ? 1 : -1;
@@ -457,16 +389,13 @@ export function calcChangSheng(ctx: EngineContext): void {
     const idx = ((offset % 12) + 12) % 12;
     palace.changsheng = stages[idx] as typeof palace.changsheng;
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.CHANGSHENG12.001',
+  return {
     inputs: { bureau: ctx.bureau, startBranch, direction: ctx.direction },
-    result: ctx.palaces.map(p => `${p.id}:${p.changsheng}`),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: ctx.palaces.map(p => `${p.id}:${p.changsheng}`)
+  };
 }
 
-export function calcBoshi(ctx: EngineContext): void {
+export function calcBoshi(ctx: EngineContext): ExecutorOutcome | void {
   if (!ctx.lucunBranch) return;
   const startIdx = branchIndex(ctx.lucunBranch);
   const stages = (changshengTable.boshi12 as { stages: string[] }).stages;
@@ -474,13 +403,10 @@ export function calcBoshi(ctx: EngineContext): void {
     const offset = ((branchIndex(palace.branch) - startIdx) % 12 + 12) % 12;
     palace.boshi = stages[offset];
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.BOSHI12.001',
+  return {
     inputs: { lucunBranch: ctx.lucunBranch },
-    result: ctx.palaces.map(p => `${p.id}:${p.boshi}`),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: ctx.palaces.map(p => `${p.id}:${p.boshi}`)
+  };
 }
 
 export interface SihuaResult {

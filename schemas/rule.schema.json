@@ -68,7 +68,7 @@
           "version": { "type": "string" },
           "type": {
             "type": "string",
-            "enum": ["breaking", "behavior-change", "evidence-update", "wording-only", "deprecated"]
+            "enum": ["rule-add", "rule-remove", "breaking", "behavior-change", "evidence-update", "wording-only", "deprecated"]
           },
           "note": { "type": "string" },
           "date": { "type": "string" }

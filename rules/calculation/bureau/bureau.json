@@ -21,7 +21,9 @@
         "executor": "calcBureau",
         "params": {
           "tableRef": "stems/nayin"
-        }
+        },
+        "stage": "natal",
+        "order": 150
       },
       "outputs": [
         "birthContext.bureau"
@@ -66,7 +68,8 @@
         "params": {
           "tableRef": "stems/nayin",
           "useYearGanzhi": true
-        }
+        },
+        "stage": "variant"
       },
       "outputs": [
         "birthContext.bureau"

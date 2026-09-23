@@ -22,7 +22,9 @@
         "params": {
           "tableRef": "transformations/sihua#canonical",
           "scope": "natal"
-        }
+        },
+        "stage": "natal",
+        "order": 320
       },
       "outputs": [
         "chart.transformations"
@@ -68,9 +70,13 @@
           "tableRef": "transformations/sihua#canonical",
           "scope": "natal",
           "variantPatch": {
-            "geng": { "quan": "ZW.STAR.MAJOR.TIANFU", "ke": "ZW.STAR.MAJOR.TIANXIANG" }
+            "geng": {
+              "quan": "ZW.STAR.MAJOR.TIANFU",
+              "ke": "ZW.STAR.MAJOR.TIANXIANG"
+            }
           }
-        }
+        },
+        "stage": "variant"
       },
       "outputs": [
         "chart.transformations"
@@ -112,7 +118,9 @@
         "params": {
           "tableRef": "transformations/sihua#canonical",
           "scope": "palace"
-        }
+        },
+        "stage": "natal",
+        "order": 330
       },
       "outputs": [
         "chart.transformations"
@@ -154,7 +162,9 @@
         "executor": "calcSihuaPeriod",
         "params": {
           "tableRef": "transformations/sihua#canonical"
-        }
+        },
+        "stage": "period",
+        "order": 440
       },
       "outputs": [
         "chart.transformations"

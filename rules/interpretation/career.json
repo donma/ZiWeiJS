@@ -42,7 +42,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.CAREER.JI_CAREER.001",
@@ -85,7 +88,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.WEALTH.LU_WEALTH.001",
@@ -128,7 +134,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.WEALTH.LUCUN_WEALTH.001",
@@ -171,7 +180,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.JI_SPOUSE.001",
@@ -214,7 +226,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     }
   ]
 }

@@ -2,29 +2,57 @@ import type {
   ZiWeiBirthInput, ZiWeiChart, CalculateOptions, Profile,
   Certainty
 } from '../core/types.js';
-import { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION, BUREAU_NAME, isYangStem, STEM_YINYANG } from '../core/constants.js';
+import { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION, BUREAU_NAME, STEM_YINYANG } from '../core/constants.js';
 import { ZiWeiError } from '../core/errors.js';
 import { getProfile, getRule } from '../rule-engine/registry.js';
 import type { Rule } from '../core/types.js';
 import { normalizeBirth, buildCalendarInfo } from '../calendar/calendar-engine.js';
 import { Tracer } from '../trace/tracer.js';
 import type { EngineContext } from '../executors/context.js';
-import {
-  calcLifePalace, calcBodyPalace, calcTwelvePalaces, calcPalaceStems, calcMasterStars
-} from '../executors/palace-executors.js';
-import {
-  calcBureau, calcMajors, calcAuxByMonth, calcAuxByHour, calcAuxByYearStem,
-  calcAuxByYearBranch, calcFixedStars, calcChangSheng, calcBoshi,
-  calcAuxByMonth2, calcAuxByYearStem2, calcAuxByDay, calcAuxByDayHour, calcAuxSpecial,
-  calcPeriodStars
-} from '../executors/star-executors.js';
-import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
-import { calcDignities } from '../dignity-engine/dignity-engine.js';
-import {
-  calcMajorPeriods, calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod, ganzhiAt
-} from '../period-engine/period-engine.js';
-import { hourBranchFromHour } from '../calendar/calendar-engine.js';
+import { registerAllExecutors } from '../rule-engine/register-executors.js';
+import { executePlan } from '../rule-engine/execute-rule.js';
+import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN } from '../rule-engine/execution-plan.js';
+import { ageAt, resolveMajorPeriod } from '../period-engine/major-period-resolver.js';
 import { runInterpretation, groupByDomain, runPatterns } from '../interpretation-engine/interpretation-engine.js';
+import type { TargetDate } from '../core/types.js';
+
+/**
+ * targetDate 契約（spec §P0-3D）：
+ * - year 必填
+ * - month 有值但 year 沒值 → INVALID_TARGET_DATE（year 已是必填）
+ * - day 有值但 month 沒值 → INVALID_TARGET_DATE
+ * - hour 有值但 day 沒值 → INVALID_TARGET_DATE
+ * - 數值範圍檢查
+ */
+function validateTargetDate(target: TargetDate): void {
+  if (!Number.isInteger(target.year)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.year is required and must be an integer', { target });
+  }
+  if (target.month !== undefined && !Number.isInteger(target.month)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.month must be an integer', { target });
+  }
+  if (target.day !== undefined && !Number.isInteger(target.day)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.day must be an integer', { target });
+  }
+  if (target.hour !== undefined && !Number.isInteger(target.hour)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.hour must be an integer', { target });
+  }
+  if (target.day !== undefined && target.month === undefined) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.day requires targetDate.month', { target });
+  }
+  if (target.hour !== undefined && target.day === undefined) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.hour requires targetDate.day', { target });
+  }
+  if (target.month !== undefined && (target.month < 1 || target.month > 12)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.month out of range 1-12', { target });
+  }
+  if (target.day !== undefined && (target.day < 1 || target.day > 31)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.day out of range 1-31', { target });
+  }
+  if (target.hour !== undefined && (target.hour < 0 || target.hour > 23)) {
+    throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate.hour out of range 0-23', { target });
+  }
+}
 
 export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}): ZiWeiChart {
   const profile = getProfile(options.profile ?? 'canonical');
@@ -36,6 +64,9 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
       'sexForCalculation is required for deterministic calculation (male | female | unknown with unknown-time analysis)'
     );
   }
+
+  const target = options.targetDate;
+  if (target) validateTargetDate(target);
 
   const normalized = normalizeBirth(input, profile);
 
@@ -53,9 +84,10 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     normalized,
     profile,
     tracer,
+    targetDate: target,
     sexForCalculation: input.sexForCalculation,
     yinYang: STEM_YINYANG[normalized.ganzhi.year.stem],
-    direction: 'forward',
+    direction: 'undetermined',
     lifePalaceBranch: 'zi',
     bodyPalaceBranch: 'zi',
     palaces: [],
@@ -67,52 +99,30 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     activeRules
   };
 
-  const yangStem = isYangStem(normalized.ganzhi.year.stem);
-  const male = input.sexForCalculation === 'male';
-  const female = input.sexForCalculation === 'female';
-  ctx.direction = ((yangStem && male) || (!yangStem && female)) ? 'forward' : 'backward';
-  if (input.sexForCalculation === 'unknown') ctx.direction = 'forward';
+  // 順逆行由 ZW.CALC.BIRTH.SEX_DIRECTION.001 規則決定（見 natal execution plan）
+  // 性別未知時該規則回報 unavailable，direction 保持 undetermined（spec §27）
 
-  calcLifePalace(ctx);
-  calcBodyPalace(ctx);
-  calcTwelvePalaces(ctx);
-  calcPalaceStems(ctx);
-  calcMasterStars(ctx);
-  calcBureau(ctx);
-  calcMajors(ctx);
-  calcAuxByMonth(ctx);
-  calcAuxByHour(ctx);
-  calcAuxByYearStem(ctx);
-  calcAuxByYearBranch(ctx);
-  calcAuxByMonth2(ctx);
-  calcAuxByYearStem2(ctx);
-  calcAuxByDay(ctx);
-  calcAuxByDayHour(ctx);
-  calcAuxSpecial(ctx);
-  calcPeriodStars(ctx);
-  calcFixedStars(ctx);
-  calcChangSheng(ctx);
-  calcBoshi(ctx);
-  calcNatalSihua(ctx);
-  calcPalaceSihua(ctx);
-  calcDignities(ctx);
-  calcMajorPeriods(ctx);
+  // 規則驅動執行：順序來自 Rule Registry 的 logic.stage / logic.order（spec §P0-1）
+  registerAllExecutors();
+  executePlan(NATAL_EXECUTION_PLAN, ctx);
 
-  const target = options.targetDate;
-  const now = new Date();
-  const ty = target?.year ?? now.getFullYear();
-  const tm = target?.month ?? (now.getMonth() + 1);
-  const td = target?.day ?? now.getDate();
-  const th = target?.hour ?? now.getHours();
+  // 限運：只有在提供 targetDate 時才計算；沒有 targetDate 時絕不隱含 now（spec §P0-3E）
+  let activePeriods: ZiWeiChart['periods']['active'];
+  if (target) {
+    // 先解出目標年齡所在之大限，限運四化才能依正確的大限（spec §P0-3A）
+    const ageMethod = profile.periodRules?.ageMethod ?? 'virtual-age';
+    const age = ageAt(normalized.lunar.year, target, ageMethod);
+    const resolution = resolveMajorPeriod(ctx.majorPeriods, age, ctx.direction);
+    ctx.activeMajorPeriod = resolution.period;
+    activePeriods = {
+      age,
+      asOf: target,
+      major: resolution.period,
+      majorSkippedReason: resolution.reason
+    };
 
-  calcYearPeriod(ctx, ty);
-  calcMonthPeriod(ctx, ty, tm, td);
-  calcDayPeriod(ctx, td, ty, tm);
-  {
-    const gzHour = ganzhiAt(ty, tm, td, th);
-    calcHourPeriod(ctx, hourBranchFromHour(th), gzHour.hour.stem, gzHour.hour.branch);
+    executePlan(PERIOD_EXECUTION_PLAN, ctx);
   }
-  calcPeriodSihua(ctx);
 
   const patterns = options.patterns !== false ? runPatterns(ctx) : [];
   const hits = options.interpretation !== false ? runInterpretation(ctx) : [];
@@ -121,6 +131,7 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   const lifePalace = ctx.palaces.find(p => p.isLifePalace)!;
   const bodyPalace = ctx.palaces.find(p => p.isBodyPalace)!;
 
+  const directionDetermined = ctx.direction !== 'undetermined';
   const certainty: Record<string, Certainty> = {
     calendar: 'certain',
     lifePalace: 'certain',
@@ -131,7 +142,11 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     minorStars: 'medium',
     dignity: 'variant-dependent',
     sihua: 'variant-dependent',
-    interpretation: 'variant-dependent'
+    interpretation: 'variant-dependent',
+    direction: directionDetermined ? 'certain' : 'unknown',
+    changsheng: directionDetermined ? 'high' : 'unknown',
+    majorPeriods: directionDetermined ? 'high' : 'unknown',
+    periods: target ? 'high' : 'unavailable'
   };
 
   const stars: Record<string, ReturnType<typeof Object>> = {};
@@ -172,6 +187,7 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     },
     periods: {
       major: ctx.majorPeriods,
+      active: activePeriods,
       year: ctx.yearPeriod,
       month: ctx.monthPeriod,
       day: ctx.dayPeriod,

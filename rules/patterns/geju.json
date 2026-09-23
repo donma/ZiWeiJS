@@ -52,7 +52,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.JIYUETONGLIANG.001",
@@ -107,7 +110,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.SHA_POLANG.001",
@@ -148,7 +154,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.RIYUEMING.001",
@@ -188,7 +197,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.JIAXIANG.001",
@@ -242,7 +254,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.ZIWEI_ZUOYOU.001",
@@ -304,7 +319,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.LUMA_JIAOCHI.001",
@@ -358,7 +376,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.WENGUI.001",
@@ -412,7 +433,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.YUE_MEN_DONG.001",
@@ -457,7 +481,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.YINGHUO.001",
@@ -523,7 +550,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.JILIANG_LU.001",
@@ -581,7 +611,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.JINJI.001",
@@ -628,7 +661,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.SHILIANG_YIN.001",
@@ -678,7 +714,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.ZIWEI_QISHA.001",
@@ -718,7 +757,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.LIANQI.001",
@@ -768,7 +810,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.WUTAN.001",
@@ -818,7 +863,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.TIANJI_JUMEN.001",
@@ -867,7 +915,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.TIANTONG_JUMEN.001",
@@ -912,7 +963,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.TAIYANG_JUMEN.001",
@@ -955,7 +1009,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.TIANXIANG_LIANZHEN.001",
@@ -1002,7 +1059,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.FULIANG.001",
@@ -1040,7 +1100,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.YUEZHU.001",
@@ -1102,7 +1165,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.YANGTUO_JIA.001",
@@ -1142,7 +1208,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     },
     {
       "ruleId": "ZW.PAT.HUOLING_JIA.001",
@@ -1182,7 +1251,10 @@
           "date": "2026-09-22",
           "note": "初版：建立待考證，標記為 candidate。"
         }
-      ]
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     }
   ]
 }

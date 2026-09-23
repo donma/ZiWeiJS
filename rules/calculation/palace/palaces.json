@@ -24,7 +24,9 @@
           "startBranch": "yin",
           "monthDirection": 1,
           "hourDirection": -1
-        }
+        },
+        "stage": "natal",
+        "order": 100
       },
       "outputs": [
         "chart.natal.lifePalaceBranch"
@@ -70,7 +72,9 @@
           "startBranch": "yin",
           "monthDirection": 1,
           "hourDirection": 1
-        }
+        },
+        "stage": "natal",
+        "order": 110
       },
       "outputs": [
         "chart.natal.bodyPalaceBranch"
@@ -110,7 +114,9 @@
         "lifePalaceBranch"
       ],
       "logic": {
-        "executor": "calcTwelvePalaces"
+        "executor": "calcTwelvePalaces",
+        "stage": "natal",
+        "order": 120
       },
       "outputs": [
         "chart.palaces"
@@ -164,7 +170,9 @@
             "wu": "jia",
             "gui": "jia"
           }
-        }
+        },
+        "stage": "natal",
+        "order": 130
       },
       "outputs": [
         "chart.palaces[].stem"
@@ -205,7 +213,9 @@
         "ganzhi.year.branch"
       ],
       "logic": {
-        "executor": "calcMasterStars"
+        "executor": "calcMasterStars",
+        "stage": "natal",
+        "order": 140
       },
       "outputs": [
         "chart.natal.masterStar",

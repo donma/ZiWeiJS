@@ -4,43 +4,34 @@ import {
   PALACE_IDS, PALACE_NAME
 } from '../core/constants.js';
 import type { BranchId, Palace, StemId } from '../core/types.js';
+import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import ziweiSeries from '../../tables/stars/ziwei-series.json' with { type: 'json' };
 
-export function calcLifePalace(ctx: EngineContext): BranchId {
+export function calcLifePalace(ctx: EngineContext): ExecutorOutcome {
   const month = ctx.normalized.lunar.month;
   const hourIdx = branchIndex(ctx.normalized.hourBranch);
   const idx = (((2 + (month - 1)) - hourIdx) % 12 + 12) % 12;
   const branch = branchAt(idx);
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PALACE.LIFE.001',
-    inputs: { lunarMonth: month, hourBranch: ctx.normalized.hourBranch },
-    result: branch,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.ANXING']
-  });
   ctx.lifePalaceBranch = branch;
-  return branch;
+  return {
+    inputs: { lunarMonth: month, hourBranch: ctx.normalized.hourBranch },
+    result: branch
+  };
 }
 
-export function calcBodyPalace(ctx: EngineContext): BranchId {
+export function calcBodyPalace(ctx: EngineContext): ExecutorOutcome {
   const month = ctx.normalized.lunar.month;
   const hourIdx = branchIndex(ctx.normalized.hourBranch);
   const idx = (((2 + (month - 1)) + hourIdx) % 12 + 12) % 12;
   const branch = branchAt(idx);
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PALACE.BODY.001',
-    inputs: { lunarMonth: month, hourBranch: ctx.normalized.hourBranch },
-    result: branch,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.ANXING']
-  });
   ctx.bodyPalaceBranch = branch;
-  return branch;
+  return {
+    inputs: { lunarMonth: month, hourBranch: ctx.normalized.hourBranch },
+    result: branch
+  };
 }
 
-export function calcTwelvePalaces(ctx: EngineContext): Palace[] {
+export function calcTwelvePalaces(ctx: EngineContext): ExecutorOutcome {
   const lifeIdx = branchIndex(ctx.lifePalaceBranch);
   const palaces: Palace[] = PALACE_IDS.map((id, i) => {
     const branch = branchAt(lifeIdx - i);
@@ -63,14 +54,10 @@ export function calcTwelvePalaces(ctx: EngineContext): Palace[] {
     };
   });
   ctx.palaces = palaces;
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PALACE.TWELVE.001',
+  return {
     inputs: { lifePalaceBranch: ctx.lifePalaceBranch },
-    result: palaces.map(p => ({ id: p.id, branch: p.branch })),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
-  return palaces;
+    result: palaces.map(p => ({ id: p.id, branch: p.branch }))
+  };
 }
 
 const WUHU_DUN: Record<string, StemId> = {
@@ -79,7 +66,7 @@ const WUHU_DUN: Record<string, StemId> = {
   wu: 'jia', gui: 'jia'
 };
 
-export function calcPalaceStems(ctx: EngineContext): void {
+export function calcPalaceStems(ctx: EngineContext): ExecutorOutcome {
   const yearStem = ctx.normalized.ganzhi.year.stem;
   const yinStem = WUHU_DUN[yearStem];
   const yinStemIdx = STEMS.indexOf(yinStem);
@@ -91,13 +78,10 @@ export function calcPalaceStems(ctx: EngineContext): void {
     palace.stem = stemAt(stemIdx);
     palace.ganzhi = { stem: palace.stem, branch: palace.branch };
   }
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PALACE.STEM.001',
+  return {
     inputs: { yearStem },
-    result: ctx.palaces.map(p => ({ palace: p.id, ganzhi: `${p.stem}-${p.branch}` })),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: ctx.palaces.map(p => ({ palace: p.id, ganzhi: `${p.stem}-${p.branch}` }))
+  };
 }
 
 const MING_ZHU_BY_LIFE_BRANCH: Record<string, string> = {
@@ -114,16 +98,13 @@ const SHEN_ZHU_BY_YEAR_BRANCH: Record<string, string> = {
   you: 'ZW.STAR.MAJOR.TIANTONG', xu: 'ZW.STAR.AUX.WENCHANG', hai: 'ZW.STAR.MAJOR.TIANJI'
 };
 
-export function calcMasterStars(ctx: EngineContext): void {
+export function calcMasterStars(ctx: EngineContext): ExecutorOutcome {
   ctx.masterStar = MING_ZHU_BY_LIFE_BRANCH[ctx.lifePalaceBranch];
   ctx.bodyStar = SHEN_ZHU_BY_YEAR_BRANCH[ctx.normalized.ganzhi.year.branch];
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PALACE.MASTER.001',
+  return {
     inputs: { lifePalaceBranch: ctx.lifePalaceBranch, yearBranch: ctx.normalized.ganzhi.year.branch },
-    result: { masterStar: ctx.masterStar, bodyStar: ctx.bodyStar },
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: { masterStar: ctx.masterStar, bodyStar: ctx.bodyStar }
+  };
 }
 
 /**
@@ -153,20 +134,16 @@ export function branchFromPalaceIndex(palaceIdx: number): BranchId {
   return branchAt((palaceIdx + 2) % 12);
 }
 
-export function calcZiweiPosition(ctx: EngineContext): BranchId {
+export function calcZiweiPosition(ctx: EngineContext): ExecutorOutcome {
   const n = ctx.bureauNumber;
   const day = ctx.normalized.lunar.day;
   const palaceIdx = ziweiPalaceIndex(n, day);
   const branch = branchFromPalaceIndex(palaceIdx);
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.STAR.ZIWEI.001',
+  ctx.ziweiBranch = branch;
+  return {
     inputs: { bureauNumber: n, lunarDay: day, palaceIdx },
-    result: branch,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.ZIWEIXI']
-  });
-  return branch;
+    result: branch
+  };
 }
 
 export function ziweiSeriesOffsets(): Record<string, number> {

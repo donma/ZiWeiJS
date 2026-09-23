@@ -6,6 +6,7 @@ import type {
 import { branchIndex, branchAt, STEMS, BRANCHES, stemAt, PALACE_IDS } from '../core/constants.js';
 import { getStar } from '../executors/star-executors.js';
 import { sihuaForStem } from '../executors/star-executors.js';
+import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import { Solar } from 'lunar-typescript';
 
 const SUIJIAN_STARS = [
@@ -90,7 +91,18 @@ export function buildPeriodOverlay(
   };
 }
 
-export function calcMajorPeriods(ctx: EngineContext): void {
+export function calcMajorPeriods(ctx: EngineContext): ExecutorOutcome {
+  // 性別未知 → 順逆行無從判定，不得猜測（spec §27）
+  if (ctx.direction === 'undetermined') {
+    ctx.majorPeriods = [];
+    return {
+      inputs: { bureau: ctx.bureau, lifePalaceBranch: ctx.lifePalaceBranch },
+      result: null,
+      status: 'unavailable',
+      reason: 'UNKNOWN_SEX_FOR_CALCULATION'
+    };
+  }
+
   const dir = ctx.direction === 'forward' ? 1 : -1;
   const startAge = ctx.bureauNumber;
   const lifeIdx = branchIndex(ctx.lifePalaceBranch);
@@ -110,18 +122,15 @@ export function calcMajorPeriods(ctx: EngineContext): void {
       fromAge,
       toAge,
       direction: ctx.direction,
+      ganzhi: { stem: palace.stem, branch },
       label: { 'zh-TW': `大限 ${fromAge}-${toAge} 歲`, en: `Major ${fromAge}-${toAge}` }
     });
   }
   ctx.majorPeriods = periods;
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PERIOD.DAXIAN.001',
+  return {
     inputs: { bureau: ctx.bureau, direction: ctx.direction, lifePalaceBranch: ctx.lifePalaceBranch },
-    result: periods.map(p => `${p.branch}:${p.fromAge}-${p.toAge}`),
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU'],
-    evidenceRefs: ['EVD.QUANSHU.DAXIAN']
-  });
+    result: periods.map(p => `${p.branch}:${p.fromAge}-${p.toAge}`)
+  };
 }
 
 function ganzhiOfSolarYear(year: number): { stem: StemId; branch: BranchId } {
@@ -146,7 +155,7 @@ function periodPalaceStem(yearStem: StemId, _pi: number, branch: BranchId): Stem
   return stemAt((yinStemIdx + posFromYin) % 10);
 }
 
-export function calcYearPeriod(ctx: EngineContext, year: number): void {
+export function calcYearPeriod(ctx: EngineContext, year: number): ExecutorOutcome {
   const gz = ganzhiOfSolarYear(year);
   const palace = ctx.palaces.find(p => p.branch === gz.branch)!;
   const overlay = buildPeriodOverlay(
@@ -159,16 +168,11 @@ export function calcYearPeriod(ctx: EngineContext, year: number): void {
     branch: gz.branch,
     palaceId: palace.id,
     year,
+    ganzhi: { stem: gz.stem, branch: gz.branch },
     label: { 'zh-TW': `流年 ${year}`, en: `Year ${year}` },
     overlay
   };
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PERIOD.LIUNIAN.001',
-    inputs: { year },
-    result: `${gz.stem}-${gz.branch} @ ${palace.id}`,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+  return { inputs: { year }, result: `${gz.stem}-${gz.branch} @ ${palace.id}` };
 }
 
 /**
@@ -194,7 +198,7 @@ function ganzhiAt(year: number, month: number, day: number, hour: number): {
   };
 }
 
-export function calcMonthPeriod(ctx: EngineContext, year: number, month: number, day = 15): void {
+export function calcMonthPeriod(ctx: EngineContext, year: number, month: number, day = 15): ExecutorOutcome | void {
   if (!ctx.yearPeriod) return;
   // 以當月 15 日取月柱（避開節氣交界爭議）
   const gz = ganzhiAt(year, month, day, 12);
@@ -208,19 +212,17 @@ export function calcMonthPeriod(ctx: EngineContext, year: number, month: number,
     stem: gz.month.stem,
     branch,
     palaceId: palace.id,
+    ganzhi: { stem: gz.month.stem, branch: gz.month.branch },
     label: { 'zh-TW': `流月 ${month}`, en: `Month ${month}` },
     overlay
   };
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PERIOD.LIUYUE.001',
+  return {
     inputs: { year, month, day, monthGanzhi: `${gz.month.stem}-${gz.month.branch}` },
-    result: `${gz.month.stem}-${branch} @ ${palace.id}`,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: `${gz.month.stem}-${branch} @ ${palace.id}`
+  };
 }
 
-export function calcDayPeriod(ctx: EngineContext, day: number, year?: number, month?: number): void {
+export function calcDayPeriod(ctx: EngineContext, day: number, year?: number, month?: number): ExecutorOutcome | void {
   if (!ctx.monthPeriod) return;
   const baseIdx = branchIndex(ctx.monthPeriod.branch);
   const branch = branchAt(baseIdx + (day - 1));
@@ -234,22 +236,20 @@ export function calcDayPeriod(ctx: EngineContext, day: number, year?: number, mo
     stem: gz.day.stem,
     branch,
     palaceId: palace.id,
+    ganzhi: { stem: gz.day.stem, branch: gz.day.branch },
     label: { 'zh-TW': `流日 ${day}`, en: `Day ${day}` },
     overlay
   };
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PERIOD.LIURI.001',
+  return {
     inputs: { day, dayGanzhi: `${gz.day.stem}-${gz.day.branch}` },
-    result: `${gz.day.stem}-${branch} @ ${palace.id}`,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: `${gz.day.stem}-${branch} @ ${palace.id}`
+  };
 }
 
 export function calcHourPeriod(
   ctx: EngineContext, hourBranch: BranchId,
   hourStem?: StemId, hourGanzhiBranch?: BranchId
-): void {
+): ExecutorOutcome | void {
   if (!ctx.dayPeriod) return;
   const baseIdx = branchIndex(ctx.dayPeriod.branch);
   const branch = branchAt(baseIdx + branchIndex(hourBranch));
@@ -263,16 +263,14 @@ export function calcHourPeriod(
     stem,
     branch,
     palaceId: palace.id,
+    ganzhi: { stem, branch: gzBranch },
     label: { 'zh-TW': `流時 ${hourBranch}`, en: `Hour ${hourBranch}` },
     overlay
   };
-  ctx.tracer.record({
-    ruleId: 'ZW.CALC.PERIOD.LIUSHI.001',
+  return {
     inputs: { hourBranch, hourGanzhi: `${stem}-${gzBranch}` },
-    result: `${stem}-${branch} @ ${palace.id}`,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.QUANSHU']
-  });
+    result: `${stem}-${branch} @ ${palace.id}`
+  };
 }
 
 export { ganzhiAt };

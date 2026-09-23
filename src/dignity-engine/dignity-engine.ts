@@ -1,4 +1,5 @@
 import type { EngineContext } from '../executors/context.js';
+import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import { effectiveRuleId, variantPatchFor } from '../executors/context.js';
 import type { DignityLevel, BranchId } from '../core/types.js';
 import dignityTable from '../../tables/dignity/brightness.json' with { type: 'json' };
@@ -18,7 +19,7 @@ export function dignityOfPatched(
   return patched ?? tables[starId]?.[branch];
 }
 
-export function calcDignities(ctx: EngineContext): void {
+export function calcDignities(ctx: EngineContext): ExecutorOutcome {
   const CANON = 'ZW.CALC.DIGNITY.BRIGHTNESS.001';
   const patch = variantPatchFor(ctx, CANON) as Record<string, Record<string, DignityLevel>> | undefined;
   const ruleId = effectiveRuleId(ctx, CANON);
@@ -30,14 +31,11 @@ export function calcDignities(ctx: EngineContext): void {
       results.push(`${p.starId}@${p.branch}:${d}`);
     }
   }
-  ctx.tracer.record({
-    ruleId: CANON,
-    inputs: { variantPatched: patch ? Object.keys(patch) : undefined },
+  return {
+    inputs: { variantOf: CANON, variantPatched: patch ? Object.keys(patch) : [] },
     result: `${results.length} dignities${patch ? ` (variant=${ruleId})` : ''}`,
-    profile: ctx.profile.profileId,
-    sourceRefs: ['SRC.MODERN-IMPL-CONSENSUS'],
-    evidenceRefs: ['EVD.CONSENSUS.MIAOWANG']
-  });
+    status: patch ? 'variant' : 'executed'
+  };
 }
 
 export const DIGNITY_ORDER: DignityLevel[] = ['miao', 'wang', 'de', 'li', 'ping', 'bu', 'xian'];

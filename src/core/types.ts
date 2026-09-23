@@ -12,6 +12,7 @@ export type Certainty =
   | 'medium'
   | 'low'
   | 'unknown'
+  | 'unavailable'
   | 'variant-dependent';
 
 export type Locale = 'zh-TW' | 'zh-CN' | 'en';
@@ -112,15 +113,20 @@ export interface ZiWeiBirthInput {
   name?: string;
 }
 
+export interface TargetDate {
+  year: number;
+  month?: number;
+  day?: number;
+  hour?: number;
+  minute?: number;
+  timezone?: string;
+}
+
 export interface CalculateOptions {
   profile?: string;
   trace?: boolean;
-  targetDate?: {
-    year?: number;
-    month?: number;
-    day?: number;
-    hour?: number;
-  };
+  /** 目標日期。未提供時只計算本命盤，不產生任何限運（不得隱含 now）。 */
+  targetDate?: TargetDate;
   interpretation?: boolean;
   patterns?: boolean;
 }
@@ -248,8 +254,14 @@ export interface PeriodOverlay {
 
 export interface PeriodInfo {
   scope: PeriodScope;
-  stem: StemId;
+  /**
+   * 限運「命宮」所在地支（用於十二宮疊盤定位），
+   * 不等於該限運之干支地支。限運干支見 `ganzhi`。
+   */
   branch: BranchId;
+  /** 該限運之真實干支（流年/流月/流日/流時各自獨立推算） */
+  ganzhi?: GanzhiPair;
+  stem: StemId;
   palaceId?: PalaceId;
   ageRange?: [number, number];
   year?: number;
@@ -263,6 +275,9 @@ export interface MajorPeriod extends PeriodInfo {
   direction: 'forward' | 'backward';
 }
 
+/** 規則執行狀態（spec §28） */
+export type RuleExecutionStatus = 'executed' | 'skipped' | 'unavailable' | 'variant' | 'error';
+
 export interface TraceEntry {
   ruleId: string;
   ruleVersion?: string;
@@ -271,6 +286,8 @@ export interface TraceEntry {
   profile: string;
   sourceRefs?: string[];
   evidenceRefs?: string[];
+  status?: RuleExecutionStatus;
+  reason?: string;
   note?: string;
 }
 
@@ -302,7 +319,8 @@ export interface ZiWeiChart {
   birthContext: {
     sexForCalculation: string;
     yinYang: 'yang' | 'yin';
-    direction: 'forward' | 'backward';
+    /** 性別未知時為 undetermined —— 不猜方向（spec §27） */
+    direction: 'forward' | 'backward' | 'undetermined';
     bureau: BureauId;
     bureauName: LocalizedText;
   };
@@ -322,6 +340,13 @@ export interface ZiWeiChart {
   };
   periods: {
     major: MajorPeriod[];
+    /** 有 targetDate 時才有值；描述目標日期當下所在之限運。 */
+    active?: {
+      age: number;
+      asOf: TargetDate;
+      major?: MajorPeriod;
+      majorSkippedReason?: string;
+    };
     year?: PeriodInfo;
     month?: PeriodInfo;
     day?: PeriodInfo;
@@ -351,6 +376,10 @@ export interface Rule {
     executor?: string;
     params?: Record<string, unknown>;
     tableRef?: string;
+    /** 執行階段（spec §P0-1 execution plan） */
+    stage?: 'natal' | 'period' | 'variant' | 'on-demand' | 'analysis' | 'unplanned';
+    /** 同一階段內的執行順序 */
+    order?: number;
   };
   outputs?: string[];
   sourceRefs?: string[];

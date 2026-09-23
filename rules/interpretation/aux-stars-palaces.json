@@ -2,174 +2,1063 @@
   "$schema": "../../schemas/interpretation.schema.json",
   "description": "輔星／煞星入關鍵宮位之解讀。以星曜語意 × 宮位主題交叉。",
   "rules": [
-    { "ruleId": "ZW.INT.PERS.ZUOYOU_LIFE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "personality",
-      "name": { "zh-TW": "左輔右弼夾拱命宮", "en": "Zuo Fu / You Bi surrounding Life" },
-      "conditions": { "all": [{ "type": "relation", "relation": "san-fang-si-zheng", "palace": "life", "containsAll": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }] },
-      "tendency": "positive", "strength": 0.72, "confidence": 0.78, "priority": 72,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ZUOYOU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "左輔右弼會照命宮，主得貴人輔佐、人緣佳，行事圓融有力。" } },
-    { "ruleId": "ZW.INT.SOCIAL.ZUOYOU_FRIENDS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "social",
-      "name": { "zh-TW": "輔弼入交友", "en": "Zuo Fu / You Bi in Friends" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "friends", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }] },
-      "tendency": "positive", "strength": 0.62, "confidence": 0.74, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ZUOYOU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "輔弼入交友宮，主朋友多助力、下屬得力，宜借眾人之力成事。" } },
-    { "ruleId": "ZW.INT.CAREER.ZUOYOU_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "輔弼入官祿", "en": "Zuo Fu / You Bi in Career" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "career", "containsAny": ["ZW.STAR.AUX.ZUOFU", "ZW.STAR.AUX.YOUBI"] }] },
-      "tendency": "positive", "strength": 0.64, "confidence": 0.75, "priority": 62,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ZUOYOU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "輔弼入官祿宮，主事業有襄助、易得賞識提拔。" } },
-
-    { "ruleId": "ZW.INT.LEARNING.WENCHANG_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "learning",
-      "name": { "zh-TW": "文昌入官祿", "en": "Wen Chang in Career" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.WENCHANG", "palace": "career" }] },
-      "tendency": "positive", "strength": 0.66, "confidence": 0.76, "priority": 64,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.CHANGQU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "文昌入官祿，主事業利文書考試、功名學術，宜專業證照路線。" } },
-    { "ruleId": "ZW.INT.CAREER.WENQU_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "文曲入官祿", "en": "Wen Qu in Career" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.WENQU", "palace": "career" }] },
-      "tendency": "positive", "strength": 0.64, "confidence": 0.75, "priority": 62,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.CHANGQU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "文曲入官祿，主事業以才藝口才取勝，宜設計傳播演藝教學。" } },
-    { "ruleId": "ZW.INT.LEARNING.WENCHANG_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "learning",
-      "name": { "zh-TW": "文昌入父母", "en": "Wen Chang in Parents" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.WENCHANG", "palace": "parents" }] },
-      "tendency": "positive", "strength": 0.62, "confidence": 0.74, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.CHANGQU"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "文昌入父母宮，主父母有文教背景、利己身升學考運與師長緣。" } },
-
-    { "ruleId": "ZW.INT.SOCIAL.KUIYUE_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "魁鉞入官祿", "en": "Tian Kui / Tian Yue in Career" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "career", "containsAny": ["ZW.STAR.AUX.TIANKUI", "ZW.STAR.AUX.TIANYUE"] }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 68,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.KUIYUE"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "魁鉞入官祿宮，主職場多貴人提攜、易得上級賞識。" } },
-    { "ruleId": "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001", "ruleVersion": "1.0", "status": "candidate", "domain": "migration",
-      "name": { "zh-TW": "魁鉞入遷移", "en": "Tian Kui / Tian Yue in Travel" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "travel", "containsAny": ["ZW.STAR.AUX.TIANKUI", "ZW.STAR.AUX.TIANYUE"] }] },
-      "tendency": "positive", "strength": 0.66, "confidence": 0.76, "priority": 64,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.KUIYUE"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "魁鉞入遷移宮，主出外遇貴人、異地得助，利外出發展。" } },
-    { "ruleId": "ZW.INT.WEALTH.LUCUN_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "祿存入官祿", "en": "Lu Cun in Career" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.LUCUN", "palace": "career" }] },
-      "tendency": "positive", "strength": 0.68, "confidence": 0.77, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.LUCUN"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "祿存入官祿宮，主事業有穩定財祿、薪資收入佳，宜守成。" } },
-    { "ruleId": "ZW.INT.MIGRATION.MA_CAREER.001", "ruleVersion": "1.0", "status": "candidate", "domain": "career",
-      "name": { "zh-TW": "天馬入官祿", "en": "Tian Ma in Career" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANMA", "palace": "career" }] },
-      "tendency": "neutral", "strength": 0.6, "confidence": 0.73, "priority": 60,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.TIANMA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "天馬入官祿宮，主事業多走動、宜外勤業務或異地發展。" } },
-    { "ruleId": "ZW.INT.MIGRATION.MA_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "天馬入田宅", "en": "Tian Ma in Property" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANMA", "palace": "property" }] },
-      "tendency": "neutral", "strength": 0.55, "confidence": 0.7, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.TIANMA"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "天馬入田宅宮，主居所多遷動、置產不定，宜流動性資產。" } },
-
-    { "ruleId": "ZW.INT.HEALTH.QINGYANG_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "擎羊入疾厄", "en": "Qing Yang in Health" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "health" }] },
-      "tendency": "negative", "strength": 0.62, "confidence": 0.74, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "擎羊入疾厄，主易有外傷手術或急性發炎，宜留意金屬利器。" } },
-    { "ruleId": "ZW.INT.HEALTH.TUOLUO_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "陀羅入疾厄", "en": "Tuo Luo in Health" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.TUOLUO", "palace": "health" }] },
-      "tendency": "negative", "strength": 0.62, "confidence": 0.74, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "陀羅入疾厄，主慢性病纏綿、筋骨關節或舊傷反覆。" } },
-    { "ruleId": "ZW.INT.HEALTH.HUOLING_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "火鈴入疾厄", "en": "Huo / Ling in Health" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "health", "containsAny": ["ZW.STAR.AUX.HUOLING", "ZW.STAR.AUX.LINGXING"] }] },
-      "tendency": "negative", "strength": 0.6, "confidence": 0.73, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.HUOLING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "火鈴入疾厄，主易發急症、熱症或情緒引發之病症。" } },
-    { "ruleId": "ZW.INT.HEALTH.KONGJIE_HEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "health",
-      "name": { "zh-TW": "空劫入疾厄", "en": "Di Kong / Ji in Health" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "health", "containsAny": ["ZW.STAR.MALEFIC.DIKONG", "ZW.STAR.MALEFIC.DIJIE"] }] },
-      "tendency": "negative", "strength": 0.58, "confidence": 0.72, "priority": 64,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.DIKONGJIE"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "空劫入疾厄，主病症難以確診或有莫名不適，宜多方檢查。" } },
-
-    { "ruleId": "ZW.INT.WEALTH.QINGYANG_WEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "擎羊入財帛", "en": "Qing Yang in Wealth" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "wealth" }] },
-      "tendency": "negative", "strength": 0.62, "confidence": 0.74, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "擎羊入財帛，主財來財去、易因衝動或糾紛破財，宜保守理財。" } },
-    { "ruleId": "ZW.INT.WEALTH.TUOLUO_WEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "陀羅入財帛", "en": "Tuo Luo in Wealth" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.TUOLUO", "palace": "wealth" }] },
-      "tendency": "negative", "strength": 0.6, "confidence": 0.73, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "陀羅入財帛，主求財遲滯拖磨、易有呆帳或積欠。" } },
-    { "ruleId": "ZW.INT.WEALTH.HUOLING_WEALTH.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "火鈴入財帛", "en": "Huo / Ling in Wealth" },
-      "conditions": { "all": [{ "type": "relation", "relation": "same-palace", "palace": "wealth", "containsAny": ["ZW.STAR.AUX.HUOLING", "ZW.STAR.AUX.LINGXING"] }] },
-      "tendency": "mixed", "strength": 0.6, "confidence": 0.73, "priority": 64,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.HUOLING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "火鈴入財帛，主財運暴起暴落，宜防投機衝動，亦主偏財機會。" } },
-
-    { "ruleId": "ZW.INT.RISK.QINGYANG_LIFE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "risk",
-      "name": { "zh-TW": "擎羊坐命", "en": "Qing Yang in Life" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "life" }] },
-      "tendency": "negative", "strength": 0.6, "confidence": 0.73, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "擎羊坐命，主性格剛烈好爭、易受傷或與人衝突，宜習武或專業技術化之。" } },
-    { "ruleId": "ZW.INT.RISK.TUOLUO_LIFE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "risk",
-      "name": { "zh-TW": "陀羅坐命", "en": "Tuo Luo in Life" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.TUOLUO", "palace": "life" }] },
-      "tendency": "negative", "strength": 0.58, "confidence": 0.72, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "陀羅坐命，主性格固執拖延、行事多阻，宜以耐性化解。" } },
-
-    { "ruleId": "ZW.INT.MARRIAGE.QINGYANG_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "擎羊入夫妻", "en": "Qing Yang in Spouse" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MALEFIC.QINGYANG", "palace": "spouse" }] },
-      "tendency": "negative", "strength": 0.6, "confidence": 0.73, "priority": 68,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "擎羊入夫妻，主感情易生爭執摩擦、配偶個性剛強，宜晚婚。" } },
-    { "ruleId": "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "貪狼入夫妻", "en": "Tan Lang in Spouse" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TANLANG", "palace": "spouse" }] },
-      "tendency": "mixed", "strength": 0.62, "confidence": 0.74, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "貪狼入夫妻，主配偶多才多藝、感情生活多采，亦防桃花干擾。" } },
-    { "ruleId": "ZW.INT.MARRIAGE.QISHA_SPOUSE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "marriage",
-      "name": { "zh-TW": "七殺入夫妻", "en": "Qi Sha in Spouse" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.QISHA", "palace": "spouse" }] },
-      "tendency": "mixed", "strength": 0.6, "confidence": 0.73, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "七殺入夫妻，主配偶獨立剛強、聚少離多或感情起伏大，宜晚婚。" } },
-
-    { "ruleId": "ZW.INT.FAMILY.TIANJI_PARENTS.001", "ruleVersion": "1.0", "status": "candidate", "domain": "family",
-      "name": { "zh-TW": "天機入父母", "en": "Tian Ji in Parents" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TIANJI", "palace": "parents" }] },
-      "tendency": "neutral", "strength": 0.55, "confidence": 0.7, "priority": 56,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "天機入父母，主父母多思慮變動，親子間易有觀念落差。" } },
-    { "ruleId": "ZW.INT.FAMILY.TAIYIN_PROPERTY.001", "ruleVersion": "1.0", "status": "candidate", "domain": "wealth",
-      "name": { "zh-TW": "太陰入田宅", "en": "Tai Yin in Property" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.TAIYIN", "palace": "property" }] },
-      "tendency": "positive", "strength": 0.7, "confidence": 0.78, "priority": 66,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "太陰入田宅，主宜置產、家宅安寧，廟旺主房產豐厚。" } },
-    { "ruleId": "ZW.INT.LEARNING.HUAGAI_LIFE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "learning",
-      "name": { "zh-TW": "華蓋入命（藝術宗教）", "en": "Hua Gai in Life" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.HUAGAI", "palace": "life" }] },
-      "tendency": "mixed", "strength": 0.55, "confidence": 0.7, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "華蓋入命，主孤高有才藝、好宗教哲思，宜藝術創作或修行路線。" } },
-    { "ruleId": "ZW.INT.SOCIAL.TIANYAO_LIFE.001", "ruleVersion": "1.0", "status": "candidate", "domain": "relationship",
-      "name": { "zh-TW": "天姚入命", "en": "Tian Yao in Life" },
-      "conditions": { "all": [{ "type": "star-in-palace", "star": "ZW.STAR.AUX.TIANYAO", "palace": "life" }] },
-      "tendency": "mixed", "strength": 0.55, "confidence": 0.7, "priority": 58,
-      "supports": [], "conflictsWith": [], "overrides": [], "evidence": ["EVD.QUANSHU.ANXING"], "sourceRefs": ["SRC.QUANSHU"],
-      "text": { "zh-TW": "天姚入命，主風流多情、異性緣重，言行受人注目。" } }
+    {
+      "ruleId": "ZW.INT.PERS.ZUOYOU_LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "personality",
+      "name": {
+        "zh-TW": "左輔右弼夾拱命宮",
+        "en": "Zuo Fu / You Bi surrounding Life"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "containsAll": [
+              "ZW.STAR.AUX.ZUOFU",
+              "ZW.STAR.AUX.YOUBI"
+            ]
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.72,
+      "confidence": 0.78,
+      "priority": 72,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ZUOYOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "左輔右弼會照命宮，主得貴人輔佐、人緣佳，行事圓融有力。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.ZUOYOU_FRIENDS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "social",
+      "name": {
+        "zh-TW": "輔弼入交友",
+        "en": "Zuo Fu / You Bi in Friends"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "friends",
+            "containsAny": [
+              "ZW.STAR.AUX.ZUOFU",
+              "ZW.STAR.AUX.YOUBI"
+            ]
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ZUOYOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "輔弼入交友宮，主朋友多助力、下屬得力，宜借眾人之力成事。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.CAREER.ZUOYOU_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "輔弼入官祿",
+        "en": "Zuo Fu / You Bi in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "career",
+            "containsAny": [
+              "ZW.STAR.AUX.ZUOFU",
+              "ZW.STAR.AUX.YOUBI"
+            ]
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.64,
+      "confidence": 0.75,
+      "priority": 62,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ZUOYOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "輔弼入官祿宮，主事業有襄助、易得賞識提拔。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.LEARNING.WENCHANG_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "learning",
+      "name": {
+        "zh-TW": "文昌入官祿",
+        "en": "Wen Chang in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.WENCHANG",
+            "palace": "career"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.66,
+      "confidence": 0.76,
+      "priority": 64,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.CHANGQU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "文昌入官祿，主事業利文書考試、功名學術，宜專業證照路線。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.CAREER.WENQU_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "文曲入官祿",
+        "en": "Wen Qu in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.WENQU",
+            "palace": "career"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.64,
+      "confidence": 0.75,
+      "priority": 62,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.CHANGQU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "文曲入官祿，主事業以才藝口才取勝，宜設計傳播演藝教學。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.LEARNING.WENCHANG_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "learning",
+      "name": {
+        "zh-TW": "文昌入父母",
+        "en": "Wen Chang in Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.WENCHANG",
+            "palace": "parents"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.CHANGQU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "文昌入父母宮，主父母有文教背景、利己身升學考運與師長緣。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.KUIYUE_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "魁鉞入官祿",
+        "en": "Tian Kui / Tian Yue in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "career",
+            "containsAny": [
+              "ZW.STAR.AUX.TIANKUI",
+              "ZW.STAR.AUX.TIANYUE"
+            ]
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 68,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.KUIYUE"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "魁鉞入官祿宮，主職場多貴人提攜、易得上級賞識。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "migration",
+      "name": {
+        "zh-TW": "魁鉞入遷移",
+        "en": "Tian Kui / Tian Yue in Travel"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "travel",
+            "containsAny": [
+              "ZW.STAR.AUX.TIANKUI",
+              "ZW.STAR.AUX.TIANYUE"
+            ]
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.66,
+      "confidence": 0.76,
+      "priority": 64,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.KUIYUE"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "魁鉞入遷移宮，主出外遇貴人、異地得助，利外出發展。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.LUCUN_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "祿存入官祿",
+        "en": "Lu Cun in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.LUCUN",
+            "palace": "career"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.68,
+      "confidence": 0.77,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.LUCUN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "祿存入官祿宮，主事業有穩定財祿、薪資收入佳，宜守成。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.MIGRATION.MA_CAREER.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "career",
+      "name": {
+        "zh-TW": "天馬入官祿",
+        "en": "Tian Ma in Career"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.TIANMA",
+            "palace": "career"
+          }
+        ]
+      },
+      "tendency": "neutral",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 60,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.TIANMA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "天馬入官祿宮，主事業多走動、宜外勤業務或異地發展。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.MIGRATION.MA_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "天馬入田宅",
+        "en": "Tian Ma in Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.TIANMA",
+            "palace": "property"
+          }
+        ]
+      },
+      "tendency": "neutral",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.TIANMA"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "天馬入田宅宮，主居所多遷動、置產不定，宜流動性資產。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.QINGYANG_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "擎羊入疾厄",
+        "en": "Qing Yang in Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.QINGYANG",
+            "palace": "health"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "擎羊入疾厄，主易有外傷手術或急性發炎，宜留意金屬利器。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.TUOLUO_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "陀羅入疾厄",
+        "en": "Tuo Luo in Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.TUOLUO",
+            "palace": "health"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "陀羅入疾厄，主慢性病纏綿、筋骨關節或舊傷反覆。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.HUOLING_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "火鈴入疾厄",
+        "en": "Huo / Ling in Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "health",
+            "containsAny": [
+              "ZW.STAR.AUX.HUOLING",
+              "ZW.STAR.AUX.LINGXING"
+            ]
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.HUOLING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "火鈴入疾厄，主易發急症、熱症或情緒引發之病症。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.HEALTH.KONGJIE_HEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "health",
+      "name": {
+        "zh-TW": "空劫入疾厄",
+        "en": "Di Kong / Ji in Health"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "health",
+            "containsAny": [
+              "ZW.STAR.MALEFIC.DIKONG",
+              "ZW.STAR.MALEFIC.DIJIE"
+            ]
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.58,
+      "confidence": 0.72,
+      "priority": 64,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.DIKONGJIE"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "空劫入疾厄，主病症難以確診或有莫名不適，宜多方檢查。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.QINGYANG_WEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "擎羊入財帛",
+        "en": "Qing Yang in Wealth"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.QINGYANG",
+            "palace": "wealth"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "擎羊入財帛，主財來財去、易因衝動或糾紛破財，宜保守理財。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.TUOLUO_WEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "陀羅入財帛",
+        "en": "Tuo Luo in Wealth"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.TUOLUO",
+            "palace": "wealth"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "陀羅入財帛，主求財遲滯拖磨、易有呆帳或積欠。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "火鈴入財帛",
+        "en": "Huo / Ling in Wealth"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "relation",
+            "relation": "same-palace",
+            "palace": "wealth",
+            "containsAny": [
+              "ZW.STAR.AUX.HUOLING",
+              "ZW.STAR.AUX.LINGXING"
+            ]
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 64,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.HUOLING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "火鈴入財帛，主財運暴起暴落，宜防投機衝動，亦主偏財機會。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.RISK.QINGYANG_LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "risk",
+      "name": {
+        "zh-TW": "擎羊坐命",
+        "en": "Qing Yang in Life"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.QINGYANG",
+            "palace": "life"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "擎羊坐命，主性格剛烈好爭、易受傷或與人衝突，宜習武或專業技術化之。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.RISK.TUOLUO_LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "risk",
+      "name": {
+        "zh-TW": "陀羅坐命",
+        "en": "Tuo Luo in Life"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.TUOLUO",
+            "palace": "life"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.58,
+      "confidence": 0.72,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "陀羅坐命，主性格固執拖延、行事多阻，宜以耐性化解。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.QINGYANG_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "擎羊入夫妻",
+        "en": "Qing Yang in Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MALEFIC.QINGYANG",
+            "palace": "spouse"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 68,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "擎羊入夫妻，主感情易生爭執摩擦、配偶個性剛強，宜晚婚。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "貪狼入夫妻",
+        "en": "Tan Lang in Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MAJOR.TANLANG",
+            "palace": "spouse"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.62,
+      "confidence": 0.74,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "貪狼入夫妻，主配偶多才多藝、感情生活多采，亦防桃花干擾。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.MARRIAGE.QISHA_SPOUSE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "marriage",
+      "name": {
+        "zh-TW": "七殺入夫妻",
+        "en": "Qi Sha in Spouse"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MAJOR.QISHA",
+            "palace": "spouse"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.6,
+      "confidence": 0.73,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "七殺入夫妻，主配偶獨立剛強、聚少離多或感情起伏大，宜晚婚。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "family",
+      "name": {
+        "zh-TW": "天機入父母",
+        "en": "Tian Ji in Parents"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MAJOR.TIANJI",
+            "palace": "parents"
+          }
+        ]
+      },
+      "tendency": "neutral",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "priority": 56,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "天機入父母，主父母多思慮變動，親子間易有觀念落差。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "wealth",
+      "name": {
+        "zh-TW": "太陰入田宅",
+        "en": "Tai Yin in Property"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.MAJOR.TAIYIN",
+            "palace": "property"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.7,
+      "confidence": 0.78,
+      "priority": 66,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "太陰入田宅，主宜置產、家宅安寧，廟旺主房產豐厚。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.LEARNING.HUAGAI_LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "learning",
+      "name": {
+        "zh-TW": "華蓋入命（藝術宗教）",
+        "en": "Hua Gai in Life"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.HUAGAI",
+            "palace": "life"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "華蓋入命，主孤高有才藝、好宗教哲思，宜藝術創作或修行路線。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.INT.SOCIAL.TIANYAO_LIFE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "domain": "relationship",
+      "name": {
+        "zh-TW": "天姚入命",
+        "en": "Tian Yao in Life"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "star-in-palace",
+            "star": "ZW.STAR.AUX.TIANYAO",
+            "palace": "life"
+          }
+        ]
+      },
+      "tendency": "mixed",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "priority": 58,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "text": {
+        "zh-TW": "天姚入命，主風流多情、異性緣重，言行受人注目。"
+      },
+      "logic": {
+        "stage": "analysis"
+      }
+    }
   ]
 }
