@@ -291,6 +291,9 @@ export interface TraceEntry {
   note?: string;
 }
 
+/** 解讀命中的解析狀態（spec §P0-6） */
+export type InterpretationStatus = 'active' | 'overridden' | 'conflicted';
+
 export interface InterpretationHit {
   ruleId: string;
   domain: Domain;
@@ -304,6 +307,9 @@ export interface InterpretationHit {
   overriddenBy: string[];
   overridesList?: string[];
   effectiveStrength?: number;
+  /** 解析結果。Narrative 預設只吃 active；Expert 模式另顯示 overridden / conflicted。 */
+  status?: InterpretationStatus;
+  supportedBy?: string[];
 }
 
 export interface ZiWeiChart {

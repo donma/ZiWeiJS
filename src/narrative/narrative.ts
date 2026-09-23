@@ -1,6 +1,7 @@
 import type { ZiWeiChart, InterpretationHit } from '../core/types.js';
 import { t } from '../core/i18n.js';
 import type { Locale } from '../core/types.js';
+import { activeHits } from '../interpretation-engine/resolver.js';
 
 export interface NarrativeSection {
   domain: string;
@@ -9,15 +10,20 @@ export interface NarrativeSection {
   hitRuleIds: string[];
 }
 
+/**
+ * 產生敘事。預設只使用 status = active 的命中（spec §P0-6）；
+ * overridden / conflicted 僅在 Expert 模式顯示（見 UI）。
+ */
 export function renderNarrative(
   chart: ZiWeiChart,
-  opts: { locale?: Locale; domains?: string[] } = {}
+  opts: { locale?: Locale; domains?: string[]; includeNonActive?: boolean } = {}
 ): NarrativeSection[] {
   const locale = opts.locale ?? 'zh-TW';
   const sections: NarrativeSection[] = [];
   const domains = opts.domains ?? Object.keys(chart.interpretation.byDomain);
   for (const domain of domains) {
-    const hits: InterpretationHit[] = chart.interpretation.byDomain[domain] ?? [];
+    const all: InterpretationHit[] = chart.interpretation.byDomain[domain] ?? [];
+    const hits = opts.includeNonActive === true ? all : activeHits(all);
     if (hits.length === 0) continue;
     const paragraphs = hits
       .filter(h => h.text)

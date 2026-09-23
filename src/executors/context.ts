@@ -1,6 +1,7 @@
 import type {
   ZiWeiBirthInput, Profile, BureauId, BranchId, Rule,
-  Palace, StarPlacement, Transformation, MajorPeriod, PeriodInfo, TargetDate
+  Palace, StarPlacement, Transformation, MajorPeriod, PeriodInfo, TargetDate,
+  PatternResult, InterpretationHit
 } from '../core/types.js';
 import type { Tracer } from '../trace/tracer.js';
 import type { NormalizedBirth } from '../calendar/calendar-engine.js';
@@ -44,6 +45,12 @@ export interface EngineContext {
 
   /** canonical ruleId → 依 profile.ruleOverrides 解析後實際使用的 Rule（可能為 variant） */
   activeRules: Map<string, Rule>;
+
+  /** 已計算之格局結果，供 DSL `pattern` operator 查詢（spec §P0-5） */
+  patternResults?: PatternResult[];
+
+  /** 已解析之解讀命中（含 status: active/overridden/conflicted） */
+  interpretationHits?: InterpretationHit[];
 }
 
 /**

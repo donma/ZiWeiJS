@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/dsl.schema.json",
+  "title": "ZiWei Bible Rule DSL",
+  "description": "規則條件式 DSL。未知 operator 一律視為錯誤（fail-close），不得視為 false 或 true。新增 operator 必須同步更新本 schema 與 src/rule-engine/dsl.ts 的 DSL_ALLOWED_OPERATORS。",
+  "definitions": {
+    "starId": { "type": "string", "pattern": "^ZW\\.STAR\\." },
+    "palaceRef": {
+      "enum": [
+        "life", "siblings", "spouse", "children", "wealth", "health",
+        "travel", "friends", "career", "property", "fortune", "parents"
+      ]
+    },
+    "relationName": {
+      "enum": [
+        "same-palace", "opposite", "trine", "san-fang-si-zheng",
+        "adjacent", "jia", "gong"
+      ]
+    },
+    "dignityLevel": { "enum": ["miao", "wang", "de", "li", "ping", "bu", "xian"] },
+    "transformationType": { "enum": ["lu", "quan", "ke", "ji"] },
+    "scope": {
+      "enum": ["natal", "palace", "major-period", "year", "month", "day", "hour"]
+    },
+    "patternStatus": {
+      "enum": ["complete", "partial", "enhanced", "broken", "variant-only", "insufficient"]
+    },
+    "groupName": {
+      "enum": ["major-malefic", "zuofu-youbi", "changqu", "kuiyue", "lucun-yangtuo", "huoling", "kongjie"]
+    },
+    "node": { "oneOf": [{ "$ref": "#/definitions/logical" }, { "$ref": "#/definitions/operator" }] },
+    "nodeArray": { "type": "array", "items": { "$ref": "#/definitions/node" }, "minItems": 1 },
+    "logical": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["all"],
+          "properties": { "all": { "$ref": "#/definitions/nodeArray" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["any"],
+          "properties": { "any": { "$ref": "#/definitions/nodeArray" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["none"],
+          "properties": { "none": { "$ref": "#/definitions/nodeArray" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["not"],
+          "properties": { "not": { "$ref": "#/definitions/node" } },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "operator": {
+      "type": "object",
+      "required": ["type"],
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "star-in-palace" },
+            "star": { "$ref": "#/definitions/starId" },
+            "palace": { "$ref": "#/definitions/palaceRef" }
+          },
+          "required": ["star"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "relation" },
+            "relation": { "$ref": "#/definitions/relationName" },
+            "palace": { "$ref": "#/definitions/palaceRef" },
+            "star": { "$ref": "#/definitions/starId" },
+            "containsAny": { "type": "array", "items": { "$ref": "#/definitions/starId" } },
+            "containsAll": { "type": "array", "items": { "$ref": "#/definitions/starId" } }
+          },
+          "required": ["relation"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "star-group" },
+            "group": {
+              "oneOf": [
+                { "$ref": "#/definitions/groupName" },
+                { "type": "array", "items": { "$ref": "#/definitions/starId" }, "minItems": 1 }
+              ]
+            },
+            "relation": { "$ref": "#/definitions/relationName" },
+            "palace": { "$ref": "#/definitions/palaceRef" },
+            "minCount": { "type": "integer", "minimum": 1 }
+          },
+          "required": ["group"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "transformation" },
+            "transform": { "$ref": "#/definitions/transformationType" },
+            "star": { "$ref": "#/definitions/starId" },
+            "palace": { "$ref": "#/definitions/palaceRef" },
+            "relation": { "$ref": "#/definitions/relationName" },
+            "scope": { "$ref": "#/definitions/scope" }
+          },
+          "required": ["transform"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "dignity" },
+            "star": { "$ref": "#/definitions/starId" },
+            "minLevel": { "$ref": "#/definitions/dignityLevel" }
+          },
+          "required": ["star", "minLevel"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "palace" },
+            "palace": { "$ref": "#/definitions/palaceRef" },
+            "isBody": { "type": "boolean" },
+            "isLife": { "type": "boolean" },
+            "empty": { "type": "boolean" }
+          },
+          "required": ["palace"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "compare" },
+            "left": { "type": "string" },
+            "op": { "enum": ["eq", "ne", "gt", "gte", "lt", "lte", "in"] },
+            "right": {}
+          },
+          "required": ["left", "op"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "exists" },
+            "path": { "type": "string" }
+          },
+          "required": ["path"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "period-scope" },
+            "scope": { "$ref": "#/definitions/scope" }
+          },
+          "required": ["scope"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "profile" },
+            "profile": { "type": "string" }
+          },
+          "required": ["profile"],
+          "additionalProperties": false
+        },
+        {
+          "properties": { "type": { "const": "variant" } },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "pattern" },
+            "patternId": { "type": "string", "pattern": "^ZW\\.PAT\\." },
+            "statusIn": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/patternStatus" },
+              "minItems": 1
+            }
+          },
+          "required": ["patternId"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "and" },
+            "conditions": { "$ref": "#/definitions/nodeArray" }
+          },
+          "required": ["conditions"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "or" },
+            "conditions": { "$ref": "#/definitions/nodeArray" }
+          },
+          "required": ["conditions"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "all" },
+            "conditions": { "$ref": "#/definitions/nodeArray" }
+          },
+          "required": ["conditions"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "any" },
+            "conditions": { "$ref": "#/definitions/nodeArray" }
+          },
+          "required": ["conditions"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "oneOf": [{ "$ref": "#/definitions/logical" }, { "$ref": "#/definitions/operator" }]
+}

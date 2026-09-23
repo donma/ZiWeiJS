@@ -4,6 +4,8 @@ import { evalDsl } from '../rule-engine/dsl.js';
 import { listInterpretationRules, listPatterns } from '../rule-engine/registry.js';
 import type { PatternResult } from '../core/types.js';
 import { buildRelationContext } from '../relation-engine/relation-engine.js';
+import { resolveInterpretationHits } from './resolver.js';
+import type { InterpretationRuleLike } from './resolver.js';
 
 export interface InterpretationRule {
   ruleId: string;
@@ -27,19 +29,19 @@ export interface InterpretationRule {
 export function runInterpretation(ctx: EngineContext): InterpretationHit[] {
   const rules = listInterpretationRules() as unknown as InterpretationRule[];
   const hits: InterpretationHit[] = [];
-  const matchedIds = new Set<string>();
   const ruleMap = new Map<string, InterpretationRule>();
   for (const r of rules) ruleMap.set(r.ruleId, r);
 
   for (const rule of rules) {
-    let matched = false;
+    let matched: boolean;
     try {
       matched = evalDsl(rule.conditions as Record<string, unknown>, { engine: ctx });
-    } catch {
-      matched = false;
+    } catch (e) {
+      // DSL 錯誤 = 規則無法執行，不得靜默視為「不成立」（spec §P0-5 / §28）
+      recordDslError(ctx, rule.ruleId, rule.ruleVersion, rule.sourceRefs, rule.evidence, e);
+      continue;
     }
     if (!matched) continue;
-    matchedIds.add(rule.ruleId);
     hits.push({
       ruleId: rule.ruleId,
       domain: rule.domain,
@@ -54,43 +56,10 @@ export function runInterpretation(ctx: EngineContext): InterpretationHit[] {
     });
   }
 
-  // 衝突與覆蓋解析：只計算雙方都命中的情況
-  // def.overrides = 本規則覆蓋哪些規則；def.conflictsWith = 與哪些規則衝突
-  for (const h of hits) {
-    const def = ruleMap.get(h.ruleId);
-    if (!def) continue;
-
-    for (const otherId of def.overrides ?? []) {
-      if (otherId === h.ruleId || !matchedIds.has(otherId)) continue;
-      const other = hits.find(x => x.ruleId === otherId)!;
-      if (!other.overriddenBy.includes(h.ruleId)) other.overriddenBy.push(h.ruleId);
-      h.overridesList = h.overridesList ?? [];
-      if (!h.overridesList.includes(otherId)) h.overridesList.push(otherId);
-    }
-
-    for (const otherId of def.conflictsWith ?? []) {
-      if (otherId === h.ruleId || !matchedIds.has(otherId)) continue;
-      const other = hits.find(x => x.ruleId === otherId)!;
-      if (!h.conflictsWith.includes(otherId)) h.conflictsWith.push(otherId);
-      if (!other.conflictsWith.includes(h.ruleId)) other.conflictsWith.push(h.ruleId);
-    }
-  }
-
-  // 未被任何規則覆蓋者，不應留在 overriddenBy
-  for (const h of hits) {
-    h.overriddenBy = [...new Set(h.overriddenBy)];
-  }
-
-  // 被覆蓋的命中降低有效強度（保留可解釋性，不移除）
-  for (const h of hits) {
-    if (h.overriddenBy.length > 0) {
-      h.effectiveStrength = Math.round(h.strength * 0.5 * 100) / 100;
-    } else {
-      h.effectiveStrength = h.strength;
-    }
-  }
-
-  return hits;
+  // 衝突與覆蓋解析（spec §P0-6）：委由 resolver 處理，不產生單一總分
+  const resolved = resolveInterpretationHits(hits, ruleMap);
+  ctx.interpretationHits = resolved;
+  return resolved;
 }
 
 export function groupByDomain(hits: InterpretationHit[]): Record<string, InterpretationHit[]> {
@@ -123,24 +92,40 @@ export function runPatterns(ctx: EngineContext): PatternResult[] {
   for (const pat of patterns) {
     const matched: string[] = [];
     const failed: string[] = [];
+    let errored = false;
     for (const cond of pat.required ?? []) {
-      const ok = safeEval(cond, ctx);
-      if (ok) matched.push(JSON.stringify(cond));
-      else failed.push(JSON.stringify(cond));
+      try {
+        if (evalDsl(cond, { engine: ctx })) matched.push(JSON.stringify(cond));
+        else failed.push(JSON.stringify(cond));
+      } catch (e) {
+        errored = true;
+        recordDslError(ctx, pat.ruleId, pat.ruleVersion, undefined, undefined, e);
+      }
     }
     const matchedEnhancers: string[] = [];
     for (const cond of pat.enhancers ?? []) {
-      if (safeEval(cond, ctx)) matchedEnhancers.push(JSON.stringify(cond));
+      try {
+        if (evalDsl(cond, { engine: ctx })) matchedEnhancers.push(JSON.stringify(cond));
+      } catch (e) {
+        errored = true;
+        recordDslError(ctx, pat.ruleId, pat.ruleVersion, undefined, undefined, e);
+      }
     }
     const matchedBreakers: string[] = [];
     for (const cond of pat.breakers ?? []) {
-      if (safeEval(cond, ctx)) matchedBreakers.push(JSON.stringify(cond));
+      try {
+        if (evalDsl(cond, { engine: ctx })) matchedBreakers.push(JSON.stringify(cond));
+      } catch (e) {
+        errored = true;
+        recordDslError(ctx, pat.ruleId, pat.ruleVersion, undefined, undefined, e);
+      }
     }
 
     const total = (pat.required ?? []).length;
     const okCount = matched.length;
     let status: PatternResult['status'];
-    if (total === 0) status = 'insufficient';
+    if (errored) status = 'insufficient';
+    else if (total === 0) status = 'insufficient';
     else if (okCount === 0) status = 'insufficient';
     else if (okCount < total) status = 'partial';
     else if (matchedBreakers.length > 0) status = 'broken';
@@ -161,13 +146,28 @@ export function runPatterns(ctx: EngineContext): PatternResult[] {
       ruleId: pat.ruleId
     });
   }
+  // 供 DSL `pattern` operator 查詢真實格局結果（spec §P0-5）
+  ctx.patternResults = results;
   return results;
 }
 
-function safeEval(cond: Record<string, unknown>, ctx: EngineContext): boolean {
-  try {
-    return evalDsl(cond, { engine: ctx });
-  } catch {
-    return false;
-  }
+/** 將 DSL 執行錯誤寫入 trace（status=error），而非靜默丟棄 */
+function recordDslError(
+  ctx: EngineContext,
+  ruleId: string,
+  ruleVersion: string | undefined,
+  sourceRefs: string[] | undefined,
+  evidenceRefs: string[] | undefined,
+  e: unknown
+): void {
+  ctx.tracer.record({
+    ruleId,
+    ruleVersion,
+    profile: ctx.profile.profileId,
+    sourceRefs: sourceRefs ?? [],
+    evidenceRefs: evidenceRefs ?? [],
+    result: null,
+    status: 'error',
+    reason: e instanceof Error ? e.message : String(e)
+  });
 }
