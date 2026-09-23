@@ -50,6 +50,12 @@ export function recalc(): void {
 }
 
 export function navigate(route: string): void {
+  if (location.protocol === 'file:') {
+    // file:// 視為獨立 origin：location.hash = route 可能被 Chrome 擋下或靜默失敗，
+    // 統一用完整 href 觸發 hashchange。
+    location.href = location.pathname + '#' + route;
+    return;
+  }
   location.hash = route;
 }
 
