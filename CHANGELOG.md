@@ -517,6 +517,13 @@
   Query Facade、中州 Diff Matrix、Pattern backlog、Variant catalog、Property 測試、AI context、Product UX）
 - 新增 3 筆研究項：`RSH.CHART.PLANE`、`RSH.VARIANT.CATALOG`、`RSH.PERIOD.DYNAMIC_STARS`（共 37 筆）
 - 新 gate：`assimilation:candidate-checklist:check`；測試 `tests/assimilation/candidate-checklist.test.ts`（6）
+### Isolation / Pollution Defense（spec §6 / §44 / §52）
+- 新增 `tools/integrity-validator/pollution.ts`，納入 `validate:integrity` gate：
+  `src/` 不得 import 外部排盤套件或 vendor / node_modules；`dependencies` 不得含外部排盤套件；
+  GPL-3.0（ziwei-chart）與授權不明（ziwei-doushu-simple）連 devDependency 都不允許；
+  曆法換算集中（`lunar-typescript` 僅允許既有 3 個模組）
+- 新增 `tests/integrity/no-external-deps.test.ts`（7 測試），含 negative control 驗證判準有效
+- `validate:integrity` CLI 輸出新增 isolation 統計（src 40 檔 / 0 forbidden import / 3 calendar importers）
 ### §51 — Assimilation PR 模板
 - 新增 `.github/pull_request_template.md`：14 個必填欄位、各欄位要求、禁止事項、檢查清單
 

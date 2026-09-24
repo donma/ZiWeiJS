@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 549 it() / 62 files（靜態計數）|
+| Tests | 556 it() / 63 files（靜態計數）|
 | E2E / Visual | 22 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -162,7 +162,7 @@ npm run validate:rules        # 規則 schema 驗證
 npm run validate:sources      # 來源 / 證據驗證（含 AI-source 阻擋）
 npm run validate:schemas      # 公開 JSON 契約驗證（含 variance / research registry）
 npm run validate:governance   # Canonical Evidence Gate
-npm run validate:integrity    # ID / ref / executor / DSL / 計畫覆蓋
+npm run validate:integrity    # ID / ref / executor / DSL / 計畫覆蓋 / isolation（禁外部排盤套件與 vendor）
 npm run validate:versions     # Rule Version Gate（changeLog / behavior-change 必須升版）
 npm run validate:research     # Research Queue governance（參照 / 狀態 / resolution）
 npm run validate:catalogs     # cycles / aliases / assimilation catalogs 治理

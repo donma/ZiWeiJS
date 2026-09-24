@@ -20,7 +20,7 @@
 | 2 | `npm run validate:sources` | Source / Evidence schema 與引用（含 AI-source 阻擋） |
 | 3 | `npm run validate:schemas` | `chart.schema.json` 嚴格驗證 + `variants/differential.json`、`research/registry.json` |
 | 4 | `npm run validate:governance` | Canonical Evidence Gate、variantOf、AI 來源阻擋 |
-| 5 | `npm run validate:integrity` | ID 唯一、ref 可解析、executor 可解析、DSL schema、計畫覆蓋、changeLog |
+| 5 | `npm run validate:integrity` | ID 唯一、ref 可解析、executor 可解析、DSL schema、計畫覆蓋、changeLog、**isolation（外部排盤套件 / vendor 污染防線）** |
 | 6 | `npm run validate:versions` | Rule Version Gate：`changeLog[0] == ruleVersion`、版本遞減、behavior-change 必升版 |
 | 7 | `npm run validate:research` | Research Queue：ID 唯一、relatedRules / evidence 可解析、resolved 需有 resolution |
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
@@ -434,6 +434,22 @@ M8 附帶發現（已修）：目標日期早於出生時，小限曾以 `Error`
 
 - 模板：`.github/pull_request_template.md`（§51 14 欄位 + 禁止事項 + 檢查清單）
 - 規則：未填寫不得 merge；AI 不得自填 `Owner decision required: approved`。
+
+## 18. Isolation / Pollution Defense（spec §6 / §44 / §52）
+
+「最終不得出現外部 runtime dependency / GPL code 混入 / 重複 Engine」已變成可執行檢查：
+
+- 實作：`tools/integrity-validator/pollution.ts`（與 `validate:integrity`、`tests/integrity/no-external-deps.test.ts` 共用）
+- 檢查項：
+  1. `src/` 不得 import 外部排盤套件（iztro / fortel / cdestiny / ziwei-* …）
+  2. `src/` 不得存在 `vendor/`，不得 import `node_modules` 路徑
+  3. `package.json.dependencies` 不得含外部排盤套件；GPL-3.0（ziwei-chart）與授權不明
+     （ziwei-doushu-simple）**連 devDependency 都不允許**
+  4. `iztro` 僅存在 devDependencies（differential oracle）
+  5. 曆法換算集中：`lunar-typescript` 之 import 僅允許既有 3 個模組，新增使用點會 fail
+- 判準自我驗證：測試以已知違規樣本（`iztro`、`../vendor/iztro` …）做 negative control，
+  確保檢查不是空轉。
+- 現況：`src` 40 檔、0 forbidden import、calendar importers = 3。
 
 ## 17. Candidate Checklist（§49）
 

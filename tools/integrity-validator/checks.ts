@@ -11,6 +11,7 @@
  *   - 執行計畫中的 executor 皆已註冊（0 unknown executor）
  *   - 每條 calculation 規則都有 stage（0 unplanned）
  *   - canonical 規則的 ruleVersion 與 changeLog 最新版本一致
+ *   - src/ 不得引入外部排盤套件 / vendor（spec §6 / §44；見 pollution.ts）
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -21,6 +22,7 @@ import { listRules, listSources, listEvidence, listProfiles } from '../../src/in
 import { listExecutorNames } from '../../src/rule-engine/executor-registry.js';
 import { registerAllExecutors } from '../../src/rule-engine/register-executors.js';
 import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN } from '../../src/rule-engine/execution-plan.js';
+import { runPollutionChecks } from './pollution.js';
 
 export interface IntegrityFailure {
   check: string;
@@ -38,6 +40,8 @@ export interface IntegrityResult {
     executors: number;
     natalPlan: number;
     periodPlan: number;
+    srcFiles: number;
+    calendarImporters: number;
   };
 }
 
@@ -196,6 +200,10 @@ export function runIntegrityChecks(root: string = defaultRoot): IntegrityResult 
     }
   }
 
+  /* ---------- 8. pollution / isolation（spec §6 / §44 / §52） ---------- */
+  const pollution = runPollutionChecks(root);
+  failures.push(...pollution.failures);
+
   return {
     failures,
     stats: {
@@ -206,7 +214,9 @@ export function runIntegrityChecks(root: string = defaultRoot): IntegrityResult 
       profiles: profiles.length,
       executors: executorNames.size,
       natalPlan: NATAL_EXECUTION_PLAN.length,
-      periodPlan: PERIOD_EXECUTION_PLAN.length
+      periodPlan: PERIOD_EXECUTION_PLAN.length,
+      srcFiles: pollution.stats.srcFiles,
+      calendarImporters: pollution.stats.calendarImporters.length
     }
   };
 }

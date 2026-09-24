@@ -14,6 +14,7 @@ const { failures, stats } = runIntegrityChecks();
 if (failures.length === 0) {
   console.log(`integrity OK — ${stats.rules} rules, ${stats.stars} stars, ${stats.sources} sources, ${stats.evidence} evidence, ${stats.executors} executors`);
   console.log(`execution plan: natal ${stats.natalPlan} / period ${stats.periodPlan}`);
+  console.log(`isolation: src ${stats.srcFiles} files, 0 forbidden import, calendar importers ${stats.calendarImporters}`);
   process.exit(0);
 }
 
