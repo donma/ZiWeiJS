@@ -128,6 +128,14 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   if (target) {
     // 單一正規化來源：Gregorian→農曆語意 / leapMonthPolicy / 真實干支（spec 2nd §P0-1）
     ctx.periodTarget = normalizePeriodTarget(target, profile);
+    // 目標日期早於出生：fail-close（不產生負年齡，M8 corpus 發現）
+    if (ctx.periodTarget.lunar.year < normalized.lunar.year) {
+      throw new ZiWeiError('INVALID_TARGET_DATE', 'targetDate is before the birth date', {
+        target,
+        birthLunarYear: normalized.lunar.year,
+        targetLunarYear: ctx.periodTarget.lunar.year
+      });
+    }
     // 先解出目標年齡所在之大限，限運四化才能依正確的大限（spec §P0-3A）
     // 虛歲以「目標農曆年」計算，不得用 Gregorian target.year，
     // 否則農曆新年之前會提早換大限（third-round §P0-1）
@@ -174,7 +182,7 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     periods: !target ? 'unavailable' : ctx.periodTarget?.isRepresentativeDate ? 'medium' : 'high',
     xiaoxian: !target
       ? 'unavailable'
-      : ctx.sexForCalculation === 'unknown' ? 'unknown' : 'high'
+      : ctx.sexForCalculation === 'unknown' ? 'unknown' : ctx.xiaoXian ? 'high' : 'unavailable'
   };
 
   const stars: Record<string, ReturnType<typeof Object>> = {};

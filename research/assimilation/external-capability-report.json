@@ -1,0 +1,176 @@
+{
+  "generatedBy": "tools/assimilation/external-capability-report.ts",
+  "note": "本報告彙整外部專案之能力盤點與使用界線，屬研究索引；不構成規則、不構成 Evidence，亦不代表本庫採用其實作。任何採用一律另行走 Rule + Source + Evidence + Owner 批准。",
+  "totalProjects": 6,
+  "projects": [
+    {
+      "project": "cdestiny",
+      "repo": "ying-rushi/cdestiny",
+      "url": "https://github.com/ying-rushi/cdestiny",
+      "license": "MIT",
+      "licenseBoundary": "僅比對行為與資料形狀，未複製程式碼；引用時仍須個別核對授權。",
+      "commit": "c86c012577d9cde126287d53c8a84411c02282a4",
+      "commitDate": "2026-08-14T16:21:39Z",
+      "packageVersion": null,
+      "stars": 0,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "star-gap-audit"
+      ],
+      "artifacts": {
+        "capabilityInventory": true,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": true
+      },
+      "counts": {
+        "candidates": 6,
+        "rejected": 2,
+        "externalStarNames": 34
+      }
+    },
+    {
+      "project": "fortel",
+      "repo": "airicyu/fortel-ziweidoushu",
+      "url": "https://github.com/airicyu/fortel-ziweidoushu",
+      "license": "MIT",
+      "licenseBoundary": "僅比對行為與資料形狀，未複製程式碼；引用時仍須個別核對授權。",
+      "commit": "2620cc895395f9f6994abd4927e739d31015c67d",
+      "commitDate": "2025-05-05T11:46:16Z",
+      "packageVersion": null,
+      "stars": 32,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "runtime-star-metadata",
+        "school-zhongzhou"
+      ],
+      "artifacts": {
+        "capabilityInventory": true,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": false
+      },
+      "counts": {
+        "candidates": 2,
+        "rejected": 3,
+        "externalStarNames": 0
+      }
+    },
+    {
+      "project": "iztro",
+      "repo": "SylarLong/iztro",
+      "url": "https://github.com/SylarLong/iztro",
+      "license": "MIT",
+      "licenseBoundary": "僅比對行為與資料形狀，未複製程式碼；引用時仍須個別核對授權。",
+      "commit": "2c7ef9be669df7b19d1799f4dce335fed3794f78",
+      "commitDate": "2026-09-06T16:21:36Z",
+      "packageVersion": "^2.6.1",
+      "stars": 4179,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "differential-oracle",
+        "dynamic-period-stars",
+        "minor-period",
+        "query-api"
+      ],
+      "artifacts": {
+        "capabilityInventory": true,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": true
+      },
+      "counts": {
+        "candidates": 5,
+        "rejected": 1,
+        "externalStarNames": 9
+      }
+    },
+    {
+      "project": "ziwei-chart",
+      "repo": "ziweiknows/ziwei-chart",
+      "url": "https://github.com/ziweiknows/ziwei-chart",
+      "license": "GPL-3.0",
+      "licenseBoundary": "copyleft：不得複製任何程式碼／檔案進本庫；僅可作行為驗證對象（differential oracle）。",
+      "commit": "614d6e104ad4d559193667187806cbb5760037ec",
+      "commitDate": "2026-09-20T15:48:39Z",
+      "packageVersion": null,
+      "stars": 452,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "ai-context-retrieval-ideas",
+        "product-ux-ideas"
+      ],
+      "artifacts": {
+        "capabilityInventory": true,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": false
+      },
+      "counts": {
+        "candidates": 2,
+        "rejected": 3,
+        "externalStarNames": 0
+      }
+    },
+    {
+      "project": "ziwei-doushu",
+      "repo": "Renhuai123/ziwei-doushu",
+      "url": "https://github.com/Renhuai123/ziwei-doushu",
+      "license": "MIT",
+      "licenseBoundary": "僅比對行為與資料形狀，未複製程式碼；引用時仍須個別核對授權。",
+      "commit": "9d98b3ae7fce298f751cb43c47783d6e84a7735d",
+      "commitDate": "2026-09-21T05:57:11Z",
+      "packageVersion": null,
+      "stars": 4195,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "pattern-candidates",
+        "property-test-ideas",
+        "variant-catalog"
+      ],
+      "artifacts": {
+        "capabilityInventory": true,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": false
+      },
+      "counts": {
+        "candidates": 4,
+        "rejected": 2,
+        "externalStarNames": 0
+      }
+    },
+    {
+      "project": "ziwei-doushu-simple",
+      "repo": "cubshuang/ZiWeiDouShu",
+      "url": "https://github.com/cubshuang/ZiWeiDouShu",
+      "license": "UNKNOWN",
+      "licenseBoundary": "授權不明：不得引用任何程式碼或資料；僅可作歷史／概念索引（不可作為 Evidence）。",
+      "commit": "2ec50ebf5149cbc90ecb7a2457bc1b9e7ea3c56e",
+      "commitDate": "2020-03-23T03:46:53Z",
+      "packageVersion": null,
+      "stars": 78,
+      "archived": false,
+      "capturedAt": "2026-09-24",
+      "areasUsed": [
+        "historical-reference-only"
+      ],
+      "artifacts": {
+        "capabilityInventory": false,
+        "candidates": true,
+        "rejected": true,
+        "externalStarNames": false
+      },
+      "counts": {
+        "candidates": 0,
+        "rejected": 1,
+        "externalStarNames": 0
+      }
+    }
+  ]
+}

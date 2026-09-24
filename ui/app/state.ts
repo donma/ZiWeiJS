@@ -8,6 +8,8 @@ export interface AppState {
   theme: 'light' | 'dark';
   locale: Locale;
   profile: string;
+  /** 查流年（西元年，可留空）。有值時疊算大限/流年/小限，並顯示時間軸。 */
+  targetYear: number | null;
   error: string | null;
   route: string;
 }
@@ -27,6 +29,7 @@ export const state: AppState = {
   theme: 'light',
   locale: 'zh-TW',
   profile: 'canonical',
+  targetYear: null,
   error: null,
   route: location.hash.replace('#', '') || '/'
 };
@@ -39,7 +42,12 @@ export function setAppLocale(locale: Locale): void {
 }
 
 export function recalc(): void {
-  const res = calculateSafe(state.input, { profile: state.profile, trace: true });
+  const options = {
+    profile: state.profile,
+    trace: true,
+    ...(state.targetYear ? { targetDate: { year: state.targetYear } } : {})
+  };
+  const res = calculateSafe(state.input, options);
   if (res.ok) {
     state.chart = res.chart;
     state.error = null;

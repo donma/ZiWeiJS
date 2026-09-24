@@ -38,6 +38,10 @@ jobs:
       - name: Profile gap audit
         run: npm run profiles:gap:check
       - run: npm run assimilation:star-gap:check
+      - run: npm run assimilation:pattern-gap:check
+      - run: npm run assimilation:capability-report:check
+      - run: npm run assimilation:zhongzhou-diff:check
+      - run: npm run stats:distribution:check
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check
       - run: npm run differential

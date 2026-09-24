@@ -38,13 +38,17 @@ research/assimilation/
   README.md
   external-projects.json      研究對象與 areasUsed（snapshot 的輸入）
   rejections.json             明確拒絕清單（§45/§46）
-  star-gap.json               star-gap-audit 產出（Gap Detector）
+  star-gap.json               star-gap-audit 產出（星曜 Gap Detector）
+  pattern-gap.json            pattern-gap-audit 產出（格局 Gap Detector）
+  external-capability-report.json  external-capability-report 產出（license 界線 / 產出物盤點）
   <project>/
     snapshot.json             真實 repo metadata（commit / license / capturedAt）
     capability-inventory.md   該專案能力盤點與採用決策
     candidates.json           內化候選（初始 status=research）
     rejected.json             指向 rejections.json 的拒絕項
     external-star-names.json  （選用）外部星名清單，供 gap audit
+    external-pattern-names.json （選用）外部格局名稱清單，供 pattern gap audit
+    zhongzhou-diff.json       （fortel/）中州 Diff Matrix：12 維度實跑對照
 ```
 
 ## Gate（spec §3）
@@ -91,6 +95,13 @@ npm run assimilation:snapshot          # 抓取 repo metadata（需網路，手�
 npm run assimilation:snapshot:check    # 比對 snapshot 是否漂移
 npm run assimilation:star-gap          # 產生 star-gap.json
 npm run assimilation:star-gap:check    # 檢查 star-gap 未漂移
+npm run assimilation:pattern-gap       # 產生 pattern-gap.json
+npm run assimilation:pattern-gap:check # 檢查 pattern-gap 未漂移
+npm run assimilation:capability-report # 產生 external-capability-report.json
+npm run assimilation:capability-report:check
+npm run assimilation:zhongzhou-diff     # 產生中州 Diff Matrix
+npm run assimilation:zhongzhou-diff:check
+npm run profiles:gap                    # Profile 欄位實作盤點（tools/assimilation/profile-gap-audit.ts）
 npm run validate:catalogs              # 驗證 cycles / aliases / candidates / rejections / snapshots
 ```
 

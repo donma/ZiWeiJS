@@ -9,7 +9,7 @@
 import { writeFileSync, existsSync, readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildProfileGapReport, runProfileGapChecks } from './checks.js';
+import { buildProfileGapReport, runProfileGapChecks } from './profile-gap-checks.js';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const outPath = join(root, 'research/profiles/profile-gap.json');

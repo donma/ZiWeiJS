@@ -1,0 +1,232 @@
+{
+  "reportVersion": "1.0.0",
+  "generatedBy": "tools/stats/distribution.ts",
+  "note": "僅統計既有引擎輸出，不新增規則、不改 canonical；用於偵測極端分佈與覆蓋率缺口。",
+  "corpus": {
+    "from": "1900-01-01",
+    "to": "2100-12-31",
+    "stepDays": 5,
+    "time": "10:00",
+    "timezone": "Asia/Taipei",
+    "sex": "male",
+    "targetDate": "birth +40 年（夾到 2100 上限）",
+    "charts": 14683,
+    "errors": 0,
+    "errorSamples": []
+  },
+  "bureauDistribution": {
+    "huo6": 2934,
+    "jin4": 2953,
+    "mu3": 2936,
+    "shui2": 2922,
+    "tu5": 2938
+  },
+  "lifePalaceBranchDistribution": {
+    "chen": 1220,
+    "chou": 1256,
+    "hai": 1235,
+    "mao": 1234,
+    "shen": 1196,
+    "si": 1200,
+    "wei": 1192,
+    "wu": 1194,
+    "xu": 1230,
+    "yin": 1260,
+    "you": 1192,
+    "zi": 1274
+  },
+  "starPlacementTotals": {
+    "distinctStars": 98,
+    "top30": [
+      {
+        "starId": "ZW.STAR.AUX.BAIHU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.BAZUO",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.BINGFU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.DAHao",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.DIAOKE",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.ENGUANG",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.FEILIAN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.FENGGAO",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.FENGGE",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.GUANFU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.GUASU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.GUCHEN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.HONGLUAN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.HUAGAI",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.HUOLING",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.JIEKONG",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.JIESHA",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.JIESHEN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.LINGXING",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.LONGCHI",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.LUCUN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.POSUI",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.SANGMEN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.SANTAI",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.SUISHEN",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.TAIFU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.TIANCHU",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.TIANDE",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.TIANFU2",
+        "placements": 14683
+      },
+      {
+        "starId": "ZW.STAR.AUX.TIANGUAN",
+        "placements": 14683
+      }
+    ]
+  },
+  "dignityDistribution": {
+    "bu": 5394,
+    "de": 21823,
+    "li": 12298,
+    "miao": 60024,
+    "ping": 23228,
+    "wang": 44801,
+    "xian": 37994
+  },
+  "patternHits": {
+    "ZW.PAT.FULIANG.001": 14683,
+    "ZW.PAT.HUOLING_JIA.001": 14683,
+    "ZW.PAT.JIAXIANG.001": 14683,
+    "ZW.PAT.JILIANG_LU.001": 14683,
+    "ZW.PAT.JINJI.001": 14683,
+    "ZW.PAT.JIYUETONGLIANG.001": 14683,
+    "ZW.PAT.LIANQI.001": 14683,
+    "ZW.PAT.LUMA_JIAOCHI.001": 14683,
+    "ZW.PAT.RIYUEMING.001": 14683,
+    "ZW.PAT.SHA_POLANG.001": 14683,
+    "ZW.PAT.SHILIANG_YIN.001": 14683,
+    "ZW.PAT.TAIYANG_JUMEN.001": 14683,
+    "ZW.PAT.TIANJI_JUMEN.001": 14683,
+    "ZW.PAT.TIANTONG_JUMEN.001": 14683,
+    "ZW.PAT.TIANXIANG_LIANZHEN.001": 14683,
+    "ZW.PAT.WENGUI.001": 14683,
+    "ZW.PAT.WUTAN.001": 14683,
+    "ZW.PAT.YANGTUO_JIA.001": 14683,
+    "ZW.PAT.YINGHUO.001": 14683,
+    "ZW.PAT.YUEZHU.001": 14683,
+    "ZW.PAT.YUE_MEN_DONG.001": 14683,
+    "ZW.PAT.ZIFU_TONGGONG.001": 14683,
+    "ZW.PAT.ZIWEI_QISHA.001": 14683,
+    "ZW.PAT.ZIWEI_ZUOYOU.001": 14683
+  },
+  "patternStatus": {
+    "broken": 18235,
+    "complete": 27402,
+    "enhanced": 11145,
+    "insufficient": 272389,
+    "partial": 23221
+  },
+  "certainty": {
+    "keys": {
+      "auxStars": 14683,
+      "bodyPalace": 14683,
+      "bureau": 14683,
+      "calendar": 14683,
+      "changsheng": 14683,
+      "dignity": 14683,
+      "direction": 14683,
+      "interpretation": 14683,
+      "lifePalace": 14683,
+      "majorPeriods": 14683,
+      "majors": 14683,
+      "minorStars": 14683,
+      "periods": 14683,
+      "sihua": 14683,
+      "xiaoxian": 14683
+    },
+    "values": {
+      "certain": 73415,
+      "high": 88098,
+      "medium": 14683,
+      "variant-dependent": 44049
+    },
+    "xiaoxianCovered": 14683,
+    "xiaoxianCoverage": 1
+  }
+}

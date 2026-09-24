@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { listProfiles, listResearch } from '../../src/index.js';
-import { buildProfileGapReport, runProfileGapChecks } from '../../tools/profiles/checks.js';
+import { buildProfileGapReport, runProfileGapChecks } from '../../tools/assimilation/profile-gap-checks.js';
 
 /**
  * Profile Gap Audit（spec Post-Stability §5 / Phase E）。

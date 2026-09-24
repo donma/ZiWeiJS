@@ -26,14 +26,18 @@
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
 | 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
 | 10 | `npm run validate:patterns` | Pattern Research Backlog：古典原文必填、research 必附 Research ID、implemented 必可解析 |
-| 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 |
 | 12 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
-| 13 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 14 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 15 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 16 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 17 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
-| 18 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 13 | `npm run assimilation:pattern-gap:check` | 格局 Gap：外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則 |
+| 14 | `npm run assimilation:capability-report:check` | 外部能力報告未漂移（license 界線 / commit / 產出物盤點須與 snapshot 一致） |
+| 15 | `npm run assimilation:zhongzhou-diff:check` | 中州 Diff Matrix 未漂移（12 維度 × 3 probe 實跑值） |
+| 16 | `npm run stats:distribution:check` | 分佈報告未漂移（1900–2100 每 5 日一盤，14,683 盤） |
+| 17 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 18 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 19 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 20 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 21 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants、`fuzz/`、large corpus） |
+| 22 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -51,7 +55,14 @@ validate:integrity
 validate:versions
 validate:research
 validate:catalogs
+validate:variants
+validate:patterns
+profiles:gap:check
 assimilation:star-gap:check
+assimilation:pattern-gap:check
+assimilation:capability-report:check
+assimilation:zhongzhou-diff:check
+stats:distribution:check
 coverage:bible
 differential:calendar -- --check
 differential
@@ -67,8 +78,10 @@ Pages deploy
 ```
 
 > CI 與 `npm run verify` 的治理 Gate **完全一致**：`verify` = validate:rules → sources → schemas →
-> governance → integrity → versions → research → catalogs → star-gap:check → differential:calendar →
-> differential → differential:period → verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
+> governance → integrity → versions → research → catalogs → variants → patterns → profiles:gap:check →
+> assimilation:star-gap:check → pattern-gap:check → capability-report:check → zhongzhou-diff:check →
+> stats:distribution:check → differential:calendar → differential → differential:period → verify:golden →
+> test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
 
 ## 1.1 Release Gate（`npm run release:check`）
 
@@ -357,4 +370,54 @@ CI 只跑不受字型影響的無障礙測試。
   - `trend` 逐年限運（大限／流年／小限）含範圍守衛
   - `retrieve` 與 `QueryApi` 結果完全一致（薄封裝、不新增演算法）
   - `sharePayload` 預設**不含出生資料**；`match` 僅列舉共同事實、**無吉凶評分**
-- 尚未做（需 Owner 決定）：UI 呈現（時間軸 / 分享卡）— 目前僅 SDK 層，避免動到視覺回歸基準。
+- UI：`/chart` 已提供「查流年」（西元年）→ 限運面板（大限／流年／小限 + certainty）、
+  12 年時間軸（`ZiWei.Product.trend`）與分享面板（`sharePayload` 指紋 + 可展開 payload，不含出生資料）。
+  程式碼界線：UI 只組合既有輸出，不含任何命理規則（`ui/pages/chart.ts`）。
+- 測試：`tests/visual/ui.e2e.ts` 之「查流年：顯示大限／流年／小限與 12 年時間軸」＋視覺快照。
+
+## 13. Assimilation Tools（spec §5）
+
+| 工具 | 產物 | Gate |
+|------|------|------|
+| `tools/assimilation/star-gap-audit.ts` | `research/assimilation/star-gap.json` | `assimilation:star-gap:check` |
+| `tools/assimilation/pattern-gap-audit.ts` | `research/assimilation/pattern-gap.json` | `assimilation:pattern-gap:check` |
+| `tools/assimilation/profile-gap-audit.ts` | `research/profiles/profile-gap.json` | `profiles:gap:check` |
+| `tools/assimilation/external-capability-report.ts` | `research/assimilation/external-capability-report.json` | `assimilation:capability-report:check` |
+| `tools/assimilation/zhongzhou-diff-matrix.ts` | `research/assimilation/fortel/zhongzhou-diff.json` | `assimilation:zhongzhou-diff:check` |
+
+共同原則：外部名稱／能力只作 Gap Detector 與研究索引；`fortel` 未安裝未執行時一律 `null`，不臆測。
+GPL-3.0 / 授權不明者於能力報告中明列使用界線（不得複製程式碼、不得作為 Evidence）。
+
+## 14. 中州 Diff Matrix（M5 / §13.1）
+
+- 產物：`research/assimilation/fortel/zhongzhou-diff.json`（12 維度 × 3 probe）
+- 方法：全部數值為**實跑輸出**——本庫 `calculate()`（`canonical` 與 `school-zhongzhou` 兩個 profile）
+  對比 iztro 2.6.1 `astro.bySolar()`（`algorithm=default` / `zhongzhou`）；fortel 未執行 → `null`。
+- 實測差異（皆附原始碼引用，MIT，僅比對行為）：
+  | 維度 | 發現 |
+  |------|------|
+  | 命主 | iztro 中州以**年支**查命主，通用派以命宮地支（`lib/astro/astro.js:210-212`） |
+  | 天使 / 天傷 | 中州在「生年支陰陽 ≠ 性別陰陽」時對調（`lib/star/location.js:673-689`）；P2 probe 實際對調 |
+  | 歲前十二神 | 中州第 11 位作「歲破」而非「大耗」（`lib/star/decorativeStar.js:193-211`） |
+  | 截空 / 旬空 | 中州不安截路／空亡，改安截空等（`lib/star/adjectiveStar.js:57-68`） |
+  | 星曜存在 | 落差僅為呈現方式（年系／將系十二神在 iztro 為獨立欄位）與名稱對齊（年解＝解神） |
+- 決策：12 維度皆為 `research` / `variant-only`，**未變更任何 canonical 規則**；
+  測試：`tests/assimilation/zhongzhou-diff.test.ts`。
+
+## 15. Research Scale（M8）
+
+| 類型 | 位置 | 內容 |
+|------|------|------|
+| Fuzz | `tests/property/fuzz/random-inputs.test.ts` | 固定種子 250 個隨機輸入（含未知時辰／未知性別／閏月／跨時區）：不丟未預期例外、結構鐵律、小限語意、決定性 |
+| Large Corpus | `tests/property/large-corpus.test.ts` | 1900–2100 每 10 日一盤（7,342 盤）：0 例外、無結構違規，且覆蓋 5 種五行局與 12 命宮地支 |
+| Distribution | `tools/stats/distribution.ts` → `research/stats/distribution.json` | 1900–2100 每 5 日一盤（14,683 盤）：五行局分佈、命宮地支分佈、星曜落宮 Top30、廟旺、格局、certainty、小限覆蓋率 |
+
+M8 附帶發現（已修）：目標日期早於出生時，小限曾以 `Error` 崩潰並產生負虛歲。現在
+`calculate()` 對早於出生之目標 fail-close 為 `INVALID_TARGET_DATE`，且虛歲 < 1 時
+`xiaoXianForTarget` 回報 `TARGET_BEFORE_FIRST_XIAOXIAN`（不落宮、不猜），
+`certainty.xiaoxian` 為 `unavailable`。
+
+## 16. Assimilation PR 必填（§51）
+
+- 模板：`.github/pull_request_template.md`（§51 14 欄位 + 禁止事項 + 檢查清單）
+- 規則：未填寫不得 merge；AI 不得自填 `Owner decision required: approved`。

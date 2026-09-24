@@ -107,6 +107,26 @@ test.describe('P2-4 主要頁面可操作', () => {
     const rows = page.locator('[data-rule-id]');
     expect(await rows.count()).toBeGreaterThan(0);
   });
+
+  test('查流年：顯示大限／流年／小限與 12 年時間軸（Phase I UI）', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await submitBirthForm(page);
+
+    const form = page.locator('form[data-form="birth"]');
+    await form.locator('input[name="targetYear"]').fill('2026');
+    await form.locator('button[type="submit"], input[type="submit"]').first().click();
+    await page.waitForTimeout(200);
+
+    // 限運面板：小限（canonical 輸出）
+    await expect(page.locator('dt', { hasText: '小限' }).first()).toBeVisible();
+    // 12 年時間軸表
+    const timeline = page.locator('table.data').first();
+    await expect(timeline).toBeVisible();
+    await expect(timeline.locator('tbody tr')).toHaveCount(12);
+    // 分享面板：指紋 + 分享資料（預設不含出生資料）
+    await expect(page.locator('summary', { hasText: '分享資料（不含出生資料）' })).toBeVisible();
+    await expect(page.locator('text=/^[0-9a-f]{8}$/').first()).toBeVisible();
+  });
 });
 
 test.describe('P2-4 星曜不重疊', () => {

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { Solar } from 'lunar-typescript';
 import { resolveYearGanzhi } from '../../src/calendar/calendar-engine.js';
-import { calculate } from '../../src/index.js';
+import { calculate, calculateSafe } from '../../src/index.js';
 import type { ZiWeiBirthInput } from '../../src/index.js';
 
 /**
@@ -83,5 +83,35 @@ describe('§30 profile 端到端：lichun vs lunar-new-year', () => {
     expect(lunar.periods.year?.yearBoundaryPolicy).toBe('lunar-new-year');
     expect(lichun.periods.year?.resolvedYear).toBe(2026);
     expect(lunar.periods.year?.resolvedYear).toBe(2025);
+  });
+});
+
+describe('§M8 fail-close：targetDate 早於出生', () => {
+  const input: ZiWeiBirthInput = {
+    calendarType: 'solar',
+    date: { year: 1990, month: 5, day: 15 },
+    time: { hour: 10 },
+    timezone: 'Asia/Taipei',
+    sexForCalculation: 'male'
+  };
+
+  it('回傳具名錯誤碼 INVALID_TARGET_DATE（不產生負虛歲、不丟未包裝例外）', () => {
+    const res = calculateSafe(input, { targetDate: { year: 1989, month: 5, day: 15 } });
+    expect(res.ok).toBe(false);
+    if (!res.ok) {
+      expect(res.error.code).toBe('INVALID_TARGET_DATE');
+      expect(res.error.message).toContain('before the birth date');
+    }
+  });
+
+  it('出生當日為合法目標（虛歲 1，小限不存在於虛歲 <1）', () => {
+    const chart = calculate(input, { targetDate: { year: 1990, month: 5, day: 16 } });
+    expect(chart.periods.xiaoxian?.age).toBe(1);
+    expect(chart.certainty.xiaoxian).toBe('high');
+  });
+
+  it('目標早於出生但同農曆年（虛歲 1 之前）亦 fail-close', () => {
+    const before = calculateSafe(input, { targetDate: { year: 1990, month: 1, day: 1 } });
+    expect(before.ok).toBe(false);
   });
 });

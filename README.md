@@ -30,8 +30,8 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 505 it() / 55 files（靜態計數）|
-| E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
+| Tests | 536 it() / 60 files（靜態計數）|
+| E2E / Visual | 22 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
 
@@ -169,6 +169,11 @@ npm run validate:catalogs     # cycles / aliases / assimilation catalogs 治理
 npm run validate:variants     # Variant Research Catalog 治理（流派差異維度）
 npm run validate:patterns     # Pattern Research Backlog 治理（格局待辦，每條先 Research）
 npm run profiles:gap          # Profile 欄位實作盤點（--check 供 CI）
+npm run assimilation:star-gap     # 外部星名 gap 審計（stage / cycle-deity 不得誤判為缺星）
+npm run assimilation:pattern-gap  # 格局 gap 審計（外部名稱必被古典 backlog 追蹤）
+npm run assimilation:capability-report  # 外部能力報告（license 界線 / 產出物盤點）
+npm run assimilation:zhongzhou-diff     # 中州 Diff Matrix（12 維度實跑對照）
+npm run stats:distribution    # 1900–2100 分佈報告（14,683 盤）
 npm run coverage:bible        # 覆蓋率報告（可 --update-readme）
 npm run release:check         # 最終 gate：verify + release artifact smoke + npm package smoke
 ```
@@ -188,12 +193,12 @@ rules/          規則資料（calculation · interpretation · patterns · rect
 tables/         星曜 registry、別名 registry、cycles（長生/博士/歲建/將前）、candidate 安星表、四化表、廟旺表、納音、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
-research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區＋ variants（Variant Research Catalog）＋ patterns（Pattern Research Backlog）＋ profiles（Profile Gap Audit）
+research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區（star/pattern gap、capability report、中州 diff matrix）＋ variants（Variant Research Catalog）＋ patterns（Pattern Research Backlog）＋ profiles（Profile Gap Audit）＋ stats（分佈報告）
 profiles/       canonical / traditional-zi / true-solar / lichun / school-zhongzhou / school-ma-hu
 variants/       Variant 與 Variance Registry
 src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · query · star-registry · product · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
-tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / property / assimilation / visual
+tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / property（含 fuzz / large corpus）/ assimilation / variants / patterns / profiles / product / visual
 fixtures/       golden / boundary / differential / calendar fixtures
 tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / assimilation / variants / patterns / profiles / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
 docs/           architecture / rules / sources / profiles / api / governance / testing

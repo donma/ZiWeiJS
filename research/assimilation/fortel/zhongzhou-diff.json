@@ -1,0 +1,2519 @@
+{
+  "matrixVersion": "1.0.0",
+  "generatedBy": "tools/assimilation/zhongzhou-diff-matrix.ts",
+  "specRef": "ai-guide/ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1.md §13.1 / M5",
+  "method": "全部數值皆為實跑輸出：本庫 calculate()（canonical 與 school-zhongzhou 兩個 profile）與 iztro 2.6.1 astro.bySolar()（algorithm=default / zhongzhou）。未執行之來源（fortel）一律 null，不臆測。",
+  "external": {
+    "iztro": {
+      "version": "2.6.1",
+      "license": "MIT",
+      "usage": "differential oracle（僅比對行為，未複製程式碼）"
+    },
+    "fortel": {
+      "available": false,
+      "reason": "未安裝、未執行；僅存在 capability-inventory 快照，不得作為數值來源。"
+    }
+  },
+  "probes": [
+    {
+      "id": "P1",
+      "solarDate": "1990-05-15",
+      "hour": 10,
+      "gender": "male",
+      "timezone": "Asia/Taipei"
+    },
+    {
+      "id": "P2",
+      "solarDate": "1984-02-03",
+      "hour": 23,
+      "gender": "female",
+      "timezone": "Asia/Taipei"
+    },
+    {
+      "id": "P3",
+      "solarDate": "2000-12-31",
+      "hour": 6,
+      "gender": "male",
+      "timezone": "Asia/Taipei"
+    }
+  ],
+  "dimensions": [
+    {
+      "dimension": "soul",
+      "label": "命主",
+      "ziweiCanonical": {
+        "modeled": true,
+        "by": "chart.chart.natal.masterStar",
+        "values": [
+          "貪狼",
+          "祿存",
+          "祿存"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          "貪狼",
+          "祿存",
+          "祿存"
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/astro/astro.js:210-212",
+        "values": [
+          "破軍",
+          "貪狼",
+          "廉貞"
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "differs",
+      "decision": "research",
+      "note": "iztro 中州派以「年支」查命主，通用派以「命宮地支」查命主；本庫目前僅實作後者。需獨立中州派來源方可成為 variant rule。"
+    },
+    {
+      "dimension": "body",
+      "label": "身主",
+      "ziweiCanonical": {
+        "modeled": true,
+        "by": "chart.chart.natal.bodyStar",
+        "values": [
+          "火星",
+          "火星",
+          "文昌"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          "火星",
+          "火星",
+          "文昌"
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/astro/astro.js:226",
+        "values": [
+          "火星",
+          "火星",
+          "文昌"
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "matches",
+      "decision": "research",
+      "note": "iztro 兩種 algorithm 之身主皆取年支（原始碼僅命主有中州分支）；本庫身主實作與其一致與否見 agreement。"
+    },
+    {
+      "dimension": "tianshi-tianshang",
+      "label": "天使 / 天傷",
+      "ziweiCanonical": {
+        "modeled": true,
+        "values": [
+          {
+            "tianshi": "wei",
+            "tianshang": "si"
+          },
+          {
+            "tianshi": "you",
+            "tianshang": "wei"
+          },
+          {
+            "tianshi": "si",
+            "tianshang": "mao"
+          }
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          {
+            "tianshi": "wei",
+            "tianshang": "si"
+          },
+          {
+            "tianshi": "you",
+            "tianshang": "wei"
+          },
+          {
+            "tianshi": "si",
+            "tianshang": "mao"
+          }
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/star/location.js:673-689",
+        "values": [
+          {
+            "tianshi": "wei",
+            "tianshang": "si"
+          },
+          {
+            "tianshi": "wei",
+            "tianshang": "you"
+          },
+          {
+            "tianshi": "si",
+            "tianshang": "mao"
+          }
+        ],
+        "defaultAlgorithmValues": [
+          {
+            "tianshi": "wei",
+            "tianshang": "si"
+          },
+          {
+            "tianshi": "you",
+            "tianshang": "wei"
+          },
+          {
+            "tianshi": "si",
+            "tianshang": "mao"
+          }
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "differs",
+      "decision": "research",
+      "note": "iztro 中州派在「生年支陰陽 ≠ 性別陰陽」時對調天傷／天使；此為流派規則差異，本庫未實作。"
+    },
+    {
+      "dimension": "kui-yue",
+      "label": "魁鉞",
+      "ziweiCanonical": {
+        "modeled": true,
+        "values": [
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ]
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ]
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "values": [
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ],
+          [
+            "天鉞",
+            "天魁"
+          ]
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "unknown",
+      "decision": "research",
+      "note": "僅比對「是否存在」；安法（年干）差異未在本次 probe 中顯現，需專門案例與中州派來源。"
+    },
+    {
+      "dimension": "jiekong-xunkong",
+      "label": "截空 / 旬空",
+      "ziweiCanonical": {
+        "modeled": "partial",
+        "values": [
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          }
+        ],
+        "note": "registry 已登錄截空／旬空，但落盤規則尚未 canonical（見 Research Queue）。"
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          }
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/star/adjectiveStar.js:57-68",
+        "values": [
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截空"
+            ],
+            "kongwangLike": [
+              "旬空"
+            ]
+          }
+        ],
+        "defaultAlgorithmValues": [
+          {
+            "jiekongLike": [
+              "截路"
+            ],
+            "kongwangLike": [
+              "旬空",
+              "空亡"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截路"
+            ],
+            "kongwangLike": [
+              "旬空",
+              "空亡"
+            ]
+          },
+          {
+            "jiekongLike": [
+              "截路"
+            ],
+            "kongwangLike": [
+              "旬空",
+              "空亡"
+            ]
+          }
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "not-modeled",
+      "decision": "research",
+      "note": "iztro 中州派不安截路／空亡，改安截空（並加劫殺／大耗等），名稱與範圍與通用派不同（spec §37 已列同名異義）。"
+    },
+    {
+      "dimension": "suiqian-12",
+      "label": "歲前十二神名稱",
+      "ziweiCanonical": {
+        "modeled": "catalog-only",
+        "values": [
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "大耗",
+          "龍德",
+          "白虎",
+          "福德",
+          "弔客",
+          "病符"
+        ],
+        "note": "tables/cycles/suiqian.json 已登錄名稱，尚未落盤（無 placement rule）。"
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "大耗",
+          "龍德",
+          "白虎",
+          "福德",
+          "弔客",
+          "病符"
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/star/decorativeStar.js:193-211",
+        "values": [
+          [
+            "歲破",
+            "龍德",
+            "白虎",
+            "天德",
+            "弔客",
+            "病符",
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗"
+          ],
+          [
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗",
+            "歲破",
+            "龍德",
+            "白虎",
+            "天德",
+            "弔客",
+            "病符"
+          ],
+          [
+            "白虎",
+            "天德",
+            "弔客",
+            "病符",
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗",
+            "歲破",
+            "龍德"
+          ]
+        ],
+        "defaultAlgorithmValues": [
+          [
+            "大耗",
+            "龍德",
+            "白虎",
+            "天德",
+            "弔客",
+            "病符",
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗"
+          ],
+          [
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗",
+            "大耗",
+            "龍德",
+            "白虎",
+            "天德",
+            "弔客",
+            "病符"
+          ],
+          [
+            "白虎",
+            "天德",
+            "弔客",
+            "病符",
+            "歲建",
+            "晦氣",
+            "喪門",
+            "貫索",
+            "官符",
+            "小耗",
+            "大耗",
+            "龍德"
+          ]
+        ],
+        "differsFromDefault": true,
+        "nameSetDiff": {
+          "onlyInZhongzhou": [
+            "歲破"
+          ],
+          "onlyInDefault": [
+            "大耗"
+          ]
+        }
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "unknown",
+      "decision": "research",
+      "note": "iztro 中州派之第 11 位名稱（大耗 ↔ 歲破）與通用派不同；本庫名稱表需明確標注流派後方可落盤。"
+    },
+    {
+      "dimension": "sihua-table",
+      "label": "四化表",
+      "ziweiCanonical": {
+        "modeled": true,
+        "by": "ZW.CALC.SIHUA.TABLE.001",
+        "values": [
+          {
+            "lu": "太陽",
+            "quan": "武曲",
+            "ke": "太陰",
+            "ji": "天同"
+          },
+          {
+            "lu": "廉貞",
+            "quan": "破軍",
+            "ke": "武曲",
+            "ji": "太陽"
+          },
+          {
+            "lu": "太陽",
+            "quan": "武曲",
+            "ke": "太陰",
+            "ji": "天同"
+          }
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "by": "ZW.CALC.SIHUA.TABLE.V001",
+        "values": [
+          {
+            "lu": "太陽",
+            "quan": "天府",
+            "ke": "天相",
+            "ji": "天同"
+          },
+          {
+            "lu": "廉貞",
+            "quan": "破軍",
+            "ke": "武曲",
+            "ji": "太陽"
+          },
+          {
+            "lu": "太陽",
+            "quan": "天府",
+            "ke": "天相",
+            "ji": "天同"
+          }
+        ],
+        "differsFromCanonical": true
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/astro/astro.js:83-112",
+        "values": [
+          {
+            "ke": "太陰",
+            "ji": "天同",
+            "quan": "武曲",
+            "lu": "太陽"
+          },
+          {
+            "lu": "廉貞",
+            "quan": "破軍",
+            "ke": "武曲",
+            "ji": "太陽"
+          },
+          {
+            "ji": "天同",
+            "quan": "武曲",
+            "lu": "太陽",
+            "ke": "太陰"
+          }
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "differs",
+      "decision": "variant-only",
+      "note": "本庫已有中州派四化表 variant（庚干）；iztro 之 algorithm 是否切換四化表以實測為準。"
+    },
+    {
+      "dimension": "star-existence",
+      "label": "星曜存在 / 不存在",
+      "ziweiCanonical": {
+        "modeled": true,
+        "by": "chart.chart.stars（canonical 落盤）",
+        "values": [
+          {
+            "probeId": "P1",
+            "count": 84
+          },
+          {
+            "probeId": "P2",
+            "count": 84
+          },
+          {
+            "probeId": "P3",
+            "count": 84
+          }
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          {
+            "probeId": "P1",
+            "count": 84
+          },
+          {
+            "probeId": "P2",
+            "count": 84
+          },
+          {
+            "probeId": "P3",
+            "count": 84
+          }
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "values": [
+          {
+            "probeId": "P1",
+            "count": 68
+          },
+          {
+            "probeId": "P2",
+            "count": 68
+          },
+          {
+            "probeId": "P3",
+            "count": 68
+          }
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "differs",
+      "decision": "research",
+      "note": "僅作 Gap Detector：列出單側存在之星名（禁止字面自動合併，須走 alias registry / spec §22）。",
+      "interpretation": {
+        "onlyInZiweiAreCycleDeities": "onlyInZiwei 幾乎全為年系／將系十二神（歲建、將星、亡神…）——本庫將其視為星曜，iztro 另以 suiqian12 / jiangqian12 欄位暴露，屬呈現方式差異，非真實缺星。",
+        "onlyInIztroZhongzhou": "iztro 中州額外落 天巫／天才／天壽 與 劫殺。前三者本庫已完成 negative finding（查無古典依據，見 research/assimilation/classical-verification.md）；「劫殺」與本庫「劫煞」需 Alias Audit（禁自動合併）。",
+        "yearJie": "iztro 之「年解」即本庫 canonical「解神」（aliases 含年解），屬名稱對齊問題。"
+      },
+      "diff": [
+        {
+          "probeId": "P1",
+          "ziweiCount": 84,
+          "iztroZhongzhouCount": 68,
+          "onlyInZiwei": [
+            "亡神",
+            "劫煞",
+            "喪門",
+            "天乙",
+            "天煞",
+            "官符",
+            "將星",
+            "小耗",
+            "弔客",
+            "息神",
+            "指背",
+            "攀鞍",
+            "晦氣",
+            "月煞",
+            "歲建",
+            "歲驛",
+            "災煞",
+            "病符",
+            "白虎",
+            "福德",
+            "貫索"
+          ],
+          "onlyInIztroZhongzhou": [
+            "劫殺",
+            "天壽",
+            "天巫",
+            "天才",
+            "年解"
+          ]
+        },
+        {
+          "probeId": "P2",
+          "ziweiCount": 84,
+          "iztroZhongzhouCount": 68,
+          "onlyInZiwei": [
+            "亡神",
+            "劫煞",
+            "喪門",
+            "天乙",
+            "天煞",
+            "官符",
+            "將星",
+            "小耗",
+            "弔客",
+            "息神",
+            "指背",
+            "攀鞍",
+            "晦氣",
+            "月煞",
+            "歲建",
+            "歲驛",
+            "災煞",
+            "病符",
+            "白虎",
+            "福德",
+            "貫索"
+          ],
+          "onlyInIztroZhongzhou": [
+            "劫殺",
+            "天壽",
+            "天巫",
+            "天才",
+            "年解"
+          ]
+        },
+        {
+          "probeId": "P3",
+          "ziweiCount": 84,
+          "iztroZhongzhouCount": 68,
+          "onlyInZiwei": [
+            "亡神",
+            "劫煞",
+            "喪門",
+            "天乙",
+            "天煞",
+            "官符",
+            "將星",
+            "小耗",
+            "弔客",
+            "息神",
+            "指背",
+            "攀鞍",
+            "晦氣",
+            "月煞",
+            "歲建",
+            "歲驛",
+            "災煞",
+            "病符",
+            "白虎",
+            "福德",
+            "貫索"
+          ],
+          "onlyInIztroZhongzhou": [
+            "劫殺",
+            "天壽",
+            "天巫",
+            "天才",
+            "年解"
+          ]
+        }
+      ]
+    },
+    {
+      "dimension": "brightness",
+      "label": "廟旺",
+      "ziweiCanonical": {
+        "modeled": "partial",
+        "by": "tables/dignity/brightness.json",
+        "values": []
+      },
+      "ziweiZhongzhouProfile": {
+        "values": []
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "node_modules/iztro/lib/astro/astro.js:83-112 (brightness config)",
+        "values": []
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "unknown",
+      "decision": "research",
+      "note": "本庫廟旺表尚未整表核對（variant catalog 已列）；iztro 之 brightness 表屬實作來源，需古典依據。"
+    },
+    {
+      "dimension": "leap-month",
+      "label": "閏月",
+      "ziweiCanonical": {
+        "modeled": true,
+        "by": "profile.leapMonthPolicy",
+        "values": [
+          "same-as-normal"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          "same-as-normal"
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "iztro config.algorithm",
+        "values": []
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "unknown",
+      "decision": "research",
+      "note": "本庫 leapMonthPolicy 之 split / mid-month / next-month 尚未實作（見 profile gap audit）。"
+    },
+    {
+      "dimension": "major-period",
+      "label": "大限",
+      "ziweiCanonical": {
+        "modeled": true,
+        "values": [
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              5,
+              14
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              25,
+              34
+            ]
+          ]
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "values": [
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              5,
+              14
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              25,
+              34
+            ]
+          ]
+        ]
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "values": [
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              6,
+              15
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              26,
+              35
+            ]
+          ],
+          [
+            [
+              5,
+              14
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              25,
+              34
+            ]
+          ]
+        ]
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "matches",
+      "decision": "research",
+      "note": "僅比對前三個大限範圍（起迄虛歲），未比對起運與童限細節。"
+    },
+    {
+      "dimension": "dynamic-stars",
+      "label": "流曜",
+      "ziweiCanonical": {
+        "modeled": "partial",
+        "by": "period plan (流曜 candidate)",
+        "values": []
+      },
+      "ziweiZhongzhouProfile": {
+        "values": []
+      },
+      "iztroZhongzhou": {
+        "modeled": true,
+        "source": "iztro horoscope()",
+        "values": []
+      },
+      "fortel": null,
+      "independentEvidence": [],
+      "agreement": "not-probed",
+      "decision": "research",
+      "note": "本次 probe 未帶 targetDate，故不比較流曜；動態流曜需先取得古典依據（spec §9）。"
+    }
+  ],
+  "decisions": {
+    "research": 11,
+    "variantOnly": 1,
+    "note": "decision=research：需獨立古典／中州派來源方可升級為 variant rule；本矩陣不改變任何 canonical 規則。"
+  },
+  "probeResults": [
+    {
+      "probeId": "P1",
+      "input": {
+        "solarDate": "1990-05-15",
+        "hour": 10,
+        "gender": "male"
+      },
+      "ziweiCanonical": {
+        "soul": "貪狼",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [],
+        "tianshi": "wei",
+        "tianshang": "si",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "太陽",
+          "quan": "武曲",
+          "ke": "太陰",
+          "ji": "天同"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "soul": "貪狼",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [],
+        "tianshi": "wei",
+        "tianshang": "si",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "太陽",
+          "quan": "天府",
+          "ke": "天相",
+          "ji": "天同"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "iztroDefault": {
+        "soul": "貪狼",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [
+          "大耗",
+          "龍德",
+          "白虎",
+          "天德",
+          "弔客",
+          "病符",
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗"
+        ],
+        "tianshi": "wei",
+        "tianshang": "si",
+        "jiekongLike": [
+          "截路"
+        ],
+        "kongwangLike": [
+          "旬空",
+          "空亡"
+        ],
+        "mutagenForStem": {
+          "ke": "太陰",
+          "ji": "天同",
+          "quan": "武曲",
+          "lu": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截路",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "空亡",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍池"
+        ]
+      },
+      "iztroZhongzhou": {
+        "soul": "破軍",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [
+          "歲破",
+          "龍德",
+          "白虎",
+          "天德",
+          "弔客",
+          "病符",
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗"
+        ],
+        "tianshi": "wei",
+        "tianshang": "si",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "ke": "太陰",
+          "ji": "天同",
+          "quan": "武曲",
+          "lu": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "劫殺",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "大耗",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截空",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      }
+    },
+    {
+      "probeId": "P2",
+      "input": {
+        "solarDate": "1984-02-03",
+        "hour": 23,
+        "gender": "female"
+      },
+      "ziweiCanonical": {
+        "soul": "祿存",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [],
+        "tianshi": "you",
+        "tianshang": "wei",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "廉貞",
+          "quan": "破軍",
+          "ke": "武曲",
+          "ji": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "soul": "祿存",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [],
+        "tianshi": "you",
+        "tianshang": "wei",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "廉貞",
+          "quan": "破軍",
+          "ke": "武曲",
+          "ji": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "iztroDefault": {
+        "soul": "祿存",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "大耗",
+          "龍德",
+          "白虎",
+          "天德",
+          "弔客",
+          "病符"
+        ],
+        "tianshi": "you",
+        "tianshang": "wei",
+        "jiekongLike": [
+          "截路"
+        ],
+        "kongwangLike": [
+          "旬空",
+          "空亡"
+        ],
+        "mutagenForStem": {
+          "lu": "廉貞",
+          "quan": "破軍",
+          "ke": "武曲",
+          "ji": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截路",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "空亡",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍池"
+        ]
+      },
+      "iztroZhongzhou": {
+        "soul": "貪狼",
+        "body": "火星",
+        "bureau": "火六局",
+        "suiqian12ByBranch": [
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "歲破",
+          "龍德",
+          "白虎",
+          "天德",
+          "弔客",
+          "病符"
+        ],
+        "tianshi": "wei",
+        "tianshang": "you",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "廉貞",
+          "quan": "破軍",
+          "ke": "武曲",
+          "ji": "太陽"
+        },
+        "majorRanges": [
+          [
+            6,
+            15
+          ],
+          [
+            16,
+            25
+          ],
+          [
+            26,
+            35
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "劫殺",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "大耗",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截空",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      }
+    },
+    {
+      "probeId": "P3",
+      "input": {
+        "solarDate": "2000-12-31",
+        "hour": 6,
+        "gender": "male"
+      },
+      "ziweiCanonical": {
+        "soul": "祿存",
+        "body": "文昌",
+        "bureau": "土五局",
+        "suiqian12ByBranch": [],
+        "tianshi": "si",
+        "tianshang": "mao",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "太陽",
+          "quan": "武曲",
+          "ke": "太陰",
+          "ji": "天同"
+        },
+        "majorRanges": [
+          [
+            5,
+            14
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            25,
+            34
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "ziweiZhongzhouProfile": {
+        "soul": "祿存",
+        "body": "文昌",
+        "bureau": "土五局",
+        "suiqian12ByBranch": [],
+        "tianshi": "si",
+        "tianshang": "mao",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "lu": "太陽",
+          "quan": "天府",
+          "ke": "天相",
+          "ji": "天同"
+        },
+        "majorRanges": [
+          [
+            5,
+            14
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            25,
+            34
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "亡神",
+          "亡神",
+          "八座",
+          "劫煞",
+          "劫煞",
+          "台輔",
+          "右弼",
+          "咸池",
+          "咸池",
+          "喪門",
+          "喪門",
+          "地劫",
+          "地空",
+          "大耗",
+          "大耗",
+          "天乙",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天姚",
+          "天官",
+          "天府",
+          "天廚",
+          "天德",
+          "天月",
+          "天梁",
+          "天機",
+          "天煞",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "官符",
+          "官符",
+          "寡宿",
+          "封誥",
+          "將星",
+          "小耗",
+          "小耗",
+          "左輔",
+          "巨門",
+          "廉貞",
+          "弔客",
+          "弔客",
+          "恩光",
+          "息神",
+          "息神",
+          "截空",
+          "指背",
+          "指背",
+          "擎羊",
+          "攀鞍",
+          "文昌",
+          "文曲",
+          "旬空",
+          "晦氣",
+          "月德",
+          "月煞",
+          "武曲",
+          "歲建",
+          "歲驛",
+          "歲驛",
+          "火星",
+          "災煞",
+          "病符",
+          "病符",
+          "白虎",
+          "白虎",
+          "破碎",
+          "破軍",
+          "祿存",
+          "福德",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "貫索",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      },
+      "iztroDefault": {
+        "soul": "祿存",
+        "body": "文昌",
+        "bureau": "土五局",
+        "suiqian12ByBranch": [
+          "白虎",
+          "天德",
+          "弔客",
+          "病符",
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "大耗",
+          "龍德"
+        ],
+        "tianshi": "si",
+        "tianshang": "mao",
+        "jiekongLike": [
+          "截路"
+        ],
+        "kongwangLike": [
+          "旬空",
+          "空亡"
+        ],
+        "mutagenForStem": {
+          "ji": "天同",
+          "quan": "武曲",
+          "lu": "太陽",
+          "ke": "太陰"
+        },
+        "majorRanges": [
+          [
+            5,
+            14
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            25,
+            34
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截路",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "空亡",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍池"
+        ]
+      },
+      "iztroZhongzhou": {
+        "soul": "廉貞",
+        "body": "文昌",
+        "bureau": "土五局",
+        "suiqian12ByBranch": [
+          "白虎",
+          "天德",
+          "弔客",
+          "病符",
+          "歲建",
+          "晦氣",
+          "喪門",
+          "貫索",
+          "官符",
+          "小耗",
+          "歲破",
+          "龍德"
+        ],
+        "tianshi": "si",
+        "tianshang": "mao",
+        "jiekongLike": [
+          "截空"
+        ],
+        "kongwangLike": [
+          "旬空"
+        ],
+        "mutagenForStem": {
+          "ji": "天同",
+          "quan": "武曲",
+          "lu": "太陽",
+          "ke": "太陰"
+        },
+        "majorRanges": [
+          [
+            5,
+            14
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            25,
+            34
+          ]
+        ],
+        "placedStars": [
+          "七殺",
+          "三台",
+          "八座",
+          "劫殺",
+          "台輔",
+          "右弼",
+          "咸池",
+          "地劫",
+          "地空",
+          "大耗",
+          "天使",
+          "天傷",
+          "天刑",
+          "天同",
+          "天哭",
+          "天喜",
+          "天壽",
+          "天姚",
+          "天官",
+          "天巫",
+          "天府",
+          "天廚",
+          "天德",
+          "天才",
+          "天月",
+          "天梁",
+          "天機",
+          "天相",
+          "天福",
+          "天空",
+          "天虛",
+          "天貴",
+          "天鉞",
+          "天馬",
+          "天魁",
+          "太陰",
+          "太陽",
+          "孤辰",
+          "寡宿",
+          "封誥",
+          "左輔",
+          "巨門",
+          "年解",
+          "廉貞",
+          "恩光",
+          "截空",
+          "擎羊",
+          "文昌",
+          "文曲",
+          "旬空",
+          "月德",
+          "武曲",
+          "火星",
+          "破碎",
+          "破軍",
+          "祿存",
+          "紅鸞",
+          "紫微",
+          "華蓋",
+          "蜚廉",
+          "解神",
+          "貪狼",
+          "鈴星",
+          "陀羅",
+          "陰煞",
+          "鳳閣",
+          "龍德",
+          "龍池"
+        ]
+      }
+    }
+  ]
+}

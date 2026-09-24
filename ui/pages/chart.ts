@@ -1,6 +1,6 @@
 import { state } from '../app/state.js';
 import { birthFormHtml } from '../components/birth-form.js';
-import { renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative, PALACE_NAME } from '../../src/index.js';
+import { renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative, PALACE_NAME, ZiWei } from '../../src/index.js';
 import type { StarPlacement } from '../../src/index.js';
 
 const SIHUA_MARK: Record<string, string> = { lu: '祿', quan: '權', ke: '科', ji: '忌' };
@@ -46,11 +46,77 @@ export function renderChartPage(forceMode?: 'standard' | 'expert'): string {
     <div class="chart-col">
       <div class="chart-wrap card">${svg}</div>
       ${palaceCardsHtml(chart)}
+      ${periodPanel(chart)}
     </div>
 
     <aside class="right-col">
       ${interpretationPanel(chart, mode)}
+      ${sharePanel(chart)}
     </aside>
+  </div>`;
+}
+
+/** 限運面板：大限 / 流年 / 小限（有輸入「查流年」時才顯示年運） */
+function periodPanel(chart: NonNullable<typeof state.chart>): string {
+  const major = chart.periods.active?.major;
+  const year = chart.periods.year;
+  const xiaoxian = chart.periods.xiaoxian;
+  if (!year && !xiaoxian) {
+    return `
+    <div class="card card-pad" style="margin-top:12px">
+      <h3 style="margin-top:0">限運</h3>
+      <p class="sub small" style="margin:0">於左側「查流年」填入西元年，即可疊算大限／流年／小限與 12 年時間軸。</p>
+    </div>`;
+  }
+  return `
+  <div class="card card-pad" style="margin-top:12px">
+    <h3 style="margin-top:0">限運${state.targetYear ? `（${state.targetYear}）` : ''}</h3>
+    <dl class="kv small">
+      ${major ? `<dt>大限</dt><dd>${major.fromAge}-${major.toAge} 歲 · ${STEM_ZH[major.stem]}${BRANCH_ZH[major.branch]}</dd>` : '<dt>大限</dt><dd class="faint">未上運或性別未知</dd>'}
+      ${year ? `<dt>流年</dt><dd>${STEM_ZH[year.stem]}${BRANCH_ZH[year.branch]}${year.resolvedYear && year.resolvedYear !== year.year ? `（年柱所屬 ${year.resolvedYear}）` : ''}</dd>` : ''}
+      ${xiaoxian ? `<dt>小限</dt><dd>${xiaoxian.age} 歲 · ${PALACE_NAME[xiaoxian.palaceId] ? t(PALACE_NAME[xiaoxian.palaceId]) : xiaoxian.palaceId}（${BRANCH_ZH[xiaoxian.branch]}）</dd>` : '<dt>小限</dt><dd class="faint">無（未提供目標日期或性別未知）</dd>'}
+    </dl>
+    ${timelineTable(chart)}
+  </div>`;
+}
+
+/** 12 年時間軸（唯讀組合 Product.trend，不新增命理規則） */
+function timelineTable(chart: NonNullable<typeof state.chart>): string {
+  if (!state.targetYear) return '';
+  const points = ZiWei.Product.trend(chart, {
+    fromYear: state.targetYear,
+    toYear: state.targetYear + 11
+  });
+  return `
+  <h4 style="margin:14px 0 6px;font-size:14px">12 年時間軸</h4>
+  <div class="table-scroll">
+    <table class="data small">
+      <thead><tr><th>年</th><th>虛歲</th><th>大限</th><th>流年</th><th>小限</th></tr></thead>
+      <tbody>
+        ${points.map(p => `<tr>
+          <td class="mono">${p.year}</td>
+          <td>${p.age ?? ''}</td>
+          <td class="mono">${p.major ? `${p.major.fromAge}-${p.major.toAge}` : ''}</td>
+          <td>${p.yearPeriod ? `${STEM_ZH[p.yearPeriod.stem]}${BRANCH_ZH[p.yearPeriod.branch]}` : ''}</td>
+          <td>${p.xiaoxian ? `${BRANCH_ZH[p.xiaoxian.branch]}` : ''}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>
+  <p class="faint small" style="margin:6px 0 0">時間軸由既有 canonical 限運輸出組合而成；不含出生資料。</p>`;
+}
+
+/** 分享面板：穩定指紋 + 可複製 payload（預設不含出生資料） */
+function sharePanel(chart: NonNullable<typeof state.chart>): string {
+  const payload = ZiWei.Product.sharePayload(chart);
+  return `
+  <div class="card card-pad" style="margin-top:12px">
+    <h3 style="margin-top:0">分享</h3>
+    <p class="small sub" style="margin:0 0 6px">指紋 <span class="mono">${payload.fingerprint}</span></p>
+    <details>
+      <summary class="small">分享資料（不含出生資料）</summary>
+      <pre tabindex="0" class="json">${JSON.stringify(payload, null, 1)}</pre>
+    </details>
   </div>`;
 }
 

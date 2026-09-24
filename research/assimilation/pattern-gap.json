@@ -1,0 +1,97 @@
+{
+  "generatedBy": "tools/assimilation/pattern-gap-audit.ts",
+  "note": "格局 Gap 僅作研究索引：外部名稱不得直接成為 canonical 規則；已實作者一律以 ZiWeiJS pattern 規則為準，未實作者需先進入古典 backlog（原文 + Source + Evidence + researchId）並經 Owner 批准。",
+  "ziweiPatternRules": [
+    "ZW.PAT.FULIANG.001",
+    "ZW.PAT.HUOLING_JIA.001",
+    "ZW.PAT.JIAXIANG.001",
+    "ZW.PAT.JILIANG_LU.001",
+    "ZW.PAT.JINJI.001",
+    "ZW.PAT.JIYUETONGLIANG.001",
+    "ZW.PAT.LIANQI.001",
+    "ZW.PAT.LUMA_JIAOCHI.001",
+    "ZW.PAT.RIYUEMING.001",
+    "ZW.PAT.SHA_POLANG.001",
+    "ZW.PAT.SHILIANG_YIN.001",
+    "ZW.PAT.TAIYANG_JUMEN.001",
+    "ZW.PAT.TIANJI_JUMEN.001",
+    "ZW.PAT.TIANTONG_JUMEN.001",
+    "ZW.PAT.TIANXIANG_LIANZHEN.001",
+    "ZW.PAT.WENGUI.001",
+    "ZW.PAT.WUTAN.001",
+    "ZW.PAT.YANGTUO_JIA.001",
+    "ZW.PAT.YINGHUO.001",
+    "ZW.PAT.YUEZHU.001",
+    "ZW.PAT.YUE_MEN_DONG.001",
+    "ZW.PAT.ZIFU_TONGGONG.001",
+    "ZW.PAT.ZIWEI_QISHA.001",
+    "ZW.PAT.ZIWEI_ZUOYOU.001"
+  ],
+  "classicalBacklog": {
+    "entries": 11,
+    "byStatus": {
+      "research": 9,
+      "equivalent": 1,
+      "rejected": 1
+    },
+    "equivalentToExisting": [
+      {
+        "patternKey": "PAT.HUOGUI",
+        "ruleId": "ZW.PAT.YINGHUO.001"
+      }
+    ],
+    "unresolvedResearch": [
+      {
+        "patternKey": "PAT.DUIMIAN_CHAODOU",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "未實作。定義為「子午宮逢祿存」，需與既有 LUMA_JIAOCHI（祿馬交馳）區辨：本條強調祿存在遷移對照命宮。"
+      },
+      {
+        "patternKey": "PAT.JIANWENWU",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "定義明確（文曲＋武曲在身命），但『在身命』是否含身宮、以及是否要求同宮，需依原文與流派確認。"
+      },
+      {
+        "patternKey": "PAT.KEQUANLU_ZHU",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "原文只有詩曰、無一句式定義；三化齊會之宮位條件（命宮或三方）需先確定，避免與既有四化類格局重疊。"
+      },
+      {
+        "patternKey": "PAT.MATOU_DAIJIAN",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件（常見說法為天馬與擎羊同宮於午）。"
+      },
+      {
+        "patternKey": "PAT.SHIDE_HEGE",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "為逐宮歌訣（如『酉宫最喜太阴逢，巨日又逢当面冲，辛乙生人为贵格…』），屬「宮位＋星曜＋生年干」組合之合／破格判斷，體系與現行 24 格局不同；需先決定是否納入 Pattern Engine（或以另類規則表達）。"
+      },
+      {
+        "patternKey": "PAT.SHIDE_POGE",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "同上（破格訣）。與得地合格訣成對，宜一併決策。"
+      },
+      {
+        "patternKey": "PAT.SHIZHONG_YINYU",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "定義明確（命宮在子或午、巨門同宮）。另卷二「巨門」章亦有『身命居子午宫为石中隐玉格』之說，可互證。"
+      },
+      {
+        "patternKey": "PAT.WENXING_CHAOMING",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "無一句式定義，僅詩曰（昌曲「值此」、「三方祥曜拱」）；需先確定昌曲所在宮位條件。"
+      },
+      {
+        "patternKey": "PAT.ZUOYOU_CHAOYUAN",
+        "researchId": "RSH.PATTERN.BACKLOG",
+        "gap": "與既有 ZW.PAT.ZIWEI_ZUOYOU.001（君臣慶會／紫微左右同宮）不同：本條為左輔右弼**在三方**（非同宮）。需新增獨立 DSL 條件，故不標 relatedRuleId（避免與既有規則混同）。"
+      }
+    ]
+  },
+  "external": {
+    "files": [],
+    "matched": [],
+    "unmatched": []
+  },
+  "researchQueue": []
+}

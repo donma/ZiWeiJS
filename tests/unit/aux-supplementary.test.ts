@@ -125,6 +125,14 @@ describe('candidate 小限（目標日期綁定，升 canonical 前之必要修�
     expect(r.branch).toBeUndefined();
   });
 
+  it('xiaoXianForTarget：目標早於出生（虛歲 < 1）不落宮，回報 reason（M8 corpus 發現）', () => {
+    const r = xiaoXianForTarget({
+      birthLunarYear: 1990, targetLunarYear: 1989, yearBranch: 'wu', sex: 'male'
+    });
+    expect(r.age).toBe(0);
+    expect(r.reason).toBe('TARGET_BEFORE_FIRST_XIAOXIAN');
+    expect(r.branch).toBeUndefined();
+  });
   it('xiaoXianForTarget：虛歲 = 目標農曆年 − 生年農曆年 + 1，並以該歲定位', () => {
     const r = xiaoXianForTarget({
       birthLunarYear: 1990, targetLunarYear: 2026, yearBranch: 'wu', sex: 'male'

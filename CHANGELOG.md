@@ -453,7 +453,54 @@
   （Research → Source/Evidence → Rule → Test → Owner 批准），不得寫在 Product 層
 - 測試 `tests/product/product.test.ts`（11 測試）：決定性、唯讀（呼叫後 chart 不變）、
   `retrieve` 與 `QueryApi` 一致、`sharePayload` 隱私預設、`match` 無評分欄位
-- 尚未做（待 Owner 決定）：UI 呈現（時間軸／分享卡），目前僅 SDK 層以免動到視覺回歸基準
+- UI（0.5.0 補完）：`/chart` 新增「查流年」輸入 → 限運面板（大限／流年／小限 + certainty）、
+  12 年時間軸（`Product.trend`）與分享面板（`sharePayload` 指紋 + 可展開 payload，預設不含出生資料）；
+  UI 僅組合既有輸出，不含任何命理規則
+
+### Phase I — Product Layer（UI 補完）
+- `ui/app/state.ts`：`targetYear` 支援（`recalc()` 轉為 `targetDate`）
+- `ui/components/birth-form.ts`：新增「查流年（西元年，選填）」欄位（1900–2100 驗證）
+- `ui/pages/chart.ts`：`periodPanel` / `timelineTable` / `sharePanel`
+- 測試：`tests/visual/ui.e2e.ts` 新增功能測試（限運面板、12 列時間軸、分享面板），
+  視覺快照重新產生（chromium，5 張）
+
+### §5 Tools 完成（Assimilation 工具鏈）
+- `tools/assimilation/pattern-gap-audit.ts` → `research/assimilation/pattern-gap.json`
+  （外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則）
+- `tools/assimilation/external-capability-report.ts` → `research/assimilation/external-capability-report.json`
+  （6 個外部專案：license 界線、commit、產出物盤點；GPL-3.0 / UNKNOWN 明列不得複製）
+- `tools/assimilation/profile-gap-audit.ts`（自 `tools/profiles/` 遷移，對齊 spec §5 路徑；
+  共用檢查 `tools/assimilation/profile-gap-checks.ts`）
+- `tools/assimilation/zhongzhou-diff-matrix.ts` → `research/assimilation/fortel/zhongzhou-diff.json`
+- 新增 gate：`assimilation:pattern-gap:check`、`assimilation:capability-report:check`、
+  `assimilation:zhongzhou-diff:check`（皆納入 `verify` 與 CI）
+- 測試：`tests/assimilation/pattern-gap.test.ts`（6）、`capability-report.test.ts`（4）、
+  `zhongzhou-diff.test.ts`（7）
+
+### M5 — 中州 Diff Matrix（§13.1）
+- 12 維度 × 3 probe **實跑**對照：本庫 `canonical` / `school-zhongzhou` vs iztro 2.6.1
+  `algorithm=default` / `zhongzhou`；`fortel` 未安裝未執行 → 一律 `null`（不臆測）
+- 實測發現：命主（年支 vs 命宮地支）、天使／天傷對調（陰陽不同時）、歲前十二神第 11 位
+  （歲破 vs 大耗）、截空 vs 截路／空亡、星曜落差僅為呈現方式與名稱對齊（年解＝解神）
+- 決策：全數 `research` / `variant-only`，**未變更任何 canonical 規則**
+
+### M8 — Research Scale（Fuzz / Property / Large Corpus / Distribution）
+- Fuzz：`tests/property/fuzz/random-inputs.test.ts`（固定種子 250 輸入 × 7 測試）
+- Large Corpus：`tests/property/large-corpus.test.ts`（1900–2100 每 10 日，7,342 盤，0 例外）
+- Distribution：`tools/stats/distribution.ts` → `research/stats/distribution.json`
+  （每 5 日，14,683 盤，errors = 0；五行局分佈均衡、小限覆蓋率 1）
+- 新 gate：`stats:distribution:check`
+
+### Correctness 修正（由 M8 corpus 發現）
+- **目標日期早於出生**曾使小限以原生 `Error` 崩潰並產生負虛歲 →
+  `calculate()` 現 fail-close 為 `INVALID_TARGET_DATE`（`targetDate is before the birth date`）
+- `xiaoXianForTarget` 於虛歲 < 1 時回報 `TARGET_BEFORE_FIRST_XIAOXIAN`，不落宮、不猜方向
+- `certainty.xiaoxian` 改為依實際輸出來源（無小限 → `unavailable`）
+- `xiaoXianBranchAtAge` 之程式護欄改丟 `ZiWeiError('INVALID_INPUT')`（不再丟未包裝 `Error`）
+- 測試：`tests/unit/aux-supplementary.test.ts`（+1）、`tests/boundary/exact-instant.test.ts`（+3）
+
+### §51 — Assimilation PR 模板
+- 新增 `.github/pull_request_template.md`：14 個必填欄位、各欄位要求、禁止事項、檢查清單
 
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
@@ -472,7 +519,9 @@
   改為由立春制年柱回推所屬年度；`ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001` 升 **1.1**（behavior-change）
 
 ### Gate
-- `verify` 納入 `validate:catalogs` 與 `assimilation:star-gap:check`；CI 同步
+- `verify` 納入 `validate:catalogs`、`validate:variants`、`validate:patterns`、`profiles:gap:check`、
+  `assimilation:star-gap:check`、`assimilation:pattern-gap:check`、`assimilation:capability-report:check`、
+  `assimilation:zhongzhou-diff:check`、`stats:distribution:check`；CI 同步
 - `npm run assimilation:snapshot`（需網路，手動執行，不在 verify）
 - 版本 `0.4.1 → 0.5.0`
 

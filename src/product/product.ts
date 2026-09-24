@@ -12,7 +12,7 @@
 import { calculate } from '../reference-engine/engine.js';
 import { QueryApi } from '../query-engine/query.js';
 import type {
-  BranchId, PalaceId, ZiWeiChart, TargetDate, StarPlacement, PeriodScope
+  BranchId, StemId, PalaceId, ZiWeiChart, TargetDate, StarPlacement, PeriodScope
 } from '../core/types.js';
 
 /* ------------------------------------------------------------------ *
@@ -105,8 +105,8 @@ export function snapshot(chart: ZiWeiChart): ProductSnapshot {
 export interface TrendPoint {
   year: number;
   age?: number;
-  major?: { fromAge: number; toAge: number; branch: BranchId; stem: string };
-  yearPeriod?: { branch: BranchId; stem: string; resolvedYear?: number };
+  major?: { fromAge: number; toAge: number; branch: BranchId; stem: StemId };
+  yearPeriod?: { branch: BranchId; stem: StemId; resolvedYear?: number };
   xiaoxian?: { age: number; branch: BranchId; palaceId: PalaceId };
 }
 

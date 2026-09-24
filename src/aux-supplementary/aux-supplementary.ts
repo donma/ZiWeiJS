@@ -13,6 +13,7 @@
  *     （SRC.QUANSHU.WIKISOURCE、SRC.QUANSHU.DIANCANG）逐字核對相符。
  */
 import { branchAt, branchIndex } from '../core/constants.js';
+import { ZiWeiError } from '../core/errors.js';
 import type { BranchId } from '../core/types.js';
 import { virtualAge } from '../period-engine/major-period-resolver.js';
 import supplementaryTables from '../../tables/stars/aux-supplementary-tables.json' with { type: 'json' };
@@ -145,7 +146,7 @@ export function xiaoXianBranchAtAge(
   age: number
 ): BranchId {
   if (!Number.isInteger(age) || age < 1) {
-    throw new Error(`xiaoXian age must be a positive integer, got ${age}`);
+    throw new ZiWeiError('INVALID_INPUT', `xiaoXian age must be a positive integer, got ${age}`, { age });
   }
   const start = branchIndex(xiaoXianStartBranch(yearBranch));
   return branchAt(start + xiaoXianDirection(sex) * (age - 1));
@@ -189,6 +190,10 @@ export function xiaoXianForTarget(input: {
     return { ruleId: XIAOXIAN_RULE_ID, reason: 'UNKNOWN_SEX_FOR_CALCULATION' };
   }
   const age = virtualAge(input.birthLunarYear, input.targetLunarYear);
+  if (age < 1) {
+    // 目標日期尚未進入一歲小限（含目標早於出生之負虛歲）：不猜、不落宮（M8 corpus 發現）
+    return { ruleId: XIAOXIAN_RULE_ID, age, reason: 'TARGET_BEFORE_FIRST_XIAOXIAN' };
+  }
   return {
     ruleId: XIAOXIAN_RULE_ID,
     age,

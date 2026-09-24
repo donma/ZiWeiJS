@@ -55,6 +55,9 @@ export function birthFormHtml(compact = false): string {
           ${profiles.map(p => `<option value="${p.profileId}" ${state.profile === p.profileId ? 'selected' : ''}>${t(p.name)}</option>`).join('')}
         </select>
       </label>
+      <label class="field">查流年（西元年，選填）
+        <input type="number" name="targetYear" value="${state.targetYear ?? ''}" min="1900" max="2100" placeholder="例 2026" />
+      </label>
       <label class="field">經度（真太陽時用，選填）
         <input type="number" step="0.01" name="longitude" value="${i.location?.longitude ?? ''}" placeholder="例 121.56" />
       </label>

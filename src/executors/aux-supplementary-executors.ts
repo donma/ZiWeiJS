@@ -82,7 +82,7 @@ export function calcXiaoXian(ctx: EngineContext): ExecutorOutcome {
       inputs: { yearBranch, sexForCalculation: sex, targetLunarYear },
       result: null,
       status: 'skipped',
-      reason: 'NO_PALACE_FOR_BRANCH'
+      reason: resolution.reason ?? 'NO_PALACE_FOR_BRANCH'
     };
   }
   ctx.xiaoXian = {

@@ -136,6 +136,11 @@ function handleForm(form: HTMLFormElement): void {
       name: (fd.get('name') as string) || undefined
     };
     state.profile = (fd.get('profile') as string) || 'canonical';
+    const targetYearRaw = (fd.get('targetYear') as string) ?? '';
+    const targetYear = targetYearRaw.trim() === '' ? null : Number(targetYearRaw);
+    state.targetYear = targetYear !== null && Number.isInteger(targetYear) && targetYear >= 1900 && targetYear <= 2100
+      ? targetYear
+      : null;
     recalc();
     if (state.chart) {
       navigate('/chart');
