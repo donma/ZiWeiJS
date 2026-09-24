@@ -24,13 +24,14 @@
 | 6 | `npm run validate:versions` | Rule Version Gate：`changeLog[0] == ruleVersion`、版本遞減、behavior-change 必升版 |
 | 7 | `npm run validate:research` | Research Queue：ID 唯一、relatedRules / evidence 可解析、resolved 需有 resolution |
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
-| 9 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
-| 10 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 11 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 12 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 13 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 14 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
-| 15 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
+| 10 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 11 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 12 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 13 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 14 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 15 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
+| 16 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -273,3 +274,28 @@ CI 只跑不受字型影響的無障礙測試。
 - 小限之目標綁定：`xiaoXianForTarget`（`targetDate`/虛歲，與大限同一慣例）；
   `tests/unit/aux-supplementary.test.ts` 的「證據強度」測試確保未來 candidate 升格前證據充足。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。
+
+
+## 9. Variant Research Catalog（Assimilation Phase F）
+
+流派差異不得以 `if (profile === ...)` 散落在演算法中，一律走
+`Profile 欄位 → ruleOverrides → Variant Rule`。Phase F 把差異維度變成可驗證資料：
+
+- 檔案：`research/variants/variant-catalog.json`（14 個 spec §26 維度）
+- Gate：`npm run validate:variants`（結構、參照、機制一致性、未建模必附 Research ID）
+- 測試：`tests/variants/variant-catalog.test.ts`
+
+盤點結果（2026-09-24）：
+
+| 狀態 | 數量 | 說明 |
+|------|------|------|
+| modeled | 2 | 年界、四化表（有 profile 欄位或 profile 實際選用之 variant） |
+| partially-modeled | 7 | 晚子時、閏月、廟旺、魁鉞、天傷天使、長生十二神、小限 |
+| not-modeled | 5 | 月界、天馬、天空、截空/旬空、十二神 Scope |
+
+- **未建模者一律附 Research ID**（如 `RSH.STAR.CHANGSHENG_DIRECTION`、`RSH.PERIOD.MONTH_BOUNDARY`），
+  不得以口頭差異帶過。
+- **重要發現**：《全書》卷二長生十二神作「男命順數、女命逆數」（不論陰陽），
+  與本引擎 canonical 之「陽男陰女順、陰男陽女逆」在陰男／陽女時相反 → 已登錄
+  `RSH.STAR.CHANGSHENG_DIRECTION`，是否變更 canonical 屬 Owner 決策。
+- 不在 spec 清單的既有 variant（五行局納音、火鈴起子時）亦一併登錄，避免黑數。

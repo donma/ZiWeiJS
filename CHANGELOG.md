@@ -405,6 +405,20 @@
 - `PERIOD_EXECUTION_PLAN` 由 5 → **6**（大限/流年/流月/流日/流時/小限）
 - Research Queue：`RSH.PERIOD.MINOR_PERIOD` → `resolved`（resolvedBy: owner）
 
+### Phase F — Variant Research Catalog（流派差異維度盤點）
+- 新增 `research/variants/variant-catalog.json`：spec §26 之 **14 個維度**全數涵蓋
+  （modeled 2 / partially-modeled 7 / not-modeled 5），每維度記載機制
+  （profile 欄位 / ruleOverrides variant / none）、externalObservation、gap、nextAction
+- 新增 `schemas/variant-catalog.schema.json`、`tools/variants/{checks,validate-catalog}.ts`
+  與 `npm run validate:variants`（已納入 `verify` 與 CI）
+- 新增測試 `tests/variants/variant-catalog.test.ts`（9 測試）：維度集合相等、
+  機制一致性、modeled 必須有 profile 實際選用 variant、既有 variant 無黑數
+- **重要發現**：《全書》卷二長生十二神作「男命順數、女命逆數」（不論陰陽），
+  與 canonical 之「陽男陰女順、陰男陽女逆」於陰男／陽女時相反 →
+  登錄 `RSH.STAR.CHANGSHENG_DIRECTION`（是否變更 canonical 屬 Owner 決策）
+- Research Queue 新增 8 項（月界、閏月拆分、廟旺整表、天馬、天空、截空/旬空、
+  天傷天使、長生方向，及晚子時混合流派、魁鉞其他天干）→ 共 31 項
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /

@@ -95,7 +95,8 @@ describe('research registry contract (Final §1)', () => {
     // 依 RSH.PERIOD.DOUJUN (resolved, relatedRules: ZW.CALC.PERIOD.LIUYUE.001)
     // 須注意 LIUYUE 若無其他 open/candidate 項目則為 false
     // 目前 LIUYUE 同時在 RSH.PERIOD.MONTH_STEM，但已 resolved
-    expect(ZiWei.Research.hasOpen('ZW.CALC.PERIOD.LIUYUE.001')).toBe(false);
+    // 無任何 open/candidate 研究掛在此規則者為 false（ZUOFU_YOUBI 未被研究項引用）
+    expect(ZiWei.Research.hasOpen('ZW.CALC.STAR.ZUOFU_YOUBI.001')).toBe(false);
     // 不存在的規則為 false
     expect(ZiWei.Research.hasOpen('ZW.NON_EXISTENT')).toBe(false);
   });

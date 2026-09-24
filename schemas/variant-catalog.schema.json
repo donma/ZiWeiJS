@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/variant-catalog.schema.json",
+  "title": "ZiWei Bible Variant Research Catalog",
+  "description": "流派差異維度盤點（spec Post-Stability Phase F）。僅描述 ZiWeiJS 目前是否以 profile 欄位 / variant 規則表達，不得作為 canonical 依據。",
+  "type": "object",
+  "required": ["catalogVersion", "dimensions"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "catalogVersion": { "type": "string" },
+    "generatedBy": { "type": "string" },
+    "note": { "type": "string" },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimensionId", "name", "status", "mechanism"],
+        "properties": {
+          "dimensionId": { "type": "string", "pattern": "^VAR\\.[A-Z0-9._]+$" },
+          "name": { "type": "object", "additionalProperties": { "type": "string" } },
+          "status": {
+            "type": "string",
+            "enum": ["modeled", "partially-modeled", "not-modeled", "research", "rejected"]
+          },
+          "mechanism": {
+            "type": "string",
+            "enum": ["profile-field", "rule-variant", "both", "none"]
+          },
+          "profileFields": { "type": "array", "items": { "type": "string" } },
+          "profiles": { "type": "array", "items": { "type": "string" } },
+          "rules": { "type": "array", "items": { "type": "string" } },
+          "variants": { "type": "array", "items": { "type": "string" } },
+          "coveredBy": { "type": "array", "items": { "type": "string" } },
+          "researchIds": { "type": "array", "items": { "type": "string", "pattern": "^RSH\\." } },
+          "externalObservation": { "type": "string" },
+          "gap": { "type": ["string", "null"] },
+          "nextAction": { "type": ["string", "null"] },
+          "ownerReviewRequired": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "existingVariantsNotInSpecList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["variantRuleId", "variantOf", "note"],
+        "properties": {
+          "variantRuleId": { "type": "string" },
+          "variantOf": { "type": "string" },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

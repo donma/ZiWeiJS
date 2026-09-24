@@ -312,6 +312,144 @@
       "question": "《全書》卷二「安童限訣：一命二財三疾厄，四妻五福六官祿，餘年一派順流行，十五命宮看端的」——其行宮順序與現行十二宮排列（命、兄弟、夫妻、子女、財帛、疾厄…）之對應關係需先釐清。",
       "nextAction": "先釐清「一命二財三疾厄四妻五福六官祿」在十二宮中的走法（是否逆時針、或按宮職序列），確認後方建 candidate 規則。",
       "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.MONTH_BOUNDARY",
+      "title": "流月月界：農曆月界 vs 節氣月界",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [
+        "ZW.CALC.PERIOD.LIUYUE.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.DOUJUN"
+      ],
+      "question": "本引擎流月以「當年斗君起正月、順數至當月」計（農曆月界）。部分流派以節氣月界推算流月，兩者在月中有差異。",
+      "nextAction": "取得可引用來源後，評估新增 profile 欄位 monthBoundaryPolicy + variant；在此之前不變更 canonical。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.LEAP_MONTH_SPLIT",
+      "title": "閏月：整月拆分（split）未實作",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [],
+      "evidence": [],
+      "question": "leapMonthPolicy 目前宣告 same-as-normal / next-month / mid-month，但 mid-month 僅以日期分界近似，`split`（整月拆分）未實作。",
+      "nextAction": "確認「整月拆分」之可引用來源與定義（前半月本月、後半月下月？逐日？）後再實作。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.BRIGHTNESS_TABLE",
+      "title": "廟旺利陷：流派整表差異",
+      "status": "open",
+      "type": "table",
+      "relatedRules": [
+        "ZW.CALC.DIGNITY.BRIGHTNESS.001"
+      ],
+      "evidence": [],
+      "question": "本引擎亮度表以 SRC.QUANSHU 為主，variant 僅涵蓋天同/巨門巳亥；iztro 等實作之亮度表有更多差異（太陰、七殺、廉貞等）。",
+      "nextAction": "如需採用某流派整表，應新增 variant 規則載入完整替代表（tableRef → variant 表檔），不可零星補丁；來源須為可引用之 Tier1/2 或 2×Tier3。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANMA_SCHOOL",
+      "title": "天馬安法流派：年支三合 vs 月支 vs 隨祿存",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARBRANCH_AUX.001"
+      ],
+      "evidence": [],
+      "question": "本引擎天馬採年支三合（寅午戌在申…）；另有以月支安之與「天馬隨祿存」之說。",
+      "nextAction": "取得可引用來源後，以 variant 規則 + 替代表實作其他安法（canonical 不變）。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANKONG_SCHOOL",
+      "title": "天空安法流派：對宮地劫 vs 年支起子逆行",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARBRANCH_AUX.001"
+      ],
+      "evidence": [],
+      "question": "本引擎天空＝地劫對宮（亥上起子順安劫、逆向為天空，依《全書》天空地劫訣）；部分實作以年支起子逆行安天空或與地空混用。",
+      "nextAction": "取得可引用來源後，以 variant 表支援第二種安法。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.VOID_STAR_SCHOOL",
+      "title": "截空 / 旬空：正空傍空與並用差異",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARSTEM_AUX.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "question": "《全書》卷二有「安截路空亡訣（論本生年干）」與「安旬中空亡訣（論本生年旬）」；部分流派再分『正空/傍空』，或只取其一顯示。",
+      "nextAction": "確認正空/傍空之可引用來源後，以 variant 擴充；現行 canonical 維持兩訣並列。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANSHI_TIANSHANG",
+      "title": "天傷天使：固定宮位 vs 命前六位/命後六位",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.FIXED.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.ANXING"
+      ],
+      "question": "《全書》卷二安天傷天使訣：「命前六位是天傷，命後六位是天使。……天傷安在奴僕宮，天使安在疾厄宮。」本引擎以固定宮位（交友/疾厄）實作。兩者於標準命宮起例下等價，但若命宮定位方式不同（如流派命宮起例差異）可能分歧。",
+      "nextAction": "以「命前六位/命後六位」重新驗證等價性；若需改為位移實作，屬 canonical 行為變更，須 Owner 批准。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.CHANGSHENG_DIRECTION",
+      "title": "長生十二神方向：《全書》男順女逆 vs 陰陽順逆",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": [
+        "ZW.CALC.STAR.CHANGSHENG12.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.CHANGSHENG"
+      ],
+      "question": "《紫微斗數全書》卷二作「安長生、沐浴、冠帶、臨官、帝旺、衰、病、死、墓、絕、胎、養　男命順數、女命逆數」（以性別為準，不論陰陽）。本引擎 canonical 目前採「陽男陰女順行、陰男陽女逆行」（以陰陽＋性別為準）。兩者僅在陰男、陽女時相反。",
+      "nextAction": "此為 canonical 既有行為與古典原文之衝突：建議新增 variant 規則（男順女逆，依《全書》）並以 profile 指定，canonical 是否改採原文須由 Owner 決定。經查五行局起長生（水申/木亥/金巳/土申/火寅）與《全書》相符，僅方向有異。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.CALENDAR.LATE_ZI_POLICY",
+      "title": "晚子時混合流派（不換日但時柱歸子）未建模",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [
+        "ZW.CALC.CALENDAR.GANZHI.001"
+      ],
+      "evidence": [],
+      "question": "目前 dayBoundary 只有 midnight（午夜換日）與 zi-hour（子初換日，traditional-zi profile）兩種整體策略。部分流派主張「晚子時（23:00–23:59）不換日、但時柱仍歸子時」，屬混合策略，現行模型無法表達。",
+      "nextAction": "取得可引用來源後，新增 profile 欄位 lateZiPolicy（enum）+ 對應 executor 分支；不得以 if (profile === ...) 實作。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.KUIYUE_SCHOOL",
+      "title": "天魁天鉞：其他天干之流派差異待查",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARSTEM_AUX.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.KUIYUE"
+      ],
+      "question": "本引擎 variant（ZW.CALC.STAR.YEARSTEM_AUX.V001）目前僅涵蓋辛干天鉞（午）。其他天干是否亦有流派差異（如庚干、癸干）尚待查核。",
+      "nextAction": "比對 2 個以上獨立來源之魁鉞表；若有差異則擴充同一 variant 的 patch。",
+      "ownerReviewRequired": true
     }
   ]
 }
