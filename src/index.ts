@@ -57,6 +57,10 @@ export {
   listStarRegistry, getStarRegistryEntry, entityKindOfStar, groupStarsByEntityKind
 } from './star-registry/registry.js';
 export { QueryApi } from './query-engine/query.js';
+export {
+  canonicalJson, fingerprint, snapshot, trend, retrieve, sharePayload, match,
+  type ProductSnapshot, type TrendPoint, type RetrievalQuery, type SharePayload, type MatchResult
+} from './product/product.js';
 export type { PalaceRelations } from './query-engine/query.js';
 export {
   supplementaryAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
@@ -81,6 +85,9 @@ import {
 } from './period-engine/period-engine.js';
 import { hourBranchFromHour } from './calendar/calendar-engine.js';
 import { QueryApi } from './query-engine/query.js';
+import {
+  canonicalJson, fingerprint, snapshot, trend, retrieve, sharePayload, match
+} from './product/product.js';
 import {
   listStarRegistry, getStarRegistryEntry, entityKindOfStar, groupStarsByEntityKind
 } from './star-registry/registry.js';
@@ -208,6 +215,19 @@ export const ZiWei = {
   Supplementary: supplementaryApi,
   /** @deprecated 0.5.0 舊名稱；請改用 `ZiWei.Supplementary` */
   Candidate: supplementaryApi,
+  /**
+   * Product Layer（spec Post-Stability Phase I）：唯讀組合層。
+   * 不新增命理規則；若需新知識必須回到 Bible 流程（Research → Evidence → Rule → Owner）。
+   */
+  Product: {
+    snapshot,
+    trend,
+    retrieve,
+    sharePayload,
+    match,
+    fingerprint,
+    canonicalJson
+  },
   Trace: {
     explain: explainTrace
   },

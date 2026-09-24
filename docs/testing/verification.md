@@ -344,3 +344,17 @@ CI 只跑不受字型影響的無障礙測試。
 
 中州派現況：`school-zhongzhou` 僅覆寫庚干四化兩條規則；廟旺表、星曜互涉／宮干飛化用法
 尚未以 variant 表達 → `RSH.PROFILE.ZHONGZHOU`（需可引用來源，不得憑印象補齊）。
+
+## 12. Product Layer（Assimilation Phase I）
+
+定位：**唯讀組合層**，不得污染 Bible Core（不新增命理規則、不改動 canonical 輸出）。
+
+- 模組：`src/product/product.ts`（`ZiWei.Product`）
+- API：`snapshot` / `trend` / `retrieve` / `sharePayload` / `match` / `fingerprint` / `canonicalJson`
+- 測試：`tests/product/product.test.ts`（11 測試）
+  - 決定性（同盤同指紋）、不同盤不同指紋
+  - **唯讀**：呼叫後 chart 序列化內容不變
+  - `trend` 逐年限運（大限／流年／小限）含範圍守衛
+  - `retrieve` 與 `QueryApi` 結果完全一致（薄封裝、不新增演算法）
+  - `sharePayload` 預設**不含出生資料**；`match` 僅列舉共同事實、**無吉凶評分**
+- 尚未做（需 Owner 決定）：UI 呈現（時間軸 / 分享卡）— 目前僅 SDK 層，避免動到視覺回歸基準。

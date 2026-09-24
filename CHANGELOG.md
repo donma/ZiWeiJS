@@ -444,6 +444,17 @@
   尚未以 variant 表達 → 新增 `RSH.PROFILE.ZHONGZHOU`（需可引用來源，不得憑印象補齊）
 - 另有 `RSH.PROFILE.TIME_CONVENTION`（local-mean-solar 未實作）→ Research Queue 共 34 項
 
+### Phase I — Product Layer（唯讀組合層，SDK）
+- 新增 `src/product/product.ts` 與 **`ZiWei.Product`**：
+  `snapshot`（命盤摘要 + 指紋）、`trend`（逐年限運時間軸：大限／流年／小限）、
+  `retrieve`（薄封裝 `QueryApi`）、`sharePayload`（**預設不含出生資料**）、
+  `match`（僅列舉共同事實，**無吉凶評分**）、`fingerprint` / `canonicalJson`（穩定序列化）
+- 護欄：**不新增任何命理規則**；若需新知識必須回到 Bible 流程
+  （Research → Source/Evidence → Rule → Test → Owner 批准），不得寫在 Product 層
+- 測試 `tests/product/product.test.ts`（11 測試）：決定性、唯讀（呼叫後 chart 不變）、
+  `retrieve` 與 `QueryApi` 一致、`sharePayload` 隱私預設、`match` 無評分欄位
+- 尚未做（待 Owner 決定）：UI 呈現（時間軸／分享卡），目前僅 SDK 層以免動到視覺回歸基準
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /
