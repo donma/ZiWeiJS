@@ -96,3 +96,26 @@ ZiWei.Candidate.xiaoXian.sequence(yearBranch, sex, 1, 12)
 ```
 
 以上輸出均標示為 candidate，**預設不併入 canonical 盤面**。
+
+## 附錄：天巫 / 天才 / 天壽 之系統性查核（負向結果，2026-09-24）
+
+查核來源：
+
+1. 《紫微斗數全書》卷二「安星訣」——維基文庫與中華典藏網兩份**互相獨立**之電子文本
+2. 知命書院《紫微斗數全書》全本目錄（42 章）
+3. archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（1600 刊本；OCR 不可用，僅確認版本存在）
+4. DuckDuckGo / Bing 全文檢索（含「安天巫訣」「正五九月在巳」等專名與原句）
+
+結果：三顆星**均無古典安法**可引。唯一可得者為 iztro 官方文件所載月支口訣
+
+```text
+安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥。
+```
+
+該口訣已登錄為 `EVD.IZTRO.ANXING.TIANWU`（type: `mentions`，sourceId: `SRC.IZTRO`），
+明示為**實作/流派文件、非古典原文**，不得作為 canonical 依據。
+
+處置：三者維持 `RSH.STAR.{TIANWU,TIANCAI,TIANSHOU}`（open），**不實作、不建表**。
+
+另註：維基文庫《紫微斗數》條目屬舊「十八飛星」系統，其天壽（及以文昌為「台輔」）與十四主星系統
+同名異義，已在 `SRC.QUANSHU.WIKISOURCE` notes 與本文檔開頭標示，避免誤引。

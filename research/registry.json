@@ -252,9 +252,12 @@
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "iztro 於多數盤面安置「天才」，但《紫微斗數全書》卷二安星訣未見天才安法。",
-      "nextAction": "不得以 iztro 實作為依據。需另尋古典文獻或流派講義原文，方可建立 candidate。",
-      "ownerReviewRequired": true
+      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻均未見天才安法（iztro 有安置，屬實作觀點）。",
+      "nextAction": "維持 open：不實作。需可引用來源（古典原文或正式出版講義）方可建 candidate。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING"
+      ]
     },
     {
       "researchId": "RSH.STAR.TIANSHOU",
@@ -262,9 +265,12 @@
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "《全書》卷二安星訣未載天壽。維基文庫《紫微斗數》條目屬舊「十八飛星」系統，其中有天壽（亥酉戌），與十四主星系統同名異義，不得混用。",
-      "nextAction": "不得以同名異義或現代實作為依據。需確認所屬系統與古典原文後再議。",
-      "ownerReviewRequired": true
+      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻未見十四主星系統之天壽安法；舊「十八飛星」系統（維基文庫《紫微斗數》條目）另有同名天壽，但同名異義，不得混用。iztro 有安置，屬實作觀點。",
+      "nextAction": "維持 open：不實作。需先確認所屬系統與可引用原文。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING"
+      ]
     },
     {
       "researchId": "RSH.STAR.TIANWU",
@@ -272,9 +278,13 @@
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "cdestiny / Fortel / iztro 皆有天巫，ZiWeiJS Star Registry 無此星。已查核《紫微斗數全書》卷二安星訣（兩份獨立電子文本）全篇未見天巫安法；惟 iztro 官方文件載有「安天巫訣：正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥」（月支系），屬現代實作/流派文件，尚非古典原文。",
-      "nextAction": "需取得可引用之古典原文或正式出版講義（Tier 1/2，或 2×獨立 Tier3）後，方可建 candidate 規則。不得以 iztro 文件為單一依據。",
-      "ownerReviewRequired": true
+      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻均未見天巫安法；唯一可得者為 iztro 官方文件所載月支口訣（「安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥」），屬實作/流派文件（Tier 3 implementation），不得作為 canonical 依據。",
+      "nextAction": "維持 open：不實作、不建表。待取得可引用之古典原文或正式出版講義（Tier 1/2，或兩份獨立 Tier3）後，方可建 candidate 規則。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+        "EVD.IZTRO.ANXING.TIANWU"
+      ]
     },
     {
       "researchId": "RSH.PERIOD.XIAOXIAN_DIRECTION",

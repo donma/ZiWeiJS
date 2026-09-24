@@ -350,6 +350,18 @@
       "notes": "負向查核紀錄（absence of evidence，非 supports；quote 欄僅標記『無原文可引』）：本電子文本卷二安星訣未載天巫、天才、天壽之安星口訣，惟此前三顆被外部資料集列為缺星。故三者不得以本書為依據實作；若日後取得其他古典文獻依據，須另立來源與證據。"
     },
     {
+      "evidenceId": "EVD.IZTRO.ANXING.TIANWU",
+      "sourceId": "SRC.IZTRO",
+      "type": "mentions",
+      "location": {
+        "section": "iztro 官方文件「紫微鬥數安星訣」/learn/setup",
+        "anchor": "安天巫訣",
+        "archiveUrl": "https://www.iztro.com/zh_TW/learn/setup"
+      },
+      "quote": "安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥。",
+      "confidence": 0.6,
+      "notes": "**實作/流派文件，非古典原文**（absence of classical evidence 之補記）。2026-09-24 系統性查核《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網兩份獨立文本）、知命書院《紫微斗數全書》全本目錄、archive.org 掃描本與 DDG/Bing 檢索，均未見天巫安法；目前唯一可得者為 iztro 文件所載月支口訣。故天巫維持 Research Queue（open），不實作、不建表。"
+    },    {
       "evidenceId": "EVD.QUANSHU.DIANCANG.TAIFU",
       "sourceId": "SRC.QUANSHU.DIANCANG",
       "type": "supports",
