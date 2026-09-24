@@ -71,3 +71,33 @@ describe('differential classification', () => {
     expect(r.classification).toBe('unclassified');
   });
 });
+
+describe('research registry contract (Final §1)', () => {
+  it('Research JSON status 全部可以被 TS API 正確回傳且型別合法', () => {
+    const all = ZiWei.Research.list();
+    expect(all.length).toBeGreaterThan(0);
+    const validStatuses = new Set(['open', 'candidate', 'resolved', 'rejected']);
+    for (const item of all) {
+      expect(validStatuses.has(item.status), `${item.researchId} status ${item.status} invalid`).toBe(true);
+    }
+    // 確認至少涵蓋 open, candidate, resolved
+    const statuses = new Set(all.map(i => i.status));
+    expect(statuses.has('open')).toBe(true);
+    expect(statuses.has('candidate')).toBe(true);
+    expect(statuses.has('resolved')).toBe(true);
+  });
+
+  it('hasOpenResearch 語意：open 或 candidate 為 true，resolved 或 rejected 為 false', () => {
+    // 依 RSH.006 (candidate, relatedRules: ZW.CALC.SIHUA.NATAL.001)
+    expect(ZiWei.Research.hasOpen('ZW.CALC.SIHUA.NATAL.001')).toBe(true);
+    // 依 RSH.001 (open, relatedRules: ZW.CALC.STAR.YEARSTEM_AUX.001)
+    expect(ZiWei.Research.hasOpen('ZW.CALC.STAR.YEARSTEM_AUX.001')).toBe(true);
+    // 依 RSH.PERIOD.DOUJUN (resolved, relatedRules: ZW.CALC.PERIOD.LIUYUE.001)
+    // 須注意 LIUYUE 若無其他 open/candidate 項目則為 false
+    // 目前 LIUYUE 同時在 RSH.PERIOD.MONTH_STEM，但已 resolved
+    expect(ZiWei.Research.hasOpen('ZW.CALC.PERIOD.LIUYUE.001')).toBe(false);
+    // 不存在的規則為 false
+    expect(ZiWei.Research.hasOpen('ZW.NON_EXISTENT')).toBe(false);
+  });
+});
+

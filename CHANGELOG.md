@@ -282,3 +282,44 @@
 - 第三輪新增測試：year-boundary（14）、major-age-boundary（7）、doujun（6）、sihua-variant-scope（9）、birth-input-validation（11）、year-only-target（6）、doujun-leap-birth（5）、overlay-scope-stars（4）、local-wall-time-dst（8）、iztro-period-gate（11）、rule-version-behavior（8）、result-provenance（7）
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
 - Golden fixtures：35 筆 v2 oracle + 8 legacy + 10 筆 period golden oracle；Differential fixtures：17 筆（12 iztro + 5 iztro-period）+ 3 筆（calendar）
+
+## 0.4.1 — Final Stabilization（Hardening 收尾 / Stable Baseline）
+
+本版**不變更排盤結果**（最後一次引擎行為變更為 0.4.0 的流月天干農曆月五虎遁）。
+目的：契約對齊、研究治理、發佈層 smoke、文件對齊，並建立穩定基線。
+
+### 契約對齊
+- **ResearchStatus 單一型別**：`src/ai/research-registry.ts` 由 `open|in-progress|resolved|closed`
+  改為 `open|candidate|resolved|rejected`，與 `research.schema.json` 一致，並自 `src/index.ts` 公開匯出
+- `hasOpenResearch()` 改以 `ACTIVE_RESEARCH_STATUSES = {open, candidate}` 判定
+- `ResearchItem` 新增 `resolution` / `resolvedAt` / `resolvedBy`；schema 於 `status=resolved` 時要求 `resolution`
+
+### 研究治理
+- 新增 `npm run validate:research`（`tools/research-validator/validate.ts`）：ID 唯一、
+  `relatedRules` / `evidence` 可解析、`resolved` 需 `resolution` 且 `ownerReviewRequired=false`、
+  `candidate` 需 `ownerReviewRequired=true`；並修正既有研究項 `RSH.004` 誤植的規則 ID
+  （`QIANGYANG` → `QINGYANG_PARENTS.001`）
+- `RSH.PERIOD.MONTH_STEM`：`question` 改為歷史敘述並補 `resolution`（owner 裁定農曆月五虎遁）；
+  `RSH.001` 拆開「歌訣 / 實際落支 / 目前 canonical」三段
+- `RSH.PERIOD.DOUJUN` 補 `resolution` / `resolvedAt` / `resolvedBy`
+
+### 發佈層驗證
+- 新增 `tools/release-validator/artifact-smoke.ts`：`dist/` 產物存在、ESM bundle 可 import 並實際排盤、
+  版本常數與 `bible-manifest.json` 一致、manifest rules / profiles 數量與 Registry 一致
+- 新增 `tools/release-validator/package-smoke.ts`：`npm pack` → 檢核 `files[]` → 解開到 `node_modules`
+  → 以 bare specifier `import 'ziwei-bible'` 排盤，模擬第三方 consumer
+- 新增 `npm run release:smoke` / `npm run release:check`（= `verify` + 發佈 smoke）；`verify` 納入 `validate:research`
+
+### 文件
+- README 移除手寫統計（`209 rules` / `28 evidence` 等），改以指令輸出為準；Gate 清單補
+  `validate:schemas` / `validate:versions` / `validate:research` / `release:check`
+- `docs/testing/verification.md` 重寫：Gate 順序與 `verify` / CI 完全一致（含 `validate:versions`、
+  `validate:research`、`differential`、`differential:period`、`verify:golden`），移除會漂移的數字，
+  補 Release Gate 與三引擎 a11y 說明
+
+### 版本
+- `package.json` / `BIBLE_VERSION`：`0.4.0` → **`0.4.1`**（Stable Baseline）
+
+> 依 Final Stabilization §11–§13：本版之後進入 **Hardening Freeze**。
+> 除非發生 §12 所列 correctness / contract 等情況，否則不再開 Hardening，
+> 後續一律歸類為 Feature / Assimilation / Research。

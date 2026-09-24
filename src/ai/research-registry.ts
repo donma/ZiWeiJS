@@ -1,7 +1,9 @@
 import researchRegistry from '../../research/registry.json' with { type: 'json' };
 
+export type ResearchStatus = 'open' | 'candidate' | 'resolved' | 'rejected';
+
 /**
- * Research Queue registry reader（spec 2nd §P1-4）。
+ * Research Queue registry reader（spec 2nd §P1-4 / Final §1）。
  *
  * 研究項目（AI / 研究者提出、尚未併入 canonical 的規則或證據衝突）
  * 需可經公開 API 查詢，Expert UI 亦標示「此規則是否存在 open research conflict」。
@@ -11,18 +13,21 @@ import researchRegistry from '../../research/registry.json' with { type: 'json' 
 export interface ResearchItem {
   researchId: string;
   title: string;
-  status: 'open' | 'in-progress' | 'resolved' | 'closed';
+  status: ResearchStatus;
   type: string;
   relatedRules: string[];
   evidence?: string[];
   question: string;
   nextAction?: string;
   ownerReviewRequired?: boolean;
+  resolution?: string;
+  resolvedAt?: string;
+  resolvedBy?: string;
 }
 
 const items: ResearchItem[] = (researchRegistry as { items?: ResearchItem[] }).items ?? [];
 
-export function listResearch(filter?: { status?: ResearchItem['status']; type?: string }): ResearchItem[] {
+export function listResearch(filter?: { status?: ResearchStatus; type?: string }): ResearchItem[] {
   let out = items;
   if (filter?.status) out = out.filter(i => i.status === filter.status);
   if (filter?.type) out = out.filter(i => i.type === filter.type);
@@ -37,7 +42,9 @@ export function researchForRule(ruleId: string): ResearchItem[] {
   return items.filter(i => (i.relatedRules ?? []).includes(ruleId));
 }
 
-/** 該規則是否仍有未結案的研究衝突（供 Expert UI 標示） */
+const ACTIVE_RESEARCH_STATUSES: ReadonlySet<ResearchStatus> = new Set(['open', 'candidate']);
+
+/** 該規則是否仍有未結案的研究衝突（供 Expert UI 標示，open 或 candidate 視為進行中） */
 export function hasOpenResearch(ruleId: string): boolean {
-  return researchForRule(ruleId).some(i => i.status === 'open' || i.status === 'in-progress');
+  return researchForRule(ruleId).some(i => ACTIVE_RESEARCH_STATUSES.has(i.status));
 }

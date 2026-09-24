@@ -38,7 +38,7 @@ export {
 } from './ai/research.js';
 export {
   listResearch, getResearch, researchForRule, hasOpenResearch,
-  type ResearchItem
+  type ResearchItem, type ResearchStatus
 } from './ai/research-registry.js';
 export type { ResearchStage, PipelineGuardResult, ConflictReport } from './ai/research.js';
 export { renderNarrative } from './narrative/narrative.js';

@@ -13,7 +13,7 @@
       "evidence": [
         "EVD.KUIYUE.VARIANT"
       ],
-      "question": "辛干魁鉞歌訣有『六辛逢馬虎』（午寅）與『六辛逢馬蛇』（午巳）兩說。canonical 目前採馬虎（丑午），需確認主流排盤系統實作。",
+      "question": "歌訣：兩說並存 —— 『六辛逢馬虎』（午、寅）與『六辛逢馬蛇』（午、巳）。實際落支：馬虎說落於午宮與寅宮；馬蛇說落於午宮與巳宮。目前 canonical：依據 SRC.YUELING 系統採『馬虎』→ 魁落午宮、鉞落寅宮。歌訣敘述、實際落支與目前 canonical 三者需分別對齊，避免『馬虎（丑午）』此類混淆敘述。",
       "nextAction": "比對 iztro / 文墨天機 / 古籍影本，確認後建立 variant 或修正 canonical。",
       "ownerReviewRequired": true
     },
@@ -49,7 +49,7 @@
       "type": "interpretation",
       "relatedRules": [
         "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
-        "ZW.INT.FAMILY.QIANGYANG_PARENTS.001"
+        "ZW.INT.FAMILY.QINGYANG_PARENTS.001"
       ],
       "question": "空宮借對宮的力度與是否降低 confidence，各派說法不一。",
       "nextAction": "補 evidence 後決定是否調降 strength/confidence。",
@@ -131,8 +131,11 @@
         "EVD.QUANSHU.DOUJUN",
         "EVD.QUANSHU.LIUNIAN"
       ],
-      "question": "《全書》載「流年歲建起正月逆數生月順數生時至斗君，斗君為正月命宮」；但部分現代流派省略斗君，直接由流年命宮起正月順數。本引擎已於 v2.0 正式採全書斗君正統古法。",
+      "question": "歷史問題：早期曾簡化為流年命宮起正月順數，忽略出生月與生時。《全書》載「流年歲建起正月逆數生月順數生時至斗君，斗君為正月命宮」。",
       "nextAction": "已實作斗君公式並於 iztro period differential 交叉驗證通過。保留研究紀錄供學術溯源。",
+      "resolution": "已於 v2.0 正式實作《全書》安子斗君訣，流月命宮以斗君為正月順數至當月。",
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
       "ownerReviewRequired": false
     },
     {
@@ -148,9 +151,11 @@
         "EVD.CALENDAR.GANZHI",
         "EVD.QUANSHU.DOUJUN"
       ],
-      "question": "流月天干（決定流月四化）本引擎一律採目標日期之「四柱節氣月柱」（lunar.getMonthInGanZhi，以節氣換月），與 docs/api/periods.md §P0-3 之 PeriodInfo.ganzhi 契約一致；但 iztro 等外部實作以「農曆月序」經五虎遁起月干。兩者在農曆月與節氣月不同時（例如 2026-04-16 為農曆二月，節氣已入辰月）會產生不同流月天干，進而使流月四化不同。",
+      "question": "歷史問題：v2.0 曾採目標日期之四柱節氣月柱（以節氣換月），但 iztro 等外部實作以農曆月序經年上起月（五虎遁）推算。在農曆月與節氣月不同步之期間（例如 2026-04-16 為農曆二月，節氣已入辰月），會產生不同流月天干與流月四化。",
       "nextAction": "owner 已於 2026-09-24 裁定採農曆月五虎遁，LIUYUE 升 2.1；後續如需保留節氣月柱版本，可另立 profile variant。",
-      "resolution": "owner 裁定採農曆月五虎遁（年上起月），與斗君流月定位及外部實作一致。",
+      "resolution": "Owner 於 2026-09-24 裁定 canonical 改採農曆月五虎遁（年上起月），與斗君流月定位及外部實作一致，LIUYUE 升至 v2.1。本命月柱仍維持真實節氣月柱不受影響。",
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
       "ownerReviewRequired": false
     }
   ]

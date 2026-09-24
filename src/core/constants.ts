@@ -1,7 +1,7 @@
 import type { BranchId, StemId, PalaceId, BureauId, LocalizedText } from './types.js';
 
 export const SCHEMA_VERSION = '2.0';
-export const BIBLE_VERSION = '0.4.0';
+export const BIBLE_VERSION = '0.4.1';
 export const ENGINE_VERSION = '0.1.0';
 
 export const STEMS: StemId[] = ['jia', 'yi', 'bing', 'ding', 'wu', 'ji', 'geng', 'xin', 'ren', 'gui'];

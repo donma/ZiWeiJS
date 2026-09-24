@@ -35,8 +35,16 @@
           "question": { "type": "string" },
           "nextAction": { "type": "string" },
           "ownerReviewRequired": { "type": "boolean" },
-          "resolution": { "type": "string" }
-        }
+          "resolution": { "type": "string" },
+          "resolvedAt": { "type": "string" },
+          "resolvedBy": { "type": "string" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "resolved" } } },
+            "then": { "required": ["resolution"] }
+          }
+        ]
       }
     }
   }

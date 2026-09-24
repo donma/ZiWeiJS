@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 413 it() / 44 files（靜態計數）|
+| Tests | 415 it() / 44 files（靜態計數）|
 | E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -144,22 +144,29 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 npm install
 npm run dev        # http://localhost:5173
 npm run test       # 執行完整測試套件
-npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html
+npm run build      # dist/ 輸出 esm + browser + d.ts + demo.html + bible-manifest.json
 npm run differential           # 與 iztro 逐欄對照（安星差分）
 npm run differential:calendar  # 與 lunar-lite 逐日對照（曆法差分）
 npm run test:visual            # Playwright：UI / Visual regression
 npm run test:a11y              # Playwright：無障礙（axe + 鍵盤）
+npm run release:check          # 最終 release gate（verify + artifact / package smoke）
 ```
 
 ### 規則驗證
 
+> 以下指令的實際數量以各自輸出與 `npm run coverage:bible` 為準，本文件不手寫會變動的統計數字。
+
 ```bash
-npm run verify            # 全部 gate：schema → governance → integrity → 差分 → test → build
-npm run validate:rules    # 209 rules schema 驗證
-npm run validate:sources  # 10 sources / 28 evidence 驗證（含 AI-source 阻擋）
-npm run validate:governance  # Canonical Evidence Gate
-npm run validate:integrity   # ID / ref / executor / DSL / 計畫覆蓋
-npm run coverage:bible    # 覆蓋率報告（可 --update-readme）
+npm run verify                # 全部 gate：rules → sources → schemas → governance → integrity → versions → research → differential → golden → test → build
+npm run validate:rules        # 規則 schema 驗證
+npm run validate:sources      # 來源 / 證據驗證（含 AI-source 阻擋）
+npm run validate:schemas      # 公開 JSON 契約驗證（含 variance / research registry）
+npm run validate:governance   # Canonical Evidence Gate
+npm run validate:integrity    # ID / ref / executor / DSL / 計畫覆蓋
+npm run validate:versions     # Rule Version Gate（changeLog / behavior-change 必須升版）
+npm run validate:research     # Research Queue governance（參照 / 狀態 / resolution）
+npm run coverage:bible        # 覆蓋率報告（可 --update-readme）
+npm run release:check         # 最終 gate：verify + release artifact smoke + npm package smoke
 ```
 
 > 詳細驗證體系見 `docs/testing/verification.md`。
@@ -169,18 +176,19 @@ npm run coverage:bible    # 覆蓋率報告（可 --update-readme）
 ## Repo 結構
 
 ```
-schemas/        JSON Schema（rule / source / evidence / chart / interpretation / trace / profile）
+schemas/        JSON Schema（rule / source / evidence / research / chart / interpretation / trace / profile / differential-variance）
 rules/          規則資料（calculation · interpretation · patterns · rectification）
 tables/         星曜 registry、四化表、廟旺表、納音、長生、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
-profiles/       canonical / traditional-zi / true-solar / school-zhongzhou / school-ma-hu
-variants/       Variant 登錄
+research/       Research Queue（open / candidate / resolved / rejected）
+profiles/       canonical / traditional-zi / true-solar / lichun / school-zhongzhou / school-ma-hu
+variants/       Variant 與 Variance Registry
 src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
-tests/          unit / golden / boundary / differential / schema / periods / calendar / visual
+tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / visual
 fixtures/       golden / boundary / differential / calendar fixtures
-tools/          rule-validator / source-validator / fixture-generator / differential-runner / calendar-differential / integrity-validator / governance-validator / schema-validator / stats / build-types / build-standalone
+tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
 docs/           architecture / rules / sources / profiles / api / governance / testing
 ```
 
