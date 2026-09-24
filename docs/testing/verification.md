@@ -181,7 +181,7 @@ trace.schema.json                 Trace entry
 | 安星正確性 | 與 `iztro@2.6.1` 對照（30 案例，natal） |
 | 安星快照 | `fixtures/differential/iztro/*.json`（CI 不需外部套件） |
 | 限運（大限/流年/流月/流日/流時） | `tools/differential-runner/iztro-period-runner.ts`（5 案例，各 scope 的 stem/branch/lifePalaceBranch/sihua） |
-| 補充星曜（台輔/封誥/年解）與小限 | `tests/differential/aux-supplementary.test.ts`：`IZTRO_CASES` 全案例 100% 一致；小限另比對 iztro `horoscope().age`（7 案 × 2 目標日） |
+| 補充星曜（台輔/封誥/年解）與小限 | `tests/differential/aux-supplementary.test.ts`：`IZTRO_CASES` ＋ golden fixtures（civil 時制、29 案）100% 一致；小限另比對 iztro `horoscope().age`（29 案 × 2 目標日） |
 | 曆法層 | `lunar-typescript@1.8.6` vs `lunar-lite@0.2.8`，逐日 1900-01-31 ~ 2100-12-31 |
 
 ### 限運差分（spec 2nd §P0-9 / 3rd §P0-5）
@@ -294,7 +294,11 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 | 月解、童限 | 未取得 / 語意未定 | 不實作，僅 Research Queue |
 
 - canonical 三顆星已進 `NATAL_EXECUTION_PLAN`（golden v2 oracle 35 fixtures 已重生）；小限已進 `PERIOD_EXECUTION_PLAN`（`chart.periods.xiaoxian`）。
-- 小限差分：`tests/differential/aux-supplementary.test.ts` 與 iztro `horoscope().age`（7 案 × 2 目標日）100% 一致。
+- 差分（M2 外部驗證廣度）：`tests/differential/aux-supplementary.test.ts` 將案例擴大為 `IZTRO_CASES` ＋
+  `fixtures/golden/*.json`（陽曆、時辰已知、civil 時制，共 29 案）：台輔／封誥／年解 87 組全數一致；
+  小限對比 iztro `horoscope().age`（29 案 × 2 目標日）虛歲 100% 一致。真太陽時／`timeConvention !== 'civil'`
+  案例（iztro `bySolar()` 不支援經度）明確排除，改由 golden oracle 驗證；未來出生案例則驗證 fail-close
+  為 `INVALID_TARGET_DATE`。
 - 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）；本次四項均經 Owner 於 2026-09-24 明確批准。
 - 來源與證據：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
   `SRC.QUANSHU.DIANCANG`（中華典藏網），四條口訣逐字相符；

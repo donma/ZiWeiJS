@@ -509,6 +509,13 @@
   之 required keys 同步加入新欄位
 - 文件：`docs/api/public-api.md` 新增 AiContext 契約與 chart JSON 的 `periods.active` / `periods.xiaoxian`
 
+### M2 外部驗證加廣（differential case 擴充）
+- `tests/differential/aux-supplementary.test.ts` 案例由 `IZTRO_CASES` 擴大為 `IZTRO_CASES` ＋
+  `fixtures/golden/*.json`（陽曆、時辰已知、civil 時制，共 29 案）：台輔／封誥／年解 87 組全數一致；
+  小限對比 iztro `horoscope().age`（29 案 × 2 目標日）虛歲 100% 一致
+- 明確排除真太陽時／`timeConvention !== 'civil'` 案例（iztro `bySolar()` 不支援經度）→ 由 golden oracle 驗證
+- 未來出生案例改驗證 fail-close（`INVALID_TARGET_DATE`）；iztro 未提供 branch 之極端虛歲案例不比對 branch
+
 ### M7 前置 — Pattern Decision Packet（交給 Owner 的決策包）
 - 新增 `tools/patterns/decision-packet.ts` → `research/patterns/pattern-decision-packet.json`：
   把 11 條 backlog 整理成可決策清單（原文定義句、gap、readiness、proposedRuleId、requiredArtifacts）
