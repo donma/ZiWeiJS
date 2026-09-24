@@ -267,7 +267,17 @@ home  chart-standard  chart-expert  dark  tooltip  bottom-sheet  rules  sources 
 視覺快照的 baseline 與作業系統字型相關，因此只在本地 / 相同環境執行；
 CI 只跑不受字型影響的無障礙測試。
 
-## 8. 補充星曜：台輔／封誥／解神（canonical）與小限（candidate）
+## 8. 補充星曜：台輔／封誥／解神（canonical）與小限（canonical）
+
+spec §18「第一批真正值得研究的 Missing Stars」共六顆（封誥／解神／台輔／天才／天壽／天巫；
+M2 = 「第一批六顆 + Placement + Evidence + UI + Tests」）。目前狀態：
+
+| 批次 | 狀態 |
+|------|------|
+| 台輔、封誥、解神 | **已 canonical**（Placement + Evidence + UI + Tests + differential 全備） |
+| 天才、天壽、天巫 | **阻塞**：兩份獨立電子文本查無安法 → 不實作，僅留 Research Queue（`RSH.STAR.{TIANCAI,TIANSHOU,TIANWU}`）與 iztro-only `mentions` 記錄 |
+
+M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其餘不得以外部實作共識充當古典依據（spec §18.1 / §42）。
 
 外部缺星清單不得直接進 canonical。本次查核《紫微斗數全書》卷二「安星訣」原文：
 
