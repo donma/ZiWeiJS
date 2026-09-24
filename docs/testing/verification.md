@@ -8,6 +8,9 @@
 > **本文件不手寫會頻繁漂移的統計數字。** 實際數量一律以指令輸出為準：
 > `npm run coverage:bible`、`npm run differential`、`npm run differential:period`、
 > `npm run differential:calendar`。
+>
+> 星曜覆蓋率 `98/99 placed (active 98)` 為**預期值**：唯一未落盤者為 `deprecated` 的
+> `ZW.STAR.AUX.MUYU`（沐浴，已由長生十二神取代），非缺口。
 
 ## 1. Gate 順序
 
@@ -26,20 +29,20 @@
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
 | 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
 | 10 | `npm run validate:patterns` | Pattern Research Backlog：古典原文必填、research 必附 Research ID、implemented 必可解析 |
-| 10b | `npm run patterns:packet:check` | Pattern Decision Packet：readiness 分類與 backlog 一致、ownerDecision 不得被 AI 填寫 |
-| 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 |
-| 12 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
-| 13 | `npm run assimilation:pattern-gap:check` | 格局 Gap：外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則 |
-| 14 | `npm run assimilation:candidate-checklist:check` | §49 候選清單：知識型候選必附 researchId、非 research 狀態必有 Owner decision |
-| 15 | `npm run assimilation:capability-report:check` | 外部能力報告未漂移（license 界線 / commit / 產出物盤點須與 snapshot 一致） |
-| 16 | `npm run assimilation:zhongzhou-diff:check` | 中州 Diff Matrix 未漂移（12 維度 × 3 probe 實跑值） |
-| 17 | `npm run stats:distribution:check` | 分佈報告未漂移（1900–2100 每 5 日一盤，14,683 盤） |
-| 18 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 19 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 20 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 21 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 22 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants、`fuzz/`、large corpus） |
-| 23 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 11 | `npm run patterns:packet:check` | Pattern Decision Packet：readiness 分類與 backlog 一致、ownerDecision 不得被 AI 填寫 |
+| 12 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 |
+| 13 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 14 | `npm run assimilation:pattern-gap:check` | 格局 Gap：外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則 |
+| 15 | `npm run assimilation:candidate-checklist:check` | §49 候選清單：知識型候選必附 researchId、非 research 狀態必有 Owner decision |
+| 16 | `npm run assimilation:capability-report:check` | 外部能力報告未漂移（license 界線 / commit / 產出物盤點須與 snapshot 一致） |
+| 17 | `npm run assimilation:zhongzhou-diff:check` | 中州 Diff Matrix 未漂移（12 維度 × 3 probe 實跑值） |
+| 18 | `npm run stats:distribution:check` | 分佈報告未漂移（1900–2100 每 5 日一盤，14,683 盤） |
+| 19 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 20 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 21 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 22 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 23 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants、`fuzz/`、large corpus） |
+| 24 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
