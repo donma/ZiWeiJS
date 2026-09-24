@@ -123,14 +123,14 @@ NO_MAJOR_PERIODS
 
 - `PeriodInfo.branch`：**該限運命宮所在的地支**（用於十二宮疊盤定位）。
   例如流月命宮由當年斗君起農曆正月順數所得之地支、流日命宮由流月命宮起農曆初一順數所得之地支。
-- `PeriodInfo.ganzhi`：**目標日期本身該層級的真實干支**（以曆法實際日期推算之四柱）。
-  `PeriodInfo.ganzhi.branch` 為該四柱的地支（如日柱地支、時柱地支）。
+- `PeriodInfo.ganzhi`：該層級之限運干支（用於該層四化）。
+  `PeriodInfo.ganzhi.branch` 為該柱地支。
 
 兩者屬於不同概念，偶爾可能恰好相同，不得假設 `branch === ganzhi.branch`，亦不得假設必不相同：
 
 ```ts
-timed.periods.month.branch        // 流月命宮所在宮位地支（疊盤定位）
-timed.periods.month.ganzhi        // { stem: 'geng', branch: 'yin' } ← 目標日農曆月份之真實月柱
+timed.periods.month.branch        // 流月命宮所在宮位地支（疊盤定位，斗君起正月）
+timed.periods.month.ganzhi        // { stem: 'xin', branch: 'mao' } ← 流月干支（農曆月五虎遁）
 timed.periods.day.branch          // 流日命宮所在宮位地支（自流月命宮起初一順數至當日農曆日）
 timed.periods.day.ganzhi          // { stem: 'geng', branch: 'chen' } ← 該日真實日柱
 timed.periods.hour.branch         // 流時命宮所在宮位地支
@@ -138,6 +138,15 @@ timed.periods.hour.ganzhi         // 該時刻真實時柱（日干+時辰）
 ```
 
 各層干支一律由 `targetDate` 實際推算，**不會沿用上層天干**。
+
+### 流月干支：農曆月五虎遁（owner 裁定 2026-09-24）
+
+流月天干**不是**四柱節氣月柱，而是以「流年天干 + 有效農曆月序」依年上起月（五虎遁）推得，
+與流月命宮所用之農曆月序一致。因此當農曆月與節氣月不同步時（例如 `2026-04-16` 為農曆二月、
+節氣已入辰月），流月干支為農曆二月之 `辛卯`，而非節氣月柱之 `壬辰`。
+
+- 本命（`chart.calendar.ganzhi.month`）仍為真實四柱節氣月柱，**不受此變更影響**。
+- 規則：`ZW.CALC.PERIOD.LIUYUE.001` v2.1；研究紀錄：`RSH.PERIOD.MONTH_STEM`（resolved）。
 
 ## 疊盤內容
 

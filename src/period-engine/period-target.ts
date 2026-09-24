@@ -1,5 +1,5 @@
 import { Solar } from 'lunar-typescript';
-import type { BranchId, GanzhiPair, Profile, TargetDate } from '../core/types.js';
+import type { BranchId, GanzhiPair, Profile, StemId, TargetDate } from '../core/types.js';
 import { BRANCHES, STEMS, branchAt, branchIndex } from '../core/constants.js';
 import { ZiWeiError } from '../core/errors.js';
 import { hourBranchFromHour, resolveYearGanzhi } from '../calendar/calendar-engine.js';
@@ -66,6 +66,30 @@ function gzToPair(gz: string): GanzhiPair {
     stem: STEMS[STEMS_ZH.indexOf(gz[0])],
     branch: BRANCHES[BRANCHES_ZH.indexOf(gz[1])]
   };
+}
+
+/**
+ * 流月干支：農曆月五虎遁（年上起月）。
+ *
+ * 甲己之年丙作首、乙庚之歲戊為頭、丙辛必定尋庚起、丁壬壬位順行流、戊癸甲寅之上求。
+ * 以「流年天干 + 有效農曆月序」定流月干；月支自寅宮起順數（正月 = 寅）。
+ *
+ * owner 於 2026-09-24 裁定：流月天干採農曆月五虎遁（不再採四柱節氣月柱），
+ * 與斗君流月定位一致，並與外部實作對齊（spec 3rd §P0-4 補述 / RSH.PERIOD.MONTH_STEM）。
+ */
+const MONTH_STEM_SEED: Record<StemId, number> = {
+  jia: 2, ji: 2,
+  yi: 4, geng: 4,
+  bing: 6, xin: 6,
+  ding: 8, ren: 8,
+  wu: 0, gui: 0
+};
+
+export function monthlyGanzhiFromLunar(yearStem: StemId, effectiveLunarMonth: number): GanzhiPair {
+  const seed = MONTH_STEM_SEED[yearStem];
+  const stemIdx = (((seed + (effectiveLunarMonth - 1)) % 10) + 10) % 10;
+  const branchIdx = (((2 + (effectiveLunarMonth - 1)) % 12) + 12) % 12;
+  return { stem: STEMS[stemIdx], branch: BRANCHES[branchIdx] };
 }
 
 /**
@@ -192,7 +216,8 @@ export function normalizePeriodTarget(target: TargetDate, profile: Profile): Nor
 
   const ganzhi: NormalizedPeriodTarget['ganzhi'] = {
     year: ganzhiYear,
-    month: gzToPair(lunar.getMonthInGanZhi()),
+    // 流月干支：農曆月五虎遁（owner 決策，spec 3rd §P0-4 補述）
+    month: monthlyGanzhiFromLunar(ganzhiYear.stem, effectiveLunarMonth),
     day: isRepresentativeDate ? undefined : gzToPair(lunar.getDayInGanZhi())
   };
 

@@ -138,7 +138,7 @@
     {
       "researchId": "RSH.PERIOD.MONTH_STEM",
       "title": "流月天干基準：四柱節氣月柱 vs 農曆月五虎遁",
-      "status": "open",
+      "status": "resolved",
       "type": "calendar-variance",
       "relatedRules": [
         "ZW.CALC.PERIOD.LIUYUE.001",
@@ -149,8 +149,9 @@
         "EVD.QUANSHU.DOUJUN"
       ],
       "question": "流月天干（決定流月四化）本引擎一律採目標日期之「四柱節氣月柱」（lunar.getMonthInGanZhi，以節氣換月），與 docs/api/periods.md §P0-3 之 PeriodInfo.ganzhi 契約一致；但 iztro 等外部實作以「農曆月序」經五虎遁起月干。兩者在農曆月與節氣月不同時（例如 2026-04-16 為農曆二月，節氣已入辰月）會產生不同流月天干，進而使流月四化不同。",
-      "nextAction": "考證古籍對流月四化干之依據（斗君法通常以農曆月五虎遁取干），確認後決定是否調整 canonical 或於 profile 提供 variant；目前已登錄為 calendar-variance。",
-      "ownerReviewRequired": true
+      "nextAction": "owner 已於 2026-09-24 裁定採農曆月五虎遁，LIUYUE 升 2.1；後續如需保留節氣月柱版本，可另立 profile variant。",
+      "resolution": "owner 裁定採農曆月五虎遁（年上起月），與斗君流月定位及外部實作一致。",
+      "ownerReviewRequired": false
     }
   ]
 }

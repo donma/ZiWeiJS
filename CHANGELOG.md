@@ -166,7 +166,11 @@
 - **§6 Period Golden 外部驗證**：`fixtures/golden-period/*` 新增 `external` 中繼資料（iztro 交叉驗證；差異須通過 Variance Registry gate，否則產生失敗）；`--check` 同時偵測 oracle 與外部驗證漂移
 - **§P0-5/§3 Gate 抽出**：新增 `tools/differential-runner/period-gate.ts`，runner 與測試共用同一 gate 實作
 - **治理修補**：`schemas/research.schema.json` 原本拒絕既有之 `RSH.CALENDAR.YEAR_BOUNDARY` 等 ID/type（漂移未驗證）；已修正並由 `validate:schemas` 實際驗證 `research/registry.json` 與 `variants/differential.json`
-- **新差異登錄**：`VAR.PERIOD.MONTH_STEM_BASIS`（流月天干：四柱節氣月柱 vs 農曆月五虎遁）＋ 研究項 `RSH.PERIOD.MONTH_STEM`（owner 裁決，AI 不自行對齊 iztro）
+- **流月天干（owner 裁定 2026-09-24）**：改採**農曆月五虎遁**（年上起月），不再採四柱節氣月柱；修正農曆月與節氣月不同步期間之流月干支與流月四化（例如 `2026-04-16` 為農曆二月 → `辛卯`，非節氣月柱 `壬辰`）
+  - `ZW.CALC.PERIOD.LIUYUE.001` **2.0 → 2.1**（behavior-change）
+  - 本命 `chart.calendar.ganzhi.month` 仍為真實節氣月柱，不受影響
+  - 研究項 `RSH.PERIOD.MONTH_STEM` → `resolved`；原先登錄之 `VAR.PERIOD.MONTH_STEM_BASIS` 因差異消失而移除
+  - period golden `lunar-year-cross` / `day-last` 由 `variance` 轉為 iztro `verified`
 
 ### P0-1 Rule 真正成為 Source of Truth
 - 新增 `executor-registry` / `execute-rule` / `execution-plan`；`engine.ts` 不再直接呼叫 executor

@@ -44,7 +44,7 @@ describe('P1-7 星曜 provenance', () => {
     }
   });
 
-  it('provenance 並非硬寫：整體存在 ruleVersion ≠ 1.0 的實體（流月 2.0）', () => {
+  it('provenance 並非硬寫：整體存在 ruleVersion ≠ 1.0 的實體（流月 2.1）', () => {
     const versions = [
       ...Object.values(chart.chart.stars).map(p => p.provenance!.ruleVersion),
       ...chart.chart.transformations.map(t => t.provenance!.ruleVersion),
@@ -71,12 +71,12 @@ describe('P1-7 四化 / 格局 / 解讀 / 限運 provenance', () => {
     for (const h of chart.interpretation.hits) expectProvenance(h.provenance, h.ruleId);
   });
 
-  it('限運 PeriodInfo 帶 provenance（含流月 2.0）', () => {
+  it('限運 PeriodInfo 帶 provenance（含流月 2.1）', () => {
     for (const info of [chart.periods.year, chart.periods.month, chart.periods.day, chart.periods.hour]) {
       expectProvenance(info?.provenance, `period ${info?.scope}`);
     }
     expect(chart.periods.month!.provenance!.ruleId).toBe('ZW.CALC.PERIOD.LIUYUE.001');
-    expect(chart.periods.month!.provenance!.ruleVersion).toBe('2.0');
+    expect(chart.periods.month!.provenance!.ruleVersion).toBe('2.1');
     expectProvenance(chart.periods.active?.major?.provenance, 'active major');
   });
 });

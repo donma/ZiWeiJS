@@ -96,7 +96,7 @@
     },
     {
       "ruleId": "ZW.CALC.PERIOD.LIUYUE.001",
-      "ruleVersion": "2.0",
+      "ruleVersion": "2.1",
       "status": "canonical",
       "scope": "calculation.periods.month",
       "category": "periods",
@@ -105,7 +105,7 @@
         "en": "Monthly period (DouJun)"
       },
       "description": {
-        "zh-TW": "流月命宮以當年斗君為正月命宮順數至當月。斗君推算法：流年歲建起正月、逆數生月，再由該宮起子時順數至生時。（《紫微斗數全書》安子斗訣）。"
+        "zh-TW": "流月命宮以當年斗君為正月命宮順數至當月。斗君推算法：流年歲建起正月、逆數生月，再由該宮起子時順數至生時。（《紫微斗數全書》安子斗訣）。流月天干採農曆月五虎遁（年上起月），與流月命宮之農曆月序一致。"
       },
       "inputs": [
         "periods.year",
@@ -133,6 +133,12 @@
         "doujun"
       ],
       "changeLog": [
+        {
+          "version": "2.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "Owner 裁定（RSH.PERIOD.MONTH_STEM）：流月天干改採農曆月五虎遁（年上起月），不再使用四柱節氣月柱。修正農曆月與節氣月不同步期間（如 2026-04-16 農曆二月、節氣已入辰月）之流月四化；與外部實作對齊。"
+        },
         {
           "version": "2.0",
           "type": "behavior-change",

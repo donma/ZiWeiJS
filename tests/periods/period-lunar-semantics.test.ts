@@ -80,6 +80,21 @@ describe('P0-1 流月：以農曆月定位（非 Gregorian）', () => {
   });
 });
 
+describe('流月干支：農曆月五虎遁（owner 裁定 2026-09-24）', () => {
+  it('農曆月與節氣月不同步時，採農曆月而非節氣月柱', () => {
+    // 2026-04-16：農曆二月廿九，但節氣已過清明（辰月/三月）
+    const c = calculate(base, { targetDate: { year: 2026, month: 4, day: 16 } });
+    // 2026 丙年 → 正月庚寅 → 農曆二月 = 辛卯（節氣月柱會是壬辰）
+    expect(c.periods.month!.ganzhi).toEqual({ stem: 'xin', branch: 'mao' });
+  });
+
+  it('農曆月與節氣月同步時兩者相同', () => {
+    // 2026-03-19：農曆二月初一，節氣亦為卯月
+    const c = calculate(base, { targetDate: { year: 2026, month: 3, day: 19 } });
+    expect(c.periods.month!.ganzhi).toEqual({ stem: 'xin', branch: 'mao' });
+  });
+});
+
 describe('P0-2 流日：以農曆日定位（非 Gregorian）', () => {
   it('流日命宮 = 流月命宮起初一順數至農曆當日', () => {
     // 2026-03-19 → 農曆 2026-2-1（初一）

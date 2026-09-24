@@ -160,11 +160,10 @@ describe('P0-3B/C 流日與流時干支由真實目標日期推算', () => {
     expect(c.periods.hour!.ganzhi!.branch).toBe(gz.hour.branch);
   });
 
-  it('流月干支與該年該月之真實月柱一致', () => {
+  it('流月干支採農曆月五虎遁（owner 裁定，非節氣月柱）', () => {
     const c = calculate(BASE, { targetDate: { year: 2020, month: 6, day: 10 } });
-    const gz = ganzhiAt(2020, 6, 10, 12);
-    expect(c.periods.month!.ganzhi!.stem).toBe(gz.month.stem);
-    expect(c.periods.month!.ganzhi!.branch).toBe(gz.month.branch);
+    // 2020-06-10 = 農曆閏四月十九 → 有效農曆月 4；2020 庚年 → 正月戊寅 → 四月辛巳
+    expect(c.periods.month!.ganzhi).toEqual({ stem: 'xin', branch: 'si' });
   });
 });
 

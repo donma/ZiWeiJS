@@ -78,7 +78,7 @@ describe('§4 Rule Version Gate', () => {
 
 describe('§P0-11 本輪 behavior-change 已升版', () => {
   const expected: Array<[string, string]> = [
-    ['ZW.CALC.PERIOD.LIUYUE.001', '2.0'],
+    ['ZW.CALC.PERIOD.LIUYUE.001', '2.1'],
     ['ZW.CALC.PERIOD.LIUNIAN.001', '1.1'],
     ['ZW.CALC.PERIOD.LIURI.001', '1.1'],
     ['ZW.CALC.PERIOD.LIUSHI.001', '1.1']

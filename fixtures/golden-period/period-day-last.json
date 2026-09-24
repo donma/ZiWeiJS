@@ -17,7 +17,7 @@
     "sexForCalculation": "male"
   },
   "external": {
-    "status": "variance",
+    "status": "verified",
     "verifiedBy": "differential:iztro",
     "verifiedAt": "2026-09-24",
     "against": [
@@ -26,11 +26,9 @@
         "version": "2.6.1"
       }
     ],
-    "rows": "22/28",
-    "varianceIds": [
-      "VAR.PERIOD.MONTH_STEM_BASIS"
-    ],
-    "note": "與 iztro 差異全部已登錄於 variants/differential.json。"
+    "rows": "28/28",
+    "varianceIds": [],
+    "note": "與 iztro 完全一致（命宮位置 / 干支 / 四化）。"
   },
   "oracle": {
     "targetDate": {
@@ -64,10 +62,10 @@
     },
     "month": {
       "branch": "you",
-      "stem": "ren",
+      "stem": "xin",
       "ganzhi": {
-        "stem": "ren",
-        "branch": "chen"
+        "stem": "xin",
+        "branch": "mao"
       },
       "palaceId": "children"
     },
