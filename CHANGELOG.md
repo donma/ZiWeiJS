@@ -419,6 +419,19 @@
 - Research Queue 新增 8 項（月界、閏月拆分、廟旺整表、天馬、天空、截空/旬空、
   天傷天使、長生方向，及晚子時混合流派、魁鉞其他天干）→ 共 31 項
 
+### Phase G — Pattern Research Backlog（格局擴充，先研究不追數量）
+- 新增 `research/patterns/pattern-backlog.json`：自《紫微斗數全書》卷三「格局」章
+  逐條登錄 **11 條**（equivalent 1 / research 9 / rejected 1），每條附原文、來源與定位
+- 新增 `schemas/pattern-backlog.schema.json`、`tools/patterns/{checks,validate-backlog}.ts`
+  與 `npm run validate:patterns`（已納入 `verify` 與 CI）
+- 新增測試 `tests/patterns/pattern-backlog.test.ts`（7 測試）：原文必填、
+  research 必附 Research ID 且不得指向既有 pattern（防「假研究、真實作」）
+- 重要判定：**貪狼遇火名為火貴格 ＝ 既有 `ZW.PAT.YINGHUO.001`（火貪／鈴貪）**；
+  「財官格／貴格（依生年干逐宮條列）」**rejected**（屬 Interpretation 層，非具名格局）
+- 優先研究候選：石中隱玉格（原文兩處互證）、兼文武格、左右朝垣格；
+  馬頭帶劍原文疑似脫誤，需校勘後再議
+- Research Queue 新增 `RSH.PATTERN.BACKLOG` → 共 32 項
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /

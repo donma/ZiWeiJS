@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/pattern-backlog.schema.json",
+  "title": "ZiWei Bible Pattern Research Backlog",
+  "description": "格局研究待辦（spec Post-Stability Phase G）：只登錄有古典原文可引者；每條須標明 implemented / equivalent / research / rejected。",
+  "type": "object",
+  "required": ["backlogVersion", "entries"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "backlogVersion": { "type": "string" },
+    "generatedBy": { "type": "string" },
+    "note": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["patternKey", "name", "status", "quote", "sourceId"],
+        "properties": {
+          "patternKey": { "type": "string", "pattern": "^PAT\\.[A-Z0-9._]+$" },
+          "name": { "type": "object", "additionalProperties": { "type": "string" } },
+          "status": {
+            "type": "string",
+            "enum": ["implemented", "equivalent", "research", "rejected"]
+          },
+          "quote": { "type": "string" },
+          "sourceId": { "type": "string", "pattern": "^SRC\\." },
+          "locator": {
+            "type": "object",
+            "properties": {
+              "volume": { "type": "string" },
+              "chapter": { "type": "string" },
+              "section": { "type": "string" },
+              "anchor": { "type": "string" },
+              "archiveUrl": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "relatedRuleId": { "type": ["string", "null"] },
+          "researchId": { "type": ["string", "null"] },
+          "gap": { "type": ["string", "null"] },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

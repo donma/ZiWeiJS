@@ -1,0 +1,195 @@
+{
+  "$schema": "../../schemas/pattern-backlog.schema.json",
+  "backlogVersion": "1.0",
+  "generatedBy": "manual research（spec Post-Stability Phase G，2026-09-24）",
+  "note": "格局待辦清單。原則：**只登錄有古典原文可引者，不追數量**；每條須標明是否已實作（implemented）、與既有格局等價（equivalent）、待研究（research）或不予採用（rejected）。未經 Owner 批准不得將 research 格局實作為 canonical；實作前一律先進 Research Queue。",
+  "entries": [
+    {
+      "patternKey": "PAT.DUIMIAN_CHAODOU",
+      "name": { "zh-TW": "對面朝斗格", "zh-CN": "对面朝斗格" },
+      "status": "research",
+      "quote": "论对面朝斗格 子午宫逢禄存是也　诗曰 禄有对面在迁移，子午逢之利禄宜，德合吉壤人敬重，双全富贵福稀奇。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論對面朝斗格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "未實作。定義為「子午宮逢祿存」，需與既有 LUMA_JIAOCHI（祿馬交馳）區辨：本條強調祿存在遷移對照命宮。",
+      "note": "原文有明確定義與詩曰，來源清楚。"
+    },
+    {
+      "patternKey": "PAT.KEQUANLU_ZHU",
+      "name": { "zh-TW": "科權祿主格", "zh-CN": "科权禄主格" },
+      "status": "research",
+      "quote": "论科权禄主格 诗曰 禄权周勃命中逢，入相王朝赞圣功，迎合权星兼吉曜，巍巍富贵列三公。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論科權祿主格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "原文只有詩曰、無一句式定義；三化齊會之宮位條件（命宮或三方）需先確定，避免與既有四化類格局重疊。",
+      "note": "定義不足，暫不實作。"
+    },
+    {
+      "patternKey": "PAT.ZUOYOU_CHAOYUAN",
+      "name": { "zh-TW": "左右朝垣格", "zh-CN": "左右朝垣格" },
+      "status": "research",
+      "quote": "论左右朝垣格 诗曰 天星左右最高明，若在三方禄位兴，武职高登应显佐，文人名誉列公卿。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論左右朝垣格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "與既有 ZW.PAT.ZIWEI_ZUOYOU.001（君臣慶會／紫微左右同宮）不同：本條為左輔右弼**在三方**（非同宮）。需新增獨立 DSL 條件，故不標 relatedRuleId（避免與既有規則混同）。",
+      "note": "與既有格局有明確區辨，適合優先研究。"
+    },
+    {
+      "patternKey": "PAT.JIANWENWU",
+      "name": { "zh-TW": "兼文武格", "zh-CN": "兼文武格" },
+      "status": "research",
+      "quote": "论兼文武格 文曲武曲在身命是也　诗曰 格名文武少人知，遇此须教百事通，更值命宫无杀破，滔滔荣显是英雄。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論兼文武格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "定義明確（文曲＋武曲在身命），但『在身命』是否含身宮、以及是否要求同宮，需依原文與流派確認。",
+      "note": "定義明確，可作為下一個實作候選。"
+    },
+    {
+      "patternKey": "PAT.WENXING_CHAOMING",
+      "name": { "zh-TW": "文星朝命格", "zh-CN": "文星朝命格" },
+      "status": "research",
+      "quote": "论文星朝命格 诗曰 文昌文曲最荣华，值此须生富贵家，更得三方祥曜拱，却如锦上又添花。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論文星朝命格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "無一句式定義，僅詩曰（昌曲「值此」、「三方祥曜拱」）；需先確定昌曲所在宮位條件。",
+      "note": "定義不足。"
+    },
+    {
+      "patternKey": "PAT.SHIZHONG_YINYU",
+      "name": { "zh-TW": "石中隱玉格", "zh-CN": "石中隐玉格" },
+      "status": "research",
+      "quote": "论石中隐玉格 命在子午逢巨门是也　诗曰 巨门子午二宫逢，身命逢之必贵荣，更得三方科禄照，石中隐玉是丰隆。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論石中隱玉格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "定義明確（命宮在子或午、巨門同宮）。另卷二「巨門」章亦有『身命居子午宫为石中隐玉格』之說，可互證。",
+      "note": "定義明確且兩處原文互證，優先研究候選。"
+    },
+    {
+      "patternKey": "PAT.HUOGUI",
+      "name": { "zh-TW": "貪狼遇火名為火貴格（火貴格）", "zh-CN": "贪狼遇火名为火贵格" },
+      "status": "equivalent",
+      "quote": "论贪狼遇火名为火贵格 三合照身命是也　诗曰 火遇贪狼照命宫，封侯食禄是英雄，三方倘若无凶杀，到老应知福寿隆。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "論貪狼遇火名為火貴格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": "ZW.PAT.YINGHUO.001",
+      "researchId": null,
+      "gap": null,
+      "note": "與既有 ZW.PAT.YINGHUO.001（火貪／鈴貪）為同一格局之古典名稱。已實作，故不重複建立；惟既有名稱「火貴格」可考慮加入該規則名稱之別名（待 Owner 決定）。"
+    },
+    {
+      "patternKey": "PAT.MATOU_DAIJIAN",
+      "name": { "zh-TW": "馬頭帶劍", "zh-CN": "马头带剑" },
+      "status": "research",
+      "quote": "马头带剑 谓马有刃是也不是居午格。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "馬頭帶劍",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件（常見說法為天馬與擎羊同宮於午）。",
+      "note": "原文殘缺 → 不得依此實作；需校勘後再議。"
+    },
+    {
+      "patternKey": "PAT.SHIDE_HEGE",
+      "name": { "zh-TW": "十二宮諸星得地合格訣", "zh-CN": "十二宫诸星得地合格诀" },
+      "status": "research",
+      "quote": "===十二宫诸星得地合格诀===",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "為逐宮歌訣（如『酉宫最喜太阴逢，巨日又逢当面冲，辛乙生人为贵格…』），屬「宮位＋星曜＋生年干」組合之合／破格判斷，體系與現行 24 格局不同；需先決定是否納入 Pattern Engine（或以另類規則表達）。",
+      "note": "體系性議題，需 Owner 決策是否納入。"
+    },
+    {
+      "patternKey": "PAT.SHIDE_POGE",
+      "name": { "zh-TW": "十二宮諸星失陷破格訣", "zh-CN": "十二宫诸星失陷破格诀" },
+      "status": "research",
+      "quote": "===十二宫诸星失陷破格诀===",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷三",
+        "chapter": "格局",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+      },
+      "relatedRuleId": null,
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "gap": "同上（破格訣）。與得地合格訣成對，宜一併決策。",
+      "note": "體系性議題。"
+    },
+    {
+      "patternKey": "PAT.CAIGUAN_GE",
+      "name": { "zh-TW": "財官格／貴格（依生年干逐宮條列）", "zh-CN": "财官格／贵格（依生年干逐宫条列）" },
+      "status": "rejected",
+      "quote": "子宫喜丁己庚生人贵格，壬癸生人不耐久。",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "locator": {
+        "volume": "卷二",
+        "chapter": "諸星",
+        "section": "紫微／諸星各宮生年干組合",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "relatedRuleId": null,
+      "researchId": null,
+      "gap": null,
+      "note": "不予採用為「格局」：卷二中此類「某某生人財官格／貴格」係逐宮逐干的星情斷語（數十條，格式固定），並非具名格局；如要納入，應屬 Interpretation 層之宮干組合條件，而非 Pattern Engine。此決議已記錄以免日後重複評估。"
+    }
+  ]
+}

@@ -460,6 +460,20 @@
       "question": "本引擎 variant（ZW.CALC.STAR.YEARSTEM_AUX.V001）目前僅涵蓋辛干天鉞（午）。其他天干是否亦有流派差異（如庚干、癸干）尚待查核。",
       "nextAction": "比對 2 個以上獨立來源之魁鉞表；若有差異則擴充同一 variant 的 patch。",
       "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "title": "格局擴充：以《全書》卷三格局章建立待辦（每條先 Research，不追數量）",
+      "status": "open",
+      "type": "pattern",
+      "relatedRules": [
+        "ZW.PAT.YINGHUO.001",
+        "ZW.PAT.ZIWEI_ZUOYOU.001"
+      ],
+      "evidence": [],
+      "question": "《紫微斗數全書》卷三「格局」章列有具名格局（對面朝斗、科權祿主、左右朝垣、兼文武、文星朝命、石中隱玉、貪狼遇火名為火貴（＝既有火貪／鈴貪）、馬頭帶劍、十二宮諸星得地合格／失陷破格等）。哪些應納入 Pattern Engine、哪些屬 Interpretation 層或體系性議題，需先逐條研究。",
+      "nextAction": "未實作者一律維持 research（見 research/patterns/pattern-backlog.json）；優先候選：石中隱玉格（原文兩處互證）、兼文武格、左右朝垣格（與既有君臣慶會不同）。馬頭帶劍原文疑似脫誤，需校勘。財官格／貴格類（依生年干逐宮條列）已決議不納入 Pattern Engine。",
+      "ownerReviewRequired": true
     }
   ]
 }

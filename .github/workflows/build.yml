@@ -33,6 +33,8 @@ jobs:
       - run: npm run validate:catalogs
       - name: Validate variant catalog
         run: npm run validate:variants
+      - name: Validate pattern backlog
+        run: npm run validate:patterns
       - run: npm run assimilation:star-gap:check
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check

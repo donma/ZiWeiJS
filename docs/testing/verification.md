@@ -25,13 +25,14 @@
 | 7 | `npm run validate:research` | Research Queue：ID 唯一、relatedRules / evidence 可解析、resolved 需有 resolution |
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
 | 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
-| 10 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
-| 11 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 12 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 13 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 14 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 15 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
-| 16 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 10 | `npm run validate:patterns` | Pattern Research Backlog：古典原文必填、research 必附 Research ID、implemented 必可解析 |
+| 11 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 12 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 13 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 14 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 15 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 16 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
+| 17 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -299,3 +300,27 @@ CI 只跑不受字型影響的無障礙測試。
   與本引擎 canonical 之「陽男陰女順、陰男陽女逆」在陰男／陽女時相反 → 已登錄
   `RSH.STAR.CHANGSHENG_DIRECTION`，是否變更 canonical 屬 Owner 決策。
 - 不在 spec 清單的既有 variant（五行局納音、火鈴起子時）亦一併登錄，避免黑數。
+
+## 10. Pattern Research Backlog（Assimilation Phase G）
+
+規則：**不追數量，每條先 Research**。格局只登錄有古典原文可引者。
+
+- 檔案：`research/patterns/pattern-backlog.json`（11 條：equivalent 1 / research 9 / rejected 1）
+- Gate：`npm run validate:patterns`（原文必填、來源可解析、research 必附 Research ID、
+  implemented/equivalent 必指向既有 pattern 規則、rejected 必說明理由）
+- 測試：`tests/patterns/pattern-backlog.test.ts`
+
+來源與發現（《紫微斗數全書》卷三「格局」章）：
+
+| 格局 | 原文 | 處置 |
+|------|------|------|
+| 對面朝斗格 | 子午宮逢祿存是也 | research |
+| 科權祿主格 | 詩曰（無一句式定義） | research（定義不足） |
+| 左右朝垣格 | 左輔右弼在三方 | research（與君臣慶會區辨） |
+| 兼文武格 | 文曲武曲在身命是也 | research（定義明確，優先） |
+| 文星朝命格 | 詩曰（無定義） | research（定義不足） |
+| 石中隱玉格 | 命在子午逢巨門是也（卷二亦有互證） | research（優先） |
+| 貪狼遇火名為火貴格 | 三合照身命是也 | **equivalent**（＝既有 `ZW.PAT.YINGHUO.001`） |
+| 馬頭帶劍 | 原文疑似脫誤 | research（需校勘） |
+| 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣 | research（體系性議題，需 Owner 決策） |
+| 財官格／貴格（依生年干逐宮條列） | 卷二諸星章 | **rejected**（屬 Interpretation 層，非具名格局） |
