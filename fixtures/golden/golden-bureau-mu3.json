@@ -366,6 +366,18 @@
       "ZW.STAR.AUX.TIANMA": {
         "branch": "yin",
         "palaceId": "wealth"
+      },
+      "ZW.STAR.AUX.TAIFU": {
+        "branch": "shen",
+        "palaceId": "fortune"
+      },
+      "ZW.STAR.AUX.FENGGAO": {
+        "branch": "chen",
+        "palaceId": "spouse"
+      },
+      "ZW.STAR.AUX.JIESHEN": {
+        "branch": "wu",
+        "palaceId": "life"
       }
     },
     "sihua": {

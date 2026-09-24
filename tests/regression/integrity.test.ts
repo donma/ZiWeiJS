@@ -28,15 +28,14 @@ describe('integrity: star coverage', () => {
     expect(unplaced.map(s => s.id)).toEqual([]);
   });
 
-  it('candidate stars are never placed into the canonical chart（需 Owner 批准才可升 canonical）', () => {
+  it('非 canonical 星曜（candidate / research / undetermined）不得進入 canonical 盤面', () => {
     const placed = new Set<string>();
     for (const input of MULTI) {
       const c = calculate(input);
       for (const id of Object.keys(c.chart.stars)) placed.add(id);
     }
-    const candidates = listStars().filter(s => s.status === 'candidate');
-    expect(candidates.length).toBeGreaterThan(0);
-    expect(candidates.filter(s => placed.has(s.id)).map(s => s.id)).toEqual([]);
+    const nonCanonical = listStars().filter(s => s.status !== 'canonical');
+    expect(nonCanonical.filter(s => placed.has(s.id)).map(s => s.id)).toEqual([]);
   });
 });
 

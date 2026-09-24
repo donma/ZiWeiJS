@@ -251,26 +251,26 @@ home  chart-standard  chart-expert  dark  tooltip  bottom-sheet  rules  sources 
 視覺快照的 baseline 與作業系統字型相關，因此只在本地 / 相同環境執行；
 CI 只跑不受字型影響的無障礙測試。
 
-## 8. Candidate 星曜 / 小限（Assimilation Phase B / C）
+## 8. 補充星曜：台輔／封誥／解神（canonical）與小限（candidate）
 
 外部缺星清單不得直接進 canonical。本次查核《紫微斗數全書》卷二「安星訣」原文：
 
 | 項目 | 古典依據 | 處置 |
 |------|----------|------|
-| 台輔、封誥 | 有（午起子時順、寅起子時順） | candidate 規則 `ZW.CALC.STAR.TAIFU_FENGGAO.001` |
-| 解神（年解） | 有（戌起子逆至生年太歲） | candidate 規則 `ZW.CALC.STAR.JIESHEN.001` |
-| 小限 | 有（寅午戌起辰…男順女逆） | candidate 規則 `ZW.CALC.PERIOD.XIAOXIAN.001` |
+| 台輔、封誥 | 有（午起子時順、寅起子時順） | **canonical** `ZW.CALC.STAR.TAIFU_FENGGAO.001`（Owner 2026-09-24 批准） |
+| 解神（年解） | 有（戌起子逆至生年太歲） | **canonical** `ZW.CALC.STAR.JIESHEN.001`（Owner 2026-09-24 批准） |
+| 小限 | 有（寅午戌起辰…男順女逆） | candidate `ZW.CALC.PERIOD.XIAOXIAN.001`（待批准） |
 | 天巫、天才、天壽 | **查無**（全書卷二未載） | 不實作，僅 Research Queue |
 | 月解、童限 | 未取得 / 語意未定 | 不實作，僅 Research Queue |
 
-- candidate 規則一律 `status: "candidate"` + `stage: "on-demand"`，**不進入** `NATAL_EXECUTION_PLAN` / `PERIOD_EXECUTION_PLAN`，
-  故 canonical 盤面與 golden oracle 不變；`tests/unit/candidate-stars.test.ts` 對此設有護欄。
+- canonical 三顆星已進 `NATAL_EXECUTION_PLAN` 並反映於 golden v2 oracle（35 fixtures 已重生）。
+- 小限仍為 `status: "candidate"` + `stage: "on-demand"`，**不進入**任何執行計畫，
+  故 canonical 限運輸出不受影響；`tests/unit/candidate-stars.test.ts` 對此設有護欄。
 - 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）。
 - 來源與證據：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
   `SRC.QUANSHU.DIANCANG`（中華典藏網），四條口訣逐字相符；
   證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`；
   另負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
-- **升 canonical 準備度**：證據強度已達 Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3），
-  由 `tests/unit/candidate-stars.test.ts` 的「證據強度」測試把關；小限亦已改為由
-  `targetDate`/虛歲定位（`xiaoXianForTarget`，與大限同一慣例）。仍待 Owner 批准升 canonical。
+- 小限之目標綁定：`xiaoXianForTarget`（`targetDate`/虛歲，與大限同一慣例）；
+  `test/unit/candidate-stars.test.ts` 的「證據強度」測試確保未來 candidate 升格前證據充足。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

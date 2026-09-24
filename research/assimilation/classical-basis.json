@@ -34,9 +34,9 @@
       "evidenceId": "EVD.QUANSHU.TAIFU",
       "evidenceId2": "EVD.QUANSHU.DIANCANG.TAIFU",
       "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
-      "ruleStatus": "candidate",
+      "ruleStatus": "canonical",
       "externalAgreement": "iztro（SRC.IZTRO）實作觀點一致：午宮 + 時序",
-      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可升 canonical"
+      "decision": "Owner 於 2026-09-24 批准升 canonical（stage=natal），已併入本命盤；golden v2 oracle 已重生"
     },
     {
       "name": "封誥",
@@ -46,9 +46,9 @@
       "evidenceId": "EVD.QUANSHU.FENGGAO",
       "evidenceId2": "EVD.QUANSHU.DIANCANG.FENGGAO",
       "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
-      "ruleStatus": "candidate",
+      "ruleStatus": "canonical",
       "externalAgreement": "iztro 實作觀點一致：寅宮 + 時序",
-      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可升 canonical"
+      "decision": "Owner 於 2026-09-24 批准升 canonical（stage=natal），已併入本命盤；golden v2 oracle 已重生"
     },
     {
       "name": "解神（年解）",
@@ -58,9 +58,9 @@
       "evidenceId": "EVD.QUANSHU.JIESHEN",
       "evidenceId2": "EVD.QUANSHU.DIANCANG.JIESHEN",
       "ruleId": "ZW.CALC.STAR.JIESHEN.001",
-      "ruleStatus": "candidate",
+      "ruleStatus": "canonical",
       "externalAgreement": "iztro 之『年解』一致；iztro 另有『解神』為月解，不同義，未納入比對",
-      "decision": "建 candidate 規則（stage=on-demand）；月解另立 RSH.STAR.YUEJIE"
+      "decision": "年解已於 2026-09-24 經 Owner 批准升 canonical（stage=natal）；月解仍未實作，另見 RSH.STAR.YUEJIE"
     },
     {
       "name": "天巫",
@@ -132,11 +132,15 @@
   ],
   "promotionReadiness": {
     "gate": "Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3）",
-    "status": "ready（證據強度已足）",
+    "status": "done（台輔／封誥／解神 已升 canonical；小限仍為 candidate）",
     "blockersOutsideEvidence": [
-      "小限需先改為由 targetDate/虛歲定位（現為 1–12 靜態序列）",
-      "升 canonical 需重生 35 個 golden oracle 並重新交叉驗證",
-      "Owner 專屬批准（AI 不得自行升級）"
+      "小限若升 canonical 仍待 Owner 批准（演算法已改為 targetDate/虛歲綁定）",
+      "紙本逐字複核（可選之證據強化）"
+    ],
+    "completed": [
+      "台輔／封誥／解神 升 canonical（Owner 2026-09-24 批准）",
+      "golden v2 oracle 重生 35 fixtures 並重新通過 iztro 外部驗證",
+      "小限演算法改為 targetDate/虛歲綁定"
     ]
   },
   "verification": {

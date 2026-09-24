@@ -378,6 +378,19 @@
   `tests/differential/candidate-stars.test.ts`（iztro 全案例 台輔／封誥／年解 100% 一致）
 - 修正：`package.json` 重複的 `validate:catalogs` 鍵（先前 Phase A 誤植）
 
+### Phase B（canonical 升格）— 台輔／封誥／解神併入本命盤
+- **Owner 於 2026-09-24 批准**：`ZW.CALC.STAR.TAIFU_FENGGAO.001` 與 `ZW.CALC.STAR.JIESHEN.001`
+  由 `candidate / on-demand` 升為 **`canonical / natal`**（ruleVersion `0.1 → 1.0`，changeLog `behavior-change`）
+- 星曜 registry：`ZW.STAR.AUX.{TAIFU,FENGGAO,JIESHEN}` 升 canonical，`sources` 納入兩份獨立文本
+- **星曜數 96 → 99**；每張盤新增台輔（午起子時順）、封誥（寅起子時順）、解神年解（戌起子逆至生年太歲）
+- golden v2 oracle **重生 35 fixtures** 並重新通過 iztro 外部驗證與 `--check`（無 drift）
+- 規則檔更名／整併：`aux-candidates.json` → `aux-taifu-fenggao-jieshen.json`；
+  表檔 `candidate-aux-tables.json` → `aux-supplementary-tables.json`；
+  executor 更名 `calcAuxTaiFuFengGao` / `calcAuxJieShen`（小限仍為 `calcCandidateXiaoXian`）
+- 護欄測試改寫：canonical 三顆星必須進執行計畫且出現在盤面；小限必須維持 candidate 且不得進盤面
+- Research Queue：`RSH.STAR.{TAIFU,FENGGAO,JIESHEN}` → `resolved`（resolvedBy: owner）
+- 小限仍為 candidate（演算法已改為 `targetDate`／虛歲綁定），待 Owner 批准
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /

@@ -1,8 +1,10 @@
 /**
- * Candidate 星曜 executors（spec Post-Stability Phase B/C）。
+ * 補充安星 executors（spec Post-Stability Phase B/C）。
  *
- * 只由 `stage: "on-demand"` 的 candidate 規則引用，**不進入** natal / period 執行計畫，
- * 因此 canonical 盤面輸出完全不變（待 Owner 批准後才可改 stage）。
+ * - `calcAuxTaiFuFengGao` / `calcAuxJieShen`：canonical（Owner 於 2026-09-24 批准），
+ *   由 `stage: "natal"` 規則呼叫，安置台輔／封誥／解神於本命盤。
+ * - `calcCandidateXiaoXian`：仍為 candidate（`stage: "on-demand"`），
+ *   以目標日期之農曆年計算虛歲後定位；性別未知或無目標日期時 skip。
  */
 import type { EngineContext } from './context.js';
 import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
@@ -17,7 +19,7 @@ import {
 } from '../candidate-stars/candidate-stars.js';
 
 /** 台輔 / 封誥（生時系） */
-export function calcCandidateByHour(ctx: EngineContext): ExecutorOutcome {
+export function calcAuxTaiFuFengGao(ctx: EngineContext): ExecutorOutcome {
   const hourBranch = ctx.normalized.hourBranch as BranchId;
   const yearBranch = ctx.normalized.ganzhi.year.branch as BranchId;
   const placed: string[] = [];
@@ -29,14 +31,12 @@ export function calcCandidateByHour(ctx: EngineContext): ExecutorOutcome {
   }
   return {
     inputs: { hourBranch },
-    result: placed,
-    status: 'candidate',
-    note: 'candidate 星曜：未經 Owner 批准，不併入 canonical 盤面'
+    result: placed
   };
 }
 
 /** 解神（年支系） */
-export function calcCandidateByYearBranch(ctx: EngineContext): ExecutorOutcome {
+export function calcAuxJieShen(ctx: EngineContext): ExecutorOutcome {
   const hourBranch = ctx.normalized.hourBranch as BranchId;
   const yearBranch = ctx.normalized.ganzhi.year.branch as BranchId;
   const placed: string[] = [];
@@ -47,13 +47,11 @@ export function calcCandidateByYearBranch(ctx: EngineContext): ExecutorOutcome {
   }
   return {
     inputs: { yearBranch },
-    result: placed,
-    status: 'candidate',
-    note: 'candidate 星曜：未經 Owner 批准，不併入 canonical 盤面'
+    result: placed
   };
 }
 
-/** 小限（以目標日期之農曆年計算虛歲後定位；性別未知或無目標日期時不猜） */
+/** 小限（candidate；以目標日期之農曆年計算虛歲後定位，不猜方向） */
 export function calcCandidateXiaoXian(ctx: EngineContext): ExecutorOutcome {
   const yearBranch = ctx.normalized.ganzhi.year.branch as BranchId;
   const sex = ctx.sexForCalculation;

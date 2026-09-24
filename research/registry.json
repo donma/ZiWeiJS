@@ -188,51 +188,60 @@
     },
     {
       "researchId": "RSH.STAR.FENGGAO",
-      "title": "封誥：古典依據已取得，candidate 待 Owner 核可",
-      "status": "candidate",
+      "title": "封誥：已升 canonical（Owner 批准）",
+      "status": "resolved",
       "type": "star",
       "relatedRules": [
         "ZW.CALC.STAR.TAIFU_FENGGAO.001"
       ],
       "question": "《紫微斗數全書》卷二安星訣「由寅起宫子顺数至本生时安之」是否即應併入 canonical 之安法？",
-      "nextAction": "已依原文建 candidate 規則（與台輔共用 ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），iztro differential 一致；證據強度已達 2×獨立 Tier3。待 Owner 批准升 canonical。",
-      "ownerReviewRequired": true,
+      "nextAction": "已結案。",
+      "ownerReviewRequired": false,
       "evidence": [
         "EVD.QUANSHU.FENGGAO",
         "EVD.QUANSHU.DIANCANG.FENGGAO"
-      ]
+      ],
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
+      "resolution": "Owner 於 2026-09-24 批准：與台輔共用規則 ZW.CALC.STAR.TAIFU_FENGGAO.001（canonical / stage=natal）。證據：EVD.QUANSHU.FENGGAO + EVD.QUANSHU.DIANCANG.FENGGAO 逐字相符。golden v2 oracle 已重生。"
     },
     {
       "researchId": "RSH.STAR.JIESHEN",
-      "title": "解神：年解已有古典依據（candidate）；月解仍未實作",
-      "status": "candidate",
+      "title": "解神（年解）：已升 canonical；月解仍待考",
+      "status": "resolved",
       "type": "star",
       "relatedRules": [
         "ZW.CALC.STAR.JIESHEN.001"
       ],
       "question": "《全書》卷二「解神从戌上起子，逆数至当生年太岁上是也」對應年解；月解（依生月）是否應另立規則？",
-      "nextAction": "年解已建 candidate 規則 ZW.CALC.STAR.JIESHEN.001（stage=on-demand）並與 iztro「年解」比對一致；兩份獨立 Tier3 文本逐字相符，證據強度已足。月解僅見於外部實作，另立 RSH.STAR.YUEJIE。待 Owner 批准年解升 canonical。",
-      "ownerReviewRequired": true,
+      "nextAction": "年解已結案；月解（依生月）另見 RSH.STAR.YUEJIE，取得古典原文前不實作。",
+      "ownerReviewRequired": false,
       "evidence": [
         "EVD.QUANSHU.JIESHEN",
         "EVD.QUANSHU.DIANCANG.JIESHEN"
-      ]
+      ],
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
+      "resolution": "Owner 於 2026-09-24 批准年解升 canonical：規則 ZW.CALC.STAR.JIESHEN.001（canonical / stage=natal，ruleVersion 1.0），星曜 ZW.STAR.AUX.JIESHEN 升 canonical。證據：EVD.QUANSHU.JIESHEN + EVD.QUANSHU.DIANCANG.JIESHEN 逐字相符；iztro『年解』differential 一致。"
     },
     {
       "researchId": "RSH.STAR.TAIFU",
-      "title": "台輔：古典依據已取得，candidate 待 Owner 核可",
-      "status": "candidate",
+      "title": "台輔：已升 canonical（Owner 批准）",
+      "status": "resolved",
       "type": "star",
       "relatedRules": [
         "ZW.CALC.STAR.TAIFU_FENGGAO.001"
       ],
       "question": "《紫微斗數全書》卷二安星訣「由午宫起子顺数至本生时安之」是否即應併入 canonical 之安法？",
-      "nextAction": "已依原文建 candidate 規則（ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），並與 SRC.IZTRO 實作觀點 differential 12 時辰 100% 一致。證據強度已達 Canonical Evidence Gate：兩份獨立 Tier3 文本（維基文庫 / 中華典藏網）逐字相符。待 Owner 正式批准升 canonical（並改 stage=natal、重生 golden oracle）。",
-      "ownerReviewRequired": true,
+      "nextAction": "已結案。紙本逐字複核（如華夏出版《紫微斗數全書》）可作為後續證據強化，不阻擋上線。",
+      "ownerReviewRequired": false,
       "evidence": [
         "EVD.QUANSHU.TAIFU",
         "EVD.QUANSHU.DIANCANG.TAIFU"
-      ]
+      ],
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
+      "resolution": "Owner 於 2026-09-24 批准：規則 ZW.CALC.STAR.TAIFU_FENGGAO.001 升 canonical、stage=natal（ruleVersion 1.0，behavior-change），星曜 registry ZW.STAR.AUX.TAIFU 升 canonical。證據：兩份獨立 Tier3 文本（EVD.QUANSHU.TAIFU + EVD.QUANSHU.DIANCANG.TAIFU）逐字相符；並與 iztro differential 一致。golden v2 oracle 已重生（35 fixtures）。"
     },
     {
       "researchId": "RSH.STAR.TIANCAI",

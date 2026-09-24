@@ -366,6 +366,18 @@
       "ZW.STAR.AUX.TIANMA": {
         "branch": "si",
         "palaceId": "parents"
+      },
+      "ZW.STAR.AUX.TAIFU": {
+        "branch": "xu",
+        "palaceId": "travel"
+      },
+      "ZW.STAR.AUX.FENGGAO": {
+        "branch": "wu",
+        "palaceId": "fortune"
+      },
+      "ZW.STAR.AUX.JIESHEN": {
+        "branch": "hai",
+        "palaceId": "health"
       }
     },
     "sihua": {

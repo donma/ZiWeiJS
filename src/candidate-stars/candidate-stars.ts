@@ -1,16 +1,21 @@
 /**
- * Candidate 星曜 / 小限 計算模組（研究階段，spec Post-Stability Phase B/C）。
+ * 補充安星計算模組（spec Post-Stability Phase B/C）。
+ *
+ * 現況（0.5.0）：
+ *   - 台輔 / 封誥 / 解神（年解）：**canonical**，經 Owner 於 2026-09-24 批准，
+ *     由 `ZW.CALC.STAR.TAIFU_FENGGAO.001` / `ZW.CALC.STAR.JIESHEN.001` 於 natal 階段安置。
+ *   - 小限：仍為 **candidate**（`ZW.CALC.PERIOD.XIAOXIAN.001`，stage=on-demand），
+ *     未併入 canonical 限運輸出；須待 Owner 批准。
  *
  * 護欄：
- *   - 本模組輸出**不併入** canonical 盤面（未列入 natal / period 執行計畫）。
- *   - 僅在 Owner 批准升 canonical 後，才可將對應規則改為 stage=natal/period。
- *   - 安星依據：SRC.QUANSHU.WIKISOURCE《紫微斗數全書》卷二「安星訣」原文
- *     （另與 SRC.IZTRO 實作觀點交叉比對，實作僅作比對、不作權威）。
+ *   - AI 不得將 candidate 升為 canonical（`canPromoteStatus()`）。
+ *   - 安星依據：《紫微斗數全書》卷二「安星訣」原文，並以**兩份互相獨立**之電子文本
+ *     （SRC.QUANSHU.WIKISOURCE、SRC.QUANSHU.DIANCANG）逐字核對相符。
  */
 import { branchAt, branchIndex } from '../core/constants.js';
 import type { BranchId } from '../core/types.js';
 import { virtualAge } from '../period-engine/major-period-resolver.js';
-import candidateTables from '../../tables/stars/candidate-aux-tables.json' with { type: 'json' };
+import candidateTables from '../../tables/stars/aux-supplementary-tables.json' with { type: 'json' };
 
 export const TAIFU_FENGGAO_RULE_ID = 'ZW.CALC.STAR.TAIFU_FENGGAO.001';
 export const JIESHEN_RULE_ID = 'ZW.CALC.STAR.JIESHEN.001';
@@ -85,7 +90,7 @@ const FORMULA = {
   jieshen: '解神從戌上起子，逆數至當生年太歲是也'
 } as const;
 
-/** 三顆 candidate 輔星之安星結果（不含 canonical 盤面） */
+/** 補充輔星（台輔／封誥／解神）之安星結果；三者已為 canonical，與本命盤安置結果一致 */
 export function candidateAuxStars(input: { hourBranch: BranchId; yearBranch: BranchId }): CandidateStarPlacement[] {
   return [
     {

@@ -3,26 +3,26 @@
   "rules": [
     {
       "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
-      "ruleVersion": "0.1",
-      "status": "candidate",
-      "scope": "calculation.stars.aux.candidate.taifu-fenggao",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.stars.aux.taifu-fenggao",
       "category": "stars",
       "name": {
-        "zh-TW": "安台輔封誥（candidate）",
-        "en": "Place Tai Fu / Feng Gao (candidate)"
+        "zh-TW": "安台輔封誥",
+        "en": "Place Tai Fu / Feng Gao"
       },
       "description": {
-        "zh-TW": "台輔由午宮起子順數至本生時；封誥由寅宮起子順數至本生時。依《紫微斗數全書》卷二安星訣，並以兩份獨立電子文本（維基文庫、中華典藏網）逐字核對相符。status=candidate：未經 Owner 批准升 canonical，stage=on-demand 故不併入 canonical 盤面。"
+        "zh-TW": "台輔由午宮起子順數至本生時；封誥由寅宮起子順數至本生時。依《紫微斗數全書》卷二安星訣，並以兩份互相獨立之電子文本（維基文庫、中華典藏網）逐字核對相符；另與 iztro 實作觀點 differential 一致。"
       },
       "inputs": [
         "hourBranch"
       ],
       "logic": {
-        "executor": "calcCandidateByHour",
+        "executor": "calcAuxTaiFuFengGao",
         "params": {
-          "tableRef": "stars/candidate-aux-tables#byHourBranch"
+          "tableRef": "stars/aux-supplementary-tables#byHourBranch"
         },
-        "stage": "on-demand",
+        "stage": "natal",
         "order": 2000
       },
       "outputs": [
@@ -39,11 +39,16 @@
         "EVD.QUANSHU.DIANCANG.FENGGAO"
       ],
       "tags": [
-        "candidate",
         "phase-b",
         "hour-branch"
       ],
       "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "Owner 批准升 canonical（2026-09-24）：改 stage=on-demand→natal，正式併入本命盤；證據為兩份獨立 Tier3 文本（EVD.QUANSHU.* + EVD.QUANSHU.DIANCANG.*）。"
+        },
         {
           "version": "0.1",
           "type": "rule-add",
@@ -54,26 +59,26 @@
     },
     {
       "ruleId": "ZW.CALC.STAR.JIESHEN.001",
-      "ruleVersion": "0.1",
-      "status": "candidate",
-      "scope": "calculation.stars.aux.candidate.jieshen",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.stars.aux.jieshen",
       "category": "stars",
       "name": {
-        "zh-TW": "安解神（年解，candidate）",
-        "en": "Place Jie Shen (year, candidate)"
+        "zh-TW": "安解神（年解）",
+        "en": "Place Jie Shen (year)"
       },
       "description": {
-        "zh-TW": "解神（年解）由戌宮起子，逆數至當生年太歲。依《紫微斗數全書》卷二安天德月德解神訣，並以兩份獨立電子文本逐字核對相符。月解（依生月）尚未實作。"
+        "zh-TW": "解神（年解）由戌宮起子，逆數至當生年太歲。依《紫微斗數全書》卷二安天德月德解神訣，並以兩份互相獨立之電子文本逐字核對相符。月解（依生月）尚未實作。"
       },
       "inputs": [
         "ganzhi.year.branch"
       ],
       "logic": {
-        "executor": "calcCandidateByYearBranch",
+        "executor": "calcAuxJieShen",
         "params": {
-          "tableRef": "stars/candidate-aux-tables#byYearBranch"
+          "tableRef": "stars/aux-supplementary-tables#byYearBranch"
         },
-        "stage": "on-demand",
+        "stage": "natal",
         "order": 2010
       },
       "outputs": [
@@ -88,11 +93,16 @@
         "EVD.QUANSHU.DIANCANG.JIESHEN"
       ],
       "tags": [
-        "candidate",
         "phase-b",
         "year-branch"
       ],
       "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "Owner 批准升 canonical（2026-09-24）：改 stage=on-demand→natal，正式併入本命盤；證據為兩份獨立 Tier3 文本。月解仍未實作（RSH.STAR.YUEJIE）。"
+        },
         {
           "version": "0.1",
           "type": "rule-add",

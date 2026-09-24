@@ -18,7 +18,8 @@ import { registerAllExecutors, listExecutorNames } from '../../src/rule-engine/r
  *   - 解神（年解）：由戌宮起子，逆數至生年太歲
  *   - 小限：寅午戌起辰、申子辰起戌、巳酉丑起未、亥卯未起丑；不論陰陽，男順女逆
  *
- * 護欄：三顆星與小限皆為 candidate，不得出現在 canonical 盤面／執行計畫中。
+ * 護欄：台輔／封誥／解神 自 0.5.0 起為 canonical（Owner 2026-09-24 批准）並進入本命盤；
+ *       小限仍為 candidate，不得進入任何執行計畫或 canonical 限運輸出。
  */
 
 const hourBranchAt = (index: number): BranchId => BRANCHES[index] as BranchId;
@@ -159,27 +160,29 @@ describe('candidate 小限（目標日期綁定，升 canonical 前之必要修�
   });
 });
 
-describe('candidate 治理護欄', () => {
-  const candidateRuleIds = [TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID];
+describe('補充星曜治理：canonical（台輔／封誥／解神）與 candidate（小限）', () => {
+  const SUPPLEMENTARY_STAR_RULES = [TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID];
+  const SUPPLEMENTARY_STARS = ['ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN'];
 
-  it('三條 candidate 規則存在、status=candidate 且 stage=on-demand', () => {
-    for (const id of candidateRuleIds) {
+  it('台輔／封誥／解神 規則為 canonical 且 stage=natal（2026-09-24 Owner 批准）', () => {
+    for (const id of SUPPLEMENTARY_STAR_RULES) {
       const rule = listRules().find(r => r.ruleId === id);
       expect(rule, id).toBeDefined();
-      expect(rule!.status).toBe('candidate');
-      expect(rule!.logic.stage).toBe('on-demand');
-      expect(rule!.sourceRefs ?? []).toContain('SRC.QUANSHU.WIKISOURCE');
+      expect(rule!.status).toBe('canonical');
+      expect(rule!.logic.stage).toBe('natal');
+      expect(rule!.ruleVersion).toBe('1.0');
+      expect(rule!.changeLog?.[0].type).toBe('behavior-change');
     }
   });
 
-  it('candidate 規則不進任何執行計畫（natal / period 皆無）', () => {
+  it('台輔／封誥／解神 進 natal 執行計畫（正式併入本命盤）', () => {
     const planned = new Set(plannedRuleIds());
-    for (const id of candidateRuleIds) expect(planned.has(id), id).toBe(false);
+    for (const id of SUPPLEMENTARY_STAR_RULES) expect(planned.has(id), id).toBe(true);
   });
 
-  it('candidate 規則已具備升 canonical 的證據強度（Tier1/2 或 2×獨立 Tier3）', () => {
+  it('canonical 規則證據強度（Tier1/2 或 2×獨立 Tier3）', () => {
     const tiers = new Map(listSources().map(s => [s.sourceId, s.tier]));
-    for (const id of candidateRuleIds) {
+    for (const id of [...SUPPLEMENTARY_STAR_RULES, XIAOXIAN_RULE_ID]) {
       const rule = listRules().find(r => r.ruleId === id)!;
       const refs = rule.sourceRefs ?? [];
       const hasTier12 = refs.some(s => (tiers.get(s) ?? 99) <= 2);
@@ -188,35 +191,52 @@ describe('candidate 治理護欄', () => {
     }
   });
 
-  it('candidate executors 已註冊（規則可被 on-demand 執行）', () => {
+  it('補充星曜 executors 已註冊', () => {
     registerAllExecutors();
     const names = new Set(listExecutorNames());
-    for (const n of ['calcCandidateByHour', 'calcCandidateByYearBranch', 'calcCandidateXiaoXian']) {
+    for (const n of ['calcAuxTaiFuFengGao', 'calcAuxJieShen', 'calcCandidateXiaoXian']) {
       expect(names.has(n), n).toBe(true);
     }
   });
 
-  it('星曜 registry 三筆為 candidate，且不得為 canonical', () => {
+  it('小限仍為 candidate 且不進任何執行計畫', () => {
+    const rule = listRules().find(r => r.ruleId === XIAOXIAN_RULE_ID)!;
+    expect(rule.status).toBe('candidate');
+    expect(rule.logic.stage).toBe('on-demand');
+    expect(plannedRuleIds()).not.toContain(XIAOXIAN_RULE_ID);
+  });
+
+  it('星曜 registry 三筆為 canonical, entityKind=star, 具兩份獨立來源', () => {
     const reg = listStarRegistry();
-    for (const id of ['ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN']) {
+    for (const id of SUPPLEMENTARY_STARS) {
       const s = reg.find(x => x.id === id);
       expect(s, id).toBeDefined();
-      expect(s!.status).toBe('candidate');
+      expect(s!.status).toBe('canonical');
       expect(s!.entityKind ?? 'star').toBe('star');
+      expect(s!.sources ?? []).toEqual(
+        expect.arrayContaining(['SRC.QUANSHU.WIKISOURCE', 'SRC.QUANSHU.DIANCANG'])
+      );
     }
   });
 
-  it('canonical 盤面不得出現 candidate 星曜（未經 Owner 批准）', () => {
+  it('canonical 盤面出現台輔／封誥／解神，且位置與安星口訣一致', () => {
     const input: ZiWeiBirthInput = {
       calendarType: 'solar',
       date: { year: 1990, month: 5, day: 15 },
       time: { hour: 12 },
+      timezone: 'Asia/Taipei',
       sexForCalculation: 'male'
     };
     const chart = calculate(input);
     const placed = Object.keys(chart.chart.stars);
-    for (const id of ['ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN']) {
-      expect(placed, id).not.toContain(id);
+    for (const id of SUPPLEMENTARY_STARS) expect(placed, id).toContain(id);
+
+    const expected = candidateAuxStars({
+      hourBranch: chart.calendar.hourBranch,
+      yearBranch: chart.calendar.ganzhi.year.branch
+    });
+    for (const e of expected) {
+      expect(chart.chart.stars[e.starId].branch, e.starId).toBe(e.branch);
     }
   });
 });

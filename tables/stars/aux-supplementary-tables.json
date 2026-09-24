@@ -1,24 +1,32 @@
 {
-  "description": "Candidate 星曜安星表（研究階段，未經 Owner 批准升 canonical）。index = 地支序 zi=0 ... hai=11。本表不參與 natal 執行計畫，故 canonical 盤面輸出不受影響。",
+  "description": "補充安星表。台輔／封誥／解神（年解）自 0.5.0 起為 canonical（規則 ZW.CALC.STAR.TAIFU_FENGGAO.001 / ZW.CALC.STAR.JIESHEN.001，經 Owner 於 2026-09-24 批准）；小限仍為 candidate（ZW.CALC.PERIOD.XIAOXIAN.001）。index = 地支序 zi=0 ... hai=11。",
   "rules": {
     "byHourBranch": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
     "byYearBranch": "ZW.CALC.STAR.JIESHEN.001",
     "xiaoXian": "ZW.CALC.PERIOD.XIAOXIAN.001"
   },
   "provenance": {
-    "classicalSourceId": "SRC.QUANSHU.WIKISOURCE",
+    "classicalSourceIds": [
+      "SRC.QUANSHU.WIKISOURCE",
+      "SRC.QUANSHU.DIANCANG"
+    ],
     "classicalEvidence": [
       "EVD.QUANSHU.TAIFU",
       "EVD.QUANSHU.FENGGAO",
       "EVD.QUANSHU.JIESHEN",
-      "EVD.QUANSHU.XIAOXIAN"
+      "EVD.QUANSHU.XIAOXIAN",
+      "EVD.QUANSHU.DIANCANG.TAIFU",
+      "EVD.QUANSHU.DIANCANG.FENGGAO",
+      "EVD.QUANSHU.DIANCANG.JIESHEN",
+      "EVD.QUANSHU.DIANCANG.XIAOXIAN"
     ],
     "quotes": {
       "taifu": "由午宫起子顺数至本生时安之。",
       "fenggao": "由寅起宫子顺数至本生时安之。",
       "jieshen": "解神从戌上起子，逆数至当生年太岁上是也。",
       "xiaoXian": "寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫（不论阴阳男俱顺数不论阴阳女俱逆数）。"
-    }
+    },
+    "crossCheck": "台輔／封誥／年解 與 SRC.IZTRO 實作觀點 differential 100% 一致（實作僅作比對，非 canonical 依據）。"
   },
   "byHourBranch": {
     "note": "台輔自午起子時順行；封誥自寅起子時順行。",
@@ -30,7 +38,7 @@
     "ZW.STAR.AUX.JIESHEN": { "startBranch": "xu", "direction": -1 }
   },
   "xiaoXian": {
-    "note": "小限一歲起於年支三合局所屬宮位，男順女逆（不論陰陽）；宮位為地支。",
+    "note": "candidate：小限一歲起於年支三合局所屬宮位，男順女逆（不論陰陽）；宮位為地支。",
     "startByGroup": {
       "yin-wu-xu": "chen",
       "shen-zi-chen": "xu",
