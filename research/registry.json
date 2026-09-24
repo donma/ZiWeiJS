@@ -167,10 +167,11 @@
         "ZW.CALC.PERIOD.XIAOXIAN.001"
       ],
       "question": "《全書》卷二安小限訣：「寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫」，方向「不论阴阳男俱顺数不论阴阳女俱逆数」。是否即 canonical 採行之小限法？",
-      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand、性別未知時 skip）與純函式模組；方向與部分現代流派（陰男陽女逆行）不同，見 RSH.PERIOD.XIAOXIAN_DIRECTION。待 Owner 核可。",
+      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand）與純函式模組；起宮與方向之兩份獨立 Tier3 文本相符。**升 canonical 前必須先完成**：將輸出改為由 targetDate/虛歲定位（現為 1–12 靜態序列，未綁限運），並與大限/流年關係一併測試。方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION。",
       "ownerReviewRequired": true,
       "evidence": [
-        "EVD.QUANSHU.XIAOXIAN"
+        "EVD.QUANSHU.XIAOXIAN",
+        "EVD.QUANSHU.DIANCANG.XIAOXIAN"
       ]
     },
     {
@@ -194,10 +195,11 @@
         "ZW.CALC.STAR.TAIFU_FENGGAO.001"
       ],
       "question": "《紫微斗數全書》卷二安星訣「由寅起宫子顺数至本生时安之」是否即應併入 canonical 之安法？",
-      "nextAction": "已依原文建 candidate 規則（與台輔共用 ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），並與 SRC.IZTRO differential 比對一致。待 Owner 核可後才可升 canonical。",
+      "nextAction": "已依原文建 candidate 規則（與台輔共用 ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），iztro differential 一致；證據強度已達 2×獨立 Tier3。待 Owner 批准升 canonical。",
       "ownerReviewRequired": true,
       "evidence": [
-        "EVD.QUANSHU.FENGGAO"
+        "EVD.QUANSHU.FENGGAO",
+        "EVD.QUANSHU.DIANCANG.FENGGAO"
       ]
     },
     {
@@ -209,10 +211,11 @@
         "ZW.CALC.STAR.JIESHEN.001"
       ],
       "question": "《全書》卷二「解神从戌上起子，逆数至当生年太岁上是也」對應年解；月解（依生月）是否應另立規則？",
-      "nextAction": "年解已建 candidate 規則 ZW.CALC.STAR.JIESHEN.001（stage=on-demand）並與 iztro 之「年解」比對一致；月解僅見於外部實作（正二在申、三四在戌、五六在子、七八在寅、九十在辰、十一十二在午），未取得古典原文，另立 RSH.STAR.YUEJIE 追蹤。",
+      "nextAction": "年解已建 candidate 規則 ZW.CALC.STAR.JIESHEN.001（stage=on-demand）並與 iztro「年解」比對一致；兩份獨立 Tier3 文本逐字相符，證據強度已足。月解僅見於外部實作，另立 RSH.STAR.YUEJIE。待 Owner 批准年解升 canonical。",
       "ownerReviewRequired": true,
       "evidence": [
-        "EVD.QUANSHU.JIESHEN"
+        "EVD.QUANSHU.JIESHEN",
+        "EVD.QUANSHU.DIANCANG.JIESHEN"
       ]
     },
     {
@@ -224,10 +227,11 @@
         "ZW.CALC.STAR.TAIFU_FENGGAO.001"
       ],
       "question": "《紫微斗數全書》卷二安星訣「由午宫起子顺数至本生时安之」是否即應併入 canonical 之安法？",
-      "nextAction": "已依原文建 candidate 規則（ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand，不影響 canonical 盤面），並與 SRC.IZTRO 實作觀點 differential 交叉比對 12 時辰 100% 一致。待 Owner 決定是否升 canonical 並改 stage=natal。",
+      "nextAction": "已依原文建 candidate 規則（ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），並與 SRC.IZTRO 實作觀點 differential 12 時辰 100% 一致。證據強度已達 Canonical Evidence Gate：兩份獨立 Tier3 文本（維基文庫 / 中華典藏網）逐字相符。待 Owner 正式批准升 canonical（並改 stage=natal、重生 golden oracle）。",
       "ownerReviewRequired": true,
       "evidence": [
-        "EVD.QUANSHU.TAIFU"
+        "EVD.QUANSHU.TAIFU",
+        "EVD.QUANSHU.DIANCANG.TAIFU"
       ]
     },
     {
@@ -256,8 +260,8 @@
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "cdestiny / Fortel / iztro 皆有天巫，ZiWeiJS Star Registry 無此星。本次查核《紫微斗數全書》卷二安星訣全篇未見天巫安法（見 EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING）。",
-      "nextAction": "僅有現代實作（iztro 等）安法，屬實作觀點，不得作為 canonical 依據。需另尋古典文獻（如《紫微斗數全集》或流派講義）取得可引用原文後再議。",
+      "question": "cdestiny / Fortel / iztro 皆有天巫，ZiWeiJS Star Registry 無此星。已查核《紫微斗數全書》卷二安星訣（兩份獨立電子文本）全篇未見天巫安法；惟 iztro 官方文件載有「安天巫訣：正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥」（月支系），屬現代實作/流派文件，尚非古典原文。",
+      "nextAction": "需取得可引用之古典原文或正式出版講義（Tier 1/2，或 2×獨立 Tier3）後，方可建 candidate 規則。不得以 iztro 文件為單一依據。",
       "ownerReviewRequired": true
     },
     {

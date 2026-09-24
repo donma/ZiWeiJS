@@ -12,7 +12,7 @@
         "en": "Place Xiao Xian (candidate)"
       },
       "description": {
-        "zh-TW": "小限一歲起於年支三合局所屬宮位：寅午戌起辰、申子辰起戌、巳酉丑起未、亥卯未起丑；方向不論陰陽，男順女逆。依 SRC.QUANSHU.WIKISOURCE 卷二安小限訣原文。status=candidate、stage=on-demand：不併入 canonical 限運輸出；性別未知（unknown）時 skip，不猜方向。"
+        "zh-TW": "小限一歲起於年支三合局所屬宮位：寅午戌起辰、申子辰起戌、巳酉丑起未、亥卯未起丑；方向不論陰陽，男順女逆。依《紫微斗數全書》卷二安小限訣，並以兩份獨立電子文本逐字核對相符。status=candidate、stage=on-demand：不併入 canonical 限運輸出；性別未知（unknown）時 skip，不猜方向。"
       },
       "inputs": [
         "ganzhi.year.branch",
@@ -30,10 +30,12 @@
         "periods.xiaoxian"
       ],
       "sourceRefs": [
-        "SRC.QUANSHU.WIKISOURCE"
+        "SRC.QUANSHU.WIKISOURCE",
+        "SRC.QUANSHU.DIANCANG"
       ],
       "evidenceRefs": [
-        "EVD.QUANSHU.XIAOXIAN"
+        "EVD.QUANSHU.XIAOXIAN",
+        "EVD.QUANSHU.DIANCANG.XIAOXIAN"
       ],
       "tags": [
         "candidate",

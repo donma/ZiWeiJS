@@ -266,6 +266,11 @@ CI 只跑不受字型影響的無障礙測試。
 - candidate 規則一律 `status: "candidate"` + `stage: "on-demand"`，**不進入** `NATAL_EXECUTION_PLAN` / `PERIOD_EXECUTION_PLAN`，
   故 canonical 盤面與 golden oracle 不變；`tests/unit/candidate-stars.test.ts` 對此設有護欄。
 - 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）。
-- 來源與證據：`SRC.QUANSHU.WIKISOURCE`（tier 3，電子文本未校勘）、`EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}`，
-  以及負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
+- 來源與證據：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
+  `SRC.QUANSHU.DIANCANG`（中華典藏網），四條口訣逐字相符；
+  證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`；
+  另負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
+- **升 canonical 準備度**：證據強度已達 Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3），
+  由 `tests/unit/candidate-stars.test.ts` 的「證據強度」測試把關；仍待 Owner 批准，
+  且小限須先改為由 `targetDate`/虛歲定位後才可升 `period`。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

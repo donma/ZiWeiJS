@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calculate, listRules, listStarRegistry, BRANCHES,
+  calculate, listRules, listStarRegistry, listSources, BRANCHES,
   candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
   xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
   TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
@@ -131,6 +131,17 @@ describe('candidate 治理護欄', () => {
   it('candidate 規則不進任何執行計畫（natal / period 皆無）', () => {
     const planned = new Set(plannedRuleIds());
     for (const id of candidateRuleIds) expect(planned.has(id), id).toBe(false);
+  });
+
+  it('candidate 規則已具備升 canonical 的證據強度（Tier1/2 或 2×獨立 Tier3）', () => {
+    const tiers = new Map(listSources().map(s => [s.sourceId, s.tier]));
+    for (const id of candidateRuleIds) {
+      const rule = listRules().find(r => r.ruleId === id)!;
+      const refs = rule.sourceRefs ?? [];
+      const hasTier12 = refs.some(s => (tiers.get(s) ?? 99) <= 2);
+      const distinctTier3 = new Set(refs.filter(s => tiers.get(s) === 3)).size;
+      expect(hasTier12 || distinctTier3 >= 2, `${id}: refs=${refs.join(',')}`).toBe(true);
+    }
   });
 
   it('candidate executors 已註冊（規則可被 on-demand 執行）', () => {

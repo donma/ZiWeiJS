@@ -10,6 +10,16 @@
     "retrievedAt": "2026-09-24",
     "volumeUsed": "卷二（安星訣）"
   },
+  "secondText": {
+    "sourceId": "SRC.QUANSHU.DIANCANG",
+    "title": "紫微斗數全書（中華典藏網電子文本）",
+    "tier": 3,
+    "url": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html",
+    "retrievedAt": "2026-09-24",
+    "volumeUsed": "卷二（安星訣）",
+    "relation": "與 primaryText 互相獨立之第二份電子文本（非鏡像）；台輔/封誥/解神/小限/大限/童限等安星訣逐字相符（僅簡繁差異）。",
+    "purpose": "滿足 Canonical Evidence Gate『Tier1/2 或 2×獨立 Tier3』之第二來源。"
+  },
   "trap": {
     "title": "同名異義陷阱：舊『十八飛星』系統 vs 十四主星系統",
     "detail": "維基文庫《紫微斗數》條目（pageid 254072）屬舊『十八飛星』系統，星曜為紫微、天虛、天貴、天印、天壽、紅鸞、天庫、天貫、文昌、天福、天祿等；該系統明言『文昌星，名曰台輔』，其台輔／天壽與十四主星系統同名異義。故本專案僅採《紫微斗數全書》卷二安星訣，不採該條目之星名與安法。",
@@ -22,6 +32,7 @@
       "classicalBasis": "book",
       "quote": "安台辅封诀 由午宫起子顺数至本生时安之。",
       "evidenceId": "EVD.QUANSHU.TAIFU",
+      "evidenceId2": "EVD.QUANSHU.DIANCANG.TAIFU",
       "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
       "ruleStatus": "candidate",
       "externalAgreement": "iztro（SRC.IZTRO）實作觀點一致：午宮 + 時序",
@@ -33,6 +44,7 @@
       "classicalBasis": "book",
       "quote": "安封诰诀 由寅起宫子顺数至本生时安之。",
       "evidenceId": "EVD.QUANSHU.FENGGAO",
+      "evidenceId2": "EVD.QUANSHU.DIANCANG.FENGGAO",
       "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
       "ruleStatus": "candidate",
       "externalAgreement": "iztro 實作觀點一致：寅宮 + 時序",
@@ -44,6 +56,7 @@
       "classicalBasis": "book",
       "quote": "安天德月德解神诀 天德星从酉上起子，顺数至流年太岁上是也。月德星从子上起子，顺数至流年太岁上是也。解神从戌上起子，逆数至当生年太岁上是也。",
       "evidenceId": "EVD.QUANSHU.JIESHEN",
+      "evidenceId2": "EVD.QUANSHU.DIANCANG.JIESHEN",
       "ruleId": "ZW.CALC.STAR.JIESHEN.001",
       "ruleStatus": "candidate",
       "externalAgreement": "iztro 之『年解』一致；iztro 另有『解神』為月解，不同義，未納入比對",
@@ -88,6 +101,7 @@
       "classicalBasis": "book",
       "quote": "安小限诀 不论阴阳男俱顺数不论阴阳女俱逆数。寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫。",
       "evidenceId": "EVD.QUANSHU.XIAOXIAN",
+      "evidenceId2": "EVD.QUANSHU.DIANCANG.XIAOXIAN",
       "ruleId": "ZW.CALC.PERIOD.XIAOXIAN.001",
       "ruleStatus": "candidate",
       "externalAgreement": "iztro 起宮一致（寅午戌起辰…）；方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION",
@@ -116,6 +130,15 @@
       "decision": "本條原文主要在說明宮位擺放（命前一宮為父母宮），與現行實作不衝突；不改動 canonical，僅記錄以免誤讀。"
     }
   ],
+  "promotionReadiness": {
+    "gate": "Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3）",
+    "status": "ready（證據強度已足）",
+    "blockersOutsideEvidence": [
+      "小限需先改為由 targetDate/虛歲定位（現為 1–12 靜態序列）",
+      "升 canonical 需重生 35 個 golden oracle 並重新交叉驗證",
+      "Owner 專屬批准（AI 不得自行升級）"
+    ]
+  },
   "verification": {
     "tool": "tests/differential/candidate-stars.test.ts",
     "result": "IZTRO_CASES 全部案例之 台輔／封誥／年解 與 iztro 100% 一致",

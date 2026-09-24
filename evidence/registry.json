@@ -348,6 +348,62 @@
       "quote": "(absent)",
       "confidence": 0.7,
       "notes": "負向查核紀錄（absence of evidence，非 supports；quote 欄僅標記『無原文可引』）：本電子文本卷二安星訣未載天巫、天才、天壽之安星口訣，惟此前三顆被外部資料集列為缺星。故三者不得以本書為依據實作；若日後取得其他古典文獻依據，須另立來源與證據。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DIANCANG.TAIFU",
+      "sourceId": "SRC.QUANSHU.DIANCANG",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安台輔封訣",
+        "archiveUrl": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html"
+      },
+      "quote": "安台辅封诀 由午宫起子顺数至本生时安之。",
+      "confidence": 0.9,
+      "notes": "第二份獨立電子文本（中華典藏網）之台輔安法，與 SRC.QUANSHU.WIKISOURCE 逐字相符（僅簡繁差異）。兩份獨立 Tier3 文本相符 → 滿足 Canonical Evidence Gate『2×Tier3』；紙本複核仍待 Owner。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DIANCANG.FENGGAO",
+      "sourceId": "SRC.QUANSHU.DIANCANG",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安封誥訣",
+        "archiveUrl": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html"
+      },
+      "quote": "安封诰诀 由寅起宫子顺数至本生时安之。",
+      "confidence": 0.9,
+      "notes": "第二份獨立電子文本之封誥安法，與 SRC.QUANSHU.WIKISOURCE 逐字相符（僅簡繁差異）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DIANCANG.JIESHEN",
+      "sourceId": "SRC.QUANSHU.DIANCANG",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安天德月德解神訣",
+        "archiveUrl": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html"
+      },
+      "quote": "安天德月德解神诀 天德星从酉上起子，顺数至流年太岁上是也。月德星从子上起子，顺数至流年太岁上是也。解神从戌上起子，逆数至当生年太岁上是也。",
+      "confidence": 0.9,
+      "notes": "第二份獨立電子文本之年解安法，與 SRC.QUANSHU.WIKISOURCE 逐字相符（僅簡繁差異）。月解仍未取得古典原文。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DIANCANG.XIAOXIAN",
+      "sourceId": "SRC.QUANSHU.DIANCANG",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安小限訣",
+        "archiveUrl": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html"
+      },
+      "quote": "安小限诀 不论阴阳男俱顺数不论阴阳女俱逆数 寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫。",
+      "confidence": 0.9,
+      "notes": "第二份獨立電子文本之小限起法與方向，與 SRC.QUANSHU.WIKISOURCE 逐字相符（僅簡繁差異）。"
     }
   ]
 }

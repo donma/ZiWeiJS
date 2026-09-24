@@ -351,9 +351,13 @@
 - Research Queue 新增 8 項（小限、年神 scope、封誥 / 解神 / 台輔 / 天才 / 天壽 / 天巫）
 
 ### Phase B / C — 古典原文查核 + Candidate 規則（不影響 canonical 輸出）
-- **古典原文查核**：新增 `SRC.QUANSHU.WIKISOURCE`（《紫微斗數全書》維基文庫電子文本，tier 3，
-  未與紙本逐字校勘）與 4 條原文證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}`，
+- **古典原文查核（雙獨立來源）**：新增 `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
+  `SRC.QUANSHU.DIANCANG`（中華典藏網，**非鏡像之第二份獨立文本**），兩者於台輔／封誥／解神／小限
+  安星訣逐字相符；證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` + `EVD.QUANSHU.DIANCANG.*`，
   另加負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）
+- **Canonical Evidence Gate 已解除**：candidate 規則之 `sourceRefs` 具兩份獨立 Tier3 → 符合
+  「Tier1/2 或 2×獨立 Tier3」；由 `tests/unit/candidate-stars.test.ts` 的證據強度測試把關。
+  升 canonical 仍需 Owner 批准（AI 不得自行升級）
 - **同名異義防護**：維基文庫《紫微斗數》屬舊「十八飛星」系統（其「台輔」指文昌、另有天壽），
   已於 source notes 與 `research/assimilation/classical-verification.md` 明載，不得混用
 - **新增 candidate 星曜**：台輔（午起子時順）、封誥（寅起子時順）、解神年解（戌起子逆至生年太歲）

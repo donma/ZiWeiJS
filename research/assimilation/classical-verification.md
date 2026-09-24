@@ -7,8 +7,10 @@
 ## 方法
 
 1. 由外部實作清單（見各 `research/assimilation/<project>/external-star-names.json`）取得 Gap Detector 清單。
-2. 以**古典原文**為主要依據：維基文庫《紫微斗數全書》卷二「安星訣」電子文本
-   （`SRC.QUANSHU.WIKISOURCE`，tier 3，2026-09-24 取得）。
+2. 以**古典原文**為主要依據，且**至少兩份互相獨立的電子文本**：
+   - `SRC.QUANSHU.WIKISOURCE`（維基文庫《紫微斗數全書》卷二，tier 3，2026-09-24 取得）
+   - `SRC.QUANSHU.DIANCANG`（中華典藏網《紫微斗數全書》卷二，tier 3，2026-09-24 取得；非鏡像）
+   兩份文本於台輔／封誥／解神／小限等安星訣**逐字相符**（僅簡繁差異）。
 3. 以外部實作（`SRC.IZTRO`，tier 3）作**交叉比對**，僅證明實作一致性，不作為 canonical 依據。
 4. 有古典原文者 → 建 `candidate` 規則（`stage: "on-demand"`，不影響 canonical 盤面）；
    無古典原文者 → 只登錄 Research Queue，**不實作、不建表**。
@@ -17,6 +19,7 @@
 
 ```
 GET https://zh.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&titles=紫微斗數全書/卷二
+GET https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html
 ```
 
 ## 同名異義陷阱（重要）
@@ -54,6 +57,24 @@ GET https://zh.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=conte
 因 `stage: "on-demand"`，三者**不在** `NATAL_EXECUTION_PLAN` / `PERIOD_EXECUTION_PLAN` 中，
 canonical 盤面與既有 golden fixtures 完全不變（由 `tests/unit/candidate-stars.test.ts` 護欄驗證）。
 Owner 核可後，將 `status` 改 `canonical` 並把 `stage` 改 `natal` / `period` 即可併入主盤。
+
+## 升 canonical 準備度（2026-09-24）
+
+| 項目 | 證據強度 | 狀態 |
+|---|---|---|
+| 台輔、封誥 | 2×獨立 Tier3（相符） | **證據已足**，待 Owner 批准 |
+| 解神（年解） | 2×獨立 Tier3（相符） | **證據已足**，待 Owner 批准 |
+| 小限 | 2×獨立 Tier3（起宮/方向相符） | 證據已足，但**演算法須先改**（見下） |
+| 天巫／天才／天壽 | 無古典依據 | 不升（維持 Research Queue） |
+
+升 canonical 前置作業（非證據問題）：
+
+1. **小限必須先改為由 `targetDate`／虛歲定位**：現行 executor 回傳靜態「虛歲 1–12 序列」，
+   未綁限運；直接改 `stage: "period"` 會輸出與流年無關的死資料。
+2. 重生 35 個 golden v2 oracle（新增三顆星會使全部 fixture drift），並重新與 iztro 交叉驗證。
+3. 更新護欄測試（`tests/unit/candidate-stars.test.ts`、`tests/regression/integrity.test.ts`）
+   由「不得進入盤面」改為 canonical 期待值，並保留負向測試。
+4. Owner 批准為**必要條件**（`canPromoteStatus()`：AI 不得將 candidate 升 canonical）。
 
 ## 驗證
 
