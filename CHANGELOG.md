@@ -542,6 +542,15 @@
   `tests/visual/ui.e2e.ts` 新增 M7 徽章端到端測試（共 22；視覺快照 3 張重生：chart-expert / rules / sources）
 - 文件：`docs/testing/verification.md` §10 改寫（含實作要點表、locator 校正說明）；`docs/rules/rule-dsl.md` 補 `body`
 
+### Phase G 補正 — 格局 locator／引文校對（2026-09-25）
+- 再核維基文庫卷一電子文本：累計校正 **10 筆** locator
+  （新增馬頭帶劍：卷三／格局 → **卷一〈定貴局〉**）
+- 得地合格訣／失陷破格訣之 `quote` 由 wikitext 標題佔位改為該訣**首條逐字**，
+  並註明確切段名（卷一〈十二宮諸星得地／失陷訣〉，非〈論格局〉段）
+- 馬頭帶劍補記同書 3 處相關句（卷一骨髓賦、卷一女命骨髓賦註、卷三擎羊條），吉凶語意不一
+  → 校勘需求提高，**維持 research、不得實作**
+- 重生 decision packet；readiness 不變（landed 5／needs-definition 2／needs-collation 1／needs-owner-scope 2／rejected 1）
+
 ### M7 前置 — Pattern Decision Packet（交給 Owner 的決策包）
 - 新增 `tools/patterns/decision-packet.ts` → `research/patterns/pattern-decision-packet.json`：
   把 11 條 backlog 整理成可決策清單（原文定義句、gap、readiness、proposedRuleId、requiredArtifacts）

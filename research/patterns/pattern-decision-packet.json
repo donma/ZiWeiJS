@@ -94,15 +94,16 @@
       "definitionSource": "prose",
       "sourceId": "SRC.QUANSHU.WIKISOURCE",
       "locator": {
-        "volume": "卷三",
-        "chapter": "格局",
+        "volume": "卷一",
+        "chapter": "定貴局",
         "section": "馬頭帶劍",
-        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷三"
+        "anchor": "定贵局",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
       },
       "researchId": "RSH.PATTERN.BACKLOG",
       "relatedRuleId": null,
       "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件（常見說法為天馬與擎羊同宮於午）。",
-      "note": "原文殘缺 → 不得依此實作；需校勘後再議。",
+      "note": "原文殘缺 → 不得依此實作；需校勘後再議。（2026-09-25 校正：原記卷三／格局，實位於《全書》卷一〈定貴局〉「某某 謂…是也」逐條段；已逐字核對維基文庫卷一電子文本。同書另有 3 處「馬頭帶劍」：卷一〈骨髓賦〉「馬頭帶劍，鎮衛邊疆」、卷一女命骨髓賦註「马头带剑非夭折则主刑伤」、卷三「擎羊子午卯酉非夭折而刑伤…马头带剑，吉多勿论」，四處吉凶語意不一，更增校勘之必要。）",
       "proposedRuleId": "ZW.PAT.MATOU_DAIJIAN.001",
       "requiredArtifacts": [
         "Source + Evidence（《全書》原文為 Tier1；須逐條 EVD）",
@@ -118,7 +119,7 @@
       "name": "十二宮諸星得地合格訣",
       "status": "research",
       "readiness": "needs-owner-scope",
-      "quote": "===十二宫诸星得地合格诀===",
+      "quote": "子安命 子宫贪狼杀阴星，机梁相拱福兴隆，庚辛乙癸生人美，一生富贵足丰荣。",
       "definitionClause": null,
       "definitionSource": "poem-or-gap",
       "sourceId": "SRC.QUANSHU.WIKISOURCE",
@@ -131,7 +132,7 @@
       "researchId": "RSH.PATTERN.BACKLOG",
       "relatedRuleId": null,
       "gap": "為逐宮歌訣（如『酉宫最喜太阴逢，巨日又逢当面冲，辛乙生人为贵格…』），屬「宮位＋星曜＋生年干」組合之合／破格判斷，體系與現行 24 格局不同；需先決定是否納入 Pattern Engine（或以另類規則表達）。",
-      "note": "體系性議題，需 Owner 決策是否納入。（2026-09-24 校正：原文位於《全書》卷一（女命骨髓賦之後的論格局段），非卷三；已逐字核對維基文庫卷一電子文本。）",
+      "note": "體系性議題，需 Owner 決策是否納入。（2026-09-24 校正：原文位於《全書》卷一，非卷三；已逐字核對維基文庫卷一電子文本。2026-09-25 補正：本訣不在〈論格局〉段，而在卷一〈十二宮諸星得地／失陷訣〉，共 12 條（子→亥安命）；quote 由原 wikitext 標題佔位改為首條逐字。）",
       "proposedRuleId": "ZW.PAT.SHIDE_HEGE.001",
       "requiredArtifacts": [
         "Source + Evidence（《全書》原文為 Tier1；須逐條 EVD）",
@@ -147,7 +148,7 @@
       "name": "十二宮諸星失陷破格訣",
       "status": "research",
       "readiness": "needs-owner-scope",
-      "quote": "===十二宫诸星失陷破格诀===",
+      "quote": "子丑安命 子午天机丑巨铃，此星落陷果为真，纵然化吉更为美，任他富贵不清宁。",
       "definitionClause": null,
       "definitionSource": "poem-or-gap",
       "sourceId": "SRC.QUANSHU.WIKISOURCE",
@@ -160,7 +161,7 @@
       "researchId": "RSH.PATTERN.BACKLOG",
       "relatedRuleId": null,
       "gap": "同上（破格訣）。與得地合格訣成對，宜一併決策。",
-      "note": "體系性議題。（2026-09-24 校正：原文位於《全書》卷一（女命骨髓賦之後的論格局段），非卷三；已逐字核對維基文庫卷一電子文本。）",
+      "note": "體系性議題。（2026-09-24 校正：原文位於《全書》卷一，非卷三；已逐字核對維基文庫卷一電子文本。2026-09-25 補正：本訣不在〈論格局〉段，而在卷一〈十二宮諸星得地／失陷訣〉逐宮條列；quote 由原 wikitext 標題佔位改為首條逐字。）",
       "proposedRuleId": "ZW.PAT.SHIDE_POGE.001",
       "requiredArtifacts": [
         "Source + Evidence（《全書》原文為 Tier1；須逐條 EVD）",
