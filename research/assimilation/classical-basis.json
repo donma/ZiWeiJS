@@ -103,9 +103,9 @@
       "evidenceId": "EVD.QUANSHU.XIAOXIAN",
       "evidenceId2": "EVD.QUANSHU.DIANCANG.XIAOXIAN",
       "ruleId": "ZW.CALC.PERIOD.XIAOXIAN.001",
-      "ruleStatus": "candidate",
+      "ruleStatus": "canonical",
       "externalAgreement": "iztro 起宮一致（寅午戌起辰…）；方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION",
-      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可"
+      "decision": "Owner 於 2026-09-24 批准升 canonical（stage=period），輸出至 chart.periods.xiaoxian"
     },
     {
       "name": "童限",
@@ -132,9 +132,9 @@
   ],
   "promotionReadiness": {
     "gate": "Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3）",
-    "status": "done（台輔／封誥／解神 已升 canonical；小限仍為 candidate）",
+    "status": "done（台輔／封誥／解神／小限 四項皆已升 canonical）",
     "blockersOutsideEvidence": [
-      "小限若升 canonical 仍待 Owner 批准（演算法已改為 targetDate/虛歲綁定）",
+      
       "紙本逐字複核（可選之證據強化）"
     ],
     "completed": [

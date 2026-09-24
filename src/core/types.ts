@@ -305,6 +305,25 @@ export interface MajorPeriod extends PeriodInfo {
   direction: 'forward' | 'backward';
 }
 
+/**
+ * 小限（spec Post-Stability Phase C）。
+ *
+ * 依《紫微斗數全書》卷二安小限訣：一歲起於年支三合局所屬宮位（寅午戌起辰、申子辰起戌、
+ * 巳酉丑起未、亥卯未起丑），**不論陰陽，男順女逆**；年齡以虛歲（目標農曆年 − 生年農曆年 + 1）。
+ * 性別未知 → 不產生此欄位（不得猜方向）。
+ */
+export interface XiaoXianPeriod {
+  scope: 'xiaoxian';
+  /** 虛歲（以農曆年計算，與大限同一慣例） */
+  age: number;
+  branch: BranchId;
+  palaceId: PalaceId;
+  /** 目標農曆年 */
+  lunarYear: number;
+  label: LocalizedText;
+  provenance?: Provenance;
+}
+
 /** 規則執行狀態（spec §28） */
 export type RuleExecutionStatus = 'executed' | 'skipped' | 'unavailable' | 'variant' | 'candidate' | 'error';
 
@@ -388,6 +407,8 @@ export interface ZiWeiChart {
     month?: PeriodInfo;
     day?: PeriodInfo;
     hour?: PeriodInfo;
+    /** 小限（依年支三合局起宮，男順女逆；性別未知或無目標日期時不存在） */
+    xiaoxian?: XiaoXianPeriod;
   };
   interpretation: {
     hits: InterpretationHit[];

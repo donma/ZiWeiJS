@@ -391,6 +391,20 @@
 - Research Queue：`RSH.STAR.{TAIFU,FENGGAO,JIESHEN}` → `resolved`（resolvedBy: owner）
 - 小限仍為 candidate（演算法已改為 `targetDate`／虛歲綁定），待 Owner 批准
 
+### Phase C（canonical 升格）— 小限併入限運輸出
+- **Owner 於 2026-09-24 批准**：`ZW.CALC.PERIOD.XIAOXIAN.001` 由 `candidate / on-demand`
+  升為 **`canonical / period`**（ruleVersion `0.1 → 1.0`，changeLog `behavior-change`）
+- 新增 `chart.periods.xiaoxian`（`XiaoXianPeriod`：虛歲 / 地支 / 宮位 / 目標農曆年 / label / provenance）
+  與 `certainty.xiaoxian`；`chart.schema.json` 新增 `$defs/xiaoXianPeriod`
+- 年齡以虛歲（目標農曆年 − 生年農曆年 + 1，與大限同一慣例）；方向採原文「不論陰陽、男順女逆」；
+  性別未知 → 不產生小限且 `certainty=unknown`（不猜方向）
+- **差分驗證**：與 `iztro` `horoscope().age`（`IZTRO_CASES` 7 案 × 2 目標日）**100% 一致**
+（nominalAge 與 小限宮位地支皆相符）
+- API 更名：`ZiWei.Candidate` → **`ZiWei.Supplementary`**（`Candidate` 保留為 deprecated 別名）；
+  模組 `src/candidate-stars/` → `src/aux-supplementary/`，檔名／executor 同步更名
+- `PERIOD_EXECUTION_PLAN` 由 5 → **6**（大限/流年/流月/流日/流時/小限）
+- Research Queue：`RSH.PERIOD.MINOR_PERIOD` → `resolved`（resolvedBy: owner）
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /

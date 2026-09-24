@@ -15,33 +15,33 @@
 import { branchAt, branchIndex } from '../core/constants.js';
 import type { BranchId } from '../core/types.js';
 import { virtualAge } from '../period-engine/major-period-resolver.js';
-import candidateTables from '../../tables/stars/aux-supplementary-tables.json' with { type: 'json' };
+import supplementaryTables from '../../tables/stars/aux-supplementary-tables.json' with { type: 'json' };
 
 export const TAIFU_FENGGAO_RULE_ID = 'ZW.CALC.STAR.TAIFU_FENGGAO.001';
 export const JIESHEN_RULE_ID = 'ZW.CALC.STAR.JIESHEN.001';
 export const XIAOXIAN_RULE_ID = 'ZW.CALC.PERIOD.XIAOXIAN.001';
 
-export type CandidateBasis = 'hour-branch' | 'year-branch';
+export type SupplementaryBasis = 'hour-branch' | 'year-branch';
 
-export interface CandidateStarPlacement {
+export interface SupplementaryStarPlacement {
   starId: string;
   branch: BranchId;
   ruleId: string;
-  basis: CandidateBasis;
+  basis: SupplementaryBasis;
   /** 安星口訣（原文照錄，便於溯源） */
   formula: string;
 }
 
-const BY_HOUR = candidateTables.byHourBranch as unknown as Record<
+const BY_HOUR = supplementaryTables.byHourBranch as unknown as Record<
   string,
   { startBranch: string; direction: number } | string
 >;
-const BY_YEAR_BRANCH = candidateTables.byYearBranch as unknown as Record<
+const BY_YEAR_BRANCH = supplementaryTables.byYearBranch as unknown as Record<
   string,
   { startBranch: string; direction: number } | string
 >;
 
-const XIAOXIAN_START = candidateTables.xiaoXian.startByGroup as unknown as Record<string, string>;
+const XIAOXIAN_START = supplementaryTables.xiaoXian.startByGroup as unknown as Record<string, string>;
 
 const GROUP_BRANCHES: Record<string, BranchId[]> = {
   'yin-wu-xu': ['yin', 'wu', 'xu'],
@@ -91,7 +91,7 @@ const FORMULA = {
 } as const;
 
 /** 補充輔星（台輔／封誥／解神）之安星結果；三者已為 canonical，與本命盤安置結果一致 */
-export function candidateAuxStars(input: { hourBranch: BranchId; yearBranch: BranchId }): CandidateStarPlacement[] {
+export function supplementaryAuxStars(input: { hourBranch: BranchId; yearBranch: BranchId }): SupplementaryStarPlacement[] {
   return [
     {
       starId: 'ZW.STAR.AUX.TAIFU',

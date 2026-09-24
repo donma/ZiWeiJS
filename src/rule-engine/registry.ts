@@ -10,7 +10,7 @@ import auxVariantsData from '../../rules/calculation/stars/aux-variants.json' wi
 import auxTaiFuFengGaoJieShen from '../../rules/calculation/stars/aux-taifu-fenggao-jieshen.json' with { type: 'json' };
 import sihuaData from '../../rules/calculation/transformations/sihua.json' with { type: 'json' };
 import periodsData from '../../rules/calculation/periods/periods.json' with { type: 'json' };
-import periodCandidatesData from '../../rules/calculation/periods/periods-candidates.json' with { type: 'json' };
+import xiaoxianData from '../../rules/calculation/periods/xiaoxian.json' with { type: 'json' };
 import relationsData from '../../rules/calculation/relations/relations.json' with { type: 'json' };
 import dignityData from '../../rules/calculation/dignity/dignity.json' with { type: 'json' };
 import calendarData from '../../rules/calculation/calendar/calendar.json' with { type: 'json' };
@@ -37,7 +37,7 @@ interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
 const ruleFiles: RuleFile[] = [
   palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData, auxTaiFuFengGaoJieShen,
-  sihuaData, periodsData, periodCandidatesData, relationsData, dignityData, calendarData, birthData,
+  sihuaData, periodsData, xiaoxianData, relationsData, dignityData, calendarData, birthData,
   patternsData, rectificationData
 ] as unknown as RuleFile[];
 

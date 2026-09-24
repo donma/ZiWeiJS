@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   calculate, listRules, listStarRegistry, listSources, BRANCHES, ZiWei,
-  candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
+  supplementaryAuxStars, placeTaiFu, placeFengGao, placeJieShen,
   xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
   TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
 } from '../../src/index.js';
@@ -68,8 +68,8 @@ describe('candidate 星曜安法（全書卷二口訣）', () => {
     }
   });
 
-  it('candidateAuxStars 回傳三顆星並附口訣與規則來源', () => {
-    const out = candidateAuxStars({ hourBranch: 'wu', yearBranch: 'wu' });
+  it('supplementaryAuxStars 回傳三顆星並附口訣與規則來源', () => {
+    const out = supplementaryAuxStars({ hourBranch: 'wu', yearBranch: 'wu' });
     expect(out.map(p => p.starId)).toEqual([
       'ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN'
     ]);
@@ -134,14 +134,14 @@ describe('candidate 小限（目標日期綁定，升 canonical 前之必要修�
     expect(r.ruleId).toBe(XIAOXIAN_RULE_ID);
   });
 
-  it('ZiWei.Candidate.xiaoXian.forTarget：與目標年綁定（不同目標年 → 不同虛歲／宮位）', () => {
+  it('ZiWei.Supplementary.xiaoXian.forTarget：與目標年綁定（不同目標年 → 不同虛歲／宮位）', () => {
     const input: ZiWeiBirthInput = {
       calendarType: 'solar', date: { year: 1990, month: 5, day: 15 },
       time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'male'
     };
     const chart = calculate(input);
-    const a = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2026 });
-    const b = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2030 });
+    const a = ZiWei.Supplementary.xiaoXian.forTarget(chart, { year: 2026 });
+    const b = ZiWei.Supplementary.xiaoXian.forTarget(chart, { year: 2030 });
     expect(a.age).toBeDefined();
     expect(b.age).toBe((a.age ?? 0) + 4);
     expect(a.branch).toBe(xiaoXianBranchAtAge(chart.calendar.ganzhi.year.branch, 'male', a.age!));
@@ -154,9 +154,45 @@ describe('candidate 小限（目標日期綁定，升 canonical 前之必要修�
       time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'unknown'
     };
     const chart = calculate(input);
-    const r = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2026 });
+    const r = ZiWei.Supplementary.xiaoXian.forTarget(chart, { year: 2026 });
     expect(r.reason).toBe('UNKNOWN_SEX_FOR_CALCULATION');
     expect(r.branch).toBeUndefined();
+  });
+
+  it('canonical 輸出：有 targetDate 時 chart.periods.xiaoxian 具虛歲／宮位／provenance', () => {
+    const input: ZiWeiBirthInput = {
+      calendarType: 'solar', date: { year: 1990, month: 5, day: 15 },
+      time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'male'
+    };
+    const chart = calculate(input, { targetDate: { year: 2026 } });
+    const xx = chart.periods.xiaoxian;
+    expect(xx).toBeDefined();
+    expect(xx!.scope).toBe('xiaoxian');
+    expect(xx!.age).toBeGreaterThan(0);
+    expect(xx!.branch).toBe(xiaoXianBranchAtAge(chart.calendar.ganzhi.year.branch, 'male', xx!.age));
+    expect(chart.chart.palaces.find(p => p.id === xx!.palaceId)!.branch).toBe(xx!.branch);
+    expect(xx!.provenance?.ruleId).toBe(XIAOXIAN_RULE_ID);
+    expect(chart.certainty.xiaoxian).toBe('high');
+  });
+
+  it('canonical 輸出：無 targetDate 時不產生小限；性別未知時 certainty=unknown', () => {
+    const base: ZiWeiBirthInput = {
+      calendarType: 'solar', date: { year: 1990, month: 5, day: 15 },
+      time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'male'
+    };
+    expect(calculate(base).periods.xiaoxian).toBeUndefined();
+    expect(calculate(base).certainty.xiaoxian).toBe('unavailable');
+
+    const unknownSex = calculate(
+      { ...base, sexForCalculation: 'unknown' },
+      { targetDate: { year: 2026 } }
+    );
+    expect(unknownSex.periods.xiaoxian).toBeUndefined();
+    expect(unknownSex.certainty.xiaoxian).toBe('unknown');
+  });
+
+  it('`ZiWei.Candidate` 為 0.5.0 舊名，與 `ZiWei.Supplementary` 同一物件', () => {
+    expect(ZiWei.Candidate).toBe(ZiWei.Supplementary);
   });
 });
 
@@ -194,16 +230,17 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
   it('補充星曜 executors 已註冊', () => {
     registerAllExecutors();
     const names = new Set(listExecutorNames());
-    for (const n of ['calcAuxTaiFuFengGao', 'calcAuxJieShen', 'calcCandidateXiaoXian']) {
+    for (const n of ['calcAuxTaiFuFengGao', 'calcAuxJieShen', 'calcXiaoXian']) {
       expect(names.has(n), n).toBe(true);
     }
   });
 
-  it('小限仍為 candidate 且不進任何執行計畫', () => {
+  it('小限已升 canonical 且進 period 執行計畫（2026-09-24 Owner 批准）', () => {
     const rule = listRules().find(r => r.ruleId === XIAOXIAN_RULE_ID)!;
-    expect(rule.status).toBe('candidate');
-    expect(rule.logic.stage).toBe('on-demand');
-    expect(plannedRuleIds()).not.toContain(XIAOXIAN_RULE_ID);
+    expect(rule.status).toBe('canonical');
+    expect(rule.logic.stage).toBe('period');
+    expect(rule.ruleVersion).toBe('1.0');
+    expect(plannedRuleIds()).toContain(XIAOXIAN_RULE_ID);
   });
 
   it('星曜 registry 三筆為 canonical, entityKind=star, 具兩份獨立來源', () => {
@@ -231,7 +268,7 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
     const placed = Object.keys(chart.chart.stars);
     for (const id of SUPPLEMENTARY_STARS) expect(placed, id).toContain(id);
 
-    const expected = candidateAuxStars({
+    const expected = supplementaryAuxStars({
       hourBranch: chart.calendar.hourBranch,
       yearBranch: chart.calendar.ganzhi.year.branch
     });

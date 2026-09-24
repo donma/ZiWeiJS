@@ -59,11 +59,11 @@ export {
 export { QueryApi } from './query-engine/query.js';
 export type { PalaceRelations } from './query-engine/query.js';
 export {
-  candidateAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
+  supplementaryAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
   yearBranchGroup, xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
   xiaoXianForTarget, TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
-  type CandidateStarPlacement, type CandidateBasis, type XiaoXianTargetResolution
-} from './candidate-stars/candidate-stars.js';
+  type SupplementaryStarPlacement, type SupplementaryBasis, type XiaoXianTargetResolution
+} from './aux-supplementary/aux-supplementary.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
 import { getRule, listRules, getSource, listSources } from './rule-engine/registry.js';
@@ -86,12 +86,51 @@ import {
 } from './star-registry/registry.js';
 import { ASTRO_ENTITY_KINDS } from './core/entity-kinds.js';
 import {
-  candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
+  supplementaryAuxStars, placeTaiFu, placeFengGao, placeJieShen,
   xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
   TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
   type XiaoXianTargetResolution
-} from './candidate-stars/candidate-stars.js';
+} from './aux-supplementary/aux-supplementary.js';
 import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
+
+/** 補充安星 API（台輔／封誥／解神／小限）；`ZiWei.Supplementary` 與舊名 `ZiWei.Candidate` 共用 */
+const supplementaryApi = {
+  auxStars: supplementaryAuxStars,
+  taiFu: placeTaiFu,
+  fengGao: placeFengGao,
+  jieShen: placeJieShen,
+  xiaoXian: {
+    startBranch: xiaoXianStartBranch,
+    direction: xiaoXianDirection,
+    branchAtAge: xiaoXianBranchAtAge,
+    sequence: xiaoXianSequence,
+    /**
+     * 目標日期所落之小限（以農曆年計算虛歲後定位，與大限相同之年齡慣例）。
+     * 性別未知或無目標日期時回傳 reason，不猜方向。
+     */
+    forTarget(chart: ZiWeiChart, target: TargetDate): XiaoXianTargetResolution {
+      const overlaid = calculate(chart.input, {
+        targetDate: target,
+        profile: chart.generatedWith.profile
+      });
+      const targetLunarYear = overlaid.periods.year?.lunarYear;
+      if (targetLunarYear === undefined) {
+        return { ruleId: XIAOXIAN_RULE_ID, reason: 'NO_TARGET_YEAR_PERIOD' };
+      }
+      return xiaoXianForTarget({
+        birthLunarYear: chart.calendar.lunar.year,
+        targetLunarYear,
+        yearBranch: chart.calendar.ganzhi.year.branch,
+        sex: chart.birthContext.sexForCalculation as 'male' | 'female' | 'unknown'
+      });
+    }
+  },
+  ruleIds: {
+    taiFuFengGao: TAIFU_FENGGAO_RULE_ID,
+    jieShen: JIESHEN_RULE_ID,
+    xiaoXian: XIAOXIAN_RULE_ID
+  }
+};
 
 export const ZiWei = {
   calculate,
@@ -163,46 +202,12 @@ export const ZiWei = {
     ofStar: entityKindOfStar
   },
   /**
-   * Candidate 星曜 / 小限（spec Post-Stability Phase B/C）。
-   * 明確標示為 candidate：預設不併入 canonical 盤面，需 Owner 批准後才會進執行計畫。
+   * 補充安星 API（spec Post-Stability Phase B/C）。
+   * 台輔／封誥／解神（2026-09-24）與小限均經 Owner 批准升 canonical，已併入盤面／限運輸出。
    */
-  Candidate: {
-    auxStars: candidateAuxStars,
-    taiFu: placeTaiFu,
-    fengGao: placeFengGao,
-    jieShen: placeJieShen,
-    xiaoXian: {
-      startBranch: xiaoXianStartBranch,
-      direction: xiaoXianDirection,
-      branchAtAge: xiaoXianBranchAtAge,
-      sequence: xiaoXianSequence,
-      /**
-       * 目標日期所落之小限（以農曆年計算虛歲後定位，與大限相同之年齡慣例）。
-       * 性別未知或無目標日期時回傳 reason，不猜方向。
-       */
-      forTarget(chart: ZiWeiChart, target: TargetDate): XiaoXianTargetResolution {
-        const overlaid = calculate(chart.input, {
-          targetDate: target,
-          profile: chart.generatedWith.profile
-        });
-        const targetLunarYear = overlaid.periods.year?.lunarYear;
-        if (targetLunarYear === undefined) {
-          return { ruleId: XIAOXIAN_RULE_ID, reason: 'NO_TARGET_YEAR_PERIOD' };
-        }
-        return xiaoXianForTarget({
-          birthLunarYear: chart.calendar.lunar.year,
-          targetLunarYear,
-          yearBranch: chart.calendar.ganzhi.year.branch,
-          sex: chart.birthContext.sexForCalculation as 'male' | 'female' | 'unknown'
-        });
-      }
-    },
-    ruleIds: {
-      taiFuFengGao: TAIFU_FENGGAO_RULE_ID,
-      jieShen: JIESHEN_RULE_ID,
-      xiaoXian: XIAOXIAN_RULE_ID
-    }
-  },
+  Supplementary: supplementaryApi,
+  /** @deprecated 0.5.0 舊名稱；請改用 `ZiWei.Supplementary` */
+  Candidate: supplementaryApi,
   Trace: {
     explain: explainTrace
   },

@@ -171,7 +171,10 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     changsheng: directionDetermined ? 'high' : 'unknown',
     majorPeriods: directionDetermined ? 'high' : 'unknown',
     // representative-date（year+month，未給 day）為模糊語意，certainty 降級（spec 3rd §P0-3）
-    periods: !target ? 'unavailable' : ctx.periodTarget?.isRepresentativeDate ? 'medium' : 'high'
+    periods: !target ? 'unavailable' : ctx.periodTarget?.isRepresentativeDate ? 'medium' : 'high',
+    xiaoxian: !target
+      ? 'unavailable'
+      : ctx.sexForCalculation === 'unknown' ? 'unknown' : 'high'
   };
 
   const stars: Record<string, ReturnType<typeof Object>> = {};
@@ -216,7 +219,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
       year: ctx.yearPeriod,
       month: ctx.monthPeriod,
       day: ctx.dayPeriod,
-      hour: ctx.hourPeriod
+      hour: ctx.hourPeriod,
+      xiaoxian: ctx.xiaoXian
     },
     interpretation: { hits, byDomain },
     certainty

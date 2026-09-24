@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createRequire } from 'node:module';
-import { calculate, candidateAuxStars } from '../../src/index.js';
-import type { BranchId, ZiWeiBirthInput } from '../../src/index.js';
+import { calculate, supplementaryAuxStars } from '../../src/index.js';
+import type { BranchId, TargetDate, ZiWeiBirthInput } from '../../src/index.js';
 import { IZTRO_CASES, iztroTimeIndex, profileForCase } from '../../tools/differential-runner/iztro-compare.js';
 
 /**
@@ -24,6 +24,11 @@ const ZH_TO_BRANCH: Record<string, BranchId> = {
   子: 'zi', 丑: 'chou', 寅: 'yin', 卯: 'mao', 辰: 'chen', 巳: 'si',
   午: 'wu', 未: 'wei', 申: 'shen', 酉: 'you', 戌: 'xu', 亥: 'hai'
 };
+
+function solarTarget(iso: string): TargetDate {
+  const [year, month, day] = iso.split('-').map(Number);
+  return { year, month, day };
+}
 
 interface IztroPalace {
   earthlyBranch: string;
@@ -59,7 +64,7 @@ for (const input of IZTRO_CASES) {
   const yearBranch = chart.calendar.ganzhi.year.branch as BranchId;
 
   const ours: Record<string, string> = {};
-  for (const p of candidateAuxStars({ hourBranch, yearBranch })) ours[p.starId] = p.branch;
+  for (const p of supplementaryAuxStars({ hourBranch, yearBranch })) ours[p.starId] = p.branch;
 
   const hour = input.time?.hour ?? 12;
   const dateStr = `${input.date.year}-${input.date.month}-${input.date.day}`;
@@ -80,7 +85,7 @@ for (const input of IZTRO_CASES) {
   }
 }
 
-describe('differential: candidate 星曜 vs iztro', () => {
+describe('differential: 補充星曜 / 小限 vs iztro', () => {
   it('三個星曜在全部案例皆取得外部值（無 empty）', () => {
     expect(rows.length).toBe(IZTRO_CASES.length * 3);
     expect(rows.filter(r => !r.external)).toEqual([]);
@@ -91,5 +96,33 @@ describe('differential: candidate 星曜 vs iztro', () => {
     expect(
       mismatches.map(r => `${r.label} ${r.star}: bible=${r.bible} iztro=${r.external}`)
     ).toEqual([]);
+  });
+
+  it('小限（虛歲 + 宮位）與 iztro `horoscope().age` 100% 一致', () => {
+    const mismatches: string[] = [];
+    for (const input of IZTRO_CASES) {
+      const { profile } = profileForCase(input);
+      const hour = input.time?.hour ?? 12;
+      const dateStr = `${input.date.year}-${input.date.month}-${input.date.day}`;
+      const gender = input.sexForCalculation === 'female' ? 'female' : 'male';
+      const a = astro.bySolar(dateStr, iztroTimeIndex(hour), gender, true, 'zh-TW') as {
+        horoscope(target: string): { age?: { nominalAge?: number; earthlyBranch?: string } };
+      };
+      for (const target of ['2026-09-24', '2031-03-15']) {
+        const chart = calculate(input, { targetDate: solarTarget(target), profile });
+        const ours = chart.periods.xiaoxian;
+        const ext = a.horoscope(target).age;
+        const extBranch = ext?.earthlyBranch ? ZH_TO_BRANCH[ext.earthlyBranch] : undefined;
+        const label = `${dateStr} ${hour}時 @${target}`;
+        if (!ours) { mismatches.push(`${label}: bible 無小限`); continue; }
+        if (ours.age !== ext?.nominalAge) {
+          mismatches.push(`${label}: age bible=${ours.age} iztro=${ext?.nominalAge}`);
+        }
+        if (ours.branch !== extBranch) {
+          mismatches.push(`${label}: branch bible=${ours.branch} iztro=${extBranch}`);
+        }
+      }
+    }
+    expect(mismatches).toEqual([]);
   });
 });

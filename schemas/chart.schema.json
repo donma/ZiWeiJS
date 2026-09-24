@@ -110,7 +110,8 @@
         "year": { "$ref": "#/$defs/periodInfo" },
         "month": { "$ref": "#/$defs/periodInfo" },
         "day": { "$ref": "#/$defs/periodInfo" },
-        "hour": { "$ref": "#/$defs/periodInfo" }
+        "hour": { "$ref": "#/$defs/periodInfo" },
+        "xiaoxian": { "$ref": "#/$defs/xiaoXianPeriod" }
       }
     },
     "interpretation": {
@@ -380,6 +381,20 @@
         "resolution": { "enum": ["exact-date", "representative-date", "year-only"] },
         "label": { "$ref": "#/$defs/localizedText" },
         "overlay": { "$ref": "#/$defs/periodOverlay" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "xiaoXianPeriod": {
+      "type": "object",
+      "required": ["scope", "age", "branch", "palaceId", "lunarYear", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "const": "xiaoxian" },
+        "age": { "type": "integer", "minimum": 1 },
+        "branch": { "$ref": "#/$defs/branch" },
+        "palaceId": { "$ref": "#/$defs/palaceId" },
+        "lunarYear": { "type": "integer" },
+        "label": { "$ref": "#/$defs/localizedText" },
         "provenance": { "$ref": "#/$defs/provenance" }
       }
     },

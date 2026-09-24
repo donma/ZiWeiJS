@@ -160,19 +160,22 @@
     },
     {
       "researchId": "RSH.PERIOD.MINOR_PERIOD",
-      "title": "小限：起宮與方向已有古典依據（candidate 待核）",
-      "status": "candidate",
+      "title": "小限：已升 canonical（Owner 批准，period 階段）",
+      "status": "resolved",
       "type": "policy",
       "relatedRules": [
         "ZW.CALC.PERIOD.XIAOXIAN.001"
       ],
       "question": "《全書》卷二安小限訣：「寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫」，方向「不论阴阳男俱顺数不论阴阳女俱逆数」。是否即 canonical 採行之小限法？",
-      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand）；起宮與方向之兩份獨立 Tier3 文本相符。演算法已改為 **targetDate／虛歲綁定**（xiaoXianForTarget + ZiWei.Candidate.xiaoXian.forTarget，與大限同一虛歲慣例；性別未知或無目標日期時回報 reason，不猜方向）。證據與演算法皆已就緒，待 Owner 批准升 canonical。方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION。",
-      "ownerReviewRequired": true,
+      "nextAction": "已結案。方向流派差異仍登錄於 RSH.PERIOD.XIAOXIAN_DIRECTION；若日後要支援「陰男陽女逆行」，應以 profile variant（ruleOverrides + variantPatch）擴充，而非改動 canonical。",
+      "ownerReviewRequired": false,
       "evidence": [
         "EVD.QUANSHU.XIAOXIAN",
         "EVD.QUANSHU.DIANCANG.XIAOXIAN"
-      ]
+      ],
+      "resolvedAt": "2026-09-24",
+      "resolvedBy": "owner",
+      "resolution": "Owner 於 2026-09-24 批准：ZW.CALC.PERIOD.XIAOXIAN.001 升 canonical、stage=period（ruleVersion 1.0，behavior-change），輸出至 chart.periods.xiaoxian（含虛歲、宮位、provenance、certainty）。年齡以虛歲（目標農曆年 − 生年農曆年 + 1，與大限同一慣例）；方向採原文「不論陰陽、男順女逆」；性別未知時 skip 且 certainty=unknown。與 iztro horoscope().age 差分（7 案 × 2 目標日）100% 一致。"
     },
     {
       "researchId": "RSH.PERIOD.YEAR_DEITY_SCOPE",

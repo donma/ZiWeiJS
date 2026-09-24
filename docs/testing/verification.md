@@ -161,7 +161,7 @@ trace.schema.json                 Trace entry
 | 安星正確性 | 與 `iztro@2.6.1` 對照（30 案例，natal） |
 | 安星快照 | `fixtures/differential/iztro/*.json`（CI 不需外部套件） |
 | 限運（大限/流年/流月/流日/流時） | `tools/differential-runner/iztro-period-runner.ts`（5 案例，各 scope 的 stem/branch/lifePalaceBranch/sihua） |
-| Candidate 星曜（台輔/封誥/年解） | `tests/differential/candidate-stars.test.ts`：`IZTRO_CASES` 全案例 100% 一致（僅證明實作一致，非 canonical 依據） |
+| 補充星曜（台輔/封誥/年解）與小限 | `tests/differential/aux-supplementary.test.ts`：`IZTRO_CASES` 全案例 100% 一致；小限另比對 iztro `horoscope().age`（7 案 × 2 目標日） |
 | 曆法層 | `lunar-typescript@1.8.6` vs `lunar-lite@0.2.8`，逐日 1900-01-31 ~ 2100-12-31 |
 
 ### 限運差分（spec 2nd §P0-9 / 3rd §P0-5）
@@ -259,18 +259,17 @@ CI 只跑不受字型影響的無障礙測試。
 |------|----------|------|
 | 台輔、封誥 | 有（午起子時順、寅起子時順） | **canonical** `ZW.CALC.STAR.TAIFU_FENGGAO.001`（Owner 2026-09-24 批准） |
 | 解神（年解） | 有（戌起子逆至生年太歲） | **canonical** `ZW.CALC.STAR.JIESHEN.001`（Owner 2026-09-24 批准） |
-| 小限 | 有（寅午戌起辰…男順女逆） | candidate `ZW.CALC.PERIOD.XIAOXIAN.001`（待批准） |
+| 小限 | 有（寅午戌起辰…男順女逆） | **canonical** `ZW.CALC.PERIOD.XIAOXIAN.001`（Owner 2026-09-24 批准，`chart.periods.xiaoxian`） |
 | 天巫、天才、天壽 | **查無**（全書卷二未載） | 不實作，僅 Research Queue |
 | 月解、童限 | 未取得 / 語意未定 | 不實作，僅 Research Queue |
 
-- canonical 三顆星已進 `NATAL_EXECUTION_PLAN` 並反映於 golden v2 oracle（35 fixtures 已重生）。
-- 小限仍為 `status: "candidate"` + `stage: "on-demand"`，**不進入**任何執行計畫，
-  故 canonical 限運輸出不受影響；`tests/unit/candidate-stars.test.ts` 對此設有護欄。
-- 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）。
+- canonical 三顆星已進 `NATAL_EXECUTION_PLAN`（golden v2 oracle 35 fixtures 已重生）；小限已進 `PERIOD_EXECUTION_PLAN`（`chart.periods.xiaoxian`）。
+- 小限差分：`tests/differential/aux-supplementary.test.ts` 與 iztro `horoscope().age`（7 案 × 2 目標日）100% 一致。
+- 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）；本次四項均經 Owner 於 2026-09-24 明確批准。
 - 來源與證據：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
   `SRC.QUANSHU.DIANCANG`（中華典藏網），四條口訣逐字相符；
   證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`；
   另負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
 - 小限之目標綁定：`xiaoXianForTarget`（`targetDate`/虛歲，與大限同一慣例）；
-  `test/unit/candidate-stars.test.ts` 的「證據強度」測試確保未來 candidate 升格前證據充足。
+  `tests/unit/aux-supplementary.test.ts` 的「證據強度」測試確保未來 candidate 升格前證據充足。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

@@ -21,7 +21,8 @@ registerAllExecutors();
 describe('P0-1 Rule Execution Layer — 計畫由規則資料產生', () => {
   it('natal / period 計畫非空且依 order 遞增排序', () => {
     expect(NATAL_EXECUTION_PLAN.length).toBeGreaterThan(20);
-    expect(PERIOD_EXECUTION_PLAN.length).toBe(5);
+    // 大限 / 流年 / 流月 / 流日 / 流時 / 小限（小限於 2026-09-24 Owner 批准升 canonical）
+    expect(PERIOD_EXECUTION_PLAN.length).toBe(6);
     const orders = NATAL_EXECUTION_PLAN.map(p => p.order);
     expect([...orders].sort((a, b) => a - b)).toEqual(orders);
   });
