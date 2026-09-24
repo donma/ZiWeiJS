@@ -57,7 +57,7 @@ const cases: Array<{ name: string; input: ZiWeiBirthInput; check: (c: ReturnType
     },
     check: c => {
       const ctx = ZiWei.AI.toContext(c);
-      for (const k of ['birth', 'pillars', 'lifePalace', 'bodyPalace', 'bureau', 'palaces', 'transformations', 'patterns', 'periods', 'interpretationHits', 'ruleIds', 'profile', 'schemaVersion', 'certainty']) {
+      for (const k of ['birth', 'pillars', 'lifePalace', 'bodyPalace', 'lifeMaster', 'bodyMaster', 'bureau', 'palaces', 'transformations', 'patterns', 'periods', 'interpretationHits', 'ruleIds', 'sourceIds', 'evidenceIds', 'profile', 'schemaVersion', 'certainty']) {
         expect(ctx).toHaveProperty(k);
       }
       expect(ctx.palaces.length).toBe(12);

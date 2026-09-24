@@ -499,6 +499,16 @@
 - `xiaoXianBranchAtAge` 之程式護欄改丟 `ZiWeiError('INVALID_INPUT')`（不再丟未包裝 `Error`）
 - 測試：`tests/unit/aux-supplementary.test.ts`（+1）、`tests/boundary/exact-instant.test.ts`（+3）
 
+### AI Context 精準化（spec §52「AI Context 更精準」）
+- `AiContext` 補上 `lifeMaster` / `bodyMaster`（命主／身主，zh 名稱，取自 star registry）
+- `periods` 補上 `xiaoxian`（canonical 小限：虛歲／地支／宮名）、`activeMajor`（目標當下大限，
+  含年齡）、`day` / `hour`；`year` / `month` 改為干支**中文字**（原為 `stem-branch` id）
+- **修正**：`evidenceIds` 原本恆為空 → 現自 trace 的 `evidenceRefs` 收集，並新增 `sourceIds`
+  （來自 `sourceRefs`）；`ruleIds` / `sourceIds` / `evidenceIds` 皆排序、去重（可重現）
+- 測試：`tests/unit/ai-context.test.ts`（7 測試）；`tests/regression/regression.test.ts`
+  之 required keys 同步加入新欄位
+- 文件：`docs/api/public-api.md` 新增 AiContext 契約與 chart JSON 的 `periods.active` / `periods.xiaoxian`
+
 ### §51 — Assimilation PR 模板
 - 新增 `.github/pull_request_template.md`：14 個必填欄位、各欄位要求、禁止事項、檢查清單
 

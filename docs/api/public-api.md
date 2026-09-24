@@ -101,9 +101,32 @@ if (!res.ok) console.error(res.error.code, res.error.message, res.error.details)
     "transformations": [ /* Transformation[] */ ],
     "patterns": [ /* PatternResult[] */ ]
   },
-  "periods": { "major": [ /* 12 */ ], "year": {}, "month": {}, "day": {}, "hour": {} },
+  "periods": { "major": [ /* 12 */ ], "active": { /* 有 targetDate 時才有 */ }, "year": {}, "month": {}, "day": {}, "hour": {}, "xiaoxian": { "age": 37, "branch": "chen", "palaceId": "friends" } },
   "interpretation": { "hits": [], "byDomain": {} },
-  "certainty": { "calendar": "certain", "dignity": "variant-dependent", ... },
+  "certainty": { "calendar": "certain", "dignity": "variant-dependent", "xiaoxian": "high", ... },
   "trace": { "entries": [] }   // 僅 trace: true 時
 }
 ```
+
+## AiContext（`ZiWei.AI.toContext`）
+
+AI-ready 扁平化 context；只重排既有 chart 輸出，不含任何新命理判斷。
+
+```ts
+interface AiContext {
+  birth; pillars;                                   // 出生 / 四柱
+  lifePalace; bodyPalace; lifeMaster?; bodyMaster?; // 命宮 / 身宮 / 命主 / 身主（zh 名稱）
+  bureau; palaces; transformations; patterns;
+  periods: {
+    major; activeMajor?;                            // 目標當下大限（需 targetDate）
+    year?; month?; day?; hour?;                     // 干支中文字
+    xiaoxian?: { age; branch; palace }              // 小限（canonical）
+  };
+  interpretationHits; ruleIds; sourceIds; evidenceIds; // 皆可回溯（來自 trace）
+  profile; schemaVersion; certainty;
+}
+```
+
+- `certainty` 完整轉出（`xiaoxian` 於無 targetDate 為 `unavailable`、性別未知為 `unknown`）。
+- `sourceIds` / `evidenceIds` 來自 trace 的 `sourceRefs` / `evidenceRefs`，因此 `toContext` 需搭配
+  `calculate(input, { trace: true })` 才有完整溯源（否則僅有 ruleIds）。
