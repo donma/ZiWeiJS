@@ -26,6 +26,7 @@
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
 | 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
 | 10 | `npm run validate:patterns` | Pattern Research Backlog：古典原文必填、research 必附 Research ID、implemented 必可解析 |
+| 10b | `npm run patterns:packet:check` | Pattern Decision Packet：readiness 分類與 backlog 一致、ownerDecision 不得被 AI 填寫 |
 | 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 |
 | 12 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
 | 13 | `npm run assimilation:pattern-gap:check` | 格局 Gap：外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則 |
@@ -58,6 +59,7 @@ validate:research
 validate:catalogs
 validate:variants
 validate:patterns
+patterns:packet:check
 profiles:gap:check
 assimilation:star-gap:check
 assimilation:pattern-gap:check
@@ -80,7 +82,7 @@ Pages deploy
 ```
 
 > CI 與 `npm run verify` 的治理 Gate **完全一致**：`verify` = validate:rules → sources → schemas →
-> governance → integrity → versions → research → catalogs → variants → patterns → profiles:gap:check →
+> governance → integrity → versions → research → catalogs → variants → patterns → patterns:packet:check → profiles:gap:check →
 > assimilation:star-gap:check → pattern-gap:check → candidate-checklist:check → capability-report:check →
 > zhongzhou-diff:check → stats:distribution:check → differential:calendar → differential → differential:period →
 > verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
@@ -334,7 +336,7 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 - 檔案：`research/patterns/pattern-backlog.json`（11 條：equivalent 1 / research 9 / rejected 1）
 - Gate：`npm run validate:patterns`（原文必填、來源可解析、research 必附 Research ID、
   implemented/equivalent 必指向既有 pattern 規則、rejected 必說明理由）
-- 測試：`tests/patterns/pattern-backlog.test.ts`
+- 測試：`tests/patterns/pattern-backlog.test.ts`、`tests/patterns/decision-packet.test.ts`
 
 來源與發現（《紫微斗數全書》卷三「格局」章）：
 
@@ -350,6 +352,23 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 | 馬頭帶劍 | 原文疑似脫誤 | research（需校勘） |
 | 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣 | research（體系性議題，需 Owner 決策） |
 | 財官格／貴格（依生年干逐宮條列） | 卷二諸星章 | **rejected**（屬 Interpretation 層，非具名格局） |
+
+### Decision Packet（M7 前置：交給 Owner 的決策包）
+
+`npm run patterns:packet` → `research/patterns/pattern-decision-packet.json`（gate：`patterns:packet:check`）
+
+readiness 由 backlog 文字**機械分類**（非命理判斷），`ownerDecision` 一律 `null`：
+
+| readiness | 條數 | 內容 |
+|-----------|------|------|
+| `ready-for-owner-review` | 4 | 對面朝斗格、兼文武格、石中隱玉格、左右朝垣格（定義明確或與既有格局明確區辨） |
+| `needs-definition` | 2 | 科權祿主格、文星朝命格（僅詩曰，無一句式定義） |
+| `needs-collation` | 1 | 馬頭帶劍（原文殘缺，需校勘／第二來源） |
+| `needs-owner-scope` | 2 | 十二宮得地合格訣／失陷破格訣（體系性議題） |
+| `landed` / `rejected` | 1 / 1 | 火貴格（＝既有 `ZW.PAT.YINGHUO.001`）／財官格（屬 Interpretation 層） |
+
+每條附 `proposedRuleId`、`requiredArtifacts`（Source+Evidence / Rule / Tests / plan coverage / 影響評估）。
+**AI 不得自行實作或升級 canonical**；Owner 批准後才走 Rule + Evidence + Tests 流程。
 
 ## 11. Profile Gap Audit（Assimilation Phase E）
 

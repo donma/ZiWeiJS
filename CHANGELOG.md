@@ -509,6 +509,14 @@
   之 required keys 同步加入新欄位
 - 文件：`docs/api/public-api.md` 新增 AiContext 契約與 chart JSON 的 `periods.active` / `periods.xiaoxian`
 
+### M7 前置 — Pattern Decision Packet（交給 Owner 的決策包）
+- 新增 `tools/patterns/decision-packet.ts` → `research/patterns/pattern-decision-packet.json`：
+  把 11 條 backlog 整理成可決策清單（原文定義句、gap、readiness、proposedRuleId、requiredArtifacts）
+- readiness 由 backlog 文字機械分類（非命理判斷）：
+  ready-for-owner-review 4（對面朝斗／兼文武／石中隱玉／左右朝垣）、needs-definition 2、
+  needs-collation 1（馬頭帶劍）、needs-owner-scope 2（得地／失陷訣）、landed 1、rejected 1
+- `ownerDecision` 一律 null：**AI 不得自行實作或升級 canonical**
+- 新 gate `patterns:packet:check`；測試 `tests/patterns/decision-packet.test.ts`（6）
 ### §49 — Candidate Checklist（候選進入 Repo 前檢查）
 - 新增 `tools/assimilation/candidate-checklist.ts` → `research/assimilation/candidate-checklist.json`：
   將 §49 的 12 項檢查機械化，分 enforced（stable ID / Gap / 增益 / external comparison / 知識型
