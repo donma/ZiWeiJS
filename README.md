@@ -170,6 +170,9 @@ npm run release:check         # 最終 gate：verify + release artifact smoke + 
 ```
 
 > 詳細驗證體系見 `docs/testing/verification.md`。
+>
+> CI（`.github/workflows/build.yml`）執行與 `verify` 相同的治理 Gate（另加 `coverage:bible`），
+> 並於 `npm run build` 之後執行 `npm run release:smoke`，再跑 A11y 與 Pages 部署。
 
 ---
 

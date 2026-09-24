@@ -20,13 +20,16 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # 順序：Schema → Governance → Integrity → 差分 → Tests → Build → A11y（spec §18）
+      # 順序：Rules → Sources → Schemas → Governance → Integrity → Versions → Research
+      #       → 覆蓋率 → 差分（calendar / natal / period）→ Golden → Tests → Build
+      #       → Release Smoke → A11y → standalone → Pages
       - run: npm run validate:rules
       - run: npm run validate:sources
       - run: npm run validate:schemas
       - run: npm run validate:governance
       - run: npm run validate:integrity
       - run: npm run validate:versions
+      - run: npm run validate:research
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check
       - run: npm run differential
@@ -34,6 +37,7 @@ jobs:
       - run: npm run verify:golden
       - run: npm run test
       - run: npm run build
+      - run: npm run release:smoke
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run test:a11y
       - run: node tools/build-standalone.mjs

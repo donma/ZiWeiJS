@@ -30,9 +30,38 @@
 | 12 | `npm run test` | Vitest 全測試 |
 | 13 | `npm run build` | app + library + types + `bible-manifest.json` |
 
-CI（`.github/workflows/build.yml`）在 push 時另加 `npm run coverage:bible`，並於 build 後安裝
-**chromium / firefox / webkit** 執行 `npm run test:a11y`，最後 `node tools/build-standalone.mjs`
+CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
+於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
+再安裝 **chromium / firefox / webkit** 執行 `npm run test:a11y`，最後 `node tools/build-standalone.mjs`
 產生 `dist/ziwei-bible-demo.html` 並部署 Pages。
+
+CI 的實際 step 清單：
+
+```text
+validate:rules
+validate:sources
+validate:schemas
+validate:governance
+validate:integrity
+validate:versions
+validate:research
+coverage:bible
+differential:calendar -- --check
+differential
+differential:period
+verify:golden
+test
+build
+release:smoke
+Playwright install（chromium / firefox / webkit）
+test:a11y
+node tools/build-standalone.mjs
+Pages deploy
+```
+
+> CI 與 `npm run verify` 的治理 Gate **完全一致**：`verify` = validate:rules → sources → schemas →
+> governance → integrity → versions → research → differential:calendar → differential → differential:period →
+> verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
 
 ## 1.1 Release Gate（`npm run release:check`）
 
@@ -51,6 +80,8 @@ npm run release:smoke          # artifact smoke + package smoke
   `npm pack` 產生真實 tarball → 確認 `files[]` 含必要產物 →
   解開到 `node_modules` → 以 bare specifier `import 'ziwei-bible'` →
   排盤成功，模擬第三方 consumer 安裝。
+
+兩者已納入 CI：`build.yml` 在 `npm run build` 之後執行 `npm run release:smoke`（再繼續 A11y 與 Pages）。
 
 ## 1.2 Integrity Tests（`tests/integrity/`）
 

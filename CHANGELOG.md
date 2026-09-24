@@ -309,6 +309,8 @@
 - 新增 `tools/release-validator/package-smoke.ts`：`npm pack` → 檢核 `files[]` → 解開到 `node_modules`
   → 以 bare specifier `import 'ziwei-bible'` 排盤，模擬第三方 consumer
 - 新增 `npm run release:smoke` / `npm run release:check`（= `verify` + 發佈 smoke）；`verify` 納入 `validate:research`
+- CI 收尾（`build.yml`）：於 `validate:versions` 後補 `validate:research`，並於 `npm run build` 後執行
+  `npm run release:smoke`；CI 治理 Gate 自此與 `npm run verify` 完全一致
 
 ### 文件
 - README 移除手寫統計（`209 rules` / `28 evidence` 等），改以指令輸出為準；Gate 清單補
