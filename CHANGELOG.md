@@ -509,6 +509,13 @@
   之 required keys 同步加入新欄位
 - 文件：`docs/api/public-api.md` 新增 AiContext 契約與 chart JSON 的 `periods.active` / `periods.xiaoxian`
 
+### Phase B 第二輪查核（負向，2026-09-24 追加）
+- 補查《全書》**卷一**（MediaWiki wikitext 全文：諸星問答論 37 問、斗數骨髓賦、定富局／貴局／
+  貧賤局／雜局）：`天巫`／`天才`／`天壽` 各 **0 次命中**
+- 維基文庫搜尋 API（`srsearch=天巫 紫微斗數`）：全站 10,763 筆，前 10 筆無《全書》內文命中
+- 結論不變：三顆維持 `RSH.STAR.{TIANWU,TIANCAI,TIANSHOU}`（open）、不實作、不建表
+  （記錄於 `research/assimilation/classical-verification.md` 附錄二；verification.md §8 同步）
+
 ### M2 外部驗證加廣（differential case 擴充）
 - `tests/differential/aux-supplementary.test.ts` 案例由 `IZTRO_CASES` 擴大為 `IZTRO_CASES` ＋
   `fixtures/golden/*.json`（陽曆、時辰已知、civil 時制，共 29 案）：台輔／封誥／年解 87 組全數一致；

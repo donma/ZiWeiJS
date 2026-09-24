@@ -282,7 +282,7 @@ M2 = 「第一批六顆 + Placement + Evidence + UI + Tests」）。目前狀態
 | 批次 | 狀態 |
 |------|------|
 | 台輔、封誥、解神 | **已 canonical**（Placement + Evidence + UI + Tests + differential 全備） |
-| 天才、天壽、天巫 | **阻塞**：兩份獨立電子文本查無安法 → 不實作，僅留 Research Queue（`RSH.STAR.{TIANCAI,TIANSHOU,TIANWU}`）與 iztro-only `mentions` 記錄 |
+| 天才、天壽、天巫 | **阻塞**：兩輪查核（卷二／卷三安星訣＋卷一全文＋維基文庫檢索 API）皆查無安法與條目 → 不實作，僅留 Research Queue（`RSH.STAR.{TIANCAI,TIANSHOU,TIANWU}`）與 iztro-only `mentions` 記錄（詳見 `research/assimilation/classical-verification.md` 附錄一／二） |
 
 M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其餘不得以外部實作共識充當古典依據（spec §18.1 / §42）。
 
