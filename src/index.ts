@@ -61,8 +61,8 @@ export type { PalaceRelations } from './query-engine/query.js';
 export {
   candidateAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
   yearBranchGroup, xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
-  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
-  type CandidateStarPlacement, type CandidateBasis
+  xiaoXianForTarget, TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
+  type CandidateStarPlacement, type CandidateBasis, type XiaoXianTargetResolution
 } from './candidate-stars/candidate-stars.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
@@ -87,8 +87,9 @@ import {
 import { ASTRO_ENTITY_KINDS } from './core/entity-kinds.js';
 import {
   candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
-  xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
-  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
+  xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
+  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
+  type XiaoXianTargetResolution
 } from './candidate-stars/candidate-stars.js';
 import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
 
@@ -174,7 +175,27 @@ export const ZiWei = {
       startBranch: xiaoXianStartBranch,
       direction: xiaoXianDirection,
       branchAtAge: xiaoXianBranchAtAge,
-      sequence: xiaoXianSequence
+      sequence: xiaoXianSequence,
+      /**
+       * 目標日期所落之小限（以農曆年計算虛歲後定位，與大限相同之年齡慣例）。
+       * 性別未知或無目標日期時回傳 reason，不猜方向。
+       */
+      forTarget(chart: ZiWeiChart, target: TargetDate): XiaoXianTargetResolution {
+        const overlaid = calculate(chart.input, {
+          targetDate: target,
+          profile: chart.generatedWith.profile
+        });
+        const targetLunarYear = overlaid.periods.year?.lunarYear;
+        if (targetLunarYear === undefined) {
+          return { ruleId: XIAOXIAN_RULE_ID, reason: 'NO_TARGET_YEAR_PERIOD' };
+        }
+        return xiaoXianForTarget({
+          birthLunarYear: chart.calendar.lunar.year,
+          targetLunarYear,
+          yearBranch: chart.calendar.ganzhi.year.branch,
+          sex: chart.birthContext.sexForCalculation as 'male' | 'female' | 'unknown'
+        });
+      }
     },
     ruleIds: {
       taiFuFengGao: TAIFU_FENGGAO_RULE_ID,

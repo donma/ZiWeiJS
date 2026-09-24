@@ -9,6 +9,7 @@
  */
 import { branchAt, branchIndex } from '../core/constants.js';
 import type { BranchId } from '../core/types.js';
+import { virtualAge } from '../period-engine/major-period-resolver.js';
 import candidateTables from '../../tables/stars/candidate-aux-tables.json' with { type: 'json' };
 
 export const TAIFU_FENGGAO_RULE_ID = 'ZW.CALC.STAR.TAIFU_FENGGAO.001';
@@ -157,4 +158,35 @@ export function xiaoXianSequence(
     out.push({ age, branch: xiaoXianBranchAtAge(yearBranch, sex, age) });
   }
   return out;
+}
+
+export interface XiaoXianTargetResolution {
+  age?: number;
+  branch?: BranchId;
+  ruleId: string;
+  reason?: string;
+}
+
+/**
+ * 目標日期所落之小限：以「農曆年」計算虛歲後定位。
+ *
+ * 護欄（與大限相同的年齡慣例）：
+ *   - 必須傳入**農曆年**（目標年的農曆年），否則農曆新年前會提早換限。
+ *   - 性別未知 → 不猜方向，回傳 reason。
+ */
+export function xiaoXianForTarget(input: {
+  birthLunarYear: number;
+  targetLunarYear: number;
+  yearBranch: BranchId;
+  sex: 'male' | 'female' | 'unknown';
+}): XiaoXianTargetResolution {
+  if (input.sex === 'unknown') {
+    return { ruleId: XIAOXIAN_RULE_ID, reason: 'UNKNOWN_SEX_FOR_CALCULATION' };
+  }
+  const age = virtualAge(input.birthLunarYear, input.targetLunarYear);
+  return {
+    ruleId: XIAOXIAN_RULE_ID,
+    age,
+    branch: xiaoXianBranchAtAge(input.yearBranch, input.sex, age)
+  };
 }

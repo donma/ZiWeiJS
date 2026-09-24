@@ -271,6 +271,6 @@ CI 只跑不受字型影響的無障礙測試。
   證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`；
   另負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
 - **升 canonical 準備度**：證據強度已達 Canonical Evidence Gate（Tier1/2 或 2×獨立 Tier3），
-  由 `tests/unit/candidate-stars.test.ts` 的「證據強度」測試把關；仍待 Owner 批准，
-  且小限須先改為由 `targetDate`/虛歲定位後才可升 `period`。
+  由 `tests/unit/candidate-stars.test.ts` 的「證據強度」測試把關；小限亦已改為由
+  `targetDate`/虛歲定位（`xiaoXianForTarget`，與大限同一慣例）。仍待 Owner 批准升 canonical。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import {
-  calculate, listRules, listStarRegistry, listSources, BRANCHES,
+  calculate, listRules, listStarRegistry, listSources, BRANCHES, ZiWei,
   candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
-  xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
+  xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
   TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
 } from '../../src/index.js';
 import type { BranchId, ZiWeiBirthInput } from '../../src/index.js';
@@ -112,6 +112,50 @@ describe('candidate 小限（全書卷二安小限訣）', () => {
       const seq = xiaoXianSequence(yb, 'male', 1, 13);
       expect(seq[12].branch, `年支 ${yb}`).toBe(seq[0].branch);
     }
+  });
+});
+
+describe('candidate 小限（目標日期綁定，升 canonical 前之必要修正）', () => {
+  it('xiaoXianForTarget：性別未知不猜方向', () => {
+    const r = xiaoXianForTarget({
+      birthLunarYear: 1990, targetLunarYear: 2026, yearBranch: 'wu', sex: 'unknown'
+    });
+    expect(r.reason).toBe('UNKNOWN_SEX_FOR_CALCULATION');
+    expect(r.branch).toBeUndefined();
+  });
+
+  it('xiaoXianForTarget：虛歲 = 目標農曆年 − 生年農曆年 + 1，並以該歲定位', () => {
+    const r = xiaoXianForTarget({
+      birthLunarYear: 1990, targetLunarYear: 2026, yearBranch: 'wu', sex: 'male'
+    });
+    expect(r.age).toBe(37);
+    expect(r.branch).toBe(xiaoXianBranchAtAge('wu', 'male', 37));
+    expect(r.ruleId).toBe(XIAOXIAN_RULE_ID);
+  });
+
+  it('ZiWei.Candidate.xiaoXian.forTarget：與目標年綁定（不同目標年 → 不同虛歲／宮位）', () => {
+    const input: ZiWeiBirthInput = {
+      calendarType: 'solar', date: { year: 1990, month: 5, day: 15 },
+      time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'male'
+    };
+    const chart = calculate(input);
+    const a = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2026 });
+    const b = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2030 });
+    expect(a.age).toBeDefined();
+    expect(b.age).toBe((a.age ?? 0) + 4);
+    expect(a.branch).toBe(xiaoXianBranchAtAge(chart.calendar.ganzhi.year.branch, 'male', a.age!));
+    expect(b.branch).toBe(xiaoXianBranchAtAge(chart.calendar.ganzhi.year.branch, 'male', b.age!));
+  });
+
+  it('性別未知之命盤：forTarget 回報 reason，不產生宮位', () => {
+    const input: ZiWeiBirthInput = {
+      calendarType: 'solar', date: { year: 1990, month: 5, day: 15 },
+      time: { hour: 10 }, timezone: 'Asia/Taipei', sexForCalculation: 'unknown'
+    };
+    const chart = calculate(input);
+    const r = ZiWei.Candidate.xiaoXian.forTarget(chart, { year: 2026 });
+    expect(r.reason).toBe('UNKNOWN_SEX_FOR_CALCULATION');
+    expect(r.branch).toBeUndefined();
   });
 });
 

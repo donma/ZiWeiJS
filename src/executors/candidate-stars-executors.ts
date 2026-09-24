@@ -13,7 +13,7 @@ import {
   JIESHEN_RULE_ID,
   XIAOXIAN_RULE_ID,
   candidateAuxStars,
-  xiaoXianSequence
+  xiaoXianForTarget
 } from '../candidate-stars/candidate-stars.js';
 
 /** 台輔 / 封誥（生時系） */
@@ -53,10 +53,11 @@ export function calcCandidateByYearBranch(ctx: EngineContext): ExecutorOutcome {
   };
 }
 
-/** 小限（虛歲序列；性別未知時不猜方向） */
+/** 小限（以目標日期之農曆年計算虛歲後定位；性別未知或無目標日期時不猜） */
 export function calcCandidateXiaoXian(ctx: EngineContext): ExecutorOutcome {
   const yearBranch = ctx.normalized.ganzhi.year.branch as BranchId;
   const sex = ctx.sexForCalculation;
+  const birthLunarYear = ctx.normalized.lunar.year;
   if (sex === 'unknown') {
     return {
       inputs: { yearBranch, sexForCalculation: sex },
@@ -65,10 +66,20 @@ export function calcCandidateXiaoXian(ctx: EngineContext): ExecutorOutcome {
       reason: 'SEX_UNKNOWN'
     };
   }
+  const targetLunarYear = ctx.periodTarget?.lunar.year;
+  if (!ctx.targetDate || targetLunarYear === undefined) {
+    return {
+      inputs: { yearBranch, sexForCalculation: sex, targetDate: ctx.targetDate ?? null },
+      result: null,
+      status: 'skipped',
+      reason: 'NO_TARGET_DATE'
+    };
+  }
+  const resolution = xiaoXianForTarget({ birthLunarYear, targetLunarYear, yearBranch, sex });
   return {
-    inputs: { yearBranch, sexForCalculation: sex },
-    result: xiaoXianSequence(yearBranch, sex, 1, 12),
+    inputs: { yearBranch, sexForCalculation: sex, birthLunarYear, targetLunarYear },
+    result: resolution,
     status: 'candidate',
-    note: `candidate 小限（bible rule ${XIAOXIAN_RULE_ID}）：一歲起宮 + 男順女逆，待 Owner 批准`
+    note: `candidate 小限（${XIAOXIAN_RULE_ID}）：虛歲 ${resolution.age} → ${resolution.branch}（男順女逆），待 Owner 批准`
   };
 }

@@ -64,13 +64,15 @@ Owner 核可後，將 `status` 改 `canonical` 並把 `stage` 改 `natal` / `per
 |---|---|---|
 | 台輔、封誥 | 2×獨立 Tier3（相符） | **證據已足**，待 Owner 批准 |
 | 解神（年解） | 2×獨立 Tier3（相符） | **證據已足**，待 Owner 批准 |
-| 小限 | 2×獨立 Tier3（起宮/方向相符） | 證據已足，但**演算法須先改**（見下） |
+| 小限 | 2×獨立 Tier3（起宮/方向相符） | **證據已足；已改為 targetDate／虛歲綁定**，待 Owner 批准 |
 | 天巫／天才／天壽 | 無古典依據 | 不升（維持 Research Queue） |
 
 升 canonical 前置作業（非證據問題）：
 
-1. **小限必須先改為由 `targetDate`／虛歲定位**：現行 executor 回傳靜態「虛歲 1–12 序列」，
-   未綁限運；直接改 `stage: "period"` 會輸出與流年無關的死資料。
+1. ~~**小限必須先改為由 `targetDate`／虛歲定位**~~ **已完成**：
+   `xiaoXianForTarget()` 以「目標農曆年 − 生年農曆年 + 1」求虛歲後定位（與大限同一慣例），
+   `ZiWei.Candidate.xiaoXian.forTarget(chart, target)` 提供綁定查詢；
+   性別未知或無目標日期一律回報 reason，不猜方向。
 2. 重生 35 個 golden v2 oracle（新增三顆星會使全部 fixture drift），並重新與 iztro 交叉驗證。
 3. 更新護欄測試（`tests/unit/candidate-stars.test.ts`、`tests/regression/integrity.test.ts`）
    由「不得進入盤面」改為 canonical 期待值，並保留負向測試。

@@ -371,7 +371,10 @@
 - **查無古典依據者不實作**：天巫 / 天才 / 天壽（全書卷二安星訣未載）、月解、童限
   → 只更新 Research Queue（現 21 項），不建規則、不建表
 - 公開 API：`ZiWei.Candidate.*`（auxStars / taiFu / fengGao / jieShen / xiaoXian）
-- 測試：`tests/unit/candidate-stars.test.ts`（口訣逐支展開 + candidate 護欄）、
+- **小限改為目標日期綁定**（升 canonical 之必要前置）：新增 `xiaoXianForTarget()`
+  以「目標農曆年 − 生年農曆年 + 1」求虛歲後定位（與大限同一慣例），
+  並提供 `ZiWei.Candidate.xiaoXian.forTarget(chart, target)`；性別未知／無目標日期時回報 reason、不猜方向
+- 測試：`tests/unit/candidate-stars.test.ts`（口訣逐支展開 + 目標綁定 + candidate 護欄 + 證據強度）、
   `tests/differential/candidate-stars.test.ts`（iztro 全案例 台輔／封誥／年解 100% 一致）
 - 修正：`package.json` 重複的 `validate:catalogs` 鍵（先前 Phase A 誤植）
 

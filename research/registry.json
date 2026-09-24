@@ -167,7 +167,7 @@
         "ZW.CALC.PERIOD.XIAOXIAN.001"
       ],
       "question": "《全書》卷二安小限訣：「寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫」，方向「不论阴阳男俱顺数不论阴阳女俱逆数」。是否即 canonical 採行之小限法？",
-      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand）與純函式模組；起宮與方向之兩份獨立 Tier3 文本相符。**升 canonical 前必須先完成**：將輸出改為由 targetDate/虛歲定位（現為 1–12 靜態序列，未綁限運），並與大限/流年關係一併測試。方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION。",
+      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand）；起宮與方向之兩份獨立 Tier3 文本相符。演算法已改為 **targetDate／虛歲綁定**（xiaoXianForTarget + ZiWei.Candidate.xiaoXian.forTarget，與大限同一虛歲慣例；性別未知或無目標日期時回報 reason，不猜方向）。證據與演算法皆已就緒，待 Owner 批准升 canonical。方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION。",
       "ownerReviewRequired": true,
       "evidence": [
         "EVD.QUANSHU.XIAOXIAN",
