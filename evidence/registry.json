@@ -279,6 +279,75 @@
       "quote": "流年歲建起正月，逆數生月；由該宮起子時，順數到生時。所得為當年斗君，即流年正月之命宮。",
       "confidence": 0.95,
       "notes": "斗君推算法權威古本出處。流月以當年斗君為正月命宮順數至當月（ZW.CALC.PERIOD.LIUYUE.001 v2.0）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.TAIFU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安台輔封訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "quote": "安台辅封诀。由午宫起子顺数至本生时安之。",
+      "confidence": 0.9,
+      "notes": "台輔安法原文（電子文本照錄，簡體）。與 SRC.IZTRO 實作觀點一致（午宮起子時順行），實作僅作交叉比對、非權威依據。對應 candidate 規則 ZW.CALC.STAR.TAIFU_FENGGAO.001。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.FENGGAO",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安封誥訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "quote": "安封诰诀。由寅起宫子顺数至本生时安之。",
+      "confidence": 0.9,
+      "notes": "封誥安法原文（電子文本照錄，簡體）。與 SRC.IZTRO 實作觀點一致（寅宮起子時順行）。對應 candidate 規則 ZW.CALC.STAR.TAIFU_FENGGAO.001。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.JIESHEN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安天德月德解神訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "quote": "安天德月德解神诀。解神从戌上起子，逆数至当生年太岁上是也。",
+      "confidence": 0.9,
+      "notes": "年解安法原文（電子文本照錄，簡體）；本條僅及年解。月解（依生月：正二在申、三四在戌、五六在子、七八在寅、九十在辰、十一十二在午）見於外部實作但未取得本書原文，故未實作。對應 candidate 規則 ZW.CALC.STAR.JIESHEN.001。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.XIAOXIAN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣",
+        "section": "安小限訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "quote": "安小限诀 不论阴阳男俱顺数不论阴阳女俱逆数。寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫。",
+      "confidence": 0.9,
+      "notes": "小限起宮與方向原文（電子文本照錄，簡體）。方向為『不論陰陽、男順女逆』，與部分現代流派『陰男陽女逆行』不同 → 已登錄 Research Queue（RSH.PERIOD.XIAOXIAN_DIRECTION），本引擎採原文並保持 candidate。對應 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "mentions",
+      "location": {
+        "volume": "卷二",
+        "chapter": "安星訣（全篇檢索）",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷二"
+      },
+      "quote": "(absent)",
+      "confidence": 0.7,
+      "notes": "負向查核紀錄（absence of evidence，非 supports；quote 欄僅標記『無原文可引』）：本電子文本卷二安星訣未載天巫、天才、天壽之安星口訣，惟此前三顆被外部資料集列為缺星。故三者不得以本書為依據實作；若日後取得其他古典文獻依據，須另立來源與證據。"
     }
   ]
 }

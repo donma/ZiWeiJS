@@ -20,6 +20,9 @@ import {
   calcChangSheng, calcBoshi
 } from '../executors/star-executors.js';
 import { calcDirection, requireSex } from '../executors/birth-executors.js';
+import {
+  calcCandidateByHour, calcCandidateByYearBranch, calcCandidateXiaoXian
+} from '../executors/candidate-stars-executors.js';
 import { verifySolarLunar, verifyGanzhi, verifyTrueSolar } from './calendar-executors.js';
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
 import { calcDignities } from '../dignity-engine/dignity-engine.js';
@@ -151,6 +154,11 @@ export function registerAllExecutors(): void {
   for (const rel of Object.keys(REL_BUILDERS)) {
     registerExecutor(rel, makeRelExecutor(rel));
   }
+
+  /* candidate（stage: on-demand）：待 Owner 批准前不進入任何執行計畫 */
+  registerExecutor('calcCandidateByHour', calcCandidateByHour);
+  registerExecutor('calcCandidateByYearBranch', calcCandidateByYearBranch);
+  registerExecutor('calcCandidateXiaoXian', calcCandidateXiaoXian);
 
   registerExecutor('rectifyAnalyze', rectifyFramework);
 }

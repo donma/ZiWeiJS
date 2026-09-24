@@ -1,0 +1,100 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+      "ruleVersion": "0.1",
+      "status": "candidate",
+      "scope": "calculation.stars.aux.candidate.taifu-fenggao",
+      "category": "stars",
+      "name": {
+        "zh-TW": "安台輔封誥（candidate）",
+        "en": "Place Tai Fu / Feng Gao (candidate)"
+      },
+      "description": {
+        "zh-TW": "台輔由午宮起子順數至本生時；封誥由寅宮起子順數至本生時。依 SRC.QUANSHU.WIKISOURCE 卷二安星訣原文。status=candidate：未經 Owner 批准升 canonical，stage=on-demand 故不併入 canonical 盤面。"
+      },
+      "inputs": [
+        "hourBranch"
+      ],
+      "logic": {
+        "executor": "calcCandidateByHour",
+        "params": {
+          "tableRef": "stars/candidate-aux-tables#byHourBranch"
+        },
+        "stage": "on-demand",
+        "order": 2000
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.TAIFU",
+        "EVD.QUANSHU.FENGGAO"
+      ],
+      "tags": [
+        "candidate",
+        "phase-b",
+        "hour-branch"
+      ],
+      "changeLog": [
+        {
+          "version": "0.1",
+          "type": "rule-add",
+          "date": "2026-09-24",
+          "note": "candidate：依《紫微斗數全書》卷二安星訣建立；待 Owner 批准升 canonical 並併入 natal 計畫。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.JIESHEN.001",
+      "ruleVersion": "0.1",
+      "status": "candidate",
+      "scope": "calculation.stars.aux.candidate.jieshen",
+      "category": "stars",
+      "name": {
+        "zh-TW": "安解神（年解，candidate）",
+        "en": "Place Jie Shen (year, candidate)"
+      },
+      "description": {
+        "zh-TW": "解神（年解）由戌宮起子，逆數至當生年太歲。依 SRC.QUANSHU.WIKISOURCE 卷二安天德月德解神訣原文。月解（依生月）尚未實作。"
+      },
+      "inputs": [
+        "ganzhi.year.branch"
+      ],
+      "logic": {
+        "executor": "calcCandidateByYearBranch",
+        "params": {
+          "tableRef": "stars/candidate-aux-tables#byYearBranch"
+        },
+        "stage": "on-demand",
+        "order": 2010
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.JIESHEN"
+      ],
+      "tags": [
+        "candidate",
+        "phase-b",
+        "year-branch"
+      ],
+      "changeLog": [
+        {
+          "version": "0.1",
+          "type": "rule-add",
+          "date": "2026-09-24",
+          "note": "candidate：依《紫微斗數全書》卷二安天德月德解神訣建立；待 Owner 批准升 canonical。"
+        }
+      ]
+    }
+  ]
+}

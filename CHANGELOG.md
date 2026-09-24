@@ -326,7 +326,7 @@
 > 除非發生 §12 所列 correctness / contract 等情況，否則不再開 Hardening，
 > 後續一律歸類為 Feature / Assimilation / Research。
 
-## 0.5.0 — Post-Stability Assimilation Phase A（Catalog Foundation）
+## 0.5.0 — Post-Stability Assimilation（Phase A + Phase B/C candidate）
 
 依 `ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1` 施工。
 外部專案只作 **研究樣本 / 實作觀點 / 驗證對象 / 資料索引**，不是 ZiWeiJS 的架構（spec §53）。
@@ -342,13 +342,34 @@
   含飛廉、大耗、旬空、空亡、截路、年解…），禁止字面自動合併（spec §37）
 - **Star Gap Audit**：新增 `tools/assimilation/{normalize-name,star-gap-audit,checks,validate-catalogs}.ts`
   → `research/assimilation/star-gap.json`：43 個外部名稱分類為
-  actual-missing-star 6 / external-only 8 / stage 12 / cycle-deity 8 / ambiguous 4 / period-dynamic 5
+  actual-missing-star 3 / existing 5 / external-only 6 / stage 12 / cycle-deity 8 / ambiguous 4 / period-dynamic 5
 - **External Snapshot**：新增 `tools/assimilation/external-snapshot.ts` 與
   `research/assimilation/*/snapshot.json`（**真實** commit / license / capturedAt；
   iztro・fortel・cdestiny・ziwei-doushu = MIT、ziwei-chart = GPL-3.0、ziwei-doushu-simple = 不明）
 - **Reject Registry**：`research/assimilation/rejections.json`（12 項，spec §46）避免未來重複搬入
 - **Assimilation Schema**：`schemas/{cycle,star-aliases,external-snapshot,assimilation-candidate,assimilation-rejection}.schema.json`
 - Research Queue 新增 8 項（小限、年神 scope、封誥 / 解神 / 台輔 / 天才 / 天壽 / 天巫）
+
+### Phase B / C — 古典原文查核 + Candidate 規則（不影響 canonical 輸出）
+- **古典原文查核**：新增 `SRC.QUANSHU.WIKISOURCE`（《紫微斗數全書》維基文庫電子文本，tier 3，
+  未與紙本逐字校勘）與 4 條原文證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}`，
+  另加負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）
+- **同名異義防護**：維基文庫《紫微斗數》屬舊「十八飛星」系統（其「台輔」指文昌、另有天壽），
+  已於 source notes 與 `research/assimilation/classical-verification.md` 明載，不得混用
+- **新增 candidate 星曜**：台輔（午起子時順）、封誥（寅起子時順）、解神年解（戌起子逆至生年太歲）
+  → `tables/stars/candidate-aux-tables.json` + `src/candidate-stars/candidate-stars.ts`
+  + `src/executors/candidate-stars-executors.ts` + 星曜 registry（`status: candidate`）
+- **新增小限**（`ZW.CALC.PERIOD.XIAOXIAN.001`）：寅午戌起辰、申子辰起戌、巳酉丑起未、亥卯未起丑；
+  方向採原文「不論陰陽、男順女逆」；性別未知時 **skip，不猜方向**
+- **規則**：`rules/calculation/stars/aux-candidates.json`、`rules/calculation/periods/periods-candidates.json`
+  —— 一律 `status: candidate` + `stage: on-demand`，**不進** `NATAL_EXECUTION_PLAN` / `PERIOD_EXECUTION_PLAN`，
+  故 canonical 盤面與 golden oracle 完全不變；升 canonical 為 Owner 專屬動作（spec §1.3 / §56）
+- **查無古典依據者不實作**：天巫 / 天才 / 天壽（全書卷二安星訣未載）、月解、童限
+  → 只更新 Research Queue（現 21 項），不建規則、不建表
+- 公開 API：`ZiWei.Candidate.*`（auxStars / taiFu / fengGao / jieShen / xiaoXian）
+- 測試：`tests/unit/candidate-stars.test.ts`（口訣逐支展開 + candidate 護欄）、
+  `tests/differential/candidate-stars.test.ts`（iztro 全案例 台輔／封誥／年解 100% 一致）
+- 修正：`package.json` 重複的 `validate:catalogs` 鍵（先前 Phase A 誤植）
 
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /

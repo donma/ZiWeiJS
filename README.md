@@ -16,21 +16,21 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 <!-- STATS:BEGIN (由 `npm run coverage:bible -- --update-readme` 產生，請勿手寫) -->
 | 項目 | 數量 |
 |---|---|
-| 規則總數 | 213 |
+| 規則總數 | 216 |
 | canonical | 36 |
-| candidate | 168 |
+| candidate | 171 |
 | variant | 7 |
 | research | 2 |
 | Canonical source 覆蓋率 | 100% |
 | Canonical evidence 覆蓋率 | 100% |
-| 星曜（實測安星 / 總數）| 95 / 96（active 95）|
+| 星曜（實測安星 / 總數）| 95 / 99（active 98）|
 | 格局 | 24 |
 | 解讀規則 | 138（12 domains）|
-| 文獻 / 證據 | 10 / 30 |
+| 文獻 / 證據 | 11 / 35 |
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 444 it() / 49 files（靜態計數）|
+| Tests | 462 it() / 51 files（靜態計數）|
 | E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -182,13 +182,13 @@ npm run release:check         # 最終 gate：verify + release artifact smoke + 
 ```
 schemas/        JSON Schema（rule / source / evidence / research / chart / interpretation / trace / profile / differential-variance）
 rules/          規則資料（calculation · interpretation · patterns · rectification）
-tables/         星曜 registry、別名 registry、cycles（長生/博士/歲建/將前）、四化表、廟旺表、納音、雜曜安星表
+tables/         星曜 registry、別名 registry、cycles（長生/博士/歲建/將前）、candidate 安星表、四化表、廟旺表、納音、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
 research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區
 profiles/       canonical / traditional-zi / true-solar / lichun / school-zhongzhou / school-ma-hu
 variants/       Variant 與 Variance Registry
-src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · query · star-registry · trace · renderer · ai · narrative）
+src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · query · star-registry · candidate-stars · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
 tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / property / assimilation / visual
 fixtures/       golden / boundary / differential / calendar fixtures

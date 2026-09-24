@@ -160,82 +160,141 @@
     },
     {
       "researchId": "RSH.PERIOD.MINOR_PERIOD",
-      "title": "小限（minor period）起法與 Evidence",
-      "status": "open",
+      "title": "小限：起宮與方向已有古典依據（candidate 待核）",
+      "status": "candidate",
       "type": "policy",
-      "relatedRules": [],
-      "question": "ZiWeiJS 尚無小限。需確認：男女順逆、虛歲起算點、與大限之關係、是否使用年支三合、古籍（全書/全集）依據。外部實作（iztro ages/agePalace）只作 differential oracle，不可直接沿用。",
-      "nextAction": "先以獨立古籍來源確立起法，再建 minor-period 規則（status=research→candidate），並以 iztro 作差分。",
-      "ownerReviewRequired": true
+      "relatedRules": [
+        "ZW.CALC.PERIOD.XIAOXIAN.001"
+      ],
+      "question": "《全書》卷二安小限訣：「寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫」，方向「不论阴阳男俱顺数不论阴阳女俱逆数」。是否即 canonical 採行之小限法？",
+      "nextAction": "已建 candidate 規則 ZW.CALC.PERIOD.XIAOXIAN.001（stage=on-demand、性別未知時 skip）與純函式模組；方向與部分現代流派（陰男陽女逆行）不同，見 RSH.PERIOD.XIAOXIAN_DIRECTION。待 Owner 核可。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.XIAOXIAN"
+      ]
     },
     {
       "researchId": "RSH.PERIOD.YEAR_DEITY_SCOPE",
       "title": "歲前 / 將前十二神之安放 scope 爭議",
       "status": "open",
       "type": "variant-conflict",
-      "relatedRules": ["ZW.CALC.STAR.PERIOD12.001"],
+      "relatedRules": [
+        "ZW.CALC.STAR.PERIOD12.001"
+      ],
       "question": "ZiWeiJS 目前僅於 year scope 安放歲建/將前十二神（Hardening P0-10）。但外部反推顯示部分流派在大限/流年/流月/流日/流時/小限每層重安，兩說衝突，不得現在硬定死。",
       "nextAction": "以古籍、Wenmo 行為、iztro、Fortel 交叉後，建立 Variant 候選 year-only / all-period-scopes / custom，再由 owner 裁決。",
       "ownerReviewRequired": true
     },
     {
       "researchId": "RSH.STAR.FENGGAO",
-      "title": "缺星候選：封誥",
-      "status": "open",
+      "title": "封誥：古典依據已取得，candidate 待 Owner 核可",
+      "status": "candidate",
       "type": "star",
-      "relatedRules": [],
-      "question": "cdestiny / Fortel / iztro 皆有，ZiWeiJS Star Registry 未收錄。需研究正式名稱、繁簡、別名、分類、安星法、年月日時依據、流派差異、廟旺適用、是否四化、是否運限動態、古籍出處、現代來源。",
-      "nextAction": "取得獨立 Evidence 後建 placement rule（status=research→candidate），暫定 ID ZW.STAR.MINOR.FENGGAO。",
-      "ownerReviewRequired": true
+      "relatedRules": [
+        "ZW.CALC.STAR.TAIFU_FENGGAO.001"
+      ],
+      "question": "《紫微斗數全書》卷二安星訣「由寅起宫子顺数至本生时安之」是否即應併入 canonical 之安法？",
+      "nextAction": "已依原文建 candidate 規則（與台輔共用 ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand），並與 SRC.IZTRO differential 比對一致。待 Owner 核可後才可升 canonical。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.FENGGAO"
+      ]
     },
     {
       "researchId": "RSH.STAR.JIESHEN",
-      "title": "缺星候選：解神",
-      "status": "open",
+      "title": "解神：年解已有古典依據（candidate）；月解仍未實作",
+      "status": "candidate",
       "type": "star",
-      "relatedRules": [],
-      "question": "外部多數有，ZiWeiJS 未收錄。注意『年解 / 解神』可能為不同 entity，需 Alias / Variant Audit 先行。",
-      "nextAction": "先釐清與年解之關係，再取得獨立 Evidence 建規則，暫定 ID ZW.STAR.MINOR.JIESHEN。",
-      "ownerReviewRequired": true
+      "relatedRules": [
+        "ZW.CALC.STAR.JIESHEN.001"
+      ],
+      "question": "《全書》卷二「解神从戌上起子，逆数至当生年太岁上是也」對應年解；月解（依生月）是否應另立規則？",
+      "nextAction": "年解已建 candidate 規則 ZW.CALC.STAR.JIESHEN.001（stage=on-demand）並與 iztro 之「年解」比對一致；月解僅見於外部實作（正二在申、三四在戌、五六在子、七八在寅、九十在辰、十一十二在午），未取得古典原文，另立 RSH.STAR.YUEJIE 追蹤。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.JIESHEN"
+      ]
     },
     {
       "researchId": "RSH.STAR.TAIFU",
-      "title": "缺星候選：台輔",
-      "status": "open",
+      "title": "台輔：古典依據已取得，candidate 待 Owner 核可",
+      "status": "candidate",
       "type": "star",
-      "relatedRules": [],
-      "question": "外部多數有，ZiWeiJS 未收錄。需釐清與三台/八座系統之關係與起法依據。",
-      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TAIFU。",
-      "ownerReviewRequired": true
+      "relatedRules": [
+        "ZW.CALC.STAR.TAIFU_FENGGAO.001"
+      ],
+      "question": "《紫微斗數全書》卷二安星訣「由午宫起子顺数至本生时安之」是否即應併入 canonical 之安法？",
+      "nextAction": "已依原文建 candidate 規則（ZW.CALC.STAR.TAIFU_FENGGAO.001，stage=on-demand，不影響 canonical 盤面），並與 SRC.IZTRO 實作觀點 differential 交叉比對 12 時辰 100% 一致。待 Owner 決定是否升 canonical 並改 stage=natal。",
+      "ownerReviewRequired": true,
+      "evidence": [
+        "EVD.QUANSHU.TAIFU"
+      ]
     },
     {
       "researchId": "RSH.STAR.TIANCAI",
-      "title": "缺星候選：天才",
+      "title": "天才：全書卷二安星訣未載，尚無古典依據",
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "外部多數有，ZiWeiJS 未收錄。與天壽成對，起法需古籍依據。",
-      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANCAI。",
+      "question": "iztro 於多數盤面安置「天才」，但《紫微斗數全書》卷二安星訣未見天才安法。",
+      "nextAction": "不得以 iztro 實作為依據。需另尋古典文獻或流派講義原文，方可建立 candidate。",
       "ownerReviewRequired": true
     },
     {
       "researchId": "RSH.STAR.TIANSHOU",
-      "title": "缺星候選：天壽",
+      "title": "天壽：全書卷二安星訣未載；注意舊「十八飛星」系統另有同名天壽",
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "外部多數有，ZiWeiJS 未收錄。與天才成對，起法需古籍依據。",
-      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANSHOU。",
+      "question": "《全書》卷二安星訣未載天壽。維基文庫《紫微斗數》條目屬舊「十八飛星」系統，其中有天壽（亥酉戌），與十四主星系統同名異義，不得混用。",
+      "nextAction": "不得以同名異義或現代實作為依據。需確認所屬系統與古典原文後再議。",
       "ownerReviewRequired": true
     },
     {
       "researchId": "RSH.STAR.TIANWU",
-      "title": "缺星候選：天巫",
+      "title": "天巫：全書卷二安星訣未載，尚無古典依據",
       "status": "open",
       "type": "star",
       "relatedRules": [],
-      "question": "cdestiny / Fortel / iztro 皆有，ZiWeiJS Star Registry 未收錄。安星法（月支？）與是否四化需確認。",
-      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANWU（spec §18/§36）。",
+      "question": "cdestiny / Fortel / iztro 皆有天巫，ZiWeiJS Star Registry 無此星。本次查核《紫微斗數全書》卷二安星訣全篇未見天巫安法（見 EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING）。",
+      "nextAction": "僅有現代實作（iztro 等）安法，屬實作觀點，不得作為 canonical 依據。需另尋古典文獻（如《紫微斗數全集》或流派講義）取得可引用原文後再議。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.XIAOXIAN_DIRECTION",
+      "title": "小限方向：全書「不論陰陽、男順女逆」vs 現代流派「陰男陽女逆行」",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": [
+        "ZW.CALC.PERIOD.XIAOXIAN.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.XIAOXIAN"
+      ],
+      "question": "《全書》卷二明言小限「不论阴阳男俱顺数不论阴阳女俱逆数」，但部分現代排盤以小限同大限之陰陽順逆（陰男陽女逆行）。本引擎 candidate 採原文。",
+      "nextAction": "待 Owner 決定：僅提供單一（原文）方向，或以 profile variant 同時支援兩種方向。目前候選規則為 candidate，尚未影響上線輸出。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.YUEJIE",
+      "title": "月解（月支解神）：外部實作有、古典原文未取得",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "evidence": [],
+      "question": "iztro 將「解神」按月支安（正二在申、三四在戌、五六在子、七八在寅、九十在辰、十一十二在午），與《全書》年解不同。此月解之古典出處待考。",
+      "nextAction": "取得可引用原文前不實作、不建表；年解已由 ZW.CALC.STAR.JIESHEN.001（candidate）涵蓋。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.TONGLIAN",
+      "title": "童限：全書卷二有訣但語意未定，尚未實作",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [],
+      "evidence": [],
+      "question": "《全書》卷二「安童限訣：一命二財三疾厄，四妻五福六官祿，餘年一派順流行，十五命宮看端的」——其行宮順序與現行十二宮排列（命、兄弟、夫妻、子女、財帛、疾厄…）之對應關係需先釐清。",
+      "nextAction": "先釐清「一命二財三疾厄四妻五福六官祿」在十二宮中的走法（是否逆時針、或按宮職序列），確認後方建 candidate 規則。",
       "ownerReviewRequired": true
     }
   ]

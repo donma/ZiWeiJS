@@ -306,7 +306,7 @@ export interface MajorPeriod extends PeriodInfo {
 }
 
 /** 規則執行狀態（spec §28） */
-export type RuleExecutionStatus = 'executed' | 'skipped' | 'unavailable' | 'variant' | 'error';
+export type RuleExecutionStatus = 'executed' | 'skipped' | 'unavailable' | 'variant' | 'candidate' | 'error';
 
 export interface TraceEntry {
   ruleId: string;

@@ -1,0 +1,124 @@
+{
+  "generatedBy": "manual research note（2026-09-24）",
+  "spec": "ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1（Phase B / Phase C）",
+  "purpose": "將本次古典原文查核結果建檔：哪些缺星有古典依據、哪些只有實作觀點（不得作 canonical 依據）。",
+  "primaryText": {
+    "sourceId": "SRC.QUANSHU.WIKISOURCE",
+    "title": "紫微斗數全書（維基文庫電子文本）",
+    "tier": 3,
+    "url": "https://zh.wikisource.org/wiki/紫微斗數全書",
+    "retrievedAt": "2026-09-24",
+    "volumeUsed": "卷二（安星訣）"
+  },
+  "trap": {
+    "title": "同名異義陷阱：舊『十八飛星』系統 vs 十四主星系統",
+    "detail": "維基文庫《紫微斗數》條目（pageid 254072）屬舊『十八飛星』系統，星曜為紫微、天虛、天貴、天印、天壽、紅鸞、天庫、天貫、文昌、天福、天祿等；該系統明言『文昌星，名曰台輔』，其台輔／天壽與十四主星系統同名異義。故本專案僅採《紫微斗數全書》卷二安星訣，不採該條目之星名與安法。",
+    "action": "已於 SRC.QUANSHU.WIKISOURCE.notes 明載，避免日後誤引。"
+  },
+  "items": [
+    {
+      "name": "台輔",
+      "starId": "ZW.STAR.AUX.TAIFU",
+      "classicalBasis": "book",
+      "quote": "安台辅封诀 由午宫起子顺数至本生时安之。",
+      "evidenceId": "EVD.QUANSHU.TAIFU",
+      "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+      "ruleStatus": "candidate",
+      "externalAgreement": "iztro（SRC.IZTRO）實作觀點一致：午宮 + 時序",
+      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可升 canonical"
+    },
+    {
+      "name": "封誥",
+      "starId": "ZW.STAR.AUX.FENGGAO",
+      "classicalBasis": "book",
+      "quote": "安封诰诀 由寅起宫子顺数至本生时安之。",
+      "evidenceId": "EVD.QUANSHU.FENGGAO",
+      "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+      "ruleStatus": "candidate",
+      "externalAgreement": "iztro 實作觀點一致：寅宮 + 時序",
+      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可升 canonical"
+    },
+    {
+      "name": "解神（年解）",
+      "starId": "ZW.STAR.AUX.JIESHEN",
+      "classicalBasis": "book",
+      "quote": "安天德月德解神诀 天德星从酉上起子，顺数至流年太岁上是也。月德星从子上起子，顺数至流年太岁上是也。解神从戌上起子，逆数至当生年太岁上是也。",
+      "evidenceId": "EVD.QUANSHU.JIESHEN",
+      "ruleId": "ZW.CALC.STAR.JIESHEN.001",
+      "ruleStatus": "candidate",
+      "externalAgreement": "iztro 之『年解』一致；iztro 另有『解神』為月解，不同義，未納入比對",
+      "decision": "建 candidate 規則（stage=on-demand）；月解另立 RSH.STAR.YUEJIE"
+    },
+    {
+      "name": "天巫",
+      "starId": null,
+      "classicalBasis": "none-found",
+      "quote": null,
+      "evidenceId": "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+      "ruleId": null,
+      "ruleStatus": null,
+      "externalAgreement": "iztro / cdestiny / Fortel 皆有（實作觀點，非依據）",
+      "decision": "不實作；維持 RSH.STAR.TIANWU（open）"
+    },
+    {
+      "name": "天才",
+      "starId": null,
+      "classicalBasis": "none-found",
+      "quote": null,
+      "evidenceId": "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+      "ruleId": null,
+      "ruleStatus": null,
+      "externalAgreement": "iztro 有（實作觀點，非依據）",
+      "decision": "不實作；維持 RSH.STAR.TIANCAI（open）"
+    },
+    {
+      "name": "天壽",
+      "starId": null,
+      "classicalBasis": "none-found",
+      "quote": null,
+      "evidenceId": "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+      "ruleId": null,
+      "ruleStatus": null,
+      "externalAgreement": "iztro 有；舊十八飛星系統另有同名天壽（不同義）",
+      "decision": "不實作；維持 RSH.STAR.TIANSHOU（open）"
+    },
+    {
+      "name": "小限",
+      "starId": null,
+      "classicalBasis": "book",
+      "quote": "安小限诀 不论阴阳男俱顺数不论阴阳女俱逆数。寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫。",
+      "evidenceId": "EVD.QUANSHU.XIAOXIAN",
+      "ruleId": "ZW.CALC.PERIOD.XIAOXIAN.001",
+      "ruleStatus": "candidate",
+      "externalAgreement": "iztro 起宮一致（寅午戌起辰…）；方向議題見 RSH.PERIOD.XIAOXIAN_DIRECTION",
+      "decision": "建 candidate 規則（stage=on-demand），待 Owner 核可"
+    },
+    {
+      "name": "童限",
+      "starId": null,
+      "classicalBasis": "book-ambiguous",
+      "quote": "安童限诀 一命二财三疾厄，四妻五福六官禄，余年一派顺流行，十五命宫看端的。",
+      "evidenceId": null,
+      "ruleId": null,
+      "ruleStatus": null,
+      "externalAgreement": "未查",
+      "decision": "語意未定，不實作；登錄 RSH.PERIOD.TONGLIAN"
+    },
+    {
+      "name": "大限起法",
+      "starId": null,
+      "classicalBasis": "book",
+      "quote": "安大限诀 阳男阴女从命前一宫起顺行 是父母宫。阴男阳女从命后一宫起逆行 是兄弟宫",
+      "evidenceId": null,
+      "ruleId": null,
+      "ruleStatus": null,
+      "externalAgreement": "本引擎現行大限自命宮起（canonical 既有行為，未變更）",
+      "decision": "本條原文主要在說明宮位擺放（命前一宮為父母宮），與現行實作不衝突；不改動 canonical，僅記錄以免誤讀。"
+    }
+  ],
+  "verification": {
+    "tool": "tests/differential/candidate-stars.test.ts",
+    "result": "IZTRO_CASES 全部案例之 台輔／封誥／年解 與 iztro 100% 一致",
+    "note": "外部實作僅證明『兩實作一致』，不構成 canonical 依據；canonical 仍須 Owner 批准。"
+  }
+}

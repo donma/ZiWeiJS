@@ -2,7 +2,7 @@
   "generatedBy": "tools/assimilation/star-gap-audit.ts",
   "note": "外部名稱只作 Gap Detector，不作為 canonical；actual-missing-star 一律先進 Research Queue。",
   "ziweiCounts": {
-    "star": 95,
+    "star": 98,
     "stage": 12,
     "cycleDeity": 12,
     "yearDeity": 24
@@ -11,30 +11,69 @@
   "results": [
     {
       "name": "封誥",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.FENGGAO",
+          "entityKind": "star",
+          "names": [
+            "封誥",
+            "封诰",
+            "Feng Gao",
+            "封诰",
+            "封誥星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "解神",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.JIESHEN",
+          "entityKind": "star",
+          "names": [
+            "解神",
+            "解神",
+            "Jie Shen",
+            "年解",
+            "解神星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "台輔",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TAIFU",
+          "entityKind": "star",
+          "names": [
+            "台輔",
+            "台辅",
+            "Tai Fu",
+            "台辅",
+            "台輔星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "天才",
@@ -110,18 +149,25 @@
     },
     {
       "name": "年解",
-      "status": "external-only",
-      "matched": [],
-      "alias": {
-        "alias": "年解",
-        "type": "external-only",
-        "candidates": [],
-        "note": "外部實作名稱；與解神是否同星需 Alias Audit（spec §22）"
-      },
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.JIESHEN",
+          "entityKind": "star",
+          "names": [
+            "解神",
+            "解神",
+            "Jie Shen",
+            "年解",
+            "解神星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "classify"
+      "decision": null
     },
     {
       "name": "長生",
@@ -730,18 +776,25 @@
     },
     {
       "name": "年解",
-      "status": "external-only",
-      "matched": [],
-      "alias": {
-        "alias": "年解",
-        "type": "external-only",
-        "candidates": [],
-        "note": "外部實作名稱；與解神是否同星需 Alias Audit（spec §22）"
-      },
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.JIESHEN",
+          "entityKind": "star",
+          "names": [
+            "解神",
+            "解神",
+            "Jie Shen",
+            "年解",
+            "解神星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "iztro"
       ],
-      "decision": "classify"
+      "decision": null
     },
     {
       "name": "流魁",

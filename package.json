@@ -55,7 +55,6 @@
     "assimilation:snapshot:check": "tsx tools/assimilation/external-snapshot.ts --check",
     "assimilation:star-gap": "tsx tools/assimilation/star-gap-audit.ts",
     "assimilation:star-gap:check": "tsx tools/assimilation/star-gap-audit.ts --check",
-    "validate:catalogs": "tsx tools/assimilation/validate-catalogs.ts",
     "release:smoke:artifacts": "tsx tools/release-validator/artifact-smoke.ts",
     "release:smoke:package": "tsx tools/release-validator/package-smoke.ts",
     "release:smoke": "npm run release:smoke:artifacts && npm run release:smoke:package",

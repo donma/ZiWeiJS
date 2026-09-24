@@ -7,8 +7,10 @@ import majorStarsData from '../../rules/calculation/stars/major.json' with { typ
 import auxStarsData from '../../rules/calculation/stars/aux-stars.json' with { type: 'json' };
 import auxGroupsData from '../../rules/calculation/stars/aux-groups.json' with { type: 'json' };
 import auxVariantsData from '../../rules/calculation/stars/aux-variants.json' with { type: 'json' };
+import auxCandidatesData from '../../rules/calculation/stars/aux-candidates.json' with { type: 'json' };
 import sihuaData from '../../rules/calculation/transformations/sihua.json' with { type: 'json' };
 import periodsData from '../../rules/calculation/periods/periods.json' with { type: 'json' };
+import periodCandidatesData from '../../rules/calculation/periods/periods-candidates.json' with { type: 'json' };
 import relationsData from '../../rules/calculation/relations/relations.json' with { type: 'json' };
 import dignityData from '../../rules/calculation/dignity/dignity.json' with { type: 'json' };
 import calendarData from '../../rules/calculation/calendar/calendar.json' with { type: 'json' };
@@ -34,8 +36,8 @@ import profilesLichun from '../../profiles/lichun.json' with { type: 'json' };
 interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
 const ruleFiles: RuleFile[] = [
-  palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData, sihuaData,
-  periodsData, relationsData, dignityData, calendarData, birthData,
+  palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData, auxCandidatesData,
+  sihuaData, periodsData, periodCandidatesData, relationsData, dignityData, calendarData, birthData,
   patternsData, rectificationData
 ] as unknown as RuleFile[];
 

@@ -106,6 +106,18 @@
       "language": "zh",
       "url": "https://github.com/6tail/lunar-typescript",
       "notes": "本引擎用於：國曆↔農曆轉換、節氣、四柱干支（年/月/日/時柱）、閏月判定。注意：真太陽時之經度修正與 equation of time 近似式由 ZiWeiJS 自行實作，並非本套件提供；本套件只提供曆法與干支。"
+    },
+    {
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "title": "紫微斗數全書（維基文庫電子文本）",
+      "author": "托名陳希夷（陳摶）",
+      "era": "宋（傳）/明清刊本",
+      "edition": "維基文庫錄入本（未與紙本/善本逐字校勘）",
+      "type": "classical-text",
+      "tier": 3,
+      "language": "zh",
+      "url": "https://zh.wikisource.org/wiki/紫微斗數全書",
+      "notes": "Post-Stability Assimilation Phase B/C 研究用文本：卷二「安星訣」用於核對台輔、封誥、解神（年解）、小限、大限、童限等條目原文，2026-09-24 取得。電子文本存在簡繁混排與錄入差異，且未與紙本逐字校勘，故列 tier 3；不得單獨作為 canonical 依據（canonical 需 Tier1/2 或 2×Tier3）。另注意維基文庫《紫微斗數》條目屬舊「十八飛星」系統，其『台輔』指文昌，與十四主星系統同名異義，不得混用。"
     }
   ]
 }

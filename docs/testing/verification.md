@@ -161,6 +161,7 @@ trace.schema.json                 Trace entry
 | 安星正確性 | 與 `iztro@2.6.1` 對照（30 案例，natal） |
 | 安星快照 | `fixtures/differential/iztro/*.json`（CI 不需外部套件） |
 | 限運（大限/流年/流月/流日/流時） | `tools/differential-runner/iztro-period-runner.ts`（5 案例，各 scope 的 stem/branch/lifePalaceBranch/sihua） |
+| Candidate 星曜（台輔/封誥/年解） | `tests/differential/candidate-stars.test.ts`：`IZTRO_CASES` 全案例 100% 一致（僅證明實作一致，非 canonical 依據） |
 | 曆法層 | `lunar-typescript@1.8.6` vs `lunar-lite@0.2.8`，逐日 1900-01-31 ~ 2100-12-31 |
 
 ### 限運差分（spec 2nd §P0-9 / 3rd §P0-5）
@@ -249,3 +250,22 @@ home  chart-standard  chart-expert  dark  tooltip  bottom-sheet  rules  sources 
 
 視覺快照的 baseline 與作業系統字型相關，因此只在本地 / 相同環境執行；
 CI 只跑不受字型影響的無障礙測試。
+
+## 8. Candidate 星曜 / 小限（Assimilation Phase B / C）
+
+外部缺星清單不得直接進 canonical。本次查核《紫微斗數全書》卷二「安星訣」原文：
+
+| 項目 | 古典依據 | 處置 |
+|------|----------|------|
+| 台輔、封誥 | 有（午起子時順、寅起子時順） | candidate 規則 `ZW.CALC.STAR.TAIFU_FENGGAO.001` |
+| 解神（年解） | 有（戌起子逆至生年太歲） | candidate 規則 `ZW.CALC.STAR.JIESHEN.001` |
+| 小限 | 有（寅午戌起辰…男順女逆） | candidate 規則 `ZW.CALC.PERIOD.XIAOXIAN.001` |
+| 天巫、天才、天壽 | **查無**（全書卷二未載） | 不實作，僅 Research Queue |
+| 月解、童限 | 未取得 / 語意未定 | 不實作，僅 Research Queue |
+
+- candidate 規則一律 `status: "candidate"` + `stage: "on-demand"`，**不進入** `NATAL_EXECUTION_PLAN` / `PERIOD_EXECUTION_PLAN`，
+  故 canonical 盤面與 golden oracle 不變；`tests/unit/candidate-stars.test.ts` 對此設有護欄。
+- 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）。
+- 來源與證據：`SRC.QUANSHU.WIKISOURCE`（tier 3，電子文本未校勘）、`EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}`，
+  以及負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
+- 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

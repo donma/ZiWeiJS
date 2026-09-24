@@ -79,7 +79,7 @@ function record(
   outcome: {
     inputs?: Record<string, unknown>;
     result: unknown;
-    status: 'executed' | 'skipped' | 'unavailable' | 'variant' | 'error';
+    status: 'executed' | 'skipped' | 'unavailable' | 'variant' | 'candidate' | 'error';
     reason?: string;
     note?: string;
   }

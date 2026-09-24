@@ -1,0 +1,49 @@
+{
+  "description": "Candidate 星曜安星表（研究階段，未經 Owner 批准升 canonical）。index = 地支序 zi=0 ... hai=11。本表不參與 natal 執行計畫，故 canonical 盤面輸出不受影響。",
+  "rules": {
+    "byHourBranch": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+    "byYearBranch": "ZW.CALC.STAR.JIESHEN.001",
+    "xiaoXian": "ZW.CALC.PERIOD.XIAOXIAN.001"
+  },
+  "provenance": {
+    "classicalSourceId": "SRC.QUANSHU.WIKISOURCE",
+    "classicalEvidence": [
+      "EVD.QUANSHU.TAIFU",
+      "EVD.QUANSHU.FENGGAO",
+      "EVD.QUANSHU.JIESHEN",
+      "EVD.QUANSHU.XIAOXIAN"
+    ],
+    "quotes": {
+      "taifu": "由午宫起子顺数至本生时安之。",
+      "fenggao": "由寅起宫子顺数至本生时安之。",
+      "jieshen": "解神从戌上起子，逆数至当生年太岁上是也。",
+      "xiaoXian": "寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫（不论阴阳男俱顺数不论阴阳女俱逆数）。"
+    }
+  },
+  "byHourBranch": {
+    "note": "台輔自午起子時順行；封誥自寅起子時順行。",
+    "ZW.STAR.AUX.TAIFU": { "startBranch": "wu", "direction": 1 },
+    "ZW.STAR.AUX.FENGGAO": { "startBranch": "yin", "direction": 1 }
+  },
+  "byYearBranch": {
+    "note": "解神（年解）自戌起子時逆行，數至生年太歲。",
+    "ZW.STAR.AUX.JIESHEN": { "startBranch": "xu", "direction": -1 }
+  },
+  "xiaoXian": {
+    "note": "小限一歲起於年支三合局所屬宮位，男順女逆（不論陰陽）；宮位為地支。",
+    "startByGroup": {
+      "yin-wu-xu": "chen",
+      "shen-zi-chen": "xu",
+      "si-you-chou": "wei",
+      "hai-mao-wei": "chou"
+    },
+    "direction": { "male": 1, "female": -1 }
+  },
+  "notImplemented": {
+    "note": "以下同見於外部實作但尚未取得古典依據，故不實作、不建表。",
+    "items": [
+      "月解（解神按月支：正二在申、三四在戌、五六在子、七八在寅、九十在辰、十一十二在午）",
+      "童限（一命二財三疾厄四妻五福六官祿，餘年順行，十五回命宮）"
+    ]
+  }
+}

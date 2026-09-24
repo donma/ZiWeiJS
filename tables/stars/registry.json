@@ -387,6 +387,24 @@
     { "id": "ZW.STAR.INTERIM.WANGSHEN2", "category": "interim", "tier": "common", "status": "canonical",
       "name": { "zh-TW": "亡神", "zh-CN": "亡神", "en": "Wang Shen (interim)" },
       "shortDesc": { "zh-TW": "將前諸星之一，主耗散失神。" },
-      "sources": ["SRC.QUANSHU"], "tags": ["interim"] }
+      "sources": ["SRC.QUANSHU"], "tags": ["interim"] },
+    { "id": "ZW.STAR.AUX.TAIFU", "category": "aux", "tier": "common", "status": "candidate", "entityKind": "star",
+      "name": { "zh-TW": "台輔", "zh-CN": "台辅", "en": "Tai Fu" },
+      "aliases": ["台辅", "台輔星"],
+      "shortDesc": { "zh-TW": "生時系輔星，由午宮起子時順行；主貴、輔佐。" },
+      "note": "candidate：依《紫微斗數全書》卷二安星訣（SRC.QUANSHU.WIKISOURCE）建立，尚未併入 canonical 盤面。",
+      "sources": ["SRC.QUANSHU.WIKISOURCE"], "tags": ["candidate", "hour-branch", "phase-b"] },
+    { "id": "ZW.STAR.AUX.FENGGAO", "category": "aux", "tier": "common", "status": "candidate", "entityKind": "star",
+      "name": { "zh-TW": "封誥", "zh-CN": "封诰", "en": "Feng Gao" },
+      "aliases": ["封诰", "封誥星"],
+      "shortDesc": { "zh-TW": "生時系輔星，由寅宮起子時順行；主封贈、榮典。" },
+      "note": "candidate：依《紫微斗數全書》卷二安星訣（SRC.QUANSHU.WIKISOURCE）建立，尚未併入 canonical 盤面。",
+      "sources": ["SRC.QUANSHU.WIKISOURCE"], "tags": ["candidate", "hour-branch", "phase-b"] },
+    { "id": "ZW.STAR.AUX.JIESHEN", "category": "aux", "tier": "common", "status": "candidate", "entityKind": "star",
+      "name": { "zh-TW": "解神", "zh-CN": "解神", "en": "Jie Shen" },
+      "aliases": ["年解", "解神星"],
+      "shortDesc": { "zh-TW": "年支系輔星，由戌宮起子逆數至生年太歲；主解厄。" },
+      "note": "candidate：依《紫微斗數全書》卷二安天德月德解神訣（SRC.QUANSHU.WIKISOURCE）建立；月解（依生月）尚未實作。",
+      "sources": ["SRC.QUANSHU.WIKISOURCE"], "tags": ["candidate", "year-branch", "phase-b"] }
   ]
 }

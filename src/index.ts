@@ -58,6 +58,12 @@ export {
 } from './star-registry/registry.js';
 export { QueryApi } from './query-engine/query.js';
 export type { PalaceRelations } from './query-engine/query.js';
+export {
+  candidateAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
+  yearBranchGroup, xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
+  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
+  type CandidateStarPlacement, type CandidateBasis
+} from './candidate-stars/candidate-stars.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
 import { getRule, listRules, getSource, listSources } from './rule-engine/registry.js';
@@ -79,6 +85,11 @@ import {
   listStarRegistry, getStarRegistryEntry, entityKindOfStar, groupStarsByEntityKind
 } from './star-registry/registry.js';
 import { ASTRO_ENTITY_KINDS } from './core/entity-kinds.js';
+import {
+  candidateAuxStars, placeTaiFu, placeFengGao, placeJieShen,
+  xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
+  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
+} from './candidate-stars/candidate-stars.js';
 import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
 
 export const ZiWei = {
@@ -149,6 +160,27 @@ export const ZiWei = {
   Taxonomy: {
     kinds: ASTRO_ENTITY_KINDS,
     ofStar: entityKindOfStar
+  },
+  /**
+   * Candidate 星曜 / 小限（spec Post-Stability Phase B/C）。
+   * 明確標示為 candidate：預設不併入 canonical 盤面，需 Owner 批准後才會進執行計畫。
+   */
+  Candidate: {
+    auxStars: candidateAuxStars,
+    taiFu: placeTaiFu,
+    fengGao: placeFengGao,
+    jieShen: placeJieShen,
+    xiaoXian: {
+      startBranch: xiaoXianStartBranch,
+      direction: xiaoXianDirection,
+      branchAtAge: xiaoXianBranchAtAge,
+      sequence: xiaoXianSequence
+    },
+    ruleIds: {
+      taiFuFengGao: TAIFU_FENGGAO_RULE_ID,
+      jieShen: JIESHEN_RULE_ID,
+      xiaoXian: XIAOXIAN_RULE_ID
+    }
   },
   Trace: {
     explain: explainTrace
