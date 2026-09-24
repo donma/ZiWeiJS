@@ -136,6 +136,29 @@
 - **P2-4 清理根目錄暫存檔**：移除 `.fixture-gen.tmp.ts`，`.gitignore` 加強
 - **P2-5 ROADMAP 重整**：分 Done / In progress / Next，澄清 research pipeline 範圍
 
+### 第三輪 Correctness / Contract Hardening（P0-1 ~ P2-5）
+- **P0-1 虛歲以農曆年為準**：大限 / `active.age` 改用目標「農曆年」計算，跨越正月初一即換歲（不再用 Gregorian 年）；`virtualAge` / `ageAt` 改收 `targetLunarYear`
+- **P0-2 年柱換年分界可選**：新增 `profile.yearBoundaryPolicy`（`lunar-new-year` / `lichun`）；新增共用 `resolveYearGanzhi(lunar, policy)`（本命與限運共用）；新增 `profiles/lichun.json`；新規則 `ZW.CALC.CALENDAR.YEAR_BOUNDARY.001` / `.V001`
+- **P0-3 year-only 不再捏造 1/15**：`normalizeAnnualTarget()` 以年中定年柱；新增 `granularity` / `resolution`（`exact-date` / `representative-date` / `year-only`）；`solar.day` / `lunar.day` 於代表日情境留空
+- **P0-4 斗君**：新增 `src/period-engine/doujun.ts`；流月命宮改由斗君（流年歲建起正月、逆數生月、順數生時）起算（原「流年命宮起正月順數」為誤），**修正 28 筆限運 iztro 差異**；`ZW.CALC.PERIOD.LIUYUE.001` → 2.0
+- **P0-5 限運差分嚴格 Gate**：`bug` / `unclassified` / `external-error` 一律 FAIL；已知流派差異必須登錄 `variants/differential.json`
+- **P0-6 四化差分真實比對**：逐 scope 比對 `lu/quan/ke/ji`；iztro locale 改 `zh-TW` 並補簡繁星名 fallback
+- **P0-7 Differential fixtures 契約**：帶 `expectedScopes` 與 `external.sourceId` / `version`
+- **P0-8 verify / CI 納入 live differential**：`npm run differential` 與 `differential:period`
+- **P0-9 共用四化表**：新增 `ZW.CALC.SIHUA.TABLE.001` / `.V001` + `resolveSihuaPatch` / `resolveSihuaForStem`；本命/宮干/大限/流年/流月/流日/流時統一走同一 resolver
+- **P0-10 歲建 / 將前十二神僅流年**：流月 / 流日 / 流時 overlay 之 `periodStars` 一律為空
+- **P0-11 規則版本**：`LIUNIAN` / `LIURI` / `LIUSHI` → 1.1、`LIUYUE` → 2.0（皆附 `behavior-change` changeLog）
+- **P1-1 / P1-2 嚴格出生輸入驗證**：真實國曆日期（`INVALID_DATE`）、時/分/秒範圍、經緯度範圍與 NaN/Infinity（`INVALID_INPUT`）、農曆大小月天數、DST 不存在/歧義時刻（`NONEXISTENT_LOCAL_TIME` / `AMBIGUOUS_LOCAL_TIME`）＋ `timezoneDisambiguation`
+- **P1-3 / P1-4 共用年柱解析與 PeriodInfo 擴充**：`lunarYear` / `resolvedYear` / `yearBoundaryPolicy` / `resolution`
+- **P1-5 / P1-6 Variance Registry**：`variants/differential.json`（6 筆，`acceptedByOwner: false`，僅 owner 可核可）；fixtures 帶外部來源版本
+- **P1-7 Provenance 中繼資料**：`StarPlacement` / `Transformation` / `PatternResult` / `InterpretationHit` / `PeriodInfo` 皆帶 `provenance`（ruleId/ruleVersion/profile/sourceRefs/evidenceRefs）；修正 `placeStar` 的 `ruleId` 誤植
+- **P1-8 共用限運四化解析**：`resolvePeriodTransformations` 由 `calcPeriodSihua` 與 `buildPeriodOverlay` 共用
+- **P1-9 來源清理**：移除已刪除之 `SRC.MODERN-IMPL-CONSENSUS` 殘留引用
+- **P2-1 ~ P2-3 治理資料**：`evidence` / `source` schema 補 `editionId` / `publisher` / `publicationYear` / `archiveUrl` / `editions[]`；補研究條目
+- **P2-4 文件**：修正 `docs/api/periods.md`（斗君、虛歲、year-only、yearBoundaryPolicy、periodStars 範圍）、`public-api.md`（錯誤碼 / `timezoneDisambiguation`）
+- **P2-5 Build Manifest**：新增 `tools/build-manifest.ts` → `dist/bible-manifest.json`（規則數 / profile 版本），納入 `npm run build`
+- 契約：`chart.schema.json` 補 `provenance` 與 `PeriodInfo` 新欄位
+
 ### P0-1 Rule 真正成為 Source of Truth
 - 新增 `executor-registry` / `execute-rule` / `execution-plan`；`engine.ts` 不再直接呼叫 executor
 - 執行順序來自規則資料的 `logic.stage` + `logic.order`（natal 31 步 / period 5 步）
@@ -230,9 +253,10 @@
 - `schemaVersion` **1.0 → 2.0**（period 契約、`direction` 列舉、`chart.stars` 型別）
 - 沒有 `targetDate` 時不再產生限運
 - `time.hour` 成為必填
+- 第三輪：`chart.schema.json` 新增可選 `provenance` 與 `PeriodInfo.{lunarYear,resolvedYear,yearBoundaryPolicy,resolution}`；規則版本 `LIUYUE` 升為 2.0（流月命宮改斗君）；`profile.yearBoundaryPolicy` 預設 `lunar-new-year`
 
 ### 測試
-- **412 tests / 32 files**（Vitest；0.3.0 為 150）
+- **469 tests / 37 files**（Vitest；0.3.0 為 150、第二輪為 412）
 - **62 Playwright tests**：Chromium（UI 20 + a11y 13 + file:// 1）+ Firefox（14）+ WebKit（14）
 - `tests/integrity/`（spec §25）：與 `validate:integrity` 共用同一份實作，ID 唯一 / 參照可解析 /
   canonical 溯源 / DSL 與 star schema / 執行計畫覆蓋 / changeLog 一致性 / chart output schema
@@ -240,7 +264,8 @@
   無 targetDate 不產流年、targetDate 改變→active period 改變、真太陽時跨日、23:00 換日慣例差異、
   DSL typo→error、profile override 生效、Trace 自動帶 source/evidence/version
 - Determinism（spec §26）：`JSON.stringify(calculate(input))` 連同 periods 完全一致，不再需要 strip
-- 差分：iztro 10 案例 × 45 欄 = 450 欄，0 needs-review；12 筆存檔 fixture
-- 限運差分：5 案例五層限運（66 欄，49 match / 17 分類完成）；5 筆存檔 fixture
+- 差分：iztro 30 案例 × 45 欄 = 1350 欄（natal 布星 0 needs-review；晚子時案例差異歸類換日/流派）
+- 限運差分：5 案例五層限運 **154 欄：148 match / 6 已知 day-boundary variance（全數登錄）**；5 筆存檔 fixture
+- 第三輪新增測試：year-boundary（14）、major-age-boundary（7）、doujun（6）、sihua-variant-scope（9）、birth-input-validation（11）
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
 - Golden fixtures：35 筆 v2 oracle + 8 legacy + 10 筆 period golden oracle；Differential fixtures：17 筆（12 iztro + 5 iztro-period）+ 3 筆（calendar）

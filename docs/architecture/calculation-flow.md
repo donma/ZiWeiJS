@@ -26,7 +26,7 @@
   │       → 生年四化 / 宮干四化 / 廟旺 / 大限
   │
   ├─ 4. 若有 targetDate
-  │     虛歲 = targetYear − 農曆生年 + 1
+  │     虛歲 = 目標農曆年 − 生年農曆年 + 1
   │     resolveMajorPeriod() → periods.active.major
   │     PERIOD_EXECUTION_PLAN（5 步）
   │       流年 → 流月 → 流日 → 流時 → 限運四化

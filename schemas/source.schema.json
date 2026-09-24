@@ -29,6 +29,23 @@
     "publisher": { "type": "string" },
     "year": { "type": ["integer", "string"] },
     "url": { "type": "string" },
+    "archiveUrl": { "type": "string" },
+    "publicationYear": { "type": ["integer", "string"] },
+    "editions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["editionId", "title"],
+        "properties": {
+          "editionId": { "type": "string" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "year": { "type": ["integer", "string"] },
+          "url": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
     "notes": { "type": "string" }
   },
   "additionalProperties": true

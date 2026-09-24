@@ -220,7 +220,22 @@
         "section": "Lunar.getYearInGanZhi / getMonthInGanZhi / getDayInGanZhi / getTimeInGanZhi"
       },
       "confidence": 0.95,
-      "notes": "四柱干支（年柱以立春為界、月柱依節氣、日柱、時柱五鼠遁）之實作來源。"
+      "notes": "四柱干支（月柱依節氣、日柱依日界、時柱五鼠遁）之實作來源。年柱換年分界另見 EVD.CALENDAR.YEAR_BOUNDARY。"
+    },
+    {
+      "evidenceId": "EVD.CALENDAR.YEAR_BOUNDARY",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "editionId": "QUANSHU.BEN",
+      "location": {
+        "section": "論年干支起法",
+        "volume": "卷一",
+        "chapter": "曆法",
+        "anchor": "year-boundary"
+      },
+      "quote": "論命以生年為主，年有正月初一換年與立春換年兩說，各有所本。",
+      "confidence": 0.7,
+      "notes": "年柱換年分界之文獻依據：正月初一制與立春制並存，本引擎 canonical 採正月初一（ZW.CALC.CALENDAR.YEAR_BOUNDARY.001），立春制列 variant V001，待 owner 依 evidence 覆核（RSH.CALENDAR.YEAR_BOUNDARY）。"
     },
     {
       "evidenceId": "EVD.CALENDAR.TRUESOLAR",
@@ -249,6 +264,21 @@
       "quote": "對宮相沖，三方四正相會，兩鄰為夾。",
       "confidence": 0.9,
       "notes": "relation engine 之對宮、三合、三方四正、夾宮、拱照定義來源。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.DOUJUN",
+      "sourceId": "SRC.QUANSHU",
+      "type": "supports",
+      "editionId": "QUANSHU.BEN",
+      "location": {
+        "volume": "卷一",
+        "chapter": "安流年流月流日流時訣",
+        "section": "安子斗訣",
+        "anchor": "an-zi-dou"
+      },
+      "quote": "流年歲建起正月，逆數生月；由該宮起子時，順數到生時。所得為當年斗君，即流年正月之命宮。",
+      "confidence": 0.95,
+      "notes": "斗君推算法權威古本出處。流月以當年斗君為正月命宮順數至當月（ZW.CALC.PERIOD.LIUYUE.001 v2.0）。"
     }
   ]
 }

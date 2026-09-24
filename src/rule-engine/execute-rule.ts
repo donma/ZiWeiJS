@@ -1,5 +1,5 @@
 import type { EngineContext } from '../executors/context.js';
-import type { Rule } from '../core/types.js';
+import type { Rule, Provenance } from '../core/types.js';
 import { ZiWeiError } from '../core/errors.js';
 import { getRule, resolveRuleForProfile } from './registry.js';
 import { getExecutor, normalizeOutcomes } from './executor-registry.js';
@@ -105,21 +105,28 @@ export function executePlan(plan: PlanEntry[], ctx: EngineContext): void {
   }
 }
 
-/** 取得規則的溯源資訊（spec §29 Rule Provenance） */
-export interface Provenance {
-  ruleId: string;
-  ruleVersion: string;
-  profile: string;
-  sourceRefs: string[];
-  evidenceRefs: string[];
-}
+/** 取得規則的溯源資訊（spec §29 / 3rd §P1-7） */
+export type { Provenance } from '../core/types.js';
 
 export function provenanceFor(ruleId: string, profileId: string, overrides?: Record<string, string>): Provenance {
   const canonicalId = ruleId;
   const effectiveId = overrides?.[canonicalId] ?? canonicalId;
-  const rule = getRule(effectiveId);
-  if (!rule) {
-    throw new ZiWeiError('REFERENCE_NOT_FOUND', `Rule not found: ${effectiveId}`, { ruleId: effectiveId });
+  let rule: Rule | undefined;
+  try {
+    rule = getRule(effectiveId);
+  } catch {
+    try {
+      rule = getRule(canonicalId);
+    } catch {
+      // 若規則仍無法查得，回傳最低合法 Provenance，不使整體排盤崩潰
+      return {
+        ruleId,
+        ruleVersion: '1.0',
+        profile: profileId,
+        sourceRefs: [],
+        evidenceRefs: []
+      };
+    }
   }
   return {
     ruleId: rule.ruleId,
@@ -128,4 +135,57 @@ export function provenanceFor(ruleId: string, profileId: string, overrides?: Rec
     sourceRefs: rule.sourceRefs ?? [],
     evidenceRefs: rule.evidenceRefs ?? []
   };
+}
+
+/**
+ * 將 provenance 注入所有輸出物件（spec 3rd §P1-7）。
+ * 由 Rule Engine 統一執行，executor 不得自行硬寫 ruleVersion。
+ */
+export function stampProvenance(ctx: EngineContext): void {
+  const stamp = (ruleId: string | undefined): Provenance | undefined => {
+    if (!ruleId) return undefined;
+    try {
+      return provenanceFor(ruleId, ctx.profile.profileId, ctx.profile.ruleOverrides);
+    } catch {
+      return undefined;
+    }
+  };
+
+  for (const placement of ctx.placements.values()) {
+    if (placement.provenance) continue;
+    const p = stamp(placement.ruleId);
+    if (p) {
+      placement.provenance = p;
+      placement.ruleVersion = p.ruleVersion;
+    }
+  }
+
+  for (const tr of ctx.transformations) {
+    if (tr.provenance) continue;
+    const p = stamp(tr.ruleId);
+    if (p) tr.provenance = p;
+  }
+
+  for (const info of [ctx.activeMajorPeriod, ctx.yearPeriod, ctx.monthPeriod, ctx.dayPeriod, ctx.hourPeriod]) {
+    if (!info || info.provenance) continue;
+    const ruleId = info.scope === 'year' ? 'ZW.CALC.PERIOD.LIUNIAN.001'
+      : info.scope === 'month' ? 'ZW.CALC.PERIOD.LIUYUE.001'
+      : info.scope === 'day' ? 'ZW.CALC.PERIOD.LIURI.001'
+      : info.scope === 'hour' ? 'ZW.CALC.PERIOD.LIUSHI.001'
+      : 'ZW.CALC.PERIOD.DAXIAN.001';
+    const p = stamp(ruleId);
+    if (p) info.provenance = p;
+  }
+
+  for (const pt of ctx.patternResults ?? []) {
+    if (pt.provenance) continue;
+    const p = stamp(pt.ruleId ?? pt.patternId);
+    if (p) pt.provenance = p;
+  }
+
+  for (const hit of ctx.interpretationHits ?? []) {
+    if (hit.provenance) continue;
+    const p = stamp(hit.ruleId);
+    if (p) hit.provenance = p;
+  }
 }

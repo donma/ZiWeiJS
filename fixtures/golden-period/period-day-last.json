@@ -47,22 +47,22 @@
       "palaceId": "travel"
     },
     "month": {
-      "branch": "wei",
+      "branch": "you",
       "stem": "ren",
       "ganzhi": {
         "stem": "ren",
         "branch": "chen"
       },
-      "palaceId": "health"
+      "palaceId": "children"
     },
     "day": {
-      "branch": "hai",
+      "branch": "chou",
       "stem": "geng",
       "ganzhi": {
         "stem": "geng",
         "branch": "shen"
       },
-      "palaceId": "siblings"
+      "palaceId": "parents"
     },
     "hour": null
   }

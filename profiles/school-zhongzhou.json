@@ -14,6 +14,8 @@
   "dayBoundary": "midnight",
   "leapMonthPolicy": "same-as-normal",
   "ruleOverrides": {
+    "ZW.CALC.SIHUA.TABLE.001": "ZW.CALC.SIHUA.TABLE.V001",
     "ZW.CALC.SIHUA.NATAL.001": "ZW.CALC.SIHUA.NATAL.V001"
-  }
+  },
+  "yearBoundaryPolicy": "lunar-new-year"
 }

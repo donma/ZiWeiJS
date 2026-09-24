@@ -29,6 +29,7 @@ import profilesTraditionalZi from '../../profiles/traditional-zi.json' with { ty
 import profilesTrueSolar from '../../profiles/true-solar.json' with { type: 'json' };
 import profilesZhongzhou from '../../profiles/school-zhongzhou.json' with { type: 'json' };
 import profilesMaHu from '../../profiles/school-ma-hu.json' with { type: 'json' };
+import profilesLichun from '../../profiles/lichun.json' with { type: 'json' };
 
 interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
@@ -68,7 +69,7 @@ for (const e of (evidenceData as { evidence: Evidence[] }).evidence) {
 }
 
 const profileIndex = new Map<string, Profile>();
-for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar, profilesZhongzhou, profilesMaHu] as Profile[]) {
+for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar, profilesZhongzhou, profilesMaHu, profilesLichun] as Profile[]) {
   profileIndex.set(p.profileId, p);
 }
 

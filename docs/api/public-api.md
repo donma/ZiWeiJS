@@ -38,11 +38,18 @@ interface ZiWeiBirthInput {
 }
 
 interface CalculateOptions {
-  profile?: string;                  // 'canonical' | 'traditional-zi' | 'true-solar'
+  profile?: string;                  // 'canonical' | 'traditional-zi' | 'true-solar' | 'lichun' | ...
   trace?: boolean;
-  targetDate?: { year?: number; month?: number; day?: number; hour?: number };
+  /** year 必填；month/day/hour/minute 逐層可選（見 docs/api/periods.md） */
+  targetDate?: { year: number; month?: number; day?: number; hour?: number; minute?: number; timezone?: string };
   interpretation?: boolean;
   patterns?: boolean;
+}
+
+interface ZiWeiBirthInput {
+  // ...
+  /** DST 邊界本地時間歧義處理（預設 'reject'） */
+  timezoneDisambiguation?: 'reject' | 'earlier' | 'later';
 }
 ```
 
@@ -50,11 +57,16 @@ interface CalculateOptions {
 
 | 碼 | 觸發條件 |
 |---|---|
-| `INVALID_DATE` | 國曆日期不合法 |
-| `INVALID_LUNAR_DATE` | 農曆日期不合法 |
+| `INVALID_DATE` | 國曆日期不合法（含不存在的日期，如 2025-02-30） |
+| `INVALID_LUNAR_DATE` | 農曆日期不合法（含小月無 30 日） |
 | `INVALID_LEAP_MONTH` | 該年無此閏月 |
 | `INVALID_TIMEZONE` | IANA 時區不存在 |
+| `INVALID_INPUT` | 時/分/秒或經緯度超出範圍、NaN / Infinity 等非數值 |
+| `NONEXISTENT_LOCAL_TIME` | DST 跳躍造成該本地時刻不存在（需 `timezoneDisambiguation`） |
+| `AMBIGUOUS_LOCAL_TIME` | DST 重疊造成本地時刻有歧義（需 `timezoneDisambiguation`） |
+| `INVALID_TARGET_DATE` | `targetDate` 欄位依存關係錯誤或日期不存在 |
 | `MISSING_LOCATION_FOR_SOLAR_TIME` | 真太陽時未提供經度 |
+| `UNKNOWN_BIRTH_TIME` | 未提供出生時辰 |
 | `UNKNOWN_SEX_FOR_CALCULATION` | 未提供 `sexForCalculation` |
 | `UNSUPPORTED_PROFILE` | Profile 不存在 |
 | `RULE_NOT_FOUND` | `ZiWei.Rules.get` 找不到 |

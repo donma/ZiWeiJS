@@ -149,6 +149,18 @@
     "certainty": { "enum": ["certain", "high", "medium", "low", "unknown", "unavailable", "variant-dependent"] },
     "dignity": { "enum": ["miao", "wang", "de", "li", "ping", "bu", "xian"] },
     "localizedText": { "type": "object", "additionalProperties": { "type": "string" } },
+    "provenance": {
+      "type": "object",
+      "required": ["ruleId", "ruleVersion", "profile", "sourceRefs", "evidenceRefs"],
+      "additionalProperties": false,
+      "properties": {
+        "ruleId": { "type": "string" },
+        "ruleVersion": { "type": "string" },
+        "profile": { "type": "string" },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
     "ganzhiPair": {
       "type": "object",
       "required": ["stem", "branch"],
@@ -256,6 +268,7 @@
         "certainty": { "$ref": "#/$defs/certainty" },
         "ruleId": { "type": "string" },
         "ruleVersion": { "type": "string" },
+        "provenance": { "$ref": "#/$defs/provenance" },
         "transformations": { "type": "array", "items": { "$ref": "#/$defs/transformation" } }
       }
     },
@@ -272,6 +285,7 @@
         "targetPalaceId": { "$ref": "#/$defs/palaceId" },
         "profile": { "type": "string" },
         "ruleId": { "type": "string" },
+        "provenance": { "$ref": "#/$defs/provenance" },
         "selfTransformation": { "type": "boolean" }
       }
     },
@@ -319,7 +333,8 @@
         "breakers": { "type": "array", "items": { "type": "string" } },
         "enhancers": { "type": "array", "items": { "type": "string" } },
         "profile": { "type": "string" },
-        "ruleId": { "type": "string" }
+        "ruleId": { "type": "string" },
+        "provenance": { "$ref": "#/$defs/provenance" }
       }
     },
     "interpretationHit": {
@@ -340,7 +355,8 @@
         "overridesList": { "type": "array", "items": { "type": "string" } },
         "effectiveStrength": { "type": "number" },
         "status": { "enum": ["active", "overridden", "conflicted"] },
-        "supportedBy": { "type": "array", "items": { "type": "string" } }
+        "supportedBy": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "$ref": "#/$defs/provenance" }
       }
     },
     "periodInfo": {
@@ -355,8 +371,13 @@
         "palaceId": { "$ref": "#/$defs/palaceId" },
         "ageRange": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
         "year": { "type": "integer" },
+        "lunarYear": { "type": "integer" },
+        "resolvedYear": { "type": "integer" },
+        "yearBoundaryPolicy": { "enum": ["lunar-new-year", "lichun"] },
+        "resolution": { "enum": ["exact-date", "representative-date", "year-only"] },
         "label": { "$ref": "#/$defs/localizedText" },
-        "overlay": { "$ref": "#/$defs/periodOverlay" }
+        "overlay": { "$ref": "#/$defs/periodOverlay" },
+        "provenance": { "$ref": "#/$defs/provenance" }
       }
     },
     "majorPeriod": {
@@ -375,7 +396,8 @@
         "overlay": { "$ref": "#/$defs/periodOverlay" },
         "fromAge": { "type": "integer" },
         "toAge": { "type": "integer" },
-        "direction": { "enum": ["forward", "backward"] }
+        "direction": { "enum": ["forward", "backward"] },
+        "provenance": { "$ref": "#/$defs/provenance" }
       }
     },
     "periodOverlay": {

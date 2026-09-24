@@ -41,13 +41,13 @@
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
-          "note": "Canonical 初版：依 SRC.MODERN-IMPL-CONSENSUS 建立並通過 golden/unit 驗證。"
+          "note": "Canonical 初版：建立並通過 golden/unit 驗證。"
         }
       ]
     },
     {
       "ruleId": "ZW.CALC.CALENDAR.GANZHI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.calendar.ganzhi",
       "category": "calendar",
@@ -56,7 +56,7 @@
         "en": "Four pillars ganzhi"
       },
       "description": {
-        "zh-TW": "年月日時干支，年柱以立春為界（曆法庫行為）。"
+        "zh-TW": "年月日時干支。年柱換年分界由 profile.yearBoundaryPolicy 決定（見 ZW.CALC.CALENDAR.YEAR_BOUNDARY.001），月柱依節氣、日柱依日界、時柱依日干+時支。"
       },
       "inputs": [
         "normalized.solar",
@@ -82,10 +82,16 @@
       ],
       "changeLog": [
         {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "修正說明與行為：年柱分界由 yearBoundaryPolicy 明確決定（canonical 預設採農曆正月初一換年，立春制為 variant），移除原誤寫為立春之說明，並清除 stale SRC.MODERN-IMPL-CONSENSUS。"
+        },
+        {
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
-          "note": "Canonical 初版：依 SRC.MODERN-IMPL-CONSENSUS 建立並通過 golden/unit 驗證。"
+          "note": "Canonical 初版：建立並通過 golden/unit 驗證。"
         }
       ]
     },
@@ -134,7 +140,103 @@
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
-          "note": "Canonical 初版：依 SRC.MODERN-IMPL-CONSENSUS 建立並通過 golden/unit 驗證。"
+          "note": "Canonical 初版：建立並通過 golden/unit 驗證。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.calendar.year-boundary",
+      "category": "calendar",
+      "name": {
+        "zh-TW": "年柱換年分界（農曆正月初一）",
+        "en": "Year pillar boundary (lunar new year)"
+      },
+      "description": {
+        "zh-TW": "年柱以農曆正月初一為換年分界。此為本引擎 canonical 預設；立春制見 variant ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001。"
+      },
+      "inputs": [
+        "normalized.lunar",
+        "profile.yearBoundaryPolicy"
+      ],
+      "logic": {
+        "executor": "calcGanzhi",
+        "stage": "natal",
+        "order": 31,
+        "params": {
+          "yearBoundaryPolicy": "lunar-new-year"
+        }
+      },
+      "outputs": [
+        "calendar.ganzhi.year"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.LUNAR-TS"
+      ],
+      "evidenceRefs": [
+        "EVD.CALENDAR.YEAR_BOUNDARY"
+      ],
+      "tags": [
+        "core",
+        "boundary"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-2：建立年柱分界正式規則。canonical 採農曆正月初一換年；立春制另立 variant V001，是否改列 canonical 由 owner 依 evidence 決定（見 RSH.CALENDAR.YEAR_BOUNDARY）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001",
+      "scope": "calculation.calendar.year-boundary",
+      "category": "calendar",
+      "name": {
+        "zh-TW": "年柱換年分界（立春）",
+        "en": "Year pillar boundary (LiChun)"
+      },
+      "description": {
+        "zh-TW": "年柱以二十四節氣立春（精確時刻）為換年分界。經 profile.ruleOverrides 選用（如 profile 'lichun'）。"
+      },
+      "inputs": [
+        "normalized.lunar",
+        "profile.yearBoundaryPolicy"
+      ],
+      "logic": {
+        "executor": "calcGanzhi",
+        "stage": "variant",
+        "params": {
+          "yearBoundaryPolicy": "lichun"
+        }
+      },
+      "outputs": [
+        "calendar.ganzhi.year"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.LUNAR-TS"
+      ],
+      "evidenceRefs": [
+        "EVD.CALENDAR.YEAR_BOUNDARY"
+      ],
+      "tags": [
+        "variant",
+        "boundary"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-2：建立立春換年 variant（lunar-typescript getYearInGanZhiExact）。"
         }
       ]
     }

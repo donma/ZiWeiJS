@@ -13,23 +13,28 @@
       "enum": ["supports", "conflicts", "mentions", "variant-only"]
     },
     "location": {
-      "description": "引文位置：字串（卷/頁/條目）或結構化定位",
+      "description": "引文位置：字串（卷/頁/條目）或結構化定位（spec 3rd §P2-1）",
       "oneOf": [
         { "type": "string" },
         {
           "type": "object",
           "properties": {
+            "editionId": { "type": "string" },
+            "publisher": { "type": "string" },
+            "publicationYear": { "type": ["integer", "string"] },
             "volume": { "type": "string" },
             "chapter": { "type": "string" },
             "page": { "type": "string" },
             "section": { "type": "string" },
             "imagePage": { "type": "string" },
-            "anchor": { "type": "string" }
+            "anchor": { "type": "string" },
+            "archiveUrl": { "type": "string" }
           },
           "additionalProperties": false
         }
       ]
     },
+    "editionId": { "type": "string", "description": "引用版本（對應 source.editions[].editionId）" },
     "quote": { "type": "string" },
     "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
     "notes": { "type": "string" }

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { Solar } from 'lunar-typescript';
 import { calculate } from '../../src/index.js';
 import type { ZiWeiBirthInput } from '../../src/index.js';
-import { normalizePeriodTarget, monthLifeBranch, dayLifeBranch } from '../../src/period-engine/period-target.js';
+import { normalizePeriodTarget, dayLifeBranch } from '../../src/period-engine/period-target.js';
 import { getProfile } from '../../src/rule-engine/registry.js';
 
 /**
@@ -32,12 +32,15 @@ function targetLunar(y: number, m: number, d: number) {
 }
 
 describe('P0-1 流月：以農曆月定位（非 Gregorian）', () => {
-  it('國曆 2 月仍為農曆正月時，流月命宮 = 流年命宮起正月', () => {
+  it('國曆 2 月仍為農曆正月時，流月命宮 = 斗君（正月命宮）', () => {
     // 2026-02-20 → 農曆 2026-1-4（正月）
     expect(targetLunar(2026, 2, 20).month).toBe(1);
     const c = calculate(base, { targetDate: { year: 2026, month: 2, day: 20 } });
-    const expected = monthLifeBranch(c.periods.year!.branch, 1);
-    expect(c.periods.month!.branch).toBe(expected);
+    // spec 3rd §P0-4：正月流月命宮即斗君。
+    // base 盤：生月四月、生時巳時；2026 丙午年（歲建午）→ 歲建起正月逆數生月、順數生時 = 申。
+    // 因屬農曆正月，流月命宮 = 斗君 = 申（與舊「流年命宮起正月順數」的午不同）。
+    expect(c.periods.year!.branch).toBe('wu');
+    expect(c.periods.month!.branch).toBe('shen');
   });
 
   it('同一農曆月內不因 Gregorian 日期不同而換月', () => {
@@ -67,7 +70,13 @@ describe('P0-1 流月：以農曆月定位（非 Gregorian）', () => {
   it('無 day 時以 15 日為代表日並標記 isRepresentativeDate', () => {
     const pt = normalizePeriodTarget({ year: 2026, month: 2 }, canonical);
     expect(pt.isRepresentativeDate).toBe(true);
-    expect(pt.solar.day).toBe(15);
+    expect(pt.granularity).toBe('month');
+    // spec 3rd §P0-3：不得謊稱使用者指定了某日 —— solar.day / lunar.day 均留空，
+    // 僅以 isRepresentativeDate 標示，代表日 15 只用於內部推算有效農曆月序。
+    expect(pt.solar.day).toBeUndefined();
+    expect(pt.lunar.day).toBeUndefined();
+    const repr = Solar.fromYmd(2026, 2, 15).getLunar();
+    expect(pt.effectiveLunarMonth).toBe(Math.abs(repr.getMonth()));
   });
 });
 

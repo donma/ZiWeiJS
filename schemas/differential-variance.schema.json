@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/differential-variance.schema.json",
+  "title": "ZiWei Bible Differential Variance Registry",
+  "description": "已登錄之差異容許清單（spec 3rd §P1-5）。AI 不得將 acceptedByOwner 設為 true。",
+  "type": "object",
+  "required": ["variances"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "description": { "type": "string" },
+    "variances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "varianceId",
+          "scope",
+          "field",
+          "ruleId",
+          "classification",
+          "rationale",
+          "acceptedByOwner"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "varianceId": { "type": "string", "pattern": "^VAR\\." },
+          "scope": {
+            "enum": ["*", "natal", "palace", "decadal", "major-period", "yearly", "monthly", "daily", "hourly"]
+          },
+          "field": { "type": "string" },
+          "ruleId": { "type": "string" },
+          "classification": {
+            "enum": [
+              "school-variance",
+              "calendar-variance",
+              "time-basis-variance",
+              "day-boundary-variance",
+              "leap-month-variance",
+              "bug",
+              "external-error",
+              "unclassified"
+            ]
+          },
+          "condition": { "type": "string" },
+          "rationale": { "type": "string" },
+          "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+          "researchId": { "type": "string" },
+          "externalSourceId": { "type": "string" },
+          "externalVersion": { "type": "string" },
+          "acceptedByOwner": { "const": false }
+        }
+      }
+    }
+  }
+}

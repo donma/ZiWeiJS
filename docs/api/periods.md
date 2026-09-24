@@ -38,11 +38,16 @@ interface TargetDate {
 
 ```text
 year                → active major + 流年
+                      → 不捏造月/日（year-only），不產生流月/流日/流時
+                        （輸出 PeriodInfo.resolution = 'year-only'）
 year + month        → 語意模糊（Gregorian month 可能跨兩個農曆月）
                       → 以該月 15 日為 representative date，並在輸出標示
-year + month + day  → exact date（流月 / 流日以農曆月日定位）
+                        （resolution = 'representative-date'；solar/lunar.day 留空）
+year + month + day  → exact date（流月 / 流日以農曆月日定位，resolution = 'exact-date'）
 + hour（+ minute）  → exact hour（流時）
 ```
+
+`PeriodInfo.resolution` 明確標示本次輸出之日期精度，呼叫端不得假設缺漏的月/日存在。
 
 限運採**逐層疊加**：
 
@@ -57,10 +62,14 @@ year + month + day  → exact date（流月 / 流日以農曆月日定位）
 
 流月與流日**一律以農曆定位**，不得使用 Gregorian month / day：
 
-- 流月命宮：由流年命宮起**農曆正月**順數至目標農曆月
+- 斗君：由流年歲建起**農曆正月**、**逆數生月**，再自該宮起子時**順數至生時**
+  （《紫微斗數全書》安子斗訣；spec 3rd §P0-4）。
+- 流月命宮：由該年**斗君**（即流年正月命宮）起，順數至目標農曆月
 - 流日命宮：由流月命宮起**農曆初一**順數至目標農曆日
 
 因此「同一農曆月份內」不會單純因 Gregorian 日期不同而被判為不同流月。
+
+> 注意：流月命宮並非「由流年命宮起正月」；兩者僅在特定條件下巧合相同。
 
 ### leapMonthPolicy
 
@@ -90,7 +99,7 @@ const timed = ZiWei.calculate(input, { targetDate: { year: 2026, month: 3, day: 
 
 ```ts
 timed.periods.active = {
-  age: 37,                       // 虛歲 = targetYear − 農曆生年 + 1
+  age: 37,                       // 虛歲 = 目標農曆年 − 生年農曆年 + 1（非 Gregorian 年）
   asOf: { year: 2026, ... },
   major: { fromAge: 36, toAge: 45, branch: 'yin', stem: 'wu', ... },
   majorSkippedReason?: string    // 未上運 / 性別未知 / 超出範圍
@@ -113,7 +122,7 @@ NO_MAJOR_PERIODS
 必須嚴格區分兩者：
 
 - `PeriodInfo.branch`：**該限運命宮所在的地支**（用於十二宮疊盤定位）。
-  例如流月命宮由流年命宮起農曆正月順數所得之地支、流日命宮由流月命宮起農曆初一順數所得之地支。
+  例如流月命宮由當年斗君起農曆正月順數所得之地支、流日命宮由流月命宮起農曆初一順數所得之地支。
 - `PeriodInfo.ganzhi`：**目標日期本身該層級的真實干支**（以曆法實際日期推算之四柱）。
   `PeriodInfo.ganzhi.branch` 為該四柱的地支（如日柱地支、時柱地支）。
 
@@ -135,8 +144,19 @@ timed.periods.hour.ganzhi         // 該時刻真實時柱（日干+時辰）
 每個 `PeriodInfo.overlay` 含：
 
 - `palaces`：以該限運地支為命宮逆布的十二宮
-- `periodStars`：歲建十二神（12）+ 將前十二神（12）
+- `periodStars`：**僅流年**（`scope: 'year'`）安放歲建十二神（12）+ 將前十二神（12）；
+  流月 / 流日 / 流時之 `periodStars` 一律為空（spec 3rd §P0-10）
 - `transformations`：該限運天干之四化
+
+## 年柱換年分界（yearBoundaryPolicy）
+
+`profile.yearBoundaryPolicy` 決定「年柱」何時換年（影響流年干支與虛歲基準）：
+
+- `lunar-new-year`（預設）：以農曆正月初一換年
+- `lichun`：以立春換年（立春前仍屬前一年度）
+
+`PeriodInfo` 會回報 `lunarYear`、`resolvedYear`（年柱所屬年度）、`yearBoundaryPolicy`，
+供呼叫端判斷跨年邊界。`profiles/lichun.json` 即採用 `lichun` 制。
 
 ## 真太陽時跨日
 

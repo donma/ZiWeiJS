@@ -17,6 +17,11 @@
       "type": "string",
       "enum": ["midnight", "zi-hour"]
     },
+    "yearBoundaryPolicy": {
+      "type": "string",
+      "description": "年柱換年分界（lunar-new-year：農曆正月初一；lichun：二十四節氣立春）",
+      "enum": ["lunar-new-year", "lichun"]
+    },
     "leapMonthPolicy": {
       "type": "string",
       "enum": ["mid-month", "same-as-normal", "split", "next-month"]

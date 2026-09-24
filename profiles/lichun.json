@@ -1,0 +1,20 @@
+{
+  "$schema": "../schemas/profile.schema.json",
+  "profileId": "lichun",
+  "name": {
+    "zh-TW": "立春換年",
+    "zh-CN": "立春换年",
+    "en": "LiChun Year Boundary"
+  },
+  "description": {
+    "zh-TW": "年柱干支以二十四節氣立春為界（非農曆正月初一）。",
+    "en": "Year pillar boundary at solar term LiChun (approx. Feb 4), rather than Lunar New Year."
+  },
+  "timeConvention": "civil",
+  "dayBoundary": "midnight",
+  "yearBoundaryPolicy": "lichun",
+  "leapMonthPolicy": "same-as-normal",
+  "ruleOverrides": {
+    "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001"
+  }
+}

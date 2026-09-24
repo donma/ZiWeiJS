@@ -1,23 +1,33 @@
-import type { MajorPeriod, TargetDate } from '../core/types.js';
+import type { MajorPeriod } from '../core/types.js';
 import { ZiWeiError } from '../core/errors.js';
 
 /**
- * 虛歲：以農曆生年與目標年份計算（紫微斗數大限慣例）。
- * 虛歲 = targetYear − birthLunarYear + 1
+ * 虛歲：以農曆生年與目標「農曆」年計算（紫微斗數大限慣例）。
+ *
+ * 虛歲 = targetLunarYear − birthLunarYear + 1
+ *
+ * 注意：呼叫端必須傳入目標日期的**農曆年**（resolved lunar year），
+ * 不得傳入 Gregorian target.year —— 否則在農曆新年之前會提早換大限
+ * （third-round hardening §P0-1）。
  */
-export function virtualAge(birthLunarYear: number, targetYear: number): number {
-  return targetYear - birthLunarYear + 1;
+export function virtualAge(birthLunarYear: number, targetLunarYear: number): number {
+  return targetLunarYear - birthLunarYear + 1;
 }
 
-/** 依 profile.periodRules.ageMethod 計算年齡（預設 virtual-age） */
+/**
+ * 依 profile.periodRules.ageMethod 計算年齡（預設 virtual-age）。
+ *
+ * 參數為兩個「農曆年」數字，而非 TargetDate，
+ * 以避免誤用 Gregorian year（third-round hardening §P0-1）。
+ */
 export function ageAt(
   birthLunarYear: number,
-  target: Pick<TargetDate, 'year'>,
+  targetLunarYear: number,
   ageMethod: string = 'virtual-age'
 ): number {
   switch (ageMethod) {
     case 'virtual-age':
-      return virtualAge(birthLunarYear, target.year);
+      return virtualAge(birthLunarYear, targetLunarYear);
     default:
       throw new ZiWeiError(
         'UNSUPPORTED_PROFILE',

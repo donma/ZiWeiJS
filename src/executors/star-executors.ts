@@ -2,6 +2,7 @@ import type { EngineContext } from './context.js';
 import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import { effectiveRuleId, variantPatchFor } from './context.js';
 import type { BranchId, StarPlacement, Star, StemId } from '../core/types.js';
+import { provenanceFor } from '../rule-engine/execute-rule.js';
 import { branchAt, branchIndex, stemIndex, STEMS } from '../core/constants.js';
 import {
   ziweiSeriesOffsets, tianfuBase, tianfuSeriesOffsets
@@ -40,14 +41,16 @@ export function listStars(): Star[] {
 export function placeStar(ctx: EngineContext, starId: string, branch: BranchId, ruleId: string): StarPlacement {
   const palace = ctx.palaces.find(p => p.branch === branch);
   if (!palace) throw new Error(`No palace at branch ${branch}`);
+  const prov = provenanceFor(ruleId, ctx.profile.profileId, ctx.profile.ruleOverrides);
   const placement: StarPlacement = {
     starId,
     star: getStar(starId),
     palaceId: palace.id,
     branch,
     certainty: 'high',
-    ruleId,
-    ruleVersion: '1.0'
+    ruleId: prov.ruleId,
+    ruleVersion: prov.ruleVersion,
+    provenance: prov
   };
   ctx.placements.set(starId, placement);
   palace.stars.push(placement);
@@ -362,7 +365,7 @@ function yearBranchOf(ctx: EngineContext): BranchId {
 }
 
 export function calcFixedStars(ctx: EngineContext): ExecutorOutcome {
-  const ruleId = 'ZW.STAR.FIXED.001';
+  const ruleId = 'ZW.CALC.STAR.FIXED.001';
   for (const [starId, cfg] of Object.entries(auxTables.fixed as unknown as Record<string, { palace: string }>)) {
     const palace = ctx.palaces.find(p => p.id === cfg.palace);
     if (palace) placeStar(ctx, starId, palace.branch, ruleId);

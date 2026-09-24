@@ -48,7 +48,7 @@
     },
     {
       "ruleId": "ZW.CALC.PERIOD.LIUNIAN.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.periods.year",
       "category": "periods",
@@ -81,6 +81,12 @@
       ],
       "changeLog": [
         {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "Hardening 2nd/3rd：年柱干支統一由 periodTarget.ganzhi.year 提供，並與 profile.yearBoundaryPolicy 綁定，year-only 目標不再誤捏造 1/15。"
+        },
+        {
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
@@ -90,19 +96,21 @@
     },
     {
       "ruleId": "ZW.CALC.PERIOD.LIUYUE.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "2.0",
       "status": "canonical",
       "scope": "calculation.periods.month",
       "category": "periods",
       "name": {
-        "zh-TW": "流月",
-        "en": "Monthly period"
+        "zh-TW": "流月（安子斗君訣）",
+        "en": "Monthly period (DouJun)"
       },
       "description": {
-        "zh-TW": "流月命宮由流年命宮起正月順數（canonical；流派差異保留 variant）。"
+        "zh-TW": "流月命宮以當年斗君為正月命宮順數至當月。斗君推算法：流年歲建起正月、逆數生月，再由該宮起子時順數至生時。（《紫微斗數全書》安子斗訣）。"
       },
       "inputs": [
         "periods.year",
+        "normalized.lunar",
+        "normalized.hourBranch",
         "targetDate.month"
       ],
       "logic": {
@@ -117,12 +125,26 @@
         "SRC.QUANSHU"
       ],
       "evidenceRefs": [
+        "EVD.QUANSHU.DOUJUN",
         "EVD.QUANSHU.LIUNIAN"
       ],
       "tags": [
-        "core"
+        "core",
+        "doujun"
       ],
       "changeLog": [
+        {
+          "version": "2.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "Hardening 3rd §P0-4：實作正統斗君公式（流年歲建逆數生月、順數生時至斗君，斗君為正月命宮順數至目標農曆月），取代先前過度簡化之「流年起正月順數」。補入 EVD.QUANSHU.DOUJUN。"
+        },
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-23",
+          "note": "Hardening 2nd：流月定位改以目標農曆月序（非 Gregorian month），並支援 leapMonthPolicy。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -133,7 +155,7 @@
     },
     {
       "ruleId": "ZW.CALC.PERIOD.LIURI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.periods.day",
       "category": "periods",
@@ -142,7 +164,7 @@
         "en": "Daily period"
       },
       "description": {
-        "zh-TW": "流日命宮由流月命宮起初一順數至當日。"
+        "zh-TW": "流日命宮由流月命宮起初一順數至當日（農曆日）。"
       },
       "inputs": [
         "periods.month",
@@ -167,6 +189,12 @@
       ],
       "changeLog": [
         {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-23",
+          "note": "Hardening 2nd：流日定位改以目標農曆日序（非 Gregorian day），日柱移除 new Date() fallback。"
+        },
+        {
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
@@ -176,7 +204,7 @@
     },
     {
       "ruleId": "ZW.CALC.PERIOD.LIUSHI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.periods.hour",
       "category": "periods",
@@ -185,7 +213,7 @@
         "en": "Hourly period"
       },
       "description": {
-        "zh-TW": "流時命宮由流日命宮起子時順數至當時支。"
+        "zh-TW": "流時命宮由流日命宮起子時順數至當前時辰。"
       },
       "inputs": [
         "periods.day",
@@ -209,6 +237,12 @@
         "core"
       ],
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-23",
+          "note": "Hardening 2nd：流時干支統一由 periodTarget 提供，支援 minute 精度。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",

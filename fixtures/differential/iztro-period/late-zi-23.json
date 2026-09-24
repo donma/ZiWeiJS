@@ -19,6 +19,17 @@
     "day": 23,
     "hour": 23
   },
+  "expectedScopes": [
+    "decadal",
+    "yearly",
+    "monthly",
+    "daily",
+    "hourly"
+  ],
+  "external": {
+    "sourceId": "SRC.IZTRO",
+    "version": "2.6.1"
+  },
   "rows": [
     {
       "scope": "decadal",
@@ -39,6 +50,34 @@
       "field": "lifePalaceBranch",
       "bible": "wu",
       "external": "wu",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TIANLIANG",
+      "external": "ZW.STAR.MAJOR.TIANLIANG",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.ZIWEI",
+      "external": "ZW.STAR.MAJOR.ZIWEI",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.AUX.ZUOFU",
+      "external": "ZW.STAR.AUX.ZUOFU",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.WUQU",
+      "external": "ZW.STAR.MAJOR.WUQU",
       "status": "match"
     },
     {
@@ -63,6 +102,34 @@
       "status": "match"
     },
     {
+      "scope": "yearly",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TIANTONG",
+      "external": "ZW.STAR.MAJOR.TIANTONG",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.TIANJI",
+      "external": "ZW.STAR.MAJOR.TIANJI",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.AUX.WENCHANG",
+      "external": "ZW.STAR.AUX.WENCHANG",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.LIANZHEN",
+      "external": "ZW.STAR.MAJOR.LIANZHEN",
+      "status": "match"
+    },
+    {
       "scope": "monthly",
       "field": "stem",
       "bible": "ding",
@@ -79,10 +146,37 @@
     {
       "scope": "monthly",
       "field": "lifePalaceBranch",
-      "bible": "chou",
+      "bible": "wei",
       "external": "wei",
-      "status": "needs-review",
-      "classification": "school-variance"
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TAIYIN",
+      "external": "ZW.STAR.MAJOR.TAIYIN",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.TIANTONG",
+      "external": "ZW.STAR.MAJOR.TIANTONG",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.MAJOR.TIANJI",
+      "external": "ZW.STAR.MAJOR.TIANJI",
+      "status": "match"
+    },
+    {
+      "scope": "monthly",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.JUMEN",
+      "external": "ZW.STAR.MAJOR.JUMEN",
+      "status": "match"
     },
     {
       "scope": "daily",
@@ -90,7 +184,7 @@
       "bible": "geng",
       "external": "xin",
       "status": "needs-review",
-      "classification": "calendar-variance"
+      "classification": "day-boundary-variance"
     },
     {
       "scope": "daily",
@@ -98,15 +192,46 @@
       "bible": "zi",
       "external": "chou",
       "status": "needs-review",
-      "classification": "calendar-variance"
+      "classification": "day-boundary-variance"
     },
     {
       "scope": "daily",
       "field": "lifePalaceBranch",
-      "bible": "chou",
+      "bible": "wei",
       "external": "wei",
+      "status": "match"
+    },
+    {
+      "scope": "daily",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TAIYANG",
+      "external": "ZW.STAR.MAJOR.JUMEN",
       "status": "needs-review",
-      "classification": "school-variance"
+      "classification": "day-boundary-variance"
+    },
+    {
+      "scope": "daily",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.WUQU",
+      "external": "ZW.STAR.MAJOR.TAIYANG",
+      "status": "needs-review",
+      "classification": "day-boundary-variance"
+    },
+    {
+      "scope": "daily",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.MAJOR.TAIYIN",
+      "external": "ZW.STAR.AUX.WENQU",
+      "status": "needs-review",
+      "classification": "day-boundary-variance"
+    },
+    {
+      "scope": "daily",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.TIANTONG",
+      "external": "ZW.STAR.AUX.WENCHANG",
+      "status": "needs-review",
+      "classification": "day-boundary-variance"
     },
     {
       "scope": "hourly",
@@ -125,10 +250,37 @@
     {
       "scope": "hourly",
       "field": "lifePalaceBranch",
-      "bible": "chou",
+      "bible": "wei",
       "external": "wei",
-      "status": "needs-review",
-      "classification": "school-variance"
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TANLANG",
+      "external": "ZW.STAR.MAJOR.TANLANG",
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.TAIYIN",
+      "external": "ZW.STAR.MAJOR.TAIYIN",
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.AUX.YOUBI",
+      "external": "ZW.STAR.AUX.YOUBI",
+      "status": "match"
+    },
+    {
+      "scope": "hourly",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.TIANJI",
+      "external": "ZW.STAR.MAJOR.TIANJI",
+      "status": "match"
     }
   ],
   "externalError": null

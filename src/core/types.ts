@@ -110,6 +110,8 @@ export interface ZiWeiBirthInput {
   sexForCalculation?: 'male' | 'female' | 'unknown';
   timeConvention?: 'civil' | 'true-solar' | 'local-mean-solar';
   dayBoundary?: 'midnight' | 'zi-hour';
+  /** DST 邊界本地時間歧義處理（預設 'reject'，spec 3rd §P1-2） */
+  timezoneDisambiguation?: 'reject' | 'earlier' | 'later';
   name?: string;
 }
 
@@ -171,6 +173,15 @@ export interface Star {
   tags: string[];
 }
 
+/** 實體溯源中繼資料（spec 3rd §P1-7） */
+export interface Provenance {
+  ruleId: string;
+  ruleVersion: string;
+  profile: string;
+  sourceRefs: string[];
+  evidenceRefs: string[];
+}
+
 export interface StarPlacement {
   starId: string;
   star: Star;
@@ -180,6 +191,7 @@ export interface StarPlacement {
   certainty: Certainty;
   ruleId: string;
   ruleVersion: string;
+  provenance?: Provenance;
   transformations?: Transformation[];
 }
 
@@ -192,6 +204,7 @@ export interface Transformation {
   targetPalaceId: PalaceId;
   profile: string;
   ruleId: string;
+  provenance?: Provenance;
   selfTransformation?: boolean;
 }
 
@@ -227,6 +240,7 @@ export interface PatternResult {
   enhancers: string[];
   profile: string;
   ruleId: string;
+  provenance?: Provenance;
 }
 
 export interface PeriodStarPlacement {
@@ -264,9 +278,19 @@ export interface PeriodInfo {
   stem: StemId;
   palaceId?: PalaceId;
   ageRange?: [number, number];
+  /** 目標國曆年（civil / Gregorian） */
   year?: number;
+  /** 目標農曆年（以正月初一為界） */
+  lunarYear?: number;
+  /** 依 profile.yearBoundaryPolicy 解析後、年柱所屬之年度（spec 3rd §P1-4） */
+  resolvedYear?: number;
+  /** 年柱換年分界策略（spec 3rd §P0-2） */
+  yearBoundaryPolicy?: 'lunar-new-year' | 'lichun';
+  /** 目標日期精度（year-only target 時標示欠缺月日，spec 3rd §P0-3） */
+  resolution?: 'exact-date' | 'representative-date' | 'year-only';
   label: LocalizedText;
   overlay?: PeriodOverlay;
+  provenance?: Provenance;
 }
 
 export interface MajorPeriod extends PeriodInfo {
@@ -310,6 +334,7 @@ export interface InterpretationHit {
   /** 解析結果。Narrative 預設只吃 active；Expert 模式另顯示 overridden / conflicted。 */
   status?: InterpretationStatus;
   supportedBy?: string[];
+  provenance?: Provenance;
 }
 
 export interface ZiWeiChart {
@@ -429,6 +454,8 @@ export interface Profile {
   description?: LocalizedText;
   timeConvention: 'civil' | 'true-solar' | 'local-mean-solar';
   dayBoundary: 'midnight' | 'zi-hour';
+  /** 年柱分界（lunar-new-year：正月初一；lichun：立春，spec 3rd §P0-2） */
+  yearBoundaryPolicy?: 'lunar-new-year' | 'lichun';
   /** 閏月處理（same-as-normal | next-month | mid-month；split 暫未支援） */
   leapMonthPolicy: 'mid-month' | 'same-as-normal' | 'split' | 'next-month' | string;
   /** 限運相關設定（目前支援 ageMethod: 'virtual-age'） */

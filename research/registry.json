@@ -101,6 +101,39 @@
       "question": "現行真太陽時採「經度修正 + 均時差近似式」，僅有單一 Tier 3 來源。命理實務之真太陽時標準（含均時差公式版本、是否納入歷史時區/DST）需確認。",
       "nextAction": "找尋 Tier 1/2 天文曆算或命理專著依據；確認後升回 canonical 或明確標示為近似值。",
       "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.CALENDAR.YEAR_BOUNDARY",
+      "title": "年柱換年分界：農曆正月初一 vs 立春",
+      "status": "open",
+      "type": "calendar-variance",
+      "relatedRules": [
+        "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001",
+        "ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001",
+        "ZW.CALC.CALENDAR.GANZHI.001"
+      ],
+      "evidence": [
+        "EVD.CALENDAR.YEAR_BOUNDARY"
+      ],
+      "question": "紫微斗數年柱究竟應以農曆正月初一（春節）換年，或以二十四節氣立春為界？目前本引擎 canonical 採農曆正月初一（與古本全書定年起盤一致），立春制設為 variant V001。需系統性考證歷代古籍古抄本之記載，待 owner 最終裁定 canonical 是否調整。",
+      "nextAction": "考證全書、全集、十八飛星及各派實際傳承，建立完整的版本對照證據矩陣後由 owner 裁決。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.DOUJUN",
+      "title": "流月起法：傳統安子斗君訣 vs 流年起正月順數",
+      "status": "resolved",
+      "type": "school-variance",
+      "relatedRules": [
+        "ZW.CALC.PERIOD.LIUYUE.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.DOUJUN",
+        "EVD.QUANSHU.LIUNIAN"
+      ],
+      "question": "《全書》載「流年歲建起正月逆數生月順數生時至斗君，斗君為正月命宮」；但部分現代流派省略斗君，直接由流年命宮起正月順數。本引擎已於 v2.0 正式採全書斗君正統古法。",
+      "nextAction": "已實作斗君公式並於 iztro period differential 交叉驗證通過。保留研究紀錄供學術溯源。",
+      "ownerReviewRequired": false
     }
   ]
 }

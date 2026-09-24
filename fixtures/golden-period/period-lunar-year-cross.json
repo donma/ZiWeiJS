@@ -23,7 +23,7 @@
       "day": 5
     },
     "activeMajor": {
-      "age": 37,
+      "age": 36,
       "major": {
         "fromAge": 36,
         "toAge": 45,
@@ -47,22 +47,22 @@
       "palaceId": "friends"
     },
     "month": {
-      "branch": "mao",
+      "branch": "si",
       "stem": "ji",
       "ganzhi": {
         "stem": "ji",
         "branch": "chou"
       },
-      "palaceId": "property"
+      "palaceId": "friends"
     },
     "day": {
-      "branch": "wei",
+      "branch": "you",
       "stem": "ji",
       "ganzhi": {
         "stem": "ji",
         "branch": "mao"
       },
-      "palaceId": "health"
+      "palaceId": "children"
     },
     "hour": null
   }

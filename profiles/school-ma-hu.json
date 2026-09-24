@@ -15,5 +15,6 @@
   "leapMonthPolicy": "same-as-normal",
   "ruleOverrides": {
     "ZW.CALC.STAR.YEARSTEM_AUX.001": "ZW.CALC.STAR.YEARSTEM_AUX.V001"
-  }
+  },
+  "yearBoundaryPolicy": "lunar-new-year"
 }

@@ -51,22 +51,22 @@
       "palaceId": "children"
     },
     "month": {
-      "branch": "chou",
+      "branch": "wu",
       "stem": "ding",
       "ganzhi": {
         "stem": "ding",
         "branch": "you"
       },
-      "palaceId": "career"
+      "palaceId": "children"
     },
     "day": {
-      "branch": "chou",
+      "branch": "wu",
       "stem": "geng",
       "ganzhi": {
         "stem": "geng",
         "branch": "zi"
       },
-      "palaceId": "career"
+      "palaceId": "children"
     },
     "hour": null
   }

@@ -10,7 +10,7 @@ import { normalizeBirth, buildCalendarInfo } from '../calendar/calendar-engine.j
 import { Tracer } from '../trace/tracer.js';
 import type { EngineContext } from '../executors/context.js';
 import { registerAllExecutors } from '../rule-engine/register-executors.js';
-import { executePlan } from '../rule-engine/execute-rule.js';
+import { executePlan, stampProvenance } from '../rule-engine/execute-rule.js';
 import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN } from '../rule-engine/execution-plan.js';
 import { ageAt, resolveMajorPeriod } from '../period-engine/major-period-resolver.js';
 import { normalizePeriodTarget, validateSolarDate } from '../period-engine/period-target.js';
@@ -129,8 +129,10 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     // 單一正規化來源：Gregorian→農曆語意 / leapMonthPolicy / 真實干支（spec 2nd §P0-1）
     ctx.periodTarget = normalizePeriodTarget(target, profile);
     // 先解出目標年齡所在之大限，限運四化才能依正確的大限（spec §P0-3A）
+    // 虛歲以「目標農曆年」計算，不得用 Gregorian target.year，
+    // 否則農曆新年之前會提早換大限（third-round §P0-1）
     const ageMethod = profile.periodRules?.ageMethod ?? 'virtual-age';
-    const age = ageAt(normalized.lunar.year, target, ageMethod);
+    const age = ageAt(normalized.lunar.year, ctx.periodTarget.lunar.year, ageMethod);
     const resolution = resolveMajorPeriod(ctx.majorPeriods, age, ctx.direction);
     ctx.activeMajorPeriod = resolution.period;
     activePeriods = {
@@ -146,6 +148,9 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   const patterns = options.patterns !== false ? runPatterns(ctx) : [];
   const hits = options.interpretation !== false ? runInterpretation(ctx) : [];
   const byDomain = groupByDomain(hits);
+
+  // 由 Rule Engine 統一注入 provenance（spec 3rd §P1-7）：executor 不得自行硬寫版本
+  stampProvenance(ctx);
 
   const lifePalace = ctx.palaces.find(p => p.isLifePalace)!;
   const bodyPalace = ctx.palaces.find(p => p.isBodyPalace)!;

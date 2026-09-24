@@ -12,6 +12,7 @@
  */
 import type { ZiWeiChart, BranchId, StemId } from '../../src/index.js';
 import { BRANCH_ZH, BRANCH_ID, toStarId, type DiffClassification } from './iztro-compare.js';
+import { sihuaForStem } from '../../src/executors/star-executors.js';
 
 export interface IztroHoroscopeLikeScope {
   heavenlyStem: string;
@@ -33,7 +34,7 @@ export interface IztroHoroscopeLike {
 
 export interface PeriodDiffRow {
   scope: 'decadal' | 'yearly' | 'monthly' | 'daily' | 'hourly';
-  field: 'stem' | 'branch' | 'lifePalaceBranch' | 'sihua';
+  field: 'stem' | 'branch' | 'lifePalaceBranch' | 'sihua.lu' | 'sihua.quan' | 'sihua.ke' | 'sihua.ji';
   bible: string | undefined;
   external: string | undefined;
   status: 'match' | 'needs-review';
@@ -57,11 +58,31 @@ function iztroLifeBranch(scope: IztroHoroscopeLikeScope, astrolabe: IztroHorosco
   return p ? toBranchId(p.earthlyBranch) : toBranchId(scope.earthlyBranch);
 }
 
+/** iztro mutagen 固定順序：[祿, 權, 科, 忌] 之星名 */
+const IZTRO_MUTAGEN_ORDER: Array<'lu' | 'quan' | 'ke' | 'ji'> = ['lu', 'quan', 'ke', 'ji'];
+
+/** 由 iztro scope 的 mutagen 陣列取得指定四化之星曜 ID */
+function iztroSihuaId(scope: IztroHoroscopeLikeScope, type: 'lu' | 'quan' | 'ke' | 'ji'): string | undefined {
+  const idx = IZTRO_MUTAGEN_ORDER.indexOf(type);
+  const name = scope.mutagen?.[idx];
+  if (!name) return undefined;
+  return toStarId(name) ?? undefined;
+}
+
+export interface CompareOptions {
+  /** 目標時辰（0-23）。23:00 之流日差異屬換日慣例（day-boundary-variance） */
+  targetHour?: number;
+}
+
 export function comparePeriodWithIztro(
   chart: ZiWeiChart,
-  iztroH: IztroHoroscopeLike
+  iztroH: IztroHoroscopeLike,
+  options: CompareOptions = {}
 ): PeriodDiffRow[] {
   const rows: PeriodDiffRow[] = [];
+  // 23:00 子時：本引擎依 profile.dayBoundary 換日，iztro 內部以固定慣例處理，
+  // 差異屬換日慣例而非 bug（spec 3rd §P1-5 分類要求）
+  const isLateZi = options.targetHour === 23;
 
   const push = (
     scope: PeriodDiffRow['scope'],
@@ -81,12 +102,28 @@ export function comparePeriodWithIztro(
     });
   };
 
+  /** 推入該層四化（lu/quan/ke/ji 各自一列，spec 3rd §P0-6） */
+  const pushSihua = (
+    scope: PeriodDiffRow['scope'],
+    stem: string | undefined,
+    iztroScope: IztroHoroscopeLikeScope,
+    defaultClass: DiffClassification
+  ) => {
+    if (!stem) return;
+    const bibleSihua = sihuaForStem(stem as never);
+    for (const type of IZTRO_MUTAGEN_ORDER) {
+      const bibleStar = bibleSihua.find(s => s.type === type)?.starId;
+      push(scope, `sihua.${type}` as PeriodDiffRow['field'], bibleStar, iztroSihuaId(iztroScope, type), defaultClass);
+    }
+  };
+
   // 1. 大限
   const decadalMajor = chart.periods.active?.major;
   if (decadalMajor) {
     push('decadal', 'stem', decadalMajor.ganzhi?.stem, toStemId(iztroH.decadal.heavenlyStem), 'bug');
     push('decadal', 'branch', decadalMajor.ganzhi?.branch, toBranchId(iztroH.decadal.earthlyBranch), 'bug');
     push('decadal', 'lifePalaceBranch', decadalMajor.branch, iztroLifeBranch(iztroH.decadal, iztroH.astrolabe), 'bug');
+    pushSihua('decadal', decadalMajor.ganzhi?.stem, iztroH.decadal, 'school-variance');
   }
 
   // 2. 流年
@@ -95,6 +132,7 @@ export function comparePeriodWithIztro(
     push('yearly', 'stem', y.ganzhi?.stem, toStemId(iztroH.yearly.heavenlyStem), 'calendar-variance');
     push('yearly', 'branch', y.ganzhi?.branch, toBranchId(iztroH.yearly.earthlyBranch), 'calendar-variance');
     push('yearly', 'lifePalaceBranch', y.branch, iztroLifeBranch(iztroH.yearly, iztroH.astrolabe), 'school-variance');
+    pushSihua('yearly', y.ganzhi?.stem, iztroH.yearly, 'calendar-variance');
   }
 
   // 3. 流月
@@ -103,14 +141,17 @@ export function comparePeriodWithIztro(
     push('monthly', 'stem', m.ganzhi?.stem, toStemId(iztroH.monthly.heavenlyStem), 'calendar-variance');
     push('monthly', 'branch', m.ganzhi?.branch, toBranchId(iztroH.monthly.earthlyBranch), 'calendar-variance');
     push('monthly', 'lifePalaceBranch', m.branch, iztroLifeBranch(iztroH.monthly, iztroH.astrolabe), 'school-variance');
+    pushSihua('monthly', m.ganzhi?.stem, iztroH.monthly, 'calendar-variance');
   }
 
   // 4. 流日
   const d = chart.periods.day;
   if (d) {
-    push('daily', 'stem', d.ganzhi?.stem, toStemId(iztroH.daily.heavenlyStem), 'calendar-variance');
-    push('daily', 'branch', d.ganzhi?.branch, toBranchId(iztroH.daily.earthlyBranch), 'calendar-variance');
-    push('daily', 'lifePalaceBranch', d.branch, iztroLifeBranch(iztroH.daily, iztroH.astrolabe), 'school-variance');
+    const dailyClass: DiffClassification = isLateZi ? 'day-boundary-variance' : 'calendar-variance';
+    push('daily', 'stem', d.ganzhi?.stem, toStemId(iztroH.daily.heavenlyStem), dailyClass);
+    push('daily', 'branch', d.ganzhi?.branch, toBranchId(iztroH.daily.earthlyBranch), dailyClass);
+    push('daily', 'lifePalaceBranch', d.branch, iztroLifeBranch(iztroH.daily, iztroH.astrolabe), dailyClass);
+    pushSihua('daily', d.ganzhi?.stem, iztroH.daily, dailyClass);
   }
 
   // 5. 流時
@@ -119,6 +160,7 @@ export function comparePeriodWithIztro(
     push('hourly', 'stem', h.ganzhi?.stem, toStemId(iztroH.hourly.heavenlyStem), 'time-basis-variance');
     push('hourly', 'branch', h.ganzhi?.branch, toBranchId(iztroH.hourly.earthlyBranch), 'time-basis-variance');
     push('hourly', 'lifePalaceBranch', h.branch, iztroLifeBranch(iztroH.hourly, iztroH.astrolabe), 'school-variance');
+    pushSihua('hourly', h.ganzhi?.stem, iztroH.hourly, 'time-basis-variance');
   }
 
   return rows;

@@ -16,6 +16,14 @@
   "target": {
     "year": 2035
   },
+  "expectedScopes": [
+    "decadal",
+    "yearly"
+  ],
+  "external": {
+    "sourceId": "SRC.IZTRO",
+    "version": "2.6.1"
+  },
   "rows": [
     {
       "scope": "decadal",
@@ -39,28 +47,81 @@
       "status": "match"
     },
     {
+      "scope": "decadal",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.LIANZHEN",
+      "external": "ZW.STAR.MAJOR.LIANZHEN",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.POJUN",
+      "external": "ZW.STAR.MAJOR.POJUN",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.MAJOR.WUQU",
+      "external": "ZW.STAR.MAJOR.WUQU",
+      "status": "match"
+    },
+    {
+      "scope": "decadal",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.TAIYANG",
+      "external": "ZW.STAR.MAJOR.TAIYANG",
+      "status": "match"
+    },
+    {
       "scope": "yearly",
       "field": "stem",
-      "bible": "jia",
+      "bible": "yi",
       "external": "yi",
-      "status": "needs-review",
-      "classification": "calendar-variance"
+      "status": "match"
     },
     {
       "scope": "yearly",
       "field": "branch",
-      "bible": "yin",
+      "bible": "mao",
       "external": "mao",
-      "status": "needs-review",
-      "classification": "calendar-variance"
+      "status": "match"
     },
     {
       "scope": "yearly",
       "field": "lifePalaceBranch",
-      "bible": "yin",
+      "bible": "mao",
       "external": "mao",
-      "status": "needs-review",
-      "classification": "school-variance"
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.lu",
+      "bible": "ZW.STAR.MAJOR.TIANJI",
+      "external": "ZW.STAR.MAJOR.TIANJI",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.quan",
+      "bible": "ZW.STAR.MAJOR.TIANLIANG",
+      "external": "ZW.STAR.MAJOR.TIANLIANG",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.ke",
+      "bible": "ZW.STAR.MAJOR.ZIWEI",
+      "external": "ZW.STAR.MAJOR.ZIWEI",
+      "status": "match"
+    },
+    {
+      "scope": "yearly",
+      "field": "sihua.ji",
+      "bible": "ZW.STAR.MAJOR.TAIYIN",
+      "external": "ZW.STAR.MAJOR.TAIYIN",
+      "status": "match"
     }
   ],
   "externalError": null

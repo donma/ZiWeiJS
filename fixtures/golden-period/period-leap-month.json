@@ -47,22 +47,22 @@
       "palaceId": "friends"
     },
     "month": {
-      "branch": "xu",
+      "branch": "zi",
       "stem": "gui",
       "ganzhi": {
         "stem": "gui",
         "branch": "wei"
       },
-      "palaceId": "spouse"
+      "palaceId": "life"
     },
     "day": {
-      "branch": "you",
+      "branch": "hai",
       "stem": "bing",
       "ganzhi": {
         "stem": "bing",
         "branch": "wu"
       },
-      "palaceId": "children"
+      "palaceId": "siblings"
     },
     "hour": null
   }

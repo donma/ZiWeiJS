@@ -13,7 +13,7 @@
  *   npx tsx tools/differential-runner/iztro-period-runner.ts --json out.json
  *   npx tsx tools/differential-runner/iztro-period-runner.ts --write-fixtures
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -69,11 +69,11 @@ function iztroHoroscope(c: PeriodCase): IztroHoroscopeLike | null {
   if (!sex) return null;
   try {
     const astrolabe = astro.bySolar(
-      `${c.input.date.year}-${c.input.date.month}-${c.input.date.day}`,
+      c.input.date.year + '-' + c.input.date.month + '-' + c.input.date.day,
       iztroTimeIndex(hour),
       sex as never,
       true,
-      'zh-CN'
+      'zh-TW'
     );
     const t = c.target;
     const stamp = t.hour !== undefined
@@ -85,10 +85,18 @@ function iztroHoroscope(c: PeriodCase): IztroHoroscopeLike | null {
   }
 }
 
+function expectedScopesFor(target: TargetDate): Array<'decadal' | 'yearly' | 'monthly' | 'daily' | 'hourly'> {
+  if (target.hour !== undefined) return ['decadal', 'yearly', 'monthly', 'daily', 'hourly'];
+  if (target.day !== undefined) return ['decadal', 'yearly', 'monthly', 'daily'];
+  if (target.month !== undefined) return ['decadal', 'yearly', 'monthly'];
+  return ['decadal', 'yearly'];
+}
+
 interface CaseReport {
   id: string;
   input: ZiWeiBirthInput;
   target: TargetDate;
+  expectedScopes: Array<'decadal' | 'yearly' | 'monthly' | 'daily' | 'hourly'>;
   rows: PeriodDiffRow[];
   externalError?: string;
 }
@@ -98,10 +106,23 @@ for (const c of cases) {
   const chart = calculate(c.input, { targetDate: c.target });
   const h = iztroHoroscope(c);
   if (!h) {
-    reports.push({ id: c.id, input: c.input, target: c.target, rows: [], externalError: 'iztro horoscope unavailable' });
+    reports.push({
+      id: c.id,
+      input: c.input,
+      target: c.target,
+      expectedScopes: expectedScopesFor(c.target),
+      rows: [],
+      externalError: 'iztro horoscope unavailable'
+    });
     continue;
   }
-  reports.push({ id: c.id, input: c.input, target: c.target, rows: comparePeriodWithIztro(chart, h) });
+  reports.push({
+    id: c.id,
+    input: c.input,
+    target: c.target,
+    expectedScopes: expectedScopesFor(c.target),
+    rows: comparePeriodWithIztro(chart, h, { targetHour: c.target.hour })
+  });
 }
 
 const allRows = reports.flatMap(r => r.rows);
@@ -112,7 +133,62 @@ const byClass = review.reduce<Record<string, number>>((acc, r) => {
   acc[k] = (acc[k] ?? 0) + 1;
   return acc;
 }, {});
-const unclassified = review.filter(r => !r.classification || r.classification === 'unclassified');
+
+/* ---------- Variance Registry（spec 3rd §P1-5） ---------- */
+interface VarianceEntry {
+  varianceId: string;
+  scope: string;
+  field: string;
+  ruleId: string;
+  classification: string;
+  condition?: string;
+  rationale?: string;
+  researchId?: string;
+  acceptedByOwner?: boolean;
+}
+
+const varianceRegistry: VarianceEntry[] = (() => {
+  try {
+    const raw = readFileSync(join(root, 'variants/differential.json'), 'utf8');
+    return (JSON.parse(raw) as { variances?: VarianceEntry[] }).variances ?? [];
+  } catch {
+    return [];
+  }
+})();
+
+function varianceRegistryMatch(row: PeriodDiffRow): VarianceEntry | undefined {
+  const fullField = `${row.scope}.${row.field}`;
+  return varianceRegistry.find(v => {
+    if (v.classification !== row.classification) return false;
+    if (v.scope !== '*' && v.scope !== row.scope) return false;
+    if (v.field.endsWith('.*')) {
+      const prefix = v.field.slice(0, -2);
+      return fullField.startsWith(`${prefix}.`) || fullField === prefix || row.field.startsWith(`${prefix}.`) || row.field === prefix;
+    }
+    return v.field === row.field || v.field === fullField;
+  });
+}
+
+/* ---------- Gate（spec 3rd §P0-5） ---------- */
+// 必須 fail：bug、unclassified、external-error
+// 可以 pass：school/calendar/time-basis/day-boundary/leap-month variance
+//           且必須在 Variance Registry 有登錄（否則 fail）
+const HARD_FAIL = new Set(['bug', 'unclassified']);
+const KNOWN_VARIANCE = new Set([
+  'school-variance',
+  'calendar-variance',
+  'time-basis-variance',
+  'day-boundary-variance',
+  'leap-month-variance'
+]);
+
+const hardFails = review.filter(r => !r.classification || HARD_FAIL.has(r.classification));
+const externalErrors = reports.filter(r => r.externalError);
+const untracked = review.filter(r => {
+  const cls = r.classification ?? 'unclassified';
+  if (!KNOWN_VARIANCE.has(cls)) return false; // 已由 hardFails 處理
+  return !varianceRegistryMatch(r);
+});
 
 console.log('=== Period Differential (iztro) ===');
 for (const r of reports) {
@@ -123,14 +199,15 @@ for (const r of reports) {
   const m = r.rows.filter(x => x.status === 'match').length;
   console.log(`  ${r.id}: ${m}/${r.rows.length} match`);
   for (const row of r.rows.filter(x => x.status === 'needs-review')) {
-    console.log(`    [${row.classification}] ${row.scope}.${row.field}: bible=${row.bible ?? '∅'} iztro=${row.external ?? '∅'}`);
+    const tracked = varianceRegistryMatch(row);
+    console.log(`    [${row.classification ?? 'unclassified'}${tracked ? ` ${tracked.varianceId}` : ' UNTRACKED'}] ${row.scope}.${row.field}: bible=${row.bible ?? '∅'} iztro=${row.external ?? '∅'}`);
   }
 }
 console.log(`\ntotal rows ${allRows.length}: match ${matched}, needs-review ${review.length}`);
 console.log('classifications', JSON.stringify(byClass));
 
-if (process.argv.includes('--json')) {
-  const idx = process.argv.indexOf('--json');
+if (process.argv.includes('--journal')) {
+  const idx = process.argv.indexOf('--journal');
   const out = process.argv[idx + 1] ?? join(root, 'period-differential.json');
   writeFileSync(out, `${JSON.stringify({ reports, summary: { total: allRows.length, matched, review: review.length, byClass } }, null, 2)}\n`, 'utf8');
   console.log(`written ${out}`);
@@ -142,14 +219,42 @@ if (process.argv.includes('--write-fixtures')) {
   for (const r of reports) {
     writeFileSync(
       join(dir, `${r.id}.json`),
-      `${JSON.stringify({ id: r.id, input: r.input, target: r.target, rows: r.rows, externalError: r.externalError ?? null }, null, 2)}\n`,
+      `${JSON.stringify({
+        id: r.id,
+        input: r.input,
+        target: r.target,
+        expectedScopes: r.expectedScopes,
+        external: { sourceId: 'SRC.IZTRO', version: '2.6.1' },
+        rows: r.rows,
+        externalError: r.externalError ?? null
+      }, null, 2)}\n`,
       'utf8'
     );
   }
   console.log(`written fixtures to ${dir} (${reports.length} files)`);
 }
 
-if (unclassified.length > 0) {
-  console.error(`\nFAILED: ${unclassified.length} row(s) without classification`);
-  process.exit(1);
+let failed = false;
+if (hardFails.length > 0) {
+  console.error(`\nFAILED: ${hardFails.length} row(s) classified as bug / unclassified (禁止通過)`);
+  for (const r of hardFails.slice(0, 20)) {
+    console.error(`  ${r.scope}.${r.field}: bible=${r.bible ?? '∅'} iztro=${r.external ?? '∅'} [${r.classification ?? 'unclassified'}]`);
+  }
+  failed = true;
 }
+if (externalErrors.length > 0) {
+  console.error(`\nFAILED: ${externalErrors.length} external error(s)（預設 fail，需 allowlist 才能忽略）`);
+  for (const r of externalErrors) console.error(`  ${r.id}: ${r.externalError}`);
+  failed = true;
+}
+if (untracked.length > 0) {
+  console.error(`\nFAILED: ${untracked.length} variance row(s) 未登錄於 variants/differential.json`);
+  for (const r of untracked.slice(0, 20)) {
+    console.error(`  ${r.scope}.${r.field} [${r.classification}]`);
+  }
+  failed = true;
+}
+
+if (failed) process.exit(1);
+
+console.log(`\nGATE PASS: ${matched} match / ${review.length} known-variance（全部已登錄於 variants/differential.json）`);

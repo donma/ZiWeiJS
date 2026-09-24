@@ -22,6 +22,8 @@ interface PeriodFixture {
   id: string;
   input: Parameters<typeof calculate>[0];
   target: TargetDate;
+  expectedScopes?: Array<'decadal' | 'yearly' | 'monthly' | 'daily' | 'hourly'>;
+  external?: { sourceId: string; version: string };
   rows: PeriodDiffRow[];
   externalError?: string;
 }
@@ -38,17 +40,31 @@ describe('P0-9 iztro period differential fixtures', () => {
     const fixture: PeriodFixture = JSON.parse(readFileSync(join(dir, f), 'utf8'));
 
     describe(`fixture ${fixture.id}`, () => {
-      it('禁止存在 unclassified 差異', () => {
-        const unclassified = fixture.rows.filter(
-          r => r.status === 'needs-review' && (!r.classification || r.classification === 'unclassified')
-        );
-        expect(unclassified).toEqual([]);
+      it('載明外部來源與版本（spec 3rd §P1-6）', () => {
+        expect(fixture.external?.sourceId).toBe('SRC.IZTRO');
+        expect(fixture.external?.version).toBe('2.6.1');
       });
 
-      it('五層限運範圍涵蓋完整', () => {
+      it('禁止存在 bug 或 unclassified 差異（spec 3rd §P0-5 Gate）', () => {
+        const bad = fixture.rows.filter(
+          r => r.status === 'needs-review' && (!r.classification || r.classification === 'unclassified' || r.classification === 'bug')
+        );
+        expect(bad).toEqual([]);
+      });
+
+      it('涵蓋四化比對（spec 3rd §P0-6：lu/quan/ke/ji）', () => {
+        const fields = new Set(fixture.rows.map(r => r.field));
+        expect(fields.has('sihua.lu')).toBe(true);
+        expect(fields.has('sihua.quan')).toBe(true);
+        expect(fields.has('sihua.ke')).toBe(true);
+        expect(fields.has('sihua.ji')).toBe(true);
+      });
+
+      it('符合 expectedScopes 五層限運宣告（spec 3rd §P0-7）', () => {
         const scopes = new Set(fixture.rows.map(r => r.scope));
-        // 年/大限必定有
-        expect(scopes.has('decadal') || scopes.has('yearly')).toBe(true);
+        for (const s of fixture.expectedScopes ?? []) {
+          expect(scopes.has(s), `scope ${s} 必須存在`).toBe(true);
+        }
       });
 
       it('引擎現行輸出與 fixture 記載相符', () => {
@@ -66,6 +82,13 @@ describe('P0-9 iztro period differential fixtures', () => {
           if (yearBranchRow) {
             expect(chart.periods.year.ganzhi?.branch).toBe(yearBranchRow.bible);
           }
+        }
+        // 流月干支與命宮比對
+        if (chart.periods.month) {
+          const monthBranchRow = fixture.rows.find(r => r.scope === 'monthly' && r.field === 'branch');
+          const monthLifeRow = fixture.rows.find(r => r.scope === 'monthly' && r.field === 'lifePalaceBranch');
+          if (monthBranchRow) expect(chart.periods.month.ganzhi?.branch).toBe(monthBranchRow.bible);
+          if (monthLifeRow) expect(chart.periods.month.branch).toBe(monthLifeRow.bible);
         }
       });
     });

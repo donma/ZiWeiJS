@@ -48,31 +48,31 @@
       "palaceId": "travel"
     },
     "month": {
-      "branch": "chou",
+      "branch": "mao",
       "stem": "ding",
       "ganzhi": {
         "stem": "ding",
         "branch": "you"
       },
-      "palaceId": "parents"
+      "palaceId": "property"
     },
     "day": {
-      "branch": "chou",
+      "branch": "mao",
       "stem": "geng",
       "ganzhi": {
         "stem": "geng",
         "branch": "zi"
       },
-      "palaceId": "parents"
+      "palaceId": "property"
     },
     "hour": {
-      "branch": "shen",
+      "branch": "xu",
       "stem": "gui",
       "ganzhi": {
         "stem": "gui",
         "branch": "wei"
       },
-      "palaceId": "wealth"
+      "palaceId": "spouse"
     }
   }
 }

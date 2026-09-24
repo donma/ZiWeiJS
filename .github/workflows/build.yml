@@ -28,6 +28,8 @@ jobs:
       - run: npm run validate:integrity
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check
+      - run: npm run differential
+      - run: npm run differential:period
       - run: npm run verify:golden
       - run: npm run test
       - run: npm run build

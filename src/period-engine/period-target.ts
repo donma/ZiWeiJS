@@ -2,12 +2,12 @@ import { Solar } from 'lunar-typescript';
 import type { BranchId, GanzhiPair, Profile, TargetDate } from '../core/types.js';
 import { BRANCHES, STEMS, branchAt, branchIndex } from '../core/constants.js';
 import { ZiWeiError } from '../core/errors.js';
-import { hourBranchFromHour } from '../calendar/calendar-engine.js';
+import { hourBranchFromHour, resolveYearGanzhi } from '../calendar/calendar-engine.js';
 
 /**
- * 限運目標日期之單一正規化來源（spec 2nd-round §P0-1 / §建議重構後流程）。
+ * 限運目標日期之單一正規化來源（spec 2nd §P0-1 / 3rd §P0-2 / §P0-3）。
  *
- * 所有限運 executor（流月 / 流日 / 流時）一律讀 ctx.periodTarget，
+ * 所有限運 executor（流年 / 流月 / 流日 / 流時）一律讀 ctx.periodTarget，
  * 不得各自把 Gregorian month / day 當作農曆語意使用。
  *
  * 流程：
@@ -17,40 +17,45 @@ export interface NormalizedPeriodTarget {
   /** 目標之國曆成分（可能含 representative-date 語意，見 spec §targetDate 契約） */
   solar: {
     year: number;
-    month: number;
-    day: number;
+    month?: number;
+    day?: number;
     hour?: number;
     minute?: number;
   };
-  /** 目標之農曆成分（以「代表日」換算） */
+  /** 目標之農曆成分 */
   lunar: {
     year: number;
-    month: number;
-    day: number;
-    isLeapMonth: boolean;
+    month?: number;
+    day?: number;
+    isLeapMonth?: boolean;
   };
   /**
    * 經 leapMonthPolicy 處理後、供限運定位使用之有效農曆月序。
-   * - same-as-normal：閏五月 → 五月（保持原月序）
-   * - next-month   ：閏五月 → 六月
-   * - mid-month    ：閏月初一~十五 → 本月；十六~月底 → 次月
-   * - split        ：目前資料模型不支援 → normalize 時即丟 UNSUPPORTED_PROFILE
+   * 僅當有 month/day 時存在。
    */
-  effectiveLunarMonth: number;
+  effectiveLunarMonth?: number;
   /**
-   * 當 target 未含 day 時，流月以該月 15 日作代表日（spec §targetDate 契約）。
-   * 使用方不得假設整個 Gregorian month 只有唯一流月。
+   * 當 target 未含 day 但有 month 時，流月以該月 15 日作代表日（spec §targetDate 契約）。
    */
   isRepresentativeDate: boolean;
-  /** 目標日期各層真實干支（由 lunar-typescript 以實際日期推算） */
+  /** 目標日期各層真實干支（年柱依 profile.yearBoundaryPolicy 解析，spec §P1-3） */
   ganzhi: {
     year: GanzhiPair;
-    month: GanzhiPair;
-    day: GanzhiPair;
+    month?: GanzhiPair;
+    day?: GanzhiPair;
     hour?: GanzhiPair;
   };
   /** 目標時辰地支（僅當 target 提供 hour） */
   hourBranch?: BranchId;
+  /** 提供之精度（year-only | month | day | hour） */
+  granularity: 'year' | 'month' | 'day' | 'hour';
+  /**
+   * 年柱所屬年度（spec 3rd §P1-4）：
+   * lunar-new-year 制 = 農曆年；lichun 制在農曆年後、立春前會落在前一年度。
+   */
+  resolvedYear: number;
+  /** 年柱換年分界策略（spec 3rd §P0-2） */
+  yearBoundaryPolicy: 'lunar-new-year' | 'lichun';
 }
 
 const STEMS_ZH = '甲乙丙丁戊己庚辛壬癸';
@@ -110,13 +115,48 @@ export function resolveEffectiveLunarMonth(
 }
 
 /**
+ * 單獨解析年度目標（spec 3rd §P0-3）：
+ * 當 targetDate 只有 year 時，不得偷偷捏造 1 月 15 日，
+ * 應以該年年中（6 月 1 日，避開立春與新年前後交界）由 yearBoundaryPolicy 解析該年之真實年柱干支。
+ */
+export function normalizeAnnualTarget(year: number, profile: Profile): {
+  lunarYear: number;
+  ganzhiYear: GanzhiPair;
+} {
+  const midSolar = Solar.fromYmd(year, 6, 1);
+  const midLunar = midSolar.getLunar();
+  const policy = profile.yearBoundaryPolicy ?? 'lunar-new-year';
+  const ganzhiYear = resolveYearGanzhi(midLunar, policy);
+  return {
+    lunarYear: midLunar.getYear(),
+    ganzhiYear
+  };
+}
+
+/**
  * 將 TargetDate 正規化為限運可用之單一來源。
  * 擲回：INVALID_TARGET_DATE（缺欄位順序錯或日期不存在）、UNSUPPORTED_PROFILE。
  */
 export function normalizePeriodTarget(target: TargetDate, profile: Profile): NormalizedPeriodTarget {
-  // 代表日：無 day 時以該月 15 日換算農曆（spec §targetDate 契約）
+  const yearPolicy = profile.yearBoundaryPolicy ?? 'lunar-new-year';
+
+  // 1. 純年度目標（year-only）：不得捏造 1 月 15 日（spec 3rd §P0-3）
+  if (target.month === undefined) {
+    const annual = normalizeAnnualTarget(target.year, profile);
+    return {
+      solar: { year: target.year },
+      lunar: { year: annual.lunarYear },
+      isRepresentativeDate: false,
+      ganzhi: { year: annual.ganzhiYear },
+      granularity: 'year',
+      resolvedYear: annual.lunarYear,
+      yearBoundaryPolicy: yearPolicy
+    };
+  }
+
+  // 2. 有月份：驗證真實日期
+  const month = target.month;
   const isRepresentativeDate = target.day === undefined;
-  const month = target.month ?? 1;
   const day = target.day ?? 15;
   const hour = target.hour;
   const minute = target.minute;
@@ -139,27 +179,43 @@ export function normalizePeriodTarget(target: TargetDate, profile: Profile): Nor
     lunarMonth, lunarDay, isLeap, profile.leapMonthPolicy
   );
 
+  const ganzhiYear = resolveYearGanzhi(lunar, yearPolicy);
+
+  // 年柱所屬年度（spec 3rd §P1-4）：
+  // lunar-new-year → 即農曆年
+  // lichun → 若農曆年後、立春前，年柱仍屬前一年度
+  const lunarYearOfDate = lunar.getYear();
+  let resolvedYear = lunarYearOfDate;
+  if (yearPolicy === 'lichun' && lunar.getYearInGanZhiExact() !== lunar.getYearInGanZhi()) {
+    resolvedYear = lunarYearOfDate - 1;
+  }
+
   const ganzhi: NormalizedPeriodTarget['ganzhi'] = {
-    year: gzToPair(lunar.getYearInGanZhi()),
+    year: ganzhiYear,
     month: gzToPair(lunar.getMonthInGanZhi()),
-    day: gzToPair(lunar.getDayInGanZhi())
+    day: isRepresentativeDate ? undefined : gzToPair(lunar.getDayInGanZhi())
   };
 
   let hourBranch: BranchId | undefined;
-  if (hour !== undefined) {
-    // 時柱需帶入完整日期（日 + 時），minute 目前用於時柱精細度
+  if (hour !== undefined && !isRepresentativeDate) {
     const lunarH = Solar.fromYmdHms(target.year, month, day, hour, minute ?? 0, 0).getLunar();
     ganzhi.hour = gzToPair(lunarH.getTimeInGanZhi());
     hourBranch = hourBranchFromHour(hour);
   }
 
+  const granularity: NormalizedPeriodTarget['granularity'] =
+    hour !== undefined ? 'hour' : target.day !== undefined ? 'day' : 'month';
+
   return {
-    solar: { year: target.year, month, day, hour, minute },
-    lunar: { year: lunar.getYear(), month: lunarMonth, day: lunarDay, isLeapMonth: isLeap },
+    solar: { year: target.year, month, day: target.day, hour, minute },
+    lunar: { year: lunar.getYear(), month: lunarMonth, day: target.day ? lunarDay : undefined, isLeapMonth: isLeap },
     effectiveLunarMonth,
     isRepresentativeDate,
     ganzhi,
-    hourBranch
+    hourBranch,
+    granularity,
+    resolvedYear,
+    yearBoundaryPolicy: yearPolicy
   };
 }
 

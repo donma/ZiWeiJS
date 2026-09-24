@@ -36,6 +36,8 @@ export interface EngineContext {
   /** 有 targetDate 時，目標年齡所落之大限（不得以 majorPeriods[0] 代替） */
   activeMajorPeriod?: MajorPeriod;
   yearPeriod?: PeriodInfo;
+  /** 當年斗君地支（spec 3rd §P0-4：流年歲建起正月、逆數生月、順數生時） */
+  douJunBranch?: BranchId;
   monthPeriod?: PeriodInfo;
   dayPeriod?: PeriodInfo;
   hourPeriod?: PeriodInfo;

@@ -98,8 +98,105 @@
       ]
     },
     {
-      "ruleId": "ZW.CALC.SIHUA.PALACE.001",
+      "ruleId": "ZW.CALC.SIHUA.TABLE.001",
       "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.transformations.table",
+      "category": "transformations",
+      "name": {
+        "zh-TW": "四化表（共用）",
+        "en": "Shared sihua table"
+      },
+      "description": {
+        "zh-TW": "生年、宮干、大限、流年、流月、流日、流時各層四化共用之單一四化表。所有 scope 一律經 resolveSihuaForStem(ctx, stem) 解析，確保 variant 跨 scope 一致（spec 3rd §P0-9 / §P1-8）。"
+      },
+      "inputs": [
+        "ganzhi.year.stem",
+        "palaces[].stem",
+        "periods.*.stem"
+      ],
+      "logic": {
+        "params": {
+          "tableRef": "transformations/sihua#canonical"
+        },
+        "stage": "on-demand"
+      },
+      "outputs": [
+        "chart.transformations"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "tags": [
+        "core",
+        "table"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-9：抽出共用四化表規則，所有 scope（生年/宮干/大限/流年/流月/流日/流時）共用同一解析結果，確保流派 variant 跨 scope 一致。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.SIHUA.TABLE.V001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.SIHUA.TABLE.001",
+      "scope": "calculation.transformations.table",
+      "category": "transformations",
+      "name": {
+        "zh-TW": "四化表（庚干天府化權、天相化科）",
+        "en": "Shared sihua table variant (geng)"
+      },
+      "description": {
+        "zh-TW": "中州派等流派：庚年化權為天府、化科為天相。經 profile.ruleOverrides 選用後，生年、宮干與所有限運層級一致生效。"
+      },
+      "inputs": [
+        "ganzhi.year.stem",
+        "palaces[].stem",
+        "periods.*.stem"
+      ],
+      "logic": {
+        "params": {
+          "tableRef": "transformations/sihua#canonical",
+          "variantPatch": {
+            "geng": {
+              "quan": "ZW.STAR.MAJOR.TIANFU",
+              "ke": "ZW.STAR.MAJOR.TIANXIANG"
+            }
+          }
+        },
+        "stage": "variant"
+      },
+      "outputs": [
+        "chart.transformations"
+      ],
+      "sourceRefs": [
+        "SRC.ZHONGZHOU"
+      ],
+      "evidenceRefs": [],
+      "tags": [
+        "variant",
+        "table"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-9：由原 ZW.CALC.SIHUA.NATAL.V001 提升為共用四化表 variant，套用範圍由生年四化擴及全部 scope。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.transformations.palace",
       "category": "transformations",
@@ -108,7 +205,7 @@
         "en": "Palace-stem transformations"
       },
       "description": {
-        "zh-TW": "以各宮宮干查四化表；飛入他宮為飛化，落本宮為自化。"
+        "zh-TW": "以各宮宮干查四化表；飛入他宮為飛化，落本宮為自化。四化表經共用規則 ZW.CALC.SIHUA.TABLE.001 解析。"
       },
       "inputs": [
         "palaces[].stem"
@@ -137,6 +234,12 @@
       ],
       "changeLog": [
         {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-9：宮干四化改用共用四化表解析（resolveSihuaForStem），流派 variant 對庚干宮干亦生效。"
+        },
+        {
           "version": "1.0",
           "type": "evidence-update",
           "date": "2026-09-22",
@@ -146,7 +249,7 @@
     },
     {
       "ruleId": "ZW.CALC.SIHUA.PERIOD.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "scope": "calculation.transformations.period",
       "category": "transformations",
@@ -155,7 +258,7 @@
         "en": "Period transformations"
       },
       "description": {
-        "zh-TW": "大限/流年/流月/流日/流時各以其天干查四化表疊加。"
+        "zh-TW": "大限/流年/流月/流日/流時各以其天干查四化表疊加。四化表經共用規則 ZW.CALC.SIHUA.TABLE.001 解析，且與各層 overlay 共用同一組轉換結果。"
       },
       "inputs": [
         "periods.*.stem"
@@ -181,6 +284,12 @@
         "core"
       ],
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "第三輪 Hardening §P0-9 / §P1-8：限運四化與各層 overlay 共用同一組轉換結果（resolvePeriodTransformations），流派 variant 對大限/流年月日時一致生效。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",

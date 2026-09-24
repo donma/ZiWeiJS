@@ -12,5 +12,6 @@
   },
   "timeConvention": "civil",
   "dayBoundary": "zi-hour",
-  "leapMonthPolicy": "same-as-normal"
+  "leapMonthPolicy": "same-as-normal",
+  "yearBoundaryPolicy": "lunar-new-year"
 }

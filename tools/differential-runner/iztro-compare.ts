@@ -9,31 +9,43 @@ import type { BranchId, ZiWeiChart, ZiWeiBirthInput } from '../../src/index.js';
 export const BRANCH_ZH = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
 export const BRANCH_ID: BranchId[] = ['zi', 'chou', 'yin', 'mao', 'chen', 'si', 'wu', 'wei', 'shen', 'you', 'xu', 'hai'];
 
-/** 十四主星（iztro zh-TW 名稱 → 本引擎星曜 ID） */
+/** 十四主星（iztro zh-TW / zh-CN 名稱 → 本引擎星曜 ID） */
 export const MAJOR_STARS: Record<string, string> = {
-  '紫微': 'ZW.STAR.MAJOR.ZIWEI', '天機': 'ZW.STAR.MAJOR.TIANJI', '太陽': 'ZW.STAR.MAJOR.TAIYANG',
-  '武曲': 'ZW.STAR.MAJOR.WUQU', '天同': 'ZW.STAR.MAJOR.TIANTONG', '廉貞': 'ZW.STAR.MAJOR.LIANZHEN',
-  '天府': 'ZW.STAR.MAJOR.TIANFU', '太陰': 'ZW.STAR.MAJOR.TAIYIN', '貪狼': 'ZW.STAR.MAJOR.TANLANG',
-  '巨門': 'ZW.STAR.MAJOR.JUMEN', '天相': 'ZW.STAR.MAJOR.TIANXIANG', '天梁': 'ZW.STAR.MAJOR.TIANLIANG',
-  '七殺': 'ZW.STAR.MAJOR.QISHA', '破軍': 'ZW.STAR.MAJOR.POJUN'
+  '紫微': 'ZW.STAR.MAJOR.ZIWEI', '天機': 'ZW.STAR.MAJOR.TIANJI', '天机': 'ZW.STAR.MAJOR.TIANJI',
+  '太陽': 'ZW.STAR.MAJOR.TAIYANG', '太阳': 'ZW.STAR.MAJOR.TAIYANG',
+  '武曲': 'ZW.STAR.MAJOR.WUQU', '天同': 'ZW.STAR.MAJOR.TIANTONG',
+  '廉貞': 'ZW.STAR.MAJOR.LIANZHEN', '廉贞': 'ZW.STAR.MAJOR.LIANZHEN',
+  '天府': 'ZW.STAR.MAJOR.TIANFU', '太陰': 'ZW.STAR.MAJOR.TAIYIN', '太阴': 'ZW.STAR.MAJOR.TAIYIN',
+  '貪狼': 'ZW.STAR.MAJOR.TANLANG', '贪狼': 'ZW.STAR.MAJOR.TANLANG',
+  '巨門': 'ZW.STAR.MAJOR.JUMEN', '巨门': 'ZW.STAR.MAJOR.JUMEN',
+  '天相': 'ZW.STAR.MAJOR.TIANXIANG', '天梁': 'ZW.STAR.MAJOR.TIANLIANG',
+  '七殺': 'ZW.STAR.MAJOR.QISHA', '七杀': 'ZW.STAR.MAJOR.QISHA',
+  '破軍': 'ZW.STAR.MAJOR.POJUN', '破军': 'ZW.STAR.MAJOR.POJUN'
 };
 
-/** 輔煞雜曜（iztro 與本引擎皆有安放者） */
+/** 輔煞雜曜（iztro 與本引擎皆有安放者；含簡繁對照） */
 export const AUX_STARS: Record<string, string> = {
-  '左輔': 'ZW.STAR.AUX.ZUOFU', '右弼': 'ZW.STAR.AUX.YOUBI', '文昌': 'ZW.STAR.AUX.WENCHANG', '文曲': 'ZW.STAR.AUX.WENQU',
-  '祿存': 'ZW.STAR.AUX.LUCUN', '天魁': 'ZW.STAR.AUX.TIANKUI', '天鉞': 'ZW.STAR.AUX.TIANYUE', '天馬': 'ZW.STAR.AUX.TIANMA',
-  '擎羊': 'ZW.STAR.MALEFIC.QINGYANG', '陀羅': 'ZW.STAR.MALEFIC.TUOLUO',
-  '火星': 'ZW.STAR.AUX.HUOLING', '鈴星': 'ZW.STAR.AUX.LINGXING',
+  '左輔': 'ZW.STAR.AUX.ZUOFU', '左辅': 'ZW.STAR.AUX.ZUOFU',
+  '右弼': 'ZW.STAR.AUX.YOUBI',
+  '文昌': 'ZW.STAR.AUX.WENCHANG', '文曲': 'ZW.STAR.AUX.WENQU',
+  '祿存': 'ZW.STAR.AUX.LUCUN', '禄存': 'ZW.STAR.AUX.LUCUN',
+  '天魁': 'ZW.STAR.AUX.TIANKUI', '天鉞': 'ZW.STAR.AUX.TIANYUE', '天钺': 'ZW.STAR.AUX.TIANYUE',
+  '天馬': 'ZW.STAR.AUX.TIANMA', '天马': 'ZW.STAR.AUX.TIANMA',
+  '擎羊': 'ZW.STAR.MALEFIC.QINGYANG', '陀羅': 'ZW.STAR.MALEFIC.TUOLUO', '陀罗': 'ZW.STAR.MALEFIC.TUOLUO',
+  '火星': 'ZW.STAR.AUX.HUOLING', '鈴星': 'ZW.STAR.AUX.LINGXING', '铃星': 'ZW.STAR.AUX.LINGXING',
   '地空': 'ZW.STAR.MALEFIC.DIKONG', '地劫': 'ZW.STAR.MALEFIC.DIJIE',
-  '紅鸞': 'ZW.STAR.AUX.HONGLUAN', '天喜': 'ZW.STAR.AUX.TIANXI', '天姚': 'ZW.STAR.AUX.TIANYAO',
-  '咸池': 'ZW.STAR.AUX.XIANCHI', '孤辰': 'ZW.STAR.AUX.GUCHEN', '寡宿': 'ZW.STAR.AUX.GUASU',
-  '華蓋': 'ZW.STAR.AUX.HUAGAI', '天刑': 'ZW.STAR.AUX.TIANXING', '天哭': 'ZW.STAR.AUX.TIANKU', '天虛': 'ZW.STAR.AUX.TIANXU'
+  '紅鸞': 'ZW.STAR.AUX.HONGLUAN', '红鸾': 'ZW.STAR.AUX.HONGLUAN',
+  '天喜': 'ZW.STAR.AUX.TIANXI', '天姚': 'ZW.STAR.AUX.TIANYAO',
+  '咸池': 'ZW.STAR.AUX.XIANCHI',
+  '孤辰': 'ZW.STAR.AUX.GUCHEN', '寡宿': 'ZW.STAR.AUX.GUASU',
+  '華蓋': 'ZW.STAR.AUX.HUAGAI', '华盖': 'ZW.STAR.AUX.HUAGAI',
+  '天刑': 'ZW.STAR.AUX.TIANXING', '天哭': 'ZW.STAR.AUX.TIANKU',
+  '天虛': 'ZW.STAR.AUX.TIANXU', '天虚': 'ZW.STAR.AUX.TIANXU'
 };
 
-/** 全部對照星曜 ID */
+/** 全部對照星曜 ID（去重：對照表同時收錄繁/簡名稱，值會重複） */
 export const ALL_DIFF_STAR_IDS: string[] = [
-  ...Object.values(MAJOR_STARS),
-  ...Object.values(AUX_STARS)
+  ...new Set([...Object.values(MAJOR_STARS), ...Object.values(AUX_STARS)])
 ];
 
 export function toStarId(name: string): string | null {

@@ -89,8 +89,20 @@ for (const [name, input, options] of errorCases) {
 // 確保 calculate 仍可被直接呼叫（非 Safe 版本）
 calculate(base(1990, 5, 15, 10));
 
+// Variance Registry（spec 3rd §P1-5）：AI 不得自行核可，acceptedByOwner 永遠為 false
+const varianceSchema = JSON.parse(readFileSync(root + 'schemas/differential-variance.schema.json', 'utf8'));
+const varianceRegistry = JSON.parse(readFileSync(root + 'variants/differential.json', 'utf8'));
+const validateVariance = new Ajv({ allErrors: true, strict: false }).compile(varianceSchema);
+if (!validateVariance(varianceRegistry)) {
+  console.error('FAIL variants/differential.json:');
+  for (const e of validateVariance.errors ?? []) {
+    console.error(`   ${e.instancePath || '/'} ${e.message}`);
+  }
+  failed++;
+}
+
 if (failed === 0) {
-  console.log(`schema OK — chart.schema.json validated against ${cases.length} charts + ${errorCases.length} error cases`);
+  console.log(`schema OK — chart.schema.json validated against ${cases.length} charts + ${errorCases.length} error cases; variance registry valid`);
   process.exit(0);
 }
 console.error(`schema FAILED — ${failed} case(s)`);

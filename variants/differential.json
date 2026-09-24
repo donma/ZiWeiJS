@@ -1,0 +1,102 @@
+{
+  "$schema": "../schemas/differential-variance.schema.json",
+  "description": "已登錄之差異容許清單（Variance Registry）。Period / 安星 differential 之差異只有在對應登錄存在時，才能通過 gate（spec 3rd §P1-5）。AI 不得自行標記 acceptedByOwner=true；owner 覆核前一律為 false。",
+  "variances": [
+    {
+      "varianceId": "VAR.PERIOD.DAY_BOUNDARY.LATE_ZI",
+      "scope": "daily",
+      "field": "daily.*",
+      "ruleId": "ZW.CALC.PERIOD.LIURI.001",
+      "classification": "day-boundary-variance",
+      "condition": "targetHour === 23",
+      "rationale": "23:00 起子時之日歸屬依 profile.dayBoundary 決定（midnight 屬當日 / zi-hour 屬次日）；外部實作另有固定慣例。此差異為換日慣例而非計算錯誤。",
+      "evidenceRefs": [
+        "EVD.CALENDAR.GANZHI"
+      ],
+      "researchId": "RSH.CALENDAR.YEAR_BOUNDARY",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.PERIOD.DAY_BOUNDARY.LATE_ZI_HOUR",
+      "scope": "hourly",
+      "field": "hourly.*",
+      "ruleId": "ZW.CALC.PERIOD.LIUSHI.001",
+      "classification": "day-boundary-variance",
+      "condition": "targetHour === 23",
+      "rationale": "流時之命宮自流日命宮起子時順數；流日之換日慣例不同時，流時位置亦相應不同。",
+      "evidenceRefs": [
+        "EVD.CALENDAR.GANZHI"
+      ],
+      "researchId": "RSH.CALENDAR.YEAR_BOUNDARY",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.PERIOD.SCHOOL.SIHUA",
+      "scope": "*",
+      "field": "sihua.*",
+      "ruleId": "ZW.CALC.SIHUA.PERIOD.001",
+      "classification": "school-variance",
+      "condition": "profile 選用不同四化表（ruleOverrides: ZW.CALC.SIHUA.TABLE.001）",
+      "rationale": "庚干等四化各流派版本不同，屬流派差異。",
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ],
+      "researchId": "RSH.001",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.CALENDAR.YEAR_BOUNDARY",
+      "scope": "*",
+      "field": "yearly.*",
+      "ruleId": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001",
+      "classification": "calendar-variance",
+      "condition": "profile.yearBoundaryPolicy 不同（lunar-new-year vs lichun）",
+      "rationale": "年柱換年分界之流派與曆法差異，本引擎 canonical 採農曆正月初一。",
+      "evidenceRefs": [
+        "EVD.CALENDAR.YEAR_BOUNDARY"
+      ],
+      "researchId": "RSH.CALENDAR.YEAR_BOUNDARY",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.PERIOD.LEAP_MONTH",
+      "scope": "monthly",
+      "field": "monthly.*",
+      "ruleId": "ZW.CALC.PERIOD.LIUYUE.001",
+      "classification": "leap-month-variance",
+      "condition": "目標或出生落於閏月且 leapMonthPolicy 不同",
+      "rationale": "閏月落月政策（same-as-normal / next-month / mid-month）之流派差異。",
+      "evidenceRefs": [
+        "EVD.QUANSHU.DOUJUN"
+      ],
+      "researchId": "RSH.PERIOD.DOUJUN",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.PERIOD.TIME_BASIS",
+      "scope": "hourly",
+      "field": "hourly.*",
+      "ruleId": "ZW.CALC.PERIOD.LIUSHI.001",
+      "classification": "time-basis-variance",
+      "condition": "timeConvention 或 timezone 不同",
+      "rationale": "真太陽時 / 平均太陽時 / 民用時之時間基準差異。",
+      "evidenceRefs": [
+        "EVD.CALENDAR.TRUESOLAR"
+      ],
+      "researchId": "RSH.007",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
+    }
+  ]
+}

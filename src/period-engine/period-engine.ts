@@ -5,10 +5,11 @@ import type {
 } from '../core/types.js';
 import { branchIndex, branchAt, STEMS, BRANCHES, stemAt, PALACE_IDS } from '../core/constants.js';
 import { getStar } from '../executors/star-executors.js';
-import { sihuaForStem } from '../executors/star-executors.js';
+import { resolvePeriodTransformations } from '../transformation-engine/transformation-engine.js';
 import type { ExecutorOutcome } from '../rule-engine/executor-registry.js';
 import { Solar } from 'lunar-typescript';
 import { monthLifeBranch, dayLifeBranch } from './period-target.js';
+import { resolveDouJun, monthLifeBranchFromDouJun } from './doujun.js';
 
 const SUIJIAN_STARS = [
   'ZW.STAR.PERIOD.SUIJIAN', 'ZW.STAR.PERIOD.HUIQI', 'ZW.STAR.PERIOD.SANGMEN2',
@@ -27,8 +28,8 @@ const JIANGQIAN_STARS = [
 /**
  * 建立限運疊盤（流年/流月/流日/流時）：
  * - 以該限運地支為流年命宮，逆布十二宮
- * - 疊上歲建十二神與將前十二神（依該限運地支）
- * - 疊上該限運天干之四化
+ * - 歲建十二神與將前十二神：僅掛於 yearly scope（spec 3rd §P0-10；month/day/hour 不無條件灑星）
+ * - 疊上該限運天干之四化：由 resolvePeriodTransformations 與 global period sihua 共用（spec 3rd §P1-8）
  */
 export function buildPeriodOverlay(
   ctx: EngineContext,
@@ -44,42 +45,37 @@ export function buildPeriodOverlay(
   });
 
   const periodStars: PeriodStarPlacement[] = [];
-  for (let i = 0; i < 12; i++) {
-    const sid = SUIJIAN_STARS[i];
-    const b = branchAt(baseIdx + i);
-    periodStars.push({ starId: sid, name: getStar(sid).name, branch: b });
-    const p = palaces.find(x => x.branch === b);
-    if (p) p.stars.push({ starId: sid, name: getStar(sid).name, branch: b });
+
+  // 歲前十二神 / 將前十二神：目前文獻依據均為「流年歲前/將前神煞」，
+  // 僅在 year scope 安放，不再無條件灑入 month / day / hour（spec 3rd §P0-10）。
+  if (scope === 'year') {
+    for (let i = 0; i < 12; i++) {
+      const sid = SUIJIAN_STARS[i];
+      const b = branchAt(baseIdx + i);
+      periodStars.push({ starId: sid, name: getStar(sid).name, branch: b });
+      const p = palaces.find(x => x.branch === b);
+      if (p) p.stars.push({ starId: sid, name: getStar(sid).name, branch: b });
+    }
+
+    const GROUP_CENTER: Record<string, number> = { 'yin-wu-xu': 6, 'shen-zi-chen': 0, 'si-you-chou': 9, 'hai-mao-wei': 3 };
+    const bIdx = branchIndex(branch);
+    let group = 'yin-wu-xu';
+    if ([8, 0, 4].includes(bIdx)) group = 'shen-zi-chen';
+    else if ([5, 9, 1].includes(bIdx)) group = 'si-you-chou';
+    else if ([11, 3, 7].includes(bIdx)) group = 'hai-mao-wei';
+    const jxBase = GROUP_CENTER[group];
+    for (let i = 0; i < 12; i++) {
+      const sid = JIANGQIAN_STARS[i];
+      const b = branchAt(jxBase + i);
+      periodStars.push({ starId: sid, name: getStar(sid).name, branch: b });
+      const p = palaces.find(x => x.branch === b);
+      if (p) p.stars.push({ starId: sid, name: getStar(sid).name, branch: b });
+    }
   }
 
-  const GROUP_CENTER: Record<string, number> = { 'yin-wu-xu': 6, 'shen-zi-chen': 0, 'si-you-chou': 9, 'hai-mao-wei': 3 };
-  const bIdx = branchIndex(branch);
-  let group = 'yin-wu-xu';
-  if ([8, 0, 4].includes(bIdx)) group = 'shen-zi-chen';
-  else if ([5, 9, 1].includes(bIdx)) group = 'si-you-chou';
-  else if ([11, 3, 7].includes(bIdx)) group = 'hai-mao-wei';
-  const jxBase = GROUP_CENTER[group];
-  for (let i = 0; i < 12; i++) {
-    const sid = JIANGQIAN_STARS[i];
-    const b = branchAt(jxBase + i);
-    periodStars.push({ starId: sid, name: getStar(sid).name, branch: b });
-    const p = palaces.find(x => x.branch === b);
-    if (p) p.stars.push({ starId: sid, name: getStar(sid).name, branch: b });
-  }
-
-  const transformations = sihuaForStem(stem).flatMap(({ type, starId }) => {
-    const placement = ctx.placements.get(starId);
-    if (!placement) return [];
-    return [{
-      type,
-      sourceScope: scope,
-      sourceStem: stem,
-      targetStarId: starId,
-      targetPalaceId: placement.palaceId,
-      profile: ctx.profile.profileId,
-      ruleId: 'ZW.CALC.SIHUA.PERIOD.001'
-    }];
-  });
+  // 四化轉換：與 calcPeriodSihua 共用單一出口 resolvePeriodTransformations（spec 3rd §P1-8），
+  // 確保流派 variant（如 school-zhongzhou 庚干天府化權天相化科）在 overlay 與 global 一致生效。
+  const transformations = resolvePeriodTransformations(ctx, scope, stem);
 
   return {
     scope,
@@ -165,17 +161,35 @@ export function calcYearPeriod(ctx: EngineContext, year: number): ExecutorOutcom
     ctx, 'year', gz.stem, gz.branch,
     (_pi, branch) => periodPalaceStem(gz.stem, 0, branch)
   );
+  const yearPolicy = ctx.profile.yearBoundaryPolicy ?? 'lunar-new-year';
+  const targetLunarYear = pt?.lunar.year;
+  const resolvedYear = pt?.resolvedYear ?? year;
   ctx.yearPeriod = {
     scope: 'year',
     stem: gz.stem,
     branch: gz.branch,
     palaceId: palace.id,
     year,
+    lunarYear: targetLunarYear,
+    resolvedYear,
+    yearBoundaryPolicy: yearPolicy,
+    resolution: pt?.granularity === 'year' ? 'year-only' : pt?.isRepresentativeDate ? 'representative-date' : 'exact-date',
     ganzhi: { stem: gz.stem, branch: gz.branch },
-    label: { 'zh-TW': `流年 ${year}`, en: `Year ${year}` },
+    label: yearPolicy === 'lichun' && resolvedYear !== year
+      ? { 'zh-TW': `流年 ${year}（年柱屬 ${resolvedYear} 立春制）`, en: `Year ${year} (pillar year ${resolvedYear}, lichun)` }
+      : { 'zh-TW': `流年 ${year}`, en: `Year ${year}` },
     overlay
   };
-  return { inputs: { year }, result: `${gz.stem}-${gz.branch} @ ${palace.id}` };
+  return {
+    inputs: {
+      year,
+      lunarYear: pt?.lunar.year,
+      resolvedYear,
+      yearBoundaryPolicy: yearPolicy,
+      resolution: ctx.yearPeriod.resolution
+    },
+    result: `${gz.stem}-${gz.branch} @ ${palace.id}`
+  };
 }
 
 /**
@@ -204,9 +218,21 @@ function ganzhiAt(year: number, month: number, day: number, hour: number, minute
 export function calcMonthPeriod(ctx: EngineContext): ExecutorOutcome | void {
   if (!ctx.yearPeriod || !ctx.periodTarget) return;
   const pt = ctx.periodTarget;
-  // 流月命宮：由流年命宮起「農曆正月」順數（spec 2nd §P0-1），
-  // 用經 leapMonthPolicy 處理後之 effectiveLunarMonth，而非 Gregorian month。
-  const branch = monthLifeBranch(ctx.yearPeriod.branch, pt.effectiveLunarMonth);
+  if (pt.effectiveLunarMonth === undefined || !pt.ganzhi.month) return;
+  // 流月命宮：自當年「斗君」起農曆正月順數（spec 3rd §P0-4）。
+  // 斗君 = 流年歲建起正月、逆數生月，再由該宮起子時順數至生時。
+  const douJun = resolveDouJun({
+    yearBranch: ctx.yearPeriod.branch,
+    birth: {
+      lunarMonth: ctx.normalized.lunar.month,
+      lunarDay: ctx.normalized.lunar.day,
+      isLeapMonth: ctx.normalized.lunar.isLeapMonth,
+      hourBranch: ctx.normalized.hourBranch
+    },
+    leapMonthPolicy: ctx.profile.leapMonthPolicy
+  });
+  ctx.douJunBranch = douJun;
+  const branch = monthLifeBranchFromDouJun(douJun, pt.effectiveLunarMonth);
   const palace = ctx.palaces.find(p => p.branch === branch)!;
   // 流月干支：目標代表日之真實月柱
   const gz = pt.ganzhi.month;
@@ -228,6 +254,7 @@ export function calcMonthPeriod(ctx: EngineContext): ExecutorOutcome | void {
     inputs: {
       lunarMonth: pt.lunar.month, isLeapMonth: pt.lunar.isLeapMonth,
       effectiveLunarMonth: pt.effectiveLunarMonth,
+      douJun,
       representativeDate: pt.isRepresentativeDate,
       monthGanzhi: `${gz.stem}-${gz.branch}`
     },
@@ -238,6 +265,7 @@ export function calcMonthPeriod(ctx: EngineContext): ExecutorOutcome | void {
 export function calcDayPeriod(ctx: EngineContext): ExecutorOutcome | void {
   if (!ctx.monthPeriod || !ctx.periodTarget) return;
   const pt = ctx.periodTarget;
+  if (pt.lunar.day === undefined || !pt.ganzhi.day) return;
   // 流日命宮：自流月命宮起「農曆初一」順數至當日（spec 2nd §P0-2），
   // 用 lunar day 而非 Gregorian day。
   const branch = dayLifeBranch(ctx.monthPeriod.branch, pt.lunar.day);
