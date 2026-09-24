@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 543 it() / 61 files（靜態計數）|
+| Tests | 549 it() / 62 files（靜態計數）|
 | E2E / Visual | 22 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -171,6 +171,7 @@ npm run validate:patterns     # Pattern Research Backlog 治理（格局待辦�
 npm run profiles:gap          # Profile 欄位實作盤點（--check 供 CI）
 npm run assimilation:star-gap     # 外部星名 gap 審計（stage / cycle-deity 不得誤判為缺星）
 npm run assimilation:pattern-gap  # 格局 gap 審計（外部名稱必被古典 backlog 追蹤）
+npm run assimilation:candidate-checklist  # §49 候選檢查（enforced / advisory）
 npm run assimilation:capability-report  # 外部能力報告（license 界線 / 產出物盤點）
 npm run assimilation:zhongzhou-diff     # 中州 Diff Matrix（12 維度實跑對照）
 npm run stats:distribution    # 1900–2100 分佈報告（14,683 盤）

@@ -1,0 +1,474 @@
+{
+  "checklistVersion": "1.0.0",
+  "generatedBy": "tools/assimilation/candidate-checklist.ts",
+  "specRef": "ai-guide/ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1.md §49",
+  "note": "本報告只做機械可證的檢查；「無現有重複能力 / Test / Owner review」屬 Owner 判斷，一律標為 advisory，不得由 AI 代為宣告通過。任何候選之初始狀態必須為 research。",
+  "totals": {
+    "candidates": 19,
+    "research": 8,
+    "nonResearch": 11,
+    "failures": 0
+  },
+  "entries": [
+    {
+      "candidateId": "ASM.AI.TASK_CONTEXT",
+      "project": "ziwei-chart",
+      "type": "metadata",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.CHART.PLANE",
+      "project": "iztro",
+      "type": "metadata",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.METADATA.RUNTIME_PLACEMENT",
+      "project": "fortel",
+      "type": "metadata",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.PATTERN.CANDIDATE_HARVEST",
+      "project": "ziwei-doushu",
+      "type": "pattern",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": false,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認",
+        "Evidence route 目前為空：升級前必須補 Evidence"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.PERIOD.DYNAMIC_STARS",
+      "project": "iztro",
+      "type": "metadata",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.PERIOD.MINOR_PERIOD",
+      "project": "iztro",
+      "type": "period",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.PERIOD.YEAR_DEITY_SCOPE",
+      "project": "ziwei-doushu",
+      "type": "variant",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": false,
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "Evidence route 目前為空：升級前必須補 Evidence"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.PRODUCT.UX",
+      "project": "ziwei-chart",
+      "type": "product",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.SCHOOL.ZHONGZHOU",
+      "project": "iztro",
+      "type": "variant",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.SCHOOL.ZHONGZHOU_DIFF_MATRIX",
+      "project": "fortel",
+      "type": "variant",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.SDK.QUERY_FACADE",
+      "project": "iztro",
+      "type": "query",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.FENGGAO",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "n/a (已落地)",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.JIESHEN",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "n/a (已落地)",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.TAIFU",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "n/a (已落地)",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.TIANCAI",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": true,
+        "stableId": true,
+        "schema": true,
+        "rule": false,
+        "sourceRoute": false,
+        "evidenceRoute": true,
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.TIANSHOU",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": true,
+        "stableId": true,
+        "schema": true,
+        "rule": false,
+        "sourceRoute": false,
+        "evidenceRoute": true,
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.STAR.TIANWU",
+      "project": "cdestiny",
+      "type": "star",
+      "status": "research",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": true,
+        "stableId": true,
+        "schema": true,
+        "rule": false,
+        "sourceRoute": false,
+        "evidenceRoute": true,
+        "test": "n/a (status=research)",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "pending"
+      },
+      "advisory": [],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.TEST.PROPERTY",
+      "project": "ziwei-doushu",
+      "type": "property",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": "n/a",
+        "rule": "n/a",
+        "sourceRoute": "n/a",
+        "evidenceRoute": "n/a",
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    },
+    {
+      "candidateId": "ASM.VARIANT.CATALOG",
+      "project": "ziwei-doushu",
+      "type": "variant",
+      "status": "accepted",
+      "checks": {
+        "gapStatement": true,
+        "benefitStatement": true,
+        "noDuplicateCapability": "advisory",
+        "stableId": true,
+        "schema": true,
+        "rule": true,
+        "sourceRoute": true,
+        "evidenceRoute": true,
+        "test": "advisory",
+        "externalComparison": true,
+        "initialStatusResearch": true,
+        "ownerReview": "advisory"
+      },
+      "advisory": [
+        "重複能力無法機械證明：需 Owner 於 review 時對照既有模組",
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
+      "failures": []
+    }
+  ]
+}

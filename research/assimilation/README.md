@@ -40,6 +40,7 @@ research/assimilation/
   rejections.json             明確拒絕清單（§45/§46）
   star-gap.json               star-gap-audit 產出（星曜 Gap Detector）
   pattern-gap.json            pattern-gap-audit 產出（格局 Gap Detector）
+  candidate-checklist.json    §49 候選進入 Repo 前檢查（enforced / advisory）
   external-capability-report.json  external-capability-report 產出（license 界線 / 產出物盤點）
   <project>/
     snapshot.json             真實 repo metadata（commit / license / capturedAt）
@@ -97,6 +98,8 @@ npm run assimilation:star-gap          # 產生 star-gap.json
 npm run assimilation:star-gap:check    # 檢查 star-gap 未漂移
 npm run assimilation:pattern-gap       # 產生 pattern-gap.json
 npm run assimilation:pattern-gap:check # 檢查 pattern-gap 未漂移
+npm run assimilation:candidate-checklist # 產生 candidate-checklist.json（§49）
+npm run assimilation:candidate-checklist:check
 npm run assimilation:capability-report # 產生 external-capability-report.json
 npm run assimilation:capability-report:check
 npm run assimilation:zhongzhou-diff     # 產生中州 Diff Matrix

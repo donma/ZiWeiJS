@@ -8,8 +8,9 @@
       "externalRefs": [{ "project": "ziwei-doushu" }],
       "ziweiGap": "partial",
       "benefit": ["coverage"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "researchId": "RSH.PATTERN.BACKLOG",
+      "decision": "owner-directed 2026-09-24（Phase G）：已轉為古典 backlog（research/patterns/pattern-backlog.json）",
       "notes": "流程：External Pattern → Normalize Name → 與現有 24 格局比對 → 抽結構條件 → 轉 ZiWei DSL → status=research → 找獨立 Evidence → candidate（spec §24）。禁止搬 description/職業建議/財運結論/性格敘述；外部程式碼只證明『該作者這樣定義』，不是古籍 Evidence。"
     },
     {
@@ -19,8 +20,9 @@
       "externalRefs": [{ "project": "ziwei-doushu" }, { "project": "iztro", "version": "^2.6.1" }, { "project": "fortel" }],
       "ziweiGap": "partial",
       "benefit": ["school"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "researchId": "RSH.VARIANT.CATALOG",
+      "decision": "owner-directed 2026-09-24（Phase F）：已產出 variant-catalog.json（14 維度）",
       "notes": "統一為 ZiWeiJS profile dimensions（yearBoundaryPolicy / monthGanzhiBoundaryPolicy / lateZiPolicy / leapMonthPolicy / brightnessProfile / sihuaTableProfile / tianmaPlacementProfile / tiankongPlacementProfile / voidStarPlacementProfile / kuiyuePlacementProfile / tianshiTianshangProfile / changshengProfile / minorPeriodPolicy / yearDeityScopePolicy）。禁止用大量 if (profile === ...)；一律 Profile → ruleOverrides → Variant Rule（spec §26）。"
     },
     {
@@ -42,8 +44,8 @@
       "externalRefs": [{ "project": "ziwei-doushu" }],
       "ziweiGap": "partial",
       "benefit": ["validation"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "decision": "owner-directed 2026-09-24（Phase H/M8）：已實作 fuzz / large corpus / distribution",
       "notes": "每條鐵律需先自行驗證來源再鎖成 property test（spec §29）；518,400 dataset 只作 fuzz / distribution，不作 canonical oracle，且不入 repo（spec §28）。"
     }
   ]

@@ -8,8 +8,8 @@
       "externalRefs": [{ "project": "ziwei-chart" }],
       "ziweiGap": "partial",
       "benefit": ["sdk"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "decision": "owner-directed 2026-09-24（Phase I）：已實作 ZiWei.Product.retrieve 與 AiContext 精準化",
       "notes": "吸收 Chart Facts → Signals → Knowledge Retrieval → Task Context 之設計，但不得新建第二套 Knowledge DB；建於既有 Interpretation Rule Graph / Domain / Pattern Hits / Period Scope / Source-Evidence / AI.toContext() 之上。未來 API 形式：ZiWei.AI.toContext(chart, { task })（spec §31）。"
     },
     {
@@ -19,8 +19,8 @@
       "externalRefs": [{ "project": "ziwei-chart" }],
       "ziweiGap": "missing",
       "benefit": ["sdk"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "decision": "owner-directed 2026-09-24（Phase I UI）：已實作限運面板 / 12 年時間軸 / 分享（不含出生資料）",
       "notes": "只放 ui/experimental/ 或 examples/product/ 或未來獨立 Product Repo；不得污染 Reference Engine / rules / tables（spec §32）。GPL code 禁止複製。"
     }
   ]

@@ -29,15 +29,16 @@
 | 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 |
 | 12 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
 | 13 | `npm run assimilation:pattern-gap:check` | 格局 Gap：外部格局名稱必被古典 backlog 追蹤；equivalent 必指向真實 pattern 規則 |
-| 14 | `npm run assimilation:capability-report:check` | 外部能力報告未漂移（license 界線 / commit / 產出物盤點須與 snapshot 一致） |
-| 15 | `npm run assimilation:zhongzhou-diff:check` | 中州 Diff Matrix 未漂移（12 維度 × 3 probe 實跑值） |
-| 16 | `npm run stats:distribution:check` | 分佈報告未漂移（1900–2100 每 5 日一盤，14,683 盤） |
-| 17 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 18 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 19 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 20 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 21 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants、`fuzz/`、large corpus） |
-| 22 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 14 | `npm run assimilation:candidate-checklist:check` | §49 候選清單：知識型候選必附 researchId、非 research 狀態必有 Owner decision |
+| 15 | `npm run assimilation:capability-report:check` | 外部能力報告未漂移（license 界線 / commit / 產出物盤點須與 snapshot 一致） |
+| 16 | `npm run assimilation:zhongzhou-diff:check` | 中州 Diff Matrix 未漂移（12 維度 × 3 probe 實跑值） |
+| 17 | `npm run stats:distribution:check` | 分佈報告未漂移（1900–2100 每 5 日一盤，14,683 盤） |
+| 18 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 19 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 20 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 21 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 22 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants、`fuzz/`、large corpus） |
+| 23 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -60,6 +61,7 @@ validate:patterns
 profiles:gap:check
 assimilation:star-gap:check
 assimilation:pattern-gap:check
+assimilation:candidate-checklist:check
 assimilation:capability-report:check
 assimilation:zhongzhou-diff:check
 stats:distribution:check
@@ -79,9 +81,9 @@ Pages deploy
 
 > CI 與 `npm run verify` 的治理 Gate **完全一致**：`verify` = validate:rules → sources → schemas →
 > governance → integrity → versions → research → catalogs → variants → patterns → profiles:gap:check →
-> assimilation:star-gap:check → pattern-gap:check → capability-report:check → zhongzhou-diff:check →
-> stats:distribution:check → differential:calendar → differential → differential:period → verify:golden →
-> test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
+> assimilation:star-gap:check → pattern-gap:check → candidate-checklist:check → capability-report:check →
+> zhongzhou-diff:check → stats:distribution:check → differential:calendar → differential → differential:period →
+> verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
 
 ## 1.1 Release Gate（`npm run release:check`）
 
@@ -391,6 +393,7 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 |------|------|------|
 | `tools/assimilation/star-gap-audit.ts` | `research/assimilation/star-gap.json` | `assimilation:star-gap:check` |
 | `tools/assimilation/pattern-gap-audit.ts` | `research/assimilation/pattern-gap.json` | `assimilation:pattern-gap:check` |
+| `tools/assimilation/candidate-checklist.ts` | `research/assimilation/candidate-checklist.json` | `assimilation:candidate-checklist:check` |
 | `tools/assimilation/profile-gap-audit.ts` | `research/profiles/profile-gap.json` | `profiles:gap:check` |
 | `tools/assimilation/external-capability-report.ts` | `research/assimilation/external-capability-report.json` | `assimilation:capability-report:check` |
 | `tools/assimilation/zhongzhou-diff-matrix.ts` | `research/assimilation/fortel/zhongzhou-diff.json` | `assimilation:zhongzhou-diff:check` |
@@ -431,3 +434,33 @@ M8 附帶發現（已修）：目標日期早於出生時，小限曾以 `Error`
 
 - 模板：`.github/pull_request_template.md`（§51 14 欄位 + 禁止事項 + 檢查清單）
 - 規則：未填寫不得 merge；AI 不得自填 `Owner decision required: approved`。
+
+## 17. Candidate Checklist（§49）
+
+把「Candidate 進入 Repo 前」的 12 項檢查機械化，避免候選靠印象升級。
+
+- 產物：`research/assimilation/candidate-checklist.json`（19 候選；11 已落地、8 研究中、0 enforced failure）
+- Gate：`npm run assimilation:candidate-checklist:check`（已納入 `verify` 與 CI）
+- 測試：`tests/assimilation/candidate-checklist.test.ts`
+
+判準分兩級（**AI 不得代為宣告通過**）：
+
+| 級別 | 項目 | 處置 |
+|------|------|------|
+| enforced | stable ID、Gap 說明、增益說明、external comparison、知識型候選之 researchId、status 與 decision 一致 | 違反即 fail |
+| advisory | 無現有重複能力（僅 star 型可機械驗證）、Test、Owner review 實質內容 | 只記錄，需 Owner 判斷 |
+
+已落地候選（`status: accepted` + Owner decision）：
+
+| Candidate | 落地內容 |
+|-----------|----------|
+| `ASM.STAR.TAIFU` / `FENGGAO` / `JIESHEN` | canonical 星曜（`ZW.CALC.STAR.TAIFU_FENGGAO.001` / `ZW.CALC.STAR.JIESHEN.001`），附兩份獨立 Tier3 證據 |
+| `ASM.PERIOD.MINOR_PERIOD` | canonical 小限（`ZW.CALC.PERIOD.XIAOXIAN.001`） |
+| `ASM.SDK.QUERY_FACADE` | Phase D 唯讀 Query Facade |
+| `ASM.SCHOOL.ZHONGZHOU_DIFF_MATRIX` | M5 中州 Diff Matrix |
+| `ASM.PATTERN.CANDIDATE_HARVEST` / `ASM.VARIANT.CATALOG` / `ASM.TEST.PROPERTY` | Phase G / F / H-M8 產物 |
+| `ASM.AI.TASK_CONTEXT` / `ASM.PRODUCT.UX` | Phase I：`Product.retrieve`、AiContext 精準化、UI 限運面板 |
+
+仍研究中且**不得升級**者：`ASM.STAR.TIANCAI` / `TIANSHOU` / `TIANWU`（查無古典依據）、
+`ASM.CHART.PLANE`、`ASM.PERIOD.DYNAMIC_STARS`、`ASM.METADATA.RUNTIME_PLACEMENT`、
+`ASM.SCHOOL.ZHONGZHOU`、`ASM.PERIOD.YEAR_DEITY_SCOPE`（皆有 researchId 或標記 advisory）。

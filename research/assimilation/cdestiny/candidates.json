@@ -8,9 +8,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.FENGGAO",
-      "decision": null,
+      "independentEvidence": ["EVD.QUANSHU.FENGGAO","EVD.QUANSHU.DIANCANG.FENGGAO"],
+      "decision": "owner-approved 2026-09-24：升 canonical（ZW.CALC.STAR.TAIFU_FENGGAO.001）",
       "notes": "第一批六顆之一（spec §18）。需先完成：正式名稱/繁簡/別名/分類/安星法/年月日時依據/流派差異/廟旺適用/是否四化/是否運限動態/古籍出處/現代來源。暫定 ID ZW.STAR.MINOR.FENGGAO。"
     },
     {
@@ -20,9 +21,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.JIESHEN",
-      "decision": null,
+      "independentEvidence": ["EVD.QUANSHU.JIESHEN","EVD.QUANSHU.DIANCANG.JIESHEN"],
+      "decision": "owner-approved 2026-09-24：升 canonical（ZW.CALC.STAR.JIESHEN.001）",
       "notes": "注意『年解 / 解神』可能為不同 entity（spec §22），需 alias audit。"
     },
     {
@@ -32,9 +34,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.TAIFU",
-      "decision": null,
+      "independentEvidence": ["EVD.QUANSHU.TAIFU","EVD.QUANSHU.DIANCANG.TAIFU"],
+      "decision": "owner-approved 2026-09-24：升 canonical（ZW.CALC.STAR.TAIFU_FENGGAO.001）",
       "notes": "與三台/八座系統之關係需釐清（是否同組、起法依據）。"
     },
     {

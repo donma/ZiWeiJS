@@ -8,8 +8,9 @@
       "externalRefs": [{ "project": "fortel", "version": "0.1.0" }, { "project": "iztro", "version": "^2.6.1" }],
       "ziweiGap": "partial",
       "benefit": ["school", "evidence", "validation"],
-      "status": "research",
-      "decision": null,
+      "status": "accepted",
+      "researchId": "RSH.PROFILE.ZHONGZHOU",
+      "decision": "owner-directed 2026-09-24（M5）：已產出 zhongzhou-diff.json（12 維度 × 3 probe 實跑）",
       "notes": "至少三角驗證：Fortel + iztro zhongzhou mode + 獨立中州派資料；不可只信一套（spec §13）。輸出 zhongzhou-diff.json。"
     },
     {

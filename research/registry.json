@@ -503,6 +503,44 @@
       "question": "school-zhongzhou profile 目前僅以 ruleOverrides 覆寫庚干四化（天府化科、天相化科）兩條；中州派其他特徵（廟旺表、星曜互涉／宮干飛化用法、格局取法）尚未以 variant 表達。",
       "nextAction": "需王亭之著作或正式出版講義等可引用來源（SRC.ZHONGZHOU 目前僅為 Tier 2 類別佔位、無逐條證據），逐項建立 variant 規則；不得憑印象補齊。",
       "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.VARIANT.CATALOG",
+      "title": "Variant Research Catalog：14 維度中 7 項僅部分建模、5 項未建模",
+      "status": "open",
+      "type": "table",
+      "relatedRules": [
+        "ZW.CALC.SIHUA.TABLE.V001",
+        "ZW.CALC.DIGNITY.BRIGHTNESS.001"
+      ],
+      "evidence": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ],
+      "question": "research/variants/variant-catalog.json 登錄 spec §26 之 14 個流派差異維度，其中 7 項 partial、5 項 not-modeled（含廟旺整表、天馬、天空、截空、天傷天使、長生方向、晚子時、魁鉞）。各維度尚未逐一取得可引用來源。",
+      "nextAction": "依維度逐一取得 Tier1/2 或 2× 獨立 Tier3 來源，再轉為 variant 規則或正式否決；禁止以外部實作共識補齊。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.CHART.PLANE",
+      "title": "天盤 / 地盤 / 人盤（chartPlane）未建模",
+      "status": "open",
+      "type": "table",
+      "relatedRules": [],
+      "evidence": [],
+      "question": "部分實作以「天盤／地盤／人盤」表達同盤不同盤面（起盤差異），ZiWeiJS 目前僅有單一盤面，無 chartPlane 概念。",
+      "nextAction": "需取得可引用之定義與使用情境（是否為流派差異或應用層觀點），並確認與現有十二宮／限運疊盤之關係後，才考慮新增 schema 欄位；不得以外部實作共識補齊。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.DYNAMIC_STARS",
+      "title": "動態流曜（流年/流月/流日/流時星系）尚未建模",
+      "status": "open",
+      "type": "table",
+      "relatedRules": [],
+      "evidence": [],
+      "question": "限運目前輸出大限／流年／流月／流日／流時之宮位與四化，但「流曜」（依限運層級另安之動態星曜，如流昌流曲、流魁流鉞、流馬等）尚未建模；iztro 以 baseStarId + scope 表達，屬實作觀點而非古典依據。",
+      "nextAction": "先取得《全書》或正式出版講義中關於流曜安法之逐條原文（含是否與本命同法），再決定以 metadata 或 rule 建模；不得直接照搬外部實作。",
+      "ownerReviewRequired": true
     }
   ]
 }

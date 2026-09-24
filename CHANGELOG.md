@@ -509,6 +509,14 @@
   之 required keys 同步加入新欄位
 - 文件：`docs/api/public-api.md` 新增 AiContext 契約與 chart JSON 的 `periods.active` / `periods.xiaoxian`
 
+### §49 — Candidate Checklist（候選進入 Repo 前檢查）
+- 新增 `tools/assimilation/candidate-checklist.ts` → `research/assimilation/candidate-checklist.json`：
+  將 §49 的 12 項檢查機械化，分 enforced（stable ID / Gap / 增益 / external comparison / 知識型
+  researchId / status 與 decision 一致）與 advisory（重複能力 / Test / Owner review）
+- **候選狀態與現實對齊**：11 筆標為 `accepted` 並附 Owner decision（台輔／封誥／解神／小限、
+  Query Facade、中州 Diff Matrix、Pattern backlog、Variant catalog、Property 測試、AI context、Product UX）
+- 新增 3 筆研究項：`RSH.CHART.PLANE`、`RSH.VARIANT.CATALOG`、`RSH.PERIOD.DYNAMIC_STARS`（共 37 筆）
+- 新 gate：`assimilation:candidate-checklist:check`；測試 `tests/assimilation/candidate-checklist.test.ts`（6）
 ### §51 — Assimilation PR 模板
 - 新增 `.github/pull_request_template.md`：14 個必填欄位、各欄位要求、禁止事項、檢查清單
 
@@ -530,7 +538,7 @@
 
 ### Gate
 - `verify` 納入 `validate:catalogs`、`validate:variants`、`validate:patterns`、`profiles:gap:check`、
-  `assimilation:star-gap:check`、`assimilation:pattern-gap:check`、`assimilation:capability-report:check`、
+  `assimilation:star-gap:check`、`assimilation:pattern-gap:check`、`assimilation:candidate-checklist:check`、`assimilation:capability-report:check`、
   `assimilation:zhongzhou-diff:check`、`stats:distribution:check`；CI 同步
 - `npm run assimilation:snapshot`（需網路，手動執行，不在 verify）
 - 版本 `0.4.1 → 0.5.0`
