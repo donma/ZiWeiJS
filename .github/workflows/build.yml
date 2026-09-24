@@ -30,6 +30,8 @@ jobs:
       - run: npm run validate:integrity
       - run: npm run validate:versions
       - run: npm run validate:research
+      - run: npm run validate:catalogs
+      - run: npm run assimilation:star-gap:check
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check
       - run: npm run differential

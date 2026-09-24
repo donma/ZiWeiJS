@@ -1,0 +1,852 @@
+{
+  "generatedBy": "tools/assimilation/star-gap-audit.ts",
+  "note": "外部名稱只作 Gap Detector，不作為 canonical；actual-missing-star 一律先進 Research Queue。",
+  "ziweiCounts": {
+    "star": 95,
+    "stage": 12,
+    "cycleDeity": 12,
+    "yearDeity": 24
+  },
+  "totalExternalNames": 43,
+  "results": [
+    {
+      "name": "封誥",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "解神",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "台輔",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "天才",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "天壽",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "天巫",
+      "status": "actual-missing-star",
+      "matched": [],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "research"
+    },
+    {
+      "name": "旬中",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "旬中",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；可能為旬空之別稱或不同 entity（spec §22），列入 research"
+      },
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "空亡",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "空亡",
+        "type": "external-only",
+        "candidates": [],
+        "note": "與截空 / 旬空 / 天空之關係各派不一（spec §37），禁止直接新增或合併"
+      },
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "截路",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "截路",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；是否即截空（JIEKONG）需 Alias / Variant Audit（spec §22）"
+      },
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "年解",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "年解",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；與解神是否同星需 Alias Audit（spec §22）"
+      },
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "長生",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.CHANGSHENG",
+          "entityKind": "stage",
+          "names": [
+            "長生",
+            "长生",
+            "Chang Sheng"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "沐浴",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.MUYU",
+          "entityKind": "stage",
+          "names": [
+            "沐浴",
+            "沐浴",
+            "Mu Yu"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "冠帶",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.GUANDAI",
+          "entityKind": "stage",
+          "names": [
+            "冠帶",
+            "冠带",
+            "Guan Dai"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "臨官",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.LINGUAN",
+          "entityKind": "stage",
+          "names": [
+            "臨官",
+            "临官",
+            "Lin Guan"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "帝旺",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.DIWANG",
+          "entityKind": "stage",
+          "names": [
+            "帝旺",
+            "帝旺",
+            "Di Wang"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "衰",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.SHUAI",
+          "entityKind": "stage",
+          "names": [
+            "衰",
+            "衰",
+            "Shuai"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "病",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.BING",
+          "entityKind": "stage",
+          "names": [
+            "病",
+            "病",
+            "Bing"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "死",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.SI",
+          "entityKind": "stage",
+          "names": [
+            "死",
+            "死",
+            "Si"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "墓",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.MU",
+          "entityKind": "stage",
+          "names": [
+            "墓",
+            "墓",
+            "Mu"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "絕",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.JUE",
+          "entityKind": "stage",
+          "names": [
+            "絕",
+            "绝",
+            "Jue"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "胎",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.TAI",
+          "entityKind": "stage",
+          "names": [
+            "胎",
+            "胎",
+            "Tai"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "養",
+      "status": "stage",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.CHANGSHENG.YANG",
+          "entityKind": "stage",
+          "names": [
+            "養",
+            "养",
+            "Yang"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "博士",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.BOSHI",
+          "entityKind": "cycle-deity",
+          "names": [
+            "博士",
+            "博士",
+            "Bo Shi"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "力士",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.LISHI",
+          "entityKind": "cycle-deity",
+          "names": [
+            "力士",
+            "力士",
+            "Li Shi"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "青龍",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.QINGLONG",
+          "entityKind": "cycle-deity",
+          "names": [
+            "青龍",
+            "青龙",
+            "Qing Long"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "小耗",
+      "status": "ambiguous",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.XIAOHAO",
+          "entityKind": "star",
+          "names": [
+            "小耗",
+            "小耗",
+            "Xiao Hao"
+          ],
+          "source": "star-registry"
+        },
+        {
+          "id": "ZW.STAR.PERIOD.XIAOHAO2",
+          "entityKind": "year-deity",
+          "names": [
+            "小耗",
+            "小耗",
+            "Xiao Hao"
+          ],
+          "source": "cycle-registry"
+        },
+        {
+          "id": "ZW.CYCLE.BOSHI.XIAOHAO",
+          "entityKind": "cycle-deity",
+          "names": [
+            "小耗",
+            "小耗",
+            "Xiao Hao"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "將軍",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.JIANGJUN",
+          "entityKind": "cycle-deity",
+          "names": [
+            "將軍",
+            "将军",
+            "Jiang Jun"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "奏書",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.ZOUSHU",
+          "entityKind": "cycle-deity",
+          "names": [
+            "奏書",
+            "奏书",
+            "Zou Shu"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "飛廉",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.FEILIAN",
+          "entityKind": "cycle-deity",
+          "names": [
+            "飛廉",
+            "飞廉",
+            "Fei Lian"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "喜神",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.XISHEN",
+          "entityKind": "cycle-deity",
+          "names": [
+            "喜神",
+            "喜神",
+            "Xi Shen"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "病符",
+      "status": "ambiguous",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.BINGFU",
+          "entityKind": "star",
+          "names": [
+            "病符",
+            "病符",
+            "Bing Fu"
+          ],
+          "source": "star-registry"
+        },
+        {
+          "id": "ZW.STAR.PERIOD.BINGFU2",
+          "entityKind": "year-deity",
+          "names": [
+            "病符",
+            "病符",
+            "Bing Fu"
+          ],
+          "source": "cycle-registry"
+        },
+        {
+          "id": "ZW.CYCLE.BOSHI.BINGFU",
+          "entityKind": "cycle-deity",
+          "names": [
+            "病符",
+            "病符",
+            "Bing Fu"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "大耗",
+      "status": "ambiguous",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.DAHao",
+          "entityKind": "star",
+          "names": [
+            "大耗",
+            "大耗",
+            "Da Hao"
+          ],
+          "source": "star-registry"
+        },
+        {
+          "id": "ZW.STAR.PERIOD.DAHAO2",
+          "entityKind": "year-deity",
+          "names": [
+            "大耗",
+            "大耗",
+            "Da Hao"
+          ],
+          "source": "cycle-registry"
+        },
+        {
+          "id": "ZW.CYCLE.BOSHI.DAHAO",
+          "entityKind": "cycle-deity",
+          "names": [
+            "大耗",
+            "大耗",
+            "Da Hao"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "伏兵",
+      "status": "cycle-deity",
+      "matched": [
+        {
+          "id": "ZW.CYCLE.BOSHI.FUBING",
+          "entityKind": "cycle-deity",
+          "names": [
+            "伏兵",
+            "伏兵",
+            "Fu Bing"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "官符",
+      "status": "ambiguous",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.GUANFU",
+          "entityKind": "star",
+          "names": [
+            "官符",
+            "官符",
+            "Guan Fu"
+          ],
+          "source": "star-registry"
+        },
+        {
+          "id": "ZW.STAR.PERIOD.GUANFU2",
+          "entityKind": "year-deity",
+          "names": [
+            "官符",
+            "官符",
+            "Guan Fu"
+          ],
+          "source": "cycle-registry"
+        },
+        {
+          "id": "ZW.CYCLE.BOSHI.GUANFU",
+          "entityKind": "cycle-deity",
+          "names": [
+            "官符",
+            "官符",
+            "Guan Fu"
+          ],
+          "source": "cycle-registry"
+        }
+      ],
+      "seenIn": [
+        "cdestiny"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "旬中",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "旬中",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；可能為旬空之別稱或不同 entity（spec §22），列入 research"
+      },
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "空亡",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "空亡",
+        "type": "external-only",
+        "candidates": [],
+        "note": "與截空 / 旬空 / 天空之關係各派不一（spec §37），禁止直接新增或合併"
+      },
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "截路",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "截路",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；是否即截空（JIEKONG）需 Alias / Variant Audit（spec §22）"
+      },
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "年解",
+      "status": "external-only",
+      "matched": [],
+      "alias": {
+        "alias": "年解",
+        "type": "external-only",
+        "candidates": [],
+        "note": "外部實作名稱；與解神是否同星需 Alias Audit（spec §22）"
+      },
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "流魁",
+      "status": "period-dynamic",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANKUI",
+          "entityKind": "star",
+          "names": [
+            "天魁",
+            "天魁",
+            "Tian Kui"
+          ],
+          "source": "star-registry"
+        }
+      ],
+      "baseStarId": "ZW.STAR.AUX.TIANKUI",
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "流鉞",
+      "status": "period-dynamic",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANYUE",
+          "entityKind": "star",
+          "names": [
+            "天鉞",
+            "天钺",
+            "Tian Yue"
+          ],
+          "source": "star-registry"
+        }
+      ],
+      "baseStarId": "ZW.STAR.AUX.TIANYUE",
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "流昌",
+      "status": "period-dynamic",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.WENCHANG",
+          "entityKind": "star",
+          "names": [
+            "文昌",
+            "文昌",
+            "Wen Chang"
+          ],
+          "source": "star-registry"
+        }
+      ],
+      "baseStarId": "ZW.STAR.AUX.WENCHANG",
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "流曲",
+      "status": "period-dynamic",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.WENQU",
+          "entityKind": "star",
+          "names": [
+            "文曲",
+            "文曲",
+            "Wen Qu"
+          ],
+          "source": "star-registry"
+        }
+      ],
+      "baseStarId": "ZW.STAR.AUX.WENQU",
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    },
+    {
+      "name": "流馬",
+      "status": "period-dynamic",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANMA",
+          "entityKind": "star",
+          "names": [
+            "天馬",
+            "天马",
+            "Tian Ma"
+          ],
+          "source": "star-registry"
+        }
+      ],
+      "baseStarId": "ZW.STAR.AUX.TIANMA",
+      "seenIn": [
+        "iztro"
+      ],
+      "decision": "classify"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "ziwei-doushu-simple",
+  "repo": "cubshuang/ZiWeiDouShu",
+  "url": "https://github.com/cubshuang/ZiWeiDouShu",
+  "license": "UNKNOWN",
+  "defaultBranch": "master",
+  "commit": "2ec50ebf5149cbc90ecb7a2457bc1b9e7ea3c56e",
+  "commitDate": "2020-03-23T03:46:53Z",
+  "packageVersion": null,
+  "stars": 78,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "historical-reference-only"
+  ]
+}

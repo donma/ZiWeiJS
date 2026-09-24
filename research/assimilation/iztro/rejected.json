@@ -1,0 +1,7 @@
+{
+  "project": "iztro",
+  "note": "本專案無整體拒絕項；核心 Engine 整包拒絕（見 rejections.json）。iztro 仍為主要 differential oracle。",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.EXTERNAL.UI_FRAMEWORK", "scope": "i18n / AI Chat / Agents SDK / Hosted Model / Plugin / Docs site", "reason": "與 Bible Core 無必要關係（spec §12）" }
+  ]
+}

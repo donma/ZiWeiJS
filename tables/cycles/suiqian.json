@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/cycle.schema.json",
+  "cycleId": "suiqian",
+  "name": { "zh-TW": "歲建十二神", "en": "Twelve Year Deities (Sui Jian)" },
+  "description": "自太歲宮（歲建）順行。屬 year-deity（spec §20）；安放 scope 尚有爭議（見 RSH.PERIOD.YEAR_DEITY_SCOPE）。",
+  "entityKind": "year-deity",
+  "placementRuleId": "ZW.CALC.STAR.PERIOD12.001",
+  "periodScope": "year",
+  "sourceRefs": ["SRC.QUANSHU"],
+  "evidenceRefs": ["EVD.QUANSHU.SUIJIAN", "EVD.IZTRO.AUXGROUPS"],
+  "entries": [
+    { "key": "suijian", "name": { "zh-TW": "歲建", "zh-CN": "岁建", "en": "Sui Jian" }, "index": 0, "starId": "ZW.STAR.PERIOD.SUIJIAN" },
+    { "key": "huiqi", "name": { "zh-TW": "晦氣", "zh-CN": "晦气", "en": "Hui Qi" }, "index": 1, "starId": "ZW.STAR.PERIOD.HUIQI" },
+    { "key": "sangmen", "name": { "zh-TW": "喪門", "zh-CN": "丧门", "en": "Sang Men" }, "index": 2, "starId": "ZW.STAR.PERIOD.SANGMEN2" },
+    { "key": "guansuo", "name": { "zh-TW": "貫索", "zh-CN": "贯索", "en": "Guan Suo" }, "index": 3, "starId": "ZW.STAR.PERIOD.GUANSUO" },
+    { "key": "guanfu", "name": { "zh-TW": "官符", "zh-CN": "官符", "en": "Guan Fu" }, "index": 4, "starId": "ZW.STAR.PERIOD.GUANFU2" },
+    { "key": "xiaohao", "name": { "zh-TW": "小耗", "zh-CN": "小耗", "en": "Xiao Hao" }, "index": 5, "starId": "ZW.STAR.PERIOD.XIAOHAO2" },
+    { "key": "dahao", "name": { "zh-TW": "大耗", "zh-CN": "大耗", "en": "Da Hao" }, "index": 6, "starId": "ZW.STAR.PERIOD.DAHAO2" },
+    { "key": "londe", "name": { "zh-TW": "龍德", "zh-CN": "龙德", "en": "Long De" }, "index": 7, "starId": "ZW.STAR.PERIOD.LONDE" },
+    { "key": "baihu", "name": { "zh-TW": "白虎", "zh-CN": "白虎", "en": "Bai Hu" }, "index": 8, "starId": "ZW.STAR.PERIOD.BAIHU2" },
+    { "key": "fude", "name": { "zh-TW": "福德", "zh-CN": "福德", "en": "Fu De" }, "index": 9, "starId": "ZW.STAR.PERIOD.FUDE" },
+    { "key": "diaoke", "name": { "zh-TW": "弔客", "zh-CN": "吊客", "en": "Diao Ke" }, "index": 10, "starId": "ZW.STAR.PERIOD.DIAOKE2" },
+    { "key": "bingfu", "name": { "zh-TW": "病符", "zh-CN": "病符", "en": "Bing Fu" }, "index": 11, "starId": "ZW.STAR.PERIOD.BINGFU2" }
+  ]
+}

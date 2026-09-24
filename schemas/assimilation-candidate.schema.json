@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/assimilation-candidate.schema.json",
+  "title": "ZiWei Bible Assimilation Candidate",
+  "description": "外部能力內化候選（spec Post-Stability §39）。初始狀態一律 research；未取得獨立 Evidence 前不得進 candidate/canonical。",
+  "type": "object",
+  "required": ["candidates"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["candidateId", "type", "ziweiGap", "benefit", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "candidateId": { "type": "string", "pattern": "^ASM\\.[A-Z0-9._]+$" },
+          "type": {
+            "enum": ["star", "rule", "pattern", "variant", "query", "period", "property", "metadata", "product", "tool"]
+          },
+          "title": { "type": "string" },
+          "externalRefs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["project"],
+              "additionalProperties": false,
+              "properties": {
+                "project": { "type": "string" },
+                "version": { "type": "string" },
+                "commit": { "type": "string" }
+              }
+            }
+          },
+          "ziweiGap": { "enum": ["missing", "partial", "none"] },
+          "benefit": {
+            "type": "array",
+            "items": { "enum": ["coverage", "school", "evidence", "validation", "sdk", "taxonomy"] }
+          },
+          "status": { "enum": ["research", "candidate", "accepted", "rejected"] },
+          "independentEvidence": { "type": "array", "items": { "type": "string" } },
+          "researchId": { "type": "string" },
+          "decision": { "type": ["string", "null"] },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

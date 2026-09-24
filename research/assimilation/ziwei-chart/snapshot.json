@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "ziwei-chart",
+  "repo": "ziweiknows/ziwei-chart",
+  "url": "https://github.com/ziweiknows/ziwei-chart",
+  "license": "GPL-3.0",
+  "defaultBranch": "main",
+  "commit": "614d6e104ad4d559193667187806cbb5760037ec",
+  "commitDate": "2026-09-20T15:48:39Z",
+  "packageVersion": null,
+  "stars": 452,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "ai-context-retrieval-ideas",
+    "product-ux-ideas"
+  ]
+}

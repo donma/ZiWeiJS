@@ -23,12 +23,14 @@
 | 5 | `npm run validate:integrity` | ID 唯一、ref 可解析、executor 可解析、DSL schema、計畫覆蓋、changeLog |
 | 6 | `npm run validate:versions` | Rule Version Gate：`changeLog[0] == ruleVersion`、版本遞減、behavior-change 必升版 |
 | 7 | `npm run validate:research` | Research Queue：ID 唯一、relatedRules / evidence 可解析、resolved 需有 resolution |
-| 8 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 9 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 10 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 11 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 12 | `npm run test` | Vitest 全測試 |
-| 13 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
+| 9 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 10 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 11 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 12 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 13 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 14 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
+| 15 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -45,6 +47,8 @@ validate:governance
 validate:integrity
 validate:versions
 validate:research
+validate:catalogs
+assimilation:star-gap:check
 coverage:bible
 differential:calendar -- --check
 differential
@@ -60,8 +64,8 @@ Pages deploy
 ```
 
 > CI 與 `npm run verify` 的治理 Gate **完全一致**：`verify` = validate:rules → sources → schemas →
-> governance → integrity → versions → research → differential:calendar → differential → differential:period →
-> verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
+> governance → integrity → versions → research → catalogs → star-gap:check → differential:calendar →
+> differential → differential:period → verify:golden → test → build；CI 另加 `coverage:bible` 與 `release:smoke`。
 
 ## 1.1 Release Gate（`npm run release:check`）
 

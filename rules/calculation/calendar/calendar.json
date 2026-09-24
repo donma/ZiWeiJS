@@ -194,7 +194,7 @@
     },
     {
       "ruleId": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "variant",
       "variantOf": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001",
       "scope": "calculation.calendar.year-boundary",
@@ -232,6 +232,12 @@
         "boundary"
       ],
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "修正 resolvedYear：立春後、春節前之日原誤算為 lunarYear - 1（跨兩個年度）；改為由立春制年柱回推所屬年度。新增 tests/boundary/exact-instant.test.ts 精確時刻驗收。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",

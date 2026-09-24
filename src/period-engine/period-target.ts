@@ -85,8 +85,7 @@ const MONTH_STEM_SEED: Record<StemId, number> = {
   wu: 0, gui: 0
 };
 
-export function monthlyGanzhiFromLunar(yearStem: StemId, effectiveLunarMonth: number): GanzhiPair {
-  const seed = MONTH_STEM_SEED[yearStem];
+export function monthlyGanzhiFromLunar(yearStem: StemId, effectiveLunarMonth: number): GanzhiPair {  const seed = MONTH_STEM_SEED[yearStem];
   const stemIdx = (((seed + (effectiveLunarMonth - 1)) % 10) + 10) % 10;
   const branchIdx = (((2 + (effectiveLunarMonth - 1)) % 12) + 12) % 12;
   return { stem: STEMS[stemIdx], branch: BRANCHES[branchIdx] };
@@ -103,10 +102,22 @@ export function validateSolarDate(year: number, month: number, day: number): boo
 }
 
 /**
+ * 由「立春制年柱」字串回推其所屬年度（spec 3rd §P1-4）。
+ *
+ * 以附近 Gregorian 年之中年（6/1）取該年之 exact 年柱比對，
+ * 避免 60 干支循環歧義；立春後、春節前之日屬新年而非前一年度。
+ */
+function yearOfExactGanzhi(exactGz: string, aroundYear: number): number {
+  for (const y of [aroundYear, aroundYear - 1, aroundYear + 1]) {
+    if (Solar.fromYmd(y, 6, 1).getLunar().getYearInGanZhiExact() === exactGz) return y;
+  }
+  return aroundYear;
+}
+
+/**
  * 依 profile.leapMonthPolicy 求限運定位之有效農曆月序（spec §P0-7）。
  */
-export function resolveEffectiveLunarMonth(
-  lunarMonth: number,
+export function resolveEffectiveLunarMonth(  lunarMonth: number,
   lunarDay: number,
   isLeapMonth: boolean,
   leapMonthPolicy: string
@@ -207,12 +218,11 @@ export function normalizePeriodTarget(target: TargetDate, profile: Profile): Nor
 
   // 年柱所屬年度（spec 3rd §P1-4）：
   // lunar-new-year → 即農曆年
-  // lichun → 若農曆年後、立春前，年柱仍屬前一年度
-  const lunarYearOfDate = lunar.getYear();
-  let resolvedYear = lunarYearOfDate;
-  if (yearPolicy === 'lichun' && lunar.getYearInGanZhiExact() !== lunar.getYearInGanZhi()) {
-    resolvedYear = lunarYearOfDate - 1;
-  }
+  // lichun → 由立春制年柱回推該年柱所屬年度（立春前屬前一年度；
+  //          立春後、春節前則屬新年，故不可一律 lunarYear - 1）
+  const resolvedYear = yearPolicy === 'lichun'
+    ? yearOfExactGanzhi(lunar.getYearInGanZhiExact(), target.year)
+    : lunar.getYear();
 
   const ganzhi: NormalizedPeriodTarget['ganzhi'] = {
     year: ganzhiYear,

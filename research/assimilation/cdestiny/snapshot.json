@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "cdestiny",
+  "repo": "ying-rushi/cdestiny",
+  "url": "https://github.com/ying-rushi/cdestiny",
+  "license": "MIT",
+  "defaultBranch": "main",
+  "commit": "c86c012577d9cde126287d53c8a84411c02282a4",
+  "commitDate": "2026-08-14T16:21:39Z",
+  "packageVersion": null,
+  "stars": 0,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "star-gap-audit"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "project": "ziwei-doushu-simple",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.ZIWEI-DOUSHU-SIMPLE.CORE", "scope": "核心排盤 / Calendar table", "reason": "多年未更新、星曜少、License 未明確（spec §34）" }
+  ],
+  "note": "唯一用途為 historical sanity reference；不作 dependency / evidence / oracle / code source（spec §34）。"
+}

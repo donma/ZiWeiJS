@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/cycle.schema.json",
+  "cycleId": "boshi",
+  "name": { "zh-TW": "博士十二神", "en": "Twelve Cycle Deities (Bo Shi)" },
+  "description": "依年干起博士（祿存宮），陽男陰女順行、陰男陽女逆行。屬 cycle-deity，非 star（spec §19）。",
+  "entityKind": "cycle-deity",
+  "placementRuleId": "ZW.CALC.STAR.BOSHI12.001",
+  "periodScope": "natal",
+  "sourceRefs": ["SRC.QUANSHU"],
+  "evidenceRefs": ["EVD.QUANSHU.ANXING"],
+  "entries": [
+    { "key": "boshi", "name": { "zh-TW": "博士", "zh-CN": "博士", "en": "Bo Shi" }, "index": 0 },
+    { "key": "lishi", "name": { "zh-TW": "力士", "zh-CN": "力士", "en": "Li Shi" }, "index": 1 },
+    { "key": "qinglong", "name": { "zh-TW": "青龍", "zh-CN": "青龙", "en": "Qing Long" }, "index": 2 },
+    { "key": "xiaohao", "name": { "zh-TW": "小耗", "zh-CN": "小耗", "en": "Xiao Hao" }, "index": 3, "note": "與雜曜小耗、歲建十二神小耗同名不同 entity" },
+    { "key": "jiangjun", "name": { "zh-TW": "將軍", "zh-CN": "将军", "en": "Jiang Jun" }, "index": 4 },
+    { "key": "zoushu", "name": { "zh-TW": "奏書", "zh-CN": "奏书", "en": "Zou Shu" }, "index": 5 },
+    { "key": "feilian", "name": { "zh-TW": "飛廉", "zh-CN": "飞廉", "en": "Fei Lian" }, "index": 6, "note": "與雜曜蜚廉（飛廉）同名不同 entity" },
+    { "key": "xishen", "name": { "zh-TW": "喜神", "zh-CN": "喜神", "en": "Xi Shen" }, "index": 7 },
+    { "key": "bingfu", "name": { "zh-TW": "病符", "zh-CN": "病符", "en": "Bing Fu" }, "index": 8, "note": "與雜曜病符、歲建十二神病符同名不同 entity" },
+    { "key": "dahao", "name": { "zh-TW": "大耗", "zh-CN": "大耗", "en": "Da Hao" }, "index": 9, "note": "與雜曜大耗、歲建十二神大耗同名不同 entity" },
+    { "key": "fubing", "name": { "zh-TW": "伏兵", "zh-CN": "伏兵", "en": "Fu Bing" }, "index": 10 },
+    { "key": "guanfu", "name": { "zh-TW": "官符", "zh-CN": "官符", "en": "Guan Fu" }, "index": 11, "note": "與雜曜官符、歲建十二神官符同名不同 entity" }
+  ]
+}

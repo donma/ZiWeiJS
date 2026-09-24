@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/external-snapshot.schema.json",
+  "title": "ZiWei Bible External Project Snapshot",
+  "description": "外部專案研究快照（spec Post-Stability §40）。commit / license / capturedAt 必須為真實抓取值，不得捏造。",
+  "type": "object",
+  "required": ["project", "repo", "license", "commit", "capturedAt", "areasUsed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "project": { "type": "string" },
+    "repo": { "type": "string" },
+    "url": { "type": "string" },
+    "license": { "type": "string" },
+    "defaultBranch": { "type": "string" },
+    "commit": { "type": "string" },
+    "commitDate": { "type": "string" },
+    "packageVersion": { "type": ["string", "null"] },
+    "stars": { "type": "integer" },
+    "archived": { "type": "boolean" },
+    "capturedAt": { "type": "string" },
+    "capturedBy": { "type": "string" },
+    "areasUsed": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  }
+}

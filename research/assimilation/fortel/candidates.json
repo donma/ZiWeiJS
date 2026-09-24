@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schemas/assimilation-candidate.schema.json",
+  "candidates": [
+    {
+      "candidateId": "ASM.SCHOOL.ZHONGZHOU_DIFF_MATRIX",
+      "type": "variant",
+      "title": "中州派 Diff Matrix（命主身主 / 天使天傷 / 魁鉞 / 截空旬空 / 歲前十二神 / 四化 / 廟旺 / 閏月 / 大限 / 流曜）",
+      "externalRefs": [{ "project": "fortel", "version": "0.1.0" }, { "project": "iztro", "version": "^2.6.1" }],
+      "ziweiGap": "partial",
+      "benefit": ["school", "evidence", "validation"],
+      "status": "research",
+      "decision": null,
+      "notes": "至少三角驗證：Fortel + iztro zhongzhou mode + 獨立中州派資料；不可只信一套（spec §13）。輸出 zhongzhou-diff.json。"
+    },
+    {
+      "candidateId": "ASM.METADATA.RUNTIME_PLACEMENT",
+      "type": "metadata",
+      "title": "星曜 runtime placement metadata（某星是否隨運限重新定位）",
+      "externalRefs": [{ "project": "fortel", "version": "0.1.0" }],
+      "ziweiGap": "missing",
+      "benefit": ["taxonomy", "sdk"],
+      "status": "research",
+      "decision": null,
+      "notes": "吸收 fortel hasRuntime / evalRuntimeGround 的『設計思路』為 Rule Metadata（runtimePlacement scope 表），實際值仍需 Evidence（spec §14）。"
+    }
+  ]
+}

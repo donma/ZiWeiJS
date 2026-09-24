@@ -1,0 +1,101 @@
+{
+  "$schema": "../../schemas/assimilation-rejection.schema.json",
+  "rejections": [
+    {
+      "id": "ASM.REJECT.CDESTINY.ENGINE",
+      "project": "cdestiny",
+      "target": "Python 紫微斗數排盤 Engine",
+      "reason": "低於 ZiWeiJS 現行驗證標準：輔星少、廟旺簡化、真太陽時僅經度近似（無 EoT / IANA timezone / DST）、測試偏 smoke（spec §16）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.CDESTINY.TRUE_SOLAR",
+      "project": "cdestiny",
+      "target": "true-solar 演算法",
+      "reason": "ZiWeiJS 現行實作較完整，含 equation of time、歷史 UTC offset / DST；外部實作僅經度近似（spec §16 / §46）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.FORTEL.BORROW_CELL",
+      "project": "fortel",
+      "target": "空宮借宮百分比權重模型（54.26 / 32.45 / 13.29 等）",
+      "reason": "來源不明、無可考證依據；禁止內化成 Bible 標準（spec §15）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.FORTEL.CALENDAR",
+      "project": "fortel",
+      "target": "Calendar 層",
+      "reason": "ZiWeiJS 已有更完整的 calendar differential / timezone / true-solar / boundary test；不引入舊 calendar lineage（spec §15）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.FORTEL.OO_ARCH",
+      "project": "fortel",
+      "target": "DestinyBoard / Cell / Star class 架構",
+      "reason": "ZiWeiJS 已有自己的 data contract；不搬 OO class 架構（spec §15）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-DOUSHU.CLASSICS_AS_EVIDENCE",
+      "project": "ziwei-doushu",
+      "target": "lib/classics/data/*.ts 文字作為古籍 Evidence",
+      "reason": "雖標示古籍/公版，內容含大量明顯現代敘述；禁止 copy 進 evidence/registry.json，只能作 Research Index（spec §25 / §42）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-DOUSHU.GENERATED_INTERPRETATION",
+      "project": "ziwei-doushu",
+      "target": "生成的解讀 Dataset 作為 Bible rules",
+      "reason": "現代解讀文本 / AI 斷語不進 Bible Core；引擎生成資料也不是人工驗證答案（spec §23 / §28）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-CHART.GPL_CODE",
+      "project": "ziwei-chart",
+      "target": "GPLv3 程式碼",
+      "reason": "授權不相容；禁止複製具體程式碼進 ZiWeiJS，只可研究功能 / UX 後重新設計（spec §33 / §41）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-CHART.FORTUNE_SCORE",
+      "project": "ziwei-chart",
+      "target": "fortune-score 與財運 92 / 感情 71 之類分數",
+      "reason": "fake precision；ZiWeiJS 維持 Rule Hits / Tendency / Strength / Confidence，不產生單一總分（spec §33）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-CHART.TRUESOLAR_HELPER",
+      "project": "ziwei-chart",
+      "target": "true-solar helper",
+      "reason": "ZiWeiJS 真太陽時實作較完整（EoT / timezone / DST / 跨日）（spec §33 / §46）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.ZIWEI-DOUSHU-SIMPLE.CORE",
+      "project": "ziwei-doushu-simple",
+      "target": "核心排盤與 Calendar table 匯入",
+      "reason": "多年未更新、星曜少、舊 calendar table、License 未明確；不作 dependency / evidence / oracle / code source（spec §34）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    },
+    {
+      "id": "ASM.REJECT.EXTERNAL.UI_FRAMEWORK",
+      "project": "external",
+      "target": "外部 UI framework 整包導入 / 換 framework",
+      "reason": "與 Bible Core 無關；UI 只作 product layer，不污染 Reference Engine（spec §32 / §44）。",
+      "decision": "reject",
+      "decidedAt": "2026-09-24"
+    }
+  ]
+}

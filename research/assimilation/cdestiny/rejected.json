@@ -1,0 +1,8 @@
+{
+  "project": "cdestiny",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.CDESTINY.ENGINE", "scope": "Python 排盤 Engine", "reason": "低於 ZiWeiJS 驗證標準（spec §16）" },
+    { "rejectionId": "ASM.REJECT.CDESTINY.TRUE_SOLAR", "scope": "true-solar 演算法", "reason": "ZiWeiJS 較完整（spec §16）" }
+  ],
+  "note": "107 Star Dataset 只作 Star Gap Detector，不作 Engine 依據（spec §17）。"
+}

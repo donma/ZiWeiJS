@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../schemas/assimilation-candidate.schema.json",
+  "candidates": [
+    {
+      "candidateId": "ASM.PERIOD.MINOR_PERIOD",
+      "type": "period",
+      "title": "小限（minor period / agePalace）",
+      "externalRefs": [{ "project": "iztro", "version": "^2.6.1" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.PERIOD.MINOR_PERIOD",
+      "decision": null,
+      "notes": "實質缺口：ZiWeiJS 無小限。僅吸收概念，需自寫 Placement Rule + Evidence；iztro 只作 differential oracle（spec §7.1）。iztro 的 ages / agePalace 不可直接抄；須先確認起法（男女順逆、虛歲起算、與大限之關係）之古籍依據。"
+    },
+    {
+      "candidateId": "ASM.SDK.QUERY_FACADE",
+      "type": "query",
+      "title": "單一 Query Facade（palace / star / relation / transformation / period 查詢）",
+      "externalRefs": [{ "project": "iztro", "version": "^2.6.1" }, { "project": "fortel" }],
+      "ziweiGap": "partial",
+      "benefit": ["sdk"],
+      "status": "research",
+      "decision": null,
+      "notes": "ZiWeiJS 已有 Relation / Transformation / Period engine；只加 ergonomics，底層只呼叫既有 engine，不得新增第二套 analyzer（spec §8 / §44）。"
+    },
+    {
+      "candidateId": "ASM.PERIOD.DYNAMIC_STARS",
+      "type": "metadata",
+      "title": "動態運限星曜（流魁 / 流鉞 / 流昌 / 流曲 / 流祿 / 流羊 / 流陀 / 流馬 / 流鸞 / 流喜）",
+      "externalRefs": [{ "project": "iztro", "version": "^2.6.1" }],
+      "ziweiGap": "partial",
+      "benefit": ["coverage", "sdk"],
+      "status": "research",
+      "decision": null,
+      "notes": "以 baseStarId + scope + displayPrefix 表達，不新增大量獨立靜態星（spec §9）。需 Rule + Evidence 後方能安放。"
+    },
+    {
+      "candidateId": "ASM.SCHOOL.ZHONGZHOU",
+      "type": "variant",
+      "title": "中州派 Profile 完整性（與 Fortel / iztro zhongzhou 三方驗證）",
+      "externalRefs": [{ "project": "iztro", "version": "^2.6.1" }, { "project": "fortel" }],
+      "ziweiGap": "partial",
+      "benefit": ["school", "validation"],
+      "status": "research",
+      "decision": null,
+      "notes": "已有 profiles/school-zhongzhou.json；需建立 §13.1 Diff Matrix 後才擴充。對應 fortel/zhongzhou-diff.json。"
+    },
+    {
+      "candidateId": "ASM.CHART.PLANE",
+      "type": "metadata",
+      "title": "天盤 / 地盤 / 人盤（chartPlane）",
+      "externalRefs": [{ "project": "iztro", "version": "^2.6.1" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "decision": null,
+      "notes": "future-research：需可靠 Source 與 Schema 表達後才考慮（spec §11）。本階段不施工。"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Assimilation 研究對象登錄（spec Post-Stability §1 / §40）。areasUsed 為本專案實際研究/使用的外部能力。",
+  "projects": [
+    { "project": "iztro", "repo": "SylarLong/iztro", "dir": "iztro", "areasUsed": ["differential-oracle", "minor-period", "query-api", "dynamic-period-stars"] },
+    { "project": "fortel", "repo": "airicyu/fortel-ziweidoushu", "dir": "fortel", "areasUsed": ["school-zhongzhou", "runtime-star-metadata"] },
+    { "project": "cdestiny", "repo": "ying-rushi/cdestiny", "dir": "cdestiny", "areasUsed": ["star-gap-audit"] },
+    { "project": "ziwei-doushu", "repo": "Renhuai123/ziwei-doushu", "dir": "ziwei-doushu", "areasUsed": ["pattern-candidates", "variant-catalog", "property-test-ideas"] },
+    { "project": "ziwei-chart", "repo": "ziweiknows/ziwei-chart", "dir": "ziwei-chart", "areasUsed": ["ai-context-retrieval-ideas", "product-ux-ideas"] },
+    { "project": "ziwei-doushu-simple", "repo": "cubshuang/ZiWeiDouShu", "dir": "ziwei-doushu-simple", "areasUsed": ["historical-reference-only"] }
+  ]
+}

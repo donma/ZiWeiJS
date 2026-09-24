@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 415 it() / 44 files（靜態計數）|
+| Tests | 444 it() / 49 files（靜態計數）|
 | E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -165,6 +165,7 @@ npm run validate:governance   # Canonical Evidence Gate
 npm run validate:integrity    # ID / ref / executor / DSL / 計畫覆蓋
 npm run validate:versions     # Rule Version Gate（changeLog / behavior-change 必須升版）
 npm run validate:research     # Research Queue governance（參照 / 狀態 / resolution）
+npm run validate:catalogs     # cycles / aliases / assimilation catalogs 治理
 npm run coverage:bible        # 覆蓋率報告（可 --update-readme）
 npm run release:check         # 最終 gate：verify + release artifact smoke + npm package smoke
 ```
@@ -181,17 +182,17 @@ npm run release:check         # 最終 gate：verify + release artifact smoke + 
 ```
 schemas/        JSON Schema（rule / source / evidence / research / chart / interpretation / trace / profile / differential-variance）
 rules/          規則資料（calculation · interpretation · patterns · rectification）
-tables/         星曜 registry、四化表、廟旺表、納音、長生、雜曜安星表
+tables/         星曜 registry、別名 registry、cycles（長生/博士/歲建/將前）、四化表、廟旺表、納音、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
-research/       Research Queue（open / candidate / resolved / rejected）
+research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區
 profiles/       canonical / traditional-zi / true-solar / lichun / school-zhongzhou / school-ma-hu
 variants/       Variant 與 Variance Registry
-src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · trace · renderer · ai · narrative）
+src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · query · star-registry · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
-tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / visual
+tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / property / assimilation / visual
 fixtures/       golden / boundary / differential / calendar fixtures
-tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
+tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / assimilation / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
 docs/           architecture / rules / sources / profiles / api / governance / testing
 ```
 

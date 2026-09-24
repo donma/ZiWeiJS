@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/star-aliases.schema.json",
+  "title": "ZiWei Bible Star Alias Registry",
+  "description": "星曜別名 / 異寫 / 同名消歧（spec Post-Stability §37）。禁止僅靠字面自動合併；ambiguous 必須列出所有候選 entity。",
+  "type": "object",
+  "required": ["entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "description": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["alias", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "alias": { "type": "string" },
+          "type": {
+            "enum": ["synonym", "simplified", "traditional", "school-name", "ambiguous", "external-only"]
+          },
+          "starId": { "type": ["string", "null"] },
+          "candidates": { "type": "array", "items": { "type": "string" } },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

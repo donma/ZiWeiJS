@@ -22,6 +22,10 @@
       "required": ["zh-TW"],
       "additionalProperties": { "type": "string" }
     },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+    "entityKind": {
+      "enum": ["star", "stage", "cycle-deity", "year-deity", "period-dynamic", "transformation-marker"]
+    },
     "shortDesc": {
       "type": "object",
       "additionalProperties": { "type": "string" }

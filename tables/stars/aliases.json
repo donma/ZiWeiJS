@@ -1,0 +1,120 @@
+{
+  "$schema": "../../schemas/star-aliases.schema.json",
+  "description": "星曜別名 / 異寫 / 同名消歧 registry（spec Post-Stability §37）。cycle entity 以 ZW.CYCLE.<cycleId>.<key> 表示（見 tables/cycles/）。ambiguous 一律列出全部候選，禁止自動合併。",
+  "entries": [
+    {
+      "alias": "蜚廉",
+      "type": "synonym",
+      "starId": "ZW.STAR.AUX.FEILIAN",
+      "note": "雜曜蜚廉；與博士十二神之飛廉同名不同 entity"
+    },
+    {
+      "alias": "飛廉",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.FEILIAN", "ZW.CYCLE.BOSHI.FEILIAN"],
+      "note": "雜曜蜚廉（飛廉）vs 博士十二神飛廉，需依所在系統消歧"
+    },
+    {
+      "alias": "大耗",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.DAHao", "ZW.STAR.PERIOD.DAHAO2", "ZW.CYCLE.BOSHI.DAHAO"],
+      "note": "雜曜大耗 / 歲建十二神大耗 / 博士十二神大耗；另有歲破之別稱爭議（spec §37）"
+    },
+    {
+      "alias": "歲破",
+      "type": "external-only",
+      "candidates": [],
+      "note": "外部實作常與大耗互稱；ZiWeiJS 尚無獨立歲破 entity，待 Research 後決定"
+    },
+    {
+      "alias": "小耗",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.XIAOHAO", "ZW.STAR.PERIOD.XIAOHAO2", "ZW.CYCLE.BOSHI.XIAOHAO"],
+      "note": "雜曜 / 歲建十二神 / 博士十二神 三個不同 entity"
+    },
+    {
+      "alias": "官符",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.GUANFU", "ZW.STAR.PERIOD.GUANFU2", "ZW.CYCLE.BOSHI.GUANFU"],
+      "note": "雜曜 / 歲建十二神 / 博士十二神 三個不同 entity"
+    },
+    {
+      "alias": "病符",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.BINGFU", "ZW.STAR.PERIOD.BINGFU2", "ZW.CYCLE.BOSHI.BINGFU"],
+      "note": "雜曜 / 歲建十二神 / 博士十二神 三個不同 entity"
+    },
+    {
+      "alias": "亡神",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.WANGSHEN", "ZW.STAR.INTERIM.WANGSHEN2"],
+      "note": "雜曜亡神 vs 將前十二神亡神"
+    },
+    {
+      "alias": "咸池",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.XIANCHI", "ZW.STAR.INTERIM.XIANCHI2"],
+      "note": "雜曜咸池 vs 將前十二神咸池"
+    },
+    {
+      "alias": "華蓋",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.HUAGAI", "ZW.STAR.INTERIM.HUAGAI2"],
+      "note": "雜曜華蓋 vs 將前十二神華蓋"
+    },
+    {
+      "alias": "弔客",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.DIAOKE", "ZW.STAR.PERIOD.DIAOKE2"],
+      "note": "雜曜弔客 vs 歲建十二神弔客"
+    },
+    {
+      "alias": "丧门",
+      "type": "simplified",
+      "starId": "ZW.STAR.PERIOD.SANGMEN2",
+      "note": "喪門之簡體（雜曜亦有名為喪門者 → 見 ambiguous 同名項）"
+    },
+    {
+      "alias": "沐浴",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.MUYU", "ZW.CYCLE.CHANGSHENG.MUYU"],
+      "note": "長生十二神之沐浴即 Star Registry 已 deprecated 的 MUYU（entityKind=stage）"
+    },
+    {
+      "alias": "旬空",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.XUNKONG"],
+      "note": "旬空/旬中/空亡 之名稱與範圍各派不一（spec §37），需 Research，禁止自動合併"
+    },
+    {
+      "alias": "旬中",
+      "type": "external-only",
+      "candidates": [],
+      "note": "外部實作名稱；可能為旬空之別稱或不同 entity（spec §22），列入 research"
+    },
+    {
+      "alias": "空亡",
+      "type": "external-only",
+      "candidates": [],
+      "note": "與截空 / 旬空 / 天空之關係各派不一（spec §37），禁止直接新增或合併"
+    },
+    {
+      "alias": "截空",
+      "type": "ambiguous",
+      "candidates": ["ZW.STAR.AUX.JIEKONG"],
+      "note": "截空 / 截路空亡 之別稱需 Research"
+    },
+    {
+      "alias": "截路",
+      "type": "external-only",
+      "candidates": [],
+      "note": "外部實作名稱；是否即截空（JIEKONG）需 Alias / Variant Audit（spec §22）"
+    },
+    {
+      "alias": "年解",
+      "type": "external-only",
+      "candidates": [],
+      "note": "外部實作名稱；與解神是否同星需 Alias Audit（spec §22）"
+    }
+  ]
+}

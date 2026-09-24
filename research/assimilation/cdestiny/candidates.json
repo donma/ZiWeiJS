@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../schemas/assimilation-candidate.schema.json",
+  "candidates": [
+    {
+      "candidateId": "ASM.STAR.FENGGAO",
+      "type": "star",
+      "title": "封誥",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.FENGGAO",
+      "decision": null,
+      "notes": "第一批六顆之一（spec §18）。需先完成：正式名稱/繁簡/別名/分類/安星法/年月日時依據/流派差異/廟旺適用/是否四化/是否運限動態/古籍出處/現代來源。暫定 ID ZW.STAR.MINOR.FENGGAO。"
+    },
+    {
+      "candidateId": "ASM.STAR.JIESHEN",
+      "type": "star",
+      "title": "解神",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.JIESHEN",
+      "decision": null,
+      "notes": "注意『年解 / 解神』可能為不同 entity（spec §22），需 alias audit。"
+    },
+    {
+      "candidateId": "ASM.STAR.TAIFU",
+      "type": "star",
+      "title": "台輔",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.TAIFU",
+      "decision": null,
+      "notes": "與三台/八座系統之關係需釐清（是否同組、起法依據）。"
+    },
+    {
+      "candidateId": "ASM.STAR.TIANCAI",
+      "type": "star",
+      "title": "天才",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.TIANCAI",
+      "decision": null,
+      "notes": "與天壽成對，起法需古籍依據。"
+    },
+    {
+      "candidateId": "ASM.STAR.TIANSHOU",
+      "type": "star",
+      "title": "天壽",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.TIANSHOU",
+      "decision": null,
+      "notes": "與天才成對，起法需古籍依據。"
+    },
+    {
+      "candidateId": "ASM.STAR.TIANWU",
+      "type": "star",
+      "title": "天巫",
+      "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
+      "ziweiGap": "missing",
+      "benefit": ["coverage"],
+      "status": "research",
+      "researchId": "RSH.STAR.TIANWU",
+      "decision": null,
+      "notes": "第一批六顆之一；暫定 ID ZW.STAR.MINOR.TIANWU（spec §18/§36）。"
+    }
+  ]
+}

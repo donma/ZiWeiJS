@@ -153,7 +153,7 @@
     { "id": "ZW.STAR.AUX.MUYU", "category": "minor", "tier": "common", "status": "deprecated",
       "name": { "zh-TW": "沐浴", "zh-CN": "沐浴", "en": "Mu Yu" },
       "shortDesc": { "zh-TW": "桃花星，象徵感情、慾望。（已由長生十二神 palace.changsheng 取代）" },
-      "sources": ["SRC.QUANSHU"], "tags": ["peach", "superseded-by-changsheng"] },
+      "sources": ["SRC.QUANSHU"], "tags": ["peach", "superseded-by-changsheng"], "entityKind": "stage" },
     { "id": "ZW.STAR.AUX.GUCHEN", "category": "minor", "tier": "common", "status": "canonical",
       "name": { "zh-TW": "孤辰", "zh-CN": "孤辰", "en": "Gu Chen" },
       "shortDesc": { "zh-TW": "孤獨之星。" },

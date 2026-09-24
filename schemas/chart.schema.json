@@ -252,7 +252,10 @@
         "brightness": { "$ref": "#/$defs/dignity" },
         "status": { "enum": ["canonical", "variant", "research", "candidate", "deprecated", "undetermined"] },
         "sources": { "type": "array", "items": { "type": "string" } },
-        "tags": { "type": "array", "items": { "type": "string" } }
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "entityKind": { "enum": ["star", "stage", "cycle-deity", "year-deity", "period-dynamic", "transformation-marker"] },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "note": { "type": "string" }
       }
     },
     "starPlacement": {

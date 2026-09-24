@@ -325,3 +325,49 @@
 > 依 Final Stabilization §11–§13：本版之後進入 **Hardening Freeze**。
 > 除非發生 §12 所列 correctness / contract 等情況，否則不再開 Hardening，
 > 後續一律歸類為 Feature / Assimilation / Research。
+
+## 0.5.0 — Post-Stability Assimilation Phase A（Catalog Foundation）
+
+依 `ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1` 施工。
+外部專案只作 **研究樣本 / 實作觀點 / 驗證對象 / 資料索引**，不是 ZiWeiJS 的架構（spec §53）。
+
+### Phase A — Catalog Foundation（M1）
+- **Entity Taxonomy**：新增 `src/core/entity-kinds.ts`（`AstroEntityKind` = star / stage /
+  cycle-deity / year-deity / period-dynamic / transformation-marker）；star schema 支援
+  `entityKind` / `aliases`；沐浴（MUYU）明確標為 `stage`
+- **Cycle Registry**：新增 `tables/cycles/{changsheng,boshi,suiqian,jiangqian}.json`
+  （各 12 筆，含 stable key / index / starId / rule / evidence），把 stage / cycle-deity /
+  year-deity 與 star 分開，避免「少 24 顆星」的誤判（spec §19 / §38）
+- **Alias Registry**：新增 `tables/stars/aliases.json`（別名 / 簡繁 / 同名消歧，
+  含飛廉、大耗、旬空、空亡、截路、年解…），禁止字面自動合併（spec §37）
+- **Star Gap Audit**：新增 `tools/assimilation/{normalize-name,star-gap-audit,checks,validate-catalogs}.ts`
+  → `research/assimilation/star-gap.json`：43 個外部名稱分類為
+  actual-missing-star 6 / external-only 8 / stage 12 / cycle-deity 8 / ambiguous 4 / period-dynamic 5
+- **External Snapshot**：新增 `tools/assimilation/external-snapshot.ts` 與
+  `research/assimilation/*/snapshot.json`（**真實** commit / license / capturedAt；
+  iztro・fortel・cdestiny・ziwei-doushu = MIT、ziwei-chart = GPL-3.0、ziwei-doushu-simple = 不明）
+- **Reject Registry**：`research/assimilation/rejections.json`（12 項，spec §46）避免未來重複搬入
+- **Assimilation Schema**：`schemas/{cycle,star-aliases,external-snapshot,assimilation-candidate,assimilation-rejection}.schema.json`
+- Research Queue 新增 8 項（小限、年神 scope、封誥 / 解神 / 台輔 / 天才 / 天壽 / 天巫）
+
+### Phase D — Query Facade（SDK ergonomics）
+- 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
+  relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /
+  selfTransformations / period）。**只查既有 Engine 結果，不新增第二套演算法**（spec §8 / §44）
+- 公開 API 新增 `ZiWei.StarRegistry` / `ZiWei.Taxonomy`
+
+### Phase H（部分）— Property Tests 與 Boundary 方法
+- 新增 `tests/property/astro-invariants.test.ts`（spec §29）：12 宮 / 地支唯一 / 命身宮唯一 /
+  十四主星各一 / 紫微系天府系相對位置 / 四化唯一 / deterministic / overlay 不污染 natal
+- 新增 `tests/boundary/exact-instant.test.ts`（spec §30）：立春與農曆新年以**精確時刻**
+  before / at / after 驗收
+
+### Correctness 修正（由 §30 邊界測試發現）
+- **`resolvedYear`（lichun 制）修正**：立春後、春節前之日原誤算為 `lunarYear - 1`（跨兩個年度），
+  改為由立春制年柱回推所屬年度；`ZW.CALC.CALENDAR.YEAR_BOUNDARY.V001` 升 **1.1**（behavior-change）
+
+### Gate
+- `verify` 納入 `validate:catalogs` 與 `assimilation:star-gap:check`；CI 同步
+- `npm run assimilation:snapshot`（需網路，手動執行，不在 verify）
+- 版本 `0.4.1 → 0.5.0`
+

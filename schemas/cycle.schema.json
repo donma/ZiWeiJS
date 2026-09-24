@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/cycle.schema.json",
+  "title": "ZiWei Bible Cycle Registry",
+  "description": "長生十二神 / 博士十二神 / 歲建十二神 / 將前十二神等 cycle entity（spec Post-Stability §19 / §20 / §38）。這些是 stage / cycle-deity / year-deity，不是 Star Registry 的 star。",
+  "type": "object",
+  "required": ["cycleId", "name", "entityKind", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "cycleId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "object", "additionalProperties": { "type": "string" } },
+    "description": { "type": "string" },
+    "entityKind": { "enum": ["stage", "cycle-deity", "year-deity"] },
+    "placementRuleId": { "type": "string" },
+    "periodScope": { "enum": ["natal", "major-period", "year"] },
+    "sourceRefs": { "type": "array", "items": { "type": "string", "pattern": "^SRC\\." } },
+    "evidenceRefs": { "type": "array", "items": { "type": "string", "pattern": "^EVD\\." } },
+    "entries": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["key", "name", "index"],
+        "additionalProperties": false,
+        "properties": {
+          "key": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "object", "additionalProperties": { "type": "string" } },
+          "index": { "type": "integer", "minimum": 0, "maximum": 11 },
+          "starId": { "type": ["string", "null"] },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

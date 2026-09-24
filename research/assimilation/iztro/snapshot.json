@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "iztro",
+  "repo": "SylarLong/iztro",
+  "url": "https://github.com/SylarLong/iztro",
+  "license": "MIT",
+  "defaultBranch": "main",
+  "commit": "2c7ef9be669df7b19d1799f4dce335fed3794f78",
+  "commitDate": "2026-09-06T16:21:36Z",
+  "packageVersion": "^2.6.1",
+  "stars": 4179,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "differential-oracle",
+    "minor-period",
+    "query-api",
+    "dynamic-period-stars"
+  ]
+}

@@ -49,6 +49,15 @@ export type { RenderOptions } from './renderer/svg-renderer.js';
 export { getStar, listStars } from './executors/star-executors.js';
 export { ageAt, virtualAge, resolveMajorPeriod } from './period-engine/major-period-resolver.js';
 export { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION } from './core/constants.js';
+export {
+  ASTRO_ENTITY_KINDS, isAstroEntityKind, entityKindForCategory, entityKindOfStarEntry,
+  type AstroEntityKind
+} from './core/entity-kinds.js';
+export {
+  listStarRegistry, getStarRegistryEntry, entityKindOfStar, groupStarsByEntityKind
+} from './star-registry/registry.js';
+export { QueryApi } from './query-engine/query.js';
+export type { PalaceRelations } from './query-engine/query.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
 import { getRule, listRules, getSource, listSources } from './rule-engine/registry.js';
@@ -65,6 +74,11 @@ import {
   calcYearPeriod, calcMonthPeriod, calcDayPeriod, calcHourPeriod
 } from './period-engine/period-engine.js';
 import { hourBranchFromHour } from './calendar/calendar-engine.js';
+import { QueryApi } from './query-engine/query.js';
+import {
+  listStarRegistry, getStarRegistryEntry, entityKindOfStar, groupStarsByEntityKind
+} from './star-registry/registry.js';
+import { ASTRO_ENTITY_KINDS } from './core/entity-kinds.js';
 import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
 
 export const ZiWei = {
@@ -122,6 +136,19 @@ export const ZiWei = {
   Sources: {
     get: getSource,
     list: listSources
+  },
+  /** Query Facade（spec Post-Stability §8）：只查既有結果，不新增演算法 */
+  Query: QueryApi,
+  /** Star Registry / Entity Taxonomy 查詢（spec §20 / §36） */
+  StarRegistry: {
+    list: listStarRegistry,
+    get: getStarRegistryEntry,
+    entityKind: entityKindOfStar,
+    groupByKind: groupStarsByEntityKind
+  },
+  Taxonomy: {
+    kinds: ASTRO_ENTITY_KINDS,
+    ofStar: entityKindOfStar
   },
   Trace: {
     explain: explainTrace

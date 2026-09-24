@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/assimilation-rejection.schema.json",
+  "title": "ZiWei Bible Assimilation Rejection Registry",
+  "description": "明確拒絕內化的外部能力（spec Post-Stability §45 / §46）。目的是避免未來 Agent 又把已淘汰方案搬回來。",
+  "type": "object",
+  "required": ["rejections"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "rejections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "project", "target", "reason", "decision"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^ASM\\.REJECT\\.[A-Z0-9._-]+$" },
+          "project": { "type": "string" },
+          "target": { "type": "string" },
+          "reason": { "type": "string" },
+          "decision": { "const": "reject" },
+          "decidedAt": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/cycle.schema.json",
+  "cycleId": "jiangqian",
+  "name": { "zh-TW": "將前十二神", "en": "Twelve Deities before Jiang (Jiang Qian)" },
+  "description": "依年支三合局起將星（寅午戌在午、申子辰在子、巳酉丑在酉、亥卯未在卯），餘神順行。屬 year-deity（spec §20）。",
+  "entityKind": "year-deity",
+  "placementRuleId": "ZW.CALC.STAR.PERIOD12.001",
+  "periodScope": "year",
+  "sourceRefs": ["SRC.QUANSHU"],
+  "evidenceRefs": ["EVD.QUANSHU.SUIJIAN", "EVD.IZTRO.AUXGROUPS"],
+  "entries": [
+    { "key": "jiangxing", "name": { "zh-TW": "將星", "zh-CN": "将星", "en": "Jiang Xing" }, "index": 0, "starId": "ZW.STAR.INTERIM.JIANGXING" },
+    { "key": "panan", "name": { "zh-TW": "攀鞍", "zh-CN": "攀鞍", "en": "Pan An" }, "index": 1, "starId": "ZW.STAR.INTERIM.PANAN" },
+    { "key": "suiyi", "name": { "zh-TW": "歲驛", "zh-CN": "岁驿", "en": "Sui Yi" }, "index": 2, "starId": "ZW.STAR.INTERIM.SUIYI" },
+    { "key": "xishen", "name": { "zh-TW": "息神", "zh-CN": "息神", "en": "Xi Shen" }, "index": 3, "starId": "ZW.STAR.INTERIM.XISHEN" },
+    { "key": "huagai", "name": { "zh-TW": "華蓋", "zh-CN": "华盖", "en": "Hua Gai" }, "index": 4, "starId": "ZW.STAR.INTERIM.HUAGAI2" },
+    { "key": "jiesha", "name": { "zh-TW": "劫煞", "zh-CN": "劫煞", "en": "Jie Sha" }, "index": 5, "starId": "ZW.STAR.INTERIM.JIESHA2" },
+    { "key": "zaisha", "name": { "zh-TW": "災煞", "zh-CN": "灾煞", "en": "Zai Sha" }, "index": 6, "starId": "ZW.STAR.INTERIM.ZAISHA" },
+    { "key": "tiansha", "name": { "zh-TW": "天煞", "zh-CN": "天煞", "en": "Tian Sha" }, "index": 7, "starId": "ZW.STAR.INTERIM.TIANSHA" },
+    { "key": "zhibei", "name": { "zh-TW": "指背", "zh-CN": "指背", "en": "Zhi Bei" }, "index": 8, "starId": "ZW.STAR.INTERIM.ZHIBEI2" },
+    { "key": "xianchi", "name": { "zh-TW": "咸池", "zh-CN": "咸池", "en": "Xian Chi" }, "index": 9, "starId": "ZW.STAR.INTERIM.XIANCHI2" },
+    { "key": "yuesha", "name": { "zh-TW": "月煞", "zh-CN": "月煞", "en": "Yue Sha" }, "index": 10, "starId": "ZW.STAR.INTERIM.YUESHA" },
+    { "key": "wangshen", "name": { "zh-TW": "亡神", "zh-CN": "亡神", "en": "Wang Shen" }, "index": 11, "starId": "ZW.STAR.INTERIM.WANGSHEN2" }
+  ]
+}

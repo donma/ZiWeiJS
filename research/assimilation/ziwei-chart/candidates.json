@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schemas/assimilation-candidate.schema.json",
+  "candidates": [
+    {
+      "candidateId": "ASM.AI.TASK_CONTEXT",
+      "type": "metadata",
+      "title": "Task-aware AI Context Retrieval（在建於既有 Interpretation Rule Graph 之上）",
+      "externalRefs": [{ "project": "ziwei-chart" }],
+      "ziweiGap": "partial",
+      "benefit": ["sdk"],
+      "status": "research",
+      "decision": null,
+      "notes": "吸收 Chart Facts → Signals → Knowledge Retrieval → Task Context 之設計，但不得新建第二套 Knowledge DB；建於既有 Interpretation Rule Graph / Domain / Pattern Hits / Period Scope / Source-Evidence / AI.toContext() 之上。未來 API 形式：ZiWei.AI.toContext(chart, { task })（spec §31）。"
+    },
+    {
+      "candidateId": "ASM.PRODUCT.UX",
+      "type": "product",
+      "title": "Product-layer UX（合盤 / 年度趨勢 / Life K-Line / 分享卡 / AI streaming / 設定面板）",
+      "externalRefs": [{ "project": "ziwei-chart" }],
+      "ziweiGap": "missing",
+      "benefit": ["sdk"],
+      "status": "research",
+      "decision": null,
+      "notes": "只放 ui/experimental/ 或 examples/product/ 或未來獨立 Product Repo；不得污染 Reference Engine / rules / tables（spec §32）。GPL code 禁止複製。"
+    }
+  ]
+}

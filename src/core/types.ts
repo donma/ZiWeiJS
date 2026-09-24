@@ -1,3 +1,5 @@
+import type { AstroEntityKind } from './entity-kinds.js';
+
 export type RuleStatus =
   | 'canonical'
   | 'variant'
@@ -171,6 +173,10 @@ export interface Star {
   status: RuleStatus;
   sources: string[];
   tags: string[];
+  /** 實體分類（spec Post-Stability §20）；未給則由 category 推導 */
+  entityKind?: AstroEntityKind;
+  aliases?: string[];
+  note?: string;
 }
 
 /** 實體溯源中繼資料（spec 3rd §P1-7） */

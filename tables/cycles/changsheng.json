@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/cycle.schema.json",
+  "cycleId": "changsheng",
+  "name": { "zh-TW": "長生十二神", "en": "Twelve Stages (Chang Sheng)" },
+  "description": "依五行局起長生，陽男陰女順行、陰男陽女逆行。屬 stage，非 star（spec §19）。",
+  "entityKind": "stage",
+  "placementRuleId": "ZW.CALC.STAR.CHANGSHENG12.001",
+  "periodScope": "natal",
+  "sourceRefs": ["SRC.QUANSHU"],
+  "evidenceRefs": ["EVD.QUANSHU.CHANGSHENG"],
+  "entries": [
+    { "key": "changsheng", "name": { "zh-TW": "長生", "zh-CN": "长生", "en": "Chang Sheng" }, "index": 0 },
+    { "key": "muyu", "name": { "zh-TW": "沐浴", "zh-CN": "沐浴", "en": "Mu Yu" }, "index": 1, "starId": "ZW.STAR.AUX.MUYU", "note": "Star Registry 之 MUYU 已 deprecated，entityKind=stage" },
+    { "key": "guandai", "name": { "zh-TW": "冠帶", "zh-CN": "冠带", "en": "Guan Dai" }, "index": 2 },
+    { "key": "linguan", "name": { "zh-TW": "臨官", "zh-CN": "临官", "en": "Lin Guan" }, "index": 3 },
+    { "key": "diwang", "name": { "zh-TW": "帝旺", "zh-CN": "帝旺", "en": "Di Wang" }, "index": 4 },
+    { "key": "shuai", "name": { "zh-TW": "衰", "zh-CN": "衰", "en": "Shuai" }, "index": 5 },
+    { "key": "bing", "name": { "zh-TW": "病", "zh-CN": "病", "en": "Bing" }, "index": 6 },
+    { "key": "si", "name": { "zh-TW": "死", "zh-CN": "死", "en": "Si" }, "index": 7 },
+    { "key": "mu", "name": { "zh-TW": "墓", "zh-CN": "墓", "en": "Mu" }, "index": 8 },
+    { "key": "jue", "name": { "zh-TW": "絕", "zh-CN": "绝", "en": "Jue" }, "index": 9 },
+    { "key": "tai", "name": { "zh-TW": "胎", "zh-CN": "胎", "en": "Tai" }, "index": 10 },
+    { "key": "yang", "name": { "zh-TW": "養", "zh-CN": "养", "en": "Yang" }, "index": 11 }
+  ]
+}

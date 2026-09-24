@@ -157,6 +157,86 @@
       "resolvedAt": "2026-09-24",
       "resolvedBy": "owner",
       "ownerReviewRequired": false
+    },
+    {
+      "researchId": "RSH.PERIOD.MINOR_PERIOD",
+      "title": "小限（minor period）起法與 Evidence",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [],
+      "question": "ZiWeiJS 尚無小限。需確認：男女順逆、虛歲起算點、與大限之關係、是否使用年支三合、古籍（全書/全集）依據。外部實作（iztro ages/agePalace）只作 differential oracle，不可直接沿用。",
+      "nextAction": "先以獨立古籍來源確立起法，再建 minor-period 規則（status=research→candidate），並以 iztro 作差分。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PERIOD.YEAR_DEITY_SCOPE",
+      "title": "歲前 / 將前十二神之安放 scope 爭議",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": ["ZW.CALC.STAR.PERIOD12.001"],
+      "question": "ZiWeiJS 目前僅於 year scope 安放歲建/將前十二神（Hardening P0-10）。但外部反推顯示部分流派在大限/流年/流月/流日/流時/小限每層重安，兩說衝突，不得現在硬定死。",
+      "nextAction": "以古籍、Wenmo 行為、iztro、Fortel 交叉後，建立 Variant 候選 year-only / all-period-scopes / custom，再由 owner 裁決。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.FENGGAO",
+      "title": "缺星候選：封誥",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "cdestiny / Fortel / iztro 皆有，ZiWeiJS Star Registry 未收錄。需研究正式名稱、繁簡、別名、分類、安星法、年月日時依據、流派差異、廟旺適用、是否四化、是否運限動態、古籍出處、現代來源。",
+      "nextAction": "取得獨立 Evidence 後建 placement rule（status=research→candidate），暫定 ID ZW.STAR.MINOR.FENGGAO。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.JIESHEN",
+      "title": "缺星候選：解神",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "外部多數有，ZiWeiJS 未收錄。注意『年解 / 解神』可能為不同 entity，需 Alias / Variant Audit 先行。",
+      "nextAction": "先釐清與年解之關係，再取得獨立 Evidence 建規則，暫定 ID ZW.STAR.MINOR.JIESHEN。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TAIFU",
+      "title": "缺星候選：台輔",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "外部多數有，ZiWeiJS 未收錄。需釐清與三台/八座系統之關係與起法依據。",
+      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TAIFU。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANCAI",
+      "title": "缺星候選：天才",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "外部多數有，ZiWeiJS 未收錄。與天壽成對，起法需古籍依據。",
+      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANCAI。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANSHOU",
+      "title": "缺星候選：天壽",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "外部多數有，ZiWeiJS 未收錄。與天才成對，起法需古籍依據。",
+      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANSHOU。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.STAR.TIANWU",
+      "title": "缺星候選：天巫",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [],
+      "question": "cdestiny / Fortel / iztro 皆有，ZiWeiJS Star Registry 未收錄。安星法（月支？）與是否四化需確認。",
+      "nextAction": "取得獨立 Evidence 後建規則，暫定 ID ZW.STAR.MINOR.TIANWU（spec §18/§36）。",
+      "ownerReviewRequired": true
     }
   ]
 }

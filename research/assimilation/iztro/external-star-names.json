@@ -1,0 +1,15 @@
+{
+  "project": "iztro",
+  "provenance": "spec Post-Stability §22（旬中/空亡/截路/年解，research-only）與 §9（動態運限星曜前綴）列舉。正式替換為 iztro catalog 前，僅作 Gap Detector。",
+  "names": [
+    { "name": "旬中", "source": "spec §22" },
+    { "name": "空亡", "source": "spec §22" },
+    { "name": "截路", "source": "spec §22" },
+    { "name": "年解", "source": "spec §22" },
+    { "name": "流魁", "source": "spec §9" },
+    { "name": "流鉞", "source": "spec §9" },
+    { "name": "流昌", "source": "spec §9" },
+    { "name": "流曲", "source": "spec §9" },
+    { "name": "流馬", "source": "spec §9" }
+  ]
+}

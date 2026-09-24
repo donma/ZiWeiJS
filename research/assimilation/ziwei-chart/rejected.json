@@ -1,0 +1,8 @@
+{
+  "project": "ziwei-chart",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.ZIWEI-CHART.GPL_CODE", "scope": "GPLv3 程式碼", "reason": "授權不相容，禁止複製（spec §33/§41）" },
+    { "rejectionId": "ASM.REJECT.ZIWEI-CHART.FORTUNE_SCORE", "scope": "fortune-score / 財運 92 / 感情 71", "reason": "fake precision（spec §33）" },
+    { "rejectionId": "ASM.REJECT.ZIWEI-CHART.TRUESOLAR_HELPER", "scope": "true-solar helper", "reason": "ZiWeiJS 較完整（spec §33）" }
+  ]
+}

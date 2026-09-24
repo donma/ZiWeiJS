@@ -1,0 +1,8 @@
+{
+  "project": "fortel",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.FORTEL.BORROW_CELL", "scope": "空宮借宮百分比權重模型", "reason": "來源不明，禁止內化成 Bible 標準（spec §15）" },
+    { "rejectionId": "ASM.REJECT.FORTEL.CALENDAR", "scope": "Calendar 層", "reason": "ZiWeiJS calendar 較完整（spec §15）" },
+    { "rejectionId": "ASM.REJECT.FORTEL.OO_ARCH", "scope": "DestinyBoard / Cell / Star class 架構", "reason": "已有自己的 data contract（spec §15）" }
+  ]
+}

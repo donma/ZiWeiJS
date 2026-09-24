@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "fortel",
+  "repo": "airicyu/fortel-ziweidoushu",
+  "url": "https://github.com/airicyu/fortel-ziweidoushu",
+  "license": "MIT",
+  "defaultBranch": "main",
+  "commit": "2620cc895395f9f6994abd4927e739d31015c67d",
+  "commitDate": "2025-05-05T11:46:16Z",
+  "packageVersion": null,
+  "stars": 32,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "school-zhongzhou",
+    "runtime-star-metadata"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/assimilation-candidate.schema.json",
+  "candidates": [
+    {
+      "candidateId": "ASM.PATTERN.CANDIDATE_HARVEST",
+      "type": "pattern",
+      "title": "格局候選（patterns.ts 之 required / bonus / breaking 結構條件）",
+      "externalRefs": [{ "project": "ziwei-doushu" }],
+      "ziweiGap": "partial",
+      "benefit": ["coverage"],
+      "status": "research",
+      "decision": null,
+      "notes": "流程：External Pattern → Normalize Name → 與現有 24 格局比對 → 抽結構條件 → 轉 ZiWei DSL → status=research → 找獨立 Evidence → candidate（spec §24）。禁止搬 description/職業建議/財運結論/性格敘述；外部程式碼只證明『該作者這樣定義』，不是古籍 Evidence。"
+    },
+    {
+      "candidateId": "ASM.VARIANT.CATALOG",
+      "type": "variant",
+      "title": "Variant Research Catalog（亮度 / 庚干四化 / 天馬 / 天空 / 截空旬空 / 魁鉞 / 天使天傷 / 長生 / 晚子時 / 閏月 / 年界）",
+      "externalRefs": [{ "project": "ziwei-doushu" }, { "project": "iztro", "version": "^2.6.1" }, { "project": "fortel" }],
+      "ziweiGap": "partial",
+      "benefit": ["school"],
+      "status": "research",
+      "decision": null,
+      "notes": "統一為 ZiWeiJS profile dimensions（yearBoundaryPolicy / monthGanzhiBoundaryPolicy / lateZiPolicy / leapMonthPolicy / brightnessProfile / sihuaTableProfile / tianmaPlacementProfile / tiankongPlacementProfile / voidStarPlacementProfile / kuiyuePlacementProfile / tianshiTianshangProfile / changshengProfile / minorPeriodPolicy / yearDeityScopePolicy）。禁止用大量 if (profile === ...)；一律 Profile → ruleOverrides → Variant Rule（spec §26）。"
+    },
+    {
+      "candidateId": "ASM.PERIOD.YEAR_DEITY_SCOPE",
+      "type": "variant",
+      "title": "歲前 / 將前十二神之安放 scope（year-only vs all-period-scopes）",
+      "externalRefs": [{ "project": "ziwei-doushu" }, { "project": "iztro", "version": "^2.6.1" }],
+      "ziweiGap": "partial",
+      "benefit": ["school", "evidence"],
+      "status": "research",
+      "researchId": "RSH.PERIOD.YEAR_DEITY_SCOPE",
+      "decision": null,
+      "notes": "ziwei-doushu 反推 Wenmo 認為可能在大限/流年/流月/流日/流時/小限每層重安，與 ZiWeiJS 目前『僅 year scope』（P0-10）衝突。不得現在硬定死；Variant 候選：year-only / all-period-scopes / custom（spec §27）。"
+    },
+    {
+      "candidateId": "ASM.TEST.PROPERTY",
+      "type": "property",
+      "title": "Property / Fuzz invariants（12 宮唯一、十四主星各一、四化唯一、deterministic、overlay 不污染 natal…）",
+      "externalRefs": [{ "project": "ziwei-doushu" }],
+      "ziweiGap": "partial",
+      "benefit": ["validation"],
+      "status": "research",
+      "decision": null,
+      "notes": "每條鐵律需先自行驗證來源再鎖成 property test（spec §29）；518,400 dataset 只作 fuzz / distribution，不作 canonical oracle，且不入 repo（spec §28）。"
+    }
+  ]
+}

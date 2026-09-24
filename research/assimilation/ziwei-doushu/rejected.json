@@ -1,0 +1,8 @@
+{
+  "project": "ziwei-doushu",
+  "rejected": [
+    { "rejectionId": "ASM.REJECT.ZIWEI-DOUSHU.CLASSICS_AS_EVIDENCE", "scope": "lib/classics/data/*.ts 文字", "reason": "含現代敘述，僅可作 Research Index（spec §25）" },
+    { "rejectionId": "ASM.REJECT.ZIWEI-DOUSHU.GENERATED_INTERPRETATION", "scope": "生成解讀 Dataset", "reason": "AI 斷語 / 現代解讀不進 Bible Core（spec §23）" }
+  ],
+  "note": "518,400 dataset 只作 fuzz / distribution，不作 canonical oracle，亦不入 repo（spec §28）。"
+}

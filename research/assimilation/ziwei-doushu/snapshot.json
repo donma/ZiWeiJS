@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schemas/external-snapshot.schema.json",
+  "project": "ziwei-doushu",
+  "repo": "Renhuai123/ziwei-doushu",
+  "url": "https://github.com/Renhuai123/ziwei-doushu",
+  "license": "MIT",
+  "defaultBranch": "main",
+  "commit": "9d98b3ae7fce298f751cb43c47783d6e84a7735d",
+  "commitDate": "2026-09-21T05:57:11Z",
+  "packageVersion": null,
+  "stars": 4195,
+  "archived": false,
+  "capturedAt": "2026-09-24",
+  "capturedBy": "tools/assimilation/external-snapshot.ts",
+  "areasUsed": [
+    "pattern-candidates",
+    "variant-catalog",
+    "property-test-ideas"
+  ]
+}
