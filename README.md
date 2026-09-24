@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 488 it() / 53 files（靜態計數）|
+| Tests | 494 it() / 54 files（靜態計數）|
 | E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -168,6 +168,7 @@ npm run validate:research     # Research Queue governance（參照 / 狀態 / re
 npm run validate:catalogs     # cycles / aliases / assimilation catalogs 治理
 npm run validate:variants     # Variant Research Catalog 治理（流派差異維度）
 npm run validate:patterns     # Pattern Research Backlog 治理（格局待辦，每條先 Research）
+npm run profiles:gap          # Profile 欄位實作盤點（--check 供 CI）
 npm run coverage:bible        # 覆蓋率報告（可 --update-readme）
 npm run release:check         # 最終 gate：verify + release artifact smoke + npm package smoke
 ```
@@ -187,14 +188,14 @@ rules/          規則資料（calculation · interpretation · patterns · rect
 tables/         星曜 registry、別名 registry、cycles（長生/博士/歲建/將前）、candidate 安星表、四化表、廟旺表、納音、雜曜安星表
 sources/        文獻登錄（Tier 1–6）
 evidence/       證據登錄（supports / conflicts / mentions / variant-only）
-research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區＋ variants（Variant Research Catalog）＋ patterns（Pattern Research Backlog）
+research/       Research Queue（open / candidate / resolved / rejected）＋ assimilation 研究區＋ variants（Variant Research Catalog）＋ patterns（Pattern Research Backlog）＋ profiles（Profile Gap Audit）
 profiles/       canonical / traditional-zi / true-solar / lichun / school-zhongzhou / school-ma-hu
 variants/       Variant 與 Variance Registry
 src/            Reference Engine（calendar · rule · relation · transformation · dignity · period · interpretation · pattern · rectification · query · star-registry · candidate-stars · trace · renderer · ai · narrative）
 ui/             官方 UI（Standard / Expert · RWD · tooltip / bottom-sheet / drawer）
 tests/          unit / golden / boundary / differential / schema / periods / calendar / provenance / governance / property / assimilation / visual
 fixtures/       golden / boundary / differential / calendar fixtures
-tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / assimilation / variants / patterns / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
+tools/          rule-validator / source-validator / schema-validator / governance-validator / integrity-validator / rule-version / research-validator / release-validator / assimilation / variants / patterns / profiles / fixture-generator / differential-runner / calendar-differential / stats / build-types / build-standalone
 docs/           architecture / rules / sources / profiles / api / governance / testing
 ```
 

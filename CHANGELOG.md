@@ -432,6 +432,18 @@
   馬頭帶劍原文疑似脫誤，需校勘後再議
 - Research Queue 新增 `RSH.PATTERN.BACKLOG` → 共 32 項
 
+### Phase E — Profile Gap Audit（宣告 vs runtime 實作盤點）
+- 新增 `tools/profiles/{checks,profile-gap-audit}.ts` → `research/profiles/profile-gap.json`
+  （spec §5 之 `profile-gap-audit`）＋ `npm run profiles:gap[:check]`（已納入 `verify` 與 CI）
+- 盤點：6 profiles、11 個 schema 宣告欄位，其中 **6 個真的被 runtime 消費**（附消費位置）；
+  4 個 **未實作值** 逐一標註（`leapMonthPolicy.split/mid-month/next-month`、
+  `timeConvention.local-mean-solar`）並掛 Research ID
+- 新增測試 `tests/profiles/profile-gap.test.ts`（6 測試）：profile 清單一致、
+  未實作值必有 gap 與可解析 Research ID、`runtimeConsumed` 必有消費位置
+- **中州派現況基線**：`school-zhongzhou` 僅覆寫庚干四化兩條；廟旺表、星曜互涉／宮干飛化用法
+  尚未以 variant 表達 → 新增 `RSH.PROFILE.ZHONGZHOU`（需可引用來源，不得憑印象補齊）
+- 另有 `RSH.PROFILE.TIME_CONVENTION`（local-mean-solar 未實作）→ Research Queue 共 34 項
+
 ### Phase D — Query Facade（SDK ergonomics）
 - 新增 `src/query-engine/query.ts` 與 `ZiWei.Query.*`（palace / star / hasStars / hasAnyStar /
   relations / sanFangSiZheng / opposite / isEmptyPalace / transformations / fliesTo /

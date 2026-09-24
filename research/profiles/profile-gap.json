@@ -1,0 +1,252 @@
+{
+  "generatedBy": "tools/profiles/profile-gap-audit.ts",
+  "note": "profile 欄位與 enum 之實作盤點。runtimeConsumed=false 或列於 notImplementedValues 者，不得宣稱為可用功能（spec 2nd §P0-8）。",
+  "profiles": [
+    {
+      "profileId": "canonical",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 0
+    },
+    {
+      "profileId": "lichun",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "ruleOverrides",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 1
+    },
+    {
+      "profileId": "school-ma-hu",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "ruleOverrides",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 1
+    },
+    {
+      "profileId": "school-zhongzhou",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "ruleOverrides",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 2
+    },
+    {
+      "profileId": "traditional-zi",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 0
+    },
+    {
+      "profileId": "true-solar",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 0
+    }
+  ],
+  "fields": [
+    {
+      "field": "$schema",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "../schemas/profile.schema.json"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "profileId",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "canonical",
+        "lichun",
+        "school-ma-hu",
+        "school-zhongzhou",
+        "traditional-zi",
+        "true-solar"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "name",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "<object>"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "description",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "<object>"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "timeConvention",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "calendar-engine（true-solar）",
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "civil",
+        "true-solar"
+      ],
+      "notImplementedValues": [
+        "local-mean-solar"
+      ]
+    },
+    {
+      "field": "dayBoundary",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "calendar-engine（子時換日）",
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "midnight",
+        "zi-hour"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "yearBoundaryPolicy",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "ZW.CALC.CALENDAR.YEAR_BOUNDARY.001 / variants",
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "lichun",
+        "lunar-new-year"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "leapMonthPolicy",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "calendar-engine（閏月）",
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "same-as-normal"
+      ],
+      "notImplementedValues": [
+        "split",
+        "mid-month",
+        "next-month"
+      ]
+    },
+    {
+      "field": "periodRules",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "major-period-resolver.ageAt",
+      "hasDefault": true,
+      "valuesUsedByProfiles": [],
+      "notImplementedValues": []
+    },
+    {
+      "field": "ruleOverrides",
+      "declaredInSchema": true,
+      "runtimeConsumed": true,
+      "consumedBy": "reference-engine（activeRules）+ 各 executor 之 variantPatchFor",
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "<object>"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "_reserved",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [],
+      "notImplementedValues": []
+    }
+  ],
+  "unimplementedValues": [
+    {
+      "field": "leapMonthPolicy",
+      "value": "split",
+      "gap": "整月拆分未實作（schema 允許，executor 無對應分支）。",
+      "researchId": "RSH.LEAP_MONTH_SPLIT"
+    },
+    {
+      "field": "leapMonthPolicy",
+      "value": "mid-month",
+      "gap": "mid-month 僅能以日期分界近似，未以獨立規則表達。",
+      "researchId": "RSH.LEAP_MONTH_SPLIT"
+    },
+    {
+      "field": "leapMonthPolicy",
+      "value": "next-month",
+      "gap": "next-month 未以獨立規則表達（現行僅 same-as-normal 生效）。",
+      "researchId": "RSH.LEAP_MONTH_SPLIT"
+    },
+    {
+      "field": "timeConvention",
+      "value": "local-mean-solar",
+      "gap": "local-mean-solar 未實作（僅 civil / true-solar 有 runtime 行為）。",
+      "researchId": "RSH.PROFILE.TIME_CONVENTION"
+    }
+  ]
+}

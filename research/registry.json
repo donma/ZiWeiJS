@@ -474,6 +474,35 @@
       "question": "《紫微斗數全書》卷三「格局」章列有具名格局（對面朝斗、科權祿主、左右朝垣、兼文武、文星朝命、石中隱玉、貪狼遇火名為火貴（＝既有火貪／鈴貪）、馬頭帶劍、十二宮諸星得地合格／失陷破格等）。哪些應納入 Pattern Engine、哪些屬 Interpretation 層或體系性議題，需先逐條研究。",
       "nextAction": "未實作者一律維持 research（見 research/patterns/pattern-backlog.json）；優先候選：石中隱玉格（原文兩處互證）、兼文武格、左右朝垣格（與既有君臣慶會不同）。馬頭帶劍原文疑似脫誤，需校勘。財官格／貴格類（依生年干逐宮條列）已決議不納入 Pattern Engine。",
       "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PROFILE.TIME_CONVENTION",
+      "title": "時間慣例：local-mean-solar 未實作",
+      "status": "open",
+      "type": "policy",
+      "relatedRules": [
+        "ZW.CALC.CALENDAR.TRUESOLAR.001"
+      ],
+      "evidence": [],
+      "question": "profile.timeConvention 宣告 civil / true-solar / local-mean-solar 三值，但 runtime 僅 civil 與 true-solar 有行為；local-mean-solar（地方平太陽時）未實作。",
+      "nextAction": "取得可引用定義（地方平太陽時 = 經度 × 4 分/度，不含均時差）後實作；true-solar 目前之 equation of time 近似式亦應一併揭露其誤差。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PROFILE.ZHONGZHOU",
+      "title": "中州派 Profile：目前僅涵蓋庚干四化兩條",
+      "status": "open",
+      "type": "school-variance",
+      "relatedRules": [
+        "ZW.CALC.SIHUA.TABLE.V001",
+        "ZW.CALC.SIHUA.NATAL.V001"
+      ],
+      "evidence": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ],
+      "question": "school-zhongzhou profile 目前僅以 ruleOverrides 覆寫庚干四化（天府化科、天相化科）兩條；中州派其他特徵（廟旺表、星曜互涉／宮干飛化用法、格局取法）尚未以 variant 表達。",
+      "nextAction": "需王亭之著作或正式出版講義等可引用來源（SRC.ZHONGZHOU 目前僅為 Tier 2 類別佔位、無逐條證據），逐項建立 variant 規則；不得憑印象補齊。",
+      "ownerReviewRequired": true
     }
   ]
 }

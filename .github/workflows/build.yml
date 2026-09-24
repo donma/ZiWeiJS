@@ -35,6 +35,8 @@ jobs:
         run: npm run validate:variants
       - name: Validate pattern backlog
         run: npm run validate:patterns
+      - name: Profile gap audit
+        run: npm run profiles:gap:check
       - run: npm run assimilation:star-gap:check
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check

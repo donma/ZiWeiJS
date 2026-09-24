@@ -26,13 +26,14 @@
 | 8 | `npm run validate:catalogs` | Cycles / aliases / assimilation candidates / rejections / snapshots schema 與交互參照 |
 | 9 | `npm run validate:variants` | Variant Research Catalog：維度涵蓋、profile 欄位 / variant 參照可解析、未建模必附 Research ID |
 | 10 | `npm run validate:patterns` | Pattern Research Backlog：古典原文必填、research 必附 Research ID、implemented 必可解析 |
-| 11 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
-| 12 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
-| 13 | `npm run differential` | 安星即時對照 `iztro`（live） |
-| 14 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
-| 15 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
-| 16 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
-| 17 | `npm run build` | app + library + types + `bible-manifest.json` |
+| 11 | `npm run profiles:gap:check` | Profile Gap Audit：schema 欄位 / enum 與 runtime 實作盤點不得漂移 | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 12 | `npm run assimilation:star-gap:check` | Star gap report 未漂移（stage / cycle-deity / year-deity 不得誤判為缺星） |
+| 13 | `npm run differential:calendar -- --check` | 曆法差分 fixture 與現行實作不得漂移 |
+| 14 | `npm run differential` | 安星即時對照 `iztro`（live） |
+| 15 | `npm run differential:period` | 五層限運即時對照 `iztro`（live），未登錄差異即 fail |
+| 16 | `npm run verify:golden` | Golden v2 + Period Golden `--check`（oracle 與外部驗證不得漂移） |
+| 17 | `npm run test` | Vitest 全測試（含 `tests/property/` invariants） |
+| 18 | `npm run build` | app + library + types + `bible-manifest.json` |
 
 CI（`.github/workflows/build.yml`）在 push 時執行與上表相同的 Gate 順序（另加 `npm run coverage:bible`
 於 `validate:research` 之後），並於 `npm run build` 之後執行 `npm run release:smoke`，
@@ -324,3 +325,22 @@ CI 只跑不受字型影響的無障礙測試。
 | 馬頭帶劍 | 原文疑似脫誤 | research（需校勘） |
 | 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣 | research（體系性議題，需 Owner 決策） |
 | 財官格／貴格（依生年干逐宮條列） | 卷二諸星章 | **rejected**（屬 Interpretation 層，非具名格局） |
+
+## 11. Profile Gap Audit（Assimilation Phase E）
+
+目的：schema 宣告的 profile 欄位 / enum 值，必須與 runtime 實作分開記錄，
+避免 `_reserved` 或未實作的 enum 被當成可用功能（spec 2nd §P0-8）。
+
+- 檔案：`research/profiles/profile-gap.json`（6 profiles、11 宣告欄位、6 個真的被 runtime 消費、4 個未實作值）
+- 指令：`npm run profiles:gap` / `npm run profiles:gap:check`（已納入 `verify` 與 CI）
+- 測試：`tests/profiles/profile-gap.test.ts`
+
+未實作值（皆有 gap 與 Research ID）：
+
+| 欄位 | 值 | Research |
+|------|----|----------|
+| `leapMonthPolicy` | `split` / `mid-month` / `next-month` | `RSH.LEAP_MONTH_SPLIT` |
+| `timeConvention` | `local-mean-solar` | `RSH.PROFILE.TIME_CONVENTION` |
+
+中州派現況：`school-zhongzhou` 僅覆寫庚干四化兩條規則；廟旺表、星曜互涉／宮干飛化用法
+尚未以 variant 表達 → `RSH.PROFILE.ZHONGZHOU`（需可引用來源，不得憑印象補齊）。
