@@ -340,25 +340,44 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 
 規則：**不追數量，每條先 Research**。格局只登錄有古典原文可引者。
 
-- 檔案：`research/patterns/pattern-backlog.json`（11 條：equivalent 1 / research 9 / rejected 1）
+- 檔案：`research/patterns/pattern-backlog.json`（11 條：implemented 4 / equivalent 1 / research 5 / rejected 1）
 - Gate：`npm run validate:patterns`（原文必填、來源可解析、research 必附 Research ID、
   implemented/equivalent 必指向既有 pattern 規則、rejected 必說明理由）
-- 測試：`tests/patterns/pattern-backlog.test.ts`、`tests/patterns/decision-packet.test.ts`
+- 測試：`tests/patterns/pattern-backlog.test.ts`、`tests/patterns/decision-packet.test.ts`、
+  `tests/unit/pattern-new-geju.test.ts`
 
-來源與發現（《紫微斗數全書》卷三「格局」章）：
+**來源 locator 校正（2026-09-24）**：本批「論 X 格」原文位於《全書》**卷一**
+（女命骨髓賦之後的論格局段），Phase G 初版誤記為卷三。已逐字核對維基文庫卷一並校正 9 筆 locator
+（含得地合格訣／失陷破格訣）。
+
+來源與發現（《紫微斗數全書》**卷一**「論格局」段）：
 
 | 格局 | 原文 | 處置 |
 |------|------|------|
-| 對面朝斗格 | 子午宮逢祿存是也 | research |
+| 對面朝斗格 | 子午宮逢祿存是也 | **implemented** → `ZW.PAT.DUIMIAN_CHAODOU.001`（Owner 2026-09-24） |
 | 科權祿主格 | 詩曰（無一句式定義） | research（定義不足） |
-| 左右朝垣格 | 左輔右弼在三方 | research（與君臣慶會區辨） |
-| 兼文武格 | 文曲武曲在身命是也 | research（定義明確，優先） |
+| 左右朝垣格 | 詩曰「若在三方」 | **implemented** → `ZW.PAT.ZUOYOU_CHAOYUAN.001`（Owner 2026-09-24） |
+| 兼文武格 | 文曲武曲在身命是也 | **implemented** → `ZW.PAT.JIANWENWU.001`（Owner 2026-09-24；需 DSL `palace:"body"`） |
 | 文星朝命格 | 詩曰（無定義） | research（定義不足） |
-| 石中隱玉格 | 命在子午逢巨門是也（卷二亦有互證） | research（優先） |
+| 石中隱玉格 | 命在子午逢巨門是也（卷二／卷三互證） | **implemented** → `ZW.PAT.SHIZHONG_YINYU.001`（Owner 2026-09-24） |
 | 貪狼遇火名為火貴格 | 三合照身命是也 | **equivalent**（＝既有 `ZW.PAT.YINGHUO.001`） |
-| 馬頭帶劍 | 原文疑似脫誤 | research（需校勘） |
-| 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣 | research（體系性議題，需 Owner 決策） |
+| 馬頭帶劍 | 原文疑似脫誤 | research（需校勘；locator 未經本輪核對） |
+| 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣（卷一 1.13／1.14） | research（體系性議題，需 Owner 決策） |
 | 財官格／貴格（依生年干逐宮條列） | 卷二諸星章 | **rejected**（屬 Interpretation 層，非具名格局） |
+
+### 已實作四條之實作要點
+
+| 規則 | 條件（DSL） | 增強／破格 |
+|------|-------------|-----------|
+| `ZW.PAT.DUIMIAN_CHAODOU.001` | 命宮在子／午 ＋ 祿存在對宮（遷移） | 三方四正見輔弼昌曲魁鉞為 enhanced |
+| `ZW.PAT.JIANWENWU.001` | 武曲＋文曲同宮，且該宮為命宮或**身宮** | 命宮見七殺／破軍為 broken（詩曰「命宮無殺破」） |
+| `ZW.PAT.SHIZHONG_YINYU.001` | 命宮在子／午 ＋ 巨門同宮 | 三方化祿／化科為 enhanced；三方羊陀火鈴為 broken（卷二「會羊陀火鈴化忌」） |
+| `ZW.PAT.ZUOYOU_CHAOYUAN.001` | 左輔＋右弼皆在命宮三方四正，且**不**同在命宮 | 三方見紫微／天府為 enhanced |
+
+- DSL 擴充：新增 `palaceRef: "body"`（以身宮地支反查身宮）——為忠實表達「文曲武曲在**身命**」；
+  與既有 `{ "type": "palace", "palace": "life", "isBody": true }`（命身同宮）語意不同。
+- 測試 `tests/unit/pattern-new-geju.test.ts`（10）：正案例、`body` 語意、破格（含合成 fixture）、
+  以及「左右同在命宮 → partial（不得判為完整）」之區辨。
 
 ### Decision Packet（M7 前置：交給 Owner 的決策包）
 
@@ -368,11 +387,11 @@ readiness 由 backlog 文字**機械分類**（非命理判斷），`ownerDecisi
 
 | readiness | 條數 | 內容 |
 |-----------|------|------|
-| `ready-for-owner-review` | 4 | 對面朝斗格、兼文武格、石中隱玉格、左右朝垣格（定義明確或與既有格局明確區辨） |
+| `landed` | 5 | 火貴格（＝既有 `ZW.PAT.YINGHUO.001`）＋ Owner 已批准實作之四條 |
 | `needs-definition` | 2 | 科權祿主格、文星朝命格（僅詩曰，無一句式定義） |
 | `needs-collation` | 1 | 馬頭帶劍（原文殘缺，需校勘／第二來源） |
 | `needs-owner-scope` | 2 | 十二宮得地合格訣／失陷破格訣（體系性議題） |
-| `landed` / `rejected` | 1 / 1 | 火貴格（＝既有 `ZW.PAT.YINGHUO.001`）／財官格（屬 Interpretation 層） |
+| `rejected` | 1 | 財官格（屬 Interpretation 層） |
 
 每條附 `proposedRuleId`、`requiredArtifacts`（Source+Evidence / Rule / Tests / plan coverage / 影響評估）。
 **AI 不得自行實作或升級 canonical**；Owner 批准後才走 Rule + Evidence + Tests 流程。

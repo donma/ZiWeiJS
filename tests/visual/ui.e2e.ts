@@ -127,6 +127,24 @@ test.describe('P2-4 主要頁面可操作', () => {
     await expect(page.locator('summary', { hasText: '分享資料（不含出生資料）' })).toBeVisible();
     await expect(page.locator('text=/^[0-9a-f]{8}$/').first()).toBeVisible();
   });
+
+  test('M7 新格局：命中之命盤顯示「對面朝斗格」徽章（UI 端到端）', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/');
+    const form = page.locator('form[data-form="birth"]');
+    await form.locator('input[name="year"]').fill('1950');
+    await form.locator('input[name="month"]').fill('1');
+    await form.locator('input[name="day"]').fill('5');
+    const hour = form.locator('input[name="hour"], select[name="hour"]');
+    if (await hour.count()) {
+      await hour.first().fill('0').catch(async () => { await hour.first().selectOption('0'); });
+    }
+    await form.locator('button[type="submit"], input[type="submit"]').first().click();
+    await page.waitForSelector('svg', { timeout: 15_000 });
+    await page.waitForTimeout(200);
+
+    await expect(page.locator('.badge', { hasText: '對面朝斗格' }).first()).toBeVisible();
+  });
 });
 
 test.describe('P2-4 星曜不重疊', () => {

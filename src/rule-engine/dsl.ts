@@ -107,6 +107,11 @@ function requireString(node: Dsl, key: string, op: string): string {
 function resolvePalace(ctx: DslContext, palaceRef: unknown): PalaceId | undefined {
   if (palaceRef === undefined || palaceRef === null) return ctx.focusPalaceId;
   if (typeof palaceRef !== 'string') invalidDsl('`palace` must be a string palace id');
+  // `body` 為虛擬 palaceRef：身宮為十二宮之一，依 bodyPalaceBranch 反查（spec §P0-5 擴充）
+  if (palaceRef === 'body') {
+    const bodyBranch = ctx.engine.bodyPalaceBranch;
+    return ctx.engine.palaces.find(p => p.branch === bodyBranch)?.id;
+  }
   return palaceRef as PalaceId;
 }
 

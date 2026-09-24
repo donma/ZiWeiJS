@@ -16,21 +16,21 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 <!-- STATS:BEGIN (由 `npm run coverage:bible -- --update-readme` 產生，請勿手寫) -->
 | 項目 | 數量 |
 |---|---|
-| 規則總數 | 216 |
-| canonical | 39 |
+| 規則總數 | 220 |
+| canonical | 43 |
 | candidate | 168 |
 | variant | 7 |
 | research | 2 |
 | Canonical source 覆蓋率 | 100% |
 | Canonical evidence 覆蓋率 | 100% |
 | 星曜（實測安星 / 總數）| 98 / 99（active 98）|
-| 格局 | 24 |
+| 格局 | 28 |
 | 解讀規則 | 138（12 domains）|
-| 文獻 / 證據 | 12 / 40 |
+| 文獻 / 證據 | 12 / 44 |
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 562 it() / 64 files（靜態計數）|
+| Tests | 573 it() / 65 files（靜態計數）|
 | E2E / Visual | 22 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->

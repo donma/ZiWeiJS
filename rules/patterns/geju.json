@@ -1255,6 +1255,289 @@
       "logic": {
         "stage": "analysis"
       }
+    },
+    {
+      "ruleId": "ZW.PAT.DUIMIAN_CHAODOU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "對面朝斗格",
+        "en": "Opposite Lu Cun facing Life"
+      },
+      "required": [
+        {
+          "type": "compare",
+          "left": "lifePalaceBranch",
+          "op": "in",
+          "right": [
+            "zi",
+            "wu"
+          ]
+        },
+        {
+          "type": "relation",
+          "relation": "opposite",
+          "palace": "life",
+          "containsAll": [
+            "ZW.STAR.AUX.LUCUN"
+          ]
+        }
+      ],
+      "enhancers": [
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI",
+            "ZW.STAR.AUX.WENCHANG",
+            "ZW.STAR.AUX.WENQU",
+            "ZW.STAR.AUX.TIANKUI",
+            "ZW.STAR.AUX.TIANYUE"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.DUIMIAN_CHAODOU"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一：「論對面朝斗格 子午宮逢祿存是也」；詩曰「祿有對面在遷移，子午逢之利祿宜」。本規則取「命宮在子或午，且祿存在遷移（對宮）」。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "初版即 canonical：Owner 於 2026-09-24 批准實作（依 decision packet ready-for-owner-review 清單）。證據為維基文庫《紫微斗數全書》卷一（2026-09-24 逐字核對）；圖輸出新增此格局。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.PAT.JIANWENWU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "兼文武格",
+        "en": "Both Wen Qu and Wu Qu in Life/Body"
+      },
+      "required": [
+        {
+          "type": "star-group",
+          "group": [
+            "ZW.STAR.MAJOR.WUQU",
+            "ZW.STAR.AUX.WENQU"
+          ],
+          "relation": "same-palace"
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "star-in-palace",
+              "star": "ZW.STAR.MAJOR.WUQU",
+              "palace": "life"
+            },
+            {
+              "type": "star-in-palace",
+              "star": "ZW.STAR.MAJOR.WUQU",
+              "palace": "body"
+            }
+          ]
+        }
+      ],
+      "breakers": [
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MAJOR.QISHA",
+          "palace": "life"
+        },
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MAJOR.POJUN",
+          "palace": "life"
+        }
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.JIANWENWU"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一：「論兼文武格 文曲武曲在身命是也」；詩曰「更值命宮無殺破，滔滔榮顯是英雄」。本規則取「武曲與文曲同宮，且該宮為命宮或身宮」；「殺破」以命宮見七殺或破軍為破格。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "初版即 canonical：Owner 於 2026-09-24 批准實作（依 decision packet ready-for-owner-review 清單）。為忠實表達「在身命」，本版同時擴充 DSL 之 palaceRef `body`（以身宮地支反查身宮）。證據：維基文庫卷一（2026-09-24 逐字核對）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.PAT.SHIZHONG_YINYU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "石中隱玉格",
+        "en": "Ju Men in Zi/Wu life palace"
+      },
+      "required": [
+        {
+          "type": "compare",
+          "left": "lifePalaceBranch",
+          "op": "in",
+          "right": [
+            "zi",
+            "wu"
+          ]
+        },
+        {
+          "type": "star-in-palace",
+          "star": "ZW.STAR.MAJOR.JUMEN",
+          "palace": "life"
+        }
+      ],
+      "enhancers": [
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        },
+        {
+          "type": "transformation",
+          "transform": "ke",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        }
+      ],
+      "breakers": [
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.MALEFIC.QINGYANG",
+            "ZW.STAR.MALEFIC.TUOLUO",
+            "ZW.STAR.AUX.HUOLING",
+            "ZW.STAR.AUX.LINGXING"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.SHIZHONG_YINYU"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一：「論石中隱玉格 命在子午逢巨門是也」；詩曰「更得三方科祿照，石中隱玉是豐隆」；卷三「論諸星同垣」亦有「巨門子午科權祿，石中隱玉福興隆」互證。本規則取「命宮在子或午且巨門同宮」；三方科祿為增強，三方羊陀火鈴為破格（據卷二「會羊陀火鈴化忌……男盜女娼」）。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "初版即 canonical：Owner 於 2026-09-24 批准實作（依 decision packet ready-for-owner-review 清單）。證據為維基文庫卷一（2026-09-24 逐字核對）；卷二巨門章與卷三論諸星同垣為互證，非獨立來源。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "左右朝垣格",
+        "en": "Zuo Fu & You Bi in san-fang"
+      },
+      "required": [
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAll": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI"
+          ]
+        },
+        {
+          "none": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "star-in-palace",
+                  "star": "ZW.STAR.AUX.ZUOFU",
+                  "palace": "life"
+                },
+                {
+                  "type": "star-in-palace",
+                  "star": "ZW.STAR.AUX.YOUBI",
+                  "palace": "life"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "enhancers": [
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.MAJOR.ZIWEI",
+            "ZW.STAR.MAJOR.TIANFU"
+          ]
+        }
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.ZUOYOU_CHAOYUAN"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一：「論左右朝垣格」詩曰「天星左右最高明，若在三方祿位興」。原文無一句式定義，本規則取「左輔右弼皆在命宮三方四正」，並排除左右同在命宮（後者屬君臣慶會路線，避免重疊）。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-24",
+          "note": "初版即 canonical：Owner 於 2026-09-24 批准實作（依 decision packet ready-for-owner-review 清單）。條件由詩曰「若在三方」推定，並與既有 ZW.PAT.ZIWEI_ZUOYOU.001（紫微左右同宮）區辨；證據為維基文庫卷一（2026-09-24 逐字核對）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
     }
   ]
 }

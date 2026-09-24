@@ -556,6 +556,22 @@
       {
         "patternId": "ZW.PAT.HUOLING_JIA.001",
         "status": "complete"
+      },
+      {
+        "patternId": "ZW.PAT.DUIMIAN_CHAODOU.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.JIANWENWU.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.SHIZHONG_YINYU.001",
+        "status": "insufficient"
+      },
+      {
+        "patternId": "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+        "status": "partial"
       }
     ]
   }

@@ -523,6 +523,25 @@
 - 明確排除真太陽時／`timeConvention !== 'civil'` 案例（iztro `bySolar()` 不支援經度）→ 由 golden oracle 驗證
 - 未來出生案例改驗證 fail-close（`INVALID_TARGET_DATE`）；iztro 未提供 branch 之極端虛歲案例不比對 branch
 
+### M7 首批格局實作（Owner 批准 2026-09-24）＋ 來源 locator 校正
+- **新增 4 條 canonical 格局**（rules 216 → 220，canonical 39 → 43）：
+  - `ZW.PAT.DUIMIAN_CHAODOU.001` 對面朝斗格（命宮在子／午＋祿存在對宮）
+  - `ZW.PAT.JIANWENWU.001` 兼文武格（武曲＋文曲同宮，且該宮為命宮或**身宮**）
+  - `ZW.PAT.SHIZHONG_YINYU.001` 石中隱玉格（命宮在子／午＋巨門同宮）
+  - `ZW.PAT.ZUOYOU_CHAOYUAN.001` 左右朝垣格（左輔右弼皆在命宮三方四正、且不同在命宮）
+- **來源 locator 校正（研究誠信）**：Phase G backlog 原記此批「論 X 格」原文在卷三，
+  經維基文庫 API 全文檢索確認為**卷一**（女命骨髓賦之後的論格局段）→ 校正 9 筆 locator；
+  新增 4 條 EVD（逐字核對卷一，evidence 40 → 44）
+- **DSL 擴充**：新增 `palaceRef: "body"`（以身宮地支反查身宮；schema + eval + 測試），
+  為忠實表達「文曲武曲在**身命**」；與 `palace:"life", isBody:true`（命身同宮）語意不同
+- backlog：4 筆改 `implemented` + `relatedRuleId`（implemented 4 / equivalent 1 / research 5 / rejected 1）
+- golden v2 35 fixtures 重生（各 +4 pattern 條目）；pattern-gap 報告、decision packet、
+  `research/stats/distribution.json` 重生（14,683 盤；pattern 評估 4×14,683 筆，errors=0）
+- 測試：`tests/unit/pattern-new-geju.test.ts`（10，含 `body` 語意與「左右同在命宮 → partial」區辨）、
+  `tests/schema/dsl.test.ts`（+1 `body` palaceRef）、`tests/patterns/decision-packet.test.ts` 更新、
+  `tests/visual/ui.e2e.ts` 新增 M7 徽章端到端測試（共 22；視覺快照 3 張重生：chart-expert / rules / sources）
+- 文件：`docs/testing/verification.md` §10 改寫（含實作要點表、locator 校正說明）；`docs/rules/rule-dsl.md` 補 `body`
+
 ### M7 前置 — Pattern Decision Packet（交給 Owner 的決策包）
 - 新增 `tools/patterns/decision-packet.ts` → `research/patterns/pattern-decision-packet.json`：
   把 11 條 backlog 整理成可決策清單（原文定義句、gap、readiness、proposedRuleId、requiredArtifacts）

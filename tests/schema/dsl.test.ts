@@ -39,6 +39,24 @@ describe('P0-5 DSL 必須 fail-close', () => {
     expect(evalDsl({ none: [{ type: 'star-in-palace', star: 'ZW.STAR.MAJOR.ZIWEI', palace: 'life' }] }, ctx)).toBe(true);
     expect(evalDsl({ not: { type: 'star-in-palace', star: 'ZW.STAR.MAJOR.ZIWEI', palace: 'life' } }, ctx)).toBe(true);
   });
+
+  it('palaceRef `body` 以身宮地支反查身宮（M7 格局所需）', () => {
+    const bodyBranch = ctx.engine.bodyPalaceBranch;
+    const bodyPalace = ctx.engine.palaces.find(p => p.branch === bodyBranch)!;
+    expect(bodyPalace).toBeTruthy();
+    // 任一在身宮之星，以 palace:'body' 查詢必命中
+    for (const s of bodyPalace.stars) {
+      expect(evalDsl({ type: 'star-in-palace', star: s.starId, palace: 'body' }, ctx), s.starId).toBe(true);
+    }
+    // 與命宮不同宮時，`life` 與 `body` 語意必須可分辨
+    const lifeBranch = ctx.engine.lifePalaceBranch;
+    if (lifeBranch !== bodyBranch) {
+      const onlyBody = bodyPalace.stars.map(s => s.starId);
+      for (const id of onlyBody) {
+        expect(evalDsl({ type: 'star-in-palace', star: id, palace: 'life' }, ctx), id).toBe(false);
+      }
+    }
+  });
 });
 
 describe('P0-5 pattern operator 讀取真實 Pattern 結果', () => {

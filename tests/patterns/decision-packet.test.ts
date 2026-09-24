@@ -22,28 +22,38 @@ describe('pattern decision packet', () => {
     expect(entries.map(e => e.patternKey).sort()).toEqual(backlog.entries.map((e: { patternKey: string }) => e.patternKey).sort());
   });
 
-  it('readiness 分佈：4 ready / 2 needs-definition / 1 needs-collation / 2 needs-owner-scope / 1 landed / 1 rejected', () => {
+  it('readiness 分佈：5 landed / 2 needs-definition / 1 needs-collation / 2 needs-owner-scope / 1 rejected', () => {
     expect(packet.totals).toMatchObject({
       entries: 11,
-      'ready-for-owner-review': 4,
+      'ready-for-owner-review': 0,
       'needs-definition': 2,
       'needs-collation': 1,
       'needs-owner-scope': 2,
       'needs-review': 0,
-      landed: 1,
+      landed: 5,
       rejected: 1
     });
+    const sum = Object.entries(packet.totals)
+      .filter(([k]) => k !== 'entries')
+      .reduce((acc, [, v]) => acc + (v as number), 0);
+    expect(sum).toBe(11);
   });
 
-  it('ready-for-owner-review：有古典定義句與候選 ruleId', () => {
-    const ready = entries.filter(e => e.readiness === 'ready-for-owner-review');
-    expect(ready.length).toBeGreaterThan(0);
-    for (const e of ready) {
-      // 定義可來自散文定義句，或詩曰＋gap（如左右朝垣格）；兩者皆不得為空
-      expect(e.definitionClause ?? e.gap, e.patternKey).toBeTruthy();
-      expect(['prose', 'poem-or-gap'], e.patternKey).toContain(e.definitionSource);
-      expect(e.proposedRuleId, e.patternKey).toBe(`ZW.PAT.${e.patternKey.replace(/^PAT\./, '')}.001`);
-      expect(e.requiredArtifacts.length, e.patternKey).toBeGreaterThan(0);
+  it('Owner 已批准之四條格局：landed + relatedRuleId + 不再提議規則', () => {
+    const implemented: Array<[string, string]> = [
+      ['PAT.DUIMIAN_CHAODOU', 'ZW.PAT.DUIMIAN_CHAODOU.001'],
+      ['PAT.JIANWENWU', 'ZW.PAT.JIANWENWU.001'],
+      ['PAT.SHIZHONG_YINYU', 'ZW.PAT.SHIZHONG_YINYU.001'],
+      ['PAT.ZUOYOU_CHAOYUAN', 'ZW.PAT.ZUOYOU_CHAOYUAN.001']
+    ];
+    for (const [key, ruleId] of implemented) {
+      const e = entries.find(x => x.patternKey === key)!;
+      expect(e, key).toBeTruthy();
+      expect(e.readiness, key).toBe('landed');
+      expect(e.status, key).toBe('implemented');
+      expect(e.relatedRuleId, key).toBe(ruleId);
+      expect(e.proposedRuleId, key).toBeNull();
+      expect(e.requiredArtifacts, key).toEqual([]);
     }
   });
 

@@ -361,7 +361,8 @@
       "quote": "安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥。",
       "confidence": 0.6,
       "notes": "**實作/流派文件，非古典原文**（absence of classical evidence 之補記）。2026-09-24 系統性查核《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網兩份獨立文本）、知命書院《紫微斗數全書》全本目錄、archive.org 掃描本與 DDG/Bing 檢索，均未見天巫安法；目前唯一可得者為 iztro 文件所載月支口訣。故天巫維持 Research Queue（open），不實作、不建表。"
-    },    {
+    },
+    {
       "evidenceId": "EVD.QUANSHU.DIANCANG.TAIFU",
       "sourceId": "SRC.QUANSHU.DIANCANG",
       "type": "supports",
@@ -416,6 +417,62 @@
       "quote": "安小限诀 不论阴阳男俱顺数不论阴阳女俱逆数 寅午戌人起辰宫，申子辰人自戌宫，巳酉丑人起未宫，亥卯未人起丑宫。",
       "confidence": 0.9,
       "notes": "第二份獨立電子文本之小限起法與方向，與 SRC.QUANSHU.WIKISOURCE 逐字相符（僅簡繁差異）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.DUIMIAN_CHAODOU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論對面朝斗格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论对面朝斗格 子午宫逢禄存是也　诗曰 禄有对面在迁移，子午逢之利禄宜，德合吉壤人敬重，双全富贵福稀奇。",
+      "confidence": 0.9,
+      "notes": "子午宮逢祿存之古典定義＋詩曰。2026-09-24 逐字核對維基文庫《紫微斗數全書》卷一（簡體電子文本）；詩曰「祿有對面在遷移」支持「祿存在遷移對照命宮」之讀法。（Owner 於 2026-09-24 批准據此實作格局規則。）"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.JIANWENWU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論兼文武格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论兼文武格 文曲武曲在身命是也　诗曰 格名文武少人知，遇此须教百事通，更值命宫无杀破，滔滔荣显是英雄。",
+      "confidence": 0.9,
+      "notes": "文曲＋武曲在身命之古典定義＋詩曰。2026-09-24 逐字核對維基文庫《紫微斗數全書》卷一。（Owner 於 2026-09-24 批准據此實作格局規則。）"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.SHIZHONG_YINYU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論石中隱玉格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论石中隐玉格 命在子午逢巨门是也　诗曰 巨门子午二宫逢，身命逢之必贵荣，更得三方科禄照，石中隐玉是丰隆。",
+      "confidence": 0.9,
+      "notes": "命在子午逢巨門之古典定義＋詩曰。2026-09-24 逐字核對維基文庫卷一本段；另維基文庫卷三「論諸星同垣」有「巨门子午科权禄石中隐玉福兴隆」互證。（Owner 於 2026-09-24 批准據此實作格局規則。）"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.ZUOYOU_CHAOYUAN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論左右朝垣格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论左右朝垣格　诗曰 天星左右最高明，若在三方禄位兴，武职高登应显佐，文人名誉列公卿。",
+      "confidence": 0.9,
+      "notes": "左輔右弼在三方（本條無一句式定義，條件由詩曰「若在三方」推定）。2026-09-24 逐字核對維基文庫《紫微斗數全書》卷一。（Owner 於 2026-09-24 批准據此實作格局規則。）"
     }
   ]
 }

@@ -13,9 +13,14 @@
 
 ## 條件節點
 
+`palace` 可為十二宮 ID（`life` / `siblings` / … / `parents`）或虛擬值 **`body`**（身宮：
+依 `bodyPalaceBranch` 反查該宮；用於「在身命」等古典條件）。若要判斷某宮是否即身宮，
+使用 `{ "type": "palace", "palace": "life", "isBody": true }`。
+
 ### star-in-palace
 ```json
 { "type": "star-in-palace", "star": "ZW.STAR.MAJOR.ZIWEI", "palace": "life" }
+{ "type": "star-in-palace", "star": "ZW.STAR.MAJOR.WUQU", "palace": "body" }
 ```
 
 ### relation

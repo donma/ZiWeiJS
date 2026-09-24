@@ -170,8 +170,10 @@
     "xian": 37994
   },
   "patternHits": {
+    "ZW.PAT.DUIMIAN_CHAODOU.001": 14683,
     "ZW.PAT.FULIANG.001": 14683,
     "ZW.PAT.HUOLING_JIA.001": 14683,
+    "ZW.PAT.JIANWENWU.001": 14683,
     "ZW.PAT.JIAXIANG.001": 14683,
     "ZW.PAT.JILIANG_LU.001": 14683,
     "ZW.PAT.JINJI.001": 14683,
@@ -181,6 +183,7 @@
     "ZW.PAT.RIYUEMING.001": 14683,
     "ZW.PAT.SHA_POLANG.001": 14683,
     "ZW.PAT.SHILIANG_YIN.001": 14683,
+    "ZW.PAT.SHIZHONG_YINYU.001": 14683,
     "ZW.PAT.TAIYANG_JUMEN.001": 14683,
     "ZW.PAT.TIANJI_JUMEN.001": 14683,
     "ZW.PAT.TIANTONG_JUMEN.001": 14683,
@@ -193,14 +196,15 @@
     "ZW.PAT.YUE_MEN_DONG.001": 14683,
     "ZW.PAT.ZIFU_TONGGONG.001": 14683,
     "ZW.PAT.ZIWEI_QISHA.001": 14683,
-    "ZW.PAT.ZIWEI_ZUOYOU.001": 14683
+    "ZW.PAT.ZIWEI_ZUOYOU.001": 14683,
+    "ZW.PAT.ZUOYOU_CHAOYUAN.001": 14683
   },
   "patternStatus": {
-    "broken": 18235,
-    "complete": 27402,
-    "enhanced": 11145,
-    "insufficient": 272389,
-    "partial": 23221
+    "broken": 18493,
+    "complete": 27746,
+    "enhanced": 11325,
+    "insufficient": 306158,
+    "partial": 47402
   },
   "certainty": {
     "keys": {

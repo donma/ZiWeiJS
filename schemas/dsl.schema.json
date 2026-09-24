@@ -8,7 +8,8 @@
     "palaceRef": {
       "enum": [
         "life", "siblings", "spouse", "children", "wealth", "health",
-        "travel", "friends", "career", "property", "fortune", "parents"
+        "travel", "friends", "career", "property", "fortune", "parents",
+        "body"
       ]
     },
     "relationName": {
