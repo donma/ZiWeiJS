@@ -30,7 +30,7 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 359 it() / 37 files（靜態計數）|
+| Tests | 411 it() / 44 files（靜態計數）|
 | E2E / Visual | 21 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->

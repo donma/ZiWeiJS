@@ -24,9 +24,33 @@ describe('P2-3 Period Golden Fixtures', () => {
     expect(files.length).toBeGreaterThanOrEqual(10);
   });
 
+  it('多數案例具外部（iztro）驗證，且無 failed', () => {
+    const all = files.map(f => JSON.parse(readFileSync(join(dir, f), 'utf8')).external);
+    expect(all.every(e => e)).toBe(true);
+    const externallyChecked = all.filter(e => e.status === 'verified' || e.status === 'variance');
+    expect(externallyChecked.length).toBeGreaterThanOrEqual(5);
+    expect(all.some(e => e.status === 'verified')).toBe(true);
+    expect(all.filter(e => e.status === 'failed')).toEqual([]);
+  });
+
   for (const f of files) {
     const raw = JSON.parse(readFileSync(join(dir, f), 'utf8'));
     describe(raw.name, () => {
+      it('攜帶外部驗證中繼資料（spec 3rd §6）', () => {
+        const ext = raw.external as {
+          status: string;
+          verifiedBy: string;
+          against: Array<{ sourceId: string; version: string }>;
+        };
+        expect(ext, `${f} 缺 external 中繼資料`).toBeTruthy();
+        expect(['verified', 'variance', 'engine-only']).toContain(ext.status);
+        expect(ext.status).not.toBe('failed');
+        if (ext.status !== 'engine-only') {
+          expect(ext.verifiedBy).toBe('differential:iztro');
+          expect(ext.against.some(a => a.sourceId === 'SRC.IZTRO')).toBe(true);
+        }
+      });
+
       it('即時運算完全符合 stored oracle', () => {
         const chart = calculate(raw.input, { targetDate: raw.oracle.targetDate });
 

@@ -134,6 +134,23 @@
       "question": "《全書》載「流年歲建起正月逆數生月順數生時至斗君，斗君為正月命宮」；但部分現代流派省略斗君，直接由流年命宮起正月順數。本引擎已於 v2.0 正式採全書斗君正統古法。",
       "nextAction": "已實作斗君公式並於 iztro period differential 交叉驗證通過。保留研究紀錄供學術溯源。",
       "ownerReviewRequired": false
+    },
+    {
+      "researchId": "RSH.PERIOD.MONTH_STEM",
+      "title": "流月天干基準：四柱節氣月柱 vs 農曆月五虎遁",
+      "status": "open",
+      "type": "calendar-variance",
+      "relatedRules": [
+        "ZW.CALC.PERIOD.LIUYUE.001",
+        "ZW.CALC.CALENDAR.GANZHI.001"
+      ],
+      "evidence": [
+        "EVD.CALENDAR.GANZHI",
+        "EVD.QUANSHU.DOUJUN"
+      ],
+      "question": "流月天干（決定流月四化）本引擎一律採目標日期之「四柱節氣月柱」（lunar.getMonthInGanZhi，以節氣換月），與 docs/api/periods.md §P0-3 之 PeriodInfo.ganzhi 契約一致；但 iztro 等外部實作以「農曆月序」經五虎遁起月干。兩者在農曆月與節氣月不同時（例如 2026-04-16 為農曆二月，節氣已入辰月）會產生不同流月天干，進而使流月四化不同。",
+      "nextAction": "考證古籍對流月四化干之依據（斗君法通常以農曆月五虎遁取干），確認後決定是否調整 canonical 或於 profile 提供 variant；目前已登錄為 calendar-variance。",
+      "ownerReviewRequired": true
     }
   ]
 }

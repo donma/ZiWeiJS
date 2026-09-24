@@ -16,6 +16,20 @@
     "timezone": "America/New_York",
     "sexForCalculation": "male"
   },
+  "external": {
+    "status": "verified",
+    "verifiedBy": "differential:iztro",
+    "verifiedAt": "2026-09-24",
+    "against": [
+      {
+        "sourceId": "SRC.IZTRO",
+        "version": "2.6.1"
+      }
+    ],
+    "rows": "35/35",
+    "varianceIds": [],
+    "note": "與 iztro 完全一致（命宮位置 / 干支 / 四化）。"
+  },
   "oracle": {
     "targetDate": {
       "year": 2026,

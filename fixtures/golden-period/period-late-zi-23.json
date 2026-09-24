@@ -16,6 +16,15 @@
     "timezone": "Asia/Taipei",
     "sexForCalculation": "male"
   },
+  "external": {
+    "status": "engine-only",
+    "verifiedBy": "engine",
+    "verifiedAt": "2026-09-24",
+    "against": [],
+    "rows": null,
+    "varianceIds": [],
+    "note": "非 civil 時序 / dayBoundary 覆寫 / 地點或真太陽時 / 晚子時：iztro 不適用，僅以引擎 golden 結果 + 邊界測試驗證。"
+  },
   "oracle": {
     "targetDate": {
       "year": 2026,

@@ -170,7 +170,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     direction: directionDetermined ? 'certain' : 'unknown',
     changsheng: directionDetermined ? 'high' : 'unknown',
     majorPeriods: directionDetermined ? 'high' : 'unknown',
-    periods: target ? 'high' : 'unavailable'
+    // representative-date（year+month，未給 day）為模糊語意，certainty 降級（spec 3rd §P0-3）
+    periods: !target ? 'unavailable' : ctx.periodTarget?.isRepresentativeDate ? 'medium' : 'high'
   };
 
   const stars: Record<string, ReturnType<typeof Object>> = {};

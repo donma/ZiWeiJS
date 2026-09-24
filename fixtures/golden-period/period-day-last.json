@@ -16,6 +16,22 @@
     "timezone": "Asia/Taipei",
     "sexForCalculation": "male"
   },
+  "external": {
+    "status": "variance",
+    "verifiedBy": "differential:iztro",
+    "verifiedAt": "2026-09-24",
+    "against": [
+      {
+        "sourceId": "SRC.IZTRO",
+        "version": "2.6.1"
+      }
+    ],
+    "rows": "22/28",
+    "varianceIds": [
+      "VAR.PERIOD.MONTH_STEM_BASIS"
+    ],
+    "note": "與 iztro 差異全部已登錄於 variants/differential.json。"
+  },
   "oracle": {
     "targetDate": {
       "year": 2026,

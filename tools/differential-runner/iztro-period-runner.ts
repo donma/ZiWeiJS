@@ -21,6 +21,7 @@ import { calculate } from '../../src/reference-engine/engine.js';
 import type { ZiWeiBirthInput, TargetDate } from '../../src/index.js';
 import { comparePeriodWithIztro, type IztroHoroscopeLike, type PeriodDiffRow } from './iztro-period-compare.js';
 import { iztroTimeIndex } from './iztro-compare.js';
+import { evaluatePeriodGate, varianceRegistryMatch, type VarianceEntry } from './period-gate.js';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const require = createRequire(import.meta.url);
@@ -135,18 +136,6 @@ const byClass = review.reduce<Record<string, number>>((acc, r) => {
 }, {});
 
 /* ---------- Variance Registry（spec 3rd §P1-5） ---------- */
-interface VarianceEntry {
-  varianceId: string;
-  scope: string;
-  field: string;
-  ruleId: string;
-  classification: string;
-  condition?: string;
-  rationale?: string;
-  researchId?: string;
-  acceptedByOwner?: boolean;
-}
-
 const varianceRegistry: VarianceEntry[] = (() => {
   try {
     const raw = readFileSync(join(root, 'variants/differential.json'), 'utf8');
@@ -156,39 +145,9 @@ const varianceRegistry: VarianceEntry[] = (() => {
   }
 })();
 
-function varianceRegistryMatch(row: PeriodDiffRow): VarianceEntry | undefined {
-  const fullField = `${row.scope}.${row.field}`;
-  return varianceRegistry.find(v => {
-    if (v.classification !== row.classification) return false;
-    if (v.scope !== '*' && v.scope !== row.scope) return false;
-    if (v.field.endsWith('.*')) {
-      const prefix = v.field.slice(0, -2);
-      return fullField.startsWith(`${prefix}.`) || fullField === prefix || row.field.startsWith(`${prefix}.`) || row.field === prefix;
-    }
-    return v.field === row.field || v.field === fullField;
-  });
-}
-
-/* ---------- Gate（spec 3rd §P0-5） ---------- */
-// 必須 fail：bug、unclassified、external-error
-// 可以 pass：school/calendar/time-basis/day-boundary/leap-month variance
-//           且必須在 Variance Registry 有登錄（否則 fail）
-const HARD_FAIL = new Set(['bug', 'unclassified']);
-const KNOWN_VARIANCE = new Set([
-  'school-variance',
-  'calendar-variance',
-  'time-basis-variance',
-  'day-boundary-variance',
-  'leap-month-variance'
-]);
-
-const hardFails = review.filter(r => !r.classification || HARD_FAIL.has(r.classification));
+/* ---------- Gate（spec 3rd §P0-5，實作於 period-gate.ts 供測試共用） ---------- */
+const { hardFails, untracked } = evaluatePeriodGate(allRows, varianceRegistry);
 const externalErrors = reports.filter(r => r.externalError);
-const untracked = review.filter(r => {
-  const cls = r.classification ?? 'unclassified';
-  if (!KNOWN_VARIANCE.has(cls)) return false; // 已由 hardFails 處理
-  return !varianceRegistryMatch(r);
-});
 
 console.log('=== Period Differential (iztro) ===');
 for (const r of reports) {
@@ -199,7 +158,7 @@ for (const r of reports) {
   const m = r.rows.filter(x => x.status === 'match').length;
   console.log(`  ${r.id}: ${m}/${r.rows.length} match`);
   for (const row of r.rows.filter(x => x.status === 'needs-review')) {
-    const tracked = varianceRegistryMatch(row);
+    const tracked = varianceRegistryMatch(row, varianceRegistry);
     console.log(`    [${row.classification ?? 'unclassified'}${tracked ? ` ${tracked.varianceId}` : ' UNTRACKED'}] ${row.scope}.${row.field}: bible=${row.bible ?? '∅'} iztro=${row.external ?? '∅'}`);
   }
 }

@@ -101,8 +101,20 @@ if (!validateVariance(varianceRegistry)) {
   failed++;
 }
 
+// Research Queue（spec 3rd §P2-2 / §P2-3）：AI 不得自行升級為 canonical，ownerReviewRequired 保留
+const researchSchema = JSON.parse(readFileSync(root + 'schemas/research.schema.json', 'utf8'));
+const researchRegistry = JSON.parse(readFileSync(root + 'research/registry.json', 'utf8'));
+const validateResearch = new Ajv({ allErrors: true, strict: false }).compile(researchSchema);
+if (!validateResearch(researchRegistry)) {
+  console.error('FAIL research/registry.json:');
+  for (const e of validateResearch.errors ?? []) {
+    console.error(`   ${e.instancePath || '/'} ${e.message}`);
+  }
+  failed++;
+}
+
 if (failed === 0) {
-  console.log(`schema OK — chart.schema.json validated against ${cases.length} charts + ${errorCases.length} error cases; variance registry valid`);
+  console.log(`schema OK — chart.schema.json validated against ${cases.length} charts + ${errorCases.length} error cases; variance + research registries valid`);
   process.exit(0);
 }
 console.error(`schema FAILED — ${failed} case(s)`);

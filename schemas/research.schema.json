@@ -11,12 +11,24 @@
         "type": "object",
         "required": ["researchId", "title", "status", "type"],
         "properties": {
-          "researchId": { "type": "string", "pattern": "^RSH\\.[0-9]+$" },
+          "researchId": { "type": "string", "pattern": "^RSH\\.[0-9A-Za-z._]+$" },
           "title": { "type": "string" },
           "status": { "type": "string", "enum": ["open", "candidate", "resolved", "rejected"] },
           "type": {
             "type": "string",
-            "enum": ["variant-conflict", "policy", "interpretation", "table", "star", "pattern", "bug"]
+            "enum": [
+              "variant-conflict",
+              "policy",
+              "interpretation",
+              "table",
+              "star",
+              "pattern",
+              "bug",
+              "evidence-gap",
+              "calendar-variance",
+              "school-variance",
+              "time-basis-variance"
+            ]
           },
           "relatedRules": { "type": "array", "items": { "type": "string" } },
           "evidence": { "type": "array", "items": { "type": "string" } },

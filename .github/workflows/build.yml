@@ -26,6 +26,7 @@ jobs:
       - run: npm run validate:schemas
       - run: npm run validate:governance
       - run: npm run validate:integrity
+      - run: npm run validate:versions
       - run: npm run coverage:bible
       - run: npm run differential:calendar -- --check
       - run: npm run differential

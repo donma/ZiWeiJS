@@ -158,6 +158,15 @@
 - **P2-4 文件**：修正 `docs/api/periods.md`（斗君、虛歲、year-only、yearBoundaryPolicy、periodStars 範圍）、`public-api.md`（錯誤碼 / `timezoneDisambiguation`）
 - **P2-5 Build Manifest**：新增 `tools/build-manifest.ts` → `dist/bible-manifest.json`（規則數 / profile 版本），納入 `npm run build`
 - 契約：`chart.schema.json` 補 `provenance` 與 `PeriodInfo` 新欄位
+- **P0-3 certainty 降級**：`year+month`（representative date）之 `certainty.periods` 由 `high` 降為 `medium`
+
+### 第三輪補完（spec §4 / §5 / §6 / §7 驗收）
+- **§4 Rule Version Gate**：新增 `tools/rule-version/validate.ts` 與 `npm run validate:versions`（最新 changeLog == ruleVersion、版本嚴格遞減、behavior-change 必升版），納入 `verify` 與 CI
+- **§5 必加測試**：新增 `tests/calendar/local-wall-time-dst.test.ts`（DST 不存在/歧義 + disambiguation）、`tests/periods/doujun-leap-birth.test.ts`（出生閏月影響斗君）、`tests/differential/iztro-period-gate.test.ts`（gate 抽出為可測試純函式）、`tests/periods/overlay-scope-stars.test.ts`（歲建/將前僅流年）、`tests/governance/rule-version-behavior.test.ts`、`tests/provenance/result-provenance.test.ts`、`tests/periods/year-only-target.test.ts`
+- **§6 Period Golden 外部驗證**：`fixtures/golden-period/*` 新增 `external` 中繼資料（iztro 交叉驗證；差異須通過 Variance Registry gate，否則產生失敗）；`--check` 同時偵測 oracle 與外部驗證漂移
+- **§P0-5/§3 Gate 抽出**：新增 `tools/differential-runner/period-gate.ts`，runner 與測試共用同一 gate 實作
+- **治理修補**：`schemas/research.schema.json` 原本拒絕既有之 `RSH.CALENDAR.YEAR_BOUNDARY` 等 ID/type（漂移未驗證）；已修正並由 `validate:schemas` 實際驗證 `research/registry.json` 與 `variants/differential.json`
+- **新差異登錄**：`VAR.PERIOD.MONTH_STEM_BASIS`（流月天干：四柱節氣月柱 vs 農曆月五虎遁）＋ 研究項 `RSH.PERIOD.MONTH_STEM`（owner 裁決，AI 不自行對齊 iztro）
 
 ### P0-1 Rule 真正成為 Source of Truth
 - 新增 `executor-registry` / `execute-rule` / `execution-plan`；`engine.ts` 不再直接呼叫 executor
@@ -256,7 +265,7 @@
 - 第三輪：`chart.schema.json` 新增可選 `provenance` 與 `PeriodInfo.{lunarYear,resolvedYear,yearBoundaryPolicy,resolution}`；規則版本 `LIUYUE` 升為 2.0（流月命宮改斗君）；`profile.yearBoundaryPolicy` 預設 `lunar-new-year`
 
 ### 測試
-- **469 tests / 37 files**（Vitest；0.3.0 為 150、第二輪為 412）
+- **533 tests / 44 files**（Vitest；0.3.0 為 150、第二輪為 412）
 - **62 Playwright tests**：Chromium（UI 20 + a11y 13 + file:// 1）+ Firefox（14）+ WebKit（14）
 - `tests/integrity/`（spec §25）：與 `validate:integrity` 共用同一份實作，ID 唯一 / 參照可解析 /
   canonical 溯源 / DSL 與 star schema / 執行計畫覆蓋 / changeLog 一致性 / chart output schema
@@ -266,6 +275,6 @@
 - Determinism（spec §26）：`JSON.stringify(calculate(input))` 連同 periods 完全一致，不再需要 strip
 - 差分：iztro 30 案例 × 45 欄 = 1350 欄（natal 布星 0 needs-review；晚子時案例差異歸類換日/流派）
 - 限運差分：5 案例五層限運 **154 欄：148 match / 6 已知 day-boundary variance（全數登錄）**；5 筆存檔 fixture
-- 第三輪新增測試：year-boundary（14）、major-age-boundary（7）、doujun（6）、sihua-variant-scope（9）、birth-input-validation（11）
+- 第三輪新增測試：year-boundary（14）、major-age-boundary（7）、doujun（6）、sihua-variant-scope（9）、birth-input-validation（11）、year-only-target（6）、doujun-leap-birth（5）、overlay-scope-stars（4）、local-wall-time-dst（8）、iztro-period-gate（11）、rule-version-behavior（8）、result-provenance（7）
 - 曆法差分：73,384 日 + 201 閏月年 + 9 筆歷史時區查證，0 未解釋差異
 - Golden fixtures：35 筆 v2 oracle + 8 legacy + 10 筆 period golden oracle；Differential fixtures：17 筆（12 iztro + 5 iztro-period）+ 3 筆（calendar）

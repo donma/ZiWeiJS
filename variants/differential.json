@@ -97,6 +97,22 @@
       "externalSourceId": "SRC.IZTRO",
       "externalVersion": "2.6.1",
       "acceptedByOwner": false
+    },
+    {
+      "varianceId": "VAR.PERIOD.MONTH_STEM_BASIS",
+      "scope": "monthly",
+      "field": "monthly.*",
+      "ruleId": "ZW.CALC.PERIOD.LIUYUE.001",
+      "classification": "calendar-variance",
+      "condition": "目標日期之農曆月與節氣月不同（月柱換月界：節氣 vs 農曆月）",
+      "rationale": "流月天干基準不同：本引擎採四柱節氣月柱（與 PeriodInfo.ganzhi 契約一致），iztro 等外部實作採農曆月序五虎遁。兩者在換月界附近會產生不同流月天干與流月四化。",
+      "evidenceRefs": [
+        "EVD.CALENDAR.GANZHI"
+      ],
+      "researchId": "RSH.PERIOD.MONTH_STEM",
+      "externalSourceId": "SRC.IZTRO",
+      "externalVersion": "2.6.1",
+      "acceptedByOwner": false
     }
   ]
 }
