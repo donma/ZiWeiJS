@@ -22,15 +22,15 @@ describe('pattern decision packet', () => {
     expect(entries.map(e => e.patternKey).sort()).toEqual(backlog.entries.map((e: { patternKey: string }) => e.patternKey).sort());
   });
 
-  it('readiness 分佈：5 landed / 2 needs-definition / 1 needs-collation / 2 needs-owner-scope / 1 rejected', () => {
+  it('readiness 分佈：7 landed / 0 needs-definition / 1 needs-collation / 2 needs-owner-scope / 1 rejected', () => {
     expect(packet.totals).toMatchObject({
       entries: 11,
       'ready-for-owner-review': 0,
-      'needs-definition': 2,
+      'needs-definition': 0,
       'needs-collation': 1,
       'needs-owner-scope': 2,
       'needs-review': 0,
-      landed: 5,
+      landed: 7,
       rejected: 1
     });
     const sum = Object.entries(packet.totals)
@@ -39,12 +39,13 @@ describe('pattern decision packet', () => {
     expect(sum).toBe(11);
   });
 
-  it('Owner 已批准之四條格局：landed + relatedRuleId + 不再提議規則', () => {
+  it('Owner 已批准／授權之五條 implemented 格局：landed + relatedRuleId + 不再提議規則', () => {
     const implemented: Array<[string, string]> = [
       ['PAT.DUIMIAN_CHAODOU', 'ZW.PAT.DUIMIAN_CHAODOU.001'],
       ['PAT.JIANWENWU', 'ZW.PAT.JIANWENWU.001'],
       ['PAT.SHIZHONG_YINYU', 'ZW.PAT.SHIZHONG_YINYU.001'],
-      ['PAT.ZUOYOU_CHAOYUAN', 'ZW.PAT.ZUOYOU_CHAOYUAN.001']
+      ['PAT.ZUOYOU_CHAOYUAN', 'ZW.PAT.ZUOYOU_CHAOYUAN.001'],
+      ['PAT.KEQUANLU_ZHU', 'ZW.PAT.KEQUANLU_ZHU.001']
     ];
     for (const [key, ruleId] of implemented) {
       const e = entries.find(x => x.patternKey === key)!;
@@ -55,6 +56,16 @@ describe('pattern decision packet', () => {
       expect(e.proposedRuleId, key).toBeNull();
       expect(e.requiredArtifacts, key).toEqual([]);
     }
+  });
+
+  it('文星朝命格以 equivalent 結案：指向既有 ZW.PAT.WENGUI.001、不另立重複規則', () => {
+    const e = entries.find(x => x.patternKey === 'PAT.WENXING_CHAOMING')!;
+    expect(e).toBeTruthy();
+    expect(e.readiness).toBe('landed');
+    expect(e.status).toBe('equivalent');
+    expect(e.relatedRuleId).toBe('ZW.PAT.WENGUI.001');
+    expect(e.proposedRuleId).toBeNull();
+    expect(e.requiredArtifacts).toEqual([]);
   });
 
   it('已實作 / 已拒絕者不需要 artifacts，也不提議新規則', () => {

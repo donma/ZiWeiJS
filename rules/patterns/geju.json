@@ -383,7 +383,7 @@
     },
     {
       "ruleId": "ZW.PAT.WENGUI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "candidate",
       "scope": "pattern",
       "category": "patterns",
@@ -422,11 +422,19 @@
       "sourceRefs": [
         "SRC.QUANSHU"
       ],
-      "evidenceRefs": [],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.WENXING_CHAOMING"
+      ],
       "text": {
-        "zh-TW": "昌曲夾拱命身，主文才科名、才華出眾。"
+        "zh-TW": "昌曲夾拱命身，主文才科名、才華出眾。（古典別名「文星朝命格」：昌曲在排盤上恆為對宮相距六宮，故「朝命」即昌曲分居命宮與對宮、同在三方四正之義，與本規則條件同義；《全書》卷一「論文星朝命格」詩曰「文昌文曲最榮華，值此須生富貴家，更得三方祥曜拱」可為證。）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "併入古典別名與證據：卷一「論文星朝命格」詩曰與本規則同義（昌曲恆對宮，三方四正會昌曲＝昌曲分居命宮／對宮拱命），backlog 條目 PAT.WENXING_CHAOMING 以 equivalent 結案並指向本規則；不另立重複規則。未變更 status（維持 candidate，未經 Owner 個別核可）。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1533,6 +1541,77 @@
           "type": "behavior-change",
           "date": "2026-09-24",
           "note": "初版即 canonical：Owner 於 2026-09-24 批准實作（依 decision packet ready-for-owner-review 清單）。條件由詩曰「若在三方」推定，並與既有 ZW.PAT.ZIWEI_ZUOYOU.001（紫微左右同宮）區辨；證據為維基文庫卷一（2026-09-24 逐字核對）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      }
+    },
+    {
+      "ruleId": "ZW.PAT.KEQUANLU_ZHU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "pattern",
+      "category": "patterns",
+      "name": {
+        "zh-TW": "科權祿主格",
+        "en": "Lu / Quan / Ke all in life trine"
+      },
+      "required": [
+        {
+          "type": "transformation",
+          "transform": "lu",
+          "scope": "natal",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        },
+        {
+          "type": "transformation",
+          "transform": "quan",
+          "scope": "natal",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        },
+        {
+          "type": "transformation",
+          "transform": "ke",
+          "scope": "natal",
+          "relation": "san-fang-si-zheng",
+          "palace": "life"
+        }
+      ],
+      "enhancers": [
+        {
+          "type": "relation",
+          "relation": "san-fang-si-zheng",
+          "palace": "life",
+          "containsAny": [
+            "ZW.STAR.AUX.ZUOFU",
+            "ZW.STAR.AUX.YOUBI",
+            "ZW.STAR.AUX.WENCHANG",
+            "ZW.STAR.AUX.WENQU",
+            "ZW.STAR.AUX.TIANKUI",
+            "ZW.STAR.AUX.TIANYUE"
+          ]
+        }
+      ],
+      "breakers": [],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.PAT.KEQUANLU_ZHU"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一：「論科權祿主格」詩曰「祿權周勃命中逢，入相王朝讚聖功，迎合權星兼吉曜，巍巍富貴列三公」。原文僅詩曰、無一句式定義；本規則取「生年化祿、化權、化科三化皆在命宮或三方四正」（由詩曰「祿權…命中逢」與格名「科權祿主」推定），三方四正再見輔弼昌曲魁鉞為 enhanced（「兼吉曜」）。原文無凶煞語，故不設破格條件；祿存不替代化祿（卷三「祿存亦是祿」屬另章論述，未納入本條）。"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "初版即 canonical：Owner 於 2026-09-25 對話中概括授權（「目標就是 Bible，你幫我決策，理論上是都要有」），由 AI 依 decision packet 擬定條件並實作，條件推定過程記於 text。與既有 29 條格局規則盤點後無條件重疊（既有四化類僅涉及單一化）；證據為維基文庫卷一（2026-09-25 逐字核對）。"
         }
       ],
       "logic": {

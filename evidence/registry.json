@@ -473,6 +473,34 @@
       "quote": "论左右朝垣格　诗曰 天星左右最高明，若在三方禄位兴，武职高登应显佐，文人名誉列公卿。",
       "confidence": 0.9,
       "notes": "左輔右弼在三方（本條無一句式定義，條件由詩曰「若在三方」推定）。2026-09-24 逐字核對維基文庫《紫微斗數全書》卷一。（Owner 於 2026-09-24 批准據此實作格局規則。）"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.KEQUANLU_ZHU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論科權祿主格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论科权禄主格 诗曰 禄权周勃命中逢，入相王朝赞圣功，迎合权星兼吉曜，巍巍富贵列三公。",
+      "confidence": 0.9,
+      "notes": "《紫微斗數全書》卷一論科權祿主格詩曰。詩曰「祿權周勃命中逢…迎合權星兼吉曜」，取化祿化權在命宮或三方會合（且化科亦照）。2026-09-24/25 逐字核對維基文庫《全書》卷一；Owner 於 2026-09-24 授權 Bible 完整收錄格局。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.PAT.WENXING_CHAOMING",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "論格局",
+        "section": "論文星朝命格",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "论文星朝命格 诗曰 文昌文曲最荣华，值此须生富贵家，更得三方祥曜拱，却如锦上又添花。",
+      "confidence": 0.9,
+      "notes": "《紫微斗數全書》卷一論文星朝命格詩曰。詩曰「文昌文曲最榮華，值此須生富貴家，更得三方祥曜拱」，取文昌、文曲在命宮或三方四正拱照命宮；與 ZW.PAT.WENGUI.001（文桂文華，著重昌曲夾拱或同會身命）互補。2026-09-24/25 逐字核對維基文庫《全書》卷一；Owner 於 2026-09-24 授權 Bible 完整收錄格局。"
     }
   ]
 }

@@ -573,6 +573,10 @@
       {
         "patternId": "ZW.PAT.ZUOYOU_CHAOYUAN.001",
         "status": "partial"
+      },
+      {
+        "patternId": "ZW.PAT.KEQUANLU_ZHU.001",
+        "status": "insufficient"
       }
     ]
   }

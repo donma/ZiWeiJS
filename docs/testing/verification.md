@@ -340,7 +340,7 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 
 規則：**不追數量，每條先 Research**。格局只登錄有古典原文可引者。
 
-- 檔案：`research/patterns/pattern-backlog.json`（11 條：implemented 4 / equivalent 1 / research 5 / rejected 1）
+- 檔案：`research/patterns/pattern-backlog.json`（11 條：implemented 5 / equivalent 2 / research 3 / rejected 1）
 - Gate：`npm run validate:patterns`（原文必填、來源可解析、research 必附 Research ID、
   implemented/equivalent 必指向既有 pattern 規則、rejected 必說明理由）
 - 測試：`tests/patterns/pattern-backlog.test.ts`、`tests/patterns/decision-packet.test.ts`、
@@ -363,17 +363,17 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 | 格局 | 原文 | 處置 |
 |------|------|------|
 | 對面朝斗格 | 子午宮逢祿存是也 | **implemented** → `ZW.PAT.DUIMIAN_CHAODOU.001`（Owner 2026-09-24） |
-| 科權祿主格 | 詩曰（無一句式定義） | research（定義不足） |
+| 科權祿主格 | 詩曰「祿權周勃命中逢…迎合權星兼吉曜」 | **implemented** → `ZW.PAT.KEQUANLU_ZHU.001`（Owner 2026-09-25 授權） |
 | 左右朝垣格 | 詩曰「若在三方」 | **implemented** → `ZW.PAT.ZUOYOU_CHAOYUAN.001`（Owner 2026-09-24） |
 | 兼文武格 | 文曲武曲在身命是也 | **implemented** → `ZW.PAT.JIANWENWU.001`（Owner 2026-09-24；需 DSL `palace:"body"`） |
-| 文星朝命格 | 詩曰（無定義） | research（定義不足） |
+| 文星朝命格 | 詩曰「文昌文曲最榮華…更得三方祥曜拱」 | **equivalent**（＝既有 `ZW.PAT.WENGUI.001` 文桂文華；昌曲排盤恆對宮相距六宮，「朝命」即分居命宮與對宮拱照之義，與 WENGUI 條件同義；已補入該規則之別名記載與本條 EVD） |
 | 石中隱玉格 | 命在子午逢巨門是也（卷二／卷三互證） | **implemented** → `ZW.PAT.SHIZHONG_YINYU.001`（Owner 2026-09-24） |
 | 貪狼遇火名為火貴格 | 三合照身命是也 | **equivalent**（＝既有 `ZW.PAT.YINGHUO.001`） |
-| 馬頭帶劍 | 卷一〈定貴局〉「谓马有刃是也不是居午格。」（疑似脫誤） | research（需校勘；locator 已於 2026-09-25 校正為卷一〈定貴局〉） |
-| 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣（卷一「十二宮諸星得地／失陷訣」段） | research（體系性議題，需 Owner 決策；引文已改為首條逐字） |
+| 馬頭帶劍 | 卷一〈定貴局〉「谓马有刃是也不是居午格。」（疑似脫誤） | research（locator 已於 2026-09-25 校正為卷一〈定貴局〉；4 處原文＋子平語源旁證已記，兩讀法未決不得實作） |
+| 十二宮諸星得地合格／失陷破格訣 | 逐宮歌訣（卷一「十二宮諸星得地／失陷訣」段） | research（**2026-09-25 體系決策：歸入 Interpretation 層**，非 Pattern Engine；待系統轉譯，見下） |
 | 財官格／貴格（依生年干逐宮條列） | 卷二諸星章 | **rejected**（屬 Interpretation 層，非具名格局） |
 
-### 已實作四條之實作要點
+### 已實作五條之實作要點
 
 | 規則 | 條件（DSL） | 增強／破格 |
 |------|-------------|-----------|
@@ -381,11 +381,12 @@ M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其�
 | `ZW.PAT.JIANWENWU.001` | 武曲＋文曲同宮，且該宮為命宮或**身宮** | 命宮見七殺／破軍為 broken（詩曰「命宮無殺破」） |
 | `ZW.PAT.SHIZHONG_YINYU.001` | 命宮在子／午 ＋ 巨門同宮 | 三方化祿／化科為 enhanced；三方羊陀火鈴為 broken（卷二「會羊陀火鈴化忌」） |
 | `ZW.PAT.ZUOYOU_CHAOYUAN.001` | 左輔＋右弼皆在命宮三方四正，且**不**同在命宮 | 三方見紫微／天府為 enhanced |
+| `ZW.PAT.KEQUANLU_ZHU.001` | 生年化祿、化權、化科（`scope:natal`）皆在命宮三方四正 | 三方四正見輔弼昌曲魁鉞為 enhanced |
 
 - DSL 擴充：新增 `palaceRef: "body"`（以身宮地支反查身宮）——為忠實表達「文曲武曲在**身命**」；
   與既有 `{ "type": "palace", "palace": "life", "isBody": true }`（命身同宮）語意不同。
-- 測試 `tests/unit/pattern-new-geju.test.ts`（10）：正案例、`body` 語意、破格（含合成 fixture）、
-  以及「左右同在命宮 → partial（不得判為完整）」之區辨。
+- 測試 `tests/unit/pattern-new-geju.test.ts`（12）：正案例、`body` 語意、破格（含合成 fixture）、
+  「左右同在命宮 → partial」區辨、以及科權祿主格三化齊會（全中／缺化科化權 → partial）之驗證。
 
 ### Decision Packet（M7 前置：交給 Owner 的決策包）
 
@@ -395,14 +396,26 @@ readiness 由 backlog 文字**機械分類**（非命理判斷），`ownerDecisi
 
 | readiness | 條數 | 內容 |
 |-----------|------|------|
-| `landed` | 5 | 火貴格（＝既有 `ZW.PAT.YINGHUO.001`）＋ Owner 已批准實作之四條 |
-| `needs-definition` | 2 | 科權祿主格、文星朝命格（僅詩曰，無一句式定義） |
+| `landed` | 7 | 火貴格（＝既有 `ZW.PAT.YINGHUO.001`）＋ 文星朝命格（＝既有 `ZW.PAT.WENGUI.001`）＋ Owner 已批准／授權實作之五條（對面朝斗／兼文武／石中隱玉／左右朝垣／科權祿主） |
+| `needs-definition` | 0 | 原科權祿主、文星朝命皆已 landed |
 | `needs-collation` | 1 | 馬頭帶劍（原文殘缺，需校勘／第二來源） |
 | `needs-owner-scope` | 2 | 十二宮得地合格訣／失陷破格訣（體系性議題） |
 | `rejected` | 1 | 財官格（屬 Interpretation 層） |
 
 每條附 `proposedRuleId`、`requiredArtifacts`（Source+Evidence / Rule / Tests / plan coverage / 影響評估）。
-**AI 不得自行實作或升級 canonical**；Owner 批准後才走 Rule + Evidence + Tests 流程。
+**AI 不得自行實作或升級 canonical**；一律依 Owner 核准／授權範圍（如首批 4 條之專案批准、
+或針對殘留項目之明確指示「目標就是 Bible，你幫我決策，理論上是都要有」）才走 Rule + Evidence + Tests 流程。
+
+### Owner 概括授權（2026-09-25）與續批決策
+
+Owner 授權 AI 就殘留條目代為決策（`ownerDecision` 欄位語意不變，決策依據記於規則 `changeLog`／backlog `note`）：
+
+- 科權祿主格 → **implemented** → `ZW.PAT.KEQUANLU_ZHU.001`（條件推定：生年三化皆在命宮三方四正；
+  DSL 加 `scope:"natal"` 以免誤收宮干四化）
+- 文星朝命格 → **equivalent** → `ZW.PAT.WENGUI.001`（昌曲排盤恆對宮相距六宮；已補別名與 EVD）
+- 馬頭帶劍 → 維持 **research**（原文校勘未決；《三命通會》《淵海子平》同名術語僅作語源旁證）
+- 得地合格訣／失陷破格訣 → 決策：**歸入 Interpretation 層**（逐宮歌訣本質為「命宮＋生年干」之吉凶斷語，
+  以 Interpretation Rule 表達，避免膨脹 Pattern 列表）→ 待下一階段系統轉譯（12＋10 條）
 
 ## 11. Profile Gap Audit（Assimilation Phase E）
 

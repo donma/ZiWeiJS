@@ -178,6 +178,7 @@
     "ZW.PAT.JILIANG_LU.001": 14683,
     "ZW.PAT.JINJI.001": 14683,
     "ZW.PAT.JIYUETONGLIANG.001": 14683,
+    "ZW.PAT.KEQUANLU_ZHU.001": 14683,
     "ZW.PAT.LIANQI.001": 14683,
     "ZW.PAT.LUMA_JIAOCHI.001": 14683,
     "ZW.PAT.RIYUEMING.001": 14683,
@@ -201,10 +202,10 @@
   },
   "patternStatus": {
     "broken": 18493,
-    "complete": 27746,
-    "enhanced": 11325,
-    "insufficient": 306158,
-    "partial": 47402
+    "complete": 27997,
+    "enhanced": 11770,
+    "insufficient": 310989,
+    "partial": 56558
   },
   "certainty": {
     "keys": {

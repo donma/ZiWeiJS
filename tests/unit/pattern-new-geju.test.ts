@@ -135,17 +135,51 @@ describe('M7 格局：左右朝垣格（ZW.PAT.ZUOYOU_CHAOYUAN.001）', () => {
   });
 });
 
+describe('M7 續批格局：科權祿主格（ZW.PAT.KEQUANLU_ZHU.001，Owner 2026-09-25 概括授權）', () => {
+  const CYCLE = ['zi', 'chou', 'yin', 'mao', 'chen', 'si', 'wu', 'wei', 'shen', 'you', 'xu', 'hai'];
+  const clusterOf = (branch: string) => {
+    const i = CYCLE.indexOf(branch);
+    return new Set([branch, CYCLE[(i + 6) % 12], CYCLE[(i + 4) % 12], CYCLE[(i + 8) % 12]]);
+  };
+
+  it('三化（祿／權／科）皆入命宮三方四正 → 命中', () => {
+    const { chart, pat } = statusOf(mk(1984, 2, 3, 0, 'male'), 'ZW.PAT.KEQUANLU_ZHU.001');
+    expect(['complete', 'enhanced']).toContain(pat?.status);
+    const lifeBranch = chart.chart.natal.lifePalaceBranch;
+    const cluster = clusterOf(lifeBranch);
+    const hits = new Set<string>();
+    for (const p of chart.chart.palaces) {
+      if (!cluster.has(p.branch)) continue;
+      for (const t of p.transformations) {
+        if (t.sourceScope === 'natal' && ['lu', 'quan', 'ke'].includes(t.type)) hits.add(t.type);
+      }
+    }
+    expect([...hits].sort()).toEqual(['ke', 'lu', 'quan']);
+  });
+
+  it('僅化祿入命宮三方四正、化權科皆不合格 → partial（不得誤判為命中）', () => {
+    const { chart, pat } = statusOf(mk(1984, 1, 1, 0, 'male'), 'ZW.PAT.KEQUANLU_ZHU.001');
+    expect(pat?.status).toBe('partial');
+    expect(pat?.matchedConditions.length).toBe(1);
+    expect(pat?.failedConditions.some(c => c.includes('"transform":"ke"'))).toBe(true);
+    expect(pat?.failedConditions.some(c => c.includes('"transform":"quan"'))).toBe(true);
+    const lifePalace = chart.chart.palaces.find(p => p.isLifePalace)!;
+    expect(lifePalace.branch).toBeTruthy();
+  });
+});
+
 describe('M7 格局：治理狀態', () => {
   const ids = [
     'ZW.PAT.DUIMIAN_CHAODOU.001',
     'ZW.PAT.JIANWENWU.001',
     'ZW.PAT.SHIZHONG_YINYU.001',
-    'ZW.PAT.ZUOYOU_CHAOYUAN.001'
+    'ZW.PAT.ZUOYOU_CHAOYUAN.001',
+    'ZW.PAT.KEQUANLU_ZHU.001'
   ];
 
-  it('四條皆為 canonical，且具 sourceRefs 與 evidenceRefs', () => {
+  it('五條皆為 canonical，且具 sourceRefs 與 evidenceRefs', () => {
     const patterns = listPatterns() as unknown as Array<{ ruleId: string; status: string; sourceRefs?: string[]; evidenceRefs?: string[] }>;
-    expect(patterns.length).toBe(28);
+    expect(patterns.length).toBe(29);
     for (const id of ids) {
       const p = patterns.find(x => x.ruleId === id);
       expect(p, id).toBeTruthy();

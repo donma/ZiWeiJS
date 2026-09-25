@@ -542,6 +542,22 @@
   `tests/visual/ui.e2e.ts` 新增 M7 徽章端到端測試（共 22；視覺快照 3 張重生：chart-expert / rules / sources）
 - 文件：`docs/testing/verification.md` §10 改寫（含實作要點表、locator 校正說明）；`docs/rules/rule-dsl.md` 補 `body`
 
+### M7 續批格局實作（Owner 概括授權 2026-09-25）
+- **新增 1 條 canonical 格局**（rules 220 → 221，canonical 43 → 44，patterns 28 → 29）：
+  - `ZW.PAT.KEQUANLU_ZHU.001` 科權祿主格：生年化祿／化權／化科（`scope:natal`）皆在命宮三方四正
+- **1 條 equivalent 結案**：文星朝命格（PAT.WENXING_CHAOMING）
+  - 昌曲排盤恆對宮相距六宮，「朝命」即分居命宮與對宮拱照之義，與既有 `ZW.PAT.WENGUI.001`（文桂文華）條件同義
+  - 於 `ZW.PAT.WENGUI.001` 補入別名與 EVD（`EVD.QUANSHU.PAT.WENXING_CHAOMING`），不另立重複規則
+- **馬頭帶劍（PAT.MATOU_DAIJIAN）維持 research**：
+  - 考訂全書 4 處原文（卷一骨髓賦「鎮衛邊疆」、卷一女命骨髓賦註「非夭折則主刑傷」、卷一〈定貴局〉「謂馬有刃是也不是居午格」、卷三「擎羊子午卯酉…馬頭帶劍吉多勿論」）
+  - 另考《三命通會》《淵海子平》同名術語（驛馬＋庚辛／金納音），確認「馬＋刃」為跨系統意象，但在斗數中至少兩種可能（天馬＋擎羊 或 擎羊居午馬位），語意未決不得實作
+- **十二宮得地合格／失陷破格訣體系決策**：
+  - 逐宮歌訣本質為「命宮地支＋生年干」之吉凶斷語，決策歸入 **Interpretation 層**而非 Pattern Engine，
+    維持傳統格局之聚焦；排入下一階段系統性轉譯（12+10 條）
+- decision packet readiness：**landed 7** / needs-definition 0 / needs-collation 1 / needs-owner-scope 2 / rejected 1
+- golden v2（35）、golden-period（10）、`research/stats/distribution.json`（14,683 盤）重生且 0 漂移
+- 測試：`tests/unit/pattern-new-geju.test.ts` 擴充至 13 測試（三化齊會命中、缺一化 → partial）；全套 718 tests passed
+
 ### Phase G 補正 — 格局 locator／引文校對（2026-09-25）
 - 再核維基文庫卷一電子文本：累計校正 **10 筆** locator
   （新增馬頭帶劍：卷三／格局 → **卷一〈定貴局〉**）

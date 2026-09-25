@@ -10,6 +10,7 @@
     "ZW.PAT.JILIANG_LU.001",
     "ZW.PAT.JINJI.001",
     "ZW.PAT.JIYUETONGLIANG.001",
+    "ZW.PAT.KEQUANLU_ZHU.001",
     "ZW.PAT.LIANQI.001",
     "ZW.PAT.LUMA_JIAOCHI.001",
     "ZW.PAT.RIYUEMING.001",
@@ -34,9 +35,9 @@
   "classicalBacklog": {
     "entries": 11,
     "byStatus": {
-      "implemented": 4,
-      "research": 5,
-      "equivalent": 1,
+      "implemented": 5,
+      "equivalent": 2,
+      "research": 3,
       "rejected": 1
     },
     "equivalentToExisting": [
@@ -53,8 +54,16 @@
         "ruleId": "ZW.PAT.JIANWENWU.001"
       },
       {
+        "patternKey": "PAT.KEQUANLU_ZHU",
+        "ruleId": "ZW.PAT.KEQUANLU_ZHU.001"
+      },
+      {
         "patternKey": "PAT.SHIZHONG_YINYU",
         "ruleId": "ZW.PAT.SHIZHONG_YINYU.001"
+      },
+      {
+        "patternKey": "PAT.WENXING_CHAOMING",
+        "ruleId": "ZW.PAT.WENGUI.001"
       },
       {
         "patternKey": "PAT.ZUOYOU_CHAOYUAN",
@@ -63,29 +72,19 @@
     ],
     "unresolvedResearch": [
       {
-        "patternKey": "PAT.KEQUANLU_ZHU",
-        "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "原文只有詩曰、無一句式定義；三化齊會之宮位條件（命宮或三方）需先確定，避免與既有四化類格局重疊。"
-      },
-      {
         "patternKey": "PAT.MATOU_DAIJIAN",
         "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件（常見說法為天馬與擎羊同宮於午）。"
+        "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件；至少兩種可能讀法：(a) 天馬與擎羊同宮（「馬有刃」）；(b) 擎羊在午（「馬頭」＝午馬，「劍」＝擎羊），兩者條件不同，不得自行擇一。"
       },
       {
         "patternKey": "PAT.SHIDE_HEGE",
         "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "為逐宮歌訣（如『酉宫最喜太阴逢，巨日又逢当面冲，辛乙生人为贵格…』），屬「宮位＋星曜＋生年干」組合之合／破格判斷，體系與現行 24 格局不同；需先決定是否納入 Pattern Engine（或以另類規則表達）。"
+        "gap": "體系性結構：本訣共 12 條（子→亥安命），格式為「某宮立命＋某星同垣或相拱＋某年生人為美」，為逐宮歌訣。實作路徑有二：(A) 拆為 12 條 Pattern 規則（如 ZW.PAT.SHIDE.ZI.001 等）；(B) 歸入 Interpretation 層（如 ZW.INT.GENERAL.SHIDE_ZI.001，因其本質為命身宮位＋生年干之吉凶斷語，與 Pattern Engine 之星系格局不同）。詩中若干斷句需進一步校對（如『子宮貪狼殺陰星』，七殺太陰恆在三合／對照，如何與貪狼共處命宮需以三合解）。"
       },
       {
         "patternKey": "PAT.SHIDE_POGE",
         "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "同上（破格訣）。與得地合格訣成對，宜一併決策。"
-      },
-      {
-        "patternKey": "PAT.WENXING_CHAOMING",
-        "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "無一句式定義，僅詩曰（昌曲「值此」、「三方祥曜拱」）；需先確定昌曲所在宮位條件。"
+        "gap": "同上（破格訣，10 條逐宮條列，含生年干限制如『二宮若然桃花見』）。與得地合格訣成對，宜一併決策。"
       }
     ]
   },
