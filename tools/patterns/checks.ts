@@ -5,7 +5,7 @@
  * 驗證：
  *   - schema 合法、patternKey 唯一
  *   - sourceId 可解析
- *   - implemented / equivalent → relatedRuleId 必須是既有 pattern 規則
+ *   - implemented / equivalent → relatedRuleId 必須是既有 pattern 或 interpretation 規則
  *   - research → 必須有 researchId（且該研究項存在）
  *   - rejected → 必須有 note 說明理由
  *   - research / rejected 不得同時指到既有 pattern 規則（避免「假研究、真實作」）
@@ -14,7 +14,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv/dist/2020.js';
-import { listPatterns, listSources, listResearch } from '../../src/index.js';
+import { listPatterns, listInterpretationRules, listSources, listResearch } from '../../src/index.js';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const BACKLOG_REL = 'research/patterns/pattern-backlog.json';
@@ -65,6 +65,7 @@ export function runPatternBacklogChecks(): PatternBacklogResult {
   }
 
   const patternIds = new Set(listPatterns().map(p => p.ruleId));
+  const interpretationIds = new Set(listInterpretationRules().map(p => p.ruleId));
   const sourceIds = new Set(listSources().map(s => s.sourceId));
   const researchIds = new Set(listResearch().map(r => r.researchId));
 
@@ -80,8 +81,8 @@ export function runPatternBacklogChecks(): PatternBacklogResult {
     if (e.status === 'implemented' || e.status === 'equivalent') {
       if (!e.relatedRuleId) {
         failures.push(`${key}: status=${e.status} 必須提供 relatedRuleId`);
-      } else if (!patternIds.has(e.relatedRuleId)) {
-        failures.push(`${key}: relatedRuleId not a pattern rule: ${e.relatedRuleId}`);
+      } else if (!patternIds.has(e.relatedRuleId) && !interpretationIds.has(e.relatedRuleId)) {
+        failures.push(`${key}: relatedRuleId not a pattern/interpretation rule: ${e.relatedRuleId}`);
       }
     }
 

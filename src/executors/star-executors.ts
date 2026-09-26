@@ -365,15 +365,36 @@ function yearBranchOf(ctx: EngineContext): BranchId {
 }
 
 export function calcFixedStars(ctx: EngineContext): ExecutorOutcome {
-  const ruleId = 'ZW.CALC.STAR.FIXED.001';
-  for (const [starId, cfg] of Object.entries(auxTables.fixed as unknown as Record<string, { palace: string }>)) {
-    const palace = ctx.palaces.find(p => p.id === cfg.palace);
-    if (palace) placeStar(ctx, starId, palace.branch, ruleId);
+  const CANON = 'ZW.CALC.STAR.FIXED.001';
+  const ruleId = effectiveRuleId(ctx, CANON);
+  const patch = variantPatchFor(ctx, CANON) as { swapForYinMaleYangFemale?: boolean } | undefined;
+
+  // 中州派等流派：凡陽男陰女依常規（天傷在奴僕/交友，天使在疾厄）；
+  // 若為陰男陽女，則天傷居疾厄、天使居奴僕（對調）。
+  let friendsStar = 'ZW.STAR.AUX.TIANSHANG';
+  let healthStar = 'ZW.STAR.AUX.TIANSHI';
+  if (patch?.swapForYinMaleYangFemale) {
+    const yinyangIdx = branchIndex(ctx.normalized.ganzhi.year.branch) % 2; // 0=陽 (zi=0, yin=2...), 1=陰 (chou=1, mao=3...)
+    const genderIdx = ctx.sexForCalculation === 'female' ? 1 : 0;
+    const sameYinyang = yinyangIdx === genderIdx; // 陽男 (0===0) 或 陰女 (1===1)
+    if (!sameYinyang) {
+      friendsStar = 'ZW.STAR.AUX.TIANSHI';
+      healthStar = 'ZW.STAR.AUX.TIANSHANG';
+    }
   }
-  return { inputs: {}, result: 'fixed stars placed' };
+
+  const friendsPalace = ctx.palaces.find(p => p.id === 'friends');
+  const healthPalace = ctx.palaces.find(p => p.id === 'health');
+  if (friendsPalace) placeStar(ctx, friendsStar, friendsPalace.branch, ruleId);
+  if (healthPalace) placeStar(ctx, healthStar, healthPalace.branch, ruleId);
+
+  return { inputs: { friendsStar, healthStar }, result: 'fixed stars placed' };
 }
 
 export function calcChangSheng(ctx: EngineContext): ExecutorOutcome {
+  const CANON = 'ZW.CALC.STAR.CHANGSHENG12.001';
+  const patch = variantPatchFor(ctx, CANON) as { directionBasis?: 'sex-only' } | undefined;
+
   // 長生十二神順逆依性別決定，性別未知時不得猜測（spec §27）
   if (ctx.direction === 'undetermined') {
     return {
@@ -383,9 +404,16 @@ export function calcChangSheng(ctx: EngineContext): ExecutorOutcome {
       reason: 'UNKNOWN_SEX_FOR_CALCULATION'
     };
   }
+
+  // 方向判據：
+  // canonical: 陽男陰女順、陰男陽女逆（ctx.direction）
+  // variant (ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001):《全書》卷二原文「男命順數、女命逆數」（不論陰陽）
+  const dir = patch?.directionBasis === 'sex-only'
+    ? (ctx.sexForCalculation === 'male' ? 1 : -1)
+    : (ctx.direction === 'forward' ? 1 : -1);
+
   const startBranch = (changshengTable.startBranch as Record<string, string>)[ctx.bureau];
   const startIdx = branchIndex(startBranch as BranchId);
-  const dir = ctx.direction === 'forward' ? 1 : -1;
   const stages = changshengTable.stages as string[];
   for (const palace of ctx.palaces) {
     const offset = ((branchIndex(palace.branch) - startIdx) * dir) % 12;
@@ -393,7 +421,7 @@ export function calcChangSheng(ctx: EngineContext): ExecutorOutcome {
     palace.changsheng = stages[idx] as typeof palace.changsheng;
   }
   return {
-    inputs: { bureau: ctx.bureau, startBranch, direction: ctx.direction },
+    inputs: { bureau: ctx.bureau, startBranch, direction: patch?.directionBasis === 'sex-only' ? (ctx.sexForCalculation === 'male' ? 'forward' : 'backward') : ctx.direction, directionBasis: patch?.directionBasis ?? 'yinyang' },
     result: ctx.palaces.map(p => `${p.id}:${p.changsheng}`)
   };
 }

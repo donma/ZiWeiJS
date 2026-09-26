@@ -77,6 +77,16 @@ describe('Query.transformations / period', () => {
     expect((Q.period(chart, 'xiaoxian') as any)?.age).toBeGreaterThan(0);
   });
 
+  it('dynamicStars / dynamicStar 可查詢年度動態星曜（spec 0.6 §18）', () => {
+    const ds = Q.dynamicStars(chart, 'year');
+    expect(ds.length).toBe(10);
+    const lucun = Q.dynamicStar(chart, { starId: 'ZW.STAR.AUX.LUCUN', scope: 'year' });
+    expect(lucun).toBeDefined();
+    expect(lucun!.scope).toBe('year');
+    expect(lucun!.baseStarId).toBe('ZW.STAR.AUX.LUCUN');
+    expect(['zi','chou','yin','mao','chen','si','wu','wei','shen','you','xu','hai']).toContain(lucun!.branch);
+  });
+
   it('isEmptyPalace 與 majorStars 一致', () => {
     for (const p of chart.chart.palaces) {
       expect(Q.isEmptyPalace(chart, p.id)).toBe(p.majorStars.length === 0);

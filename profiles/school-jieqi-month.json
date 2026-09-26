@@ -1,0 +1,18 @@
+{
+  "$schema": "../schemas/profile.schema.json",
+  "profileId": "school-jieqi-month",
+  "name": {
+    "zh-TW": "節氣月界（流月）",
+    "zh-CN": "节气月界（流月）",
+    "en": "Solar-term month boundary"
+  },
+  "description": {
+    "zh-TW": "流月以節氣月界（立春起寅月）換月，流月宮位（斗君順數）與流月天干（節氣月柱）共用同一 month 序；與 iztro horoscopeDivide='exact' 同一慣例。canonical 農曆月界不受影響。",
+    "en": "Horoscope months use solar-term boundaries (Li Chun starts month 1); both month palace and month stem share the same policy."
+  },
+  "timeConvention": "civil",
+  "dayBoundary": "midnight",
+  "leapMonthPolicy": "same-as-normal",
+  "monthBoundaryPolicy": "solar-term",
+  "yearBoundaryPolicy": "lunar-new-year"
+}

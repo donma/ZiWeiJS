@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/assimilation-status.schema.json",
+  "phase": "content-expansion",
+  "version": "0.6.0",
+  "complete": [
+    "star-taxonomy",
+    "minor-period",
+    "query-facade",
+    "product-layer",
+    "evidence-cleanup",
+    "dynamic-period-stars-year-scope",
+    "profile-explain-api",
+    "zhongzhou-profile-expansion",
+    "variant-catalog-landing"
+  ],
+  "partial": [
+    "dynamic-period-stars-month-day-hour",
+    "pattern-expansion",
+    "zhongzhou-void-stars",
+    "zhongzhou-brightness-table"
+  ],
+  "research": [
+    "void-star-identity",
+    "matou-daijian-textual-conflict",
+    "year-deity-scope-overlay",
+    "palace-stem-transformation-independence"
+  ],
+  "note": "0.6.0 Content Expansion 狀態清單（spec 0.6 §43）。清楚區分已完成、部分完成與研究中項目，不臆測、不跨階段宣稱完成。"
+}

@@ -240,10 +240,10 @@ const dimensions = [
     ziweiZhongzhouProfile: { values: probes.map(p => p.ziweiZhongzhouProfile.soul) },
     iztroZhongzhou: { modeled: true, source: IZTRO_SRC.soul, values: pickIztro(s => s.soul) },
     fortel: null,
-    independentEvidence: [],
+    independentEvidence: ['EVD.IZTRO.ZHONGZHOU.MASTER_STAR', 'EVD.SHUNSHI.SOUL_STAR_METHODS'],
     agreement: differs(pick(s => s.soul), pickIztro(s => s.soul)) ? 'differs' : 'matches',
-    decision: 'research',
-    note: 'iztro 中州派以「年支」查命主，通用派以「命宮地支」查命主；本庫目前僅實作後者。需獨立中州派來源方可成為 variant rule。'
+    decision: 'variant',
+    note: '已實作變體規則 ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001（依生年支取命主）並於 school-zhongzhou 啟用；與 iztro 中州演算法完全一致。'
   },
   {
     dimension: 'body',
@@ -269,10 +269,10 @@ const dimensions = [
       defaultAlgorithmValues: probes.map(p => ({ tianshi: p.iztroDefault.tianshi, tianshang: p.iztroDefault.tianshang }))
     },
     fortel: null,
-    independentEvidence: [],
+    independentEvidence: ['EVD.IZTRO.ZHONGZHOU.TIANSHI_TIANSHANG', 'EVD.SHUNSHI.TIANSHI_TIANSHANG'],
     agreement: differs(pick(s => `${s.tianshi}/${s.tianshang}`), pickIztro(s => `${s.tianshi}/${s.tianshang}`)) ? 'differs' : 'matches',
-    decision: 'research',
-    note: 'iztro 中州派在「生年支陰陽 ≠ 性別陰陽」時對調天傷／天使；此為流派規則差異，本庫未實作。'
+    decision: 'variant',
+    note: '已實作變體規則 ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001（陰男陽女天傷天使對調）並於 school-zhongzhou 啟用；與 iztro 中州演算法完全一致。'
   },
   {
     dimension: 'kui-yue',

@@ -123,7 +123,7 @@ export function buildPatternGapReport(): PatternGapReport {
       entries: backlog.entries.length,
       byStatus,
       equivalentToExisting: backlog.entries
-        .filter(e => e.relatedRuleId)
+        .filter(e => e.status === 'equivalent' && e.relatedRuleId)
         .map(e => ({ patternKey: e.patternKey, ruleId: e.relatedRuleId as string }))
         .sort((a, b) => a.patternKey.localeCompare(b.patternKey)),
       unresolvedResearch: backlog.entries

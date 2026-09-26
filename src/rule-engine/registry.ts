@@ -12,6 +12,8 @@ import auxTianWuTianCaiTianShou from '../../rules/calculation/stars/aux-tianwu-t
 import sihuaData from '../../rules/calculation/transformations/sihua.json' with { type: 'json' };
 import periodsData from '../../rules/calculation/periods/periods.json' with { type: 'json' };
 import xiaoxianData from '../../rules/calculation/periods/xiaoxian.json' with { type: 'json' };
+import dynamicStarsData from '../../rules/calculation/periods/dynamic-stars.json' with { type: 'json' };
+import zhongzhouVariantsData from '../../rules/calculation/profiles/zhongzhou-variants.json' with { type: 'json' };
 import relationsData from '../../rules/calculation/relations/relations.json' with { type: 'json' };
 import dignityData from '../../rules/calculation/dignity/dignity.json' with { type: 'json' };
 import calendarData from '../../rules/calculation/calendar/calendar.json' with { type: 'json' };
@@ -33,13 +35,16 @@ import profilesTrueSolar from '../../profiles/true-solar.json' with { type: 'jso
 import profilesZhongzhou from '../../profiles/school-zhongzhou.json' with { type: 'json' };
 import profilesMaHu from '../../profiles/school-ma-hu.json' with { type: 'json' };
 import profilesLichun from '../../profiles/lichun.json' with { type: 'json' };
+import profilesJieqiMonth from '../../profiles/school-jieqi-month.json' with { type: 'json' };
+import profilesQuanshu from '../../profiles/quanshu-classical.json' with { type: 'json' };
+import quanshuVariantsData from '../../rules/calculation/profiles/quanshu-variants.json' with { type: 'json' };
 
 interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
 const ruleFiles: RuleFile[] = [
   palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData,
   auxTaiFuFengGaoJieShen, auxTianWuTianCaiTianShou,
-  sihuaData, periodsData, xiaoxianData, relationsData, dignityData, calendarData, birthData,
+  sihuaData, periodsData, xiaoxianData, dynamicStarsData, zhongzhouVariantsData, quanshuVariantsData, relationsData, dignityData, calendarData, birthData,
   patternsData, rectificationData
 ] as unknown as RuleFile[];
 
@@ -73,7 +78,7 @@ for (const e of (evidenceData as { evidence: Evidence[] }).evidence) {
 }
 
 const profileIndex = new Map<string, Profile>();
-for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar, profilesZhongzhou, profilesMaHu, profilesLichun] as Profile[]) {
+for (const p of [profilesCanonical, profilesTraditionalZi, profilesTrueSolar, profilesZhongzhou, profilesMaHu, profilesLichun, profilesJieqiMonth, profilesQuanshu] as Profile[]) {
   profileIndex.set(p.profileId, p);
 }
 

@@ -19,7 +19,7 @@ import { listRules, listProfiles, listResearch } from '../../src/index.js';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const CATALOG_REL = 'research/variants/variant-catalog.json';
 
-/** spec §26 明列之維度（必須全數出現在 catalog） */
+/** spec §26 明列之維度 + 0.6 §9 政策鍵維度（必須全數出現在 catalog） */
 export const SPEC_DIMENSIONS = [
   'VAR.YEAR_BOUNDARY',
   'VAR.MONTH_BOUNDARY',
@@ -34,7 +34,11 @@ export const SPEC_DIMENSIONS = [
   'VAR.TIANSHI_TIANSHANG',
   'VAR.CHANGSHENG',
   'VAR.MINOR_PERIOD',
-  'VAR.YEAR_DEITY_SCOPE'
+  'VAR.YEAR_DEITY_SCOPE',
+  // 0.6 §9：Zhongzhou Dimension Registry 政策鍵
+  'VAR.MASTER_STAR',
+  'VAR.PALACE_STEM_TRANSFORMATION',
+  'VAR.YEAR_DEITY_NAME'
 ] as const;
 
 export interface VariantDimension {

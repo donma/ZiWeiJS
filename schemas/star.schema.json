@@ -38,6 +38,19 @@
       "items": { "type": "string", "pattern": "^SRC\\." }
     },
     "tags": { "type": "array", "items": { "type": "string" } },
+    "runtimePlacement": {
+      "type": "object",
+      "description": "Star Capability Metadata：此星於各運限層級（大限、小限、流年、流月、流日、流時）是否支援動態落盤（spec 0.6 §20）。",
+      "properties": {
+        "major-period": { "type": "boolean" },
+        "minor-period": { "type": "boolean" },
+        "year": { "type": "boolean" },
+        "month": { "type": "boolean" },
+        "day": { "type": "boolean" },
+        "hour": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
     "note": { "type": "string" }
   }
 }

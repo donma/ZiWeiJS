@@ -16,21 +16,21 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 <!-- STATS:BEGIN (由 `npm run coverage:bible -- --update-readme` 產生，請勿手寫) -->
 | 項目 | 數量 |
 |---|---|
-| 規則總數 | 246 |
+| 規則總數 | 255 |
 | canonical | 70 |
-| candidate | 167 |
-| variant | 7 |
+| candidate | 173 |
+| variant | 10 |
 | research | 2 |
 | Canonical source 覆蓋率 | 100% |
 | Canonical evidence 覆蓋率 | 100% |
 | 星曜（實測安星 / 總數）| 101 / 102（active 101）|
 | 格局 | 29 |
 | 解讀規則 | 161（13 domains）|
-| 文獻 / 證據 | 12 / 72 |
+| 文獻 / 證據 | 14 / 78 |
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 589 it() / 66 files（靜態計數）|
+| Tests | 618 it() / 74 files（靜態計數）|
 | E2E / Visual | 23 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -129,14 +129,6 @@ ZiWei.Sources.get('SRC.QUANSHU');                 // → source object
 ---
 
 ## 快速開始
-
-### 雙擊即用（免安裝）
-
-打開 `dist/ziwei-bible-demo.html` — 單一 HTML 檔，離線可用。
-
-**線上 gist 版**：https://gist.github.com/donma/3325f639458af903a0d8948f2bf26fe1
-
-下載後雙擊即可排盤。
 
 ### 開發模式
 

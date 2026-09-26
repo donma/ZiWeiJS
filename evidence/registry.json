@@ -862,6 +862,78 @@
       "quote": "天才由命宫起子，顺行至本生年支安之。天寿由身宫起子，顺行至本生年支安之。",
       "confidence": 0.8,
       "notes": "**實作/流派文件，非古典原文**（交叉驗證資料）。與 SRC.ZHONGZHOU 中州派講義口訣逐字相符（僅簡繁差異）。2026-09-26 差分測試 46/46 盤面 100% 一致（含 banderzhm/ZhouYiLab 獨立實作交叉驗證）。"
+    },
+    {
+      "evidenceId": "EVD.IZTRO.ZHONGZHOU.MASTER_STAR",
+      "sourceId": "SRC.IZTRO",
+      "type": "mentions",
+      "location": {
+        "section": "lib/astro/astro.js bySolar()",
+        "anchor": "config.algorithm === 'zhongzhou' ? earthlyBranchOfYear.soul : earthlyBranchOfSoulPalace.soul"
+      },
+      "quote": "soul = config.algorithm === 'zhongzhou' ? earthlyBranches[earthlyBranchOfYear].soul : earthlyBranches[earthlyBranchOfSoulPalace].soul",
+      "confidence": 0.7,
+      "notes": "**實作觀點，非古典依據**（variant 交叉驗證資料）。iztro 中州模式以生年支查命主；通行模式以命宮地支查命主。此為 0.6 §10 中州派命主 variant 之實作佐證。"
+    },
+    {
+      "evidenceId": "EVD.SHUNSHI.SOUL_STAR_METHODS",
+      "sourceId": "SRC.SHUNSHI",
+      "type": "mentions",
+      "location": {
+        "section": "流派與排盤差異〈命主的兩種取法〉",
+        "archiveUrl": "https://shunshi.ai/zh-tw/wiki/ziwei/liupai/soul-star-methods"
+      },
+      "quote": "通行本：用命宮所在宮位的地支查「命主」列；中州派：用生年年支查「命主」列；兩派：都用生年年支查「身主」列。",
+      "confidence": 0.6,
+      "notes": "**現代知識庫描述，非古典依據**（variant 描述佐證）。明示中州派按年支取命主出自王亭之整理。"
+    },
+    {
+      "evidenceId": "EVD.IZTRO.ZHONGZHOU.TIANSHI_TIANSHANG",
+      "sourceId": "SRC.IZTRO",
+      "type": "mentions",
+      "location": {
+        "section": "lib/star/location.js getTianshiTianshangIndex()",
+        "anchor": "if (algorithm === 'zhongzhou' && !sameYinyang) swap"
+      },
+      "quote": "var yinyang = EARTHLY_BRANCHES.indexOf(earthlyBranch) % 2; var sameYinyang = yinyang === genderYinyang.indexOf(gender); if (algorithm === 'zhongzhou' && !sameYinyang) { [tianshangIndex, tianshiIndex] = [tianshiIndex, tianshangIndex]; }",
+      "confidence": 0.7,
+      "notes": "**實作觀點，非古典依據**（variant 交叉驗證資料）。iztro 中州模式於生年支陰陽與性別陰陽相異（陰男陽女）時對調天傷／天使。"
+    },
+    {
+      "evidenceId": "EVD.SHUNSHI.TIANSHI_TIANSHANG",
+      "sourceId": "SRC.SHUNSHI",
+      "type": "mentions",
+      "location": {
+        "section": "流派與排盤差異〈天使天傷的分歧〉",
+        "archiveUrl": "https://shunshi.ai/zh-tw/wiki/ziwei/liupai/tianshi-tianshang"
+      },
+      "quote": "兩派都讓天傷、天使夾住遷移宮。通行本固定「天傷在僕役、天使在疾厄」；中州派對陰男陽女要把這兩顆對調。",
+      "confidence": 0.6,
+      "notes": "**現代知識庫描述，非古典依據**（variant 描述佐證）。《全書》卷二「安天傷天使訣」原文明定天傷居僕役、天使居疾厄（通行本）；中州派陰男陽女對調出自王亭之整理。"
+    },
+    {
+      "evidenceId": "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS",
+      "sourceId": "SRC.IZTRO",
+      "type": "mentions",
+      "location": {
+        "section": "lib/astro/FunctionalHoroscope.js yearly.stars ＋ lib/star/location.js",
+        "anchor": "流魁/流鉞/流昌/流曲/流祿/流羊/流陀/流馬/流鸞/流喜"
+      },
+      "quote": "yearly.stars：流魁、流鉞（依限運天干查本命魁鉞表）；流昌、流曲（依限運天干：甲巳乙午丙戊申丁己酉庚亥辛子壬寅癸卯，曲取對宮）；流祿、流羊、流陀（依限運天干查本命祿羊陀表）；流馬（依限運地支三合）；流鸞、流喜（依限運地支：卯起子逆數）。",
+      "confidence": 0.7,
+      "notes": "**實作觀點，非古典依據**。2026-09-26 以 iztro 2.6.1 horoscope() 實測 4 案例（含 10 天干覆蓋）10 顆流曜落宮 100% 一致（tests/differential/dynamic-stars.test.ts）。動態星規則維持 candidate，待古典原文佐證方可升級（spec 0.6 §17）。"
+    },
+    {
+      "evidenceId": "EVD.SHUNSHI.XIAOXIAN_DIRECTION",
+      "sourceId": "SRC.SHUNSHI",
+      "type": "mentions",
+      "location": {
+        "section": "運限〈小限〉",
+        "archiveUrl": "https://shunshi.ai/zh-tw/wiki/ziwei/yunxian/xiao-xian"
+      },
+      "quote": "它的順逆看的是性別本身，不是大限那套「陽男陰女」—— 這兩套規則最容易記混。……小限：男順女逆 —— 只看性別。……拿別處的盤對不上小限時，先確認對方的順逆規則用的是「男順女逆」還是誤用了大限那套。",
+      "confidence": 0.6,
+      "notes": "**現代知識庫描述，非古典依據**。獨立佐證 canonical（男順女逆，依《全書》卷二安小限訣）為通行正解，並指出「以小限同大限陰陽順逆」為常見誤記；亦與 iztro horoscope().age 實作（男 +i、女 -i）一致。"
     }
   ]
 }

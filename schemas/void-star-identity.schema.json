@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/void-star-identity.schema.json",
+  "title": "ZiWei Bible Void Star Identity Matrix",
+  "description": "空亡諸星之同名/異名/異義盤點（spec 0.6 §13）。禁止自動合併；未有結論者維持 research。",
+  "type": "object",
+  "required": ["matrixVersion", "entries"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "matrixVersion": { "type": "string" },
+    "generatedBy": { "type": "string" },
+    "note": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "entityId", "school", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" } },
+          "entityId": { "type": ["string", "null"], "pattern": "^ZW\\.STAR\\." },
+          "placementRule": { "type": ["string", "null"] },
+          "school": { "type": "string" },
+          "sourceRefs": { "type": "array", "items": { "type": "string", "pattern": "^SRC\\." } },
+          "evidenceRefs": { "type": "array", "items": { "type": "string", "pattern": "^EVD\\." } },
+          "equivalentTo": { "type": "array", "items": { "type": "string" } },
+          "conflictsWith": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["modeled", "research", "rejected"] },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

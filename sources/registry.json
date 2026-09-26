@@ -32,7 +32,14 @@
       "type": "modern-book",
       "tier": 2,
       "language": "zh",
-      "notes": "中州派傳承，四化飛星與星曜互涉體系代表；所載安星訣（天巫、天才、天壽等）為近代安星重要依據。"
+      "publisher": "明報出版社（《紫微斗數》系列）；周易天地等網站收錄轉錄",
+      "year": "1990–2000",
+      "isbn": "不明（各冊不同，未逐冊核對 ISBN）",
+      "independenceGroup": "zhongzhou-wangtingzhi-lineage",
+      "carrierType": "print+web-transcription",
+      "verifiedAgainstOriginal": false,
+      "capturedAt": "2026-09-26",
+      "notes": "中州派傳承（謝富坤 → 王亭之），四化飛星與星曜互涉體系代表；所載安星訣（天巫、天才、天壽等）為近代安星重要依據。原著為正式出版物（Tier 2 性質），本庫經手載體為周易天地等網站之網頁轉錄（work=原著, carrier=web-transcription），未與紙本逐字校勘。"
     },
     {
       "sourceId": "SRC.SIHUA-FEIXING",
@@ -117,6 +124,10 @@
       "tier": 3,
       "language": "zh",
       "url": "https://zh.wikisource.org/wiki/紫微斗數全書",
+      "independenceGroup": "quanshu-wikisource-family",
+      "carrierType": "web-transcription",
+      "verifiedAgainstOriginal": false,
+      "capturedAt": "2026-09-24",
       "notes": "Post-Stability Assimilation Phase B/C 研究用文本：卷二「安星訣」用於核對台輔、封誥、解神（年解）、小限、大限、童限等條目原文，2026-09-24 取得。電子文本存在簡繁混排與錄入差異，且未與紙本逐字校勘，故列 tier 3；不得單獨作為 canonical 依據（canonical 需 Tier1/2 或 2×Tier3）。另注意維基文庫《紫微斗數》條目屬舊「十八飛星」系統，其『台輔』指文昌，與十四主星系統同名異義，不得混用。"
     },
     {
@@ -129,7 +140,42 @@
       "tier": 3,
       "language": "zh",
       "url": "https://www.diancangwang.cn/xuanxuewushu/c890bd9a328b/804fd5cb53e4.html",
+      "independenceGroup": "quanshu-diancang-family",
+      "carrierType": "web-transcription",
+      "verifiedAgainstOriginal": false,
+      "capturedAt": "2026-09-24",
       "notes": "與 SRC.QUANSHU.WIKISOURCE **互相獨立** 的第二份《紫微斗數全書》卷二電子文本（中華典藏網，2026-09-24 取得）。用於滿足 Canonical Evidence Gate『2×Tier3』之獨立來源要求：兩份文本於台輔、封誥、解神、小限、大限、童限等安星訣逐字相符（僅簡繁差異）。同樣未與紙本逐字校勘，故列 tier 3；紙本複核仍建議由 Owner 進行。"
+    },
+    {
+      "sourceId": "SRC.SHUNSHI",
+      "title": "順時紫微斗數知識庫（流派與排盤差異）",
+      "author": "順時文獻小組",
+      "era": "現代",
+      "type": "article",
+      "tier": 4,
+      "language": "zh-TW",
+      "url": "https://shunshi.ai/zh-tw/wiki/ziwei",
+      "independenceGroup": "shunshi-knowledge-base",
+      "carrierType": "article",
+      "verifiedAgainstOriginal": true,
+      "capturedAt": "2026-09-26",
+      "notes": "現代紫微斗數流派差異知識庫，詳析通行本與中州派之四化、命主（依年支取）、天使天傷（陰男陽女對調）等差異，供 variant 研究參照。"
+    },
+    {
+      "sourceId": "SRC.ZHOUYILAB",
+      "title": "ZhouYiLab — 周易實驗室紫微斗數開源實作",
+      "author": "banderzhm",
+      "era": "現代",
+      "type": "implementation",
+      "tier": 3,
+      "language": "zh",
+      "url": "https://github.com/banderzhm/ZhouYiLab",
+      "license": "MIT",
+      "independenceGroup": "zhouyilab-independent-impl",
+      "carrierType": "implementation",
+      "verifiedAgainstOriginal": true,
+      "capturedAt": "2026-09-26",
+      "notes": "開源周易/紫微斗數演算法實作庫，與 iztro 彼此獨立。僅供 implementation differential 對照比對，不作古典 Evidence。"
     }
   ]
 }

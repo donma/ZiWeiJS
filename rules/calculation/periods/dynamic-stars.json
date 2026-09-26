@@ -1,0 +1,269 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.KUIYUE.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.kuiyue",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流魁流鉞",
+        "en": "Place Period Kui-Yue"
+      },
+      "description": {
+        "zh-TW": "流魁、流鉞依限運天干，套用本命天魁天鉞同一年干表（甲戊庚牛羊、乙己鼠猴鄉…）。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodStem"
+      ],
+      "logic": {
+        "executor": "calcPeriodKuiYue",
+        "stage": "period",
+        "order": 4010
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流魁流鉞（year scope），依限運天干查本命魁鉞表；與 iztro horoscope() differential 一致。初始 status=candidate（待古典原文佐證方可升級）。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.CHANGQU.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.changqu",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流昌流曲",
+        "en": "Place Period Chang-Qu"
+      },
+      "description": {
+        "zh-TW": "流昌（文昌）、流曲（文曲）依限運天干（甲巳乙午、丙戊申、丁己酉、庚亥、辛子、壬寅、癸卯；曲取對宮）。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodStem"
+      ],
+      "logic": {
+        "executor": "calcPeriodChangQu",
+        "stage": "period",
+        "order": 4020
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流昌流曲（year scope），依限運天干年干昌曲表；與 iztro horoscope() differential 一致。初始 status=candidate。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.LUCUN.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.lucun",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流祿",
+        "en": "Place Period Lucun"
+      },
+      "description": {
+        "zh-TW": "流祿依限運天干，套用本命祿存同一干表（甲寅乙卯丙戊巳丁己午庚申辛酉壬亥癸子）。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodStem"
+      ],
+      "logic": {
+        "executor": "calcPeriodLucun",
+        "stage": "period",
+        "order": 4030
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流祿（year scope），依限運天干查本命祿存表；與 iztro horoscope() differential 一致。初始 status=candidate。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.QINGYANG_TUOLUO.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.qingyang-tuoluo",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流羊流陀",
+        "en": "Place Period Qingyang-Tuoluo"
+      },
+      "description": {
+        "zh-TW": "流羊、流陀依限運天干，套用本命擎羊陀羅同一干表（羊在祿前、陀在祿後）。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodStem"
+      ],
+      "logic": {
+        "executor": "calcPeriodQingYangTuoLuo",
+        "stage": "period",
+        "order": 4040
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流羊流陀（year scope），依限運天干查本命羊陀表；與 iztro horoscope() differential 一致。初始 status=candidate。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.TIANMA.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.tianma",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流馬",
+        "en": "Place Period Tianma"
+      },
+      "description": {
+        "zh-TW": "流馬依限運地支三合局，套用本命天馬同一表（寅午戌馬在申、申子辰馬在寅、巳酉丑馬在亥、亥卯未馬在巳）。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodBranch"
+      ],
+      "logic": {
+        "executor": "calcPeriodTianMa",
+        "stage": "period",
+        "order": 4050
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流馬（year scope），依限運地支查本命天馬表；與 iztro horoscope() differential 一致。初始 status=candidate。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.PERIOD.STAR.HONGLUAN_TIANXI.001",
+      "ruleVersion": "1.0",
+      "status": "candidate",
+      "scope": "calculation.period.star.hongluan-tianxi",
+      "category": "period-star",
+      "name": {
+        "zh-TW": "安流鸞流喜",
+        "en": "Place Period Hongluan-Tianxi"
+      },
+      "description": {
+        "zh-TW": "流鸞、流喜依限運地支（卯起子逆數至年支為鸞，對宮為喜），套用本命紅鸞天喜同一法。古典原文未直接給出限運條文，暫以實作 differential 佐證，維持 candidate。"
+      },
+      "inputs": [
+        "periodBranch"
+      ],
+      "logic": {
+        "executor": "calcPeriodHongLuanTianXi",
+        "stage": "period",
+        "order": 4060
+      },
+      "outputs": [
+        "periods.dynamicStars"
+      ],
+      "sourceRefs": [
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.HOROSCOPE.DYNAMIC_STARS"
+      ],
+      "tags": [
+        "period-star",
+        "dynamic-star",
+        "candidate"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §15–§19 / §46：新增流鸞流喜（year scope），依限運地支查本命紅鸞天喜法；與 iztro horoscope() differential 一致。初始 status=candidate。"
+        }
+      ]
+    }
+  ]
+}

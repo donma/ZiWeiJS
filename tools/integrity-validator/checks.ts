@@ -200,7 +200,22 @@ export function runIntegrityChecks(root: string = defaultRoot): IntegrityResult 
     }
   }
 
-  /* ---------- 8. pollution / isolation（spec §6 / §44 / §52） ---------- */
+  /* ---------- 8. runtimePlacement 与 Rule integrity（spec 0.6 §21） ---------- */
+  for (const s of starRegistry.stars) {
+    const rp = (s as unknown as { runtimePlacement?: Record<string, boolean> }).runtimePlacement;
+    if (!rp) continue;
+    for (const [scope, enabled] of Object.entries(rp)) {
+      if (enabled) {
+        // 若宣告某 scope 支援 runtime placement，必須存在對應的 period 規則
+        const hasRule = rules.some(r => r.category === 'period-star' && (r.description?.['zh-TW']?.includes(s.name?.['zh-TW'] ?? '') || r.name?.['zh-TW']?.includes(s.name?.['zh-TW'] ?? '')));
+        if (!hasRule) {
+          fail('runtimePlacement supported by rule', `${s.id} declares ${scope}=true but no period rule found`);
+        }
+      }
+    }
+  }
+
+  /* ---------- 9. pollution / isolation（spec §6 / §44 / §52） ---------- */
   const pollution = runPollutionChecks(root);
   failures.push(...pollution.failures);
 

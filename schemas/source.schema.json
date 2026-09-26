@@ -46,7 +46,11 @@
         }
       }
     },
-    "notes": { "type": "string" }
+    "notes": { "type": "string" },
+    "independenceGroup": { "type": "string", "description": "證據獨立性分組：同一 family 的不同網頁轉錄視為同源，不得各自計為獨立 Tier3" },
+    "carrierType": { "type": "string", "description": "載體類型：print / web-transcription / api / dataset 等" },
+    "verifiedAgainstOriginal": { "type": "boolean", "description": "是否已與原著/紙本/原典逐字核對" },
+    "capturedAt": { "type": "string", "description": "取得日期（ISO 8601）" }
   },
   "additionalProperties": true
 }

@@ -7,15 +7,17 @@
     "en": "Zhongzhou School"
   },
   "description": {
-    "zh-TW": "中州派：庚干天府化權、天相化科；民用時、午夜換日。",
-    "en": "Zhongzhou school: Geng stem Tian Fu hua quan / Tian Xiang hua ke."
+    "zh-TW": "中州派：庚干天府化權、天相化科；命主依年支取；陰男陽女天傷天使對調；民用時、午夜換日。",
+    "en": "Zhongzhou school: Geng stem Tian Fu hua quan / Tian Xiang hua ke; master star by year branch; swap tianshi/tianshang for yin-male yang-female."
   },
   "timeConvention": "civil",
   "dayBoundary": "midnight",
   "leapMonthPolicy": "same-as-normal",
   "ruleOverrides": {
     "ZW.CALC.SIHUA.TABLE.001": "ZW.CALC.SIHUA.TABLE.V001",
-    "ZW.CALC.SIHUA.NATAL.001": "ZW.CALC.SIHUA.NATAL.V001"
+    "ZW.CALC.SIHUA.NATAL.001": "ZW.CALC.SIHUA.NATAL.V001",
+    "ZW.CALC.PALACE.MASTER.001": "ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001",
+    "ZW.CALC.STAR.FIXED.001": "ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001"
   },
   "yearBoundaryPolicy": "lunar-new-year"
 }

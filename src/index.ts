@@ -11,6 +11,8 @@ export {
   getSource, listSources, getEvidence, listEvidence, evidenceForRule,
   getProfile, listProfiles, resolveRuleForProfile
 } from './rule-engine/registry.js';
+export { explainProfile } from './rule-engine/profile-explain.js';
+export type { ProfileExplanation, ProfileDiffEntry } from './rule-engine/profile-explain.js';
 
 export { evalDsl } from './rule-engine/dsl.js';
 
@@ -71,7 +73,8 @@ export {
 } from './aux-supplementary/aux-supplementary.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
-import { getRule, listRules, getSource, listSources } from './rule-engine/registry.js';
+import { getRule, listRules, getSource, listSources, listProfiles, getProfile } from './rule-engine/registry.js';
+import { explainProfile } from './rule-engine/profile-explain.js';
 import { runInterpretation, runPatterns } from './interpretation-engine/interpretation-engine.js';
 import { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
 import { toContext } from './ai/context.js';
@@ -214,6 +217,12 @@ export const ZiWei = {
   Taxonomy: {
     kinds: ASTRO_ENTITY_KINDS,
     ofStar: entityKindOfStar
+  },
+  /** Profile 差異說明 API（spec 0.6 §39）：清楚列出 profile 相對 canonical 的 ruleOverrides 與 policies */
+  Profiles: {
+    list: listProfiles,
+    get: getProfile,
+    explain: explainProfile
   },
   /**
    * 補充安星 API（spec Post-Stability Phase B/C）。

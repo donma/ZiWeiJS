@@ -35,39 +35,19 @@
   "classicalBacklog": {
     "entries": 11,
     "byStatus": {
-      "implemented": 5,
+      "implemented": 7,
       "equivalent": 2,
-      "research": 3,
+      "research": 1,
       "rejected": 1
     },
     "equivalentToExisting": [
-      {
-        "patternKey": "PAT.DUIMIAN_CHAODOU",
-        "ruleId": "ZW.PAT.DUIMIAN_CHAODOU.001"
-      },
       {
         "patternKey": "PAT.HUOGUI",
         "ruleId": "ZW.PAT.YINGHUO.001"
       },
       {
-        "patternKey": "PAT.JIANWENWU",
-        "ruleId": "ZW.PAT.JIANWENWU.001"
-      },
-      {
-        "patternKey": "PAT.KEQUANLU_ZHU",
-        "ruleId": "ZW.PAT.KEQUANLU_ZHU.001"
-      },
-      {
-        "patternKey": "PAT.SHIZHONG_YINYU",
-        "ruleId": "ZW.PAT.SHIZHONG_YINYU.001"
-      },
-      {
         "patternKey": "PAT.WENXING_CHAOMING",
         "ruleId": "ZW.PAT.WENGUI.001"
-      },
-      {
-        "patternKey": "PAT.ZUOYOU_CHAOYUAN",
-        "ruleId": "ZW.PAT.ZUOYOU_CHAOYUAN.001"
       }
     ],
     "unresolvedResearch": [
@@ -75,16 +55,6 @@
         "patternKey": "PAT.MATOU_DAIJIAN",
         "researchId": "RSH.PATTERN.BACKLOG",
         "gap": "本句原文語意殘缺（「谓马有刃是也不是居午格」），成句疑有脫誤，需先校勘或取得第二來源，否則無法確定條件；至少兩種可能讀法：(a) 天馬與擎羊同宮（「馬有刃」）；(b) 擎羊在午（「馬頭」＝午馬，「劍」＝擎羊），兩者條件不同，不得自行擇一。"
-      },
-      {
-        "patternKey": "PAT.SHIDE_HEGE",
-        "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "體系性結構：本訣共 12 條（子→亥安命），格式為「某宮立命＋某星同垣或相拱＋某年生人為美」，為逐宮歌訣。實作路徑有二：(A) 拆為 12 條 Pattern 規則（如 ZW.PAT.SHIDE.ZI.001 等）；(B) 歸入 Interpretation 層（如 ZW.INT.GENERAL.SHIDE_ZI.001，因其本質為命身宮位＋生年干之吉凶斷語，與 Pattern Engine 之星系格局不同）。詩中若干斷句需進一步校對（如『子宮貪狼殺陰星』，七殺太陰恆在三合／對照，如何與貪狼共處命宮需以三合解）。"
-      },
-      {
-        "patternKey": "PAT.SHIDE_POGE",
-        "researchId": "RSH.PATTERN.BACKLOG",
-        "gap": "同上（破格訣，10 條逐宮條列，含生年干限制如『二宮若然桃花見』）。與得地合格訣成對，宜一併決策。"
       }
     ]
   },

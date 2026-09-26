@@ -1,4 +1,5 @@
 import type { EngineContext } from './context.js';
+import { variantPatchFor } from './context.js';
 import {
   BRANCHES, branchAt, branchIndex, stemAt, STEMS,
   PALACE_IDS, PALACE_NAME
@@ -99,10 +100,18 @@ const SHEN_ZHU_BY_YEAR_BRANCH: Record<string, string> = {
 };
 
 export function calcMasterStars(ctx: EngineContext): ExecutorOutcome {
-  ctx.masterStar = MING_ZHU_BY_LIFE_BRANCH[ctx.lifePalaceBranch];
+  const CANON = 'ZW.CALC.PALACE.MASTER.001';
+  const patch = variantPatchFor(ctx, CANON) as { masterStarBy?: 'lifePalaceBranch' | 'yearBranch' } | undefined;
+  const masterByYear = patch?.masterStarBy === 'yearBranch';
+  const branchForMaster = masterByYear ? ctx.normalized.ganzhi.year.branch : ctx.lifePalaceBranch;
+  ctx.masterStar = MING_ZHU_BY_LIFE_BRANCH[branchForMaster];
   ctx.bodyStar = SHEN_ZHU_BY_YEAR_BRANCH[ctx.normalized.ganzhi.year.branch];
   return {
-    inputs: { lifePalaceBranch: ctx.lifePalaceBranch, yearBranch: ctx.normalized.ganzhi.year.branch },
+    inputs: {
+      masterStarBy: masterByYear ? 'yearBranch' : 'lifePalaceBranch',
+      branchForMaster,
+      yearBranch: ctx.normalized.ganzhi.year.branch
+    },
     result: { masterStar: ctx.masterStar, bodyStar: ctx.bodyStar }
   };
 }

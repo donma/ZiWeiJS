@@ -1,5 +1,15 @@
 # 古典原文查核紀錄（Assimilation Phase B / C）
 
+## CURRENT STATUS — 2026-09-26
+
+- 天巫   canonical
+- 天才   canonical
+- 天壽   canonical
+
+> 早期「不實作」內容屬歷史研究紀錄，不代表 current runtime。
+
+---
+
 本檔記錄「外部缺星清單 → 古典原文查核 → candidate 決策」的過程與結論。
 對應 SPEC：`ZiWeiJS-Post-Stability-External-Strength-Assimilation-SPEC-v1`（Phase B 星曜覆蓋、Phase C 小限）。
 結構化資料見同目錄 `classical-basis.json`。

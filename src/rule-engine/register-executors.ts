@@ -23,6 +23,10 @@ import { calcDirection, requireSex } from '../executors/birth-executors.js';
 import {
   calcAuxTaiFuFengGao, calcAuxJieShen, calcAuxTianWu, calcAuxTianCaiTianShou, calcXiaoXian
 } from '../executors/aux-supplementary-executors.js';
+import {
+  calcPeriodKuiYue, calcPeriodChangQu, calcPeriodLucun, calcPeriodQingYangTuoLuo,
+  calcPeriodTianMa, calcPeriodHongLuanTianXi
+} from '../executors/dynamic-star-executors.js';
 import { verifySolarLunar, verifyGanzhi, verifyTrueSolar } from './calendar-executors.js';
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
 import { calcDignities } from '../dignity-engine/dignity-engine.js';
@@ -161,6 +165,14 @@ export function registerAllExecutors(): void {
   registerExecutor('calcAuxTianWu', calcAuxTianWu);
   registerExecutor('calcAuxTianCaiTianShou', calcAuxTianCaiTianShou);
   registerExecutor('calcXiaoXian', calcXiaoXian);
+
+  /* 動態限運星曜（spec 0.6 §15–§19） */
+  registerExecutor('calcPeriodKuiYue', calcPeriodKuiYue);
+  registerExecutor('calcPeriodChangQu', calcPeriodChangQu);
+  registerExecutor('calcPeriodLucun', calcPeriodLucun);
+  registerExecutor('calcPeriodQingYangTuoLuo', calcPeriodQingYangTuoLuo);
+  registerExecutor('calcPeriodTianMa', calcPeriodTianMa);
+  registerExecutor('calcPeriodHongLuanTianXi', calcPeriodHongLuanTianXi);
 
   registerExecutor('rectifyAnalyze', rectifyFramework);
 }

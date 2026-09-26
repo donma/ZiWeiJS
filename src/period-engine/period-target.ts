@@ -210,7 +210,7 @@ export function normalizePeriodTarget(target: TargetDate, profile: Profile): Nor
   const lunarMonth = Math.abs(lunar.getMonth());
   const lunarDay = lunar.getDay();
 
-  const effectiveLunarMonth = resolveEffectiveLunarMonth(
+  const effectiveLunarMonthRaw = resolveEffectiveLunarMonth(
     lunarMonth, lunarDay, isLeap, profile.leapMonthPolicy
   );
 
@@ -224,10 +224,22 @@ export function normalizePeriodTarget(target: TargetDate, profile: Profile): Nor
     ? yearOfExactGanzhi(lunar.getYearInGanZhiExact(), target.year)
     : lunar.getYear();
 
+  // 月界政策（spec 0.6 §25）：
+  // lunar-month（canonical）→ 農曆月（可受閏月政策影響），五虎遁取流月天干；
+  // solar-term → 節氣月（立春起寅月），流月天干取節氣月柱；
+  // 兩者一律共用同一 month 序，確保「流月宮位（斗君順數）」與「流月天干」同 policy。
+  let effectiveLunarMonth = effectiveLunarMonthRaw;
+  let monthPolicy: 'lunar-month' | 'solar-term' = 'lunar-month';
+  let monthGanzhi = monthlyGanzhiFromLunar(ganzhiYear.stem, effectiveLunarMonth);
+  if (profile.monthBoundaryPolicy === 'solar-term') {
+    monthPolicy = 'solar-term';
+    monthGanzhi = gzToPair(lunar.getMonthInGanZhiExact());
+    effectiveLunarMonth = ((branchIndex(monthGanzhi.branch) - branchIndex('yin') + 12) % 12) + 1;
+  }
+
   const ganzhi: NormalizedPeriodTarget['ganzhi'] = {
     year: ganzhiYear,
-    // 流月干支：農曆月五虎遁（owner 決策，spec 3rd §P0-4 補述）
-    month: monthlyGanzhiFromLunar(ganzhiYear.stem, effectiveLunarMonth),
+    month: monthGanzhi,
     day: isRepresentativeDate ? undefined : gzToPair(lunar.getDayInGanZhi())
   };
 

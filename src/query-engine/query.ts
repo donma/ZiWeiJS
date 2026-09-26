@@ -1,6 +1,6 @@
 import type {
   ZiWeiChart, Palace, PalaceId, BranchId, StarPlacement, Transformation,
-  TransformationType, PeriodScope, PeriodInfo, XiaoXianPeriod
+  TransformationType, PeriodScope, PeriodInfo, XiaoXianPeriod, DynamicStarPlacement
 } from '../core/types.js';
 import {
   buildRelationContext, palaceById, relatedPalaces, adjacentBranches, trineBranches,
@@ -135,6 +135,21 @@ export function period(
   return chart.periods[scope];
 }
 
+/** 動態限運星曜查詢（spec 0.6 §15–§19） */
+export function dynamicStars(
+  chart: ZiWeiChart,
+  scope: DynamicStarPlacement['scope']
+): DynamicStarPlacement[] {
+  return (chart.periods.dynamicStars ?? []).filter(d => d.scope === scope);
+}
+
+export function dynamicStar(
+  chart: ZiWeiChart,
+  q: { starId: string; scope: DynamicStarPlacement['scope'] }
+): DynamicStarPlacement | undefined {
+  return dynamicStars(chart, q.scope).find(d => d.baseStarId === q.starId);
+}
+
 export const QueryApi = {
   palace,
   star,
@@ -149,5 +164,7 @@ export const QueryApi = {
   transformations,
   fliesTo,
   selfTransformations,
-  period
+  period,
+  dynamicStars,
+  dynamicStar
 };

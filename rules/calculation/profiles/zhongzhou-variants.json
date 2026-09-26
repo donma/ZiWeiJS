@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.PALACE.MASTER.001",
+      "scope": "calculation.palace.master",
+      "category": "palace",
+      "name": {
+        "zh-TW": "命主（中州派：依生年支取）",
+        "en": "Life master star (Zhongzhou: by year branch)"
+      },
+      "description": {
+        "zh-TW": "中州派：命主以生年年支查表（通行本以命宮地支查表）。身主兩派一致，仍依生年支。經 school-zhongzhou profile.ruleOverrides 選用後生效。"
+      },
+      "inputs": [
+        "ganzhi.year.branch"
+      ],
+      "logic": {
+        "executor": "calcMasterStars",
+        "params": {
+          "variantPatch": {
+            "masterStarBy": "yearBranch"
+          }
+        },
+        "stage": "variant"
+      },
+      "outputs": [
+        "chart.natal.masterStar"
+      ],
+      "sourceRefs": [
+        "SRC.ZHONGZHOU",
+        "SRC.IZTRO",
+        "SRC.SHUNSHI"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.ZHONGZHOU.MASTER_STAR",
+        "EVD.SHUNSHI.SOUL_STAR_METHODS"
+      ],
+      "tags": [
+        "variant",
+        "zhongzhou",
+        "master-star"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §10：新增中州派命主 variant（依生年支取）。依 iztro 中州模式實測（2.6.0 astro.js:210-212）＋順時知識庫〈命主的兩種取法〉描述；由 school-zhongzhou profile ruleOverrides 選用，canonical 不變。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.STAR.FIXED.001",
+      "scope": "calculation.stars.aux.fixed",
+      "category": "stars",
+      "name": {
+        "zh-TW": "天傷天使（中州派：陰男陽女對調）",
+        "en": "Tian Shang / Tian Shi (Zhongzhou: swap for yin-male yang-female)"
+      },
+      "description": {
+        "zh-TW": "中州派：凡陽男陰女依常規（天傷居交友、天使居疾厄）；若為陰男陽女（生年支陰陽與性別陰陽相異），則天傷居疾厄、天使居交友。年支陰陽：子寅辰午申戌為陽、丑卯巳未酉亥為陰。經 school-zhongzhou profile.ruleOverrides 選用後生效。"
+      },
+      "inputs": [
+        "ganzhi.year.branch",
+        "sexForCalculation"
+      ],
+      "logic": {
+        "executor": "calcFixedStars",
+        "params": {
+          "variantPatch": {
+            "swapForYinMaleYangFemale": true
+          }
+        },
+        "stage": "variant"
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.ZHONGZHOU",
+        "SRC.IZTRO",
+        "SRC.SHUNSHI"
+      ],
+      "evidenceRefs": [
+        "EVD.IZTRO.ZHONGZHOU.TIANSHI_TIANSHANG",
+        "EVD.SHUNSHI.TIANSHI_TIANSHANG"
+      ],
+      "tags": [
+        "variant",
+        "zhongzhou",
+        "tianshi-tianshang"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §11：新增中州派天傷天使 variant（陰男陽女對調）。依 iztro 中州模式實測（location.js getTianshiTianshangIndex）＋順時知識庫〈天使天傷的分歧〉；由 school-zhongzhou profile ruleOverrides 選用，canonical 不變。"
+        }
+      ]
+    }
+  ]
+}

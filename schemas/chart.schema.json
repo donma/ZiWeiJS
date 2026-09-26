@@ -111,7 +111,8 @@
         "month": { "$ref": "#/$defs/periodInfo" },
         "day": { "$ref": "#/$defs/periodInfo" },
         "hour": { "$ref": "#/$defs/periodInfo" },
-        "xiaoxian": { "$ref": "#/$defs/xiaoXianPeriod" }
+        "xiaoxian": { "$ref": "#/$defs/xiaoXianPeriod" },
+        "dynamicStars": { "type": "array", "items": { "$ref": "#/$defs/dynamicStarPlacement" } }
       }
     },
     "interpretation": {
@@ -256,6 +257,18 @@
         "tags": { "type": "array", "items": { "type": "string" } },
         "entityKind": { "enum": ["star", "stage", "cycle-deity", "year-deity", "period-dynamic", "transformation-marker"] },
         "aliases": { "type": "array", "items": { "type": "string" } },
+        "runtimePlacement": {
+          "type": "object",
+          "properties": {
+            "major-period": { "type": "boolean" },
+            "minor-period": { "type": "boolean" },
+            "year": { "type": "boolean" },
+            "month": { "type": "boolean" },
+            "day": { "type": "boolean" },
+            "hour": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
         "note": { "type": "string" }
       }
     },
@@ -395,6 +408,19 @@
         "palaceId": { "$ref": "#/$defs/palaceId" },
         "lunarYear": { "type": "integer" },
         "label": { "$ref": "#/$defs/localizedText" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "dynamicStarPlacement": {
+      "type": "object",
+      "required": ["baseStarId", "scope", "branch", "palaceId", "ganzhi", "provenance"],
+      "additionalProperties": false,
+      "properties": {
+        "baseStarId": { "type": "string", "pattern": "^ZW\\.STAR\\." },
+        "scope": { "enum": ["major-period", "minor-period", "year", "month", "day", "hour"] },
+        "branch": { "$ref": "#/$defs/branch" },
+        "palaceId": { "$ref": "#/$defs/palaceId" },
+        "ganzhi": { "$ref": "#/$defs/ganzhiPair" },
         "provenance": { "$ref": "#/$defs/provenance" }
       }
     },

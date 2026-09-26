@@ -17,6 +17,10 @@
         "required": ["dimensionId", "name", "status", "mechanism"],
         "properties": {
           "dimensionId": { "type": "string", "pattern": "^VAR\\.[A-Z0-9._]+$" },
+          "policyKey": {
+            "description": "0.6 §9 政策鍵（masterStarPolicy / tianshiTianshangPolicy / yearDeityNamePolicy / voidStarPolicy / brightnessProfile / palaceStemTransformationPolicy / sihuaTableProfile）",
+            "type": "string"
+          },
           "name": { "type": "object", "additionalProperties": { "type": "string" } },
           "status": {
             "type": "string",

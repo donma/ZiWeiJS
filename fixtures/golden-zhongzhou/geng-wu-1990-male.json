@@ -1,0 +1,113 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-zhongzhou.ts",
+  "specRef": "ai-guide/ZiWeiJS-0.6-Content-Expansion-SPEC.md §38",
+  "name": "geng-wu-1990-male",
+  "note": "庚午年男：庚干四化差異（武曲化權/太陰化科 vs 天府化權/天相化科）；陽男不換天傷天使。",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "time": {
+      "hour": 10
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "male"
+  },
+  "external": {
+    "sourceId": "SRC.IZTRO",
+    "version": "2.6.1",
+    "dimensions": [
+      "masterStar",
+      "bodyStar"
+    ],
+    "note": "命主／身主以 iztro algorithm=zhongzhou 實測比對；其餘維度為 engine golden（canonical ↔ zhongzhou 差異凍結）。",
+    "iztroZhongzhou": {
+      "soul": "破軍",
+      "body": "火星"
+    },
+    "engineZhongzhou": {
+      "soul": "破軍",
+      "body": "火星"
+    },
+    "agreement": {
+      "masterStar": true,
+      "bodyStar": true
+    }
+  },
+  "oracle": {
+    "canonical": {
+      "masterStar": "ZW.STAR.MAJOR.TANLANG",
+      "bodyStar": "ZW.STAR.AUX.HUOLING",
+      "tianshiTianshang": {
+        "friends": "ZW.STAR.AUX.TIANSHANG",
+        "health": "ZW.STAR.AUX.TIANSHI"
+      },
+      "sihuaNatal": {
+        "lu": "ZW.STAR.MAJOR.TAIYANG",
+        "quan": "ZW.STAR.MAJOR.WUQU",
+        "ke": "ZW.STAR.MAJOR.TAIYIN",
+        "ji": "ZW.STAR.MAJOR.TIANTONG"
+      },
+      "jiekongBranch": "chen",
+      "xunkongBranch": "xu",
+      "brightnessSample": {
+        "ZW.STAR.MAJOR.ZIWEI": "miao",
+        "ZW.STAR.MAJOR.TIANTONG": "ping",
+        "ZW.STAR.MAJOR.JUMEN": "wang"
+      }
+    },
+    "school-zhongzhou": {
+      "masterStar": "ZW.STAR.MAJOR.POJUN",
+      "bodyStar": "ZW.STAR.AUX.HUOLING",
+      "tianshiTianshang": {
+        "friends": "ZW.STAR.AUX.TIANSHANG",
+        "health": "ZW.STAR.AUX.TIANSHI"
+      },
+      "sihuaNatal": {
+        "lu": "ZW.STAR.MAJOR.TAIYANG",
+        "quan": "ZW.STAR.MAJOR.TIANFU",
+        "ke": "ZW.STAR.MAJOR.TIANXIANG",
+        "ji": "ZW.STAR.MAJOR.TIANTONG"
+      },
+      "jiekongBranch": "chen",
+      "xunkongBranch": "xu",
+      "brightnessSample": {
+        "ZW.STAR.MAJOR.ZIWEI": "miao",
+        "ZW.STAR.MAJOR.TIANTONG": "ping",
+        "ZW.STAR.MAJOR.JUMEN": "wang"
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "dimension": "sihua",
+      "canonicalRule": "ZW.CALC.SIHUA.TABLE.001",
+      "variantRule": "ZW.CALC.SIHUA.TABLE.V001"
+    },
+    {
+      "dimension": "masterStar",
+      "canonicalRule": "ZW.CALC.PALACE.MASTER.001",
+      "variantRule": "ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001"
+    },
+    {
+      "dimension": "tianshiTianshang",
+      "canonicalRule": "ZW.CALC.STAR.FIXED.001",
+      "variantRule": "ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001"
+    },
+    {
+      "dimension": "voidStars",
+      "canonicalRule": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "variantRule": null,
+      "note": "canonical 已採截空＋旬空（與 iztro 中州模式一致），無 variant。"
+    },
+    {
+      "dimension": "brightness",
+      "canonicalRule": "ZW.CALC.DIGNITY.BRIGHTNESS.001",
+      "variantRule": null,
+      "note": "中州廟旺整表證據未足，未啟用 variant；兩 profile 目前一致。"
+    }
+  ]
+}

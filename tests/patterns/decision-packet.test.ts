@@ -22,15 +22,15 @@ describe('pattern decision packet', () => {
     expect(entries.map(e => e.patternKey).sort()).toEqual(backlog.entries.map((e: { patternKey: string }) => e.patternKey).sort());
   });
 
-  it('readiness 分佈：7 landed / 0 needs-definition / 1 needs-collation / 2 needs-owner-scope / 1 rejected', () => {
+  it('readiness 分佈：9 landed / 0 needs-definition / 1 needs-collation / 0 needs-owner-scope / 1 rejected', () => {
     expect(packet.totals).toMatchObject({
       entries: 11,
       'ready-for-owner-review': 0,
       'needs-definition': 0,
       'needs-collation': 1,
-      'needs-owner-scope': 2,
+      'needs-owner-scope': 0,
       'needs-review': 0,
-      landed: 7,
+      landed: 9,
       rejected: 1
     });
     const sum = Object.entries(packet.totals)

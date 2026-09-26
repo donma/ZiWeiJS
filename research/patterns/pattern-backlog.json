@@ -178,7 +178,7 @@
         "zh-TW": "十二宮諸星得地合格訣",
         "zh-CN": "十二宫诸星得地合格诀"
       },
-      "status": "research",
+      "status": "implemented",
       "quote": "子安命 子宫贪狼杀阴星，机梁相拱福兴隆，庚辛乙癸生人美，一生富贵足丰荣。",
       "sourceId": "SRC.QUANSHU.WIKISOURCE",
       "locator": {
@@ -187,10 +187,10 @@
         "section": "十二宮諸星得地合格訣",
         "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
       },
-      "relatedRuleId": null,
-      "researchId": "RSH.PATTERN.BACKLOG",
-      "gap": "體系性結構：本訣共 12 條（子→亥安命），格式為「某宮立命＋某星同垣或相拱＋某年生人為美」，為逐宮歌訣。實作路徑有二：(A) 拆為 12 條 Pattern 規則（如 ZW.PAT.SHIDE.ZI.001 等）；(B) 歸入 Interpretation 層（如 ZW.INT.GENERAL.SHIDE_ZI.001，因其本質為命身宮位＋生年干之吉凶斷語，與 Pattern Engine 之星系格局不同）。詩中若干斷句需進一步校對（如『子宮貪狼殺陰星』，七殺太陰恆在三合／對照，如何與貪狼共處命宮需以三合解）。",
-      "note": "2026-09-25 體系評估：依 Bible 原則，歌訣必收錄，但定位在 Interpretation 層（Interpretation Rule）較 Pattern Engine 更符架構本意（避免膨脹 pattern 列表並失焦傳統 28 大格）；待下一階段系統性轉譯 12 條歌訣。（2026-09-24 校正：原文位於《全書》卷一；2026-09-25 補正：quote 改首條逐字，段名確認為卷一〈十二宮諸星得地／失陷訣〉。）"
+      "relatedRuleId": "ZW.INT.GENERAL.SHIDE_ZI.001",
+      "researchId": null,
+      "gap": null,
+      "note": "2026-09-26 已完成體系決策並實作：12 條得地合格訣轉譯為 Interpretation 規則 ZW.INT.GENERAL.SHIDE_{ZI,CHOU,YIN,MAO,CHEN,SI,WU,WEI,SHEN,YOU,XU,HAI}.001（共 12 條 canonical Interpretation Rules），生年干限制以 compare(ganzhi.year.stem in [...]) 結構化表達；配套 12 條 EVD 與單元測試 tests/unit/interpretation-shide-shiuo.test.ts。"
     },
     {
       "patternKey": "PAT.SHIDE_POGE",
@@ -198,7 +198,7 @@
         "zh-TW": "十二宮諸星失陷破格訣",
         "zh-CN": "十二宫诸星失陷破格诀"
       },
-      "status": "research",
+      "status": "implemented",
       "quote": "子丑安命 子午天机丑巨铃，此星落陷果为真，纵然化吉更为美，任他富贵不清宁。",
       "sourceId": "SRC.QUANSHU.WIKISOURCE",
       "locator": {
@@ -207,10 +207,10 @@
         "section": "十二宮諸星失陷破格訣",
         "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
       },
-      "relatedRuleId": null,
-      "researchId": "RSH.PATTERN.BACKLOG",
-      "gap": "同上（破格訣，10 條逐宮條列，含生年干限制如『二宮若然桃花見』）。與得地合格訣成對，宜一併決策。",
-      "note": "2026-09-25 體系評估：與得地合格訣同批轉譯，建議一併歸入 Interpretation 層（與得地訣配對呈現合格／破格兩面）；待下一階段系統性轉譯。（2026-09-24 校正：原文位於《全書》卷一；2026-09-25 補正：quote 改首條逐字，段名確認為卷一〈十二宮諸星得地／失陷訣〉。）"
+      "relatedRuleId": "ZW.INT.GENERAL.SHIUO_ZI.001",
+      "researchId": null,
+      "gap": null,
+      "note": "2026-09-26 已完成體系決策並實作：10 條失陷破格訣轉譯為 Interpretation 規則 ZW.INT.GENERAL.SHIUO_{ZI,YIN,MAO,CHEN,SI,WU,WEI,SHEN,YOU,XU,HAI}.001（共 10 條 canonical Interpretation Rules），與得地合格訣配對呈現合格／破格兩面；配套 11 條 EVD 與單元測試 tests/unit/interpretation-shide-shiuo.test.ts。"
     },
     {
       "patternKey": "PAT.CAIGUAN_GE",

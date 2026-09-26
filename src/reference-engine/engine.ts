@@ -113,7 +113,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     placements: new Map(),
     transformations: [],
     majorPeriods: [],
-    activeRules
+    activeRules,
+    dynamicStars: []
   };
 
   // 順逆行由 ZW.CALC.BIRTH.SEX_DIRECTION.001 規則決定（見 natal execution plan）
@@ -228,7 +229,8 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
       month: ctx.monthPeriod,
       day: ctx.dayPeriod,
       hour: ctx.hourPeriod,
-      xiaoxian: ctx.xiaoXian
+      xiaoxian: ctx.xiaoXian,
+      dynamicStars: ctx.dynamicStars.length > 0 ? ctx.dynamicStars : undefined
     },
     interpretation: { hits, byDomain },
     certainty

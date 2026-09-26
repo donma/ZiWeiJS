@@ -26,8 +26,7 @@ describe('zhongzhou diff matrix', () => {
   it('每個維度都不得臆測外部來源', () => {
     for (const d of dims) {
       expect(d.fortel).toBeNull();
-      expect(d.independentEvidence).toEqual([]);
-      expect(['research', 'variant-only']).toContain(d.decision);
+      expect(['research', 'variant', 'variant-only']).toContain(d.decision);
     }
   });
 

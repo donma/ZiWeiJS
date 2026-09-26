@@ -52,9 +52,9 @@
       },
       "ziweiZhongzhouProfile": {
         "values": [
+          "破軍",
           "貪狼",
-          "祿存",
-          "祿存"
+          "廉貞"
         ]
       },
       "iztroZhongzhou": {
@@ -67,10 +67,13 @@
         ]
       },
       "fortel": null,
-      "independentEvidence": [],
+      "independentEvidence": [
+        "EVD.IZTRO.ZHONGZHOU.MASTER_STAR",
+        "EVD.SHUNSHI.SOUL_STAR_METHODS"
+      ],
       "agreement": "differs",
-      "decision": "research",
-      "note": "iztro 中州派以「年支」查命主，通用派以「命宮地支」查命主；本庫目前僅實作後者。需獨立中州派來源方可成為 variant rule。"
+      "decision": "variant",
+      "note": "已實作變體規則 ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001（依生年支取命主）並於 school-zhongzhou 啟用；與 iztro 中州演算法完全一致。"
     },
     {
       "dimension": "body",
@@ -133,8 +136,8 @@
             "tianshang": "si"
           },
           {
-            "tianshi": "you",
-            "tianshang": "wei"
+            "tianshi": "wei",
+            "tianshang": "you"
           },
           {
             "tianshi": "si",
@@ -175,10 +178,13 @@
         ]
       },
       "fortel": null,
-      "independentEvidence": [],
+      "independentEvidence": [
+        "EVD.IZTRO.ZHONGZHOU.TIANSHI_TIANSHANG",
+        "EVD.SHUNSHI.TIANSHI_TIANSHANG"
+      ],
       "agreement": "differs",
-      "decision": "research",
-      "note": "iztro 中州派在「生年支陰陽 ≠ 性別陰陽」時對調天傷／天使；此為流派規則差異，本庫未實作。"
+      "decision": "variant",
+      "note": "已實作變體規則 ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001（陰男陽女天傷天使對調）並於 school-zhongzhou 啟用；與 iztro 中州演算法完全一致。"
     },
     {
       "dimension": "kui-yue",
@@ -974,7 +980,7 @@
     }
   ],
   "decisions": {
-    "research": 11,
+    "research": 9,
     "variantOnly": 1,
     "note": "decision=research：需獨立古典／中州派來源方可升級為 variant rule；本矩陣不改變任何 canonical 規則。"
   },
@@ -1124,7 +1130,7 @@
         ]
       },
       "ziweiZhongzhouProfile": {
-        "soul": "貪狼",
+        "soul": "破軍",
         "body": "火星",
         "bureau": "火六局",
         "suiqian12ByBranch": [],
@@ -1639,12 +1645,12 @@
         ]
       },
       "ziweiZhongzhouProfile": {
-        "soul": "祿存",
+        "soul": "貪狼",
         "body": "火星",
         "bureau": "火六局",
         "suiqian12ByBranch": [],
-        "tianshi": "you",
-        "tianshang": "wei",
+        "tianshi": "wei",
+        "tianshang": "you",
         "jiekongLike": [
           "截空"
         ],
@@ -2154,7 +2160,7 @@
         ]
       },
       "ziweiZhongzhouProfile": {
-        "soul": "祿存",
+        "soul": "廉貞",
         "body": "文昌",
         "bureau": "土五局",
         "suiqian12ByBranch": [],

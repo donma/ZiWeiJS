@@ -23,18 +23,21 @@
     {
       "dimensionId": "VAR.MONTH_BOUNDARY",
       "name": { "zh-TW": "月界（流月換月）", "en": "Month boundary policy" },
-      "status": "not-modeled",
-      "mechanism": "none",
-      "profileFields": [],
-      "profiles": [],
+      "status": "modeled",
+      "mechanism": "profile-field",
+      "profileFields": ["monthBoundaryPolicy"],
+      "profiles": ["school-jieqi-month"],
       "rules": ["ZW.CALC.PERIOD.LIUYUE.001"],
       "variants": [],
-      "coveredBy": [],
+      "coveredBy": [
+        "canonical：以農曆月界（斗君順數，流月天干五虎遁）",
+        "school-jieqi-month：以節氣月界（立春起寅月，流月天干取節氣月柱），同 policy 一致"
+      ],
       "researchIds": ["RSH.PERIOD.MONTH_BOUNDARY"],
-      "externalObservation": "流月有以農曆月界、亦有以節氣（斗君＋節氣月）起算者；本引擎現以農曆月（斗君起正月）計。",
-      "gap": "尚無 monthBoundaryPolicy profile 欄位，無法表達節氣月界流派。",
-      "nextAction": "先登錄研究（RSH.PERIOD.MONTH_BOUNDARY），取得可引用來源後再考慮以 profile 欄位 + variant 表達。",
-      "ownerReviewRequired": true
+      "externalObservation": "流月有以農曆月界、亦有以節氣（斗君＋節氣月）起算者；本引擎 canonical 採農曆月，並以 school-jieqi-month 支援節氣月流派。",
+      "gap": null,
+      "nextAction": null,
+      "ownerReviewRequired": false
     },
     {
       "dimensionId": "VAR.LATE_ZI",
@@ -70,6 +73,7 @@
     },
     {
       "dimensionId": "VAR.BRIGHTNESS",
+      "policyKey": "brightnessProfile",
       "name": { "zh-TW": "廟旺利陷", "en": "Brightness table profile" },
       "status": "partially-modeled",
       "mechanism": "rule-variant",
@@ -86,6 +90,7 @@
     },
     {
       "dimensionId": "VAR.SIHUA_TABLE",
+      "policyKey": "sihuaTableProfile",
       "name": { "zh-TW": "四化表", "en": "Sihua table profile" },
       "status": "modeled",
       "mechanism": "both",
@@ -99,6 +104,60 @@
       "gap": null,
       "nextAction": null,
       "ownerReviewRequired": false
+    },
+    {
+      "dimensionId": "VAR.MASTER_STAR",
+      "policyKey": "masterStarPolicy",
+      "name": { "zh-TW": "命主取法", "en": "Master star (soul) policy" },
+      "status": "modeled",
+      "mechanism": "rule-variant",
+      "profileFields": [],
+      "profiles": ["school-zhongzhou"],
+      "rules": ["ZW.CALC.PALACE.MASTER.001"],
+      "variants": ["ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001"],
+      "coveredBy": [
+        "canonical：命主依命宮地支（全書通行本）",
+        "zhongzhou variant：命主依生年支（王亭之整理；iztro 中州模式 2.6.0 實作）"
+      ],
+      "researchIds": ["RSH.PROFILE.ZHONGZHOU.MASTER_STAR"],
+      "externalObservation": "通行本以命宮地支查命主；中州派以生年年支查命主（實測差異約 92% 盤面），身主兩派一致。",
+      "gap": null,
+      "nextAction": null,
+      "ownerReviewRequired": false
+    },
+    {
+      "dimensionId": "VAR.PALACE_STEM_TRANSFORMATION",
+      "policyKey": "palaceStemTransformationPolicy",
+      "name": { "zh-TW": "宮干飛化", "en": "Palace-stem transformation policy" },
+      "status": "research",
+      "mechanism": "none",
+      "profileFields": [],
+      "profiles": [],
+      "rules": ["ZW.CALC.SIHUA.PALACE.001"],
+      "variants": [],
+      "coveredBy": ["宮干四化共用 ZW.CALC.SIHUA.TABLE.001 解析（variant 對庚干亦生效）"],
+      "researchIds": ["RSH.PROFILE.ZHONGZHOU.PALACE_STEM_SIHUA"],
+      "externalObservation": "中州派部分實作對宮干飛化另設起例（干化飛星次序不同）；本引擎宮干飛化沿用同一四化表。",
+      "gap": "無獨立之宮干飛化 variant；尚待可引用來源確認中州派宮干飛化是否與生年四化表完全一致。",
+      "nextAction": "先取得中州派講義之宮干飛化條文，再考慮以 variant 表達；不得零星 if 補丁。",
+      "ownerReviewRequired": true
+    },
+    {
+      "dimensionId": "VAR.YEAR_DEITY_NAME",
+      "policyKey": "yearDeityNamePolicy",
+      "name": { "zh-TW": "歲前十二神名稱", "en": "Year deity naming policy" },
+      "status": "research",
+      "mechanism": "none",
+      "profileFields": [],
+      "profiles": [],
+      "rules": ["ZW.CALC.STAR.YEARBRANCH_AUX.001"],
+      "variants": [],
+      "coveredBy": ["tables/cycles/suiqian.json（大耗/龍德/白虎/福德/弔客/病符）"],
+      "researchIds": ["RSH.PROFILE.ZHONGZHOU.YEAR_DEITY_NAME"],
+      "externalObservation": "中州派第 7 位作『歲破』（通用派作『大耗』）、第 10 位作『天德』（本庫作『福德』）；iztro 中州模式亦見同名差異。",
+      "gap": "差異屬 Entity identity、Display alias 或 Placement rule 尚未判定；不得直接新增第二顆星。",
+      "nextAction": "先以 Void Star Identity Matrix 方法判定是否僅為命名別名（profile-aware alias），再決定建模方式。",
+      "ownerReviewRequired": true
     },
     {
       "dimensionId": "VAR.TIANMA",
@@ -134,6 +193,7 @@
     },
     {
       "dimensionId": "VAR.VOID_STAR",
+      "policyKey": "voidStarPolicy",
       "name": { "zh-TW": "截空 / 旬空", "en": "Void star placement profile" },
       "status": "not-modeled",
       "mechanism": "none",
@@ -166,35 +226,42 @@
     },
     {
       "dimensionId": "VAR.TIANSHI_TIANSHANG",
+      "policyKey": "tianshiTianshangPolicy",
       "name": { "zh-TW": "天傷天使", "en": "Tian Shang / Tian Shi profile" },
-      "status": "partially-modeled",
-      "mechanism": "none",
+      "status": "modeled",
+      "mechanism": "rule-variant",
       "profileFields": [],
-      "profiles": [],
+      "profiles": ["school-zhongzhou"],
       "rules": ["ZW.CALC.STAR.FIXED.001"],
-      "variants": [],
-      "coveredBy": ["天傷固定守交友宮、天使固定守疾厄宮（全書卷二安天傷天使訣）"],
+      "variants": ["ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001"],
+      "coveredBy": [
+        "canonical：天傷固定守交友宮、天使固定守疾厄宮（全書卷二安天傷天使訣）",
+        "zhongzhou variant：陰男陽女天傷天使對調（疾厄/交友互換，王亭之中州派口訣）"
+      ],
       "researchIds": ["RSH.STAR.TIANSHI_TIANSHANG"],
-      "externalObservation": "《全書》訣作『命前六位是天傷，命後六位是天使』，本引擎以固定宮位（交友/疾厄）實作；兩者於命宮起例下等價，但若命身宮定位不同則可能分歧。",
-      "gap": "以固定宮位實作而非依命宮位移，遇到採不同命宮起例之流派可能不一致。",
-      "nextAction": "以命前六位/命後六位重新驗證並在必要時改為位移實作（需 Owner 決定是否變更 canonical）。",
-      "ownerReviewRequired": true
+      "externalObservation": "《全書》訣作『天傷安在奴僕宮，天使安在疾厄宮』；中州派於陰男陽女對調（王亭之講義），iztro 中州模式亦有實作。",
+      "gap": null,
+      "nextAction": null,
+      "ownerReviewRequired": false
     },
     {
       "dimensionId": "VAR.CHANGSHENG",
       "name": { "zh-TW": "長生十二神", "en": "Chang Sheng profile" },
-      "status": "partially-modeled",
-      "mechanism": "profile-field",
+      "status": "modeled",
+      "mechanism": "both",
       "profileFields": ["ruleOverrides"],
-      "profiles": ["canonical"],
+      "profiles": ["canonical", "quanshu-classical"],
       "rules": ["ZW.CALC.STAR.CHANGSHENG12.001"],
-      "variants": [],
-      "coveredBy": ["五行局起長生（水申/木亥/金巳/土申/火寅）與《全書》卷二相符"],
+      "variants": ["ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001"],
+      "coveredBy": [
+        "canonical：陽男陰女順、陰男陽女逆（依性別與生年陰陽）",
+        "quanshu-classical variant：男命順數、女命逆數（不論生年陰陽，全書卷二原文）"
+      ],
       "researchIds": ["RSH.STAR.CHANGSHENG_DIRECTION"],
-      "externalObservation": "《全書》卷二作『男命順數、女命逆數』（不論陰陽）；本引擎 canonical 採『陽男陰女順、陰男陽女逆』。兩者僅在陰男/陽女時相反。",
-      "gap": "方向基準（性別 vs 陰陽）存在流派衝突，現行 canonical 未以 variant 表達《全書》原文法。",
-      "nextAction": "登錄 RSH.STAR.CHANGSHENG_DIRECTION；若 Owner 認可，新增 variant 規則（男順女逆）並指定 profile，不得直接改 canonical。",
-      "ownerReviewRequired": true
+      "externalObservation": "《全書》卷二明載『長生十二神：男命順數、女命逆數』（不論陰陽）；本引擎 canonical 採『陽男陰女順、陰男陽女逆』。兩者僅在陰男/陽女時相反。",
+      "gap": null,
+      "nextAction": null,
+      "ownerReviewRequired": false
     },
     {
       "dimensionId": "VAR.MINOR_PERIOD",
@@ -205,12 +272,15 @@
       "profiles": [],
       "rules": ["ZW.CALC.PERIOD.XIAOXIAN.001"],
       "variants": [],
-      "coveredBy": ["canonical：不論陰陽、男順女逆（依《全書》卷二安小限訣，2026-09-24 Owner 批准）"],
+      "coveredBy": [
+        "canonical：不論陰陽、男順女逆（依《全書》卷二安小限訣，2026-09-24 Owner 批准）",
+        "差分與文獻考證（EVD.SHUNSHI.XIAOXIAN_DIRECTION）確認『男順女逆』為原文唯一標記；『陰男陽女逆行』屬誤套大限規則之別說"
+      ],
       "researchIds": ["RSH.PERIOD.XIAOXIAN_DIRECTION"],
-      "externalObservation": "部分現代排盤以小限同大限之陰陽順逆（陰男陽女逆行），與《全書》原文『不論陰陽』不同。",
-      "gap": "「陰男陽女逆行」版本尚未以 variant 表達。",
-      "nextAction": "若 Owner 決定支援，新增可切換 variant（以 profile 指定），canonical 維持原文法。",
-      "ownerReviewRequired": true
+      "externalObservation": "《全書》卷二明載『不論陰陽男俱順數、不論陰陽女俱逆數』；iztro 亦採男順女逆（100% 一致）。順時知識庫載明誤套大限陰陽者屬常見混淆。",
+      "gap": "未提供『陰男陽女亦逆』之 alternative variant；現階段文獻考證顯示該說為誤記，故不實作。",
+      "nextAction": "維持 canonical 單一版本；如未來出現可信來源（Tier1/2）再評估 variant，不得零星 if 補丁。",
+      "ownerReviewRequired": false
     },
     {
       "dimensionId": "VAR.YEAR_DEITY_SCOPE",

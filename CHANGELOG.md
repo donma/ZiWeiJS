@@ -628,3 +628,42 @@
 - `npm run assimilation:snapshot`（需網路，手動執行，不在 verify）
 - 版本 `0.4.1 → 0.5.0`
 
+## 0.6.0 — 內容深化與流派擴充 (Content Expansion)
+
+依據 `ZiWeiJS-0.6-Content-Expansion-SPEC.md` 完成 0.6.0 內容深化：
+
+### 1. Evidence & Source 強化 (Milestone A)
+- **SRC.ZHONGZHOU**：補齊出版、版本、傳承脈絡與載體類型（work=原著, carrier=web-transcription）。
+- **SRC.ZHOUYILAB**：正式登錄為 Tier 3 implementation source（開源實作對照）。
+- **SRC.SHUNSHI**：登錄為流派差異知識庫參照源（Tier 4）。
+- **Evidence 獨立性模型**：新增 `independenceGroup`，並建立 `npm run validate:evidence-independence` 驗證器，防止同源網頁轉錄被誤計為 2× Tier 3。
+- **古典原文查核狀態**：`classical-verification.md` 標註最新 CURRENT STATUS。
+
+### 2. 動態限運星曜 (Milestone B)
+- **首批 10 顆動態流曜 (year scope)**：流魁、流鉞、流昌、流曲、流祿、流羊、流陀、流馬、流鸞、流喜。
+- **資料層合約**：採 `(baseStarId, scope)` 合約（`DynamicStarPlacement`），不增設大量假星 ID。
+- **差分驗證**：建立 `tests/differential/dynamic-stars.test.ts`，與 iztro `horoscope().yearly.stars` 100% 一致。
+
+### 3. Runtime Placement Metadata (Milestone C)
+- **Star Registry**：為各星曜補齊 `runtimePlacement` capability metadata。
+- **完整性約束**：Integrity Validator 新增聯鎖檢查，凡宣告之 scope 必須存在對應的 period-star 規則。
+
+### 4. 中州派 Profile 深化 (Milestone D)
+- **命主取法 Variant**：`ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001`（依生年支取命主）。
+- **天傷天使 Variant**：`ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001`（陰男陽女天傷天使對調）。
+- **Zhongzhou Golden Fixtures**：建立 `fixtures/golden-zhongzhou/` 專屬 golden fixtures（4 案，涵蓋 5 個差異維度）。
+
+### 5. 流派變體落地 (Milestone E)
+- **流月節氣月界**：實作 `monthBoundaryPolicy: solar-term` profile 欄位，並建立 `school-jieqi-month` profile。
+- **長生十二神原文派**：實作 `ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001`（男順女逆，《全書》原文派 `quanshu-classical`）。
+- **Void Star Identity Matrix**：盤點空亡諸星（截空/截路/旬空/旬中/空亡），維持未決項為 research，杜絕粗暴合併。
+
+### 6. 解讀與格局深化 (Milestone F)
+- **解讀條件完整性審核**：建立 `tools/interpretation/condition-audit.ts`（full rate 達 98.8%）。
+- **Pattern Backlog**：得地合格訣（12）與失陷破格訣（10）依架構審慎收錄為 22 條 canonical Interpretation 規則並完成留痕。
+
+### 7. SDK 與 UI 增益 (Milestone G)
+- **Profile Explain API**：新增 `ZiWei.Profiles.explain(profileId)`，結構化說明 profile 相對 canonical 的具體差異。
+- **UI 強化**：Expert 模式整合 Profile 差異面板、動態流曜清單與未決研究可見性清單。
+
+---

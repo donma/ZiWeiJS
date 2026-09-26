@@ -43,6 +43,8 @@ export interface EngineContext {
   monthPeriod?: PeriodInfo;
   dayPeriod?: PeriodInfo;
   hourPeriod?: PeriodInfo;
+  /** 動態限運星曜（spec 0.6 §15–§19：流魁、流鉞、流昌、流曲、流祿、流羊、流陀、流馬、流鸞、流喜） */
+  dynamicStars: import('../core/types.js').DynamicStarPlacement[];
 
   masterStar?: string;
   bodyStar?: string;

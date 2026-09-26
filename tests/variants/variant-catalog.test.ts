@@ -18,7 +18,7 @@ describe('variant catalog: 結構與治理', () => {
     expect(failures).toEqual([]);
   });
 
-  it('spec §26 之 14 個維度全數涵蓋（集合相等）', () => {
+  it('spec §26 之 14 個維度 + 0.6 §9 政策鍵維度全數涵蓋（集合相等）', () => {
     const ids = catalog.dimensions.map(d => d.dimensionId).sort();
     expect(ids).toEqual([...SPEC_DIMENSIONS].sort());
   });

@@ -262,6 +262,23 @@ export interface PeriodPalace {
   stars: PeriodStarPlacement[];
 }
 
+/**
+ * 動態限運星曜（spec 0.6 §15–§19）。
+ * 資料層記錄本命基準星（baseStarId）與所屬限運範圍（scope），
+ * 而非為每個 scope 產生獨立星曜 ID（例：不設 ZW.STAR.YEAR.LIUKUI）。
+ */
+export interface DynamicStarPlacement {
+  /** 本命基準星曜 ID（如 ZW.STAR.AUX.TIANKUI） */
+  baseStarId: string;
+  /** 動態星曜所屬限運範圍 */
+  scope: 'major-period' | 'minor-period' | 'year' | 'month' | 'day' | 'hour';
+  branch: BranchId;
+  palaceId: PalaceId;
+  /** 該限運實際干支（如丙午年之丙午） */
+  ganzhi: GanzhiPair;
+  provenance: Provenance;
+}
+
 export interface PeriodOverlay {
   scope: PeriodScope;
   stem: StemId;
@@ -409,6 +426,8 @@ export interface ZiWeiChart {
     hour?: PeriodInfo;
     /** 小限（依年支三合局起宮，男順女逆；性別未知或無目標日期時不存在） */
     xiaoxian?: XiaoXianPeriod;
+    /** 動態星曜落盤（spec 0.6 §15–§19：流魁、流鉞、流昌、流曲、流祿、流羊、流陀、流馬、流鸞、流喜） */
+    dynamicStars?: DynamicStarPlacement[];
   };
   interpretation: {
     hits: InterpretationHit[];
@@ -483,6 +502,8 @@ export interface Profile {
   dayBoundary: 'midnight' | 'zi-hour';
   /** 年柱分界（lunar-new-year：正月初一；lichun：立春，spec 3rd §P0-2） */
   yearBoundaryPolicy?: 'lunar-new-year' | 'lichun';
+  /** 流月月界（lunar-month：農曆月；solar-term：節氣月，spec 0.6 §25） */
+  monthBoundaryPolicy?: 'lunar-month' | 'solar-term';
   /** 閏月處理（same-as-normal | next-month | mid-month；split 暫未支援） */
   leapMonthPolicy: 'mid-month' | 'same-as-normal' | 'split' | 'next-month' | string;
   /** 限運相關設定（目前支援 ageMethod: 'virtual-age'） */

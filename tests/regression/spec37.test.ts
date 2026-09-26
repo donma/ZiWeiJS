@@ -169,7 +169,7 @@ describe('§37 profile override 真的影響 output', () => {
 
     const variant = school.trace!.entries.filter(e => e.status === 'variant');
     expect(variant.length).toBeGreaterThan(0);
-    expect(variant[0].ruleId).toContain('ZW.CALC.SIHUA.NATAL.V001');
+    expect(variant.some(e => e.ruleId.includes('ZW.CALC.SIHUA.NATAL.V001'))).toBe(true);
   });
 
   it('school-ma-hu 的年干輔星 override 亦生效', () => {

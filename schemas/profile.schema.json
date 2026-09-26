@@ -22,6 +22,11 @@
       "description": "年柱換年分界（lunar-new-year：農曆正月初一；lichun：二十四節氣立春）",
       "enum": ["lunar-new-year", "lichun"]
     },
+    "monthBoundaryPolicy": {
+      "type": "string",
+      "description": "流月換月分界（lunar-month：農曆月初；solar-term：節氣月）",
+      "enum": ["lunar-month", "solar-term"]
+    },
     "leapMonthPolicy": {
       "type": "string",
       "enum": ["mid-month", "same-as-normal", "split", "next-month"]

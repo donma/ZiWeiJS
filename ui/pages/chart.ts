@@ -1,6 +1,6 @@
 import { state } from '../app/state.js';
 import { birthFormHtml } from '../components/birth-form.js';
-import { renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative, PALACE_NAME, ZiWei } from '../../src/index.js';
+import { renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative, PALACE_NAME, ZiWei, listResearch } from '../../src/index.js';
 import type { StarPlacement } from '../../src/index.js';
 
 const SIHUA_MARK: Record<string, string> = { lu: '祿', quan: '權', ke: '科', ji: '忌' };
@@ -76,8 +76,47 @@ function periodPanel(chart: NonNullable<typeof state.chart>): string {
       ${year ? `<dt>流年</dt><dd>${STEM_ZH[year.stem]}${BRANCH_ZH[year.branch]}${year.resolvedYear && year.resolvedYear !== year.year ? `（年柱所屬 ${year.resolvedYear}）` : ''}</dd>` : ''}
       ${xiaoxian ? `<dt>小限</dt><dd>${xiaoxian.age} 歲 · ${PALACE_NAME[xiaoxian.palaceId] ? t(PALACE_NAME[xiaoxian.palaceId]) : xiaoxian.palaceId}（${BRANCH_ZH[xiaoxian.branch]}）</dd>` : '<dt>小限</dt><dd class="faint">無（未提供目標日期或性別未知）</dd>'}
     </dl>
+    ${dynamicStarsPanel(chart)}
     ${timelineTable(chart)}
   </div>`;
+}
+
+/** 動態限運星曜面板（spec 0.6 §19）：可切換 scope，不一次全疊在盤上 */
+function dynamicStarsPanel(chart: NonNullable<typeof state.chart>): string {
+  const all = chart.periods.dynamicStars ?? [];
+  if (all.length === 0) {
+    return `<p class="sub small" style="margin:10px 0 0">動態流曜：需目標年份（目前第一批僅實作流年 scope）。</p>`;
+  }
+  const mode = state.mode;
+  // 目前僅 year scope 已實作（第一批，見 spec 0.6 §46）；其餘如實標示未實作
+  const scopeLabels = ['本命', '大限', '小限', '流年', '流月', '流日', '流時'];
+  const selected = 'year';
+  const rows = all.filter(d => d.scope === selected);
+  const labelOf = (starId: string) => {
+    const star = chart.chart.stars[starId];
+    return `流${star ? t(star.star.name) : starId}`;
+  };
+  return `
+  <h4 style="margin:14px 0 6px;font-size:14px">動態流曜
+    <span class="badge canonical">流年</span>
+    ${scopeLabels.filter(l => l !== '流年').map(l => `<span class="faint small" title="尚未實作（第一批僅流年 scope）">${l}</span>`).join(' ')}
+  </h4>
+  <div class="table-scroll">
+    <table class="data small">
+      <thead><tr><th>流曜</th><th>宮位</th>${mode === 'expert' ? '<th>基準星 / scope</th><th>Rule</th>' : ''}</tr></thead>
+      <tbody>
+        ${rows.map(d => {
+          const palace = chart.chart.palaces.find(p => p.id === d.palaceId);
+          return `<tr>
+            <td>${labelOf(d.baseStarId)}</td>
+            <td>${palace ? `${t(palace.name)}（${BRANCH_ZH[d.branch]}）` : BRANCH_ZH[d.branch]}</td>
+            ${mode === 'expert' ? `<td class="mono faint">${d.baseStarId} · ${d.scope}</td><td class="mono faint">${d.provenance?.ruleId ?? ''}</td>` : ''}
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  </div>
+  <p class="faint small" style="margin:6px 0 0">資料層為基準星 + scope（不建大量假星 ID）；第一批流曜規則 status=candidate，僅流年 scope 已實作。</p>`;
 }
 
 /** 12 年時間軸（唯讀組合 Product.trend，不新增命理規則） */
@@ -131,6 +170,53 @@ function expertMeta(chart: NonNullable<typeof state.chart>): string {
       <dt>rules hit</dt><dd>${chart.interpretation.hits.length + chart.chart.patterns.length}</dd>
       <dt>trace</dt><dd>${chart.trace?.entries.length ?? 0} entries</dd>
     </dl>
+  </div>
+  ${profileDiffPanel(chart)}
+  ${researchVisibilityPanel()}`;
+}
+
+/** Profile 差異面板（spec 0.6 §40）：清楚列出 profile 相對 canonical 的差異 */
+function profileDiffPanel(chart: NonNullable<typeof state.chart>): string {
+  const explanation = ZiWei.Profiles.explain(chart.generatedWith.profile);
+  if (explanation.diffs.length === 0) {
+    return `
+    <div class="card card-pad" style="margin-top:12px">
+      <h3 style="margin-top:0">Profile 差異</h3>
+      <p class="sub small" style="margin:0">此 profile 與 canonical 無規則差異。</p>
+    </div>`;
+  }
+  return `
+  <div class="card card-pad" style="margin-top:12px">
+    <h3 style="margin-top:0">Profile 差異（相對 canonical）</h3>
+    ${explanation.diffs.map(d => `
+      <div class="small" style="margin-bottom:10px">
+        <div><strong>${d.dimension}</strong></div>
+        <div class="mono faint">canonical: ${d.canonicalRule}</div>
+        <div class="mono faint">variant: ${d.variantRule}</div>
+        ${d.description ? `<p class="sub" style="margin:4px 0">${d.description}</p>` : ''}
+        <div class="mono faint">source: ${(d.sourceRefs ?? []).join(', ')}</div>
+        <div class="mono faint">evidence: ${(d.evidenceRefs ?? []).join(', ') || '（實作差分佐證）'}</div>
+      </div>`).join('')}
+    <details>
+      <summary class="small">policies</summary>
+      <pre tabindex="0" class="json">${JSON.stringify(explanation.policies, null, 1)}</pre>
+    </details>
+  </div>`;
+}
+
+/** Research 可見性（spec 0.6 §41）：顯示未決研究，不假裝只有一個答案 */
+function researchVisibilityPanel(): string {
+  const open = listResearch().filter(r => r.status === 'open' || r.status === 'in-progress');
+  if (open.length === 0) return '';
+  const shown = open.slice(0, 8);
+  return `
+  <div class="card card-pad" style="margin-top:12px">
+    <h3 style="margin-top:0">Research（未決）</h3>
+    <ul class="small" style="margin:0;padding-left:18px">
+      ${shown.map(r => `<li><span class="mono faint">${r.researchId}</span> ${r.title ?? ''}</li>`).join('')}
+    </ul>
+    ${open.length > shown.length ? `<p class="faint small" style="margin:6px 0 0">另有 ${open.length - shown.length} 筆未決研究。</p>` : ''}
+    <p class="faint small" style="margin:6px 0 0">Research / Variant unresolved 一律如實顯示。</p>
   </div>`;
 }
 

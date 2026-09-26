@@ -1,0 +1,113 @@
+{
+  "generatedBy": "tools/fixture-generator/generate-zhongzhou.ts",
+  "specRef": "ai-guide/ZiWeiJS-0.6-Content-Expansion-SPEC.md §38",
+  "name": "jia-zi-1984-female",
+  "note": "甲子年女：陽女 → 天傷天使對調；命主命宮（寅）與年支（子）不同。",
+  "input": {
+    "calendarType": "solar",
+    "date": {
+      "year": 1984,
+      "month": 2,
+      "day": 2
+    },
+    "time": {
+      "hour": 14
+    },
+    "timezone": "Asia/Taipei",
+    "sexForCalculation": "female"
+  },
+  "external": {
+    "sourceId": "SRC.IZTRO",
+    "version": "2.6.1",
+    "dimensions": [
+      "masterStar",
+      "bodyStar"
+    ],
+    "note": "命主／身主以 iztro algorithm=zhongzhou 實測比對；其餘維度為 engine golden（canonical ↔ zhongzhou 差異凍結）。",
+    "iztroZhongzhou": {
+      "soul": "貪狼",
+      "body": "火星"
+    },
+    "engineZhongzhou": {
+      "soul": "貪狼",
+      "body": "火星"
+    },
+    "agreement": {
+      "masterStar": true,
+      "bodyStar": true
+    }
+  },
+  "oracle": {
+    "canonical": {
+      "masterStar": "ZW.STAR.MAJOR.WUQU",
+      "bodyStar": "ZW.STAR.AUX.HUOLING",
+      "tianshiTianshang": {
+        "friends": "ZW.STAR.AUX.TIANSHANG",
+        "health": "ZW.STAR.AUX.TIANSHI"
+      },
+      "sihuaNatal": {
+        "lu": "ZW.STAR.MAJOR.LIANZHEN",
+        "quan": "ZW.STAR.MAJOR.POJUN",
+        "ke": "ZW.STAR.MAJOR.WUQU",
+        "ji": "ZW.STAR.MAJOR.TAIYANG"
+      },
+      "jiekongBranch": "xu",
+      "xunkongBranch": "xu",
+      "brightnessSample": {
+        "ZW.STAR.MAJOR.ZIWEI": "miao",
+        "ZW.STAR.MAJOR.TIANTONG": "bu",
+        "ZW.STAR.MAJOR.JUMEN": "miao"
+      }
+    },
+    "school-zhongzhou": {
+      "masterStar": "ZW.STAR.MAJOR.TANLANG",
+      "bodyStar": "ZW.STAR.AUX.HUOLING",
+      "tianshiTianshang": {
+        "friends": "ZW.STAR.AUX.TIANSHI",
+        "health": "ZW.STAR.AUX.TIANSHANG"
+      },
+      "sihuaNatal": {
+        "lu": "ZW.STAR.MAJOR.LIANZHEN",
+        "quan": "ZW.STAR.MAJOR.POJUN",
+        "ke": "ZW.STAR.MAJOR.WUQU",
+        "ji": "ZW.STAR.MAJOR.TAIYANG"
+      },
+      "jiekongBranch": "xu",
+      "xunkongBranch": "xu",
+      "brightnessSample": {
+        "ZW.STAR.MAJOR.ZIWEI": "miao",
+        "ZW.STAR.MAJOR.TIANTONG": "bu",
+        "ZW.STAR.MAJOR.JUMEN": "miao"
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "dimension": "sihua",
+      "canonicalRule": "ZW.CALC.SIHUA.TABLE.001",
+      "variantRule": "ZW.CALC.SIHUA.TABLE.V001"
+    },
+    {
+      "dimension": "masterStar",
+      "canonicalRule": "ZW.CALC.PALACE.MASTER.001",
+      "variantRule": "ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001"
+    },
+    {
+      "dimension": "tianshiTianshang",
+      "canonicalRule": "ZW.CALC.STAR.FIXED.001",
+      "variantRule": "ZW.CALC.STAR.FIXED.V_ZHONGZHOU.001"
+    },
+    {
+      "dimension": "voidStars",
+      "canonicalRule": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "variantRule": null,
+      "note": "canonical 已採截空＋旬空（與 iztro 中州模式一致），無 variant。"
+    },
+    {
+      "dimension": "brightness",
+      "canonicalRule": "ZW.CALC.DIGNITY.BRIGHTNESS.001",
+      "variantRule": null,
+      "note": "中州廟旺整表證據未足，未啟用 variant；兩 profile 目前一致。"
+    }
+  ]
+}

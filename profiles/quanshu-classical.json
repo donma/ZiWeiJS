@@ -1,0 +1,20 @@
+{
+  "$schema": "../schemas/profile.schema.json",
+  "profileId": "quanshu-classical",
+  "name": {
+    "zh-TW": "全書原文派",
+    "zh-CN": "全书原文派",
+    "en": "Quanshu Classical"
+  },
+  "description": {
+    "zh-TW": "以《紫微斗數全書》卷二原文為準的流派選項：長生十二神依『男命順數、女命逆數』（不論生年陰陽）。canonical 現行採陽男陰女順、陰男陽女逆，兩者僅在陰男／陽女相反。",
+    "en": "Quanshu-original convention: Chang Sheng 12 deities run forward for males and backward for females regardless of year polarity."
+  },
+  "timeConvention": "civil",
+  "dayBoundary": "midnight",
+  "leapMonthPolicy": "same-as-normal",
+  "ruleOverrides": {
+    "ZW.CALC.STAR.CHANGSHENG12.001": "ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001"
+  },
+  "yearBoundaryPolicy": "lunar-new-year"
+}

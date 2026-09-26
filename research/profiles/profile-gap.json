@@ -32,6 +32,36 @@
       "overrides": 1
     },
     {
+      "profileId": "quanshu-classical",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "name",
+        "profileId",
+        "ruleOverrides",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 1
+    },
+    {
+      "profileId": "school-jieqi-month",
+      "fieldsSet": [
+        "dayBoundary",
+        "description",
+        "leapMonthPolicy",
+        "monthBoundaryPolicy",
+        "name",
+        "profileId",
+        "timeConvention",
+        "yearBoundaryPolicy"
+      ],
+      "reservedFields": [],
+      "overrides": 0
+    },
+    {
       "profileId": "school-ma-hu",
       "fieldsSet": [
         "dayBoundary",
@@ -59,7 +89,7 @@
         "yearBoundaryPolicy"
       ],
       "reservedFields": [],
-      "overrides": 2
+      "overrides": 4
     },
     {
       "profileId": "traditional-zi",
@@ -111,6 +141,8 @@
       "valuesUsedByProfiles": [
         "canonical",
         "lichun",
+        "quanshu-classical",
+        "school-jieqi-month",
         "school-ma-hu",
         "school-zhongzhou",
         "traditional-zi",
@@ -175,6 +207,17 @@
       "valuesUsedByProfiles": [
         "lichun",
         "lunar-new-year"
+      ],
+      "notImplementedValues": []
+    },
+    {
+      "field": "monthBoundaryPolicy",
+      "declaredInSchema": true,
+      "runtimeConsumed": false,
+      "consumedBy": null,
+      "hasDefault": false,
+      "valuesUsedByProfiles": [
+        "solar-term"
       ],
       "notImplementedValues": []
     },

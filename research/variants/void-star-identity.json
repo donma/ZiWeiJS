@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schemas/void-star-identity.schema.json",
+  "matrixVersion": "1.0",
+  "generatedBy": "manual research（spec 0.6 §13，2026-09-26）",
+  "note": "Void Star Identity Matrix：空亡諸星之同名/異名/異義盤點。禁止直接假設 截路=截空、旬中=旬空、空亡=旬空。未有結論者一律維持 research，不得自動合併或新增第二顆星。",
+  "entries": [
+    {
+      "name": "截空",
+      "aliases": ["截空亡"],
+      "entityId": "ZW.STAR.AUX.JIEKONG",
+      "placementRule": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "school": "canonical",
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING"],
+      "equivalentTo": [],
+      "conflictsWith": [],
+      "status": "modeled",
+      "notes": "本庫 canonical：依生年干安（甲亥乙子丙丑…）。iztro 中州模式亦安截空，與本庫一致。"
+    },
+    {
+      "name": "截路",
+      "aliases": ["截路空亡"],
+      "entityId": null,
+      "placementRule": null,
+      "school": "iztro-default",
+      "sourceRefs": ["SRC.IZTRO"],
+      "evidenceRefs": [],
+      "equivalentTo": [],
+      "conflictsWith": ["ZW.STAR.AUX.JIEKONG"],
+      "status": "research",
+      "notes": "iztro 通用模式安『截路』而非『截空』。是否與截空同義尚未有可引用來源佐證（spec §37 明列同名異義風險）；在判定前不得合併、不得新增 entity。"
+    },
+    {
+      "name": "旬空",
+      "aliases": ["旬中空亡"],
+      "entityId": "ZW.STAR.AUX.XUNKONG",
+      "placementRule": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "school": "canonical",
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING"],
+      "equivalentTo": [],
+      "conflictsWith": [],
+      "status": "modeled",
+      "notes": "本庫 canonical：依生年旬空（xunKong(yearStem, yearBranch)）。"
+    },
+    {
+      "name": "旬中",
+      "aliases": ["旬中空"],
+      "entityId": null,
+      "placementRule": null,
+      "school": "external",
+      "sourceRefs": [],
+      "evidenceRefs": [],
+      "equivalentTo": [],
+      "conflictsWith": ["ZW.STAR.AUX.XUNKONG"],
+      "status": "research",
+      "notes": "外部實作名稱；可能為旬空之別稱或不同 entity（spec §22）。維持 research，禁止自動合併。"
+    },
+    {
+      "name": "空亡",
+      "aliases": [],
+      "entityId": null,
+      "placementRule": null,
+      "school": "iztro-default",
+      "sourceRefs": ["SRC.IZTRO"],
+      "evidenceRefs": [],
+      "equivalentTo": [],
+      "conflictsWith": ["ZW.STAR.AUX.XUNKONG", "ZW.STAR.AUX.JIEKONG", "ZW.STAR.AUX.TIANKONG"],
+      "status": "research",
+      "notes": "iztro 通用模式額外安『空亡』；與截空/旬空/天空之關係各派不一（spec §37）。維持 research。"
+    },
+    {
+      "name": "天空",
+      "aliases": ["天空亡"],
+      "entityId": "ZW.STAR.AUX.TIANKONG",
+      "placementRule": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+      "school": "canonical",
+      "sourceRefs": ["SRC.QUANSHU"],
+      "evidenceRefs": ["EVD.QUANSHU.ZAXING"],
+      "equivalentTo": [],
+      "conflictsWith": [],
+      "status": "modeled",
+      "notes": "本庫 canonical：依生年干安（甲戌乙亥…）。另有『天空＝地劫對宮』一說（見 VAR.TIANKONG），流派差異另案研究。"
+    }
+  ]
+}

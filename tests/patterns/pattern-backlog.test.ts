@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { listPatterns } from '../../src/index.js';
+import { listPatterns, listInterpretationRules } from '../../src/index.js';
 import { runPatternBacklogChecks, readPatternBacklog } from '../../tools/patterns/checks.js';
 
 /**
@@ -30,8 +30,8 @@ describe('pattern backlog: 結構與治理', () => {
     }
   });
 
-  it('implemented / equivalent 條目必須指向真實存在的 pattern 規則', () => {
-    const ids = new Set(listPatterns().map(p => p.ruleId));
+  it('implemented / equivalent 條目必須指向真實存在的 pattern 或 interpretation 規則', () => {
+    const ids = new Set([...listPatterns().map(p => p.ruleId), ...listInterpretationRules().map(i => i.ruleId)]);
     for (const e of backlog.entries.filter(x => x.status === 'implemented' || x.status === 'equivalent')) {
       expect(e.relatedRuleId, e.patternKey).toBeTruthy();
       expect(ids.has(e.relatedRuleId!), `${e.patternKey} -> ${e.relatedRuleId}`).toBe(true);

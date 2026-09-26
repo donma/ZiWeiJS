@@ -37,6 +37,9 @@
     "editionId": { "type": "string", "description": "引用版本（對應 source.editions[].editionId）" },
     "quote": { "type": "string" },
     "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "independenceGroup": { "type": "string", "description": "證據獨立分組，例如 quanshu-wikisource-family" },
+    "carrierType": { "type": "string", "description": "載體類型：print / web-transcription 等" },
+    "verifiedAgainstOriginal": { "type": "boolean", "description": "是否已核對原著" },
     "notes": { "type": "string" }
   },
   "additionalProperties": true

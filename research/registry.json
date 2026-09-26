@@ -304,19 +304,71 @@
       ]
     },
     {
+      "researchId": "RSH.PROFILE.ZHONGZHOU.MASTER_STAR",
+      "title": "中州派命主取法：依生年支（vs 通行本依命宮地支）",
+      "status": "resolved",
+      "type": "variant-conflict",
+      "relatedRules": [
+        "ZW.CALC.PALACE.MASTER.001",
+        "ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001"
+      ],
+      "evidence": [
+        "EVD.IZTRO.ZHONGZHOU.MASTER_STAR",
+        "EVD.SHUNSHI.SOUL_STAR_METHODS"
+      ],
+      "question": "通行本命主以命宮地支查表；中州派以生年年支查表（兩派身主一致，皆依生年支）。實測約 92% 盤面之命主不同。",
+      "nextAction": "已建立 variant 規則並由 school-zhongzhou profile 選用；canonical 不變。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "依 0.6 §10 建立 ZW.CALC.PALACE.MASTER.V_ZHONGZHOU.001（variant，variantOf ZW.CALC.PALACE.MASTER.001），由 school-zhongzhou profile.ruleOverrides 選用。依據：iztro 中州模式實測（astro.js:210-212）＋順時知識庫描述（王亭之整理）。canonical 輸出維持不變。"
+    },
+    {
+      "researchId": "RSH.PROFILE.ZHONGZHOU.PALACE_STEM_SIHUA",
+      "title": "中州派宮干飛化：是否與生年四化表完全一致",
+      "status": "open",
+      "type": "variant-conflict",
+      "relatedRules": [
+        "ZW.CALC.SIHUA.PALACE.001"
+      ],
+      "evidence": [],
+      "question": "本引擎宮干四化目前共用同一四化表（含庚干 variant）。中州派部分實作對宮干飛化另設起例；是否有獨立於生年四化表之宮干飛化差異，尚待可引用來源確認。",
+      "nextAction": "取得中州派講義之宮干飛化條文後，再決定是否新增 variant；不得零星 if 補丁。",
+      "ownerReviewRequired": true
+    },
+    {
+      "researchId": "RSH.PROFILE.ZHONGZHOU.YEAR_DEITY_NAME",
+      "title": "中州派歲前十二神名稱：歲破 vs 大耗、天德 vs 福德",
+      "status": "open",
+      "type": "star",
+      "relatedRules": [
+        "ZW.CALC.STAR.YEARBRANCH_AUX.001"
+      ],
+      "evidence": [
+        "EVD.QUANSHU.SUIJIAN"
+      ],
+      "question": "中州派第 7 位作『歲破』（本庫/通用派作『大耗』）、第 10 位作『天德』（本庫作『福德』）。差異屬 Entity identity、Display alias 或 Placement rule 尚未判定。",
+      "nextAction": "依 0.6 §12：先判定是否僅為命名差異；若只是別名，改用 profile-aware alias / display name，不新增第二顆星。",
+      "ownerReviewRequired": true
+    },
+    {
       "researchId": "RSH.PERIOD.XIAOXIAN_DIRECTION",
       "title": "小限方向：全書「不論陰陽、男順女逆」vs 現代流派「陰男陽女逆行」",
-      "status": "open",
+      "status": "resolved",
       "type": "variant-conflict",
       "relatedRules": [
         "ZW.CALC.PERIOD.XIAOXIAN.001"
       ],
       "evidence": [
-        "EVD.QUANSHU.XIAOXIAN"
+        "EVD.QUANSHU.XIAOXIAN",
+        "EVD.SHUNSHI.XIAOXIAN_DIRECTION"
       ],
-      "question": "《全書》卷二明言小限「不论阴阳男俱顺数不论阴阳女俱逆数」，但部分現代排盤以小限同大限之陰陽順逆（陰男陽女逆行）。本引擎 candidate 採原文。",
-      "nextAction": "待 Owner 決定：僅提供單一（原文）方向，或以 profile variant 同時支援兩種方向。目前候選規則為 candidate，尚未影響上線輸出。",
-      "ownerReviewRequired": true
+      "question": "《全書》卷二明言小限「不论阴阳男俱顺数不论阴阳女俱逆数」，但部分現代排盤以小限同大限之陰陽順逆（陰男陽女逆行）。本引擎 canonical 採原文。",
+      "nextAction": "已完成文獻考證：維持 canonical（男順女逆），不建立 alternative variant。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "0.6 §23 / §49 Milestone E 前置研究：順時知識庫明載『小限順逆看性別，不是大限那套陽男陰女——兩套規則最容易記混』，並指『誤套大限』為常見錯誤；iztro horoscope().age 實作亦為男 +i、女 -i（與本引擎 differential 100% 一致）。結論：canonical（不論陰陽、男順女逆）即通行正解，不新增 variant。"
     },
     {
       "researchId": "RSH.STAR.YUEJIE",
@@ -343,7 +395,7 @@
     {
       "researchId": "RSH.PERIOD.MONTH_BOUNDARY",
       "title": "流月月界：農曆月界 vs 節氣月界",
-      "status": "open",
+      "status": "resolved",
       "type": "policy",
       "relatedRules": [
         "ZW.CALC.PERIOD.LIUYUE.001"
@@ -352,8 +404,11 @@
         "EVD.QUANSHU.DOUJUN"
       ],
       "question": "本引擎流月以「當年斗君起正月、順數至當月」計（農曆月界）。部分流派以節氣月界推算流月，兩者在月中有差異。",
-      "nextAction": "取得可引用來源後，評估新增 profile 欄位 monthBoundaryPolicy + variant；在此之前不變更 canonical。",
-      "ownerReviewRequired": true
+      "nextAction": "已實作 profile 欄位 monthBoundaryPolicy 並由 school-jieqi-month profile 支援節氣月流派；canonical 維持農曆月界。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "0.6 §25 / §49 Milestone E：新增 profile 欄位 monthBoundaryPolicy（lunar-month | solar-term），並由 school-jieqi-month 選用；流月宮位與流月天干共用同一 month 序。canonical 農曆月界維持不變。"
     },
     {
       "researchId": "RSH.LEAP_MONTH_SPLIT",
@@ -437,18 +492,22 @@
     },
     {
       "researchId": "RSH.STAR.CHANGSHENG_DIRECTION",
-      "title": "長生十二神方向：《全書》男順女逆 vs 陰陽順逆",
-      "status": "open",
+      "title": "長生十二神方向：全書「男順女逆」vs 現行「陽男陰女順、陰男陽女逆」",
+      "status": "resolved",
       "type": "variant-conflict",
       "relatedRules": [
-        "ZW.CALC.STAR.CHANGSHENG12.001"
+        "ZW.CALC.STAR.CHANGSHENG12.001",
+        "ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001"
       ],
       "evidence": [
         "EVD.QUANSHU.CHANGSHENG"
       ],
-      "question": "《紫微斗數全書》卷二作「安長生、沐浴、冠帶、臨官、帝旺、衰、病、死、墓、絕、胎、養　男命順數、女命逆數」（以性別為準，不論陰陽）。本引擎 canonical 目前採「陽男陰女順行、陰男陽女逆行」（以陰陽＋性別為準）。兩者僅在陰男、陽女時相反。",
-      "nextAction": "此為 canonical 既有行為與古典原文之衝突：建議新增 variant 規則（男順女逆，依《全書》）並以 profile 指定，canonical 是否改採原文須由 Owner 決定。經查五行局起長生（水申/木亥/金巳/土申/火寅）與《全書》相符，僅方向有異。",
-      "ownerReviewRequired": true
+      "question": "《全書》卷二原文明載「長生十二神：男命順數、女命逆數」，不論生年陰陽；現行 canonical 採陽男陰女順、陰男陽女逆，兩者僅在陰男/陽女時相反。",
+      "nextAction": "已實作 variant 規則 ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001 並由 quanshu-classical profile 選用；canonical 不變。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "0.6 §24 / §49 Milestone E：新增長生十二神方向 variant 規則（男順女逆），由 quanshu-classical profile 選用；canonical 維持陽男陰女順，保留兩派並存。"
     },
     {
       "researchId": "RSH.CALENDAR.LATE_ZI_POLICY",

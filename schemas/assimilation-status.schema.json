@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/assimilation-status.schema.json",
+  "title": "ZiWei Bible Assimilation Status Manifest",
+  "description": "Assimilation 與 Content Expansion 狀態清單（spec 0.6 §43）。",
+  "type": "object",
+  "required": ["phase", "version", "complete", "partial", "research"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "phase": { "type": "string", "enum": ["foundation", "content-expansion"] },
+    "version": { "type": "string" },
+    "complete": { "type": "array", "items": { "type": "string" } },
+    "partial": { "type": "array", "items": { "type": "string" } },
+    "research": { "type": "array", "items": { "type": "string" } },
+    "note": { "type": "string" }
+  },
+  "additionalProperties": false
+}

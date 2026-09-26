@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.CHANGSHENG12.V_SEX_DIRECTION.001",
+      "ruleVersion": "1.0",
+      "status": "variant",
+      "variantOf": "ZW.CALC.STAR.CHANGSHENG12.001",
+      "scope": "calculation.stars.changsheng12",
+      "category": "stars",
+      "name": {
+        "zh-TW": "長生十二神方向（全書原文：男順女逆）",
+        "en": "Chang Sheng direction (Quanshu original: male forward, female backward)"
+      },
+      "description": {
+        "zh-TW": "《紫微斗數全書》卷二原文『長生十二神：男命順數、女命逆數』（不論生年陰陽）。canonical 現行採『陽男陰女順、陰男陽女逆』（依性別與生年陰陽），本 variant 保留全書原文法，供 quanshu-classical profile 選用；canonical 不變。"
+      },
+      "inputs": [
+        "sexForCalculation",
+        "bureau"
+      ],
+      "logic": {
+        "executor": "calcChangSheng",
+        "params": {
+          "variantPatch": {
+            "directionBasis": "sex-only"
+          }
+        },
+        "stage": "variant"
+      },
+      "outputs": [
+        "palaces[].changsheng"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU"
+      ],
+      "evidenceRefs": [
+        "EVD.QUANSHU.CHANGSHENG"
+      ],
+      "tags": [
+        "variant",
+        "changsheng",
+        "direction"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "0.6 §24 / §49 Milestone E：長生十二神方向 variant。《全書》卷二明載『男命順數、女命逆數』，與現行 canonical『陽男陰女順、陰男陽女逆』僅在陰男／陽女相反；以 variant 規則保留兩派，供 quanshu-classical profile 選用，canonical 不變。"
+        }
+      ]
+    }
+  ]
+}
