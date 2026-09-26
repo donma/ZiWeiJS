@@ -558,6 +558,18 @@
 - golden v2（35）、golden-period（10）、`research/stats/distribution.json`（14,683 盤）重生且 0 漂移
 - 測試：`tests/unit/pattern-new-geju.test.ts` 擴充至 13 測試（三化齊會命中、缺一化 → partial）；全套 718 tests passed
 
+### 得地合格訣／失陷破格訣 — Interpretation 層實作（2026-09-25）
+
+依 Owner「目標就是 Bible，你幫我決策，理論上是都要有」之概括授權，
+將 backlog 中兩筆 `needs-owner-scope` 條目落地為 **Interpretation 層規則**：
+
+- 新增 22 條 canonical Interpretation 規則（rules 221 → 244，canonical 44 → 68）：
+  - 得地合格訣 12 條：`ZW.INT.GENERAL.SHIDE_{BRANCH}.001`
+  - 失陷破格訣 10 條：`ZW.INT.GENERAL.SHIUO_{BRANCH}.001`（子丑、卯辰、申酉併條拆分）
+- 新增 23 條 EVD（`EVD.QUANSHU.SHIDE.{BRANCH}` / `EVD.QUANSHU.SHIUO.{BRANCH}`，逐字卷一）
+- DSL 現狀：無生年干 operand；先收宮位＋星曜條件，生年干條款（如「甲丁己癸生人福」）留待 DSL 擴充
+- 測試 `tests/unit/interpretation-shide-shiuo.test.ts`（10 測試）；Interpretation rules 138 → 160
+
 ### Phase G 補正 — 格局 locator／引文校對（2026-09-25）
 - 再核維基文庫卷一電子文本：累計校正 **10 筆** locator
   （新增馬頭帶劍：卷三／格局 → **卷一〈定貴局〉**）

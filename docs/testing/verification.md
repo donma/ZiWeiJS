@@ -414,8 +414,21 @@ Owner 授權 AI 就殘留條目代為決策（`ownerDecision` 欄位語意不變
   DSL 加 `scope:"natal"` 以免誤收宮干四化）
 - 文星朝命格 → **equivalent** → `ZW.PAT.WENGUI.001`（昌曲排盤恆對宮相距六宮；已補別名與 EVD）
 - 馬頭帶劍 → 維持 **research**（原文校勘未決；《三命通會》《淵海子平》同名術語僅作語源旁證）
-- 得地合格訣／失陷破格訣 → 決策：**歸入 Interpretation 層**（逐宮歌訣本質為「命宮＋生年干」之吉凶斷語，
-  以 Interpretation Rule 表達，避免膨脹 Pattern 列表）→ 待下一階段系統轉譯（12＋10 條）
+- 得地合格訣／失陷破格訣 → **Interpretation 層**（逐宮歌訣本質為「命宮＋生年干」之吉凶斷語）
+
+### 得地合格訣／失陷破格訣 — Interpretation 層實作（2026-09-25）
+
+依 Owner「目標就是 Bible，你幫我決策，理論上是都要有」之概括授權：
+
+- **新增 22 條 canonical Interpretation 規則**（rules 221 → 244，canonical 44 → 68）：
+  - 得地合格訣 12 條：`ZW.INT.GENERAL.SHIDE_{BRANCH}.001`（命宮坐某宮＋三方四正會該宮歌訣星曜）
+  - 失陷破格訣 10 條：`ZW.INT.GENERAL.SHIUO_{BRANCH}.001`（同一訣文源；子丑、卯辰、申酉併條已拆成兩條規則）
+  - 全部 `domain: "general"`，DSL：`compare(lifePalaceBranch == X)` ＋ `relation(san-fang-si-zheng, star=…)`
+- **新增 23 條 EVD**（`EVD.QUANSHU.SHIDE.{BRANCH}` / `EVD.QUANSHU.SHIUO.{BRANCH}`，逐字卷一）
+- **未收生年干限定**：歌訣含「甲丁己癸生人福」類條款，DSL 尚無年干條件（先收星曜與宮位，
+  待後續 `compare(normalized.ganzhi.year.stem)` 或專用 operand 補齊，屬已知 gap）
+- 測試：`tests/unit/interpretation-shide-shiuo.test.ts`（10 測試：5 個正案例與 1 個負案例）
+- README stats：Interpretation rules 138 → 160（+22）
 
 ## 11. Profile Gap Audit（Assimilation Phase E）
 

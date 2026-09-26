@@ -501,6 +501,328 @@
       "quote": "论文星朝命格 诗曰 文昌文曲最荣华，值此须生富贵家，更得三方祥曜拱，却如锦上又添花。",
       "confidence": 0.9,
       "notes": "《紫微斗數全書》卷一論文星朝命格詩曰。詩曰「文昌文曲最榮華，值此須生富貴家，更得三方祥曜拱」，取文昌、文曲在命宮或三方四正拱照命宮；與 ZW.PAT.WENGUI.001（文桂文華，著重昌曲夾拱或同會身命）互補。2026-09-24/25 逐字核對維基文庫《全書》卷一；Owner 於 2026-09-24 授權 Bible 完整收錄格局。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.ZI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "子安命 子宫贪狼杀阴星，机梁相拱福兴隆，庚辛乙癸生人美，一生富贵足丰荣。",
+      "confidence": 0.9,
+      "notes": "命宮在子、三方四正會貪狼七殺太陰，三方四正會天機天梁。依 2026-09-25 體系決策歸入 Interpretation 層（命宮地支＋生年干組合之吉凶斷語）。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.CHOU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "丑安命 丑宫立命日月朝，丙戍生人福禄饶，正坐平常中局论，对照富贵祸皆消。",
+      "confidence": 0.9,
+      "notes": "命宮在丑、三方四正會太陽太陰。生年干附加條件（丙、戍）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.YIN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "寅安命 寅宫巨日足丰隆，七杀天梁百事通，申巳庚人皆为吉，男子为官女受封。",
+      "confidence": 0.9,
+      "notes": "命宮在寅、三方四正會巨門太陽、七殺天梁。生年干／宮位附加條件（申、巳、庚）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.MAO",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "卯安命 卯宫机巨武曲逢，辛乙生人福气隆，男子为当縻廪禄，女人享福受褒封。",
+      "confidence": 0.9,
+      "notes": "命宮在卯、三方四正會天機巨門武曲。生年干附加條件（辛、乙）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.CHEN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "辰安命 辰位机梁坐命宫，天府戍地最盈丰，腰金衣紫真荣显，富华贵辉宜到终。",
+      "confidence": 0.9,
+      "notes": "命宮在辰、命宮會天機天梁（歌訣明指坐命宮）。天府戍地「最盈豐」屬對宮陳述，未納入 required。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.SI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "巳安命 巳位天机天相临，紫府朝垣福更深，戊辛壬丙皆为贵，一生顺遂少灾侵。",
+      "confidence": 0.9,
+      "notes": "命宮在巳、三方四正會天機天相，並會紫微天府（紫府朝垣）。生年干附加條件（戊、辛、壬、丙）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.WU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "午安命 午宫紫府太阳同，机梁破杀喜相逢，甲丁己癸生人福，一世风光廪禄丰。",
+      "confidence": 0.9,
+      "notes": "命宮在午、三方四正會紫微天府太陽，並會天機天梁破軍七殺。生年干附加條件（甲、丁、己、癸）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.WEI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "未安命 未宫紫武廉贞同，日月巨门喜相逢，女人值此全福寿，男子逢之位三公。",
+      "confidence": 0.9,
+      "notes": "命宮在未、三方四正會紫微武曲廉貞、太陽太陰巨門。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.SHEN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "申安命 申宫紫帝贞梁同，武曲巨门喜相逢，甲庚癸人如得喜，一生富贵逞英雄。",
+      "confidence": 0.9,
+      "notes": "命宮在申、三方四正會紫微廉貞天梁、武曲巨門。「紫帝」即紫微（帝星）。生年干附加條件（甲、庚、癸）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.YOU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "酉安命 酉宫最喜太阴逢，巨日又逢当面冲，辛乙生人为贵格，一生福禄永亨通。",
+      "confidence": 0.9,
+      "notes": "命宮在酉、三方四正會太陰，巨門太陽居對宮（「當面沖」）。生年干附加條件（辛、乙）留待正則化階段。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.XU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "戍安命 戍宫紫微对冲辰，富而不贵有虚名，更加吉曜多权禄，只利开张贸易人。",
+      "confidence": 0.9,
+      "notes": "命宮在戍、三方四正會紫微（紫微在戍命，對宮必為辰）。本條歌訣屬富而不貴之斷，仍屬得地合格訣文體。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIDE.HAI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星得地合格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "亥安命 亥宫最喜太阴逢，若人值此福禄隆，男女逢之皆称意，富贵荣华直到终。",
+      "confidence": 0.9,
+      "notes": "命宮在亥、三方四正會太陰。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.ZI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "子丑安命 子午天机丑巨铃，此星落陷果为真，纵然化吉更为美，任他富贵不清宁。",
+      "confidence": 0.9,
+      "notes": "命宮在子（訣文並含丑宮：「丑巨鈴」指巨門＋鈴星在丑宮破格），本條轉譯為子宮天機破格。「此星落陷」指天機子宮陷地（廟旺陷落表亦可覆核）。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.YIN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "寅安命   寅上机昌曲月逢，虽然吉拱不丰隆，男为伴仆女娼婢，若非夭折即贫穷。",
+      "confidence": 0.9,
+      "notes": "命宮在寅、三方四正會天機文昌文曲太陰（「昌曲月」＝文昌文曲太陰）。訣文雖稱「吉拱」仍屬破格。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.MAO",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "卯辰安命 卯上太阴擎羊逢，辰宫巨宿紫微同，纵然化吉非全美，若非加杀到头凶。",
+      "confidence": 0.9,
+      "notes": "命宮在卯（訣文並含辰宮），本條轉譯為卯宮太陰＋擎羊破格。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.CHEN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "卯辰安命 卯上太阴擎羊逢，辰宫巨宿紫微同，纵然化吉非全美，若非加杀到头凶。",
+      "confidence": 0.9,
+      "notes": "命宮在辰（訣文並含卯宮），本條轉譯為辰宮巨門＋紫微破格。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.SI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "巳安命   巳宫武月天梁巨，贪宿廉贞共到蛇，三方吉曜皆不贵，下贱贫穷度岁华。",
+      "confidence": 0.9,
+      "notes": "命宮在巳、三方四正會武曲太陰天梁巨門貪狼廉貞（「武月天梁巨，貪宿廉貞共到蛇」＝巳宮/三方會武曲、太陰、天梁、巨門、貪狼、廉貞）。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.WU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "午安命   午宫贪巨月昌从，羊刃三合最嫌冲，虽然化吉居仕路，横破横成到老穷。",
+      "confidence": 0.9,
+      "notes": "命宮在午、三方四正會貪狼巨門太陰文昌（「貪巨月昌」），並見擎羊三合拱照。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.WEI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "未安命   未宫巨宿太阳嫌，纵少灾危有克伤，劳碌奔波官事至，随缘下贱度时光。",
+      "confidence": 0.9,
+      "notes": "命宮在未、三方四正會巨門太陽。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.SHEN",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "申酉安命 申宫机巨为破格，男人浪荡女人贫，二宫若然桃花见，男女逢之总不荣。",
+      "confidence": 0.9,
+      "notes": "命宮在申（訣文並含酉宮：「二宮」指申酉），本條轉譯為申宮天機巨門破格。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.YOU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "申酉安命 申宫机巨为破格，男人浪荡女人贫，二宫若然桃花见，男女逢之总不荣。",
+      "confidence": 0.9,
+      "notes": "命宮在酉（訣文並含申宮），本條轉譯為酉宮天機巨門破格。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.XU",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "戍安命   戍上紫破若相逢，天同太阳皆主凶，若还孤寒更殀折，随缘勤苦免贫穷。",
+      "confidence": 0.9,
+      "notes": "命宮在戍、三方四正會紫微破軍，並會天同太陽。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.QUANSHU.SHIUO.HAI",
+      "sourceId": "SRC.QUANSHU.WIKISOURCE",
+      "type": "supports",
+      "location": {
+        "volume": "卷一",
+        "chapter": "十二宮諸星得地／失陷訣",
+        "section": "十二宮諸星失陷破格訣",
+        "archiveUrl": "https://zh.wikisource.org/wiki/紫微斗數全書/卷一"
+      },
+      "quote": "亥安命   亥宫贪火天梁同，飘荡浪子走西东，若还富贵也年促，不然隶仆与贫穷。",
+      "confidence": 0.9,
+      "notes": "命宮在亥、三方四正會貪狼火星天梁（「貪火」＝貪狼＋火星）。依 2026-09-25 體系決策歸入 Interpretation 層。"
     }
   ]
 }

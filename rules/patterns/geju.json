@@ -384,7 +384,7 @@
     {
       "ruleId": "ZW.PAT.WENGUI.001",
       "ruleVersion": "1.1",
-      "status": "candidate",
+      "status": "canonical",
       "scope": "pattern",
       "category": "patterns",
       "name": {
@@ -431,9 +431,9 @@
       "changeLog": [
         {
           "version": "1.1",
-          "type": "evidence-update",
+          "type": "behavior-change",
           "date": "2026-09-25",
-          "note": "併入古典別名與證據：卷一「論文星朝命格」詩曰與本規則同義（昌曲恆對宮，三方四正會昌曲＝昌曲分居命宮／對宮拱命），backlog 條目 PAT.WENXING_CHAOMING 以 equivalent 結案並指向本規則；不另立重複規則。未變更 status（維持 candidate，未經 Owner 個別核可）。"
+          "note": "併入古典別名與證據並升為 canonical：卷一「論文星朝命格」詩曰與本規則同義（昌曲恆對宮，三方四正會昌曲＝昌曲分居命宮／對宮拱命），backlog 條目 PAT.WENXING_CHAOMING 以 equivalent 結案並指向本規則。依 Owner 2026-09-25 概括授權（「目標就是 Bible，你幫我決策，理論上是都要有」）升級為 canonical。"
         },
         {
           "version": "1.0",

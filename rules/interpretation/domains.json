@@ -45,7 +45,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
@@ -91,7 +94,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.JI_WEALTH.001",
@@ -138,7 +144,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.HEALTH.JI_HEALTH.001",
@@ -185,7 +194,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ]
     },
     {
       "ruleId": "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
@@ -246,7 +258,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ]
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
@@ -297,7 +312,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
@@ -358,7 +376,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.MIGRATION.MA_TRAVEL.001",
@@ -404,7 +425,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.MIGRATION.LU_TRAVEL.001",
@@ -451,7 +475,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.LEARNING.WENCHANG_LIFE.001",
@@ -511,7 +538,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
@@ -557,7 +587,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.RISK.KONGJIE_LIFE.001",
@@ -617,7 +650,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.LU_CAREER.001",
@@ -664,7 +700,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.CAREER.QISHA_CAREER.001",
@@ -710,7 +749,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.TIMING.DAXIAN_LIFE.001",
@@ -753,7 +795,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.FAMILY.PARENTS_EMPTY.001",
@@ -799,7 +844,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
@@ -845,7 +893,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
@@ -906,7 +957,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
@@ -956,7 +1010,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
@@ -1007,7 +1064,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.LEARNING.JUMEN_LIFE.001",
@@ -1053,7 +1113,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
@@ -1099,7 +1162,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.CONSENSUS.MIAOWANG"
+      ]
     },
     {
       "ruleId": "ZW.INT.MIGRATION.ZIWEI_TRAVEL.001",
@@ -1145,7 +1211,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
@@ -1196,7 +1265,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SIHUA"
+      ]
     },
     {
       "ruleId": "ZW.INT.MARRIAGE.TIANTONG_SPOUSE.001",
@@ -1242,7 +1314,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.RISK.HUOLING_LIFE.001",
@@ -1293,7 +1368,10 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
     },
     {
       "ruleId": "ZW.INT.TIMING.SUIJIAN_LIFE.001",
@@ -1336,7 +1414,1645 @@
       ],
       "logic": {
         "stage": "analysis"
-      }
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.ANXING"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_ZI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "子安命 得地合格",
+        "en": "Life in zi, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "zi"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TANLANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.QISHA"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.ZI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：子宮貪狼殺陰星，機梁相拱（庚辛乙癸生人尤佳，本命命宮坐子宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.ZI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_CHOU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "丑安命 得地合格",
+        "en": "Life in chou, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "chou"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.CHOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：丑宮立命日月朝（丙戍生人尤佳，本命命宮坐丑宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.CHOU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_YIN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "寅安命 得地合格",
+        "en": "Life in yin, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "yin"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.QISHA"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.YIN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：寅宮巨日足豐隆，七殺天梁百事通（申巳庚生人尤佳，本命命宮坐寅宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.YIN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_MAO.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "卯安命 得地合格",
+        "en": "Life in mao, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "mao"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.WUQU"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.MAO"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：卯宮機巨武曲逢（辛乙生人尤佳，本命命宮坐卯宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.MAO"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_CHEN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "辰安命 得地合格",
+        "en": "Life in chen, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "chen"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANFU"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.CHEN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：辰位機梁坐命宮，天府戍地最盈豐（本命命宮坐辰宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.CHEN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_SI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "巳安命 得地合格",
+        "en": "Life in si, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "si"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANXIANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANFU"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.SI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：巳位天機天相臨，紫府朝垣福更深（戊辛壬丙生人尤佳，本命命宮坐巳宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.SI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_WU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "午安命 得地合格",
+        "en": "Life in wu, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "wu"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANFU"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.POJUN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.QISHA"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.WU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：午宮紫府太陽同，機梁破殺喜相逢（甲丁己癸生人尤佳，本命命宮坐午宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.WU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_WEI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "未安命 得地合格",
+        "en": "Life in wei, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "wei"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.WUQU"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.LIANZHEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.WEI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：未宮紫武廉貞同，日月巨門喜相逢（本命命宮坐未宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.WEI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_SHEN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "申安命 得地合格",
+        "en": "Life in shen, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "shen"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.LIANZHEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.WUQU"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.SHEN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：申宮紫帝貞梁同，武曲巨門喜相逢（甲庚癸生人尤佳，本命命宮坐申宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.SHEN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_YOU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "酉安命 得地合格",
+        "en": "Life in you, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "you"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.YOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：酉宮最喜太陰逢，巨日又逢當面沖（辛乙生人尤佳，本命命宮坐酉宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.YOU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_XU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "戌安命 得地合格",
+        "en": "Life in xu, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "xu"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.XU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：戍宮紫微對沖辰，富而不貴有虛名（本命命宮坐戌宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.XU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIDE_HAI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "亥安命 得地合格",
+        "en": "Life in hai, Favorable"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "hai"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          }
+        ]
+      },
+      "tendency": "positive",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIDE.HAI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：亥宮最喜太陰逢（本命命宮坐亥宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星得地合格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIDE.HAI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_ZI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "子安命 失陷破格",
+        "en": "Life in zi, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "zi"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.ZI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：子宮天機（此星落陷果為真）（本命命宮坐子宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.ZI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_YIN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "寅安命 失陷破格",
+        "en": "Life in yin, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "yin"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.AUX.WENCHANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.AUX.WENQU"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.YIN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：寅宮機昌曲月逢（本命命宮坐寅宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.YIN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_MAO.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "卯安命 失陷破格",
+        "en": "Life in mao, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "mao"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MALEFIC.QINGYANG"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.MAO"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：卯宮太陰擎羊逢（本命命宮坐卯宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.MAO"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_CHEN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "辰安命 失陷破格",
+        "en": "Life in chen, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "chen"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.CHEN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：辰宮巨宿紫微同（本命命宮坐辰宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.CHEN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_SI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "巳安命 失陷破格",
+        "en": "Life in si, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "si"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.WUQU"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TANLANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.LIANZHEN"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.SI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：巳宮武月天梁巨，貪宿廉貞共到蛇（本命命宮坐巳宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.SI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_WU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "午安命 失陷破格",
+        "en": "Life in wu, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "wu"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TANLANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.AUX.WENCHANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MALEFIC.QINGYANG"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.WU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：午宮貪巨月昌從，羊刃三合最嫌沖（本命命宮坐午宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.WU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_WEI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "未安命 失陷破格",
+        "en": "Life in wei, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "wei"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.WEI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：未宮巨宿太陽嫌（本命命宮坐未宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.WEI"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_SHEN.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "申安命 失陷破格",
+        "en": "Life in shen, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "shen"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.SHEN"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：申宮機巨為破格（本命命宮坐申宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.SHEN"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_YOU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "酉安命 失陷破格",
+        "en": "Life in you, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "you"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANJI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.JUMEN"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.YOU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：酉宮機巨為破格（本命命宮坐酉宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.YOU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_XU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "戌安命 失陷破格",
+        "en": "Life in xu, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "xu"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.ZIWEI"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.POJUN"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANTONG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TAIYANG"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.XU"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：戍上紫破若相逢，天同太陽皆主凶（本命命宮坐戌宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.XU"
+      ]
+    },
+    {
+      "ruleId": "ZW.INT.GENERAL.SHIUO_HAI.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "domain": "general",
+      "name": {
+        "zh-TW": "亥安命 失陷破格",
+        "en": "Life in hai, Detrimental"
+      },
+      "conditions": {
+        "all": [
+          {
+            "type": "compare",
+            "left": "lifePalaceBranch",
+            "op": "eq",
+            "right": "hai"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TANLANG"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MALEFIC.HUOLING"
+          },
+          {
+            "type": "relation",
+            "relation": "san-fang-si-zheng",
+            "palace": "life",
+            "star": "ZW.STAR.MAJOR.TIANLIANG"
+          }
+        ]
+      },
+      "tendency": "negative",
+      "strength": 0.65,
+      "confidence": 0.75,
+      "priority": 55,
+      "supports": [],
+      "conflictsWith": [],
+      "overrides": [],
+      "evidence": [
+        "EVD.QUANSHU.SHIUO.HAI"
+      ],
+      "sourceRefs": [
+        "SRC.QUANSHU",
+        "SRC.QUANSHU.WIKISOURCE"
+      ],
+      "text": {
+        "zh-TW": "《全書》卷一〈十二宮諸星失陷破格訣〉：亥宮貪火天梁同（本命命宮坐亥宮，三方四正會上述星曜；含訣文中之破損/凶煞語意。）"
+      },
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "evidence-update",
+          "date": "2026-09-25",
+          "note": "《全書》卷一〈十二宮諸星失陷破格訣〉逐宮斷語（Owner 2026-09-25 授權代決；體系歸入 Interpretation 層）。"
+        }
+      ],
+      "logic": {
+        "stage": "analysis"
+      },
+      "evidenceRefs": [
+        "EVD.QUANSHU.SHIUO.HAI"
+      ]
     }
   ]
 }
