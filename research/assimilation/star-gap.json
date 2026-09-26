@@ -2,7 +2,7 @@
   "generatedBy": "tools/assimilation/star-gap-audit.ts",
   "note": "外部名稱只作 Gap Detector，不作為 canonical；actual-missing-star 一律先進 Research Queue。",
   "ziweiCounts": {
-    "star": 98,
+    "star": 101,
     "stage": 12,
     "cycleDeity": 12,
     "yearDeity": 24
@@ -77,30 +77,67 @@
     },
     {
       "name": "天才",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANCAI",
+          "entityKind": "star",
+          "names": [
+            "天才",
+            "天才",
+            "Tian Cai",
+            "天才星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "天壽",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANSHOU",
+          "entityKind": "star",
+          "names": [
+            "天壽",
+            "天寿",
+            "Tian Shou",
+            "天壽星",
+            "天寿星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "天巫",
-      "status": "actual-missing-star",
-      "matched": [],
+      "status": "existing",
+      "matched": [
+        {
+          "id": "ZW.STAR.AUX.TIANWU",
+          "entityKind": "star",
+          "names": [
+            "天巫",
+            "天巫",
+            "Tian Wu",
+            "天巫星"
+          ],
+          "source": "star-registry"
+        }
+      ],
       "seenIn": [
         "cdestiny"
       ],
-      "decision": "research"
+      "decision": null
     },
     {
       "name": "旬中",

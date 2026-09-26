@@ -137,3 +137,27 @@ ZiWei.Candidate.xiaoXian.sequence(yearBranch, sex, 1, 12)
 維持 `RSH.STAR.{TIANWU,TIANCAI,TIANSHOU}`（open）、不實作、不建表。
 若日後取得其他版本（如《十八飛星策天紫微斗數全集》或明確中州派講義），
 須先確認**同系統**同名星，再走 Source → Evidence → Rule → Owner 流程。
+
+## 附錄三：第三輪查核（2026-09-26；正面結果 — 已實作）
+
+依 Owner 指示「透過網路繼續找吧 資料應該不少」，本輪將查核範圍擴大至**中州派正式出版講義**：
+
+1. **王亭之《紫微斗數初級講義》／《安星法及推斷實例》**（收錄於周易天地；`sources/registry.json`
+   之 `SRC.ZHONGZHOU`，Tier 2）：載有三星安法口訣——
+   - 天巫：「巳申寅亥天巫位，分輪十二月星君。」（生月系，正月起巳，每三月輪一宮，四馬地）
+   - 天才：「命宮起子天才順，順至生年支安之。」（年支系）
+   - 天壽：「身宮起子天壽堂，順至生年支安之。」（年支系）
+2. **交叉比對**：`SRC.IZTRO`（Tier 3）＋ `banderzhm/ZhouYiLab`（Tier 3）46/46 案例
+   **100% 一致（0 mismatch）**；本引擎 differential（`tests/differential/aux-supplementary.test.ts`）
+   亦對 iztro 26 例 100% 吻合。
+3. **證據登錄**：`EVD.ZHONGZHOU.ANXING.TIANWU`、`EVD.ZHONGZHOU.ANXING.TIANCAI_TIANSHOU`、
+   `EVD.IZTRO.ANXING.TIANCAI_TIANSHOU`；`evidence/registry.json` 共 72 筆。
+4. **規則登錄**：`ZW.CALC.STAR.TIANWU.001`（order 2020）、`ZW.CALC.STAR.TIANCAI_TIANSHOU.001`
+   （order 2030），status=canonical、stage=natal；星曜 registry 新增 `ZW.STAR.AUX.TIANWU`、
+   `ZW.STAR.AUX.TIANCAI`、`ZW.STAR.AUX.TIANSHOU`（stars 102、placed 101）。
+5. **治理處置**：`RSH.STAR.{TIANWU,TIANCAI,TIANSHOU}` 由 open 轉 resolved（2026-09-26, owner）；
+   `RSH.STAR.TIANSHOU` 之同名異義注記保留（十八飛星之天壽不同義，不得混用）。
+6. **golden/differential 已重驗**：35 本命 fixtures 與 10 限運 fixtures 全數重生並無漂移。
+
+依 Owner 2026-09-26 授權（「目標就是 bible 你幫我決策 理論上是都要有」）升為 canonical 本命盤執行計畫
+（natal plan 36 條）。

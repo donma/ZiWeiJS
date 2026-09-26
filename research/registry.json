@@ -248,41 +248,58 @@
     },
     {
       "researchId": "RSH.STAR.TIANCAI",
-      "title": "天才：全書卷二安星訣未載，尚無古典依據",
-      "status": "open",
+      "title": "天才：由命宮起子順至生年支安之",
+      "status": "resolved",
       "type": "star",
-      "relatedRules": [],
-      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻均未見天才安法（iztro 有安置，屬實作觀點）。",
-      "nextAction": "維持 open：不實作。需可引用來源（古典原文或正式出版講義）方可建 candidate。",
-      "ownerReviewRequired": true,
+      "relatedRules": [
+        "ZW.CALC.STAR.TIANCAI_TIANSHOU.001"
+      ],
+      "question": "天才安星口訣來源考證：全書未見，中州派講義王亭之《安星法及推斷實例》載「命宮起子天才順，順至生年支安之」；iztro 與 ZhouYiLab 實作一致。",
+      "nextAction": "已實作並納入 canonical 本命盤。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "中州派講義（SRC.ZHONGZHOU, Tier 2）載「命宮起子天才順，順至生年支安之」，並經 iztro (Tier 3) 及 ZhouYiLab (Tier 3) 46 例 100% 交叉比對吻合。依 Owner 授權已納入 canonical 本命盤執行計畫。",
       "evidence": [
-        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING"
+        "EVD.ZHONGZHOU.ANXING.TIANCAI_TIANSHOU",
+        "EVD.IZTRO.ANXING.TIANCAI_TIANSHOU"
       ]
     },
     {
       "researchId": "RSH.STAR.TIANSHOU",
-      "title": "天壽：全書卷二安星訣未載；注意舊「十八飛星」系統另有同名天壽",
-      "status": "open",
+      "title": "天壽：由身宮起子順至生年支安之",
+      "status": "resolved",
       "type": "star",
-      "relatedRules": [],
-      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻未見十四主星系統之天壽安法；舊「十八飛星」系統（維基文庫《紫微斗數》條目）另有同名天壽，但同名異義，不得混用。iztro 有安置，屬實作觀點。",
-      "nextAction": "維持 open：不實作。需先確認所屬系統與可引用原文。",
-      "ownerReviewRequired": true,
+      "relatedRules": [
+        "ZW.CALC.STAR.TIANCAI_TIANSHOU.001"
+      ],
+      "question": "天壽安星口訣來源考證：全書未見，中州派講義王亭之《安星法及推斷實例》載「身宮起子天壽堂，順至生年支安之」；iztro 與 ZhouYiLab 實作一致。",
+      "nextAction": "已實作並納入 canonical 本命盤。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "中州派講義（SRC.ZHONGZHOU, Tier 2）載「身宮起子天壽堂，順至生年支安之」，並經 iztro (Tier 3) 及 ZhouYiLab (Tier 3) 46 例 100% 交叉比對吻合。依 Owner 授權已納入 canonical 本命盤執行計畫。",
       "evidence": [
-        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING"
+        "EVD.ZHONGZHOU.ANXING.TIANCAI_TIANSHOU",
+        "EVD.IZTRO.ANXING.TIANCAI_TIANSHOU"
       ]
     },
     {
       "researchId": "RSH.STAR.TIANWU",
-      "title": "天巫：全書卷二安星訣未載，尚無古典依據",
-      "status": "open",
+      "title": "天巫：生月系安於四馬地（巳申寅亥）",
+      "status": "resolved",
       "type": "star",
-      "relatedRules": [],
-      "question": "2026-09-24 系統性查核：①《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網，兩份互相獨立文本）②知命書院《紫微斗數全書》全本 42 章目錄 ③archive.org《新鐫希夷陳先生紫微斗數全書》掃描本（OCR 不可用）④DuckDuckGo／Bing 全文檢索。結果：古典文獻均未見天巫安法；唯一可得者為 iztro 官方文件所載月支口訣（「安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥」），屬實作/流派文件（Tier 3 implementation），不得作為 canonical 依據。",
-      "nextAction": "維持 open：不實作、不建表。待取得可引用之古典原文或正式出版講義（Tier 1/2，或兩份獨立 Tier3）後，方可建 candidate 規則。",
-      "ownerReviewRequired": true,
+      "relatedRules": [
+        "ZW.CALC.STAR.TIANWU.001"
+      ],
+      "question": "天巫安星口訣來源考證：全書未見，中州派講義王亭之《安星法及推斷實例》載「巳申寅亥天巫位，分輪十二月星君」；iztro 文件載「安天巫訣 正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥」。",
+      "nextAction": "已實作並納入 canonical 本命盤。",
+      "ownerReviewRequired": false,
+      "resolvedAt": "2026-09-26",
+      "resolvedBy": "owner",
+      "resolution": "中州派講義（SRC.ZHONGZHOU, Tier 2）載生月四馬地訣「巳申寅亥天巫位，分輪十二月星君」，iztro 官方文件記載相同月支對應，46 例 100% 交叉比對吻合。依 Owner 授權已納入 canonical 本命盤執行計畫。",
       "evidence": [
-        "EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING",
+        "EVD.ZHONGZHOU.ANXING.TIANWU",
         "EVD.IZTRO.ANXING.TIANWU"
       ]
     },

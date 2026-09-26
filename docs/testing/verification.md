@@ -274,39 +274,37 @@ home  chart-standard  chart-expert  dark  tooltip  bottom-sheet  rules  sources 
 視覺快照的 baseline 與作業系統字型相關，因此只在本地 / 相同環境執行；
 CI 只跑不受字型影響的無障礙測試。
 
-## 8. 補充星曜：台輔／封誥／解神（canonical）與小限（canonical）
+## 8. 補充星曜：六星全備（台輔／封誥／解神／天巫／天才／天壽）與小限（canonical）
 
 spec §18「第一批真正值得研究的 Missing Stars」共六顆（封誥／解神／台輔／天才／天壽／天巫；
 M2 = 「第一批六顆 + Placement + Evidence + UI + Tests」）。目前狀態：
 
 | 批次 | 狀態 |
 |------|------|
-| 台輔、封誥、解神 | **已 canonical**（Placement + Evidence + UI + Tests + differential 全備） |
-| 天才、天壽、天巫 | **阻塞**：兩輪查核（卷二／卷三安星訣＋卷一全文＋維基文庫檢索 API）皆查無安法與條目 → 不實作，僅留 Research Queue（`RSH.STAR.{TIANCAI,TIANSHOU,TIANWU}`）與 iztro-only `mentions` 記錄（詳見 `research/assimilation/classical-verification.md` 附錄一／二） |
+| 台輔、封誥、解神 | **已 canonical**（《全書》卷二原文，Owner 2026-09-24 批准；Placement + Evidence + UI + Tests + differential 全備） |
+| 天巫、天才、天壽 | **已 canonical**（中州派講義王亭之《安星法及推斷實例》SRC.ZHONGZHOU Tier 2，Owner 2026-09-26 批准；Placement + Evidence + UI + Tests + differential 全備，詳見 `research/assimilation/classical-verification.md` 附錄三） |
 
-M2 之完成定義因此為「3 顆落地 + 3 顆具名阻塞並留痕」，其餘不得以外部實作共識充當古典依據（spec §18.1 / §42）。
+M2 之完成定義為六顆星全數落地 canonical 本命盤，每顆星皆具備古典／講義依據、雙重獨立比對、單元測試與差分測試。
 
-外部缺星清單不得直接進 canonical。本次查核《紫微斗數全書》卷二「安星訣」原文：
-
-| 項目 | 古典依據 | 處置 |
+| 項目 | 文獻依據 | 處置 |
 |------|----------|------|
 | 台輔、封誥 | 有（午起子時順、寅起子時順） | **canonical** `ZW.CALC.STAR.TAIFU_FENGGAO.001`（Owner 2026-09-24 批准） |
 | 解神（年解） | 有（戌起子逆至生年太歲） | **canonical** `ZW.CALC.STAR.JIESHEN.001`（Owner 2026-09-24 批准） |
+| 天巫 | 有（生月四馬地，巳申寅亥輪轉） | **canonical** `ZW.CALC.STAR.TIANWU.001`（Owner 2026-09-26 批准） |
+| 天才、天壽 | 有（命宮／身宮起子順數至生年支） | **canonical** `ZW.CALC.STAR.TIANCAI_TIANSHOU.001`（Owner 2026-09-26 批准） |
 | 小限 | 有（寅午戌起辰…男順女逆） | **canonical** `ZW.CALC.PERIOD.XIAOXIAN.001`（Owner 2026-09-24 批准，`chart.periods.xiaoxian`） |
-| 天巫、天才、天壽 | **查無**（全書卷二未載） | 不實作，僅 Research Queue |
 | 月解、童限 | 未取得 / 語意未定 | 不實作，僅 Research Queue |
 
-- canonical 三顆星已進 `NATAL_EXECUTION_PLAN`（golden v2 oracle 35 fixtures 已重生）；小限已進 `PERIOD_EXECUTION_PLAN`（`chart.periods.xiaoxian`）。
+- canonical 六顆星已進 `NATAL_EXECUTION_PLAN`（golden v2 oracle 35 fixtures 已重生）；小限已進 `PERIOD_EXECUTION_PLAN`（`chart.periods.xiaoxian`）。
 - 差分（M2 外部驗證廣度）：`tests/differential/aux-supplementary.test.ts` 將案例擴大為 `IZTRO_CASES` ＋
-  `fixtures/golden/*.json`（陽曆、時辰已知、civil 時制，共 29 案）：台輔／封誥／年解 87 組全數一致；
+  `fixtures/golden/*.json`（陽曆、時辰已知、civil 時制，共 29 案）：台輔／封誥／年解／天巫／天才／天壽 六星全數 100% 一致；
   小限對比 iztro `horoscope().age`（29 案 × 2 目標日）虛歲 100% 一致。真太陽時／`timeConvention !== 'civil'`
   案例（iztro `bySolar()` 不支援經度）明確排除，改由 golden oracle 驗證；未來出生案例則驗證 fail-close
   為 `INVALID_TARGET_DATE`。
-- 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）；本次四項均經 Owner 於 2026-09-24 明確批准。
-- 來源與證據：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與
-  `SRC.QUANSHU.DIANCANG`（中華典藏網），四條口訣逐字相符；
-  證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`；
-  另負向查核 `EVD.QUANSHU.CLASSICAL-VERIFICATION.MISSING`（absence of evidence）。
+- 升 canonical 為 **Owner 專屬**動作（AI 不得自行升級，spec §1.3 / §56）；六星均經 Owner 於 2026-09-24 及 2026-09-26 明確批准。
+- 來源與證據：
+  - 前三星與小限：**兩份互相獨立的 Tier3 電子文本** —— `SRC.QUANSHU.WIKISOURCE`（維基文庫）與 `SRC.QUANSHU.DIANCANG`（中華典藏網），口訣逐字相符；證據 `EVD.QUANSHU.{TAIFU,FENGGAO,JIESHEN,XIAOXIAN}` 與 `EVD.QUANSHU.DIANCANG.*`。
+  - 後三星：王亭之《安星法及推斷實例》（`SRC.ZHONGZHOU`, Tier 2）＋ `SRC.IZTRO`（Tier 3）＋ `ZhouYiLab`（Tier 3）三重對照；證據 `EVD.ZHONGZHOU.ANXING.*` 與 `EVD.IZTRO.ANXING.*`。
 - 小限之目標綁定：`xiaoXianForTarget`（`targetDate`/虛歲，與大限同一慣例）；
   `tests/unit/aux-supplementary.test.ts` 的「證據強度」測試確保未來 candidate 升格前證據充足。
 - 詳見 `research/assimilation/classical-verification.md` 與 `classical-basis.json`。

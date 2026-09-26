@@ -20,9 +20,11 @@ import supplementaryTables from '../../tables/stars/aux-supplementary-tables.jso
 
 export const TAIFU_FENGGAO_RULE_ID = 'ZW.CALC.STAR.TAIFU_FENGGAO.001';
 export const JIESHEN_RULE_ID = 'ZW.CALC.STAR.JIESHEN.001';
+export const TIANWU_RULE_ID = 'ZW.CALC.STAR.TIANWU.001';
+export const TIANCAI_TIANSHOU_RULE_ID = 'ZW.CALC.STAR.TIANCAI_TIANSHOU.001';
 export const XIAOXIAN_RULE_ID = 'ZW.CALC.PERIOD.XIAOXIAN.001';
 
-export type SupplementaryBasis = 'hour-branch' | 'year-branch';
+export type SupplementaryBasis = 'hour-branch' | 'year-branch' | 'lunar-month' | 'year-branch-life' | 'year-branch-body';
 
 export interface SupplementaryStarPlacement {
   starId: string;
@@ -85,15 +87,44 @@ export function placeJieShen(yearBranch: BranchId): BranchId {
   return placeByOffset(cfg.startBranch, cfg.direction, branchIndex(yearBranch));
 }
 
+const TIANWU_CYCLE: BranchId[] = ['si', 'shen', 'yin', 'hai'];
+
+/** 天巫：生月系，正五九在巳、二六十在申、三七十一在寅、四八十二在亥 */
+export function placeTianWu(lunarMonth: number): BranchId {
+  if (lunarMonth < 1 || lunarMonth > 12) {
+    throw new ZiWeiError('INVALID_INPUT', `lunarMonth must be 1..12, got ${lunarMonth}`, { lunarMonth });
+  }
+  return TIANWU_CYCLE[(lunarMonth - 1) % 4];
+}
+
+/** 天才：由命宮起子，順行至本生年支 */
+export function placeTianCai(lifePalaceBranch: BranchId, yearBranch: BranchId): BranchId {
+  return branchAt(branchIndex(lifePalaceBranch) + branchIndex(yearBranch));
+}
+
+/** 天壽：由身宮起子，順行至本生年支 */
+export function placeTianShou(bodyPalaceBranch: BranchId, yearBranch: BranchId): BranchId {
+  return branchAt(branchIndex(bodyPalaceBranch) + branchIndex(yearBranch));
+}
+
 const FORMULA = {
   taifu: '由午宮起子順數至本生時安之',
   fenggao: '由寅起宮子順數至本生時安之',
-  jieshen: '解神從戌上起子，逆數至當生年太歲是也'
+  jieshen: '解神從戌上起子，逆數至當生年太歲是也',
+  tianwu: '巳申寅亥天巫位，分輪十二月星君',
+  tiancai: '命宮起子天才順，順至生年支安之',
+  tianshou: '身宮起子天壽堂，順至生年支安之'
 } as const;
 
-/** 補充輔星（台輔／封誥／解神）之安星結果；三者已為 canonical，與本命盤安置結果一致 */
-export function supplementaryAuxStars(input: { hourBranch: BranchId; yearBranch: BranchId }): SupplementaryStarPlacement[] {
-  return [
+/** 補充輔星（台輔／封誥／解神／天巫／天才／天壽）之安星結果 */
+export function supplementaryAuxStars(input: {
+  hourBranch: BranchId;
+  yearBranch: BranchId;
+  lunarMonth?: number;
+  lifePalaceBranch?: BranchId;
+  bodyPalaceBranch?: BranchId;
+}): SupplementaryStarPlacement[] {
+  const list: SupplementaryStarPlacement[] = [
     {
       starId: 'ZW.STAR.AUX.TAIFU',
       branch: placeTaiFu(input.hourBranch),
@@ -116,6 +147,38 @@ export function supplementaryAuxStars(input: { hourBranch: BranchId; yearBranch:
       formula: FORMULA.jieshen
     }
   ];
+
+  if (input.lunarMonth !== undefined) {
+    list.push({
+      starId: 'ZW.STAR.AUX.TIANWU',
+      branch: placeTianWu(input.lunarMonth),
+      ruleId: TIANWU_RULE_ID,
+      basis: 'lunar-month',
+      formula: FORMULA.tianwu
+    });
+  }
+
+  if (input.lifePalaceBranch !== undefined) {
+    list.push({
+      starId: 'ZW.STAR.AUX.TIANCAI',
+      branch: placeTianCai(input.lifePalaceBranch, input.yearBranch),
+      ruleId: TIANCAI_TIANSHOU_RULE_ID,
+      basis: 'year-branch-life',
+      formula: FORMULA.tiancai
+    });
+  }
+
+  if (input.bodyPalaceBranch !== undefined) {
+    list.push({
+      starId: 'ZW.STAR.AUX.TIANSHOU',
+      branch: placeTianShou(input.bodyPalaceBranch, input.yearBranch),
+      ruleId: TIANCAI_TIANSHOU_RULE_ID,
+      basis: 'year-branch-body',
+      formula: FORMULA.tianshou
+    });
+  }
+
+  return list;
 }
 
 /** 年支所屬三合局名稱 */

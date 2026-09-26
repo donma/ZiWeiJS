@@ -1,6 +1,6 @@
 import type {
   ZiWeiChart, Palace, PalaceId, BranchId, StarPlacement, Transformation,
-  TransformationType, PeriodScope
+  TransformationType, PeriodScope, PeriodInfo, XiaoXianPeriod
 } from '../core/types.js';
 import {
   buildRelationContext, palaceById, relatedPalaces, adjacentBranches, trineBranches,
@@ -127,8 +127,11 @@ export function selfTransformations(chart: ZiWeiChart, palaceId: PalaceId): Tran
   );
 }
 
-/** 限運查詢 */
-export function period(chart: ZiWeiChart, scope: 'year' | 'month' | 'day' | 'hour') {
+/** 限運查詢（含小限） */
+export function period(
+  chart: ZiWeiChart,
+  scope: 'year' | 'month' | 'day' | 'hour' | 'xiaoxian'
+): PeriodInfo | XiaoXianPeriod | undefined {
   return chart.periods[scope];
 }
 

@@ -405,6 +405,24 @@
       "aliases": ["年解", "解神星"],
       "shortDesc": { "zh-TW": "年支系輔星，由戌宮起子逆數至生年太歲；主解厄。" },
       "note": "安法依據《紫微斗數全書》卷二安天德月德解神訣（年解），兩份獨立電子文本逐字相符；2026-09-24 經 Owner 批准升 canonical（規則 ZW.CALC.STAR.JIESHEN.001）。月解（依生月）尚未實作。",
-      "sources": ["SRC.QUANSHU.WIKISOURCE", "SRC.QUANSHU.DIANCANG"], "tags": ["year-branch", "phase-b"] }
+      "sources": ["SRC.QUANSHU.WIKISOURCE", "SRC.QUANSHU.DIANCANG"], "tags": ["year-branch", "phase-b"] },
+    { "id": "ZW.STAR.AUX.TIANWU", "category": "aux", "tier": "common", "status": "canonical", "entityKind": "star",
+      "name": { "zh-TW": "天巫", "zh-CN": "天巫", "en": "Tian Wu" },
+      "aliases": ["天巫星"],
+      "shortDesc": { "zh-TW": "生月系輔星，落在四馬地（巳申寅亥）；主升遷、遺產、宗教。" },
+      "note": "安法依據《中州派紫微斗數講義》（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）安解神天巫訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。Owner 於 2026-09-26 授權升 canonical（規則 ZW.CALC.STAR.TIANWU.001）。",
+      "sources": ["SRC.ZHONGZHOU", "SRC.IZTRO"], "tags": ["lunar-month", "phase-b"] },
+    { "id": "ZW.STAR.AUX.TIANCAI", "category": "aux", "tier": "common", "status": "canonical", "entityKind": "star",
+      "name": { "zh-TW": "天才", "zh-CN": "天才", "en": "Tian Cai" },
+      "aliases": ["天才星"],
+      "shortDesc": { "zh-TW": "年支命宮系輔星，由命宮起子順數至生年支；主才智、聰敏。" },
+      "note": "安法依據《中州派紫微斗數講義》（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）安天才天壽訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。Owner 於 2026-09-26 授權升 canonical（規則 ZW.CALC.STAR.TIANCAI_TIANSHOU.001）。",
+      "sources": ["SRC.ZHONGZHOU", "SRC.IZTRO"], "tags": ["year-branch", "life-palace", "phase-b"] },
+    { "id": "ZW.STAR.AUX.TIANSHOU", "category": "aux", "tier": "common", "status": "canonical", "entityKind": "star",
+      "name": { "zh-TW": "天壽", "zh-CN": "天寿", "en": "Tian Shou" },
+      "aliases": ["天壽星", "天寿星"],
+      "shortDesc": { "zh-TW": "年支身宮系輔星，由身宮起子順數至生年支；主福壽、長壽。" },
+      "note": "安法依據《中州派紫微斗數講義》（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）安天才天壽訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。注意：舊「十八飛星」系統另有同名天壽，屬同名異義，本星為十四主星體系之天壽。Owner 於 2026-09-26 授權升 canonical（規則 ZW.CALC.STAR.TIANCAI_TIANSHOU.001）。",
+      "sources": ["SRC.ZHONGZHOU", "SRC.IZTRO"], "tags": ["year-branch", "body-palace", "phase-b"] }
   ]
 }

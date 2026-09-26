@@ -79,4 +79,16 @@ describe('AI context: 可追溯性（sourceIds / evidenceIds）', () => {
     const again = toContext(calculate(INPUT, { trace: true, targetDate: { year: 2026, month: 9, day: 24, hour: 12 } }));
     expect(JSON.stringify(again)).toBe(JSON.stringify(ctx));
   });
+
+  it('支援 task-specific retrieval（spec §31 / M9）', () => {
+    const full = toContext(chart);
+    const natal = toContext(chart, { task: 'natal' });
+    const rel = toContext(chart, { task: 'relationship' });
+    const yearly = toContext(chart, { task: 'yearly' });
+
+    expect(natal.interpretationHits.every(h => ['personality', 'general', 'career', 'wealth'].includes(h.domain))).toBe(true);
+    expect(rel.interpretationHits.every(h => ['relationship', 'marriage', 'family', 'social'].includes(h.domain))).toBe(true);
+    expect(yearly.interpretationHits.every(h => ['timing', 'risk', 'career', 'wealth'].includes(h.domain))).toBe(true);
+    expect(full.interpretationHits.length).toBeGreaterThanOrEqual(natal.interpretationHits.length);
+  });
 });

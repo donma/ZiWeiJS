@@ -31,3 +31,8 @@ const html = `<!DOCTYPE html>
 
 writeFileSync(join(root, 'dist/ziwei-bible-demo.html'), html, 'utf8');
 console.log('wrote dist/ziwei-bible-demo.html (double-click to open, works offline)');
+
+// 同步複製一份至 dist/app/，確保 GitHub Pages 部署 dist/app 時兩種 URL 都能開啟：
+// 1. https://donma.github.io/ZiWeiJS/ (SPA index.html)
+// 2. https://donma.github.io/ZiWeiJS/ziwei-bible-demo.html (單一獨立離線 HTML)
+writeFileSync(join(root, 'dist/app/ziwei-bible-demo.html'), html, 'utf8');

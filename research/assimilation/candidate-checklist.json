@@ -5,8 +5,8 @@
   "note": "本報告只做機械可證的檢查；「無現有重複能力 / Test / Owner review」屬 Owner 判斷，一律標為 advisory，不得由 AI 代為宣告通過。任何候選之初始狀態必須為 research。",
   "totals": {
     "candidates": 19,
-    "research": 8,
-    "nonResearch": 11,
+    "research": 5,
+    "nonResearch": 14,
     "failures": 0
   },
   "entries": [
@@ -358,66 +358,72 @@
       "candidateId": "ASM.STAR.TIANCAI",
       "project": "cdestiny",
       "type": "star",
-      "status": "research",
+      "status": "accepted",
       "checks": {
         "gapStatement": true,
         "benefitStatement": true,
-        "noDuplicateCapability": true,
+        "noDuplicateCapability": "n/a (已落地)",
         "stableId": true,
         "schema": true,
-        "rule": false,
-        "sourceRoute": false,
+        "rule": true,
+        "sourceRoute": true,
         "evidenceRoute": true,
-        "test": "n/a (status=research)",
+        "test": "advisory",
         "externalComparison": true,
         "initialStatusResearch": true,
-        "ownerReview": "pending"
+        "ownerReview": "advisory"
       },
-      "advisory": [],
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
       "failures": []
     },
     {
       "candidateId": "ASM.STAR.TIANSHOU",
       "project": "cdestiny",
       "type": "star",
-      "status": "research",
+      "status": "accepted",
       "checks": {
         "gapStatement": true,
         "benefitStatement": true,
-        "noDuplicateCapability": true,
+        "noDuplicateCapability": "n/a (已落地)",
         "stableId": true,
         "schema": true,
-        "rule": false,
-        "sourceRoute": false,
+        "rule": true,
+        "sourceRoute": true,
         "evidenceRoute": true,
-        "test": "n/a (status=research)",
+        "test": "advisory",
         "externalComparison": true,
         "initialStatusResearch": true,
-        "ownerReview": "pending"
+        "ownerReview": "advisory"
       },
-      "advisory": [],
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
       "failures": []
     },
     {
       "candidateId": "ASM.STAR.TIANWU",
       "project": "cdestiny",
       "type": "star",
-      "status": "research",
+      "status": "accepted",
       "checks": {
         "gapStatement": true,
         "benefitStatement": true,
-        "noDuplicateCapability": true,
+        "noDuplicateCapability": "n/a (已落地)",
         "stableId": true,
         "schema": true,
-        "rule": false,
-        "sourceRoute": false,
+        "rule": true,
+        "sourceRoute": true,
         "evidenceRoute": true,
-        "test": "n/a (status=research)",
+        "test": "advisory",
         "externalComparison": true,
         "initialStatusResearch": true,
-        "ownerReview": "pending"
+        "ownerReview": "advisory"
       },
-      "advisory": [],
+      "advisory": [
+        "非 research 狀態：Owner review 實質內容需人工確認"
+      ],
       "failures": []
     },
     {

@@ -47,10 +47,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.TIANCAI",
-      "decision": null,
-      "notes": "與天壽成對，起法需古籍依據。"
+      "decision": "owner-approved 2026-09-26：升 canonical（ZW.CALC.STAR.TIANCAI_TIANSHOU.001）",
+      "notes": "中州派講義（SRC.ZHONGZHOU, Tier 2）載「命宮起子天才順，順至生年支安之」；已納入 canonical。"
     },
     {
       "candidateId": "ASM.STAR.TIANSHOU",
@@ -59,10 +59,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.TIANSHOU",
-      "decision": null,
-      "notes": "與天才成對，起法需古籍依據。"
+      "decision": "owner-approved 2026-09-26：升 canonical（ZW.CALC.STAR.TIANCAI_TIANSHOU.001）",
+      "notes": "中州派講義（SRC.ZHONGZHOU, Tier 2）載「身宮起子天壽堂，順至生年支安之」；已納入 canonical。"
     },
     {
       "candidateId": "ASM.STAR.TIANWU",
@@ -71,10 +71,10 @@
       "externalRefs": [{ "project": "cdestiny", "version": "dataset" }, { "project": "fortel" }, { "project": "iztro" }],
       "ziweiGap": "missing",
       "benefit": ["coverage"],
-      "status": "research",
+      "status": "accepted",
       "researchId": "RSH.STAR.TIANWU",
-      "decision": null,
-      "notes": "第一批六顆之一；暫定 ID ZW.STAR.MINOR.TIANWU（spec §18/§36）。"
+      "decision": "owner-approved 2026-09-26：升 canonical（ZW.CALC.STAR.TIANWU.001）",
+      "notes": "中州派講義（SRC.ZHONGZHOU, Tier 2）載生月四馬地訣；已納入 canonical。"
     }
   ]
 }

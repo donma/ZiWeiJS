@@ -379,6 +379,18 @@
       "ZW.STAR.AUX.JIESHEN": {
         "branch": "wei",
         "palaceId": "parents"
+      },
+      "ZW.STAR.AUX.TIANWU": {
+        "branch": "yin",
+        "palaceId": "wealth"
+      },
+      "ZW.STAR.AUX.TIANCAI": {
+        "branch": "you",
+        "palaceId": "property"
+      },
+      "ZW.STAR.AUX.TIANSHOU": {
+        "branch": "you",
+        "palaceId": "property"
       }
     },
     "sihua": {

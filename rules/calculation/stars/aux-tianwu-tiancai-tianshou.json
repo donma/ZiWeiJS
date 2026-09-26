@@ -1,0 +1,104 @@
+{
+  "$schema": "../../../schemas/rule.schema.json",
+  "rules": [
+    {
+      "ruleId": "ZW.CALC.STAR.TIANWU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.stars.aux.tianwu",
+      "category": "stars",
+      "name": {
+        "zh-TW": "安天巫",
+        "en": "Place Tian Wu"
+      },
+      "description": {
+        "zh-TW": "天巫星依農曆生月安星：正月、五月、九月在巳；二月、六月、十月在申；三月、七月、十一月在寅；四月、八月、十二月在亥。依中州派講義（王亭之《安星法及推斷實例》／《紫微斗數初級講義》）安解神天巫訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。"
+      },
+      "inputs": [
+        "calendar.lunar.month"
+      ],
+      "logic": {
+        "executor": "calcAuxTianWu",
+        "params": {
+          "tableRef": "stars/aux-supplementary-tables#byLunarMonth"
+        },
+        "stage": "natal",
+        "order": 2020
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.ZHONGZHOU",
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.ZHONGZHOU.ANXING.TIANWU",
+        "EVD.IZTRO.ANXING.TIANWU"
+      ],
+      "tags": [
+        "phase-b",
+        "lunar-month"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "Owner 於 2026-09-26 授權升 canonical：依中州派講義（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）安解神天巫訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。"
+        }
+      ]
+    },
+    {
+      "ruleId": "ZW.CALC.STAR.TIANCAI_TIANSHOU.001",
+      "ruleVersion": "1.0",
+      "status": "canonical",
+      "scope": "calculation.stars.aux.tiancai-tianshou",
+      "category": "stars",
+      "name": {
+        "zh-TW": "安天才天壽",
+        "en": "Place Tian Cai / Tian Shou"
+      },
+      "description": {
+        "zh-TW": "天才由命宮起子，順行至本生年支安之；天壽由身宮起子，順行至本生年支安之。依中州派講義（王亭之《安星法及推斷實例》／《紫微斗數初級講義》）安天才天壽訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。"
+      },
+      "inputs": [
+        "lifePalaceBranch",
+        "bodyPalaceBranch",
+        "ganzhi.year.branch"
+      ],
+      "logic": {
+        "executor": "calcAuxTianCaiTianShou",
+        "params": {
+          "tableRef": "stars/aux-supplementary-tables#byYearBranchOffset"
+        },
+        "stage": "natal",
+        "order": 2030
+      },
+      "outputs": [
+        "stars.*"
+      ],
+      "sourceRefs": [
+        "SRC.ZHONGZHOU",
+        "SRC.IZTRO"
+      ],
+      "evidenceRefs": [
+        "EVD.ZHONGZHOU.ANXING.TIANCAI_TIANSHOU",
+        "EVD.IZTRO.ANXING.TIANCAI_TIANSHOU"
+      ],
+      "tags": [
+        "phase-b",
+        "year-branch",
+        "life-body-branch"
+      ],
+      "changeLog": [
+        {
+          "version": "1.0",
+          "type": "behavior-change",
+          "date": "2026-09-26",
+          "note": "Owner 於 2026-09-26 授權升 canonical：依中州派講義（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）安天才天壽訣；另與 iztro / ZhouYiLab 開源實作 differential 100% 一致。"
+        }
+      ]
+    }
+  ]
+}

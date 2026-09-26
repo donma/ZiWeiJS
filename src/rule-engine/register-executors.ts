@@ -21,7 +21,7 @@ import {
 } from '../executors/star-executors.js';
 import { calcDirection, requireSex } from '../executors/birth-executors.js';
 import {
-  calcAuxTaiFuFengGao, calcAuxJieShen, calcXiaoXian
+  calcAuxTaiFuFengGao, calcAuxJieShen, calcAuxTianWu, calcAuxTianCaiTianShou, calcXiaoXian
 } from '../executors/aux-supplementary-executors.js';
 import { verifySolarLunar, verifyGanzhi, verifyTrueSolar } from './calendar-executors.js';
 import { calcNatalSihua, calcPalaceSihua, calcPeriodSihua } from '../transformation-engine/transformation-engine.js';
@@ -155,9 +155,11 @@ export function registerAllExecutors(): void {
     registerExecutor(rel, makeRelExecutor(rel));
   }
 
-  /* 補充安星：台輔／封誥／解神為 canonical（natal）；小限仍為 candidate（on-demand） */
+  /* 補充安星：台輔／封誥／解神／天巫／天才／天壽為 canonical（natal）；小限為 canonical（period） */
   registerExecutor('calcAuxTaiFuFengGao', calcAuxTaiFuFengGao);
   registerExecutor('calcAuxJieShen', calcAuxJieShen);
+  registerExecutor('calcAuxTianWu', calcAuxTianWu);
+  registerExecutor('calcAuxTianCaiTianShou', calcAuxTianCaiTianShou);
   registerExecutor('calcXiaoXian', calcXiaoXian);
 
   registerExecutor('rectifyAnalyze', rectifyFramework);

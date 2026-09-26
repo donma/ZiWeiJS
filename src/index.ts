@@ -31,7 +31,7 @@ export { resolveInterpretationHits, activeHits } from './interpretation-engine/r
 export { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
 export type { UnknownTimeResult, RectificationResult, RectificationClue } from './rectification/rectification.js';
 export { toContext } from './ai/context.js';
-export type { AiContext } from './ai/context.js';
+export type { AiContext, AiTaskType, ToContextOptions } from './ai/context.js';
 export {
   PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus,
   classifyDifference, DIFFERENTIAL_CLASSES, DIFFERENTIAL_CLASS_ZH
@@ -64,8 +64,9 @@ export {
 export type { PalaceRelations } from './query-engine/query.js';
 export {
   supplementaryAuxStars, placeByOffset, placeTaiFu, placeFengGao, placeJieShen,
+  placeTianWu, placeTianCai, placeTianShou,
   yearBranchGroup, xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence,
-  xiaoXianForTarget, TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
+  xiaoXianForTarget, TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, TIANWU_RULE_ID, TIANCAI_TIANSHOU_RULE_ID, XIAOXIAN_RULE_ID,
   type SupplementaryStarPlacement, type SupplementaryBasis, type XiaoXianTargetResolution
 } from './aux-supplementary/aux-supplementary.js';
 
@@ -94,18 +95,22 @@ import {
 import { ASTRO_ENTITY_KINDS } from './core/entity-kinds.js';
 import {
   supplementaryAuxStars, placeTaiFu, placeFengGao, placeJieShen,
+  placeTianWu, placeTianCai, placeTianShou,
   xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
-  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID,
+  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, TIANWU_RULE_ID, TIANCAI_TIANSHOU_RULE_ID, XIAOXIAN_RULE_ID,
   type XiaoXianTargetResolution
 } from './aux-supplementary/aux-supplementary.js';
 import type { ZiWeiChart, CalculateOptions, ZiWeiBirthInput, TargetDate } from './core/types.js';
 
-/** 補充安星 API（台輔／封誥／解神／小限）；`ZiWei.Supplementary` 與舊名 `ZiWei.Candidate` 共用 */
+/** 補充安星 API（台輔／封誥／解神／天巫／天才／天壽／小限）；`ZiWei.Supplementary` 與舊名 `ZiWei.Candidate` 共用 */
 const supplementaryApi = {
   auxStars: supplementaryAuxStars,
   taiFu: placeTaiFu,
   fengGao: placeFengGao,
   jieShen: placeJieShen,
+  tianWu: placeTianWu,
+  tianCai: placeTianCai,
+  tianShou: placeTianShou,
   xiaoXian: {
     startBranch: xiaoXianStartBranch,
     direction: xiaoXianDirection,
@@ -135,6 +140,8 @@ const supplementaryApi = {
   ruleIds: {
     taiFuFengGao: TAIFU_FENGGAO_RULE_ID,
     jieShen: JIESHEN_RULE_ID,
+    tianWu: TIANWU_RULE_ID,
+    tianCaiTianShou: TIANCAI_TIANSHOU_RULE_ID,
     xiaoXian: XIAOXIAN_RULE_ID
   }
 };

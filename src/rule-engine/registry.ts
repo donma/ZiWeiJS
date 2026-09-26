@@ -8,6 +8,7 @@ import auxStarsData from '../../rules/calculation/stars/aux-stars.json' with { t
 import auxGroupsData from '../../rules/calculation/stars/aux-groups.json' with { type: 'json' };
 import auxVariantsData from '../../rules/calculation/stars/aux-variants.json' with { type: 'json' };
 import auxTaiFuFengGaoJieShen from '../../rules/calculation/stars/aux-taifu-fenggao-jieshen.json' with { type: 'json' };
+import auxTianWuTianCaiTianShou from '../../rules/calculation/stars/aux-tianwu-tiancai-tianshou.json' with { type: 'json' };
 import sihuaData from '../../rules/calculation/transformations/sihua.json' with { type: 'json' };
 import periodsData from '../../rules/calculation/periods/periods.json' with { type: 'json' };
 import xiaoxianData from '../../rules/calculation/periods/xiaoxian.json' with { type: 'json' };
@@ -36,7 +37,8 @@ import profilesLichun from '../../profiles/lichun.json' with { type: 'json' };
 interface RuleFile { rules?: Rule[]; patterns?: Rule[] }
 
 const ruleFiles: RuleFile[] = [
-  palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData, auxTaiFuFengGaoJieShen,
+  palacesData, bureauData, majorStarsData, auxStarsData, auxGroupsData, auxVariantsData,
+  auxTaiFuFengGaoJieShen, auxTianWuTianCaiTianShou,
   sihuaData, periodsData, xiaoxianData, relationsData, dignityData, calendarData, birthData,
   patternsData, rectificationData
 ] as unknown as RuleFile[];

@@ -70,9 +70,11 @@ describe('Query.transformations / period', () => {
     expect(Q.transformations(chart, { scope: 'natal' })).toHaveLength(4);
   });
 
-  it('period 查流年 / 流月', () => {
+  it('period 查流年 / 流月 / 小限', () => {
     expect(Q.period(chart, 'year')?.scope).toBe('year');
     expect(Q.period(chart, 'month')?.scope).toBe('month');
+    expect(Q.period(chart, 'xiaoxian')?.scope).toBe('xiaoxian');
+    expect((Q.period(chart, 'xiaoxian') as any)?.age).toBeGreaterThan(0);
   });
 
   it('isEmptyPalace 與 majorStars 一致', () => {

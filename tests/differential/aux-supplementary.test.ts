@@ -101,7 +101,13 @@ for (const input of CIVIL_CASES) {
   const yearBranch = chart.calendar.ganzhi.year.branch as BranchId;
 
   const ours: Record<string, string> = {};
-  for (const p of supplementaryAuxStars({ hourBranch, yearBranch })) ours[p.starId] = p.branch;
+  for (const p of supplementaryAuxStars({
+    hourBranch,
+    yearBranch,
+    lunarMonth: chart.calendar.lunar.month,
+    lifePalaceBranch: chart.chart.natal.lifePalaceBranch,
+    bodyPalaceBranch: chart.chart.natal.bodyPalaceBranch
+  })) ours[p.starId] = p.branch;
 
   const hour = input.time?.hour ?? 12;
   const dateStr = `${input.date.year}-${input.date.month}-${input.date.day}`;
@@ -113,7 +119,10 @@ for (const input of CIVIL_CASES) {
   const pairs: Array<[string, string, string]> = [
     ['台輔', 'ZW.STAR.AUX.TAIFU', '台輔'],
     ['封誥', 'ZW.STAR.AUX.FENGGAO', '封誥'],
-    ['年解', 'ZW.STAR.AUX.JIESHEN', '年解']
+    ['年解', 'ZW.STAR.AUX.JIESHEN', '年解'],
+    ['天巫', 'ZW.STAR.AUX.TIANWU', '天巫'],
+    ['天才', 'ZW.STAR.AUX.TIANCAI', '天才'],
+    ['天壽', 'ZW.STAR.AUX.TIANSHOU', '天壽']
   ];
   for (const [star, oursId, extName] of pairs) {
     const bible = ours[oursId];
@@ -123,14 +132,14 @@ for (const input of CIVIL_CASES) {
 }
 
 describe('differential: 補充星曜 / 小限 vs iztro', () => {
-  it('三個星曜在全部案例皆取得外部值（無 empty）', () => {
-    expect(rows.length).toBe(CIVIL_CASES.length * 3);
+  it('六個星曜在全部案例皆取得外部值（無 empty）', () => {
+    expect(rows.length).toBe(CIVIL_CASES.length * 6);
     expect(CIVIL_CASES.length).toBeGreaterThanOrEqual(25);
     expect(CASES.length).toBeGreaterThan(CIVIL_CASES.length);
     expect(rows.filter(r => !r.external)).toEqual([]);
   });
 
-  it('台輔／封誥／年解 與 iztro 100% 一致', () => {
+  it('台輔／封誥／年解／天巫／天才／天壽 與 iztro 100% 一致', () => {
     const mismatches = rows.filter(r => !r.match);
     expect(
       mismatches.map(r => `${r.label} ${r.star}: bible=${r.bible} iztro=${r.external}`)

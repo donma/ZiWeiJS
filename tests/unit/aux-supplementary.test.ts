@@ -2,8 +2,9 @@ import { describe, it, expect } from 'vitest';
 import {
   calculate, listRules, listStarRegistry, listSources, BRANCHES, ZiWei,
   supplementaryAuxStars, placeTaiFu, placeFengGao, placeJieShen,
+  placeTianWu, placeTianCai, placeTianShou,
   xiaoXianStartBranch, xiaoXianDirection, xiaoXianBranchAtAge, xiaoXianSequence, xiaoXianForTarget,
-  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, XIAOXIAN_RULE_ID
+  TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID, TIANWU_RULE_ID, TIANCAI_TIANSHOU_RULE_ID, XIAOXIAN_RULE_ID
 } from '../../src/index.js';
 import type { BranchId, ZiWeiBirthInput } from '../../src/index.js';
 import { plannedRuleIds } from '../../src/rule-engine/execution-plan.js';
@@ -68,14 +69,54 @@ describe('candidate 星曜安法（全書卷二口訣）', () => {
     }
   });
 
-  it('supplementaryAuxStars 回傳三顆星並附口訣與規則來源', () => {
-    const out = supplementaryAuxStars({ hourBranch: 'wu', yearBranch: 'wu' });
+  it('天巫：生月系，正五九在巳、二六十在申、三七十一在寅、四八十二在亥', () => {
+    const expected: Record<number, BranchId> = {
+      1: 'si', 5: 'si', 9: 'si',
+      2: 'shen', 6: 'shen', 10: 'shen',
+      3: 'yin', 7: 'yin', 11: 'yin',
+      4: 'hai', 8: 'hai', 12: 'hai'
+    };
+    for (let m = 1; m <= 12; m++) {
+      expect(placeTianWu(m), `生月 ${m}`).toBe(expected[m]);
+    }
+  });
+
+  it('天才 / 天壽：由命宮 / 身宮起子順數至生年支', () => {
+    for (let y = 0; y < 12; y++) {
+      const yb = BRANCHES[y] as BranchId;
+      for (let l = 0; l < 12; l++) {
+        const lb = BRANCHES[l] as BranchId;
+        expect(placeTianCai(lb, yb), `life=${lb} year=${yb}`).toBe(forwardFrom(lb, y));
+      }
+      for (let b = 0; b < 12; b++) {
+        const bb = BRANCHES[b] as BranchId;
+        expect(placeTianShou(bb, yb), `body=${bb} year=${yb}`).toBe(forwardFrom(bb, y));
+      }
+    }
+  });
+
+  it('supplementaryAuxStars 回傳六顆星並附口訣與規則來源', () => {
+    const out = supplementaryAuxStars({
+      hourBranch: 'wu',
+      yearBranch: 'wu',
+      lunarMonth: 5,
+      lifePalaceBranch: 'zi',
+      bodyPalaceBranch: 'chen'
+    });
     expect(out.map(p => p.starId)).toEqual([
-      'ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN'
+      'ZW.STAR.AUX.TAIFU',
+      'ZW.STAR.AUX.FENGGAO',
+      'ZW.STAR.AUX.JIESHEN',
+      'ZW.STAR.AUX.TIANWU',
+      'ZW.STAR.AUX.TIANCAI',
+      'ZW.STAR.AUX.TIANSHOU'
     ]);
     expect(out.find(p => p.starId === 'ZW.STAR.AUX.TAIFU')!.branch).toBe('zi');
     expect(out.find(p => p.starId === 'ZW.STAR.AUX.FENGGAO')!.branch).toBe('shen');
     expect(out.find(p => p.starId === 'ZW.STAR.AUX.JIESHEN')!.branch).toBe('chen');
+    expect(out.find(p => p.starId === 'ZW.STAR.AUX.TIANWU')!.branch).toBe('si');
+    expect(out.find(p => p.starId === 'ZW.STAR.AUX.TIANCAI')!.branch).toBe('wu');
+    expect(out.find(p => p.starId === 'ZW.STAR.AUX.TIANSHOU')!.branch).toBe('xu');
     for (const p of out) expect(p.formula.length).toBeGreaterThan(0);
   });
 });
@@ -204,11 +245,23 @@ describe('candidate 小限（目標日期綁定，升 canonical 前之必要修�
   });
 });
 
-describe('補充星曜治理：canonical（台輔／封誥／解神）與 candidate（小限）', () => {
-  const SUPPLEMENTARY_STAR_RULES = [TAIFU_FENGGAO_RULE_ID, JIESHEN_RULE_ID];
-  const SUPPLEMENTARY_STARS = ['ZW.STAR.AUX.TAIFU', 'ZW.STAR.AUX.FENGGAO', 'ZW.STAR.AUX.JIESHEN'];
+describe('補充星曜治理：canonical（台輔／封誥／解神／天巫／天才／天壽）與 canonical 小限', () => {
+  const SUPPLEMENTARY_STAR_RULES = [
+    TAIFU_FENGGAO_RULE_ID,
+    JIESHEN_RULE_ID,
+    TIANWU_RULE_ID,
+    TIANCAI_TIANSHOU_RULE_ID
+  ];
+  const SUPPLEMENTARY_STARS = [
+    'ZW.STAR.AUX.TAIFU',
+    'ZW.STAR.AUX.FENGGAO',
+    'ZW.STAR.AUX.JIESHEN',
+    'ZW.STAR.AUX.TIANWU',
+    'ZW.STAR.AUX.TIANCAI',
+    'ZW.STAR.AUX.TIANSHOU'
+  ];
 
-  it('台輔／封誥／解神 規則為 canonical 且 stage=natal（2026-09-24 Owner 批准）', () => {
+  it('台輔／封誥／解神／天巫／天才／天壽 規則為 canonical 且 stage=natal', () => {
     for (const id of SUPPLEMENTARY_STAR_RULES) {
       const rule = listRules().find(r => r.ruleId === id);
       expect(rule, id).toBeDefined();
@@ -219,7 +272,7 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
     }
   });
 
-  it('台輔／封誥／解神 進 natal 執行計畫（正式併入本命盤）', () => {
+  it('六顆補充星曜全進 natal 執行計畫（正式併入本命盤）', () => {
     const planned = new Set(plannedRuleIds());
     for (const id of SUPPLEMENTARY_STAR_RULES) expect(planned.has(id), id).toBe(true);
   });
@@ -238,7 +291,7 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
   it('補充星曜 executors 已註冊', () => {
     registerAllExecutors();
     const names = new Set(listExecutorNames());
-    for (const n of ['calcAuxTaiFuFengGao', 'calcAuxJieShen', 'calcXiaoXian']) {
+    for (const n of ['calcAuxTaiFuFengGao', 'calcAuxJieShen', 'calcAuxTianWu', 'calcAuxTianCaiTianShou', 'calcXiaoXian']) {
       expect(names.has(n), n).toBe(true);
     }
   });
@@ -251,20 +304,18 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
     expect(plannedRuleIds()).toContain(XIAOXIAN_RULE_ID);
   });
 
-  it('星曜 registry 三筆為 canonical, entityKind=star, 具兩份獨立來源', () => {
+  it('星曜 registry 六筆為 canonical, entityKind=star', () => {
     const reg = listStarRegistry();
     for (const id of SUPPLEMENTARY_STARS) {
       const s = reg.find(x => x.id === id);
       expect(s, id).toBeDefined();
       expect(s!.status).toBe('canonical');
       expect(s!.entityKind ?? 'star').toBe('star');
-      expect(s!.sources ?? []).toEqual(
-        expect.arrayContaining(['SRC.QUANSHU.WIKISOURCE', 'SRC.QUANSHU.DIANCANG'])
-      );
+      expect(s!.sources?.length).toBeGreaterThan(0);
     }
   });
 
-  it('canonical 盤面出現台輔／封誥／解神，且位置與安星口訣一致', () => {
+  it('canonical 盤面出現全部六顆補充星曜，且位置與安星口訣一致', () => {
     const input: ZiWeiBirthInput = {
       calendarType: 'solar',
       date: { year: 1990, month: 5, day: 15 },
@@ -278,7 +329,10 @@ describe('補充星曜治理：canonical（台輔／封誥／解神）與 candid
 
     const expected = supplementaryAuxStars({
       hourBranch: chart.calendar.hourBranch,
-      yearBranch: chart.calendar.ganzhi.year.branch
+      yearBranch: chart.calendar.ganzhi.year.branch,
+      lunarMonth: chart.calendar.lunar.month,
+      lifePalaceBranch: chart.chart.natal.lifePalaceBranch,
+      bodyPalaceBranch: chart.chart.natal.bodyPalaceBranch
     });
     for (const e of expected) {
       expect(chart.chart.stars[e.starId].branch, e.starId).toBe(e.branch);

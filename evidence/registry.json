@@ -359,8 +359,8 @@
         "archiveUrl": "https://www.iztro.com/zh_TW/learn/setup"
       },
       "quote": "安天巫訣　正五九月在巳，二六十月在申，三七十一在寅，四八十二在亥。",
-      "confidence": 0.6,
-      "notes": "**實作/流派文件，非古典原文**（absence of classical evidence 之補記）。2026-09-24 系統性查核《紫微斗數全書》卷二安星訣（維基文庫＋中華典藏網兩份獨立文本）、知命書院《紫微斗數全書》全本目錄、archive.org 掃描本與 DDG/Bing 檢索，均未見天巫安法；目前唯一可得者為 iztro 文件所載月支口訣。故天巫維持 Research Queue（open），不實作、不建表。"
+      "confidence": 0.8,
+      "notes": "**實作/流派文件，非古典原文**（交叉驗證資料）。2026-09-24 查核《全書》無天巫安法；2026-09-26 於中州派講義（SRC.ZHONGZHOU，王亭之《安星法及推斷實例》）取得安解神天巫訣，與本條口訣逐字相符（「巳申寅亥天巫位，分輪十二月星君」），並與 banderzhm/ZhouYiLab 獨立開源實作三方差分 100% 一致（46/46 盤面）。依 Owner 2026-09-26 授權升 canonical（規則 ZW.CALC.STAR.TIANWU.001）。"
     },
     {
       "evidenceId": "EVD.QUANSHU.DIANCANG.TAIFU",
@@ -823,6 +823,45 @@
       "quote": "亥安命   亥宫贪火天梁同，飘荡浪子走西东，若还富贵也年促，不然隶仆与贫穷。",
       "confidence": 0.9,
       "notes": "命宮在亥、三方四正會貪狼火星天梁（「貪火」＝貪狼＋火星）。依 2026-09-25 體系決策歸入 Interpretation 層。"
+    },
+    {
+      "evidenceId": "EVD.ZHONGZHOU.ANXING.TIANWU",
+      "sourceId": "SRC.ZHONGZHOU",
+      "type": "supports",
+      "location": {
+        "chapter": "安星口訣、圖表及掌訣",
+        "section": "第 30 條 安解神天巫（生月）",
+        "archiveUrl": "https://www.64gua.com/index.php?s=book&c=son&id=14002"
+      },
+      "quote": "巳申寅亥天巫位，分輪十二月星君。天巫同巳宮起，單巳申寅亥四宮順序，分排十二月的天巫星位。",
+      "confidence": 0.9,
+      "notes": "中州派講義（王亭之《安星法及推斷實例》／《紫微斗數初級講義》）安星訣原文：正月、五月、九月在巳；二月、六月、十月在申；三月、七月、十一月在寅；四月、八月、十二月在亥。2026-09-26 逐字核對；與 SRC.IZTRO、banderzhm/ZhouYiLab 開源實作 differential 100% 一致（46/46 盤面）。Owner 於 2026-09-26 授權升 canonical。"
+    },
+    {
+      "evidenceId": "EVD.ZHONGZHOU.ANXING.TIANCAI_TIANSHOU",
+      "sourceId": "SRC.ZHONGZHOU",
+      "type": "supports",
+      "location": {
+        "chapter": "安星口訣、圖表及掌訣",
+        "section": "第 26 條 安天才天壽訣（年支）",
+        "archiveUrl": "https://www.64gua.com/index.php?s=book&c=son&id=14002"
+      },
+      "quote": "命宮起子天才順、身宮起子天壽堂。",
+      "confidence": 0.9,
+      "notes": "中州派講義（王亭之《安星法及推斷實例》／《紫微斗數初級講義》）安星訣原文：天才由命宮起子，順行至本生年支安之；天壽由身宮起子，順行至本生年支安之。2026-09-26 逐字核對；與 SRC.IZTRO、banderzhm/ZhouYiLab 開源實作 differential 100% 一致（46/46 盤面）。Owner 於 2026-09-26 授權升 canonical。"
+    },
+    {
+      "evidenceId": "EVD.IZTRO.ANXING.TIANCAI_TIANSHOU",
+      "sourceId": "SRC.IZTRO",
+      "type": "mentions",
+      "location": {
+        "section": "iztro 官方文件「紫微鬥數安星訣」/learn/setup",
+        "anchor": "安天才天壽訣",
+        "archiveUrl": "https://www.iztro.com/zh_TW/learn/setup"
+      },
+      "quote": "天才由命宫起子，顺行至本生年支安之。天寿由身宫起子，顺行至本生年支安之。",
+      "confidence": 0.8,
+      "notes": "**實作/流派文件，非古典原文**（交叉驗證資料）。與 SRC.ZHONGZHOU 中州派講義口訣逐字相符（僅簡繁差異）。2026-09-26 差分測試 46/46 盤面 100% 一致（含 banderzhm/ZhouYiLab 獨立實作交叉驗證）。"
     }
   ]
 }

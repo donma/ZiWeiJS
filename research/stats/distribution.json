@@ -36,7 +36,7 @@
     "zi": 1274
   },
   "starPlacementTotals": {
-    "distinctStars": 98,
+    "distinctStars": 101,
     "top30": [
       {
         "starId": "ZW.STAR.AUX.BAIHU",
@@ -143,6 +143,10 @@
         "placements": 14683
       },
       {
+        "starId": "ZW.STAR.AUX.TIANCAI",
+        "placements": 14683
+      },
+      {
         "starId": "ZW.STAR.AUX.TIANCHU",
         "placements": 14683
       },
@@ -152,10 +156,6 @@
       },
       {
         "starId": "ZW.STAR.AUX.TIANFU2",
-        "placements": 14683
-      },
-      {
-        "starId": "ZW.STAR.AUX.TIANGUAN",
         "placements": 14683
       }
     ]

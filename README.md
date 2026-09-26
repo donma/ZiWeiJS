@@ -16,21 +16,21 @@ ZiWeiJS 不只是算命工具 — 它是給未來 ZiWei.NET、ZiWeiPython、心�
 <!-- STATS:BEGIN (由 `npm run coverage:bible -- --update-readme` 產生，請勿手寫) -->
 | 項目 | 數量 |
 |---|---|
-| 規則總數 | 244 |
-| canonical | 68 |
+| 規則總數 | 246 |
+| canonical | 70 |
 | candidate | 167 |
 | variant | 7 |
 | research | 2 |
 | Canonical source 覆蓋率 | 100% |
 | Canonical evidence 覆蓋率 | 100% |
-| 星曜（實測安星 / 總數）| 98 / 99（active 98）|
+| 星曜（實測安星 / 總數）| 101 / 102（active 101）|
 | 格局 | 29 |
 | 解讀規則 | 161（13 domains）|
-| 文獻 / 證據 | 12 / 69 |
+| 文獻 / 證據 | 12 / 72 |
 | Golden fixtures（外部 verified / 本地）| 35 / 8（總計 43）|
 | Differential fixtures | 17 |
 | Calendar fixtures | 3 |
-| Tests | 586 it() / 66 files（靜態計數）|
+| Tests | 589 it() / 66 files（靜態計數）|
 | E2E / Visual | 23 test() / 3 files（靜態計數；實際執行數見 npm run test:visual）|
 | schemaVersion | 2.0 |
 <!-- STATS:END -->
@@ -43,7 +43,7 @@ ZiWeiJS 是一套**紫微斗數的開放規格與參考實作**，包含三個�
 
 | 層次 | 給誰用 | 內容 |
 |---|---|---|
-| **命盤工具** | 一般使用者 | 瀏覽器開啟即可排盤、看解釋、匯出圖檔。完全離線，資料不會外傳。 |
+| **命盤工具** | 一般使用者 | 瀏覽器開啟即可排盤、看解釋、匯出圖檔。完全離線，資料不會外傳。<br>線上展示：[GitHub Pages Demo](https://donma.github.io/ZiWeiJS/) 或 [獨立單檔版](https://donma.github.io/ZiWeiJS/ziwei-bible-demo.html) |
 | **開發者 SDK** | 程式開發者 | `import { ZiWei } from 'ziwei-bible'`，三行排出一張完整的命盤 JSON / SVG。 |
 | **規則標準庫** | 命理研究者 / 其他排盤系統作者 | 每條安星、四化、格局規則皆以 JSON 記錄，含來源文獻、流派差異、版本治理。可作為各家排盤系統的對照基準（differential test oracle）。 |
 

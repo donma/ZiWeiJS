@@ -14,8 +14,13 @@ import { placeStar } from './star-executors.js';
 import {
   TAIFU_FENGGAO_RULE_ID,
   JIESHEN_RULE_ID,
+  TIANWU_RULE_ID,
+  TIANCAI_TIANSHOU_RULE_ID,
   XIAOXIAN_RULE_ID,
   supplementaryAuxStars,
+  placeTianWu,
+  placeTianCai,
+  placeTianShou,
   xiaoXianForTarget
 } from '../aux-supplementary/aux-supplementary.js';
 
@@ -49,6 +54,38 @@ export function calcAuxJieShen(ctx: EngineContext): ExecutorOutcome {
   return {
     inputs: { yearBranch },
     result: placed
+  };
+}
+
+/** 天巫（生月系，落四馬地） */
+export function calcAuxTianWu(ctx: EngineContext): ExecutorOutcome {
+  const lunarMonth = ctx.normalized.lunar.month;
+  const branch = placeTianWu(lunarMonth);
+  placeStar(ctx, 'ZW.STAR.AUX.TIANWU', branch, TIANWU_RULE_ID);
+  return {
+    inputs: { lunarMonth },
+    result: [`ZW.STAR.AUX.TIANWU@${branch}`]
+  };
+}
+
+/** 天才 / 天壽（年支系，命宮／身宮起子順數） */
+export function calcAuxTianCaiTianShou(ctx: EngineContext): ExecutorOutcome {
+  const lifeBranch = ctx.lifePalaceBranch;
+  const bodyBranch = ctx.bodyPalaceBranch;
+  const yearBranch = ctx.normalized.ganzhi.year.branch as BranchId;
+
+  const caiBranch = placeTianCai(lifeBranch, yearBranch);
+  const shouBranch = placeTianShou(bodyBranch, yearBranch);
+
+  placeStar(ctx, 'ZW.STAR.AUX.TIANCAI', caiBranch, TIANCAI_TIANSHOU_RULE_ID);
+  placeStar(ctx, 'ZW.STAR.AUX.TIANSHOU', shouBranch, TIANCAI_TIANSHOU_RULE_ID);
+
+  return {
+    inputs: { lifeBranch, bodyBranch, yearBranch },
+    result: [
+      `ZW.STAR.AUX.TIANCAI@${caiBranch}`,
+      `ZW.STAR.AUX.TIANSHOU@${shouBranch}`
+    ]
   };
 }
 

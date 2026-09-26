@@ -56,7 +56,14 @@ export interface AiContext {
   certainty: Record<string, string>;
 }
 
-export function toContext(chart: ZiWeiChart): AiContext {
+export type AiTaskType = 'all' | 'natal' | 'relationship' | 'yearly';
+
+export interface ToContextOptions {
+  task?: AiTaskType;
+}
+
+export function toContext(chart: ZiWeiChart, options?: ToContextOptions): AiContext {
+  const task = options?.task ?? 'all';
   const gz = chart.calendar.ganzhi;
   const gzStr = (p: { stem: keyof typeof STEM_ZH; branch: keyof typeof BRANCH_ZH }) =>
     `${STEM_ZH[p.stem]}${BRANCH_ZH[p.branch]}`;
@@ -169,12 +176,20 @@ export function toContext(chart: ZiWeiChart): AiContext {
           }
         : undefined
     },
-    interpretationHits: chart.interpretation.hits.map(h => ({
-      ruleId: h.ruleId,
-      domain: h.domain,
-      tendency: h.tendency,
-      strength: h.strength
-    })),
+    interpretationHits: chart.interpretation.hits
+      .filter(h => {
+        if (task === 'all') return true;
+        if (task === 'natal') return h.domain === 'personality' || h.domain === 'general' || h.domain === 'career' || h.domain === 'wealth';
+        if (task === 'relationship') return h.domain === 'relationship' || h.domain === 'marriage' || h.domain === 'family' || h.domain === 'social';
+        if (task === 'yearly') return h.domain === 'timing' || h.domain === 'risk' || h.domain === 'career' || h.domain === 'wealth';
+        return true;
+      })
+      .map(h => ({
+        ruleId: h.ruleId,
+        domain: h.domain,
+        tendency: h.tendency,
+        strength: h.strength
+      })),
     ruleIds: [...ruleIds].sort(),
     sourceIds: [...sourceIds].sort(),
     evidenceIds: [...evidenceIds].sort(),
