@@ -111,7 +111,7 @@ describe('differential: 10 顆動態流曜 (year scope) vs iztro', () => {
         timezone: 'Asia/Taipei',
         sexForCalculation: c.gender
       };
-      const chart = calculate(input, { targetDate: c.targetObj });
+      const chart = calculate(input, { targetDate: c.targetObj, experimentalDynamicStars: true });
       const dynamicStars = chart.periods.dynamicStars ?? [];
 
       expect(dynamicStars.length).toBe(10);

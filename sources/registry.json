@@ -60,6 +60,8 @@
       "tier": 3,
       "language": "zh/en",
       "url": "https://github.com/SylarLong/iztro",
+      "independenceGroup": "iztro-implementation",
+      "carrierType": "implementation",
       "notes": "開源 TypeScript 排盤實作，安星法透明可查，供 differential 比對。"
     },
     {
@@ -70,6 +72,8 @@
       "type": "implementation",
       "tier": 3,
       "language": "zh",
+      "independenceGroup": "wenmo-implementation",
+      "carrierType": "implementation",
       "notes": "廣泛使用的商業排盤軟體，作為 differential 對照來源之一。"
     },
     {
@@ -101,6 +105,8 @@
       "type": "other",
       "tier": 3,
       "language": "zh",
+      "independenceGroup": "ziwei-spec-contract",
+      "carrierType": "spec-document",
       "notes": "本 repo 之規範性建構文件。僅適用於『工程契約類』規則（輸入驗證、錯誤碼、序列化契約）之溯源，非命理知識來源；不得用於安星、四化、廟旺等命理規則。"
     },
     {
@@ -112,6 +118,8 @@
       "tier": 3,
       "language": "zh",
       "url": "https://github.com/6tail/lunar-typescript",
+      "independenceGroup": "lunar-ts-implementation",
+      "carrierType": "implementation",
       "notes": "本引擎用於：國曆↔農曆轉換、節氣、四柱干支（年/月/日/時柱）、閏月判定。注意：真太陽時之經度修正與 equation of time 近似式由 ZiWeiJS 自行實作，並非本套件提供；本套件只提供曆法與干支。"
     },
     {

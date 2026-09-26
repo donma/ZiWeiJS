@@ -195,7 +195,7 @@ describe('§37 Trace 自動帶 source / evidence / version', () => {
   });
 
   it('trace 狀態僅為已定義列舉', () => {
-    const allowed = ['executed', 'skipped', 'unavailable', 'variant', 'error'];
+    const allowed = ['executed', 'skipped', 'unavailable', 'variant', 'candidate', 'error'];
     for (const e of entries) expect(allowed, e.ruleId).toContain(e.status);
   });
 

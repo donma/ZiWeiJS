@@ -210,6 +210,7 @@
   "certainty": {
     "keys": {
       "auxStars": 14683,
+      "birthTime": 14683,
       "bodyPalace": 14683,
       "bureau": 14683,
       "calendar": 14683,
@@ -226,7 +227,7 @@
       "xiaoxian": 14683
     },
     "values": {
-      "certain": 73415,
+      "certain": 88098,
       "high": 88098,
       "medium": 14683,
       "variant-dependent": 44049

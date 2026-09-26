@@ -1,6 +1,6 @@
 import type {
   ZiWeiBirthInput, ZiWeiChart, CalculateOptions, Profile,
-  Certainty
+  Certainty, BirthTimePrecision
 } from '../core/types.js';
 import { SCHEMA_VERSION, BIBLE_VERSION, ENGINE_VERSION, BUREAU_NAME, STEM_YINYANG } from '../core/constants.js';
 import { ZiWeiError } from '../core/errors.js';
@@ -11,7 +11,7 @@ import { Tracer } from '../trace/tracer.js';
 import type { EngineContext } from '../executors/context.js';
 import { registerAllExecutors } from '../rule-engine/register-executors.js';
 import { executePlan, stampProvenance } from '../rule-engine/execute-rule.js';
-import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN } from '../rule-engine/execution-plan.js';
+import { NATAL_EXECUTION_PLAN, PERIOD_EXECUTION_PLAN, ON_DEMAND_EXECUTION_PLAN } from '../rule-engine/execution-plan.js';
 import { ageAt, resolveMajorPeriod } from '../period-engine/major-period-resolver.js';
 import { normalizePeriodTarget, validateSolarDate } from '../period-engine/period-target.js';
 import { runInterpretation, groupByDomain, runPatterns } from '../interpretation-engine/interpretation-engine.js';
@@ -82,10 +82,30 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     );
   }
 
+  // 0.71 §2：先解析 precision，再帶入 normalized input（hour-branch/range 以代表時間代替）
+  const precision: BirthTimePrecision = input.timePrecision
+    ?? (input.time?.hour !== undefined ? 'exact' : 'unknown');
+
+  const normalizedInput: ZiWeiBirthInput = (() => {
+    if (!input.timePrecision && input.time) return input;
+    if (input.timePrecision === 'exact' && input.time?.hour !== undefined) return input;
+    if (input.timePrecision === 'hour-branch' && input.hourBranch) {
+      const centers: Record<string, number> = {
+        zi: 0, chou: 2, yin: 4, mao: 6, chen: 8, si: 10,
+        wu: 12, wei: 14, shen: 16, you: 18, xu: 20, hai: 22
+      };
+      return { ...input, time: { hour: centers[input.hourBranch], minute: 0, second: 0 } };
+    }
+    if (input.timePrecision === 'range' && input.timeRange) {
+      return { ...input, time: { hour: input.timeRange.fromHour, minute: input.timeRange.fromMinute ?? 0, second: 0 } };
+    }
+    return input;
+  })();
+
   const target = options.targetDate;
   if (target) validateTargetDate(target);
 
-  const normalized = normalizeBirth(input, profile);
+  const normalized = normalizeBirth(normalizedInput, profile);
 
   const activeRules = new Map<string, Rule>();
   for (const [canonicalId, variantId] of Object.entries(profile.ruleOverrides ?? {})) {
@@ -97,12 +117,12 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
   }
 
   const ctx: EngineContext = {
-    input,
+    input: normalizedInput,
     normalized,
     profile,
     tracer,
     targetDate: target,
-    sexForCalculation: input.sexForCalculation,
+    sexForCalculation: normalizedInput.sexForCalculation!,
     yinYang: STEM_YINYANG[normalized.ganzhi.year.stem],
     direction: 'undetermined',
     lifePalaceBranch: 'zi',
@@ -152,6 +172,11 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     };
 
     executePlan(PERIOD_EXECUTION_PLAN, ctx);
+
+    // 0.71 §31 P0：若明確要求 experimental candidate 動態星曜（或由 ZiWei.Experimental 呼叫）
+    if (options.experimentalDynamicStars) {
+      executePlan(ON_DEMAND_EXECUTION_PLAN, ctx);
+    }
   }
 
   const patterns = options.patterns !== false ? runPatterns(ctx) : [];
@@ -183,7 +208,9 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
     periods: !target ? 'unavailable' : ctx.periodTarget?.isRepresentativeDate ? 'medium' : 'high',
     xiaoxian: !target
       ? 'unavailable'
-      : ctx.sexForCalculation === 'unknown' ? 'unknown' : ctx.xiaoXian ? 'high' : 'unavailable'
+      : ctx.sexForCalculation === 'unknown' ? 'unknown' : ctx.xiaoXian ? 'high' : 'unavailable',
+    // 出生時間精度（0.71 §44）：exact=certain, hour-branch=high, range=medium, unknown=unknown
+    birthTime: precision === 'exact' ? 'certain' : precision === 'hour-branch' ? 'high' : precision === 'range' ? 'medium' : 'unknown'
   };
 
   const stars: Record<string, ReturnType<typeof Object>> = {};
@@ -199,10 +226,33 @@ export function calculate(input: ZiWeiBirthInput, options: CalculateOptions = {}
       profile: profile.profileId,
       engineVersion: ENGINE_VERSION
     },
-    input,
-    calendar: buildCalendarInfo(input, profile, normalized),
+    input: normalizedInput,
+    inputResolution: (() => {
+      // 0.71 §45：記錄排盤時的時間精度，不等於真實出生分鐘
+      if (!input.timePrecision && input.time?.hour !== undefined) {
+        return { birthTimePrecision: 'exact' as const };
+      }
+      if (input.timePrecision === 'hour-branch' && input.hourBranch) {
+        return {
+          birthTimePrecision: 'hour-branch' as const,
+          representativeTimeUsed: true,
+          selectedCandidate: input.hourBranch
+        };
+      }
+      if (input.timePrecision === 'range' && input.timeRange) {
+        return {
+          birthTimePrecision: 'range' as const,
+          representativeTimeUsed: true
+        };
+      }
+      if (input.timePrecision === 'unknown') {
+        return { birthTimePrecision: 'unknown' as const };
+      }
+      return undefined;
+    })(),
+    calendar: buildCalendarInfo(normalizedInput, profile, normalized),
     birthContext: {
-      sexForCalculation: input.sexForCalculation,
+      sexForCalculation: normalizedInput.sexForCalculation!,
       yinYang: ctx.yinYang,
       direction: ctx.direction,
       bureau: ctx.bureau,

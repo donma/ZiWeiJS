@@ -58,7 +58,33 @@
         "sexForCalculation": { "enum": ["male", "female", "unknown"] },
         "timeConvention": { "enum": ["civil", "true-solar", "local-mean-solar"] },
         "dayBoundary": { "enum": ["midnight", "zi-hour"] },
-        "name": { "type": "string" }
+        "name": { "type": "string" },
+        "timePrecision": { "enum": ["exact", "hour-branch", "range", "unknown"] },
+        "hourBranch": { "$ref": "#/$defs/branch" },
+        "timeRange": {
+          "type": "object",
+          "required": ["fromHour", "toHour"],
+          "additionalProperties": false,
+          "properties": {
+            "fromHour": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "fromMinute": { "type": "integer", "minimum": 0, "maximum": 59 },
+            "toHour": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "toMinute": { "type": "integer", "minimum": 0, "maximum": 59 }
+          }
+        },
+        "birthTimeSource": { "enum": ["reported-exact", "reported-hour-branch", "user-selected-candidate", "rectification-inference"] }
+      }
+    },
+    "inputResolution": {
+      "type": "object",
+      "required": ["birthTimePrecision"],
+      "additionalProperties": false,
+      "properties": {
+        "birthTimePrecision": { "enum": ["exact", "hour-branch", "range", "unknown"] },
+        "representativeTimeUsed": { "type": "boolean" },
+        "selectedCandidate": { "$ref": "#/$defs/branch" },
+        "selectionSource": { "type": "string" },
+        "birthTimeSource": { "enum": ["reported-exact", "reported-hour-branch", "user-selected-candidate", "rectification-inference"] }
       }
     },
     "calendar": { "$ref": "#/$defs/calendar" },
@@ -507,7 +533,7 @@
         "profile": { "type": "string" },
         "sourceRefs": { "type": "array", "items": { "type": "string" } },
         "evidenceRefs": { "type": "array", "items": { "type": "string" } },
-        "status": { "enum": ["executed", "skipped", "unavailable", "variant", "error"] },
+        "status": { "enum": ["executed", "skipped", "unavailable", "variant", "candidate", "error"] },
         "reason": { "type": "string" },
         "note": { "type": "string" }
       }

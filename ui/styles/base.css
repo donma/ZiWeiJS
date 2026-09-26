@@ -341,3 +341,53 @@ table.data tr:hover td { background: var(--panel-2); }
   h1 { font-size: 24px; }
   .container { padding: 0 14px; }
 }
+
+/* 0.71 Styles: Form Sections, Hour Cards, Segments, Modal, Dropdown */
+.form-section { border: none; padding: 0; margin: 0 0 12px; }
+.form-section legend { font-weight: 600; font-size: 13.5px; margin-bottom: 8px; color: var(--text-sub); }
+
+.seg-wrap { display: flex; flex-wrap: wrap; gap: 4px; background: var(--panel-2); padding: 4px; border-radius: 8px; }
+.seg-btn {
+  flex: 1; min-width: 65px; padding: 6px 8px; border: none; background: transparent;
+  color: var(--text-sub); font-size: 12.5px; border-radius: 6px; cursor: pointer; text-align: center;
+}
+.seg-btn.active { background: var(--panel); color: var(--text); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+.hour-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+@media (max-width: 600px) { .hour-cards { grid-template-columns: repeat(3, 1fr); } }
+.hour-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 6px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+  cursor: pointer; font-size: 12px; color: var(--text);
+}
+.hour-card:hover { border-color: var(--accent); }
+.hour-card.selected { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.hour-card .hb { font-size: 13px; font-weight: 600; }
+.hour-card .range { font-size: 10.5px; color: var(--text-faint); margin-top: 2px; }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal { background: var(--panel); max-height: 90vh; overflow-y: auto; }
+
+.dropdown { position: relative; display: inline-block; }
+.dropdown summary { list-style: none; cursor: pointer; }
+.dropdown summary::-webkit-details-marker { display: none; }
+.dropdown .menu { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.menu-item {
+  display: block; width: 100%; text-align: left; padding: 6px 10px; border: none;
+  background: transparent; color: var(--text); font-size: 13px; cursor: pointer; border-radius: 4px;
+}
+.menu-item:hover { background: var(--panel-2); }
+
+.inspector-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+.inspector-tabs .tab-btn {
+  border: none; background: transparent; padding: 6px 10px; font-size: 13px;
+  color: var(--text-sub); cursor: pointer; border-bottom: 2px solid transparent;
+}
+.inspector-tabs .tab-btn.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+
+.check-label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.clean-list { list-style: none; padding: 0; margin: 0; }
+.palace-card.selected { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }

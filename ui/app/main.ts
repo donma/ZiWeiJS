@@ -1,12 +1,17 @@
 import '../styles/base.css';
 import { state, recalc, navigate, currentRoute, setAppLocale } from './state.js';
 import { renderHome } from '../pages/home.js';
-import { renderChartPage } from '../pages/chart.js';
+import { renderChartPage, bindChartInteractions } from '../pages/chart.js';
+import { renderUnknownTimePage, bindUnknownTimeInteractions } from '../pages/unknown-time.js';
+import {
+  renderBibleStarPage, renderBibleRulePage, renderBiblePatternPage, renderBibleProfilePage
+} from '../pages/bible-detail.js';
 import { renderRules, bindRuleExplorer } from '../pages/rules.js';
 import { renderSources } from '../pages/sources.js';
 import { renderGeek } from '../pages/geek.js';
 import { renderDifferential } from '../pages/differential.js';
 import { renderAbout } from '../pages/about.js';
+import { birthFormHtml, bindBirthFormInteractions } from '../components/birth-form.js';
 import { initTooltip } from '../components/tooltip.js';
 import { initSheet } from '../components/sheet.js';
 
@@ -42,7 +47,7 @@ function shell(content: string): string {
     </header>
     <main><div class="container">${content}</div></main>
     <footer class="footer"><div class="container">
-      ZiWeiJS v${state.chart?.generatedWith.bibleVersion ?? '0.1.0'} · schema ${state.chart?.schemaVersion ?? '1.0'} ·
+      ZiWeiJS v${state.chart?.generatedWith.bibleVersion ?? '0.71.0'} · schema ${state.chart?.schemaVersion ?? '2.0'} ·
       Machine-readable Zi Wei Dou Shu reference · Local-only · <a href="#/about">License</a>
     </div></footer>
     <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
@@ -56,19 +61,36 @@ function route(): void {
   const r = currentRoute();
   state.route = r;
   let content = '';
-  switch (r) {
-    case '/chart':
-    case '/expert':
-      if (!state.chart && !state.error) recalc();
-      content = renderChartPage(r === '/expert' ? 'expert' : state.mode);
-      break;
-    case '/rules': content = renderRules(); break;
-    case '/sources': content = renderSources(); break;
-    case '/geek': content = renderGeek(); break;
-    case '/differential': content = renderDifferential(); break;
-    case '/about': content = renderAbout(); break;
-    default: content = renderHome(); break;
+
+  // Bible deep-link routes（spec 0.71 §39）
+  if (r.startsWith('/bible/')) {
+    const [, , kind, id] = r.split('/');
+    switch (kind) {
+      case 'star': content = renderBibleStarPage(decodeURIComponent(id ?? '')); break;
+      case 'rule': content = renderBibleRulePage(decodeURIComponent(id ?? '')); break;
+      case 'pattern': content = renderBiblePatternPage(decodeURIComponent(id ?? '')); break;
+      case 'profile': content = renderBibleProfilePage(decodeURIComponent(id ?? '')); break;
+      default: content = renderHome(); break;
+    }
+  } else {
+    switch (r) {
+      case '/chart':
+      case '/expert':
+        if (!state.chart && !state.error) recalc();
+        content = renderChartPage(r === '/expert' ? 'expert' : state.mode);
+        break;
+      case '/unknown-time':
+        content = renderUnknownTimePage();
+        break;
+      case '/rules': content = renderRules(); break;
+      case '/sources': content = renderSources(); break;
+      case '/geek': content = renderGeek(); break;
+      case '/differential': content = renderDifferential(); break;
+      case '/about': content = renderAbout(); break;
+      default: content = renderHome(); break;
+    }
   }
+
   document.getElementById('app')!.innerHTML = shell(content);
   afterRender();
 }
@@ -109,46 +131,96 @@ function afterRender(): void {
   document.querySelectorAll('[data-chart-action]').forEach(el => {
     el.addEventListener('click', () => handleChartAction((el as HTMLElement).dataset.chartAction!));
   });
+
+  // 出生表單互動（0.71 §16：segmented control + 12 時辰卡）
+  bindBirthFormInteractions();
+  // 命盤 Workspace 互動（0.71 §24–§30）
+  bindChartInteractions();
+  // 未知時辰工作區互動（0.71 §17–§22）
+  bindUnknownTimeInteractions();
+
   if (currentRoute() === '/rules') bindRuleExplorer();
 }
 
 function handleForm(form: HTMLFormElement): void {
   const kind = form.dataset.form;
   const fd = new FormData(form);
-  if (kind === 'birth') {
-    const calType = fd.get('calendarType') as 'solar' | 'lunar';
-    const hourRaw = fd.get('hour') as string;
-    const minuteRaw = fd.get('minute') as string;
-    state.input = {
-      calendarType: calType,
-      date: {
-        year: Number(fd.get('year')),
-        month: Number(fd.get('month')),
-        day: Number(fd.get('day')),
-        isLeapMonth: fd.get('isLeapMonth') === 'on'
-      },
-      time: hourRaw === '' ? undefined : { hour: Number(hourRaw), minute: Number(minuteRaw || 0) },
-      timezone: (fd.get('timezone') as string) || 'Asia/Taipei',
-      sexForCalculation: (fd.get('sex') as 'male' | 'female') || undefined,
-      location: (fd.get('longitude') as string)
-        ? { longitude: Number(fd.get('longitude')), latitude: Number(fd.get('latitude') || 0) }
-        : undefined,
-      name: (fd.get('name') as string) || undefined
+  if (kind !== 'birth') return;
+
+  const calType = fd.get('calendarType') as 'solar' | 'lunar';
+  const precision = (fd.get('timePrecision') as string) || 'exact';
+  const hourRaw = fd.get('hour') as string;
+  const minuteRaw = fd.get('minute') as string;
+  const hourBranchRaw = (fd.get('hourBranch') as string) || '';
+  const rangeFrom = fd.get('rangeFrom') as string;
+  const rangeTo = fd.get('rangeTo') as string;
+
+  const base: typeof state.input = {
+    calendarType: calType,
+    date: {
+      year: Number(fd.get('year')),
+      month: Number(fd.get('month')),
+      day: Number(fd.get('day')),
+      isLeapMonth: fd.get('isLeapMonth') === 'on'
+    },
+    timezone: (fd.get('timezone') as string) || 'Asia/Taipei',
+    sexForCalculation: (fd.get('sex') as 'male' | 'female') || undefined,
+    name: (fd.get('name') as string) || undefined
+  };
+
+  const longitude = fd.get('longitude') as string;
+  if (longitude) {
+    base.location = {
+      longitude: Number(longitude),
+      latitude: Number(fd.get('latitude') || 0),
+      placeName: (fd.get('placeName') as string) || undefined
     };
-    state.profile = (fd.get('profile') as string) || 'canonical';
-    const targetYearRaw = (fd.get('targetYear') as string) ?? '';
-    const targetYear = targetYearRaw.trim() === '' ? null : Number(targetYearRaw);
-    state.targetYear = targetYear !== null && Number.isInteger(targetYear) && targetYear >= 1900 && targetYear <= 2100
-      ? targetYear
-      : null;
-    recalc();
-    if (state.chart) {
-      navigate('/chart');
-      // 若原本就在 /chart，hash 不變 → 不觸發 hashchange → 必須主動 route() 才會更新
-      route();
-    } else {
-      route();
-    }
+  }
+
+  // 依 precision 填入對應欄位（0.71 §2）
+  if (precision === 'exact') {
+    base.time = {
+      hour: hourRaw === '' ? undefined : Number(hourRaw),
+      minute: Number(minuteRaw || 0)
+    };
+    base.timePrecision = 'exact';
+  } else if (precision === 'hour-branch') {
+    base.timePrecision = 'hour-branch';
+    base.hourBranch = (hourBranchRaw || 'zi') as typeof base.hourBranch;
+  } else if (precision === 'range') {
+    base.timePrecision = 'range';
+    base.timeRange = {
+      fromHour: Number(rangeFrom || 9),
+      toHour: Number(rangeTo || 17)
+    };
+  } else {
+    base.timePrecision = 'unknown';
+  }
+
+  state.input = base;
+  state.profile = (fd.get('profile') as string) || 'canonical';
+  const targetYearRaw = (fd.get('targetYear') as string) ?? '';
+  const targetYear = targetYearRaw.trim() === '' ? null : Number(targetYearRaw);
+  state.targetYear = targetYear !== null && Number.isInteger(targetYear) && targetYear >= 1900 && targetYear <= 2100
+    ? targetYear
+    : null;
+
+  // 未知時辰 → Unknown Time Workspace（spec 0.71 §17）
+  if (precision === 'unknown') {
+    state.chart = null;
+    state.error = null;
+    navigate('/unknown-time');
+    route();
+    return;
+  }
+
+  recalc();
+  if (state.chart) {
+    navigate('/chart');
+    // 若原本就在 /chart，hash 不變 → 不觸發 hashchange → 必須主動 route() 才會更新
+    route();
+  } else {
+    route();
   }
 }
 

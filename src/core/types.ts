@@ -55,6 +55,7 @@ export type TransformationScope =
   | 'natal'
   | 'palace'
   | 'major-period'
+  | 'minor-period'
   | 'year'
   | 'month'
   | 'day'
@@ -76,6 +77,7 @@ export type ChangSheng =
 export type PeriodScope =
   | 'natal'
   | 'major-period'
+  | 'minor-period'
   | 'year'
   | 'month'
   | 'day'
@@ -115,6 +117,32 @@ export interface ZiWeiBirthInput {
   /** DST 邊界本地時間歧義處理（預設 'reject'，spec 3rd §P1-2） */
   timezoneDisambiguation?: 'reject' | 'earlier' | 'later';
   name?: string;
+  /** 出生時間精度（0.71 §2）。若提供，優先於舊版 time 物件的推斷。 */
+  timePrecision?: BirthTimePrecision;
+  /** 已知時辰（precision='hour-branch' 時使用） */
+  hourBranch?: BranchId;
+  /** 已知大概時段（precision='range' 時使用） */
+  timeRange?: { fromHour: number; fromMinute?: number; toHour: number; toMinute?: number };
+  /** 出生時間來源（0.71 §14） */
+  birthTimeSource?: 'reported-exact' | 'reported-hour-branch' | 'user-selected-candidate' | 'rectification-inference';
+}
+
+/** 出生時間精度（0.71 §2） */
+export type BirthTimePrecision = 'exact' | 'hour-branch' | 'range' | 'unknown';
+
+/** 出生時間輸入 V2（0.71 §2） */
+export interface BirthTimeInput {
+  precision: BirthTimePrecision;
+  hour?: number;
+  minute?: number;
+  second?: number;
+  hourBranch?: BranchId;
+  range?: {
+    fromHour: number;
+    fromMinute?: number;
+    toHour: number;
+    toMinute?: number;
+  };
 }
 
 export interface TargetDate {
@@ -133,6 +161,12 @@ export interface CalculateOptions {
   targetDate?: TargetDate;
   interpretation?: boolean;
   patterns?: boolean;
+  /**
+   * 0.71 §31：是否執行 on-demand candidate 規則（目前為動態流曜）。
+   * 預設 false；一般排盤絕不假執行 candidate，僅能由 `ZiWei.Experimental.*` 明確開啟。
+   * 開啟後 trace 中相關規則 status 一律標 `candidate`（§32）。
+   */
+  experimentalDynamicStars?: boolean;
 }
 
 export interface GanzhiPair {
@@ -388,6 +422,14 @@ export interface ZiWeiChart {
     engineVersion: string;
   };
   input: ZiWeiBirthInput;
+  /** 出生時間解析度（0.71 §45）；記錄排盤時使用的時間精度，不等於真實出生分鐘。 */
+  inputResolution?: {
+    birthTimePrecision: BirthTimePrecision;
+    representativeTimeUsed?: boolean;
+    selectedCandidate?: BranchId;
+    selectionSource?: string;
+    birthTimeSource?: 'reported-exact' | 'reported-hour-branch' | 'user-selected-candidate' | 'rectification-inference';
+  };
   calendar: CalendarInfo;
   birthContext: {
     sexForCalculation: string;
@@ -453,7 +495,14 @@ export interface Rule {
     executor?: string;
     params?: Record<string, unknown>;
     tableRef?: string;
-    /** 執行階段（spec §P0-1 execution plan） */
+    /** 執行階段（spec §P0-1 execution plan / 0.71 §31–§32）
+     * natal   → 本命排盤時執行
+     * period  → 有 targetDate 時執行
+     * on-demand → 預設不執行；由 ZiWei.Experimental / 研究工具 on-demand 呼叫，trace 狀態標 candidate
+     * variant → 僅作為 profile ruleOverride 目標（不在 default plan 中）
+     * analysis→ 僅供 analysis 層
+     * unplanned → 尚未歸類（integrity 檢查失敗）
+     */
     stage?: 'natal' | 'period' | 'variant' | 'on-demand' | 'analysis' | 'unplanned';
     /** 同一階段內的執行順序 */
     order?: number;

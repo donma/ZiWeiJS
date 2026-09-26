@@ -19,7 +19,7 @@
       ],
       "logic": {
         "executor": "calcPeriodKuiYue",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4010
       },
       "outputs": [
@@ -63,7 +63,7 @@
       ],
       "logic": {
         "executor": "calcPeriodChangQu",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4020
       },
       "outputs": [
@@ -107,7 +107,7 @@
       ],
       "logic": {
         "executor": "calcPeriodLucun",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4030
       },
       "outputs": [
@@ -151,7 +151,7 @@
       ],
       "logic": {
         "executor": "calcPeriodQingYangTuoLuo",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4040
       },
       "outputs": [
@@ -195,7 +195,7 @@
       ],
       "logic": {
         "executor": "calcPeriodTianMa",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4050
       },
       "outputs": [
@@ -239,7 +239,7 @@
       ],
       "logic": {
         "executor": "calcPeriodHongLuanTianXi",
-        "stage": "period",
+        "stage": "on-demand",
         "order": 4060
       },
       "outputs": [

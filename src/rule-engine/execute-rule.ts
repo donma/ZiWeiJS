@@ -62,12 +62,15 @@ export function executeRule(ruleId: string, ctx: EngineContext): void {
     return;
   }
 
+  // 0.71 §32：candidate 規則被 experimental/on-demand 執行時，trace status 必須標 'candidate'
+  const isCandidate = rule.status === 'candidate';
+
   for (const o of outcomes) {
     record(ctx, rule, {
       inputs: o.inputs,
       result: o.result,
       note: o.note,
-      status: o.status ?? (isVariant ? 'variant' : 'executed'),
+      status: o.status ?? (isCandidate ? 'candidate' : isVariant ? 'variant' : 'executed'),
       reason: o.reason
     });
   }

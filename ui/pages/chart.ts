@@ -1,9 +1,15 @@
 import { state } from '../app/state.js';
 import { birthFormHtml } from '../components/birth-form.js';
-import { renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative, PALACE_NAME, ZiWei, listResearch } from '../../src/index.js';
-import type { StarPlacement } from '../../src/index.js';
+import {
+  renderChartSvg, t, STEM_ZH, BRANCH_ZH, DIGNITY_ZH, renderNarrative,
+  PALACE_NAME, ZiWei, listResearch, handoff, toMarkdown, toJson
+} from '../../src/index.js';
+import type { StarPlacement, PalaceId, ZiWeiChart } from '../../src/index.js';
 
 const SIHUA_MARK: Record<string, string> = { lu: '祿', quan: '權', ke: '科', ji: '忌' };
+
+let selectedPalaceId: PalaceId | null = null;
+let activeLayers: Set<string> = new Set(['natal-stars', 'transformations', 'dignity', 'relations', 'dynamic-stars', 'patterns']);
 
 export function renderChartPage(forceMode?: 'standard' | 'expert'): string {
   if (!state.chart) {
@@ -23,40 +29,176 @@ export function renderChartPage(forceMode?: 'standard' | 'expert'): string {
   });
 
   return `
+  <!-- Workspace Header (spec 0.71 §76) -->
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
     <h1 style="margin:0">命盤</h1>
     <div class="seg" role="group" aria-label="檢視模式">
       <button data-mode="standard" aria-pressed="${mode === 'standard' ? 'true' : 'false'}" class="${mode === 'standard' ? 'active' : ''}">Standard</button>
       <button data-mode="expert" aria-pressed="${mode === 'expert' ? 'true' : 'false'}" class="${mode === 'expert' ? 'active' : ''}">Expert</button>
     </div>
+
+    <!-- AI Handoff CTA (spec 0.71 §41 / §76) -->
     <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap">
-      <button class="btn sm" data-chart-action="export-svg">SVG</button>
-      <button class="btn sm" data-chart-action="export-png">PNG</button>
-      <button class="btn sm" data-chart-action="export-json">JSON</button>
+      <button class="btn sm primary" data-ai-handoff="dialog">複製給 AI</button>
+
+      <!-- 匯出下拉選單 -->
+      <details class="dropdown" style="display:inline-block">
+        <summary class="btn sm">匯出 ▼</summary>
+        <div class="card card-pad menu" style="position:absolute;z-index:20;min-width:160px;margin-top:4px">
+          <button class="menu-item" data-chart-action="export-svg">SVG</button>
+          <button class="menu-item" data-chart-action="export-png">PNG</button>
+          <button class="menu-item" data-chart-action="export-json">命盤 JSON</button>
+          <hr style="margin:4px 0" />
+          <button class="menu-item" data-ai-handoff="download-md">AI Markdown</button>
+          <button class="menu-item" data-ai-handoff="download-json">AI JSON</button>
+        </div>
+      </details>
       <button class="btn sm" data-chart-action="print">列印</button>
     </div>
+  </div>
+
+  <!-- Chart Toolbar / Layer Filters (spec 0.71 §24–§25) -->
+  <div class="card card-pad" style="margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 12px">
+    <span class="small faint">圖層：</span>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="natal-stars" ${activeLayers.has('natal-stars') ? 'checked' : ''}/> 星曜</label>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="transformations" ${activeLayers.has('transformations') ? 'checked' : ''}/> 四化</label>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="dignity" ${activeLayers.has('dignity') ? 'checked' : ''}/> 廟旺</label>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="relations" ${activeLayers.has('relations') ? 'checked' : ''}/> 三方四正</label>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="dynamic-stars" ${activeLayers.has('dynamic-stars') ? 'checked' : ''}/> 流曜</label>
+    <label class="small check-label"><input type="checkbox" data-layer-filter="patterns" ${activeLayers.has('patterns') ? 'checked' : ''}/> 格局</label>
   </div>
 
   <div class="chart-page-layout">
     <aside>
       ${birthFormHtml(true)}
-      ${mode === 'expert' ? expertMeta(chart) : ''}
+      ${expertMeta(chart, mode)}
     </aside>
 
     <div class="chart-col">
-      <div class="chart-wrap card">${svg}</div>
+      <div class="chart-wrap card" id="main-svg-container">${svg}</div>
       ${palaceCardsHtml(chart)}
       ${periodPanel(chart)}
     </div>
 
+    <!-- Bible Inspector (spec 0.71 §27–§30) -->
     <aside class="right-col">
-      ${interpretationPanel(chart, mode)}
-      ${sharePanel(chart)}
+      ${bibleInspector(chart, mode)}
     </aside>
+  </div>
+
+  <!-- AI Handoff Dialog Modal (spec 0.71 §61) -->
+  <div id="ai-handoff-dialog-container" hidden></div>`;
+}
+
+/** Bible Inspector（spec 0.71 §27）：解讀、規則、星曜、來源、Trace、Research */
+function bibleInspector(chart: ZiWeiChart, mode: string): string {
+  const selectedPalace = selectedPalaceId
+    ? chart.chart.palaces.find(p => p.id === selectedPalaceId)
+    : null;
+
+  return `
+  <div class="card card-pad bible-inspector">
+    <h3 style="margin-top:0">Bible Inspector</h3>
+    ${selectedPalace ? `
+      <div class="callout" style="margin-bottom:12px">
+        <strong>${t(selectedPalace.name)}（${BRANCH_ZH[selectedPalace.branch]}）</strong>
+        <div class="small faint">選定宮位，點擊下方分頁檢視其歸屬 Rules 與文獻。</div>
+      </div>` : ''}
+
+    <div class="inspector-tabs" role="tablist">
+      <button class="tab-btn active" data-inspector-tab="interp" role="tab">解讀</button>
+      <button class="tab-btn" data-inspector-tab="rules" role="tab">規則</button>
+      <button class="tab-btn" data-inspector-tab="stars" role="tab">星曜</button>
+      <button class="tab-btn" data-inspector-tab="sources" role="tab">來源</button>
+      ${mode === 'expert' ? `<button class="tab-btn" data-inspector-tab="trace" role="tab">Trace</button>` : ''}
+    </div>
+
+    <div class="inspector-panel" data-panel="interp">
+      ${interpretationPanel(chart, mode)}
+    </div>
+    <div class="inspector-panel" data-panel="rules" hidden>
+      ${ruleInspector(chart)}
+    </div>
+    <div class="inspector-panel" data-panel="stars" hidden>
+      ${starInspector(chart)}
+    </div>
+    <div class="inspector-panel" data-panel="sources" hidden>
+      ${sourceInspector(chart)}
+    </div>
+    ${mode === 'expert' ? `
+    <div class="inspector-panel" data-panel="trace" hidden>
+      ${tracePanel(chart)}
+    </div>` : ''}
+  </div>
+  ${sharePanel(chart)}`;
+}
+
+/** Rule Inspector（spec 0.71 §28） */
+function ruleInspector(chart: ZiWeiChart): string {
+  const hitRuleIds = new Set<string>([
+    ...chart.interpretation.hits.map(h => h.ruleId),
+    ...chart.chart.patterns.map(p => p.ruleId)
+  ]);
+  const rules = ZiWei.Bible.rules().filter(r => hitRuleIds.has(r.ruleId));
+
+  return `
+  <div style="margin-top:10px">
+    <div class="small faint" style="margin-bottom:8px">此命盤命中 ${rules.length} 條規則：</div>
+    <ul class="clean-list small">
+      ${rules.map(r => `
+        <li style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+          <div style="display:flex;align-items:center;gap:6px">
+            <strong>${t(r.name)}</strong>
+            <span class="badge ${r.status}">${r.status}</span>
+          </div>
+          <div class="mono faint">${r.ruleId} (v${r.ruleVersion})</div>
+          ${r.description ? `<div class="sub" style="margin:2px 0">${t(r.description)}</div>` : ''}
+          <div class="faint">來源：${(r.sourceRefs ?? []).join(', ') || '無'}</div>
+        </li>`).join('')}
+    </ul>
   </div>`;
 }
 
-/** 限運面板：大限 / 流年 / 小限（有輸入「查流年」時才顯示年運） */
+/** Star Inspector（spec 0.71 §27） */
+function starInspector(chart: ZiWeiChart): string {
+  const placed = Object.values(chart.chart.stars);
+  return `
+  <div style="margin-top:10px">
+    <div class="small faint" style="margin-bottom:8px">盤上 ${placed.length} 顆星曜明細：</div>
+    <div class="table-scroll" style="max-height:360px">
+      <table class="data small">
+        <thead><tr><th>星曜</th><th>落宮</th><th>狀態</th><th>Rule</th></tr></thead>
+        <tbody>
+          ${placed.map(p => `
+            <tr>
+              <td><strong>${t(p.star.name)}</strong></td>
+              <td>${BRANCH_ZH[p.branch]}</td>
+              <td><span class="badge ${p.star.status}">${p.star.status}</span></td>
+              <td class="mono faint">${p.ruleId ?? ''}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+/** Source Inspector（spec 0.71 §29） */
+function sourceInspector(chart: ZiWeiChart): string {
+  const sources = ZiWei.Bible.sources();
+  return `
+  <div style="margin-top:10px">
+    <div class="small faint" style="margin-bottom:8px">文獻依據庫 (${sources.length} 部)：</div>
+    <ul class="clean-list small">
+      ${sources.slice(0, 8).map(s => `
+        <li style="margin-bottom:8px">
+          <div><strong>${s.title}</strong> <span class="badge canonical">Tier ${s.tier}</span></div>
+          <div class="faint mono">${s.sourceId}${s.era ? ` · ${s.era}` : ''}</div>
+        </li>`).join('')}
+    </ul>
+  </div>`;
+}
+
+/** 限運面板 */
 function periodPanel(chart: NonNullable<typeof state.chart>): string {
   const major = chart.periods.active?.major;
   const year = chart.periods.year;
@@ -81,15 +223,12 @@ function periodPanel(chart: NonNullable<typeof state.chart>): string {
   </div>`;
 }
 
-/** 動態限運星曜面板（spec 0.6 §19）：可切換 scope，不一次全疊在盤上 */
 function dynamicStarsPanel(chart: NonNullable<typeof state.chart>): string {
   const all = chart.periods.dynamicStars ?? [];
   if (all.length === 0) {
-    return `<p class="sub small" style="margin:10px 0 0">動態流曜：需目標年份（目前第一批僅實作流年 scope）。</p>`;
+    return `<p class="sub small" style="margin:10px 0 0">動態流曜：需開啟 Experimental 且給定目標年份。</p>`;
   }
   const mode = state.mode;
-  // 目前僅 year scope 已實作（第一批，見 spec 0.6 §46）；其餘如實標示未實作
-  const scopeLabels = ['本命', '大限', '小限', '流年', '流月', '流日', '流時'];
   const selected = 'year';
   const rows = all.filter(d => d.scope === selected);
   const labelOf = (starId: string) => {
@@ -97,10 +236,7 @@ function dynamicStarsPanel(chart: NonNullable<typeof state.chart>): string {
     return `流${star ? t(star.star.name) : starId}`;
   };
   return `
-  <h4 style="margin:14px 0 6px;font-size:14px">動態流曜
-    <span class="badge canonical">流年</span>
-    ${scopeLabels.filter(l => l !== '流年').map(l => `<span class="faint small" title="尚未實作（第一批僅流年 scope）">${l}</span>`).join(' ')}
-  </h4>
+  <h4 style="margin:14px 0 6px;font-size:14px">動態流曜 <span class="badge candidate">Candidate</span></h4>
   <div class="table-scroll">
     <table class="data small">
       <thead><tr><th>流曜</th><th>宮位</th>${mode === 'expert' ? '<th>基準星 / scope</th><th>Rule</th>' : ''}</tr></thead>
@@ -116,10 +252,9 @@ function dynamicStarsPanel(chart: NonNullable<typeof state.chart>): string {
       </tbody>
     </table>
   </div>
-  <p class="faint small" style="margin:6px 0 0">資料層為基準星 + scope（不建大量假星 ID）；第一批流曜規則 status=candidate，僅流年 scope 已實作。</p>`;
+  <p class="faint small" style="margin:6px 0 0">資料層為基準星 + scope；動態流曜規則 status=candidate，不混入 canonical facts。</p>`;
 }
 
-/** 12 年時間軸（唯讀組合 Product.trend，不新增命理規則） */
 function timelineTable(chart: NonNullable<typeof state.chart>): string {
   if (!state.targetYear) return '';
   const points = ZiWei.Product.trend(chart, {
@@ -141,11 +276,9 @@ function timelineTable(chart: NonNullable<typeof state.chart>): string {
         </tr>`).join('')}
       </tbody>
     </table>
-  </div>
-  <p class="faint small" style="margin:6px 0 0">時間軸由既有 canonical 限運輸出組合而成；不含出生資料。</p>`;
+  </div>`;
 }
 
-/** 分享面板：穩定指紋 + 可複製 payload（預設不含出生資料） */
 function sharePanel(chart: NonNullable<typeof state.chart>): string {
   const payload = ZiWei.Product.sharePayload(chart);
   return `
@@ -159,7 +292,8 @@ function sharePanel(chart: NonNullable<typeof state.chart>): string {
   </div>`;
 }
 
-function expertMeta(chart: NonNullable<typeof state.chart>): string {
+function expertMeta(chart: NonNullable<typeof state.chart>, mode: string): string {
+  if (mode !== 'expert') return '';
   return `
   <div class="card card-pad" style="margin-top:12px">
     <h3 style="margin-top:0">Engine</h3>
@@ -175,7 +309,6 @@ function expertMeta(chart: NonNullable<typeof state.chart>): string {
   ${researchVisibilityPanel()}`;
 }
 
-/** Profile 差異面板（spec 0.6 §40）：清楚列出 profile 相對 canonical 的差異 */
 function profileDiffPanel(chart: NonNullable<typeof state.chart>): string {
   const explanation = ZiWei.Profiles.explain(chart.generatedWith.profile);
   if (explanation.diffs.length === 0) {
@@ -194,19 +327,12 @@ function profileDiffPanel(chart: NonNullable<typeof state.chart>): string {
         <div class="mono faint">canonical: ${d.canonicalRule}</div>
         <div class="mono faint">variant: ${d.variantRule}</div>
         ${d.description ? `<p class="sub" style="margin:4px 0">${d.description}</p>` : ''}
-        <div class="mono faint">source: ${(d.sourceRefs ?? []).join(', ')}</div>
-        <div class="mono faint">evidence: ${(d.evidenceRefs ?? []).join(', ') || '（實作差分佐證）'}</div>
       </div>`).join('')}
-    <details>
-      <summary class="small">policies</summary>
-      <pre tabindex="0" class="json">${JSON.stringify(explanation.policies, null, 1)}</pre>
-    </details>
   </div>`;
 }
 
-/** Research 可見性（spec 0.6 §41）：顯示未決研究，不假裝只有一個答案 */
 function researchVisibilityPanel(): string {
-  const open = listResearch().filter(r => r.status === 'open' || r.status === 'in-progress');
+  const open = listResearch().filter(r => r.status === 'open');
   if (open.length === 0) return '';
   const shown = open.slice(0, 8);
   return `
@@ -215,8 +341,6 @@ function researchVisibilityPanel(): string {
     <ul class="small" style="margin:0;padding-left:18px">
       ${shown.map(r => `<li><span class="mono faint">${r.researchId}</span> ${r.title ?? ''}</li>`).join('')}
     </ul>
-    ${open.length > shown.length ? `<p class="faint small" style="margin:6px 0 0">另有 ${open.length - shown.length} 筆未決研究。</p>` : ''}
-    <p class="faint small" style="margin:6px 0 0">Research / Variant unresolved 一律如實顯示。</p>
   </div>`;
 }
 
@@ -232,7 +356,7 @@ function palaceCardsHtml(chart: NonNullable<typeof state.chart>): string {
   <h2>十二宮</h2>
   <div class="palace-cards">
     ${chart.chart.palaces.map(p => `
-      <div class="palace-card ${p.isLifePalace ? 'is-life' : ''}">
+      <div class="palace-card ${p.isLifePalace ? 'is-life' : ''}" data-palace-card="${p.id}">
         <div class="ph">
           <span class="name">${t(p.name)}${p.isBodyPalace ? '·身' : ''}</span>
           <span class="sub small">${STEM_ZH[p.stem]}${BRANCH_ZH[p.branch]}${p.majorPeriod ? ` · ${p.majorPeriod.fromAge}-${p.majorPeriod.toAge}` : ''}</span>
@@ -253,8 +377,7 @@ function interpretationPanel(chart: NonNullable<typeof state.chart>, mode: strin
   const sections = renderNarrative(chart, { locale: state.locale });
   const patterns = chart.chart.patterns.filter(p => p.status === 'complete' || p.status === 'enhanced' || p.status === 'partial');
   return `
-  <div class="card card-pad">
-    <h3 style="margin-top:0">解讀</h3>
+  <div>
     ${patterns.length ? `<div style="margin-bottom:10px">${patterns.map(p => `<span class="badge ${p.status === 'broken' ? 'deprecated' : 'canonical'}" title="${p.patternId}">${t(p.name)}</span> `).join('')}</div>` : ''}
     ${sections.length === 0 ? '<p class="sub small">此命盤目前無命中解讀規則。</p>' : ''}
     ${sections.map(s => `
@@ -263,15 +386,140 @@ function interpretationPanel(chart: NonNullable<typeof state.chart>, mode: strin
         ${s.paragraphs.map(p => `<p class="small sub" style="margin:0 0 6px">${p}</p>`).join('')}
         ${mode === 'expert' ? `<div class="mono small faint">${s.hitRuleIds.join(', ')}</div>` : ''}
       </div>`).join('')}
-  </div>
-  ${mode === 'expert' ? tracePanel(chart) : ''}`;
+  </div>`;
 }
 
 function tracePanel(chart: NonNullable<typeof state.chart>): string {
   if (!chart.trace) return '';
   return `
-  <div class="card card-pad" style="margin-top:12px">
-    <h3 style="margin-top:0">Trace (${chart.trace.entries.length})</h3>
-    <pre tabindex="0" class="json">${JSON.stringify(chart.trace.entries, null, 1).slice(0, 8000)}</pre>
+  <div style="margin-top:10px">
+    <div class="small faint" style="margin-bottom:6px">Trace (${chart.trace.entries.length} entries)：</div>
+    <pre tabindex="0" class="json" style="max-height:360px">${JSON.stringify(chart.trace.entries, null, 1).slice(0, 8000)}</pre>
   </div>`;
+}
+
+export function bindChartInteractions(root: HTMLElement = document.body): void {
+  // 宮位點擊 → 切換 Bible Inspector
+  root.querySelectorAll('[data-palace-card]').forEach(card => {
+    card.addEventListener('click', () => {
+      const pid = (card as HTMLElement).dataset.palaceCard as PalaceId;
+      selectedPalaceId = pid;
+      root.querySelectorAll('[data-palace-card]').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+
+  // Bible Inspector Tabs 切換
+  root.querySelectorAll('[data-inspector-tab]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabName = (tab as HTMLElement).dataset.inspectorTab;
+      root.querySelectorAll('[data-inspector-tab]').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      root.querySelectorAll('[data-panel]').forEach(p => {
+        (p as HTMLElement).hidden = (p as HTMLElement).dataset.panel !== tabName;
+      });
+    });
+  });
+
+  // AI Handoff Dialog 開啟
+  root.querySelectorAll('[data-ai-handoff="dialog"]').forEach(btn => {
+    btn.addEventListener('click', () => openAiHandoffDialog());
+  });
+
+  // AI 下載直接操作
+  root.querySelector('[data-ai-handoff="download-md"]')?.addEventListener('click', () => {
+    if (!state.chart) return;
+    const pkg = handoff(state.chart, { mode: 'compact', privacy: 'interpretation' });
+    const md = toMarkdown(pkg);
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ziwei-chart-ai-${pkg.fingerprint}.md`;
+    a.click();
+  });
+
+  root.querySelector('[data-ai-handoff="download-json"]')?.addEventListener('click', () => {
+    if (!state.chart) return;
+    const pkg = handoff(state.chart, { mode: 'compact', privacy: 'interpretation' });
+    const blob = new Blob([JSON.stringify(pkg, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ziwei-chart-ai-${pkg.fingerprint}.json`;
+    a.click();
+  });
+}
+
+/** 前端 Privacy UI 對話框（spec 0.71 §61） */
+function openAiHandoffDialog(): void {
+  if (!state.chart) return;
+  const container = document.getElementById('ai-handoff-dialog-container');
+  if (!container) return;
+
+  container.innerHTML = `
+  <div class="modal-backdrop" id="ai-modal-backdrop">
+    <div class="modal card card-pad" style="max-width:440px;width:90%">
+      <h3 style="margin-top:0">複製給 AI</h3>
+      <p class="small sub">將命盤結構化資料與解讀契約提供給外部 AI（ChatGPT、Claude 等），免重排盤。</p>
+      
+      <div style="margin-bottom:12px">
+        <label class="small"><strong>資料量</strong></label>
+        <div>
+          <label><input type="radio" name="ai-mode" value="compact" checked /> 精簡（適合一般對話）</label><br>
+          <label><input type="radio" name="ai-mode" value="full" /> 完整（含 Sources / Evidence / 完整落盤）</label>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px">
+        <label class="small"><strong>隱私</strong></label>
+        <div>
+          <label><input type="radio" name="ai-privacy" value="interpretation" checked /> 解盤需要資料（不含姓名與坐標）</label><br>
+          <label><input type="radio" name="ai-privacy" value="minimal" /> 最少資料（不含出生日期）</label><br>
+          <label><input type="radio" name="ai-privacy" value="full" /> 完整原始資料（含姓名）</label>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <label class="small"><strong>格式</strong></label>
+        <div>
+          <label><input type="radio" name="ai-format" value="markdown" checked /> Markdown</label><br>
+          <label><input type="radio" name="ai-format" value="json" /> JSON</label>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn sm" id="ai-dialog-close">取消</button>
+        <button class="btn sm primary" id="ai-dialog-copy">複製到剪貼簿</button>
+      </div>
+    </div>
+  </div>`;
+  container.hidden = false;
+
+  document.getElementById('ai-dialog-close')?.addEventListener('click', () => {
+    container.hidden = true;
+  });
+
+  document.getElementById('ai-dialog-copy')?.addEventListener('click', async () => {
+    const mode = (document.querySelector('input[name="ai-mode"]:checked') as HTMLInputElement)?.value as 'compact' | 'full';
+    const privacy = (document.querySelector('input[name="ai-privacy"]:checked') as HTMLInputElement)?.value as 'minimal' | 'interpretation' | 'full';
+    const format = (document.querySelector('input[name="ai-format"]:checked') as HTMLInputElement)?.value as 'markdown' | 'json';
+
+    const pkg = handoff(state.chart!, { mode, privacy });
+    const content = format === 'json' ? JSON.stringify(pkg, null, 2) : toMarkdown(pkg);
+
+    try {
+      await navigator.clipboard.writeText(content);
+      alert('已複製到剪貼簿！可直接貼給 AI。');
+      container.hidden = true;
+    } catch {
+      // clipboard fallback（spec 0.71 §66）
+      const ta = document.createElement('textarea');
+      ta.value = content;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('已透過相容方式複製！');
+      container.hidden = true;
+    }
+  });
 }

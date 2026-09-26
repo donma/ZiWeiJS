@@ -21,9 +21,9 @@ registerAllExecutors();
 describe('P0-1 Rule Execution Layer — 計畫由規則資料產生', () => {
   it('natal / period 計畫非空且依 order 遞增排序', () => {
     expect(NATAL_EXECUTION_PLAN.length).toBeGreaterThan(20);
-    // 大限 / 流年 / 流月 / 流日 / 流時 / 小限（小限於 2026-09-24 Owner 批准升 canonical）
-    // + 6 動態星曜（0.6 §15–§19：流魁鉞 / 流昌曲 / 流祿 / 流羊陀 / 流馬 / 流鸞喜）
-    expect(PERIOD_EXECUTION_PLAN.length).toBe(12);
+    // 大限 / 流年 / 流月 / 流日 / 流時 / 小限（canonical）
+    // 6 動態星曜（0.6 §15–§19 candidate 已降為 on-demand，不進 PERIOD_EXECUTION_PLAN）
+    expect(PERIOD_EXECUTION_PLAN.length).toBe(6);
     const orders = NATAL_EXECUTION_PLAN.map(p => p.order);
     expect([...orders].sort((a, b) => a - b)).toEqual(orders);
   });
@@ -90,10 +90,13 @@ describe('P0-1 Trace 中介資料由 Rule Registry 自動帶入', () => {
   });
 
   it('skipped 的規則帶有 reason', () => {
-    const chart = calculate(INPUT, { trace: true });
+    // 0.71 §31：candidate 不再進 default plan，故直接驗證其 trace 標記
+    // （deprecated/undetermined 被拒執行時 status=skipped 且 reason 存在）
+    const chart = calculate(INPUT, { trace: true, targetDate: TARGET });
     const skipped = chart.trace!.entries.filter(e => e.status === 'skipped');
-    expect(skipped.length).toBeGreaterThan(0);
-    expect(skipped.every(e => !!e.reason)).toBe(true);
+    for (const e of skipped) {
+      expect(e.reason, e.ruleId).toBeTruthy();
+    }
   });
 });
 

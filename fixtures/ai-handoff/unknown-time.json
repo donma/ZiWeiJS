@@ -1,0 +1,2576 @@
+{
+  "formatVersion": "1.0",
+  "generator": {
+    "product": "ZiWeiJS",
+    "bibleVersion": "0.6.0",
+    "engineVersion": "0.1.0",
+    "schemaVersion": "2.0",
+    "profile": "canonical"
+  },
+  "subject": {},
+  "birth": {
+    "calendarType": "solar",
+    "birthTimePrecision": "unknown",
+    "solar": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "lunar": {
+      "year": 1990,
+      "month": 4,
+      "day": 21,
+      "isLeapMonth": false
+    },
+    "timezone": "Asia/Taipei"
+  },
+  "unknownTime": {
+    "candidates": [
+      {
+        "hourBranch": "zi",
+        "timeRange": {
+          "start": "23:00",
+          "end": "00:59"
+        },
+        "representativeTime": {
+          "hour": 0,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "si",
+          "bodyPalace": "life",
+          "bodyPalaceBranch": "si",
+          "bureau": "jin4",
+          "masterStar": "ZW.STAR.MAJOR.WUQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "chen",
+            "ZW.STAR.MAJOR.TIANJI": "mao",
+            "ZW.STAR.MAJOR.TAIYANG": "chou",
+            "ZW.STAR.MAJOR.WUQU": "zi",
+            "ZW.STAR.MAJOR.TIANTONG": "hai",
+            "ZW.STAR.MAJOR.LIANZHEN": "shen",
+            "ZW.STAR.MAJOR.TIANFU": "zi",
+            "ZW.STAR.MAJOR.TAIYIN": "chou",
+            "ZW.STAR.MAJOR.TANLANG": "yin",
+            "ZW.STAR.MAJOR.JUMEN": "mao",
+            "ZW.STAR.MAJOR.TIANXIANG": "chen",
+            "ZW.STAR.MAJOR.TIANLIANG": "si",
+            "ZW.STAR.MAJOR.QISHA": "wu",
+            "ZW.STAR.MAJOR.POJUN": "xu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_TRAVEL.001",
+            "ZW.INT.WEALTH.STAR_TAIYIN_CN.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANLIANG_LIFE.001",
+            "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TAIYANG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_HEALTH.001",
+            "ZW.INT.MIGRATION.MA_PROPERTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "chou",
+        "timeRange": {
+          "start": "01:00",
+          "end": "02:59"
+        },
+        "representativeTime": {
+          "hour": 2,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "chen",
+          "bodyPalace": "fortune",
+          "bodyPalaceBranch": "wu",
+          "bureau": "jin4",
+          "masterStar": "ZW.STAR.MAJOR.LIANZHEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "chen",
+            "ZW.STAR.MAJOR.TIANJI": "mao",
+            "ZW.STAR.MAJOR.TAIYANG": "chou",
+            "ZW.STAR.MAJOR.WUQU": "zi",
+            "ZW.STAR.MAJOR.TIANTONG": "hai",
+            "ZW.STAR.MAJOR.LIANZHEN": "shen",
+            "ZW.STAR.MAJOR.TIANFU": "zi",
+            "ZW.STAR.MAJOR.TAIYIN": "chou",
+            "ZW.STAR.MAJOR.TANLANG": "yin",
+            "ZW.STAR.MAJOR.JUMEN": "mao",
+            "ZW.STAR.MAJOR.TIANXIANG": "chen",
+            "ZW.STAR.MAJOR.TIANLIANG": "si",
+            "ZW.STAR.MAJOR.QISHA": "wu",
+            "ZW.STAR.MAJOR.POJUN": "xu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.HEALTH.JI_HEALTH.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.WEALTH.WUQU_WEALTH.001",
+            "ZW.INT.PERS.ZIWEI_LIFE.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SIHUA.QUAN_WEALTH.001",
+            "ZW.INT.WEALTH.LUCUN_CAREER.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_LIANZHEN.001",
+            "ZW.INT.SIHUA.LU_CHILDREN.001",
+            "ZW.INT.MIGRATION.MA_CAREER.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SOCIAL.TIANYAO_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "yin",
+        "timeRange": {
+          "start": "03:00",
+          "end": "04:59"
+        },
+        "representativeTime": {
+          "hour": 4,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "mao",
+          "bodyPalace": "career",
+          "bodyPalaceBranch": "wei",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.WENQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.CAREER.LU_CAREER.001",
+            "ZW.INT.SIHUA.JI_FORTUNE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SIHUA.LU_CAREER.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.SIHUA.KE_CAREER.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_CAREER.001",
+            "ZW.INT.CAREER.STAR_TAIYANG.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_TAIYIN.001",
+            "ZW.INT.CAREER.ZUOYOU_CAREER.001",
+            "ZW.INT.WEALTH.STAR_TIANLIANG.001",
+            "ZW.INT.SIHUA.QUAN_PROPERTY.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.GENERAL.SHIUO_MAO.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "mao",
+        "timeRange": {
+          "start": "05:00",
+          "end": "06:59"
+        },
+        "representativeTime": {
+          "hour": 6,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "yin",
+          "bodyPalace": "travel",
+          "bodyPalaceBranch": "shen",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.LUCUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_PROPERTY.001",
+            "ZW.INT.PERS.LIANZHEN_LIFE.001",
+            "ZW.INT.MIGRATION.MA_TRAVEL.001",
+            "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.CAREER.STAR_WUQU.001",
+            "ZW.INT.CAREER.STAR_TIANFU.001",
+            "ZW.INT.WEALTH.STAR_ZIWEI.001",
+            "ZW.INT.HEALTH.QINGYANG_HEALTH.001",
+            "ZW.INT.MARRIAGE.QISHA_SPOUSE.001",
+            "ZW.INT.WEALTH.STAR_TIANXIANG.001",
+            "ZW.INT.SIHUA.LU_FRIENDS.001",
+            "ZW.INT.SOCIAL.ZUOYOU_FRIENDS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_FRIENDS.001",
+            "ZW.INT.FAMILY.PARENTS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "chen",
+        "timeRange": {
+          "start": "07:00",
+          "end": "08:59"
+        },
+        "representativeTime": {
+          "hour": 8,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "chou",
+          "bodyPalace": "wealth",
+          "bodyPalaceBranch": "you",
+          "bureau": "huo6",
+          "masterStar": "ZW.STAR.MAJOR.JUMEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "yin",
+            "ZW.STAR.MAJOR.TIANJI": "chou",
+            "ZW.STAR.MAJOR.TAIYANG": "hai",
+            "ZW.STAR.MAJOR.WUQU": "xu",
+            "ZW.STAR.MAJOR.TIANTONG": "you",
+            "ZW.STAR.MAJOR.LIANZHEN": "wu",
+            "ZW.STAR.MAJOR.TIANFU": "yin",
+            "ZW.STAR.MAJOR.TAIYIN": "mao",
+            "ZW.STAR.MAJOR.TANLANG": "chen",
+            "ZW.STAR.MAJOR.JUMEN": "si",
+            "ZW.STAR.MAJOR.TIANXIANG": "wu",
+            "ZW.STAR.MAJOR.TIANLIANG": "wei",
+            "ZW.STAR.MAJOR.QISHA": "shen",
+            "ZW.STAR.MAJOR.POJUN": "zi"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.JI_WEALTH.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANJI_LIFE.001",
+            "ZW.INT.WEALTH.QINGYANG_WEALTH.001",
+            "ZW.INT.SIHUA.LU_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001",
+            "ZW.INT.CAREER.STAR_JUMEN.001",
+            "ZW.INT.WEALTH.STAR_TIANTONG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_CHILDREN.001",
+            "ZW.INT.SIHUA.KE_FORTUNE.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "si",
+        "timeRange": {
+          "start": "09:00",
+          "end": "10:59"
+        },
+        "representativeTime": {
+          "hour": 10,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "zi",
+          "bodyPalace": "spouse",
+          "bodyPalaceBranch": "xu",
+          "bureau": "huo6",
+          "masterStar": "ZW.STAR.MAJOR.TANLANG",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "yin",
+            "ZW.STAR.MAJOR.TIANJI": "chou",
+            "ZW.STAR.MAJOR.TAIYANG": "hai",
+            "ZW.STAR.MAJOR.WUQU": "xu",
+            "ZW.STAR.MAJOR.TIANTONG": "you",
+            "ZW.STAR.MAJOR.LIANZHEN": "wu",
+            "ZW.STAR.MAJOR.TIANFU": "yin",
+            "ZW.STAR.MAJOR.TAIYIN": "mao",
+            "ZW.STAR.MAJOR.TANLANG": "chen",
+            "ZW.STAR.MAJOR.JUMEN": "si",
+            "ZW.STAR.MAJOR.TIANXIANG": "wu",
+            "ZW.STAR.MAJOR.TIANLIANG": "wei",
+            "ZW.STAR.MAJOR.QISHA": "shen",
+            "ZW.STAR.MAJOR.POJUN": "zi"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.POJUN_LIFE.001",
+            "ZW.INT.WEALTH.LUCUN_WEALTH.001",
+            "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+            "ZW.INT.HEALTH.TUOLUO_HEALTH.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
+            "ZW.INT.CAREER.STAR_TANLANG.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_QISHA.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_PROPERTY.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "wu",
+        "timeRange": {
+          "start": "11:00",
+          "end": "12:59"
+        },
+        "representativeTime": {
+          "hour": 12,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "hai",
+          "bodyPalace": "life",
+          "bodyPalaceBranch": "hai",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.MAJOR.JUMEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_TRAVEL.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANLIANG_LIFE.001",
+            "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.MARRIAGE.QINGYANG_SPOUSE.001",
+            "ZW.INT.WEALTH.TUOLUO_WEALTH.001",
+            "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TAIYANG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_HEALTH.001",
+            "ZW.INT.GENERAL.SHIDE_HAI.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "wei",
+        "timeRange": {
+          "start": "13:00",
+          "end": "14:59"
+        },
+        "representativeTime": {
+          "hour": 14,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "xu",
+          "bodyPalace": "fortune",
+          "bodyPalaceBranch": "zi",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.LUCUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.HEALTH.JI_HEALTH.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.WEALTH.WUQU_WEALTH.001",
+            "ZW.INT.PERS.ZIWEI_LIFE.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SIHUA.QUAN_WEALTH.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_LIANZHEN.001",
+            "ZW.INT.SIHUA.LU_CHILDREN.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.LEARNING.HUAGAI_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.GENERAL.SHIDE_XU.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "shen",
+        "timeRange": {
+          "start": "15:00",
+          "end": "16:59"
+        },
+        "representativeTime": {
+          "hour": 16,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "you",
+          "bodyPalace": "career",
+          "bodyPalaceBranch": "chou",
+          "bureau": "shui2",
+          "masterStar": "ZW.STAR.AUX.WENQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "hai",
+            "ZW.STAR.MAJOR.TIANJI": "xu",
+            "ZW.STAR.MAJOR.TAIYANG": "shen",
+            "ZW.STAR.MAJOR.WUQU": "wei",
+            "ZW.STAR.MAJOR.TIANTONG": "wu",
+            "ZW.STAR.MAJOR.LIANZHEN": "mao",
+            "ZW.STAR.MAJOR.TIANFU": "si",
+            "ZW.STAR.MAJOR.TAIYIN": "wu",
+            "ZW.STAR.MAJOR.TANLANG": "wei",
+            "ZW.STAR.MAJOR.JUMEN": "shen",
+            "ZW.STAR.MAJOR.TIANXIANG": "you",
+            "ZW.STAR.MAJOR.TIANLIANG": "xu",
+            "ZW.STAR.MAJOR.QISHA": "hai",
+            "ZW.STAR.MAJOR.POJUN": "mao"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SOCIAL.KUIYUE_CAREER.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RISK.QINGYANG_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "you",
+        "timeRange": {
+          "start": "17:00",
+          "end": "18:59"
+        },
+        "representativeTime": {
+          "hour": 18,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "shen",
+          "bodyPalace": "travel",
+          "bodyPalaceBranch": "yin",
+          "bureau": "shui2",
+          "masterStar": "ZW.STAR.MAJOR.LIANZHEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "hai",
+            "ZW.STAR.MAJOR.TIANJI": "xu",
+            "ZW.STAR.MAJOR.TAIYANG": "shen",
+            "ZW.STAR.MAJOR.WUQU": "wei",
+            "ZW.STAR.MAJOR.TIANTONG": "wu",
+            "ZW.STAR.MAJOR.LIANZHEN": "mao",
+            "ZW.STAR.MAJOR.TIANFU": "si",
+            "ZW.STAR.MAJOR.TAIYIN": "wu",
+            "ZW.STAR.MAJOR.TANLANG": "wei",
+            "ZW.STAR.MAJOR.JUMEN": "shen",
+            "ZW.STAR.MAJOR.TIANXIANG": "you",
+            "ZW.STAR.MAJOR.TIANLIANG": "xu",
+            "ZW.STAR.MAJOR.QISHA": "hai",
+            "ZW.STAR.MAJOR.POJUN": "mao"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.TAIYANG_LIFE.001",
+            "ZW.INT.PERS.JUMEN_LIFE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
+            "ZW.INT.LEARNING.JUMEN_LIFE.001",
+            "ZW.INT.MARRIAGE.TIANTONG_SPOUSE.001",
+            "ZW.INT.SIHUA.KE_SPOUSE.001",
+            "ZW.INT.SIHUA.QUAN_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "xu",
+        "timeRange": {
+          "start": "19:00",
+          "end": "20:59"
+        },
+        "representativeTime": {
+          "hour": 20,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "wei",
+          "bodyPalace": "wealth",
+          "bodyPalaceBranch": "mao",
+          "bureau": "mu3",
+          "masterStar": "ZW.STAR.MAJOR.WUQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "shen",
+            "ZW.STAR.MAJOR.TIANJI": "wei",
+            "ZW.STAR.MAJOR.TAIYANG": "si",
+            "ZW.STAR.MAJOR.WUQU": "chen",
+            "ZW.STAR.MAJOR.TIANTONG": "mao",
+            "ZW.STAR.MAJOR.LIANZHEN": "zi",
+            "ZW.STAR.MAJOR.TIANFU": "shen",
+            "ZW.STAR.MAJOR.TAIYIN": "you",
+            "ZW.STAR.MAJOR.TANLANG": "xu",
+            "ZW.STAR.MAJOR.JUMEN": "hai",
+            "ZW.STAR.MAJOR.TIANXIANG": "zi",
+            "ZW.STAR.MAJOR.TIANLIANG": "chou",
+            "ZW.STAR.MAJOR.QISHA": "yin",
+            "ZW.STAR.MAJOR.POJUN": "wu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.JI_WEALTH.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANJI_LIFE.001",
+            "ZW.INT.RISK.TUOLUO_LIFE.001",
+            "ZW.INT.SIHUA.LU_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001",
+            "ZW.INT.CAREER.STAR_JUMEN.001",
+            "ZW.INT.WEALTH.STAR_TIANTONG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_CHILDREN.001",
+            "ZW.INT.SIHUA.KE_FORTUNE.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      },
+      {
+        "hourBranch": "hai",
+        "timeRange": {
+          "start": "21:00",
+          "end": "22:59"
+        },
+        "representativeTime": {
+          "hour": 22,
+          "minute": 0
+        },
+        "signature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "wu",
+          "bodyPalace": "spouse",
+          "bodyPalaceBranch": "chen",
+          "bureau": "mu3",
+          "masterStar": "ZW.STAR.MAJOR.POJUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "shen",
+            "ZW.STAR.MAJOR.TIANJI": "wei",
+            "ZW.STAR.MAJOR.TAIYANG": "si",
+            "ZW.STAR.MAJOR.WUQU": "chen",
+            "ZW.STAR.MAJOR.TIANTONG": "mao",
+            "ZW.STAR.MAJOR.LIANZHEN": "zi",
+            "ZW.STAR.MAJOR.TIANFU": "shen",
+            "ZW.STAR.MAJOR.TAIYIN": "you",
+            "ZW.STAR.MAJOR.TANLANG": "xu",
+            "ZW.STAR.MAJOR.JUMEN": "hai",
+            "ZW.STAR.MAJOR.TIANXIANG": "zi",
+            "ZW.STAR.MAJOR.TIANLIANG": "chou",
+            "ZW.STAR.MAJOR.QISHA": "yin",
+            "ZW.STAR.MAJOR.POJUN": "wu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.POJUN_LIFE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
+            "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
+            "ZW.INT.CAREER.STAR_TANLANG.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_QISHA.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_PROPERTY.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        }
+      }
+    ],
+    "stableFacts": [
+      {
+        "factId": "bodyStar",
+        "label": "身主",
+        "status": "stable",
+        "values": {
+          "ZW.STAR.AUX.HUOLING": [
+            "zi",
+            "chou",
+            "yin",
+            "mao",
+            "chen",
+            "si",
+            "wu",
+            "wei",
+            "shen",
+            "you",
+            "xu",
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "majorStars",
+        "label": "十四主星",
+        "status": "stable",
+        "values": {
+          "ZW.STAR.MAJOR.JUMEN,ZW.STAR.MAJOR.LIANZHEN,ZW.STAR.MAJOR.POJUN,ZW.STAR.MAJOR.QISHA,ZW.STAR.MAJOR.TAIYANG,ZW.STAR.MAJOR.TAIYIN,ZW.STAR.MAJOR.TANLANG,ZW.STAR.MAJOR.TIANFU,ZW.STAR.MAJOR.TIANJI,ZW.STAR.MAJOR.TIANLIANG,ZW.STAR.MAJOR.TIANTONG,ZW.STAR.MAJOR.TIANXIANG,ZW.STAR.MAJOR.WUQU,ZW.STAR.MAJOR.ZIWEI": [
+            "zi",
+            "chou",
+            "yin",
+            "mao",
+            "chen",
+            "si",
+            "wu",
+            "wei",
+            "shen",
+            "you",
+            "xu",
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "transformations",
+        "label": "生年四化",
+        "status": "stable",
+        "values": {
+          "ZW.STAR.MAJOR.TAIYANG:lu,ZW.STAR.MAJOR.TAIYIN:ke,ZW.STAR.MAJOR.TIANTONG:ji,ZW.STAR.MAJOR.WUQU:quan": [
+            "zi",
+            "chou",
+            "yin",
+            "mao",
+            "chen",
+            "si",
+            "wu",
+            "wei",
+            "shen",
+            "you",
+            "xu",
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "patterns",
+        "label": "格局",
+        "status": "stable",
+        "values": {
+          "ZW.PAT.DUIMIAN_CHAODOU.001,ZW.PAT.FULIANG.001,ZW.PAT.HUOLING_JIA.001,ZW.PAT.JIANWENWU.001,ZW.PAT.JIAXIANG.001,ZW.PAT.JILIANG_LU.001,ZW.PAT.JINJI.001,ZW.PAT.JIYUETONGLIANG.001,ZW.PAT.KEQUANLU_ZHU.001,ZW.PAT.LIANQI.001,ZW.PAT.LUMA_JIAOCHI.001,ZW.PAT.RIYUEMING.001,ZW.PAT.SHA_POLANG.001,ZW.PAT.SHILIANG_YIN.001,ZW.PAT.SHIZHONG_YINYU.001,ZW.PAT.TAIYANG_JUMEN.001,ZW.PAT.TIANJI_JUMEN.001,ZW.PAT.TIANTONG_JUMEN.001,ZW.PAT.TIANXIANG_LIANZHEN.001,ZW.PAT.WENGUI.001,ZW.PAT.WUTAN.001,ZW.PAT.YANGTUO_JIA.001,ZW.PAT.YINGHUO.001,ZW.PAT.YUEZHU.001,ZW.PAT.YUE_MEN_DONG.001,ZW.PAT.ZIFU_TONGGONG.001,ZW.PAT.ZIWEI_QISHA.001,ZW.PAT.ZIWEI_ZUOYOU.001,ZW.PAT.ZUOYOU_CHAOYUAN.001": [
+            "zi",
+            "chou",
+            "yin",
+            "mao",
+            "chen",
+            "si",
+            "wu",
+            "wei",
+            "shen",
+            "you",
+            "xu",
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "sanfangSiZheng",
+        "label": "三方四正",
+        "status": "stable",
+        "values": {
+          "life": [
+            "zi",
+            "chou",
+            "yin",
+            "mao",
+            "chen",
+            "si",
+            "wu",
+            "wei",
+            "shen",
+            "you",
+            "xu",
+            "hai"
+          ]
+        }
+      }
+    ],
+    "variableFacts": [
+      {
+        "factId": "lifePalace",
+        "label": "命宮",
+        "status": "variable",
+        "values": {
+          "si": [
+            "zi"
+          ],
+          "chen": [
+            "chou"
+          ],
+          "mao": [
+            "yin"
+          ],
+          "yin": [
+            "mao"
+          ],
+          "chou": [
+            "chen"
+          ],
+          "zi": [
+            "si"
+          ],
+          "hai": [
+            "wu"
+          ],
+          "xu": [
+            "wei"
+          ],
+          "you": [
+            "shen"
+          ],
+          "shen": [
+            "you"
+          ],
+          "wei": [
+            "xu"
+          ],
+          "wu": [
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "bodyPalace",
+        "label": "身宮",
+        "status": "variable",
+        "values": {
+          "si": [
+            "zi"
+          ],
+          "wu": [
+            "chou"
+          ],
+          "wei": [
+            "yin"
+          ],
+          "shen": [
+            "mao"
+          ],
+          "you": [
+            "chen"
+          ],
+          "xu": [
+            "si"
+          ],
+          "hai": [
+            "wu"
+          ],
+          "zi": [
+            "wei"
+          ],
+          "chou": [
+            "shen"
+          ],
+          "yin": [
+            "you"
+          ],
+          "mao": [
+            "xu"
+          ],
+          "chen": [
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "bureau",
+        "label": "五行局",
+        "status": "variable",
+        "values": {
+          "jin4": [
+            "zi",
+            "chou"
+          ],
+          "tu5": [
+            "yin",
+            "mao",
+            "wu",
+            "wei"
+          ],
+          "huo6": [
+            "chen",
+            "si"
+          ],
+          "shui2": [
+            "shen",
+            "you"
+          ],
+          "mu3": [
+            "xu",
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "masterStar",
+        "label": "命主",
+        "status": "variable",
+        "values": {
+          "ZW.STAR.MAJOR.WUQU": [
+            "zi",
+            "xu"
+          ],
+          "ZW.STAR.MAJOR.LIANZHEN": [
+            "chou",
+            "you"
+          ],
+          "ZW.STAR.AUX.WENQU": [
+            "yin",
+            "shen"
+          ],
+          "ZW.STAR.AUX.LUCUN": [
+            "mao",
+            "wei"
+          ],
+          "ZW.STAR.MAJOR.JUMEN": [
+            "chen",
+            "wu"
+          ],
+          "ZW.STAR.MAJOR.TANLANG": [
+            "si"
+          ],
+          "ZW.STAR.MAJOR.POJUN": [
+            "hai"
+          ]
+        }
+      },
+      {
+        "factId": "interpretation",
+        "label": "Interpretation Hits",
+        "status": "variable",
+        "values": {
+          "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MIGRATION.MA_PROPERTY.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANLIANG_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.JI_TRAVEL.001,ZW.INT.SIHUA.QUAN_HEALTH.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.HUOLING_WEALTH.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TAIYANG.001,ZW.INT.WEALTH.STAR_TAIYIN_CN.001,ZW.INT.WEALTH.TAIYIN_WEALTH.001": [
+            "zi"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.STAR_LIANZHEN.001,ZW.INT.FAMILY.TIANLIANG_PARENTS.001,ZW.INT.HEALTH.JI_HEALTH.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MARRIAGE.TANLANG_SPOUSE.001,ZW.INT.MIGRATION.MA_CAREER.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANXIANG_LIFE.001,ZW.INT.PERS.ZIWEI_LIFE.001,ZW.INT.RELATIONSHIP.PEACH_LIFE.001,ZW.INT.RISK.HUOLING_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.KE_CHILDREN.001,ZW.INT.SIHUA.LU_CHILDREN.001,ZW.INT.SIHUA.QUAN_WEALTH.001,ZW.INT.SOCIAL.FRIENDS_EMPTY.001,ZW.INT.SOCIAL.TIANYAO_LIFE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.KONGJIE_WEALTH.001,ZW.INT.WEALTH.LUCUN_CAREER.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TIANFU.001,ZW.INT.WEALTH.WUQU_WEALTH.001": [
+            "chou"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.LU_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_TAIYANG.001,ZW.INT.CAREER.STAR_TAIYIN.001,ZW.INT.CAREER.ZUOYOU_CAREER.001,ZW.INT.GENERAL.SHIUO_MAO.001,ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.ZUOYOU_LIFE.001,ZW.INT.RELATIONSHIP.PEACH_LIFE.001,ZW.INT.RISK.HUOLING_LIFE.001,ZW.INT.SIHUA.JI_FORTUNE.001,ZW.INT.SIHUA.KE_CAREER.001,ZW.INT.SIHUA.LU_CAREER.001,ZW.INT.SIHUA.QUAN_PROPERTY.001,ZW.INT.SOCIAL.KUIYUE_CAREER.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TIANLIANG.001": [
+            "yin"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_TIANFU.001,ZW.INT.CAREER.STAR_WUQU.001,ZW.INT.FAMILY.PARENTS_EMPTY.001,ZW.INT.HEALTH.MALEFIC_HEALTH.001,ZW.INT.HEALTH.QINGYANG_HEALTH.001,ZW.INT.MARRIAGE.QISHA_SPOUSE.001,ZW.INT.MIGRATION.MA_TRAVEL.001,ZW.INT.PERS.JI_LIFE.001,ZW.INT.PERS.LIANZHEN_LIFE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.JI_PROPERTY.001,ZW.INT.SIHUA.KE_FRIENDS.001,ZW.INT.SIHUA.LU_FRIENDS.001,ZW.INT.SOCIAL.ZUOYOU_FRIENDS.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.STAR_TIANXIANG.001,ZW.INT.WEALTH.STAR_ZIWEI.001": [
+            "mao"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_JUMEN.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.PERS.JI_LIFE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANJI_LIFE.001,ZW.INT.PERS.ZUOYOU_LIFE.001,ZW.INT.SIHUA.KE_FORTUNE.001,ZW.INT.SIHUA.LU_SPOUSE.001,ZW.INT.SIHUA.QUAN_CHILDREN.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.SOCIAL.KUIYUE_TRAVEL.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.JI_WEALTH.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.QINGYANG_WEALTH.001,ZW.INT.WEALTH.STAR_TIANTONG.001": [
+            "chen"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_TANLANG.001,ZW.INT.FAMILY.TAIYIN_PROPERTY.001,ZW.INT.FAMILY.TIANJI_PARENTS.001,ZW.INT.HEALTH.MALEFIC_HEALTH.001,ZW.INT.HEALTH.TIANLIANG_HEALTH.001,ZW.INT.HEALTH.TUOLUO_HEALTH.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.POJUN_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.JI_CHILDREN.001,ZW.INT.SIHUA.KE_PROPERTY.001,ZW.INT.SIHUA.LU_SIBLINGS.001,ZW.INT.SIHUA.QUAN_SPOUSE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.HUOLING_WEALTH.001,ZW.INT.WEALTH.LUCUN_WEALTH.001,ZW.INT.WEALTH.STAR_QISHA.001": [
+            "si"
+          ],
+          "ZW.INT.GENERAL.SHIDE_HAI.001,ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001,ZW.INT.MARRIAGE.QINGYANG_SPOUSE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANLIANG_LIFE.001,ZW.INT.PERS.ZUOYOU_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.JI_TRAVEL.001,ZW.INT.SIHUA.QUAN_HEALTH.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.HUOLING_WEALTH.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TAIYANG.001,ZW.INT.WEALTH.TAIYIN_WEALTH.001,ZW.INT.WEALTH.TUOLUO_WEALTH.001": [
+            "wu"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.STAR_LIANZHEN.001,ZW.INT.FAMILY.TIANLIANG_PARENTS.001,ZW.INT.GENERAL.SHIDE_XU.001,ZW.INT.HEALTH.JI_HEALTH.001,ZW.INT.LEARNING.HUAGAI_LIFE.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MARRIAGE.TANLANG_SPOUSE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANXIANG_LIFE.001,ZW.INT.PERS.ZIWEI_LIFE.001,ZW.INT.RISK.HUOLING_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.KE_CHILDREN.001,ZW.INT.SIHUA.LU_CHILDREN.001,ZW.INT.SIHUA.QUAN_WEALTH.001,ZW.INT.SOCIAL.FRIENDS_EMPTY.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.KONGJIE_WEALTH.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TIANFU.001,ZW.INT.WEALTH.WUQU_WEALTH.001": [
+            "wei"
+          ],
+          "ZW.INT.FAMILY.TIANJI_PARENTS.001,ZW.INT.FAMILY.TIANLIANG_PARENTS.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001,ZW.INT.MARRIAGE.TANLANG_SPOUSE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANXIANG_LIFE.001,ZW.INT.RELATIONSHIP.PEACH_LIFE.001,ZW.INT.RISK.HUOLING_LIFE.001,ZW.INT.RISK.QINGYANG_LIFE.001,ZW.INT.SIHUA.JI_CHILDREN.001,ZW.INT.SIHUA.KE_CHILDREN.001,ZW.INT.SIHUA.LU_SIBLINGS.001,ZW.INT.SIHUA.QUAN_SPOUSE.001,ZW.INT.SOCIAL.FRIENDS_EMPTY.001,ZW.INT.SOCIAL.KUIYUE_CAREER.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.STAR_TIANFU.001": [
+            "shen"
+          ],
+          "ZW.INT.FAMILY.QINGYANG_PARENTS.001,ZW.INT.LEARNING.JUMEN_LIFE.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.MARRIAGE.TIANTONG_SPOUSE.001,ZW.INT.PERS.JI_LIFE.001,ZW.INT.PERS.JUMEN_LIFE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TAIYANG_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.KE_SPOUSE.001,ZW.INT.SIHUA.QUAN_SIBLINGS.001,ZW.INT.SOCIAL.FRIENDS_EMPTY.001,ZW.INT.TIMING.DAXIAN_LIFE.001": [
+            "you"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_JUMEN.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.PERS.JI_LIFE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.TIANJI_LIFE.001,ZW.INT.PERS.ZUOYOU_LIFE.001,ZW.INT.RISK.TUOLUO_LIFE.001,ZW.INT.SIHUA.KE_FORTUNE.001,ZW.INT.SIHUA.LU_SPOUSE.001,ZW.INT.SIHUA.QUAN_CHILDREN.001,ZW.INT.SOCIAL.KUIYUE_LIFE.001,ZW.INT.SOCIAL.KUIYUE_TRAVEL.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.JI_WEALTH.001,ZW.INT.WEALTH.LU_WEALTH.001,ZW.INT.WEALTH.STAR_TIANTONG.001": [
+            "xu"
+          ],
+          "ZW.INT.CAREER.JI_CAREER.001,ZW.INT.CAREER.QUAN_CAREER.001,ZW.INT.CAREER.STAR_TANLANG.001,ZW.INT.FAMILY.QINGYANG_PARENTS.001,ZW.INT.FAMILY.TAIYIN_PROPERTY.001,ZW.INT.FAMILY.TIANJI_PARENTS.001,ZW.INT.HEALTH.TIANLIANG_HEALTH.001,ZW.INT.MARRIAGE.JI_SPOUSE.001,ZW.INT.PERS.LU_LIFE.001,ZW.INT.PERS.MALEFIC_LIFE.001,ZW.INT.PERS.POJUN_LIFE.001,ZW.INT.RISK.KONGJIE_LIFE.001,ZW.INT.SIHUA.JI_CHILDREN.001,ZW.INT.SIHUA.KE_PROPERTY.001,ZW.INT.SIHUA.LU_SIBLINGS.001,ZW.INT.SIHUA.QUAN_SPOUSE.001,ZW.INT.TIMING.DAXIAN_LIFE.001,ZW.INT.WEALTH.HUOLING_WEALTH.001,ZW.INT.WEALTH.STAR_QISHA.001": [
+            "hai"
+          ]
+        }
+      }
+    ],
+    "uniqueFacts": [],
+    "groups": [
+      {
+        "groupId": "group-1",
+        "hourBranches": [
+          "zi"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "si",
+          "bodyPalace": "life",
+          "bodyPalaceBranch": "si",
+          "bureau": "jin4",
+          "masterStar": "ZW.STAR.MAJOR.WUQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "chen",
+            "ZW.STAR.MAJOR.TIANJI": "mao",
+            "ZW.STAR.MAJOR.TAIYANG": "chou",
+            "ZW.STAR.MAJOR.WUQU": "zi",
+            "ZW.STAR.MAJOR.TIANTONG": "hai",
+            "ZW.STAR.MAJOR.LIANZHEN": "shen",
+            "ZW.STAR.MAJOR.TIANFU": "zi",
+            "ZW.STAR.MAJOR.TAIYIN": "chou",
+            "ZW.STAR.MAJOR.TANLANG": "yin",
+            "ZW.STAR.MAJOR.JUMEN": "mao",
+            "ZW.STAR.MAJOR.TIANXIANG": "chen",
+            "ZW.STAR.MAJOR.TIANLIANG": "si",
+            "ZW.STAR.MAJOR.QISHA": "wu",
+            "ZW.STAR.MAJOR.POJUN": "xu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_TRAVEL.001",
+            "ZW.INT.WEALTH.STAR_TAIYIN_CN.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANLIANG_LIFE.001",
+            "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TAIYANG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_HEALTH.001",
+            "ZW.INT.MIGRATION.MA_PROPERTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-2",
+        "hourBranches": [
+          "chou"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "chen",
+          "bodyPalace": "fortune",
+          "bodyPalaceBranch": "wu",
+          "bureau": "jin4",
+          "masterStar": "ZW.STAR.MAJOR.LIANZHEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "chen",
+            "ZW.STAR.MAJOR.TIANJI": "mao",
+            "ZW.STAR.MAJOR.TAIYANG": "chou",
+            "ZW.STAR.MAJOR.WUQU": "zi",
+            "ZW.STAR.MAJOR.TIANTONG": "hai",
+            "ZW.STAR.MAJOR.LIANZHEN": "shen",
+            "ZW.STAR.MAJOR.TIANFU": "zi",
+            "ZW.STAR.MAJOR.TAIYIN": "chou",
+            "ZW.STAR.MAJOR.TANLANG": "yin",
+            "ZW.STAR.MAJOR.JUMEN": "mao",
+            "ZW.STAR.MAJOR.TIANXIANG": "chen",
+            "ZW.STAR.MAJOR.TIANLIANG": "si",
+            "ZW.STAR.MAJOR.QISHA": "wu",
+            "ZW.STAR.MAJOR.POJUN": "xu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.HEALTH.JI_HEALTH.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.WEALTH.WUQU_WEALTH.001",
+            "ZW.INT.PERS.ZIWEI_LIFE.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SIHUA.QUAN_WEALTH.001",
+            "ZW.INT.WEALTH.LUCUN_CAREER.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_LIANZHEN.001",
+            "ZW.INT.SIHUA.LU_CHILDREN.001",
+            "ZW.INT.MIGRATION.MA_CAREER.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SOCIAL.TIANYAO_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-3",
+        "hourBranches": [
+          "yin"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "mao",
+          "bodyPalace": "career",
+          "bodyPalaceBranch": "wei",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.WENQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.CAREER.LU_CAREER.001",
+            "ZW.INT.SIHUA.JI_FORTUNE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SIHUA.LU_CAREER.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.SIHUA.KE_CAREER.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_CAREER.001",
+            "ZW.INT.CAREER.STAR_TAIYANG.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_TAIYIN.001",
+            "ZW.INT.CAREER.ZUOYOU_CAREER.001",
+            "ZW.INT.WEALTH.STAR_TIANLIANG.001",
+            "ZW.INT.SIHUA.QUAN_PROPERTY.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.GENERAL.SHIUO_MAO.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-4",
+        "hourBranches": [
+          "mao"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "yin",
+          "bodyPalace": "travel",
+          "bodyPalaceBranch": "shen",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.LUCUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_PROPERTY.001",
+            "ZW.INT.PERS.LIANZHEN_LIFE.001",
+            "ZW.INT.MIGRATION.MA_TRAVEL.001",
+            "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.CAREER.STAR_WUQU.001",
+            "ZW.INT.CAREER.STAR_TIANFU.001",
+            "ZW.INT.WEALTH.STAR_ZIWEI.001",
+            "ZW.INT.HEALTH.QINGYANG_HEALTH.001",
+            "ZW.INT.MARRIAGE.QISHA_SPOUSE.001",
+            "ZW.INT.WEALTH.STAR_TIANXIANG.001",
+            "ZW.INT.SIHUA.LU_FRIENDS.001",
+            "ZW.INT.SOCIAL.ZUOYOU_FRIENDS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_FRIENDS.001",
+            "ZW.INT.FAMILY.PARENTS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-5",
+        "hourBranches": [
+          "chen"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "chou",
+          "bodyPalace": "wealth",
+          "bodyPalaceBranch": "you",
+          "bureau": "huo6",
+          "masterStar": "ZW.STAR.MAJOR.JUMEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "yin",
+            "ZW.STAR.MAJOR.TIANJI": "chou",
+            "ZW.STAR.MAJOR.TAIYANG": "hai",
+            "ZW.STAR.MAJOR.WUQU": "xu",
+            "ZW.STAR.MAJOR.TIANTONG": "you",
+            "ZW.STAR.MAJOR.LIANZHEN": "wu",
+            "ZW.STAR.MAJOR.TIANFU": "yin",
+            "ZW.STAR.MAJOR.TAIYIN": "mao",
+            "ZW.STAR.MAJOR.TANLANG": "chen",
+            "ZW.STAR.MAJOR.JUMEN": "si",
+            "ZW.STAR.MAJOR.TIANXIANG": "wu",
+            "ZW.STAR.MAJOR.TIANLIANG": "wei",
+            "ZW.STAR.MAJOR.QISHA": "shen",
+            "ZW.STAR.MAJOR.POJUN": "zi"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.JI_WEALTH.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANJI_LIFE.001",
+            "ZW.INT.WEALTH.QINGYANG_WEALTH.001",
+            "ZW.INT.SIHUA.LU_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001",
+            "ZW.INT.CAREER.STAR_JUMEN.001",
+            "ZW.INT.WEALTH.STAR_TIANTONG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_CHILDREN.001",
+            "ZW.INT.SIHUA.KE_FORTUNE.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-6",
+        "hourBranches": [
+          "si"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "zi",
+          "bodyPalace": "spouse",
+          "bodyPalaceBranch": "xu",
+          "bureau": "huo6",
+          "masterStar": "ZW.STAR.MAJOR.TANLANG",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "yin",
+            "ZW.STAR.MAJOR.TIANJI": "chou",
+            "ZW.STAR.MAJOR.TAIYANG": "hai",
+            "ZW.STAR.MAJOR.WUQU": "xu",
+            "ZW.STAR.MAJOR.TIANTONG": "you",
+            "ZW.STAR.MAJOR.LIANZHEN": "wu",
+            "ZW.STAR.MAJOR.TIANFU": "yin",
+            "ZW.STAR.MAJOR.TAIYIN": "mao",
+            "ZW.STAR.MAJOR.TANLANG": "chen",
+            "ZW.STAR.MAJOR.JUMEN": "si",
+            "ZW.STAR.MAJOR.TIANXIANG": "wu",
+            "ZW.STAR.MAJOR.TIANLIANG": "wei",
+            "ZW.STAR.MAJOR.QISHA": "shen",
+            "ZW.STAR.MAJOR.POJUN": "zi"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.POJUN_LIFE.001",
+            "ZW.INT.WEALTH.LUCUN_WEALTH.001",
+            "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+            "ZW.INT.HEALTH.TUOLUO_HEALTH.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
+            "ZW.INT.CAREER.STAR_TANLANG.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_QISHA.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_PROPERTY.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-7",
+        "hourBranches": [
+          "wu"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "hai",
+          "bodyPalace": "life",
+          "bodyPalaceBranch": "hai",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.MAJOR.JUMEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_TRAVEL.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANLIANG_LIFE.001",
+            "ZW.INT.WEALTH.TAIYIN_WEALTH.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.MARRIAGE.QINGYANG_SPOUSE.001",
+            "ZW.INT.WEALTH.TUOLUO_WEALTH.001",
+            "ZW.INT.MARRIAGE.HONGLUAN_SPOUSE.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TAIYANG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_HEALTH.001",
+            "ZW.INT.GENERAL.SHIDE_HAI.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-8",
+        "hourBranches": [
+          "wei"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "xu",
+          "bodyPalace": "fortune",
+          "bodyPalaceBranch": "zi",
+          "bureau": "tu5",
+          "masterStar": "ZW.STAR.AUX.LUCUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "xu",
+            "ZW.STAR.MAJOR.TIANJI": "you",
+            "ZW.STAR.MAJOR.TAIYANG": "wei",
+            "ZW.STAR.MAJOR.WUQU": "wu",
+            "ZW.STAR.MAJOR.TIANTONG": "si",
+            "ZW.STAR.MAJOR.LIANZHEN": "yin",
+            "ZW.STAR.MAJOR.TIANFU": "wu",
+            "ZW.STAR.MAJOR.TAIYIN": "wei",
+            "ZW.STAR.MAJOR.TANLANG": "shen",
+            "ZW.STAR.MAJOR.JUMEN": "you",
+            "ZW.STAR.MAJOR.TIANXIANG": "xu",
+            "ZW.STAR.MAJOR.TIANLIANG": "hai",
+            "ZW.STAR.MAJOR.QISHA": "zi",
+            "ZW.STAR.MAJOR.POJUN": "chen"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.HEALTH.JI_HEALTH.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.WEALTH.WUQU_WEALTH.001",
+            "ZW.INT.PERS.ZIWEI_LIFE.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.WEALTH.KONGJIE_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SIHUA.QUAN_WEALTH.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.CAREER.STAR_LIANZHEN.001",
+            "ZW.INT.SIHUA.LU_CHILDREN.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.LEARNING.HUAGAI_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.GENERAL.SHIDE_XU.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-9",
+        "hourBranches": [
+          "shen"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "you",
+          "bodyPalace": "career",
+          "bodyPalaceBranch": "chou",
+          "bureau": "shui2",
+          "masterStar": "ZW.STAR.AUX.WENQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "hai",
+            "ZW.STAR.MAJOR.TIANJI": "xu",
+            "ZW.STAR.MAJOR.TAIYANG": "shen",
+            "ZW.STAR.MAJOR.WUQU": "wei",
+            "ZW.STAR.MAJOR.TIANTONG": "wu",
+            "ZW.STAR.MAJOR.LIANZHEN": "mao",
+            "ZW.STAR.MAJOR.TIANFU": "si",
+            "ZW.STAR.MAJOR.TAIYIN": "wu",
+            "ZW.STAR.MAJOR.TANLANG": "wei",
+            "ZW.STAR.MAJOR.JUMEN": "shen",
+            "ZW.STAR.MAJOR.TIANXIANG": "you",
+            "ZW.STAR.MAJOR.TIANLIANG": "xu",
+            "ZW.STAR.MAJOR.QISHA": "hai",
+            "ZW.STAR.MAJOR.POJUN": "mao"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.TIANXIANG_LIFE.001",
+            "ZW.INT.FAMILY.TIANLIANG_PARENTS.001",
+            "ZW.INT.MARRIAGE.MALEFIC_SPOUSE.001",
+            "ZW.INT.WEALTH.STAR_TIANFU.001",
+            "ZW.INT.SOCIAL.KUIYUE_CAREER.001",
+            "ZW.INT.MARRIAGE.TANLANG_SPOUSE.001",
+            "ZW.INT.RISK.QINGYANG_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.RELATIONSHIP.PEACH_LIFE.001",
+            "ZW.INT.RISK.HUOLING_LIFE.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_CHILDREN.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-10",
+        "hourBranches": [
+          "you"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "shen",
+          "bodyPalace": "travel",
+          "bodyPalaceBranch": "yin",
+          "bureau": "shui2",
+          "masterStar": "ZW.STAR.MAJOR.LIANZHEN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "hai",
+            "ZW.STAR.MAJOR.TIANJI": "xu",
+            "ZW.STAR.MAJOR.TAIYANG": "shen",
+            "ZW.STAR.MAJOR.WUQU": "wei",
+            "ZW.STAR.MAJOR.TIANTONG": "wu",
+            "ZW.STAR.MAJOR.LIANZHEN": "mao",
+            "ZW.STAR.MAJOR.TIANFU": "si",
+            "ZW.STAR.MAJOR.TAIYIN": "wu",
+            "ZW.STAR.MAJOR.TANLANG": "wei",
+            "ZW.STAR.MAJOR.JUMEN": "shen",
+            "ZW.STAR.MAJOR.TIANXIANG": "you",
+            "ZW.STAR.MAJOR.TIANLIANG": "xu",
+            "ZW.STAR.MAJOR.QISHA": "hai",
+            "ZW.STAR.MAJOR.POJUN": "mao"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.TAIYANG_LIFE.001",
+            "ZW.INT.PERS.JUMEN_LIFE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
+            "ZW.INT.LEARNING.JUMEN_LIFE.001",
+            "ZW.INT.MARRIAGE.TIANTONG_SPOUSE.001",
+            "ZW.INT.SIHUA.KE_SPOUSE.001",
+            "ZW.INT.SIHUA.QUAN_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SOCIAL.FRIENDS_EMPTY.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-11",
+        "hourBranches": [
+          "xu"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "wei",
+          "bodyPalace": "wealth",
+          "bodyPalaceBranch": "mao",
+          "bureau": "mu3",
+          "masterStar": "ZW.STAR.MAJOR.WUQU",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "shen",
+            "ZW.STAR.MAJOR.TIANJI": "wei",
+            "ZW.STAR.MAJOR.TAIYANG": "si",
+            "ZW.STAR.MAJOR.WUQU": "chen",
+            "ZW.STAR.MAJOR.TIANTONG": "mao",
+            "ZW.STAR.MAJOR.LIANZHEN": "zi",
+            "ZW.STAR.MAJOR.TIANFU": "shen",
+            "ZW.STAR.MAJOR.TAIYIN": "you",
+            "ZW.STAR.MAJOR.TANLANG": "xu",
+            "ZW.STAR.MAJOR.JUMEN": "hai",
+            "ZW.STAR.MAJOR.TIANXIANG": "zi",
+            "ZW.STAR.MAJOR.TIANLIANG": "chou",
+            "ZW.STAR.MAJOR.QISHA": "yin",
+            "ZW.STAR.MAJOR.POJUN": "wu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.WEALTH.JI_WEALTH.001",
+            "ZW.INT.PERS.JI_LIFE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.WEALTH.LU_WEALTH.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.PERS.ZUOYOU_LIFE.001",
+            "ZW.INT.SOCIAL.KUIYUE_LIFE.001",
+            "ZW.INT.PERS.TIANJI_LIFE.001",
+            "ZW.INT.RISK.TUOLUO_LIFE.001",
+            "ZW.INT.SIHUA.LU_SPOUSE.001",
+            "ZW.INT.SOCIAL.KUIYUE_TRAVEL.001",
+            "ZW.INT.CAREER.STAR_JUMEN.001",
+            "ZW.INT.WEALTH.STAR_TIANTONG.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.QUAN_CHILDREN.001",
+            "ZW.INT.SIHUA.KE_FORTUNE.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      },
+      {
+        "groupId": "group-12",
+        "hourBranches": [
+          "hai"
+        ],
+        "commonSignature": {
+          "lifePalace": "life",
+          "lifePalaceBranch": "wu",
+          "bodyPalace": "spouse",
+          "bodyPalaceBranch": "chen",
+          "bureau": "mu3",
+          "masterStar": "ZW.STAR.MAJOR.POJUN",
+          "bodyStar": "ZW.STAR.AUX.HUOLING",
+          "majorStars": {
+            "ZW.STAR.MAJOR.ZIWEI": "shen",
+            "ZW.STAR.MAJOR.TIANJI": "wei",
+            "ZW.STAR.MAJOR.TAIYANG": "si",
+            "ZW.STAR.MAJOR.WUQU": "chen",
+            "ZW.STAR.MAJOR.TIANTONG": "mao",
+            "ZW.STAR.MAJOR.LIANZHEN": "zi",
+            "ZW.STAR.MAJOR.TIANFU": "shen",
+            "ZW.STAR.MAJOR.TAIYIN": "you",
+            "ZW.STAR.MAJOR.TANLANG": "xu",
+            "ZW.STAR.MAJOR.JUMEN": "hai",
+            "ZW.STAR.MAJOR.TIANXIANG": "zi",
+            "ZW.STAR.MAJOR.TIANLIANG": "chou",
+            "ZW.STAR.MAJOR.QISHA": "yin",
+            "ZW.STAR.MAJOR.POJUN": "wu"
+          },
+          "transformations": [
+            "ZW.STAR.MAJOR.TAIYANG@geng:lu",
+            "ZW.STAR.MAJOR.WUQU@geng:quan",
+            "ZW.STAR.MAJOR.TAIYIN@geng:ke",
+            "ZW.STAR.MAJOR.TIANTONG@geng:ji"
+          ],
+          "patterns": [
+            "ZW.PAT.ZIFU_TONGGONG.001",
+            "ZW.PAT.JIYUETONGLIANG.001",
+            "ZW.PAT.SHA_POLANG.001",
+            "ZW.PAT.RIYUEMING.001",
+            "ZW.PAT.JIAXIANG.001",
+            "ZW.PAT.ZIWEI_ZUOYOU.001",
+            "ZW.PAT.LUMA_JIAOCHI.001",
+            "ZW.PAT.WENGUI.001",
+            "ZW.PAT.YUE_MEN_DONG.001",
+            "ZW.PAT.YINGHUO.001",
+            "ZW.PAT.JILIANG_LU.001",
+            "ZW.PAT.JINJI.001",
+            "ZW.PAT.SHILIANG_YIN.001",
+            "ZW.PAT.ZIWEI_QISHA.001",
+            "ZW.PAT.LIANQI.001",
+            "ZW.PAT.WUTAN.001",
+            "ZW.PAT.TIANJI_JUMEN.001",
+            "ZW.PAT.TIANTONG_JUMEN.001",
+            "ZW.PAT.TAIYANG_JUMEN.001",
+            "ZW.PAT.TIANXIANG_LIANZHEN.001",
+            "ZW.PAT.FULIANG.001",
+            "ZW.PAT.YUEZHU.001",
+            "ZW.PAT.YANGTUO_JIA.001",
+            "ZW.PAT.HUOLING_JIA.001",
+            "ZW.PAT.DUIMIAN_CHAODOU.001",
+            "ZW.PAT.JIANWENWU.001",
+            "ZW.PAT.SHIZHONG_YINYU.001",
+            "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+            "ZW.PAT.KEQUANLU_ZHU.001"
+          ],
+          "interpretationRuleIds": [
+            "ZW.INT.CAREER.JI_CAREER.001",
+            "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+            "ZW.INT.CAREER.QUAN_CAREER.001",
+            "ZW.INT.PERS.LU_LIFE.001",
+            "ZW.INT.SIHUA.JI_CHILDREN.001",
+            "ZW.INT.PERS.POJUN_LIFE.001",
+            "ZW.INT.RISK.KONGJIE_LIFE.001",
+            "ZW.INT.FAMILY.QINGYANG_PARENTS.001",
+            "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+            "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+            "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
+            "ZW.INT.CAREER.STAR_TANLANG.001",
+            "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+            "ZW.INT.WEALTH.STAR_QISHA.001",
+            "ZW.INT.SIHUA.LU_SIBLINGS.001",
+            "ZW.INT.PERS.MALEFIC_LIFE.001",
+            "ZW.INT.SIHUA.KE_PROPERTY.001",
+            "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+            "ZW.INT.TIMING.DAXIAN_LIFE.001"
+          ]
+        },
+        "differences": []
+      }
+    ]
+  },
+  "instructions": {
+    "treatChartAsPrecalculated": true,
+    "doNotRecalculateUnlessAsked": true,
+    "respectProfile": true,
+    "distinguishRuleStatus": true,
+    "doNotTreatCandidateAsCanonical": true,
+    "respectBirthTimeUncertainty": true,
+    "doNotInventMissingFacts": true,
+    "isUnknownTimeComparison": true,
+    "doNotTreatAnyCandidateAsVerifiedBirthTime": true
+  },
+  "natal": {
+    "lifePalace": "unknown",
+    "lifePalaceBranch": "zi",
+    "bodyPalace": "unknown",
+    "bodyPalaceBranch": "zi",
+    "bureau": "unknown"
+  },
+  "palaces": [],
+  "transformations": [],
+  "patterns": [],
+  "fingerprint": "ad3e8b4f"
+}

@@ -1,0 +1,2257 @@
+{
+  "formatVersion": "1.0",
+  "generator": {
+    "product": "ZiWeiJS",
+    "bibleVersion": "0.6.0",
+    "engineVersion": "0.1.0",
+    "schemaVersion": "2.0",
+    "profile": "canonical"
+  },
+  "subject": {
+    "name": "王小明",
+    "sexForCalculation": "male"
+  },
+  "birth": {
+    "calendarType": "solar",
+    "birthTimePrecision": "exact",
+    "solar": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "lunar": {
+      "year": 1990,
+      "month": 4,
+      "day": 21,
+      "isLeapMonth": false
+    },
+    "timezone": "Asia/Taipei",
+    "hourBranch": "si"
+  },
+  "natal": {
+    "lifePalace": "命宮",
+    "lifePalaceBranch": "zi",
+    "bodyPalace": "夫妻宮",
+    "bodyPalaceBranch": "xu",
+    "bureau": "huo6",
+    "bureauName": "火六局",
+    "masterStar": "ZW.STAR.MAJOR.TANLANG",
+    "bodyStar": "ZW.STAR.AUX.HUOLING",
+    "yinYang": "yang",
+    "direction": "forward"
+  },
+  "palaces": [
+    {
+      "palaceId": "life",
+      "name": "命宮",
+      "stem": "戊",
+      "branch": "zi",
+      "isLifePalace": true,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 6,
+        "toAge": 15
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.POJUN",
+          "name": "破軍",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANXING",
+          "name": "天刑",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZUOFU_YOUBI.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANKU",
+          "name": "天哭",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.XIAOHAO",
+          "name": "小耗",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANFU2",
+          "name": "天福",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYYEARSTEM2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.ENGUANG",
+          "name": "恩光",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYDAYHOUR.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.ZHIFU",
+          "name": "指背",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.DAHAO2",
+          "name": "大耗",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.ZAISHA",
+          "name": "災煞",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "tai",
+      "boshi": "jiangjun"
+    },
+    {
+      "palaceId": "siblings",
+      "name": "兄弟宮",
+      "stem": "丁",
+      "branch": "hai",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 116,
+        "toAge": 125
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TAIYANG",
+          "name": "太陽",
+          "category": "major",
+          "dignity": "xian",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANGUAN",
+          "name": "天官",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYYEARSTEM2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.BAZUO",
+          "name": "八座",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYDAY.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.XIAOHAO2",
+          "name": "小耗",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.JIESHA2",
+          "name": "劫煞",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TAIFU",
+          "name": "台輔",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANWU",
+          "name": "天巫",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANWU.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "jue",
+      "boshi": "xiaohao"
+    },
+    {
+      "palaceId": "spouse",
+      "name": "夫妻宮",
+      "stem": "丙",
+      "branch": "xu",
+      "isLifePalace": false,
+      "isBodyPalace": true,
+      "majorPeriod": {
+        "fromAge": 106,
+        "toAge": 115
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.WUQU",
+          "name": "武曲",
+          "category": "major",
+          "dignity": "li",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.HUAGAI",
+          "name": "華蓋",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.XUNKONG",
+          "name": "旬空",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.FEILIAN",
+          "name": "蜚廉",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.GUANFU2",
+          "name": "官符",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.HUAGAI2",
+          "name": "華蓋",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "mu",
+      "boshi": "qinglong"
+    },
+    {
+      "palaceId": "children",
+      "name": "子女宮",
+      "stem": "乙",
+      "branch": "you",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 96,
+        "toAge": 105
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TIANTONG",
+          "name": "天同",
+          "category": "major",
+          "dignity": "ping",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.WENQU",
+          "name": "文曲",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.CHANGQU.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MALEFIC.QINGYANG",
+          "name": "擎羊",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.XIANCHI",
+          "name": "咸池",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.HONGLUAN",
+          "name": "紅鸞",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.SUISHEN",
+          "name": "歲驛",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANYUE2",
+          "name": "天月",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.GUANSUO",
+          "name": "貫索",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.XISHEN",
+          "name": "息神",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "si",
+      "boshi": "lishi"
+    },
+    {
+      "palaceId": "wealth",
+      "name": "財帛宮",
+      "stem": "甲",
+      "branch": "shen",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 86,
+        "toAge": 95
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.QISHA",
+          "name": "七殺",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.LUCUN",
+          "name": "祿存",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.LINGXING",
+          "name": "鈴星",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANMA",
+          "name": "天馬",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.SANGMEN",
+          "name": "喪門",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.YINSHA",
+          "name": "陰煞",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYMONTH2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.SANGMEN2",
+          "name": "喪門",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.SUIYI",
+          "name": "歲驛",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "bing",
+      "boshi": "boshi"
+    },
+    {
+      "palaceId": "health",
+      "name": "疾厄宮",
+      "stem": "癸",
+      "branch": "wei",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 76,
+        "toAge": 85
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TIANLIANG",
+          "name": "天梁",
+          "category": "major",
+          "dignity": "wang",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.ZUOFU",
+          "name": "左輔",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZUOFU_YOUBI.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.YOUBI",
+          "name": "右弼",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZUOFU_YOUBI.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MALEFIC.TUOLUO",
+          "name": "陀羅",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANYUE",
+          "name": "天鉞",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.LONGCHI",
+          "name": "龍池",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYMONTH2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANYI",
+          "name": "天乙",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.XIUSHEN",
+          "name": "息神",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.HUIQI",
+          "name": "晦氣",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.PANAN",
+          "name": "攀鞍",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANSHI",
+          "name": "天使",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.FIXED.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.FENGGAO",
+          "name": "封誥",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TAIFU_FENGGAO.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "shuai",
+      "boshi": "guanfu"
+    },
+    {
+      "palaceId": "travel",
+      "name": "遷移宮",
+      "stem": "壬",
+      "branch": "wu",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 66,
+        "toAge": 75
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.LIANZHEN",
+          "name": "廉貞",
+          "category": "major",
+          "dignity": "ping",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MAJOR.TIANXIANG",
+          "name": "天相",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MALEFIC.DIKONG",
+          "name": "地空",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.CHANGQU.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.HUOLING",
+          "name": "火星",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANXU",
+          "name": "天虛",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.SUIJIAN",
+          "name": "歲建",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.JIANGXING",
+          "name": "將星",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANCAI",
+          "name": "天才",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANCAI_TIANSHOU.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "diwang",
+      "boshi": "fubing"
+    },
+    {
+      "palaceId": "friends",
+      "name": "交友宮",
+      "stem": "辛",
+      "branch": "si",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 56,
+        "toAge": 65
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.JUMEN",
+          "name": "巨門",
+          "category": "major",
+          "dignity": "wang",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.WENCHANG",
+          "name": "文昌",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.CHANGQU.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.GUCHEN",
+          "name": "孤辰",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.POSUI",
+          "name": "破碎",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.JIESHA",
+          "name": "劫煞",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.BINGFU",
+          "name": "病符",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.BINGFU2",
+          "name": "病符",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.WANGSHEN2",
+          "name": "亡神",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANSHANG",
+          "name": "天傷",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.FIXED.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "linguan",
+      "boshi": "dahao"
+    },
+    {
+      "palaceId": "career",
+      "name": "官祿宮",
+      "stem": "庚",
+      "branch": "chen",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 46,
+        "toAge": 55
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TANLANG",
+          "name": "貪狼",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANYAO",
+          "name": "天姚",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZUOFU_YOUBI.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MALEFIC.DIJIE",
+          "name": "地劫",
+          "category": "malefic",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.CHANGQU.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.WANGSHEN",
+          "name": "亡神",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.DIAOKE",
+          "name": "弔客",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANGUI",
+          "name": "天貴",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYDAYHOUR.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.JIEKONG",
+          "name": "截空",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANDE",
+          "name": "天德",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.DIAOKE2",
+          "name": "弔客",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.YUESHA",
+          "name": "月煞",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.JIESHEN",
+          "name": "解神",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.JIESHEN.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANSHOU",
+          "name": "天壽",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANCAI_TIANSHOU.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "guandai",
+      "boshi": "bingfu"
+    },
+    {
+      "palaceId": "property",
+      "name": "田宅宮",
+      "stem": "己",
+      "branch": "mao",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 36,
+        "toAge": 45
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TAIYIN",
+          "name": "太陰",
+          "category": "major",
+          "dignity": "xian",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANXI",
+          "name": "天喜",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.SANTAI",
+          "name": "三台",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYDAY.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.YUEDE",
+          "name": "月德",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.FUDE",
+          "name": "福德",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.XIANCHI2",
+          "name": "咸池",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "muyu",
+      "boshi": "xishen"
+    },
+    {
+      "palaceId": "fortune",
+      "name": "福德宮",
+      "stem": "戊",
+      "branch": "yin",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 26,
+        "toAge": 35
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.ZIWEI",
+          "name": "紫微",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.MAJOR.TIANFU",
+          "name": "天府",
+          "category": "major",
+          "dignity": "miao",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.TIANFU_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.BAIHU",
+          "name": "白虎",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.GUANFU",
+          "name": "官符",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANCHU",
+          "name": "天廚",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYYEARSTEM2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANKONG",
+          "name": "天空",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.SPECIAL_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.BAIHU2",
+          "name": "白虎",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.ZHIBEI2",
+          "name": "指背",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "changsheng",
+      "boshi": "feilian"
+    },
+    {
+      "palaceId": "parents",
+      "name": "父母宮",
+      "stem": "己",
+      "branch": "chou",
+      "isLifePalace": false,
+      "isBodyPalace": false,
+      "majorPeriod": {
+        "fromAge": 16,
+        "toAge": 25
+      },
+      "stars": [
+        {
+          "starId": "ZW.STAR.MAJOR.TIANJI",
+          "name": "天機",
+          "category": "major",
+          "dignity": "xian",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.ZIWEI_SERIES.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.TIANKUI",
+          "name": "天魁",
+          "category": "aux",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARSTEM_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.GUASU",
+          "name": "寡宿",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.DAHao",
+          "name": "大耗",
+          "category": "minor",
+          "transformations": [],
+          "status": "canonical",
+          "ruleId": "ZW.CALC.STAR.YEARBRANCH_AUX.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.AUX.FENGGE",
+          "name": "鳳閣",
+          "category": "minor",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.BYMONTH2.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.PERIOD.LONDE",
+          "name": "龍德",
+          "category": "period",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        },
+        {
+          "starId": "ZW.STAR.INTERIM.TIANSHA",
+          "name": "天煞",
+          "category": "interim",
+          "transformations": [],
+          "status": "candidate",
+          "ruleId": "ZW.CALC.STAR.PERIOD12.001",
+          "ruleVersion": "1.0"
+        }
+      ],
+      "changsheng": "yang",
+      "boshi": "zoushu"
+    }
+  ],
+  "transformations": [
+    {
+      "scope": "natal",
+      "type": "lu",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYANG",
+      "targetPalaceId": "siblings",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.NATAL.001"
+    },
+    {
+      "scope": "natal",
+      "type": "quan",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.NATAL.001"
+    },
+    {
+      "scope": "natal",
+      "type": "ke",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.NATAL.001"
+    },
+    {
+      "scope": "natal",
+      "type": "ji",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TIANTONG",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.NATAL.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TANLANG",
+      "targetPalaceId": "career",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.AUX.YOUBI",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TIANJI",
+      "targetPalaceId": "parents",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "ding",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "ding",
+      "targetStarId": "ZW.STAR.MAJOR.TIANTONG",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "ding",
+      "targetStarId": "ZW.STAR.MAJOR.TIANJI",
+      "targetPalaceId": "parents",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "ding",
+      "targetStarId": "ZW.STAR.MAJOR.JUMEN",
+      "targetPalaceId": "friends",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "bing",
+      "targetStarId": "ZW.STAR.MAJOR.TIANTONG",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "bing",
+      "targetStarId": "ZW.STAR.MAJOR.TIANJI",
+      "targetPalaceId": "parents",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "bing",
+      "targetStarId": "ZW.STAR.AUX.WENCHANG",
+      "targetPalaceId": "friends",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "bing",
+      "targetStarId": "ZW.STAR.MAJOR.LIANZHEN",
+      "targetPalaceId": "travel",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "yi",
+      "targetStarId": "ZW.STAR.MAJOR.TIANJI",
+      "targetPalaceId": "parents",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "yi",
+      "targetStarId": "ZW.STAR.MAJOR.TIANLIANG",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "yi",
+      "targetStarId": "ZW.STAR.MAJOR.ZIWEI",
+      "targetPalaceId": "fortune",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "yi",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "jia",
+      "targetStarId": "ZW.STAR.MAJOR.LIANZHEN",
+      "targetPalaceId": "travel",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "jia",
+      "targetStarId": "ZW.STAR.MAJOR.POJUN",
+      "targetPalaceId": "life",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "jia",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "jia",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYANG",
+      "targetPalaceId": "siblings",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "gui",
+      "targetStarId": "ZW.STAR.MAJOR.POJUN",
+      "targetPalaceId": "life",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "gui",
+      "targetStarId": "ZW.STAR.MAJOR.JUMEN",
+      "targetPalaceId": "friends",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "gui",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "gui",
+      "targetStarId": "ZW.STAR.MAJOR.TANLANG",
+      "targetPalaceId": "career",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "ren",
+      "targetStarId": "ZW.STAR.MAJOR.TIANLIANG",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "ren",
+      "targetStarId": "ZW.STAR.MAJOR.ZIWEI",
+      "targetPalaceId": "fortune",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "ren",
+      "targetStarId": "ZW.STAR.AUX.ZUOFU",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "ren",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "xin",
+      "targetStarId": "ZW.STAR.MAJOR.JUMEN",
+      "targetPalaceId": "friends",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "xin",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYANG",
+      "targetPalaceId": "siblings",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "xin",
+      "targetStarId": "ZW.STAR.AUX.WENQU",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "xin",
+      "targetStarId": "ZW.STAR.AUX.WENCHANG",
+      "targetPalaceId": "friends",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYANG",
+      "targetPalaceId": "siblings",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "geng",
+      "targetStarId": "ZW.STAR.MAJOR.TIANTONG",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.TANLANG",
+      "targetPalaceId": "career",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.TIANLIANG",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.AUX.WENQU",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TANLANG",
+      "targetPalaceId": "career",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TAIYIN",
+      "targetPalaceId": "property",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.AUX.YOUBI",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "wu",
+      "targetStarId": "ZW.STAR.MAJOR.TIANJI",
+      "targetPalaceId": "parents",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "lu",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.WUQU",
+      "targetPalaceId": "spouse",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "quan",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.TANLANG",
+      "targetPalaceId": "career",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ke",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.MAJOR.TIANLIANG",
+      "targetPalaceId": "health",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    },
+    {
+      "scope": "palace",
+      "type": "ji",
+      "sourceStem": "ji",
+      "targetStarId": "ZW.STAR.AUX.WENQU",
+      "targetPalaceId": "children",
+      "status": "canonical",
+      "ruleId": "ZW.CALC.SIHUA.PALACE.001"
+    }
+  ],
+  "patterns": [
+    {
+      "patternId": "ZW.PAT.ZIFU_TONGGONG.001",
+      "name": "紫府同宮",
+      "status": "complete",
+      "ruleStatus": "candidate",
+      "matchedConditions": [
+        "{\"type\":\"star-group\",\"group\":[\"ZW.STAR.MAJOR.ZIWEI\",\"ZW.STAR.MAJOR.TIANFU\"],\"relation\":\"same-palace\"}"
+      ],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.JIYUETONGLIANG.001",
+      "name": "機月同梁",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"minCount\":2}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.SHA_POLANG.001",
+      "name": "殺破狼",
+      "status": "complete",
+      "ruleStatus": "candidate",
+      "matchedConditions": [
+        "{\"type\":\"star-group\",\"group\":[\"ZW.STAR.MAJOR.QISHA\",\"ZW.STAR.MAJOR.POJUN\",\"ZW.STAR.MAJOR.TANLANG\"],\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"minCount\":2}"
+      ],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.RIYUEMING.001",
+      "name": "日月並明",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.JIAXIANG.001",
+      "name": "府相朝垣",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"minCount\":2}"
+      ],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.ZIWEI_ZUOYOU.001",
+      "name": "君臣慶會",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"minCount\":3}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.LUMA_JIAOCHI.001",
+      "name": "祿馬交馳",
+      "status": "enhanced",
+      "ruleStatus": "candidate",
+      "matchedConditions": [
+        "{\"type\":\"star-group\",\"group\":[\"ZW.STAR.AUX.LUCUN\",\"ZW.STAR.AUX.TIANMA\"],\"relation\":\"same-palace\"}"
+      ],
+      "breakers": [],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.WENGUI.001",
+      "name": "文桂文華",
+      "status": "insufficient",
+      "ruleStatus": "canonical",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"same-palace\",\"palace\":\"life\",\"minCount\":2}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.YUE_MEN_DONG.001",
+      "name": "日月同宮",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"same-palace\",\"minCount\":2}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.YINGHUO.001",
+      "name": "火貪格 / 鈴貪格",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\",\"relation\":\"same-palace\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.JILIANG_LU.001",
+      "name": "機梁加祿",
+      "status": "partial",
+      "ruleStatus": "candidate",
+      "matchedConditions": [
+        "{\"type\":\"any\",\"conditions\":[{\"type\":\"transformation\",\"transform\":\"lu\"},{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.AUX.LUCUN\"}]}"
+      ],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"same-palace\",\"minCount\":2}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.JINJI.001",
+      "name": "極居卯酉",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.SHILIANG_YIN.001",
+      "name": "善蔭朝綱",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.ZIWEI_QISHA.001",
+      "name": "紫殺朝斗",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.LIANQI.001",
+      "name": "廉殺同宮",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"transformation\",\"transform\":\"ji\",\"relation\":\"san-fang-si-zheng\"}"
+      ],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\",\"relation\":\"san-fang-si-zheng\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.WUTAN.001",
+      "name": "武貪同行",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"same-palace\",\"minCount\":2}"
+      ],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.TIANJI_JUMEN.001",
+      "name": "機巨同臨",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"transformation\",\"transform\":\"ji\",\"relation\":\"same-palace\"}"
+      ],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"ke\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.TIANTONG_JUMEN.001",
+      "name": "同巨同宮",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"same-palace\",\"minCount\":2}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.TAIYANG_JUMEN.001",
+      "name": "日巨同宮",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"quan\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.TIANXIANG_LIANZHEN.001",
+      "name": "廉相同宮",
+      "status": "complete",
+      "ruleStatus": "candidate",
+      "matchedConditions": [
+        "{\"type\":\"star-group\",\"group\":[\"ZW.STAR.MAJOR.LIANZHEN\",\"ZW.STAR.MAJOR.TIANXIANG\"],\"relation\":\"same-palace\"}"
+      ],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.FULIANG.001",
+      "name": "府梁同宮",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.YUEZHU.001",
+      "name": "日月照壁",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [
+        "{\"type\":\"star-group\",\"group\":\"major-malefic\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"minCount\":3}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.YANGTUO_JIA.001",
+      "name": "羊陀夾忌",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.HUOLING_JIA.001",
+      "name": "火鈴夾命",
+      "status": "insufficient",
+      "ruleStatus": "candidate",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.DUIMIAN_CHAODOU.001",
+      "name": "對面朝斗格",
+      "status": "partial",
+      "ruleStatus": "canonical",
+      "matchedConditions": [
+        "{\"type\":\"compare\",\"left\":\"lifePalaceBranch\",\"op\":\"in\",\"right\":[\"zi\",\"wu\"]}"
+      ],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.JIANWENWU.001",
+      "name": "兼文武格",
+      "status": "partial",
+      "ruleStatus": "canonical",
+      "matchedConditions": [
+        "{\"type\":\"any\",\"conditions\":[{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.MAJOR.WUQU\",\"palace\":\"life\"},{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.MAJOR.WUQU\",\"palace\":\"body\"}]}"
+      ],
+      "breakers": [
+        "{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.MAJOR.POJUN\",\"palace\":\"life\"}"
+      ],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.SHIZHONG_YINYU.001",
+      "name": "石中隱玉格",
+      "status": "partial",
+      "ruleStatus": "canonical",
+      "matchedConditions": [
+        "{\"type\":\"compare\",\"left\":\"lifePalaceBranch\",\"op\":\"in\",\"right\":[\"zi\",\"wu\"]}"
+      ],
+      "breakers": [
+        "{\"type\":\"relation\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\",\"containsAny\":[\"ZW.STAR.MALEFIC.QINGYANG\",\"ZW.STAR.MALEFIC.TUOLUO\",\"ZW.STAR.AUX.HUOLING\",\"ZW.STAR.AUX.LINGXING\"]}"
+      ],
+      "enhancers": [
+        "{\"type\":\"transformation\",\"transform\":\"lu\",\"relation\":\"san-fang-si-zheng\",\"palace\":\"life\"}"
+      ]
+    },
+    {
+      "patternId": "ZW.PAT.ZUOYOU_CHAOYUAN.001",
+      "name": "左右朝垣格",
+      "status": "partial",
+      "ruleStatus": "canonical",
+      "matchedConditions": [
+        "{\"none\":[{\"type\":\"all\",\"conditions\":[{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.AUX.ZUOFU\",\"palace\":\"life\"},{\"type\":\"star-in-palace\",\"star\":\"ZW.STAR.AUX.YOUBI\",\"palace\":\"life\"}]}]}"
+      ],
+      "breakers": [],
+      "enhancers": []
+    },
+    {
+      "patternId": "ZW.PAT.KEQUANLU_ZHU.001",
+      "name": "科權祿主格",
+      "status": "insufficient",
+      "ruleStatus": "canonical",
+      "matchedConditions": [],
+      "breakers": [],
+      "enhancers": []
+    }
+  ],
+  "instructions": {
+    "treatChartAsPrecalculated": true,
+    "doNotRecalculateUnlessAsked": true,
+    "respectProfile": true,
+    "distinguishRuleStatus": true,
+    "doNotTreatCandidateAsCanonical": true,
+    "respectBirthTimeUncertainty": true,
+    "doNotInventMissingFacts": true
+  },
+  "periods": {
+    "major": [
+      {
+        "branch": "zi",
+        "fromAge": 6,
+        "toAge": 15,
+        "direction": "forward"
+      },
+      {
+        "branch": "chou",
+        "fromAge": 16,
+        "toAge": 25,
+        "direction": "forward"
+      },
+      {
+        "branch": "yin",
+        "fromAge": 26,
+        "toAge": 35,
+        "direction": "forward"
+      },
+      {
+        "branch": "mao",
+        "fromAge": 36,
+        "toAge": 45,
+        "direction": "forward"
+      },
+      {
+        "branch": "chen",
+        "fromAge": 46,
+        "toAge": 55,
+        "direction": "forward"
+      },
+      {
+        "branch": "si",
+        "fromAge": 56,
+        "toAge": 65,
+        "direction": "forward"
+      },
+      {
+        "branch": "wu",
+        "fromAge": 66,
+        "toAge": 75,
+        "direction": "forward"
+      },
+      {
+        "branch": "wei",
+        "fromAge": 76,
+        "toAge": 85,
+        "direction": "forward"
+      },
+      {
+        "branch": "shen",
+        "fromAge": 86,
+        "toAge": 95,
+        "direction": "forward"
+      },
+      {
+        "branch": "you",
+        "fromAge": 96,
+        "toAge": 105,
+        "direction": "forward"
+      },
+      {
+        "branch": "xu",
+        "fromAge": 106,
+        "toAge": 115,
+        "direction": "forward"
+      },
+      {
+        "branch": "hai",
+        "fromAge": 116,
+        "toAge": 125,
+        "direction": "forward"
+      }
+    ]
+  },
+  "interpretation": {
+    "hits": [
+      {
+        "ruleId": "ZW.INT.CAREER.JI_CAREER.001",
+        "domain": "career",
+        "tendency": "negative",
+        "strength": 0.7,
+        "confidence": 0.8,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.MARRIAGE.JI_SPOUSE.001",
+        "domain": "marriage",
+        "tendency": "negative",
+        "strength": 0.7,
+        "confidence": 0.8,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.CAREER.QUAN_CAREER.001",
+        "domain": "career",
+        "tendency": "positive",
+        "strength": 0.7,
+        "confidence": 0.8,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.PERS.LU_LIFE.001",
+        "domain": "personality",
+        "tendency": "positive",
+        "strength": 0.7,
+        "confidence": 0.8,
+        "status": "conflicted",
+        "supports": [],
+        "conflicts": [
+          "ZW.INT.PERS.JI_LIFE.001"
+        ]
+      },
+      {
+        "ruleId": "ZW.INT.SIHUA.JI_CHILDREN.001",
+        "domain": "family",
+        "tendency": "negative",
+        "strength": 0.66,
+        "confidence": 0.76,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.PERS.POJUN_LIFE.001",
+        "domain": "personality",
+        "tendency": "mixed",
+        "strength": 0.65,
+        "confidence": 0.8,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.WEALTH.LUCUN_WEALTH.001",
+        "domain": "wealth",
+        "tendency": "positive",
+        "strength": 0.65,
+        "confidence": 0.8,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.HEALTH.MALEFIC_HEALTH.001",
+        "domain": "health",
+        "tendency": "negative",
+        "strength": 0.6,
+        "confidence": 0.7,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.RISK.KONGJIE_LIFE.001",
+        "domain": "risk",
+        "tendency": "negative",
+        "strength": 0.6,
+        "confidence": 0.7,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.FAMILY.TAIYIN_PROPERTY.001",
+        "domain": "wealth",
+        "tendency": "positive",
+        "strength": 0.7,
+        "confidence": 0.78,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.HEALTH.TUOLUO_HEALTH.001",
+        "domain": "health",
+        "tendency": "negative",
+        "strength": 0.62,
+        "confidence": 0.74,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.SIHUA.QUAN_SPOUSE.001",
+        "domain": "marriage",
+        "tendency": "mixed",
+        "strength": 0.62,
+        "confidence": 0.72,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.HEALTH.TIANLIANG_HEALTH.001",
+        "domain": "health",
+        "tendency": "positive",
+        "strength": 0.6,
+        "confidence": 0.7,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.CAREER.STAR_TANLANG.001",
+        "domain": "career",
+        "tendency": "mixed",
+        "strength": 0.64,
+        "confidence": 0.75,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.WEALTH.HUOLING_WEALTH.001",
+        "domain": "wealth",
+        "tendency": "mixed",
+        "strength": 0.6,
+        "confidence": 0.73,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.WEALTH.STAR_QISHA.001",
+        "domain": "wealth",
+        "tendency": "mixed",
+        "strength": 0.6,
+        "confidence": 0.73,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.SIHUA.LU_SIBLINGS.001",
+        "domain": "family",
+        "tendency": "positive",
+        "strength": 0.65,
+        "confidence": 0.75,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.PERS.MALEFIC_LIFE.001",
+        "domain": "personality",
+        "tendency": "negative",
+        "strength": 0.55,
+        "confidence": 0.75,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.SIHUA.KE_PROPERTY.001",
+        "domain": "wealth",
+        "tendency": "positive",
+        "strength": 0.58,
+        "confidence": 0.7,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.FAMILY.TIANJI_PARENTS.001",
+        "domain": "family",
+        "tendency": "neutral",
+        "strength": 0.55,
+        "confidence": 0.7,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      },
+      {
+        "ruleId": "ZW.INT.TIMING.DAXIAN_LIFE.001",
+        "domain": "timing",
+        "tendency": "neutral",
+        "strength": 0.4,
+        "confidence": 0.5,
+        "status": "active",
+        "supports": [],
+        "conflicts": []
+      }
+    ]
+  },
+  "sources": [],
+  "evidence": [],
+  "fingerprint": "3ef8ff44"
+}

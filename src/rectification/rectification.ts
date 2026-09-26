@@ -1,9 +1,15 @@
-import type { ZiWeiBirthInput, ZiWeiChart, Certainty } from '../core/types.js';
-import { calculate, calculateSafe } from '../reference-engine/engine.js';
+import type { ZiWeiBirthInput, ZiWeiChart, BranchId } from '../core/types.js';
+import { calculateSafe } from '../reference-engine/engine.js';
 import { ZiWeiError } from '../core/errors.js';
 import type { CalculateOptions } from '../core/types.js';
+import {
+  analyzeBirthTime,
+  type BirthTimeUncertaintyResult,
+  type BirthTimeCandidate,
+  type CandidateSignature
+} from '../birth-time/birth-time.js';
 
-const HOUR_BRANCHES = ['zi', 'chou', 'yin', 'mao', 'chen', 'si', 'wu', 'wei', 'shen', 'you', 'xu', 'hai'] as const;
+const HOUR_BRANCHES: BranchId[] = ['zi', 'chou', 'yin', 'mao', 'chen', 'si', 'wu', 'wei', 'shen', 'you', 'xu', 'hai'];
 const HOUR_CENTERS = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22];
 
 export type UnknownTimeClass = 'stable' | 'variable' | 'unavailable';
@@ -102,21 +108,51 @@ export function analyzeUnknownTime(
   };
 }
 
+// ── Rectification V2（spec 0.71 §12–§13）──────────────────────────────
+// 不再輸出假 probability；以 matched / conflicted / unresolved 線索 + supportLevel 表達。
+
+export type RectificationClueType =
+  | 'life-event'
+  | 'relationship-event'
+  | 'career-event'
+  | 'health-event'
+  | 'family-event'
+  | 'migration-event'
+  | 'personality'
+  | 'appearance'
+  | 'known-rule'
+  | 'known-pattern';
+
 export interface RectificationClue {
-  type: 'event' | 'trait' | 'pattern' | 'interpretation-rule';
+  type: RectificationClueType;
+  /** ISO date or description */
+  date?: string;
   description: string;
+  /** 對應規則 ID（若有） */
   ruleId?: string;
-  weight?: number;
+  /** 對應格局 ID（若有） */
+  patternId?: string;
+}
+
+export interface RectificationMatch {
+  clue: RectificationClue;
+  match: 'matched' | 'conflicted' | 'unresolved';
+  detail: string;
+}
+
+export interface RectificationCandidateResult {
+  hourBranch: BranchId;
+  representativeHour: number;
+  matchedClues: RectificationMatch[];
+  conflictedClues: RectificationMatch[];
+  unresolvedClues: RectificationMatch[];
+  supportLevel: 'strong' | 'moderate' | 'weak' | 'insufficient';
+  evidenceCount: number;
+  notes: string[];
 }
 
 export interface RectificationResult {
-  candidates: Array<{
-    hourBranch: string;
-    representativeHour: number;
-    support: number;
-    matchedRules: string[];
-    conflicts: string[];
-  }>;
+  candidates: RectificationCandidateResult[];
   note: string;
 }
 
@@ -125,43 +161,66 @@ export function rectifyAnalyze(
   clues: RectificationClue[] = [],
   options: CalculateOptions = {}
 ): RectificationResult {
-  const base = analyzeUnknownTime(input, { ...options, interpretation: true, patterns: true });
-  const results: RectificationResult['candidates'] = [];
+  const base = analyzeBirthTime({ ...input, time: { precision: 'unknown' } }, { ...options, interpretation: true, patterns: true });
+  const results: RectificationCandidateResult[] = [];
 
-  const ruleClues = clues.filter(c => c.ruleId);
+  const ruleClues = clues.filter(c => c.ruleId || c.patternId);
 
-  for (const c of base.candidates) {
-    if (!c.chart) {
-      results.push({ hourBranch: c.hourBranch, representativeHour: c.representativeHour, support: 0, matchedRules: [], conflicts: ['calculation-failed'] });
+  for (const cand of base.candidates) {
+    const matched: RectificationMatch[] = [];
+    const conflicted: RectificationMatch[] = [];
+    const unresolved: RectificationMatch[] = [];
+
+    if (!cand.chart) {
+      unresolved.push(...ruleClues.map(clue => ({ clue, match: 'unresolved' as const, detail: 'calculation failed' })));
+      results.push({ hourBranch: cand.hourBranch, representativeHour: cand.representativeTime.hour, matchedClues: [], conflictedClues: [], unresolvedClues: unresolved, supportLevel: 'insufficient', evidenceCount: 0, notes: [`Chart calculation failed for ${cand.hourBranch}`] });
       continue;
     }
+
     const hitRuleIds = new Set<string>([
-      ...c.chart.interpretation.hits.map(h => h.ruleId),
-      ...c.chart.chart.patterns.filter(p => p.status === 'complete' || p.status === 'enhanced').map(p => p.patternId)
+      ...cand.chart.interpretation.hits.map(h => h.ruleId),
+      ...cand.chart.chart.patterns.filter(p => p.status === 'complete' || p.status === 'enhanced').map(p => p.patternId)
     ]);
-    const matched: string[] = [];
-    const conflicts: string[] = [];
-    let score = 0.5;
-    for (const clue of ruleClues) {
-      const w = clue.weight ?? 1;
-      if (hitRuleIds.has(clue.ruleId!)) {
-        matched.push(clue.ruleId!);
-        score += 0.1 * w;
+
+    for (const clue of clues) {
+      const rid = clue.ruleId ?? clue.patternId;
+      if (rid && hitRuleIds.has(rid)) {
+        matched.push({ clue, match: 'matched', detail: `hit ${rid}` });
+      } else if (rid) {
+        conflicted.push({ clue, match: 'conflicted', detail: `missed ${rid}` });
       } else {
-        conflicts.push(clue.ruleId!);
-        score -= 0.05 * w;
+        // 事件型線索尚無對應 canonical rule — 誠實標 unresolved（spec §13）
+        unresolved.push({ clue, match: 'unresolved', detail: 'no ruleId/patternId supplied (framework-only)' });
       }
     }
+
+    const matchedCount = matched.length;
+    const conflictedCount = conflicted.length;
+    let supportLevel: RectificationCandidateResult['supportLevel'] = 'insufficient';
+    if (matchedCount >= 3 && conflictedCount === 0) supportLevel = 'strong';
+    else if (matchedCount >= 2) supportLevel = 'moderate';
+    else if (matchedCount >= 1) supportLevel = 'weak';
+
+    const notes: string[] = [];
+    if (matchedCount > 0) notes.push(`${matchedCount} clue(s) matched`);
+    if (conflictedCount > 0) notes.push(`${conflictedCount} clue(s) conflicted`);
+    if (unresolved.length > 0) notes.push(`${unresolved.length} clue(s) unresolved (no rule/pattern ID)`);
+
     results.push({
-      hourBranch: c.hourBranch,
-      representativeHour: c.representativeHour,
-      support: Math.max(0, Math.min(1, score)),
-      matchedRules: matched,
-      conflicts
+      hourBranch: cand.hourBranch,
+      representativeHour: cand.representativeTime.hour,
+      matchedClues: matched,
+      conflictedClues: conflicted,
+      unresolvedClues: unresolved,
+      supportLevel,
+      evidenceCount: matchedCount + conflictedCount,
+      notes
     });
   }
 
-  results.sort((a, b) => b.support - a.support);
+  // 依 support 排序：strong > moderate > weak > insufficient；同級依 matched 數
+  const levelOrder = { strong: 0, moderate: 1, weak: 2, insufficient: 3 };
+  results.sort((a, b) => levelOrder[a.supportLevel] - levelOrder[b.supportLevel] || b.matchedClues.length - a.matchedClues.length);
 
   return {
     candidates: results,

@@ -16,7 +16,10 @@ const input: ZiWeiBirthInput = {
   sexForCalculation: 'male'
 };
 
-const chart = calculate(input, { targetDate: { year: 2026, month: 9, day: 23, hour: 14 } });
+const chart = calculate(input, {
+  targetDate: { year: 2026, month: 9, day: 23, hour: 14 },
+  experimentalDynamicStars: true
+});
 
 describe('Query.palace / star', () => {
   it('palace 取得命宮', () => {

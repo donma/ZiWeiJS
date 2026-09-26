@@ -667,3 +667,40 @@
 - **UI 強化**：Expert 模式整合 Profile 差異面板、動態流曜清單與未決研究可見性清單。
 
 ---
+
+## 0.71.0 — 出生時間不確定性分析 + 專業 Bible 預覽 + AI Handoff
+
+依據 `ZiWeiJS-0.71-Birth-Time-Bible-Preview-AI-Handoff-SPEC.md` 完成 0.71.0 建設：
+
+### 1. 出生時間不確定性引擎 (Birth Time Uncertainty Engine)
+- **四種出生時間精度模式**：`exact`（精確時間）、`hour-branch`（只知道時辰）、`range`（大概時段）、`unknown`（完全不知道）。
+- **Unknown Time Analysis V2**：`ZiWei.BirthTime.analyze()`，完全不知道出生時辰時產生 12 個候選時辰比對，提供 `stableFacts`（不論何時辰皆不變的結構事實）、`variableFacts`、`uniqueFacts` 與 `groups`（結構相似分組），不輸出虛假機率。
+- **時辰解析度合約**：新增 `inputResolution` 與 `certainty.birthTime`；只知道時辰時標記 `representativeTimeUsed: true`，不將代表時間偽裝成真實出生分鐘。
+- **Candidate 選擇 API**：`ZiWei.BirthTime.select()` 產生標註為 `user-selected-candidate` 的完整命盤。
+
+### 2. 校時推論 V2 (Rectification V2)
+- **線索結構化**：`RectificationClueType` 支援事件、性格、相貌、已知規則與格局。
+- **誠實評估**：移除假機率/假分數算法，改以 `matchedClues`、`conflictedClues`、`unresolvedClues` 與 `supportLevel`（strong/moderate/weak/insufficient）客觀表達推論依據。
+
+### 3. 核心治理與生命週期加固 (Core Governance P0)
+- **Candidate 執行計畫隔離**：`ZW.CALC.PERIOD.STAR.*` candidate 動態流曜規則自預設執行計畫移除，轉為 `stage='on-demand'`，僅能透過 `ZiWei.Experimental.dynamicStars()` 明確呼叫，Trace 中狀態如實標記為 `candidate`，不再污染 canonical。
+- **PeriodScope 統一**：納入 `minor-period`。
+- **Evidence 獨立性門檻 V2**：升級為 `rule.evidenceRefs → Evidence → Source.independenceGroup`，嚴格落實 Tier 3 來源缺 independenceGroup 判定 FAIL。
+- **ZiWei.Bible 命名空間**：提供 `rules`、`rule`、`sources`、`evidence`、`explainRule`、`sourceGraph`、`research`、`search` 等核心確定性檢索 API。
+
+### 4. AI Handoff Package (跨 AI 解盤便攜契約)
+- **獨立 JSON Schema**：`schemas/ai-handoff.schema.json` 驗證。
+- **主 API**：`ZiWei.AI.handoff()`、`ZiWei.AI.handoffUnknownTime()`、`ZiWei.AI.toMarkdown()`、`ZiWei.AI.toJson()`。
+- **跨平台解盤契約**：附帶機器可讀的 `instructions`，明令外部 AI「不得自行重排盤、尊重 Profile、不得臆測未知時辰、區分規則層級」。
+- **隱私層級 (Privacy Profiles)**：支援 `minimal`（最少資料）、`interpretation`（解盤必要資料，預設）、`full`（含姓名等原始資料）。
+- **指紋與確定性**：同一命盤與選項恆產出相同指紋與 JSON。
+
+### 5. 專業工作區與 Bible 頁面 (Preview Workspace)
+- **Birth Form 專業化**：Segmented control 四模式切換、12 時辰卡、進階設定摺疊。
+- **Unknown Time 專屬工作區**：`#/unknown-time`，提供候選矩陣表、穩定結構專區、最多 3 個候選並排比較。
+- **Chart Workspace 專業工具列**：圖層開關（星曜/四化/廟旺/三方四正/流曜/格局）、宮位點擊聯動。
+- **Bible Inspector**：整合解讀、規則、星曜、文獻來源、Trace 查驗面板。
+- **Bible 專屬深層鏈結頁**：`#/bible/star/{id}`、`#/bible/rule/{id}`、`#/bible/pattern/{id}`、`#/bible/profile/{id}`。
+- **前端一鍵 AI 匯出**：對話框提供「精簡/完整」、「隱私設定」、「Markdown/JSON」選擇，支援一鍵複製或直接下載。
+
+---

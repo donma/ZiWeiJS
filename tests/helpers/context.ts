@@ -43,6 +43,7 @@ export function buildTestContext(
     placements,
     transformations: chart.chart.transformations,
     majorPeriods: chart.periods.major,
+    dynamicStars: chart.periods.dynamicStars ?? [],
     yearPeriod: chart.periods.year,
     monthPeriod: chart.periods.month,
     dayPeriod: chart.periods.day,

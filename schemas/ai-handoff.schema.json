@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ziwei-bible/ai-handoff.schema.json",
+  "title": "ZiWeiJS AI Handoff Package",
+  "description": "結構化命盤資料（Facts + Rules + Provenance），供外部 AI 直接解讀，不需重排盤。deterministic / versioned / privacy-aware / profile-aware / uncertainty-aware。",
+  "type": "object",
+  "required": ["formatVersion", "generator", "subject", "birth", "natal", "palaces", "transformations", "patterns", "instructions", "fingerprint"],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": { "type": "string" },
+    "generator": {
+      "type": "object",
+      "required": ["product", "bibleVersion", "engineVersion", "schemaVersion", "profile"],
+      "additionalProperties": false,
+      "properties": {
+        "product": { "const": "ZiWeiJS" },
+        "bibleVersion": { "type": "string" },
+        "engineVersion": { "type": "string" },
+        "schemaVersion": { "type": "string" },
+        "profile": { "type": "string" }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "sexForCalculation": { "type": "string" }
+      }
+    },
+    "birth": {
+      "type": "object",
+      "required": ["calendarType", "birthTimePrecision"],
+      "additionalProperties": false,
+      "properties": {
+        "calendarType": { "enum": ["solar", "lunar"] },
+        "solar": {
+          "type": "object",
+          "required": ["year", "month", "day"],
+          "additionalProperties": false,
+          "properties": {
+            "year": { "type": "integer" },
+            "month": { "type": "integer" },
+            "day": { "type": "integer" }
+          }
+        },
+        "lunar": {
+          "type": "object",
+          "required": ["year", "month", "day"],
+          "additionalProperties": false,
+          "properties": {
+            "year": { "type": "integer" },
+            "month": { "type": "integer" },
+            "day": { "type": "integer" },
+            "isLeapMonth": { "type": "boolean" }
+          }
+        },
+        "timezone": { "type": "string" },
+        "birthTimePrecision": { "enum": ["exact", "hour-branch", "range", "unknown"] },
+        "hourBranch": { "$ref": "#/$defs/branch" },
+        "representativeTimeUsed": { "type": "boolean" },
+        "selectedCandidate": { "$ref": "#/$defs/branch" },
+        "birthTimeSource": { "type": "string" }
+      }
+    },
+    "natal": {
+      "type": "object",
+      "required": ["lifePalace", "lifePalaceBranch", "bodyPalace", "bodyPalaceBranch", "bureau"],
+      "additionalProperties": false,
+      "properties": {
+        "lifePalace": { "type": "string" },
+        "lifePalaceBranch": { "$ref": "#/$defs/branch" },
+        "bodyPalace": { "type": "string" },
+        "bodyPalaceBranch": { "$ref": "#/$defs/branch" },
+        "bureau": { "type": "string" },
+        "bureauName": { "type": "string" },
+        "masterStar": { "type": "string" },
+        "bodyStar": { "type": "string" },
+        "yinYang": { "type": "string" },
+        "direction": { "type": "string" }
+      }
+    },
+    "palaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["palaceId", "name", "stem", "branch", "isLifePalace", "isBodyPalace", "stars"],
+        "additionalProperties": false,
+        "properties": {
+          "palaceId": { "type": "string" },
+          "name": { "type": "string" },
+          "stem": { "type": "string" },
+          "branch": { "$ref": "#/$defs/branch" },
+          "isLifePalace": { "type": "boolean" },
+          "isBodyPalace": { "type": "boolean" },
+          "majorPeriod": {
+            "type": "object",
+            "required": ["fromAge", "toAge"],
+            "additionalProperties": false,
+            "properties": {
+              "fromAge": { "type": "integer" },
+              "toAge": { "type": "integer" }
+            }
+          },
+          "stars": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["starId", "name", "category"],
+              "additionalProperties": false,
+              "properties": {
+                "starId": { "type": "string" },
+                "name": { "type": "string" },
+                "category": { "type": "string" },
+                "dignity": { "type": "string" },
+                "transformations": { "type": "array", "items": { "type": "string" } },
+                "status": { "enum": ["canonical", "variant", "candidate", "research", "deprecated"] },
+                "ruleId": { "type": "string" },
+                "ruleVersion": { "type": "string" }
+              }
+            }
+          },
+          "changsheng": { "type": "string" },
+          "boshi": { "type": "string" }
+        }
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scope", "type", "sourceStem", "targetStarId", "targetPalaceId"],
+        "additionalProperties": false,
+        "properties": {
+          "scope": { "type": "string" },
+          "type": { "enum": ["lu", "quan", "ke", "ji"] },
+          "sourceStem": { "type": "string" },
+          "targetStarId": { "type": "string" },
+          "targetPalaceId": { "type": "string" },
+          "status": { "enum": ["canonical", "variant", "candidate", "research"] },
+          "ruleId": { "type": "string" }
+        }
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["patternId", "name", "status", "ruleStatus"],
+        "additionalProperties": false,
+        "properties": {
+          "patternId": { "type": "string" },
+          "name": { "type": "string" },
+          "status": { "enum": ["complete", "enhanced", "partial", "broken", "variant-only", "insufficient"] },
+          "ruleStatus": { "enum": ["canonical", "variant", "candidate", "research"] },
+          "matchedConditions": { "type": "array", "items": { "type": "string" } },
+          "breakers": { "type": "array", "items": { "type": "string" } },
+          "enhancers": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "periods": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "major": { "type": "array", "items": { "type": "object" } },
+        "active": { "type": "object" },
+        "year": { "type": "object" },
+        "month": { "type": "object" },
+        "day": { "type": "object" },
+        "hour": { "type": "object" },
+        "xiaoxian": { "type": "object" },
+        "dynamicStars": { "type": "array" }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ruleId", "domain", "tendency", "strength"],
+            "additionalProperties": false,
+            "properties": {
+              "ruleId": { "type": "string" },
+              "domain": { "type": "string" },
+              "tendency": { "type": "string" },
+              "strength": { "type": "number" },
+              "confidence": { "type": "number" },
+              "status": { "enum": ["canonical", "variant", "candidate", "research", "active", "overridden", "conflicted"] },
+              "supports": { "type": "array", "items": { "type": "string" } },
+              "conflicts": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "narrative": { "type": "string" }
+      }
+    },
+    "profileDifferences": { "type": "array", "items": { "type": "object" } },
+    "researchWarnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "id", "note"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "enum": ["candidate-rule", "research", "dynamic-star-candidate", "variant", "deprecated"] },
+          "id": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "sources": { "type": "array" },
+    "evidence": { "type": "array" },
+    "unknownTime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidates": { "type": "array" },
+        "stableFacts": { "type": "array" },
+        "variableFacts": { "type": "array" },
+        "groups": { "type": "array" },
+        "uniqueFacts": { "type": "array" }
+      }
+    },
+    "instructions": {
+      "type": "object",
+      "required": [
+        "treatChartAsPrecalculated", "doNotRecalculateUnlessAsked", "respectProfile",
+        "distinguishRuleStatus", "doNotTreatCandidateAsCanonical",
+        "respectBirthTimeUncertainty", "doNotInventMissingFacts"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "treatChartAsPrecalculated": { "const": true },
+        "doNotRecalculateUnlessAsked": { "const": true },
+        "respectProfile": { "const": true },
+        "distinguishRuleStatus": { "const": true },
+        "doNotTreatCandidateAsCanonical": { "const": true },
+        "respectBirthTimeUncertainty": { "const": true },
+        "doNotInventMissingFacts": { "const": true }
+      }
+    },
+    "fingerprint": { "type": "string" }
+  },
+  "$defs": {
+    "branch": { "enum": ["zi", "chou", "yin", "mao", "chen", "si", "wu", "wei", "shen", "you", "xu", "hai"] }
+  }
+}

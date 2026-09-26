@@ -11,6 +11,8 @@ export {
   getSource, listSources, getEvidence, listEvidence, evidenceForRule,
   getProfile, listProfiles, resolveRuleForProfile
 } from './rule-engine/registry.js';
+export { searchBible } from './bible/bible.js';
+export type { BibleSearchResult } from './bible/bible.js';
 export { explainProfile } from './rule-engine/profile-explain.js';
 export type { ProfileExplanation, ProfileDiffEntry } from './rule-engine/profile-explain.js';
 
@@ -31,6 +33,17 @@ export { ziweiPalaceIndex, branchFromPalaceIndex } from './executors/palace-exec
 export { runInterpretation, runPatterns, groupByDomain } from './interpretation-engine/interpretation-engine.js';
 export { resolveInterpretationHits, activeHits } from './interpretation-engine/resolver.js';
 export { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
+export {
+  analyzeBirthTime, selectCandidate, generateCandidates,
+  type BirthTimeUncertaintyResult, type BirthTimeCandidate,
+  type CandidateSignature, type FactDiff, type CandidateGroup,
+  type SensitivitySummary
+} from './birth-time/birth-time.js';
+export {
+  handoff, handoffUnknownTime, toMarkdown, toJson,
+  AI_HANDOFF_FORMAT_VERSION,
+  type AiHandoffMode, type AiHandoffFormat, type AiHandoffPrivacy, type AiHandoffOptions
+} from './ai/handoff.js';
 export type { UnknownTimeResult, RectificationResult, RectificationClue } from './rectification/rectification.js';
 export { toContext } from './ai/context.js';
 export type { AiContext, AiTaskType, ToContextOptions } from './ai/context.js';
@@ -73,10 +86,13 @@ export {
 } from './aux-supplementary/aux-supplementary.js';
 
 import { calculate, calculateSafe } from './reference-engine/engine.js';
-import { getRule, listRules, getSource, listSources, listProfiles, getProfile } from './rule-engine/registry.js';
+import { getRule, listRules, getSource, listSources, listProfiles, getProfile, getEvidence, listEvidence } from './rule-engine/registry.js';
+import { searchBible } from './bible/bible.js';
 import { explainProfile } from './rule-engine/profile-explain.js';
 import { runInterpretation, runPatterns } from './interpretation-engine/interpretation-engine.js';
 import { analyzeUnknownTime, rectifyAnalyze } from './rectification/rectification.js';
+import { analyzeBirthTime, selectCandidate } from './birth-time/birth-time.js';
+import { handoff, handoffUnknownTime, toMarkdown, toJson } from './ai/handoff.js';
 import { toContext } from './ai/context.js';
 import {
   PIPELINE_STAGES, AI_ALLOWED_STAGES, canAdvance, canPromoteStatus, classifyDifference, DIFFERENTIAL_CLASSES
@@ -175,7 +191,12 @@ export const ZiWei = {
     canAdvance,
     canPromoteStatus,
     pipelineStages: PIPELINE_STAGES,
-    aiAllowedStages: AI_ALLOWED_STAGES
+    aiAllowedStages: AI_ALLOWED_STAGES,
+    /** AI Handoff Package（spec 0.71 §40–§75） */
+    handoff,
+    handoffUnknownTime,
+    toMarkdown,
+    toJson
   },
   Research: {
     canAdvance,
@@ -204,6 +225,30 @@ export const ZiWei = {
   Sources: {
     get: getSource,
     list: listSources
+  },
+  /** Bible 查詢與溯源命名空間（spec 0.71 §37） */
+  Bible: {
+    rules: listRules,
+    rule: getRule,
+    sources: listSources,
+    evidence: (evidenceId: string) => getEvidence(evidenceId),
+    explainRule(ruleId: string) {
+      const rule = getRule(ruleId);
+      return {
+        rule,
+        sources: (rule.sourceRefs ?? []).map(id => { try { return getSource(id); } catch { return { sourceId: id, title: id, type: 'other', tier: 6 }; } }),
+        evidence: (rule.evidenceRefs ?? []).map(id => getEvidence(id)).filter(Boolean)
+      };
+    },
+    sourceGraph(ruleId: string) {
+      const rule = getRule(ruleId);
+      const sources = (rule.sourceRefs ?? []).map(id => { try { return getSource(id); } catch { return null; } }).filter(Boolean);
+      const evidence = (rule.evidenceRefs ?? []).map(id => getEvidence(id)).filter(Boolean);
+      return { rule, sources, evidence };
+    },
+    research: listResearch,
+    variants: listRules,
+    search: searchBible
   },
   /** Query Facade（spec Post-Stability §8）：只查既有結果，不新增演算法 */
   Query: QueryApi,
@@ -246,6 +291,31 @@ export const ZiWei = {
   },
   Trace: {
     explain: explainTrace
+  },
+  /** 出生時間精度分析（spec 0.71 §1–§14） */
+  BirthTime: {
+    analyze: analyzeBirthTime,
+    select: selectCandidate,
+    /** @deprecated 舊名稱；0.71 改用 `ZiWei.BirthTime.analyze` */
+    analyzeUnknownTime
+  },
+  /**
+   * 實驗性 API（spec 0.71 §31–§32）。
+   * 執行 stage='on-demand' 之 candidate 規則，trace 一律標 `candidate`。
+   * 禁止在一般 calculate() 中自動觸發。
+   */
+  Experimental: {
+    /**
+     * 動態流曜（year scope）— 與 `ZiWei.BirthTime` 共用同一 candidate 實作，
+     * 但在 trace 中以 `status='candidate'` 標記，不提升為 canonical。
+     */
+    dynamicStars(input: ZiWeiBirthInput, target: TargetDate, options?: CalculateOptions): ZiWeiChart {
+      return calculate(input, {
+        ...(options ?? {}),
+        targetDate: target,
+        experimentalDynamicStars: true
+      });
+    }
   },
   analyzeUnknownTime,
   canAdvance,
