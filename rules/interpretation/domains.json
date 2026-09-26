@@ -1421,7 +1421,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_ZI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1465,6 +1465,17 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "geng",
+              "xin",
+              "yi",
+              "gui"
+            ]
           }
         ]
       },
@@ -1483,9 +1494,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：子宮貪狼殺陰星，機梁相拱（庚辛乙癸生人尤佳，本命命宮坐子宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐子宮，三方四正會上述星曜，生年干限庚、辛、乙、癸（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「庚、辛、乙、癸生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1502,7 +1519,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_CHOU.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1528,6 +1545,15 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.TAIYIN"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "bing",
+              "wu"
+            ]
           }
         ]
       },
@@ -1546,9 +1572,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：丑宮立命日月朝（丙戍生人尤佳，本命命宮坐丑宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐丑宮，三方四正會上述星曜，生年干限丙、戊（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「丙、戊生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1565,7 +1597,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_YIN.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1603,6 +1635,16 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.TIANLIANG"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "shen",
+              "si",
+              "geng"
+            ]
           }
         ]
       },
@@ -1621,9 +1663,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：寅宮巨日足豐隆，七殺天梁百事通（申巳庚生人尤佳，本命命宮坐寅宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐寅宮，三方四正會上述星曜，生年干限申、巳、庚（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「申、巳、庚生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1640,7 +1688,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_MAO.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1672,6 +1720,15 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.WUQU"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "xin",
+              "yi"
+            ]
           }
         ]
       },
@@ -1690,9 +1747,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：卯宮機巨武曲逢（辛乙生人尤佳，本命命宮坐卯宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐卯宮，三方四正會上述星曜，生年干限辛、乙（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「辛、乙生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1778,7 +1841,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_SI.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1816,6 +1879,17 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.TIANFU"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "wu",
+              "xin",
+              "ren",
+              "bing"
+            ]
           }
         ]
       },
@@ -1834,9 +1908,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：巳位天機天相臨，紫府朝垣福更深（戊辛壬丙生人尤佳，本命命宮坐巳宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐巳宮，三方四正會上述星曜，生年干限戊、辛、壬、丙（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「戊、辛、壬、丙生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -1853,7 +1933,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_WU.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -1909,6 +1989,17 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.QISHA"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "jia",
+              "ding",
+              "ji",
+              "gui"
+            ]
           }
         ]
       },
@@ -1927,9 +2018,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：午宮紫府太陽同，機梁破殺喜相逢（甲丁己癸生人尤佳，本命命宮坐午宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐午宮，三方四正會上述星曜，生年干限甲、丁、己、癸（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「甲、丁、己、癸生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -2033,7 +2130,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_SHEN.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -2077,6 +2174,16 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.JUMEN"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "jia",
+              "geng",
+              "gui"
+            ]
           }
         ]
       },
@@ -2095,9 +2202,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：申宮紫帝貞梁同，武曲巨門喜相逢（甲庚癸生人尤佳，本命命宮坐申宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐申宮，三方四正會上述星曜，生年干限甲、庚、癸（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「甲、庚、癸生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",
@@ -2114,7 +2227,7 @@
     },
     {
       "ruleId": "ZW.INT.GENERAL.SHIDE_YOU.001",
-      "ruleVersion": "1.0",
+      "ruleVersion": "1.1",
       "status": "canonical",
       "domain": "general",
       "name": {
@@ -2146,6 +2259,15 @@
             "relation": "san-fang-si-zheng",
             "palace": "life",
             "star": "ZW.STAR.MAJOR.TAIYANG"
+          },
+          {
+            "type": "compare",
+            "left": "normalized.ganzhi.year.stem",
+            "op": "in",
+            "right": [
+              "xin",
+              "yi"
+            ]
           }
         ]
       },
@@ -2164,9 +2286,15 @@
         "SRC.QUANSHU.WIKISOURCE"
       ],
       "text": {
-        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：酉宮最喜太陰逢，巨日又逢當面沖（辛乙生人尤佳，本命命宮坐酉宮，三方四正會上述星曜；本條先收星曜條件，生年干限定待後續 DSL 正則化。）"
+        "zh-TW": "《全書》卷一〈十二宮諸星得地合格訣〉：本命命宮坐酉宮，三方四正會上述星曜，生年干限辛、乙（含生年干限定）"
       },
       "changeLog": [
+        {
+          "version": "1.1",
+          "type": "behavior-change",
+          "date": "2026-09-25",
+          "note": "補齊生年干限定（DSL compare on normalized.ganzhi.year.stem），完整對應《全書》歌訣之「辛、乙生人」條款；沿用既有 compare 路徑解析，維持 fail-close 語意。"
+        },
         {
           "version": "1.0",
           "type": "evidence-update",

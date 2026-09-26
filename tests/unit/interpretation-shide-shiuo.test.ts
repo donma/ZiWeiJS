@@ -20,11 +20,11 @@ const mk = (year: number, month: number, day: number, hour: number): ZiWeiBirthI
 const hitsOf = (input: ZiWeiBirthInput) => calculate(input).interpretation.hits.map(h => h.ruleId);
 
 describe('得地合格訣（ZW.INT.GENERAL.SHIDE_*）', () => {
-  it('命宮在丑且三方會太陽太陰 → 命中 SHIDE_CHOU', () => {
-    expect(hitsOf(mk(1984, 1, 20, 0))).toContain('ZW.INT.GENERAL.SHIDE_CHOU.001');
+  it('命宮在丑且三方會太陽太陰＋丙年生人 → 命中 SHIDE_CHOU', () => {
+    expect(hitsOf(mk(1986, 4, 15, 6))).toContain('ZW.INT.GENERAL.SHIDE_CHOU.001');
   });
-  it('命宮在酉且三方會太陰，對宮巨門太陽 → 命中 SHIDE_YOU', () => {
-    expect(hitsOf(mk(1984, 6, 1, 18))).toContain('ZW.INT.GENERAL.SHIDE_YOU.001');
+  it('命宮在酉且三方會太陰＋對宮巨門太陽＋乙年生人 → 命中 SHIDE_YOU', () => {
+    expect(hitsOf(mk(1985, 9, 20, 0))).toContain('ZW.INT.GENERAL.SHIDE_YOU.001');
   });
   it('命宮在戍且三方會紫微 → 命中 SHIDE_XU', () => {
     expect(hitsOf(mk(1984, 1, 5, 6))).toContain('ZW.INT.GENERAL.SHIDE_XU.001');
